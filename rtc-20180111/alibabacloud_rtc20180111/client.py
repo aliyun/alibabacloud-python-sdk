@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -48,7 +49,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.AddRecordTemplateResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.AddRecordTemplateResponse(),
             self.do_rpcrequest('AddRecordTemplate', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -61,7 +63,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.AddRecordTemplateResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.AddRecordTemplateResponse(),
             await self.do_rpcrequest_async('AddRecordTemplate', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -88,7 +91,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.CreateAutoLiveStreamRuleResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.CreateAutoLiveStreamRuleResponse(),
             self.do_rpcrequest('CreateAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -101,7 +105,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.CreateAutoLiveStreamRuleResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.CreateAutoLiveStreamRuleResponse(),
             await self.do_rpcrequest_async('CreateAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -119,86 +124,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_auto_live_stream_rule_with_options_async(request, runtime)
 
-    def create_channel_with_options(
-        self,
-        request: rtc_20180111_models.CreateChannelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.CreateChannelResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.CreateChannelResponse().from_map(
-            self.do_rpcrequest('CreateChannel', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_channel_with_options_async(
-        self,
-        request: rtc_20180111_models.CreateChannelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.CreateChannelResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.CreateChannelResponse().from_map(
-            await self.do_rpcrequest_async('CreateChannel', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_channel(
-        self,
-        request: rtc_20180111_models.CreateChannelRequest,
-    ) -> rtc_20180111_models.CreateChannelResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_channel_with_options(request, runtime)
-
-    async def create_channel_async(
-        self,
-        request: rtc_20180111_models.CreateChannelRequest,
-    ) -> rtc_20180111_models.CreateChannelResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_channel_with_options_async(request, runtime)
-
-    def create_conference_with_options(
-        self,
-        request: rtc_20180111_models.CreateConferenceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.CreateConferenceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.CreateConferenceResponse().from_map(
-            self.do_rpcrequest('CreateConference', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_conference_with_options_async(
-        self,
-        request: rtc_20180111_models.CreateConferenceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.CreateConferenceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.CreateConferenceResponse().from_map(
-            await self.do_rpcrequest_async('CreateConference', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_conference(
-        self,
-        request: rtc_20180111_models.CreateConferenceRequest,
-    ) -> rtc_20180111_models.CreateConferenceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_conference_with_options(request, runtime)
-
-    async def create_conference_async(
-        self,
-        request: rtc_20180111_models.CreateConferenceRequest,
-    ) -> rtc_20180111_models.CreateConferenceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_conference_with_options_async(request, runtime)
-
     def create_event_subscribe_with_options(
         self,
         request: rtc_20180111_models.CreateEventSubscribeRequest,
@@ -208,7 +133,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.CreateEventSubscribeResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.CreateEventSubscribeResponse(),
             self.do_rpcrequest('CreateEventSubscribe', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -221,7 +147,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.CreateEventSubscribeResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.CreateEventSubscribeResponse(),
             await self.do_rpcrequest_async('CreateEventSubscribe', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -248,7 +175,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.CreateMPULayoutResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.CreateMPULayoutResponse(),
             self.do_rpcrequest('CreateMPULayout', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -261,7 +189,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.CreateMPULayoutResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.CreateMPULayoutResponse(),
             await self.do_rpcrequest_async('CreateMPULayout', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -279,125 +208,47 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_mpulayout_with_options_async(request, runtime)
 
-    def create_mpurule_with_options(
+    def create_record_index_file_with_options(
         self,
-        request: rtc_20180111_models.CreateMPURuleRequest,
+        request: rtc_20180111_models.CreateRecordIndexFileRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.CreateMPURuleResponse:
+    ) -> rtc_20180111_models.CreateRecordIndexFileResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.CreateMPURuleResponse().from_map(
-            self.do_rpcrequest('CreateMPURule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            rtc_20180111_models.CreateRecordIndexFileResponse(),
+            self.do_rpcrequest('CreateRecordIndexFile', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def create_mpurule_with_options_async(
+    async def create_record_index_file_with_options_async(
         self,
-        request: rtc_20180111_models.CreateMPURuleRequest,
+        request: rtc_20180111_models.CreateRecordIndexFileRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.CreateMPURuleResponse:
+    ) -> rtc_20180111_models.CreateRecordIndexFileResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.CreateMPURuleResponse().from_map(
-            await self.do_rpcrequest_async('CreateMPURule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            rtc_20180111_models.CreateRecordIndexFileResponse(),
+            await self.do_rpcrequest_async('CreateRecordIndexFile', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def create_mpurule(
+    def create_record_index_file(
         self,
-        request: rtc_20180111_models.CreateMPURuleRequest,
-    ) -> rtc_20180111_models.CreateMPURuleResponse:
+        request: rtc_20180111_models.CreateRecordIndexFileRequest,
+    ) -> rtc_20180111_models.CreateRecordIndexFileResponse:
         runtime = util_models.RuntimeOptions()
-        return self.create_mpurule_with_options(request, runtime)
+        return self.create_record_index_file_with_options(request, runtime)
 
-    async def create_mpurule_async(
+    async def create_record_index_file_async(
         self,
-        request: rtc_20180111_models.CreateMPURuleRequest,
-    ) -> rtc_20180111_models.CreateMPURuleResponse:
+        request: rtc_20180111_models.CreateRecordIndexFileRequest,
+    ) -> rtc_20180111_models.CreateRecordIndexFileResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.create_mpurule_with_options_async(request, runtime)
-
-    def create_service_linked_role_for_rtc_with_options(
-        self,
-        request: rtc_20180111_models.CreateServiceLinkedRoleForRtcRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.CreateServiceLinkedRoleForRtcResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.CreateServiceLinkedRoleForRtcResponse().from_map(
-            self.do_rpcrequest('CreateServiceLinkedRoleForRtc', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_service_linked_role_for_rtc_with_options_async(
-        self,
-        request: rtc_20180111_models.CreateServiceLinkedRoleForRtcRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.CreateServiceLinkedRoleForRtcResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.CreateServiceLinkedRoleForRtcResponse().from_map(
-            await self.do_rpcrequest_async('CreateServiceLinkedRoleForRtc', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_service_linked_role_for_rtc(
-        self,
-        request: rtc_20180111_models.CreateServiceLinkedRoleForRtcRequest,
-    ) -> rtc_20180111_models.CreateServiceLinkedRoleForRtcResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_service_linked_role_for_rtc_with_options(request, runtime)
-
-    async def create_service_linked_role_for_rtc_async(
-        self,
-        request: rtc_20180111_models.CreateServiceLinkedRoleForRtcRequest,
-    ) -> rtc_20180111_models.CreateServiceLinkedRoleForRtcResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_service_linked_role_for_rtc_with_options_async(request, runtime)
-
-    def create_subscribe_with_options(
-        self,
-        request: rtc_20180111_models.CreateSubscribeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.CreateSubscribeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.CreateSubscribeResponse().from_map(
-            self.do_rpcrequest('CreateSubscribe', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_subscribe_with_options_async(
-        self,
-        request: rtc_20180111_models.CreateSubscribeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.CreateSubscribeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.CreateSubscribeResponse().from_map(
-            await self.do_rpcrequest_async('CreateSubscribe', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_subscribe(
-        self,
-        request: rtc_20180111_models.CreateSubscribeRequest,
-    ) -> rtc_20180111_models.CreateSubscribeResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_subscribe_with_options(request, runtime)
-
-    async def create_subscribe_async(
-        self,
-        request: rtc_20180111_models.CreateSubscribeRequest,
-    ) -> rtc_20180111_models.CreateSubscribeResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_subscribe_with_options_async(request, runtime)
+        return await self.create_record_index_file_with_options_async(request, runtime)
 
     def delete_auto_live_stream_rule_with_options(
         self,
@@ -408,7 +259,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DeleteAutoLiveStreamRuleResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DeleteAutoLiveStreamRuleResponse(),
             self.do_rpcrequest('DeleteAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -421,7 +273,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DeleteAutoLiveStreamRuleResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DeleteAutoLiveStreamRuleResponse(),
             await self.do_rpcrequest_async('DeleteAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -439,86 +292,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_auto_live_stream_rule_with_options_async(request, runtime)
 
-    def delete_channel_with_options(
-        self,
-        request: rtc_20180111_models.DeleteChannelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DeleteChannelResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DeleteChannelResponse().from_map(
-            self.do_rpcrequest('DeleteChannel', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_channel_with_options_async(
-        self,
-        request: rtc_20180111_models.DeleteChannelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DeleteChannelResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DeleteChannelResponse().from_map(
-            await self.do_rpcrequest_async('DeleteChannel', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_channel(
-        self,
-        request: rtc_20180111_models.DeleteChannelRequest,
-    ) -> rtc_20180111_models.DeleteChannelResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_channel_with_options(request, runtime)
-
-    async def delete_channel_async(
-        self,
-        request: rtc_20180111_models.DeleteChannelRequest,
-    ) -> rtc_20180111_models.DeleteChannelResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_channel_with_options_async(request, runtime)
-
-    def delete_conference_with_options(
-        self,
-        request: rtc_20180111_models.DeleteConferenceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DeleteConferenceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DeleteConferenceResponse().from_map(
-            self.do_rpcrequest('DeleteConference', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_conference_with_options_async(
-        self,
-        request: rtc_20180111_models.DeleteConferenceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DeleteConferenceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DeleteConferenceResponse().from_map(
-            await self.do_rpcrequest_async('DeleteConference', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_conference(
-        self,
-        request: rtc_20180111_models.DeleteConferenceRequest,
-    ) -> rtc_20180111_models.DeleteConferenceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_conference_with_options(request, runtime)
-
-    async def delete_conference_async(
-        self,
-        request: rtc_20180111_models.DeleteConferenceRequest,
-    ) -> rtc_20180111_models.DeleteConferenceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_conference_with_options_async(request, runtime)
-
     def delete_event_subscribe_with_options(
         self,
         request: rtc_20180111_models.DeleteEventSubscribeRequest,
@@ -528,7 +301,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DeleteEventSubscribeResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DeleteEventSubscribeResponse(),
             self.do_rpcrequest('DeleteEventSubscribe', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -541,7 +315,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DeleteEventSubscribeResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DeleteEventSubscribeResponse(),
             await self.do_rpcrequest_async('DeleteEventSubscribe', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -568,7 +343,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DeleteMPULayoutResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DeleteMPULayoutResponse(),
             self.do_rpcrequest('DeleteMPULayout', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -581,7 +357,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DeleteMPULayoutResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DeleteMPULayoutResponse(),
             await self.do_rpcrequest_async('DeleteMPULayout', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -599,46 +376,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_mpulayout_with_options_async(request, runtime)
 
-    def delete_mpurule_with_options(
-        self,
-        request: rtc_20180111_models.DeleteMPURuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DeleteMPURuleResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DeleteMPURuleResponse().from_map(
-            self.do_rpcrequest('DeleteMPURule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_mpurule_with_options_async(
-        self,
-        request: rtc_20180111_models.DeleteMPURuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DeleteMPURuleResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DeleteMPURuleResponse().from_map(
-            await self.do_rpcrequest_async('DeleteMPURule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_mpurule(
-        self,
-        request: rtc_20180111_models.DeleteMPURuleRequest,
-    ) -> rtc_20180111_models.DeleteMPURuleResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_mpurule_with_options(request, runtime)
-
-    async def delete_mpurule_async(
-        self,
-        request: rtc_20180111_models.DeleteMPURuleRequest,
-    ) -> rtc_20180111_models.DeleteMPURuleResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_mpurule_with_options_async(request, runtime)
-
     def delete_record_template_with_options(
         self,
         request: rtc_20180111_models.DeleteRecordTemplateRequest,
@@ -648,7 +385,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DeleteRecordTemplateResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DeleteRecordTemplateResponse(),
             self.do_rpcrequest('DeleteRecordTemplate', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -661,7 +399,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DeleteRecordTemplateResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DeleteRecordTemplateResponse(),
             await self.do_rpcrequest_async('DeleteRecordTemplate', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -679,86 +418,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_record_template_with_options_async(request, runtime)
 
-    def delete_subscribe_with_options(
-        self,
-        request: rtc_20180111_models.DeleteSubscribeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DeleteSubscribeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DeleteSubscribeResponse().from_map(
-            self.do_rpcrequest('DeleteSubscribe', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_subscribe_with_options_async(
-        self,
-        request: rtc_20180111_models.DeleteSubscribeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DeleteSubscribeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DeleteSubscribeResponse().from_map(
-            await self.do_rpcrequest_async('DeleteSubscribe', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_subscribe(
-        self,
-        request: rtc_20180111_models.DeleteSubscribeRequest,
-    ) -> rtc_20180111_models.DeleteSubscribeResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_subscribe_with_options(request, runtime)
-
-    async def delete_subscribe_async(
-        self,
-        request: rtc_20180111_models.DeleteSubscribeRequest,
-    ) -> rtc_20180111_models.DeleteSubscribeResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_subscribe_with_options_async(request, runtime)
-
-    def describe_apps_with_options(
-        self,
-        request: rtc_20180111_models.DescribeAppsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeAppsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeAppsResponse().from_map(
-            self.do_rpcrequest('DescribeApps', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_apps_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeAppsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeAppsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeAppsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeApps', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_apps(
-        self,
-        request: rtc_20180111_models.DescribeAppsRequest,
-    ) -> rtc_20180111_models.DescribeAppsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_apps_with_options(request, runtime)
-
-    async def describe_apps_async(
-        self,
-        request: rtc_20180111_models.DescribeAppsRequest,
-    ) -> rtc_20180111_models.DescribeAppsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_apps_with_options_async(request, runtime)
-
     def describe_auto_live_stream_rule_with_options(
         self,
         request: rtc_20180111_models.DescribeAutoLiveStreamRuleRequest,
@@ -768,7 +427,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DescribeAutoLiveStreamRuleResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAutoLiveStreamRuleResponse(),
             self.do_rpcrequest('DescribeAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -781,7 +441,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DescribeAutoLiveStreamRuleResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAutoLiveStreamRuleResponse(),
             await self.do_rpcrequest_async('DescribeAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -808,7 +469,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DescribeChannelParticipantsResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeChannelParticipantsResponse(),
             self.do_rpcrequest('DescribeChannelParticipants', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -821,7 +483,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DescribeChannelParticipantsResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeChannelParticipantsResponse(),
             await self.do_rpcrequest_async('DescribeChannelParticipants', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -848,7 +511,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DescribeChannelUsersResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeChannelUsersResponse(),
             self.do_rpcrequest('DescribeChannelUsers', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -861,7 +525,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DescribeChannelUsersResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeChannelUsersResponse(),
             await self.do_rpcrequest_async('DescribeChannelUsers', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -879,86 +544,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_channel_users_with_options_async(request, runtime)
 
-    def describe_conference_auth_info_with_options(
-        self,
-        request: rtc_20180111_models.DescribeConferenceAuthInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeConferenceAuthInfoResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeConferenceAuthInfoResponse().from_map(
-            self.do_rpcrequest('DescribeConferenceAuthInfo', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_conference_auth_info_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeConferenceAuthInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeConferenceAuthInfoResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeConferenceAuthInfoResponse().from_map(
-            await self.do_rpcrequest_async('DescribeConferenceAuthInfo', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_conference_auth_info(
-        self,
-        request: rtc_20180111_models.DescribeConferenceAuthInfoRequest,
-    ) -> rtc_20180111_models.DescribeConferenceAuthInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_conference_auth_info_with_options(request, runtime)
-
-    async def describe_conference_auth_info_async(
-        self,
-        request: rtc_20180111_models.DescribeConferenceAuthInfoRequest,
-    ) -> rtc_20180111_models.DescribeConferenceAuthInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_conference_auth_info_with_options_async(request, runtime)
-
-    def describe_mpulayout_info_with_options(
-        self,
-        request: rtc_20180111_models.DescribeMPULayoutInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeMPULayoutInfoResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeMPULayoutInfoResponse().from_map(
-            self.do_rpcrequest('DescribeMPULayoutInfo', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_mpulayout_info_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeMPULayoutInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeMPULayoutInfoResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeMPULayoutInfoResponse().from_map(
-            await self.do_rpcrequest_async('DescribeMPULayoutInfo', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_mpulayout_info(
-        self,
-        request: rtc_20180111_models.DescribeMPULayoutInfoRequest,
-    ) -> rtc_20180111_models.DescribeMPULayoutInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_mpulayout_info_with_options(request, runtime)
-
-    async def describe_mpulayout_info_async(
-        self,
-        request: rtc_20180111_models.DescribeMPULayoutInfoRequest,
-    ) -> rtc_20180111_models.DescribeMPULayoutInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_mpulayout_info_with_options_async(request, runtime)
-
     def describe_mpulayout_info_list_with_options(
         self,
         request: rtc_20180111_models.DescribeMPULayoutInfoListRequest,
@@ -968,7 +553,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DescribeMPULayoutInfoListResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeMPULayoutInfoListResponse(),
             self.do_rpcrequest('DescribeMPULayoutInfoList', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -981,7 +567,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DescribeMPULayoutInfoListResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeMPULayoutInfoListResponse(),
             await self.do_rpcrequest_async('DescribeMPULayoutInfoList', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -999,86 +586,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_mpulayout_info_list_with_options_async(request, runtime)
 
-    def describe_mpulayout_list_with_options(
-        self,
-        request: rtc_20180111_models.DescribeMPULayoutListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeMPULayoutListResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeMPULayoutListResponse().from_map(
-            self.do_rpcrequest('DescribeMPULayoutList', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_mpulayout_list_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeMPULayoutListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeMPULayoutListResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeMPULayoutListResponse().from_map(
-            await self.do_rpcrequest_async('DescribeMPULayoutList', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_mpulayout_list(
-        self,
-        request: rtc_20180111_models.DescribeMPULayoutListRequest,
-    ) -> rtc_20180111_models.DescribeMPULayoutListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_mpulayout_list_with_options(request, runtime)
-
-    async def describe_mpulayout_list_async(
-        self,
-        request: rtc_20180111_models.DescribeMPULayoutListRequest,
-    ) -> rtc_20180111_models.DescribeMPULayoutListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_mpulayout_list_with_options_async(request, runtime)
-
-    def describe_mpurule_with_options(
-        self,
-        request: rtc_20180111_models.DescribeMPURuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeMPURuleResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeMPURuleResponse().from_map(
-            self.do_rpcrequest('DescribeMPURule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_mpurule_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeMPURuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeMPURuleResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeMPURuleResponse().from_map(
-            await self.do_rpcrequest_async('DescribeMPURule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_mpurule(
-        self,
-        request: rtc_20180111_models.DescribeMPURuleRequest,
-    ) -> rtc_20180111_models.DescribeMPURuleResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_mpurule_with_options(request, runtime)
-
-    async def describe_mpurule_async(
-        self,
-        request: rtc_20180111_models.DescribeMPURuleRequest,
-    ) -> rtc_20180111_models.DescribeMPURuleResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_mpurule_with_options_async(request, runtime)
-
     def describe_record_files_with_options(
         self,
         request: rtc_20180111_models.DescribeRecordFilesRequest,
@@ -1088,7 +595,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DescribeRecordFilesResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeRecordFilesResponse(),
             self.do_rpcrequest('DescribeRecordFiles', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1101,7 +609,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DescribeRecordFilesResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeRecordFilesResponse(),
             await self.do_rpcrequest_async('DescribeRecordFiles', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1128,7 +637,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DescribeRecordTasksResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeRecordTasksResponse(),
             self.do_rpcrequest('DescribeRecordTasks', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1141,7 +651,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DescribeRecordTasksResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeRecordTasksResponse(),
             await self.do_rpcrequest_async('DescribeRecordTasks', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1168,7 +679,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DescribeRecordTemplatesResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeRecordTemplatesResponse(),
             self.do_rpcrequest('DescribeRecordTemplates', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1181,7 +693,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DescribeRecordTemplatesResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeRecordTemplatesResponse(),
             await self.do_rpcrequest_async('DescribeRecordTemplates', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1199,646 +712,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_record_templates_with_options_async(request, runtime)
 
-    def describe_rtcapp_key_with_options(
-        self,
-        request: rtc_20180111_models.DescribeRTCAppKeyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRTCAppKeyResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRTCAppKeyResponse().from_map(
-            self.do_rpcrequest('DescribeRTCAppKey', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_rtcapp_key_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeRTCAppKeyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRTCAppKeyResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRTCAppKeyResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRTCAppKey', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_rtcapp_key(
-        self,
-        request: rtc_20180111_models.DescribeRTCAppKeyRequest,
-    ) -> rtc_20180111_models.DescribeRTCAppKeyResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rtcapp_key_with_options(request, runtime)
-
-    async def describe_rtcapp_key_async(
-        self,
-        request: rtc_20180111_models.DescribeRTCAppKeyRequest,
-    ) -> rtc_20180111_models.DescribeRTCAppKeyResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rtcapp_key_with_options_async(request, runtime)
-
-    def describe_rtc_channel_cnt_data_with_options(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelCntDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcChannelCntDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcChannelCntDataResponse().from_map(
-            self.do_rpcrequest('DescribeRtcChannelCntData', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_rtc_channel_cnt_data_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelCntDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcChannelCntDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcChannelCntDataResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRtcChannelCntData', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_rtc_channel_cnt_data(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelCntDataRequest,
-    ) -> rtc_20180111_models.DescribeRtcChannelCntDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rtc_channel_cnt_data_with_options(request, runtime)
-
-    async def describe_rtc_channel_cnt_data_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelCntDataRequest,
-    ) -> rtc_20180111_models.DescribeRtcChannelCntDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rtc_channel_cnt_data_with_options_async(request, runtime)
-
-    def describe_rtc_channel_detail_with_options(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcChannelDetailResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcChannelDetailResponse().from_map(
-            self.do_rpcrequest('DescribeRtcChannelDetail', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_rtc_channel_detail_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcChannelDetailResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcChannelDetailResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRtcChannelDetail', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_rtc_channel_detail(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelDetailRequest,
-    ) -> rtc_20180111_models.DescribeRtcChannelDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rtc_channel_detail_with_options(request, runtime)
-
-    async def describe_rtc_channel_detail_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelDetailRequest,
-    ) -> rtc_20180111_models.DescribeRtcChannelDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rtc_channel_detail_with_options_async(request, runtime)
-
-    def describe_rtc_channel_list_with_options(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcChannelListResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcChannelListResponse().from_map(
-            self.do_rpcrequest('DescribeRtcChannelList', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_rtc_channel_list_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcChannelListResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcChannelListResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRtcChannelList', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_rtc_channel_list(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelListRequest,
-    ) -> rtc_20180111_models.DescribeRtcChannelListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rtc_channel_list_with_options(request, runtime)
-
-    async def describe_rtc_channel_list_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelListRequest,
-    ) -> rtc_20180111_models.DescribeRtcChannelListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rtc_channel_list_with_options_async(request, runtime)
-
-    def describe_rtc_channel_metric_with_options(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelMetricRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcChannelMetricResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcChannelMetricResponse().from_map(
-            self.do_rpcrequest('DescribeRtcChannelMetric', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_rtc_channel_metric_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelMetricRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcChannelMetricResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcChannelMetricResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRtcChannelMetric', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_rtc_channel_metric(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelMetricRequest,
-    ) -> rtc_20180111_models.DescribeRtcChannelMetricResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rtc_channel_metric_with_options(request, runtime)
-
-    async def describe_rtc_channel_metric_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelMetricRequest,
-    ) -> rtc_20180111_models.DescribeRtcChannelMetricResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rtc_channel_metric_with_options_async(request, runtime)
-
-    def describe_rtc_channel_metrics_with_options(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelMetricsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcChannelMetricsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcChannelMetricsResponse().from_map(
-            self.do_rpcrequest('DescribeRtcChannelMetrics', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_rtc_channel_metrics_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelMetricsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcChannelMetricsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcChannelMetricsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRtcChannelMetrics', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_rtc_channel_metrics(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelMetricsRequest,
-    ) -> rtc_20180111_models.DescribeRtcChannelMetricsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rtc_channel_metrics_with_options(request, runtime)
-
-    async def describe_rtc_channel_metrics_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelMetricsRequest,
-    ) -> rtc_20180111_models.DescribeRtcChannelMetricsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rtc_channel_metrics_with_options_async(request, runtime)
-
-    def describe_rtc_channels_with_options(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcChannelsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcChannelsResponse().from_map(
-            self.do_rpcrequest('DescribeRtcChannels', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_rtc_channels_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcChannelsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcChannelsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRtcChannels', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_rtc_channels(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelsRequest,
-    ) -> rtc_20180111_models.DescribeRtcChannelsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rtc_channels_with_options(request, runtime)
-
-    async def describe_rtc_channels_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelsRequest,
-    ) -> rtc_20180111_models.DescribeRtcChannelsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rtc_channels_with_options_async(request, runtime)
-
-    def describe_rtc_channel_user_list_with_options(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelUserListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcChannelUserListResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcChannelUserListResponse().from_map(
-            self.do_rpcrequest('DescribeRtcChannelUserList', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_rtc_channel_user_list_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelUserListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcChannelUserListResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcChannelUserListResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRtcChannelUserList', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_rtc_channel_user_list(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelUserListRequest,
-    ) -> rtc_20180111_models.DescribeRtcChannelUserListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rtc_channel_user_list_with_options(request, runtime)
-
-    async def describe_rtc_channel_user_list_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcChannelUserListRequest,
-    ) -> rtc_20180111_models.DescribeRtcChannelUserListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rtc_channel_user_list_with_options_async(request, runtime)
-
-    def describe_rtc_duration_data_with_options(
-        self,
-        request: rtc_20180111_models.DescribeRtcDurationDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcDurationDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcDurationDataResponse().from_map(
-            self.do_rpcrequest('DescribeRtcDurationData', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_rtc_duration_data_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcDurationDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcDurationDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcDurationDataResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRtcDurationData', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_rtc_duration_data(
-        self,
-        request: rtc_20180111_models.DescribeRtcDurationDataRequest,
-    ) -> rtc_20180111_models.DescribeRtcDurationDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rtc_duration_data_with_options(request, runtime)
-
-    async def describe_rtc_duration_data_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcDurationDataRequest,
-    ) -> rtc_20180111_models.DescribeRtcDurationDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rtc_duration_data_with_options_async(request, runtime)
-
-    def describe_rtc_peak_channel_cnt_data_with_options(
-        self,
-        request: rtc_20180111_models.DescribeRtcPeakChannelCntDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcPeakChannelCntDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcPeakChannelCntDataResponse().from_map(
-            self.do_rpcrequest('DescribeRtcPeakChannelCntData', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_rtc_peak_channel_cnt_data_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcPeakChannelCntDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcPeakChannelCntDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcPeakChannelCntDataResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRtcPeakChannelCntData', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_rtc_peak_channel_cnt_data(
-        self,
-        request: rtc_20180111_models.DescribeRtcPeakChannelCntDataRequest,
-    ) -> rtc_20180111_models.DescribeRtcPeakChannelCntDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rtc_peak_channel_cnt_data_with_options(request, runtime)
-
-    async def describe_rtc_peak_channel_cnt_data_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcPeakChannelCntDataRequest,
-    ) -> rtc_20180111_models.DescribeRtcPeakChannelCntDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rtc_peak_channel_cnt_data_with_options_async(request, runtime)
-
-    def describe_rtc_peak_user_cnt_data_with_options(
-        self,
-        request: rtc_20180111_models.DescribeRtcPeakUserCntDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcPeakUserCntDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcPeakUserCntDataResponse().from_map(
-            self.do_rpcrequest('DescribeRtcPeakUserCntData', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_rtc_peak_user_cnt_data_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcPeakUserCntDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcPeakUserCntDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcPeakUserCntDataResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRtcPeakUserCntData', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_rtc_peak_user_cnt_data(
-        self,
-        request: rtc_20180111_models.DescribeRtcPeakUserCntDataRequest,
-    ) -> rtc_20180111_models.DescribeRtcPeakUserCntDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rtc_peak_user_cnt_data_with_options(request, runtime)
-
-    async def describe_rtc_peak_user_cnt_data_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcPeakUserCntDataRequest,
-    ) -> rtc_20180111_models.DescribeRtcPeakUserCntDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rtc_peak_user_cnt_data_with_options_async(request, runtime)
-
-    def describe_rtc_scale_with_options(
-        self,
-        request: rtc_20180111_models.DescribeRtcScaleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcScaleResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcScaleResponse().from_map(
-            self.do_rpcrequest('DescribeRtcScale', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_rtc_scale_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcScaleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcScaleResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcScaleResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRtcScale', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_rtc_scale(
-        self,
-        request: rtc_20180111_models.DescribeRtcScaleRequest,
-    ) -> rtc_20180111_models.DescribeRtcScaleResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rtc_scale_with_options(request, runtime)
-
-    async def describe_rtc_scale_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcScaleRequest,
-    ) -> rtc_20180111_models.DescribeRtcScaleResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rtc_scale_with_options_async(request, runtime)
-
-    def describe_rtc_scale_detail_with_options(
-        self,
-        request: rtc_20180111_models.DescribeRtcScaleDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcScaleDetailResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcScaleDetailResponse().from_map(
-            self.do_rpcrequest('DescribeRtcScaleDetail', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_rtc_scale_detail_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcScaleDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcScaleDetailResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcScaleDetailResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRtcScaleDetail', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_rtc_scale_detail(
-        self,
-        request: rtc_20180111_models.DescribeRtcScaleDetailRequest,
-    ) -> rtc_20180111_models.DescribeRtcScaleDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rtc_scale_detail_with_options(request, runtime)
-
-    async def describe_rtc_scale_detail_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcScaleDetailRequest,
-    ) -> rtc_20180111_models.DescribeRtcScaleDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rtc_scale_detail_with_options_async(request, runtime)
-
-    def describe_rtc_user_cnt_data_with_options(
-        self,
-        request: rtc_20180111_models.DescribeRtcUserCntDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcUserCntDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcUserCntDataResponse().from_map(
-            self.do_rpcrequest('DescribeRtcUserCntData', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_rtc_user_cnt_data_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcUserCntDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcUserCntDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcUserCntDataResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRtcUserCntData', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_rtc_user_cnt_data(
-        self,
-        request: rtc_20180111_models.DescribeRtcUserCntDataRequest,
-    ) -> rtc_20180111_models.DescribeRtcUserCntDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rtc_user_cnt_data_with_options(request, runtime)
-
-    async def describe_rtc_user_cnt_data_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcUserCntDataRequest,
-    ) -> rtc_20180111_models.DescribeRtcUserCntDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rtc_user_cnt_data_with_options_async(request, runtime)
-
-    def describe_rtc_user_events_with_options(
-        self,
-        request: rtc_20180111_models.DescribeRtcUserEventsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcUserEventsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcUserEventsResponse().from_map(
-            self.do_rpcrequest('DescribeRtcUserEvents', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_rtc_user_events_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcUserEventsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcUserEventsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcUserEventsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRtcUserEvents', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_rtc_user_events(
-        self,
-        request: rtc_20180111_models.DescribeRtcUserEventsRequest,
-    ) -> rtc_20180111_models.DescribeRtcUserEventsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rtc_user_events_with_options(request, runtime)
-
-    async def describe_rtc_user_events_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcUserEventsRequest,
-    ) -> rtc_20180111_models.DescribeRtcUserEventsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rtc_user_events_with_options_async(request, runtime)
-
-    def describe_rtc_user_list_with_options(
-        self,
-        request: rtc_20180111_models.DescribeRtcUserListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcUserListResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcUserListResponse().from_map(
-            self.do_rpcrequest('DescribeRtcUserList', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_rtc_user_list_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcUserListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRtcUserListResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.DescribeRtcUserListResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRtcUserList', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_rtc_user_list(
-        self,
-        request: rtc_20180111_models.DescribeRtcUserListRequest,
-    ) -> rtc_20180111_models.DescribeRtcUserListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rtc_user_list_with_options(request, runtime)
-
-    async def describe_rtc_user_list_async(
-        self,
-        request: rtc_20180111_models.DescribeRtcUserListRequest,
-    ) -> rtc_20180111_models.DescribeRtcUserListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rtc_user_list_with_options_async(request, runtime)
-
     def describe_user_info_in_channel_with_options(
         self,
         request: rtc_20180111_models.DescribeUserInfoInChannelRequest,
@@ -1848,7 +721,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DescribeUserInfoInChannelResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeUserInfoInChannelResponse(),
             self.do_rpcrequest('DescribeUserInfoInChannel', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1861,7 +735,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DescribeUserInfoInChannelResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeUserInfoInChannelResponse(),
             await self.do_rpcrequest_async('DescribeUserInfoInChannel', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1879,85 +754,89 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_info_in_channel_with_options_async(request, runtime)
 
-    def disable_mpurule_with_options(
+    def disable_auto_live_stream_rule_with_options(
         self,
-        request: rtc_20180111_models.DisableMPURuleRequest,
+        request: rtc_20180111_models.DisableAutoLiveStreamRuleRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DisableMPURuleResponse:
+    ) -> rtc_20180111_models.DisableAutoLiveStreamRuleResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DisableMPURuleResponse().from_map(
-            self.do_rpcrequest('DisableMPURule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            rtc_20180111_models.DisableAutoLiveStreamRuleResponse(),
+            self.do_rpcrequest('DisableAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def disable_mpurule_with_options_async(
+    async def disable_auto_live_stream_rule_with_options_async(
         self,
-        request: rtc_20180111_models.DisableMPURuleRequest,
+        request: rtc_20180111_models.DisableAutoLiveStreamRuleRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DisableMPURuleResponse:
+    ) -> rtc_20180111_models.DisableAutoLiveStreamRuleResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.DisableMPURuleResponse().from_map(
-            await self.do_rpcrequest_async('DisableMPURule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            rtc_20180111_models.DisableAutoLiveStreamRuleResponse(),
+            await self.do_rpcrequest_async('DisableAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def disable_mpurule(
+    def disable_auto_live_stream_rule(
         self,
-        request: rtc_20180111_models.DisableMPURuleRequest,
-    ) -> rtc_20180111_models.DisableMPURuleResponse:
+        request: rtc_20180111_models.DisableAutoLiveStreamRuleRequest,
+    ) -> rtc_20180111_models.DisableAutoLiveStreamRuleResponse:
         runtime = util_models.RuntimeOptions()
-        return self.disable_mpurule_with_options(request, runtime)
+        return self.disable_auto_live_stream_rule_with_options(request, runtime)
 
-    async def disable_mpurule_async(
+    async def disable_auto_live_stream_rule_async(
         self,
-        request: rtc_20180111_models.DisableMPURuleRequest,
-    ) -> rtc_20180111_models.DisableMPURuleResponse:
+        request: rtc_20180111_models.DisableAutoLiveStreamRuleRequest,
+    ) -> rtc_20180111_models.DisableAutoLiveStreamRuleResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.disable_mpurule_with_options_async(request, runtime)
+        return await self.disable_auto_live_stream_rule_with_options_async(request, runtime)
 
-    def enable_mpurule_with_options(
+    def enable_auto_live_stream_rule_with_options(
         self,
-        request: rtc_20180111_models.EnableMPURuleRequest,
+        request: rtc_20180111_models.EnableAutoLiveStreamRuleRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.EnableMPURuleResponse:
+    ) -> rtc_20180111_models.EnableAutoLiveStreamRuleResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.EnableMPURuleResponse().from_map(
-            self.do_rpcrequest('EnableMPURule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            rtc_20180111_models.EnableAutoLiveStreamRuleResponse(),
+            self.do_rpcrequest('EnableAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def enable_mpurule_with_options_async(
+    async def enable_auto_live_stream_rule_with_options_async(
         self,
-        request: rtc_20180111_models.EnableMPURuleRequest,
+        request: rtc_20180111_models.EnableAutoLiveStreamRuleRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.EnableMPURuleResponse:
+    ) -> rtc_20180111_models.EnableAutoLiveStreamRuleResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.EnableMPURuleResponse().from_map(
-            await self.do_rpcrequest_async('EnableMPURule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            rtc_20180111_models.EnableAutoLiveStreamRuleResponse(),
+            await self.do_rpcrequest_async('EnableAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def enable_mpurule(
+    def enable_auto_live_stream_rule(
         self,
-        request: rtc_20180111_models.EnableMPURuleRequest,
-    ) -> rtc_20180111_models.EnableMPURuleResponse:
+        request: rtc_20180111_models.EnableAutoLiveStreamRuleRequest,
+    ) -> rtc_20180111_models.EnableAutoLiveStreamRuleResponse:
         runtime = util_models.RuntimeOptions()
-        return self.enable_mpurule_with_options(request, runtime)
+        return self.enable_auto_live_stream_rule_with_options(request, runtime)
 
-    async def enable_mpurule_async(
+    async def enable_auto_live_stream_rule_async(
         self,
-        request: rtc_20180111_models.EnableMPURuleRequest,
-    ) -> rtc_20180111_models.EnableMPURuleResponse:
+        request: rtc_20180111_models.EnableAutoLiveStreamRuleRequest,
+    ) -> rtc_20180111_models.EnableAutoLiveStreamRuleResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.enable_mpurule_with_options_async(request, runtime)
+        return await self.enable_auto_live_stream_rule_with_options_async(request, runtime)
 
     def get_mputask_status_with_options(
         self,
@@ -1968,7 +847,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.GetMPUTaskStatusResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.GetMPUTaskStatusResponse(),
             self.do_rpcrequest('GetMPUTaskStatus', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1981,7 +861,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.GetMPUTaskStatusResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.GetMPUTaskStatusResponse(),
             await self.do_rpcrequest_async('GetMPUTaskStatus', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -1999,86 +880,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_mputask_status_with_options_async(request, runtime)
 
-    def modify_app_with_options(
-        self,
-        request: rtc_20180111_models.ModifyAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.ModifyAppResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.ModifyAppResponse().from_map(
-            self.do_rpcrequest('ModifyApp', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def modify_app_with_options_async(
-        self,
-        request: rtc_20180111_models.ModifyAppRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.ModifyAppResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.ModifyAppResponse().from_map(
-            await self.do_rpcrequest_async('ModifyApp', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def modify_app(
-        self,
-        request: rtc_20180111_models.ModifyAppRequest,
-    ) -> rtc_20180111_models.ModifyAppResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_app_with_options(request, runtime)
-
-    async def modify_app_async(
-        self,
-        request: rtc_20180111_models.ModifyAppRequest,
-    ) -> rtc_20180111_models.ModifyAppResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_app_with_options_async(request, runtime)
-
-    def modify_conference_with_options(
-        self,
-        request: rtc_20180111_models.ModifyConferenceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.ModifyConferenceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.ModifyConferenceResponse().from_map(
-            self.do_rpcrequest('ModifyConference', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def modify_conference_with_options_async(
-        self,
-        request: rtc_20180111_models.ModifyConferenceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.ModifyConferenceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.ModifyConferenceResponse().from_map(
-            await self.do_rpcrequest_async('ModifyConference', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def modify_conference(
-        self,
-        request: rtc_20180111_models.ModifyConferenceRequest,
-    ) -> rtc_20180111_models.ModifyConferenceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_conference_with_options(request, runtime)
-
-    async def modify_conference_async(
-        self,
-        request: rtc_20180111_models.ModifyConferenceRequest,
-    ) -> rtc_20180111_models.ModifyConferenceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_conference_with_options_async(request, runtime)
-
     def modify_mpulayout_with_options(
         self,
         request: rtc_20180111_models.ModifyMPULayoutRequest,
@@ -2088,7 +889,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.ModifyMPULayoutResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyMPULayoutResponse(),
             self.do_rpcrequest('ModifyMPULayout', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2101,7 +903,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.ModifyMPULayoutResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyMPULayoutResponse(),
             await self.do_rpcrequest_async('ModifyMPULayout', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2119,166 +922,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_mpulayout_with_options_async(request, runtime)
 
-    def mute_audio_with_options(
-        self,
-        request: rtc_20180111_models.MuteAudioRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.MuteAudioResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.MuteAudioResponse().from_map(
-            self.do_rpcrequest('MuteAudio', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def mute_audio_with_options_async(
-        self,
-        request: rtc_20180111_models.MuteAudioRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.MuteAudioResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.MuteAudioResponse().from_map(
-            await self.do_rpcrequest_async('MuteAudio', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def mute_audio(
-        self,
-        request: rtc_20180111_models.MuteAudioRequest,
-    ) -> rtc_20180111_models.MuteAudioResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.mute_audio_with_options(request, runtime)
-
-    async def mute_audio_async(
-        self,
-        request: rtc_20180111_models.MuteAudioRequest,
-    ) -> rtc_20180111_models.MuteAudioResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.mute_audio_with_options_async(request, runtime)
-
-    def mute_audio_all_with_options(
-        self,
-        request: rtc_20180111_models.MuteAudioAllRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.MuteAudioAllResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.MuteAudioAllResponse().from_map(
-            self.do_rpcrequest('MuteAudioAll', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def mute_audio_all_with_options_async(
-        self,
-        request: rtc_20180111_models.MuteAudioAllRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.MuteAudioAllResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.MuteAudioAllResponse().from_map(
-            await self.do_rpcrequest_async('MuteAudioAll', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def mute_audio_all(
-        self,
-        request: rtc_20180111_models.MuteAudioAllRequest,
-    ) -> rtc_20180111_models.MuteAudioAllResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.mute_audio_all_with_options(request, runtime)
-
-    async def mute_audio_all_async(
-        self,
-        request: rtc_20180111_models.MuteAudioAllRequest,
-    ) -> rtc_20180111_models.MuteAudioAllResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.mute_audio_all_with_options_async(request, runtime)
-
-    def receive_notify_with_options(
-        self,
-        request: rtc_20180111_models.ReceiveNotifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.ReceiveNotifyResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.ReceiveNotifyResponse().from_map(
-            self.do_rpcrequest('ReceiveNotify', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def receive_notify_with_options_async(
-        self,
-        request: rtc_20180111_models.ReceiveNotifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.ReceiveNotifyResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.ReceiveNotifyResponse().from_map(
-            await self.do_rpcrequest_async('ReceiveNotify', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def receive_notify(
-        self,
-        request: rtc_20180111_models.ReceiveNotifyRequest,
-    ) -> rtc_20180111_models.ReceiveNotifyResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.receive_notify_with_options(request, runtime)
-
-    async def receive_notify_async(
-        self,
-        request: rtc_20180111_models.ReceiveNotifyRequest,
-    ) -> rtc_20180111_models.ReceiveNotifyResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.receive_notify_with_options_async(request, runtime)
-
-    def remove_participants_with_options(
-        self,
-        request: rtc_20180111_models.RemoveParticipantsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.RemoveParticipantsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.RemoveParticipantsResponse().from_map(
-            self.do_rpcrequest('RemoveParticipants', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def remove_participants_with_options_async(
-        self,
-        request: rtc_20180111_models.RemoveParticipantsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.RemoveParticipantsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.RemoveParticipantsResponse().from_map(
-            await self.do_rpcrequest_async('RemoveParticipants', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def remove_participants(
-        self,
-        request: rtc_20180111_models.RemoveParticipantsRequest,
-    ) -> rtc_20180111_models.RemoveParticipantsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.remove_participants_with_options(request, runtime)
-
-    async def remove_participants_async(
-        self,
-        request: rtc_20180111_models.RemoveParticipantsRequest,
-    ) -> rtc_20180111_models.RemoveParticipantsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.remove_participants_with_options_async(request, runtime)
-
     def remove_terminals_with_options(
         self,
         request: rtc_20180111_models.RemoveTerminalsRequest,
@@ -2288,7 +931,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.RemoveTerminalsResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.RemoveTerminalsResponse(),
             self.do_rpcrequest('RemoveTerminals', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2301,7 +945,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.RemoveTerminalsResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.RemoveTerminalsResponse(),
             await self.do_rpcrequest_async('RemoveTerminals', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2319,46 +964,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.remove_terminals_with_options_async(request, runtime)
 
-    def set_channel_property_with_options(
-        self,
-        request: rtc_20180111_models.SetChannelPropertyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.SetChannelPropertyResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.SetChannelPropertyResponse().from_map(
-            self.do_rpcrequest('SetChannelProperty', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def set_channel_property_with_options_async(
-        self,
-        request: rtc_20180111_models.SetChannelPropertyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.SetChannelPropertyResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.SetChannelPropertyResponse().from_map(
-            await self.do_rpcrequest_async('SetChannelProperty', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def set_channel_property(
-        self,
-        request: rtc_20180111_models.SetChannelPropertyRequest,
-    ) -> rtc_20180111_models.SetChannelPropertyResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.set_channel_property_with_options(request, runtime)
-
-    async def set_channel_property_async(
-        self,
-        request: rtc_20180111_models.SetChannelPropertyRequest,
-    ) -> rtc_20180111_models.SetChannelPropertyResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.set_channel_property_with_options_async(request, runtime)
-
     def start_mputask_with_options(
         self,
         request: rtc_20180111_models.StartMPUTaskRequest,
@@ -2368,7 +973,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.StartMPUTaskResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.StartMPUTaskResponse(),
             self.do_rpcrequest('StartMPUTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2381,7 +987,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.StartMPUTaskResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.StartMPUTaskResponse(),
             await self.do_rpcrequest_async('StartMPUTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2408,7 +1015,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.StartRecordTaskResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.StartRecordTaskResponse(),
             self.do_rpcrequest('StartRecordTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2421,7 +1029,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.StartRecordTaskResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.StartRecordTaskResponse(),
             await self.do_rpcrequest_async('StartRecordTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2448,7 +1057,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.StopChannelUserPublishResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.StopChannelUserPublishResponse(),
             self.do_rpcrequest('StopChannelUserPublish', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2461,7 +1071,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.StopChannelUserPublishResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.StopChannelUserPublishResponse(),
             await self.do_rpcrequest_async('StopChannelUserPublish', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2488,7 +1099,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.StopMPUTaskResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.StopMPUTaskResponse(),
             self.do_rpcrequest('StopMPUTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2501,7 +1113,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.StopMPUTaskResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.StopMPUTaskResponse(),
             await self.do_rpcrequest_async('StopMPUTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2528,7 +1141,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.StopRecordTaskResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.StopRecordTaskResponse(),
             self.do_rpcrequest('StopRecordTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2541,7 +1155,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.StopRecordTaskResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.StopRecordTaskResponse(),
             await self.do_rpcrequest_async('StopRecordTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2559,165 +1174,89 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.stop_record_task_with_options_async(request, runtime)
 
-    def unmute_audio_with_options(
+    def update_auto_live_stream_rule_with_options(
         self,
-        request: rtc_20180111_models.UnmuteAudioRequest,
+        request: rtc_20180111_models.UpdateAutoLiveStreamRuleRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.UnmuteAudioResponse:
+    ) -> rtc_20180111_models.UpdateAutoLiveStreamRuleResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.UnmuteAudioResponse().from_map(
-            self.do_rpcrequest('UnmuteAudio', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            rtc_20180111_models.UpdateAutoLiveStreamRuleResponse(),
+            self.do_rpcrequest('UpdateAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def unmute_audio_with_options_async(
+    async def update_auto_live_stream_rule_with_options_async(
         self,
-        request: rtc_20180111_models.UnmuteAudioRequest,
+        request: rtc_20180111_models.UpdateAutoLiveStreamRuleRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.UnmuteAudioResponse:
+    ) -> rtc_20180111_models.UpdateAutoLiveStreamRuleResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.UnmuteAudioResponse().from_map(
-            await self.do_rpcrequest_async('UnmuteAudio', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            rtc_20180111_models.UpdateAutoLiveStreamRuleResponse(),
+            await self.do_rpcrequest_async('UpdateAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def unmute_audio(
+    def update_auto_live_stream_rule(
         self,
-        request: rtc_20180111_models.UnmuteAudioRequest,
-    ) -> rtc_20180111_models.UnmuteAudioResponse:
+        request: rtc_20180111_models.UpdateAutoLiveStreamRuleRequest,
+    ) -> rtc_20180111_models.UpdateAutoLiveStreamRuleResponse:
         runtime = util_models.RuntimeOptions()
-        return self.unmute_audio_with_options(request, runtime)
+        return self.update_auto_live_stream_rule_with_options(request, runtime)
 
-    async def unmute_audio_async(
+    async def update_auto_live_stream_rule_async(
         self,
-        request: rtc_20180111_models.UnmuteAudioRequest,
-    ) -> rtc_20180111_models.UnmuteAudioResponse:
+        request: rtc_20180111_models.UpdateAutoLiveStreamRuleRequest,
+    ) -> rtc_20180111_models.UpdateAutoLiveStreamRuleResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.unmute_audio_with_options_async(request, runtime)
+        return await self.update_auto_live_stream_rule_with_options_async(request, runtime)
 
-    def unmute_audio_all_with_options(
+    def update_mputask_with_options(
         self,
-        request: rtc_20180111_models.UnmuteAudioAllRequest,
+        request: rtc_20180111_models.UpdateMPUTaskRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.UnmuteAudioAllResponse:
+    ) -> rtc_20180111_models.UpdateMPUTaskResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.UnmuteAudioAllResponse().from_map(
-            self.do_rpcrequest('UnmuteAudioAll', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            rtc_20180111_models.UpdateMPUTaskResponse(),
+            self.do_rpcrequest('UpdateMPUTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    async def unmute_audio_all_with_options_async(
+    async def update_mputask_with_options_async(
         self,
-        request: rtc_20180111_models.UnmuteAudioAllRequest,
+        request: rtc_20180111_models.UpdateMPUTaskRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.UnmuteAudioAllResponse:
+    ) -> rtc_20180111_models.UpdateMPUTaskResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.UnmuteAudioAllResponse().from_map(
-            await self.do_rpcrequest_async('UnmuteAudioAll', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            rtc_20180111_models.UpdateMPUTaskResponse(),
+            await self.do_rpcrequest_async('UpdateMPUTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
-    def unmute_audio_all(
+    def update_mputask(
         self,
-        request: rtc_20180111_models.UnmuteAudioAllRequest,
-    ) -> rtc_20180111_models.UnmuteAudioAllResponse:
+        request: rtc_20180111_models.UpdateMPUTaskRequest,
+    ) -> rtc_20180111_models.UpdateMPUTaskResponse:
         runtime = util_models.RuntimeOptions()
-        return self.unmute_audio_all_with_options(request, runtime)
+        return self.update_mputask_with_options(request, runtime)
 
-    async def unmute_audio_all_async(
+    async def update_mputask_async(
         self,
-        request: rtc_20180111_models.UnmuteAudioAllRequest,
-    ) -> rtc_20180111_models.UnmuteAudioAllResponse:
+        request: rtc_20180111_models.UpdateMPUTaskRequest,
+    ) -> rtc_20180111_models.UpdateMPUTaskResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.unmute_audio_all_with_options_async(request, runtime)
-
-    def update_channel_with_options(
-        self,
-        request: rtc_20180111_models.UpdateChannelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.UpdateChannelResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.UpdateChannelResponse().from_map(
-            self.do_rpcrequest('UpdateChannel', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def update_channel_with_options_async(
-        self,
-        request: rtc_20180111_models.UpdateChannelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.UpdateChannelResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.UpdateChannelResponse().from_map(
-            await self.do_rpcrequest_async('UpdateChannel', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def update_channel(
-        self,
-        request: rtc_20180111_models.UpdateChannelRequest,
-    ) -> rtc_20180111_models.UpdateChannelResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_channel_with_options(request, runtime)
-
-    async def update_channel_async(
-        self,
-        request: rtc_20180111_models.UpdateChannelRequest,
-    ) -> rtc_20180111_models.UpdateChannelResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_channel_with_options_async(request, runtime)
-
-    def update_mpulayout_with_options(
-        self,
-        request: rtc_20180111_models.UpdateMPULayoutRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.UpdateMPULayoutResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.UpdateMPULayoutResponse().from_map(
-            self.do_rpcrequest('UpdateMPULayout', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def update_mpulayout_with_options_async(
-        self,
-        request: rtc_20180111_models.UpdateMPULayoutRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.UpdateMPULayoutResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return rtc_20180111_models.UpdateMPULayoutResponse().from_map(
-            await self.do_rpcrequest_async('UpdateMPULayout', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def update_mpulayout(
-        self,
-        request: rtc_20180111_models.UpdateMPULayoutRequest,
-    ) -> rtc_20180111_models.UpdateMPULayoutResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_mpulayout_with_options(request, runtime)
-
-    async def update_mpulayout_async(
-        self,
-        request: rtc_20180111_models.UpdateMPULayoutRequest,
-    ) -> rtc_20180111_models.UpdateMPULayoutResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_mpulayout_with_options_async(request, runtime)
+        return await self.update_mputask_with_options_async(request, runtime)
 
     def update_record_task_with_options(
         self,
@@ -2728,7 +1267,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.UpdateRecordTaskResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.UpdateRecordTaskResponse(),
             self.do_rpcrequest('UpdateRecordTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2741,7 +1281,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.UpdateRecordTaskResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.UpdateRecordTaskResponse(),
             await self.do_rpcrequest_async('UpdateRecordTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2768,7 +1309,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.UpdateRecordTemplateResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.UpdateRecordTemplateResponse(),
             self.do_rpcrequest('UpdateRecordTemplate', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
@@ -2781,7 +1323,8 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        return rtc_20180111_models.UpdateRecordTemplateResponse().from_map(
+        return TeaCore.from_map(
+            rtc_20180111_models.UpdateRecordTemplateResponse(),
             await self.do_rpcrequest_async('UpdateRecordTemplate', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
