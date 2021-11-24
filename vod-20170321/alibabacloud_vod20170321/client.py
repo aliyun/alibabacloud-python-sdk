@@ -97,12 +97,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddAITemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateConfig'] = request.template_config
+        query['TemplateName'] = request.template_name
+        query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddAITemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.AddAITemplateResponse(),
-            self.do_rpcrequest('AddAITemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_aitemplate_with_options_async(
@@ -111,12 +127,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddAITemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateConfig'] = request.template_config
+        query['TemplateName'] = request.template_name
+        query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddAITemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.AddAITemplateResponse(),
-            await self.do_rpcrequest_async('AddAITemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_aitemplate(
@@ -139,12 +171,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CateName'] = request.cate_name
+        query['ParentId'] = request.parent_id
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddCategory',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.AddCategoryResponse(),
-            self.do_rpcrequest('AddCategory', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_category_with_options_async(
@@ -153,12 +201,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CateName'] = request.cate_name
+        query['ParentId'] = request.parent_id
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddCategory',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.AddCategoryResponse(),
-            await self.do_rpcrequest_async('AddCategory', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_category(
@@ -181,12 +245,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddEditingProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CoverURL'] = request.cover_url
+        query['Description'] = request.description
+        query['Division'] = request.division
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Timeline'] = request.timeline
+        query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddEditingProject',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.AddEditingProjectResponse(),
-            self.do_rpcrequest('AddEditingProject', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_editing_project_with_options_async(
@@ -195,12 +281,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddEditingProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CoverURL'] = request.cover_url
+        query['Description'] = request.description
+        query['Division'] = request.division
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Timeline'] = request.timeline
+        query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddEditingProject',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.AddEditingProjectResponse(),
-            await self.do_rpcrequest_async('AddEditingProject', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_editing_project(
@@ -223,12 +331,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['Name'] = request.name
+        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
+        query['TranscodeTemplateList'] = request.transcode_template_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddTranscodeTemplateGroup',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.AddTranscodeTemplateGroupResponse(),
-            self.do_rpcrequest('AddTranscodeTemplateGroup', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_transcode_template_group_with_options_async(
@@ -237,12 +362,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['Name'] = request.name
+        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
+        query['TranscodeTemplateList'] = request.transcode_template_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddTranscodeTemplateGroup',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.AddTranscodeTemplateGroupResponse(),
-            await self.do_rpcrequest_async('AddTranscodeTemplateGroup', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_transcode_template_group(
@@ -265,12 +407,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddVodDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CheckUrl'] = request.check_url
+        query['DomainName'] = request.domain_name
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['Scope'] = request.scope
+        query['SecurityToken'] = request.security_token
+        query['Sources'] = request.sources
+        query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddVodDomain',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.AddVodDomainResponse(),
-            self.do_rpcrequest('AddVodDomain', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_vod_domain_with_options_async(
@@ -279,12 +442,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddVodDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CheckUrl'] = request.check_url
+        query['DomainName'] = request.domain_name
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['Scope'] = request.scope
+        query['SecurityToken'] = request.security_token
+        query['Sources'] = request.sources
+        query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddVodDomain',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.AddVodDomainResponse(),
-            await self.do_rpcrequest_async('AddVodDomain', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_vod_domain(
@@ -307,12 +491,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddVodTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['Name'] = request.name
+        query['TemplateConfig'] = request.template_config
+        query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddVodTemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.AddVodTemplateResponse(),
-            self.do_rpcrequest('AddVodTemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_vod_template_with_options_async(
@@ -321,12 +522,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddVodTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['Name'] = request.name
+        query['TemplateConfig'] = request.template_config
+        query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddVodTemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.AddVodTemplateResponse(),
-            await self.do_rpcrequest_async('AddVodTemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_vod_template(
@@ -349,12 +567,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddWatermarkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['FileUrl'] = request.file_url
+        query['Name'] = request.name
+        query['Type'] = request.type
+        query['WatermarkConfig'] = request.watermark_config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddWatermark',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.AddWatermarkResponse(),
-            self.do_rpcrequest('AddWatermark', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_watermark_with_options_async(
@@ -363,12 +599,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AddWatermarkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['FileUrl'] = request.file_url
+        query['Name'] = request.name
+        query['Type'] = request.type
+        query['WatermarkConfig'] = request.watermark_config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddWatermark',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.AddWatermarkResponse(),
-            await self.do_rpcrequest_async('AddWatermark', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_watermark(
@@ -391,12 +645,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AttachAppPolicyToIdentityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['IdentityName'] = request.identity_name
+        query['IdentityType'] = request.identity_type
+        query['PolicyNames'] = request.policy_names
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AttachAppPolicyToIdentity',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.AttachAppPolicyToIdentityResponse(),
-            self.do_rpcrequest('AttachAppPolicyToIdentity', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def attach_app_policy_to_identity_with_options_async(
@@ -405,12 +676,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.AttachAppPolicyToIdentityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['IdentityName'] = request.identity_name
+        query['IdentityType'] = request.identity_type
+        query['PolicyNames'] = request.policy_names
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AttachAppPolicyToIdentity',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.AttachAppPolicyToIdentityResponse(),
-            await self.do_rpcrequest_async('AttachAppPolicyToIdentity', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def attach_app_policy_to_identity(
@@ -433,12 +721,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.BatchSetVodDomainConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['Functions'] = request.functions
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchSetVodDomainConfigs',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.BatchSetVodDomainConfigsResponse(),
-            self.do_rpcrequest('BatchSetVodDomainConfigs', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_set_vod_domain_configs_with_options_async(
@@ -447,12 +753,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.BatchSetVodDomainConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['Functions'] = request.functions
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchSetVodDomainConfigs',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.BatchSetVodDomainConfigsResponse(),
-            await self.do_rpcrequest_async('BatchSetVodDomainConfigs', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_set_vod_domain_configs(
@@ -475,12 +799,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.BatchStartVodDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchStartVodDomain',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.BatchStartVodDomainResponse(),
-            self.do_rpcrequest('BatchStartVodDomain', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_start_vod_domain_with_options_async(
@@ -489,12 +829,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.BatchStartVodDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchStartVodDomain',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.BatchStartVodDomainResponse(),
-            await self.do_rpcrequest_async('BatchStartVodDomain', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_start_vod_domain(
@@ -517,12 +873,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.BatchStopVodDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchStopVodDomain',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.BatchStopVodDomainResponse(),
-            self.do_rpcrequest('BatchStopVodDomain', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_stop_vod_domain_with_options_async(
@@ -531,12 +903,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.BatchStopVodDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchStopVodDomain',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.BatchStopVodDomainResponse(),
-            await self.do_rpcrequest_async('BatchStopVodDomain', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_stop_vod_domain(
@@ -559,12 +947,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CancelUrlUploadJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobIds'] = request.job_ids
+        query['UploadUrls'] = request.upload_urls
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CancelUrlUploadJobs',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.CancelUrlUploadJobsResponse(),
-            self.do_rpcrequest('CancelUrlUploadJobs', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def cancel_url_upload_jobs_with_options_async(
@@ -573,12 +976,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CancelUrlUploadJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobIds'] = request.job_ids
+        query['UploadUrls'] = request.upload_urls
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CancelUrlUploadJobs',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.CancelUrlUploadJobsResponse(),
-            await self.do_rpcrequest_async('CancelUrlUploadJobs', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def cancel_url_upload_jobs(
@@ -601,12 +1019,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CreateAppInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppName'] = request.app_name
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateAppInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.CreateAppInfoResponse(),
-            self.do_rpcrequest('CreateAppInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_app_info_with_options_async(
@@ -615,12 +1048,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CreateAppInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppName'] = request.app_name
+        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateAppInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.CreateAppInfoResponse(),
-            await self.do_rpcrequest_async('CreateAppInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_app_info(
@@ -643,12 +1091,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CreateAuditResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuditContent'] = request.audit_content
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateAudit',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.CreateAuditResponse(),
-            self.do_rpcrequest('CreateAudit', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_audit_with_options_async(
@@ -657,12 +1119,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CreateAuditResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuditContent'] = request.audit_content
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateAudit',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.CreateAuditResponse(),
-            await self.do_rpcrequest_async('CreateAudit', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_audit(
@@ -679,60 +1155,42 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_audit_with_options_async(request, runtime)
 
-    def create_detection_template_with_options(
-        self,
-        request: vod_20170321_models.CreateDetectionTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.CreateDetectionTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.CreateDetectionTemplateResponse(),
-            self.do_rpcrequest('CreateDetectionTemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_detection_template_with_options_async(
-        self,
-        request: vod_20170321_models.CreateDetectionTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.CreateDetectionTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.CreateDetectionTemplateResponse(),
-            await self.do_rpcrequest_async('CreateDetectionTemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_detection_template(
-        self,
-        request: vod_20170321_models.CreateDetectionTemplateRequest,
-    ) -> vod_20170321_models.CreateDetectionTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_detection_template_with_options(request, runtime)
-
-    async def create_detection_template_async(
-        self,
-        request: vod_20170321_models.CreateDetectionTemplateRequest,
-    ) -> vod_20170321_models.CreateDetectionTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_detection_template_with_options_async(request, runtime)
-
     def create_upload_attached_media_with_options(
         self,
         request: vod_20170321_models.CreateUploadAttachedMediaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CreateUploadAttachedMediaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['BusinessType'] = request.business_type
+        query['CateIds'] = request.cate_ids
+        query['Description'] = request.description
+        query['FileName'] = request.file_name
+        query['FileSize'] = request.file_size
+        query['MediaExt'] = request.media_ext
+        query['StorageLocation'] = request.storage_location
+        query['Tags'] = request.tags
+        query['Title'] = request.title
+        query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateUploadAttachedMedia',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.CreateUploadAttachedMediaResponse(),
-            self.do_rpcrequest('CreateUploadAttachedMedia', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_upload_attached_media_with_options_async(
@@ -741,12 +1199,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CreateUploadAttachedMediaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['BusinessType'] = request.business_type
+        query['CateIds'] = request.cate_ids
+        query['Description'] = request.description
+        query['FileName'] = request.file_name
+        query['FileSize'] = request.file_size
+        query['MediaExt'] = request.media_ext
+        query['StorageLocation'] = request.storage_location
+        query['Tags'] = request.tags
+        query['Title'] = request.title
+        query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateUploadAttachedMedia',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.CreateUploadAttachedMediaResponse(),
-            await self.do_rpcrequest_async('CreateUploadAttachedMedia', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_upload_attached_media(
@@ -769,12 +1251,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CreateUploadImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['CateId'] = request.cate_id
+        query['Description'] = request.description
+        query['ImageExt'] = request.image_ext
+        query['ImageType'] = request.image_type
+        query['StorageLocation'] = request.storage_location
+        query['Tags'] = request.tags
+        query['Title'] = request.title
+        query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateUploadImage',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.CreateUploadImageResponse(),
-            self.do_rpcrequest('CreateUploadImage', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_upload_image_with_options_async(
@@ -783,12 +1287,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CreateUploadImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['CateId'] = request.cate_id
+        query['Description'] = request.description
+        query['ImageExt'] = request.image_ext
+        query['ImageType'] = request.image_type
+        query['StorageLocation'] = request.storage_location
+        query['Tags'] = request.tags
+        query['Title'] = request.title
+        query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateUploadImage',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.CreateUploadImageResponse(),
-            await self.do_rpcrequest_async('CreateUploadImage', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_upload_image(
@@ -811,12 +1337,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CreateUploadVideoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['CateId'] = request.cate_id
+        query['CoverURL'] = request.cover_url
+        query['Description'] = request.description
+        query['FileName'] = request.file_name
+        query['FileSize'] = request.file_size
+        query['StorageLocation'] = request.storage_location
+        query['Tags'] = request.tags
+        query['TemplateGroupId'] = request.template_group_id
+        query['Title'] = request.title
+        query['UserData'] = request.user_data
+        query['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateUploadVideo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.CreateUploadVideoResponse(),
-            self.do_rpcrequest('CreateUploadVideo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_upload_video_with_options_async(
@@ -825,12 +1376,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.CreateUploadVideoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['CateId'] = request.cate_id
+        query['CoverURL'] = request.cover_url
+        query['Description'] = request.description
+        query['FileName'] = request.file_name
+        query['FileSize'] = request.file_size
+        query['StorageLocation'] = request.storage_location
+        query['Tags'] = request.tags
+        query['TemplateGroupId'] = request.template_group_id
+        query['Title'] = request.title
+        query['UserData'] = request.user_data
+        query['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateUploadVideo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.CreateUploadVideoResponse(),
-            await self.do_rpcrequest_async('CreateUploadVideo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_upload_video(
@@ -855,11 +1431,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVodRealTimeLogDelivery',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.CreateVodRealTimeLogDeliveryResponse(),
-            self.do_rpcrequest('CreateVodRealTimeLogDelivery', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_vod_real_time_log_delivery_with_options_async(
@@ -870,11 +1457,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVodRealTimeLogDelivery',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.CreateVodRealTimeLogDeliveryResponse(),
-            await self.do_rpcrequest_async('CreateVodRealTimeLogDelivery', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_vod_real_time_log_delivery(
@@ -897,12 +1495,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteAIImageInfosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AIImageInfoIds'] = request.aiimage_info_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteAIImageInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteAIImageInfosResponse(),
-            self.do_rpcrequest('DeleteAIImageInfos', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_aiimage_infos_with_options_async(
@@ -911,12 +1523,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteAIImageInfosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AIImageInfoIds'] = request.aiimage_info_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteAIImageInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteAIImageInfosResponse(),
-            await self.do_rpcrequest_async('DeleteAIImageInfos', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_aiimage_infos(
@@ -939,12 +1565,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteAITemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteAITemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteAITemplateResponse(),
-            self.do_rpcrequest('DeleteAITemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_aitemplate_with_options_async(
@@ -953,12 +1593,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteAITemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteAITemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteAITemplateResponse(),
-            await self.do_rpcrequest_async('DeleteAITemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_aitemplate(
@@ -981,12 +1635,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteAppInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteAppInfoResponse(),
-            self.do_rpcrequest('DeleteAppInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_app_info_with_options_async(
@@ -995,12 +1663,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteAppInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteAppInfoResponse(),
-            await self.do_rpcrequest_async('DeleteAppInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_app_info(
@@ -1023,12 +1705,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteAttachedMediaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaIds'] = request.media_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteAttachedMedia',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteAttachedMediaResponse(),
-            self.do_rpcrequest('DeleteAttachedMedia', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_attached_media_with_options_async(
@@ -1037,12 +1733,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteAttachedMediaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaIds'] = request.media_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteAttachedMedia',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteAttachedMediaResponse(),
-            await self.do_rpcrequest_async('DeleteAttachedMedia', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_attached_media(
@@ -1065,12 +1775,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CateId'] = request.cate_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteCategory',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteCategoryResponse(),
-            self.do_rpcrequest('DeleteCategory', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_category_with_options_async(
@@ -1079,12 +1803,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CateId'] = request.cate_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteCategory',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteCategoryResponse(),
-            await self.do_rpcrequest_async('DeleteCategory', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_category(
@@ -1101,60 +1839,33 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_category_with_options_async(request, runtime)
 
-    def delete_detection_template_with_options(
-        self,
-        request: vod_20170321_models.DeleteDetectionTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.DeleteDetectionTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.DeleteDetectionTemplateResponse(),
-            self.do_rpcrequest('DeleteDetectionTemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_detection_template_with_options_async(
-        self,
-        request: vod_20170321_models.DeleteDetectionTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.DeleteDetectionTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.DeleteDetectionTemplateResponse(),
-            await self.do_rpcrequest_async('DeleteDetectionTemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_detection_template(
-        self,
-        request: vod_20170321_models.DeleteDetectionTemplateRequest,
-    ) -> vod_20170321_models.DeleteDetectionTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_detection_template_with_options(request, runtime)
-
-    async def delete_detection_template_async(
-        self,
-        request: vod_20170321_models.DeleteDetectionTemplateRequest,
-    ) -> vod_20170321_models.DeleteDetectionTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_detection_template_with_options_async(request, runtime)
-
     def delete_dynamic_image_with_options(
         self,
         request: vod_20170321_models.DeleteDynamicImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteDynamicImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DynamicImageIds'] = request.dynamic_image_ids
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteDynamicImage',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteDynamicImageResponse(),
-            self.do_rpcrequest('DeleteDynamicImage', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_dynamic_image_with_options_async(
@@ -1163,12 +1874,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteDynamicImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DynamicImageIds'] = request.dynamic_image_ids
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteDynamicImage',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteDynamicImageResponse(),
-            await self.do_rpcrequest_async('DeleteDynamicImage', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_dynamic_image(
@@ -1191,12 +1917,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteEditingProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ProjectIds'] = request.project_ids
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteEditingProject',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteEditingProjectResponse(),
-            self.do_rpcrequest('DeleteEditingProject', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_editing_project_with_options_async(
@@ -1205,12 +1949,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteEditingProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ProjectIds'] = request.project_ids
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteEditingProject',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteEditingProjectResponse(),
-            await self.do_rpcrequest_async('DeleteEditingProject', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_editing_project(
@@ -1233,12 +1995,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DeleteImageType'] = request.delete_image_type
+        query['ImageIds'] = request.image_ids
+        query['ImageType'] = request.image_type
+        query['ImageURLs'] = request.image_urls
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteImage',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteImageResponse(),
-            self.do_rpcrequest('DeleteImage', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_image_with_options_async(
@@ -1247,12 +2027,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DeleteImageType'] = request.delete_image_type
+        query['ImageIds'] = request.image_ids
+        query['ImageType'] = request.image_type
+        query['ImageURLs'] = request.image_urls
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteImage',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteImageResponse(),
-            await self.do_rpcrequest_async('DeleteImage', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_image(
@@ -1275,12 +2073,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteMessageCallbackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerAccount'] = request.owner_account
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteMessageCallback',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteMessageCallbackResponse(),
-            self.do_rpcrequest('DeleteMessageCallback', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_message_callback_with_options_async(
@@ -1289,12 +2102,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteMessageCallbackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerAccount'] = request.owner_account
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteMessageCallback',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteMessageCallbackResponse(),
-            await self.do_rpcrequest_async('DeleteMessageCallback', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_message_callback(
@@ -1317,12 +2145,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteMezzaninesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Force'] = request.force
+        query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteMezzanines',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteMezzaninesResponse(),
-            self.do_rpcrequest('DeleteMezzanines', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_mezzanines_with_options_async(
@@ -1331,12 +2174,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteMezzaninesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Force'] = request.force
+        query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteMezzanines',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteMezzaninesResponse(),
-            await self.do_rpcrequest_async('DeleteMezzanines', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_mezzanines(
@@ -1359,12 +2217,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteMultipartUploadResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaId'] = request.media_id
+        query['MediaType'] = request.media_type
+        query['OwnerAccount'] = request.owner_account
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteMultipartUpload',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteMultipartUploadResponse(),
-            self.do_rpcrequest('DeleteMultipartUpload', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_multipart_upload_with_options_async(
@@ -1373,12 +2247,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteMultipartUploadResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaId'] = request.media_id
+        query['MediaType'] = request.media_type
+        query['OwnerAccount'] = request.owner_account
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteMultipartUpload',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteMultipartUploadResponse(),
-            await self.do_rpcrequest_async('DeleteMultipartUpload', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_multipart_upload(
@@ -1401,12 +2291,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteStreamResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobIds'] = request.job_ids
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteStream',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteStreamResponse(),
-            self.do_rpcrequest('DeleteStream', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_stream_with_options_async(
@@ -1415,12 +2320,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteStreamResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobIds'] = request.job_ids
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteStream',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteStreamResponse(),
-            await self.do_rpcrequest_async('DeleteStream', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_stream(
@@ -1443,12 +2363,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ForceDelGroup'] = request.force_del_group
+        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
+        query['TranscodeTemplateIds'] = request.transcode_template_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteTranscodeTemplateGroup',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteTranscodeTemplateGroupResponse(),
-            self.do_rpcrequest('DeleteTranscodeTemplateGroup', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_transcode_template_group_with_options_async(
@@ -1457,12 +2393,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ForceDelGroup'] = request.force_del_group
+        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
+        query['TranscodeTemplateIds'] = request.transcode_template_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteTranscodeTemplateGroup',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteTranscodeTemplateGroupResponse(),
-            await self.do_rpcrequest_async('DeleteTranscodeTemplateGroup', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_transcode_template_group(
@@ -1485,12 +2437,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteVideoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteVideo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteVideoResponse(),
-            self.do_rpcrequest('DeleteVideo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_video_with_options_async(
@@ -1499,12 +2465,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteVideoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteVideo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteVideoResponse(),
-            await self.do_rpcrequest_async('DeleteVideo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_video(
@@ -1527,12 +2507,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteVodDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteVodDomain',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteVodDomainResponse(),
-            self.do_rpcrequest('DeleteVodDomain', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_vod_domain_with_options_async(
@@ -1541,12 +2538,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteVodDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteVodDomain',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteVodDomainResponse(),
-            await self.do_rpcrequest_async('DeleteVodDomain', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_vod_domain(
@@ -1571,11 +2585,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVodRealtimeLogDelivery',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteVodRealtimeLogDeliveryResponse(),
-            self.do_rpcrequest('DeleteVodRealtimeLogDelivery', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_vod_realtime_log_delivery_with_options_async(
@@ -1586,11 +2611,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVodRealtimeLogDelivery',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteVodRealtimeLogDeliveryResponse(),
-            await self.do_rpcrequest_async('DeleteVodRealtimeLogDelivery', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_vod_realtime_log_delivery(
@@ -1613,12 +2649,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteVodSpecificConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteVodSpecificConfig',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteVodSpecificConfigResponse(),
-            self.do_rpcrequest('DeleteVodSpecificConfig', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_vod_specific_config_with_options_async(
@@ -1627,12 +2680,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteVodSpecificConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteVodSpecificConfig',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteVodSpecificConfigResponse(),
-            await self.do_rpcrequest_async('DeleteVodSpecificConfig', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_vod_specific_config(
@@ -1655,12 +2725,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteVodTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VodTemplateId'] = request.vod_template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteVodTemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteVodTemplateResponse(),
-            self.do_rpcrequest('DeleteVodTemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_vod_template_with_options_async(
@@ -1669,12 +2753,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteVodTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VodTemplateId'] = request.vod_template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteVodTemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteVodTemplateResponse(),
-            await self.do_rpcrequest_async('DeleteVodTemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_vod_template(
@@ -1697,12 +2795,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteWatermarkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['WatermarkId'] = request.watermark_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteWatermark',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteWatermarkResponse(),
-            self.do_rpcrequest('DeleteWatermark', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_watermark_with_options_async(
@@ -1711,12 +2823,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DeleteWatermarkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['WatermarkId'] = request.watermark_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteWatermark',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DeleteWatermarkResponse(),
-            await self.do_rpcrequest_async('DeleteWatermark', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_watermark(
@@ -1739,12 +2865,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribePlayTopVideosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizDate'] = request.biz_date
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribePlayTopVideos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribePlayTopVideosResponse(),
-            self.do_rpcrequest('DescribePlayTopVideos', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_play_top_videos_with_options_async(
@@ -1753,12 +2896,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribePlayTopVideosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizDate'] = request.biz_date
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribePlayTopVideos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribePlayTopVideosResponse(),
-            await self.do_rpcrequest_async('DescribePlayTopVideos', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_play_top_videos(
@@ -1781,12 +2941,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribePlayUserAvgResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribePlayUserAvg',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribePlayUserAvgResponse(),
-            self.do_rpcrequest('DescribePlayUserAvg', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_play_user_avg_with_options_async(
@@ -1795,12 +2971,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribePlayUserAvgResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribePlayUserAvg',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribePlayUserAvgResponse(),
-            await self.do_rpcrequest_async('DescribePlayUserAvg', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_play_user_avg(
@@ -1823,12 +3015,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribePlayUserTotalResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribePlayUserTotal',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribePlayUserTotalResponse(),
-            self.do_rpcrequest('DescribePlayUserTotal', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_play_user_total_with_options_async(
@@ -1837,12 +3045,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribePlayUserTotalResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribePlayUserTotal',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribePlayUserTotalResponse(),
-            await self.do_rpcrequest_async('DescribePlayUserTotal', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_play_user_total(
@@ -1865,12 +3089,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribePlayVideoStatisResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribePlayVideoStatis',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribePlayVideoStatisResponse(),
-            self.do_rpcrequest('DescribePlayVideoStatis', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_play_video_statis_with_options_async(
@@ -1879,12 +3120,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribePlayVideoStatisResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribePlayVideoStatis',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribePlayVideoStatisResponse(),
-            await self.do_rpcrequest_async('DescribePlayVideoStatis', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_play_video_statis(
@@ -1907,12 +3165,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodAIDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AIType'] = request.aitype
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['Region'] = request.region
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodAIData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodAIDataResponse(),
-            self.do_rpcrequest('DescribeVodAIData', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vod_aidata_with_options_async(
@@ -1921,12 +3197,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodAIDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AIType'] = request.aitype
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['Region'] = request.region
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodAIData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodAIDataResponse(),
-            await self.do_rpcrequest_async('DescribeVodAIData', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vod_aidata(
@@ -1949,12 +3243,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodCertificateListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodCertificateList',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodCertificateListResponse(),
-            self.do_rpcrequest('DescribeVodCertificateList', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vod_certificate_list_with_options_async(
@@ -1963,12 +3273,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodCertificateListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodCertificateList',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodCertificateListResponse(),
-            await self.do_rpcrequest_async('DescribeVodCertificateList', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vod_certificate_list(
@@ -1991,12 +3317,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainBpsDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['IspNameEn'] = request.isp_name_en
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainBpsData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodDomainBpsDataResponse(),
-            self.do_rpcrequest('DescribeVodDomainBpsData', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vod_domain_bps_data_with_options_async(
@@ -2005,12 +3351,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainBpsDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['IspNameEn'] = request.isp_name_en
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainBpsData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodDomainBpsDataResponse(),
-            await self.do_rpcrequest_async('DescribeVodDomainBpsData', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vod_domain_bps_data(
@@ -2033,12 +3399,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainCertificateInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainCertificateInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodDomainCertificateInfoResponse(),
-            self.do_rpcrequest('DescribeVodDomainCertificateInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vod_domain_certificate_info_with_options_async(
@@ -2047,12 +3428,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainCertificateInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainCertificateInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodDomainCertificateInfoResponse(),
-            await self.do_rpcrequest_async('DescribeVodDomainCertificateInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vod_domain_certificate_info(
@@ -2075,12 +3471,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['FunctionNames'] = request.function_names
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainConfigs',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodDomainConfigsResponse(),
-            self.do_rpcrequest('DescribeVodDomainConfigs', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vod_domain_configs_with_options_async(
@@ -2089,12 +3502,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['FunctionNames'] = request.function_names
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainConfigs',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodDomainConfigsResponse(),
-            await self.do_rpcrequest_async('DescribeVodDomainConfigs', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vod_domain_configs(
@@ -2117,12 +3547,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainDetail',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodDomainDetailResponse(),
-            self.do_rpcrequest('DescribeVodDomainDetail', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vod_domain_detail_with_options_async(
@@ -2131,12 +3577,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainDetail',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodDomainDetailResponse(),
-            await self.do_rpcrequest_async('DescribeVodDomainDetail', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vod_domain_detail(
@@ -2159,12 +3621,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainLog',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodDomainLogResponse(),
-            self.do_rpcrequest('DescribeVodDomainLog', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vod_domain_log_with_options_async(
@@ -2173,12 +3654,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainLog',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodDomainLogResponse(),
-            await self.do_rpcrequest_async('DescribeVodDomainLog', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vod_domain_log(
@@ -2203,11 +3703,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainRealtimeLogDelivery',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodDomainRealtimeLogDeliveryResponse(),
-            self.do_rpcrequest('DescribeVodDomainRealtimeLogDelivery', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vod_domain_realtime_log_delivery_with_options_async(
@@ -2218,11 +3729,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainRealtimeLogDelivery',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodDomainRealtimeLogDeliveryResponse(),
-            await self.do_rpcrequest_async('DescribeVodDomainRealtimeLogDelivery', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vod_domain_realtime_log_delivery(
@@ -2239,18 +3761,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vod_domain_realtime_log_delivery_with_options_async(request, runtime)
 
+    def describe_vod_domain_src_bps_data_with_options(
+        self,
+        request: vod_20170321_models.DescribeVodDomainSrcBpsDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainSrcBpsDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainSrcBpsData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainSrcBpsDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vod_domain_src_bps_data_with_options_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainSrcBpsDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainSrcBpsDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainSrcBpsData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainSrcBpsDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vod_domain_src_bps_data(
+        self,
+        request: vod_20170321_models.DescribeVodDomainSrcBpsDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainSrcBpsDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vod_domain_src_bps_data_with_options(request, runtime)
+
+    async def describe_vod_domain_src_bps_data_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainSrcBpsDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainSrcBpsDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vod_domain_src_bps_data_with_options_async(request, runtime)
+
     def describe_vod_domain_traffic_data_with_options(
         self,
         request: vod_20170321_models.DescribeVodDomainTrafficDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainTrafficDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['IspNameEn'] = request.isp_name_en
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainTrafficData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodDomainTrafficDataResponse(),
-            self.do_rpcrequest('DescribeVodDomainTrafficData', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vod_domain_traffic_data_with_options_async(
@@ -2259,12 +3879,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainTrafficDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['IspNameEn'] = request.isp_name_en
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainTrafficData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodDomainTrafficDataResponse(),
-            await self.do_rpcrequest_async('DescribeVodDomainTrafficData', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vod_domain_traffic_data(
@@ -2287,12 +3927,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainUsageDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Area'] = request.area
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Field'] = request.field
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainUsageData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodDomainUsageDataResponse(),
-            self.do_rpcrequest('DescribeVodDomainUsageData', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vod_domain_usage_data_with_options_async(
@@ -2301,12 +3961,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainUsageDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Area'] = request.area
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Field'] = request.field
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainUsageData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodDomainUsageDataResponse(),
-            await self.do_rpcrequest_async('DescribeVodDomainUsageData', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vod_domain_usage_data(
@@ -2329,12 +4009,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodRefreshQuotaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodRefreshQuota',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodRefreshQuotaResponse(),
-            self.do_rpcrequest('DescribeVodRefreshQuota', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vod_refresh_quota_with_options_async(
@@ -2343,12 +4038,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodRefreshQuotaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodRefreshQuota',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodRefreshQuotaResponse(),
-            await self.do_rpcrequest_async('DescribeVodRefreshQuota', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vod_refresh_quota(
@@ -2371,12 +4081,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodRefreshTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['ObjectPath'] = request.object_path
+        query['ObjectType'] = request.object_type
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['SecurityToken'] = request.security_token
+        query['StartTime'] = request.start_time
+        query['Status'] = request.status
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodRefreshTasks',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodRefreshTasksResponse(),
-            self.do_rpcrequest('DescribeVodRefreshTasks', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vod_refresh_tasks_with_options_async(
@@ -2385,12 +4119,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodRefreshTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['ObjectPath'] = request.object_path
+        query['ObjectType'] = request.object_type
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['SecurityToken'] = request.security_token
+        query['StartTime'] = request.start_time
+        query['Status'] = request.status
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodRefreshTasks',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodRefreshTasksResponse(),
-            await self.do_rpcrequest_async('DescribeVodRefreshTasks', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vod_refresh_tasks(
@@ -2413,12 +4171,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodStorageDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['Region'] = request.region
+        query['StartTime'] = request.start_time
+        query['Storage'] = request.storage
+        query['StorageType'] = request.storage_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodStorageData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodStorageDataResponse(),
-            self.do_rpcrequest('DescribeVodStorageData', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vod_storage_data_with_options_async(
@@ -2427,12 +4204,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodStorageDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['Region'] = request.region
+        query['StartTime'] = request.start_time
+        query['Storage'] = request.storage
+        query['StorageType'] = request.storage_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodStorageData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodStorageDataResponse(),
-            await self.do_rpcrequest_async('DescribeVodStorageData', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vod_storage_data(
@@ -2455,12 +4251,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodTagResources',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodTagResourcesResponse(),
-            self.do_rpcrequest('DescribeVodTagResources', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vod_tag_resources_with_options_async(
@@ -2469,12 +4282,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodTagResources',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodTagResourcesResponse(),
-            await self.do_rpcrequest_async('DescribeVodTagResources', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vod_tag_resources(
@@ -2497,12 +4327,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodTranscodeDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['Region'] = request.region
+        query['Specification'] = request.specification
+        query['StartTime'] = request.start_time
+        query['Storage'] = request.storage
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodTranscodeData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodTranscodeDataResponse(),
-            self.do_rpcrequest('DescribeVodTranscodeData', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vod_transcode_data_with_options_async(
@@ -2511,12 +4361,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodTranscodeDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['Region'] = request.region
+        query['Specification'] = request.specification
+        query['StartTime'] = request.start_time
+        query['Storage'] = request.storage
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodTranscodeData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodTranscodeDataResponse(),
-            await self.do_rpcrequest_async('DescribeVodTranscodeData', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vod_transcode_data(
@@ -2539,12 +4409,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodUserDomainsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['DomainSearchType'] = request.domain_search_type
+        query['DomainStatus'] = request.domain_status
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['SecurityToken'] = request.security_token
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodUserDomains',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodUserDomainsResponse(),
-            self.do_rpcrequest('DescribeVodUserDomains', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vod_user_domains_with_options_async(
@@ -2553,12 +4444,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodUserDomainsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['DomainSearchType'] = request.domain_search_type
+        query['DomainStatus'] = request.domain_status
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['SecurityToken'] = request.security_token
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodUserDomains',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodUserDomainsResponse(),
-            await self.do_rpcrequest_async('DescribeVodUserDomains', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vod_user_domains(
@@ -2581,12 +4493,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodUserTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodUserTags',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodUserTagsResponse(),
-            self.do_rpcrequest('DescribeVodUserTags', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vod_user_tags_with_options_async(
@@ -2595,12 +4521,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodUserTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodUserTags',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodUserTagsResponse(),
-            await self.do_rpcrequest_async('DescribeVodUserTags', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vod_user_tags(
@@ -2623,12 +4563,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodVerifyContentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodVerifyContent',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodVerifyContentResponse(),
-            self.do_rpcrequest('DescribeVodVerifyContent', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vod_verify_content_with_options_async(
@@ -2637,12 +4592,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodVerifyContentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodVerifyContent',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DescribeVodVerifyContentResponse(),
-            await self.do_rpcrequest_async('DescribeVodVerifyContent', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vod_verify_content(
@@ -2665,12 +4635,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DetachAppPolicyFromIdentityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['IdentityName'] = request.identity_name
+        query['IdentityType'] = request.identity_type
+        query['PolicyNames'] = request.policy_names
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DetachAppPolicyFromIdentity',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DetachAppPolicyFromIdentityResponse(),
-            self.do_rpcrequest('DetachAppPolicyFromIdentity', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def detach_app_policy_from_identity_with_options_async(
@@ -2679,12 +4666,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DetachAppPolicyFromIdentityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['IdentityName'] = request.identity_name
+        query['IdentityType'] = request.identity_type
+        query['PolicyNames'] = request.policy_names
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DetachAppPolicyFromIdentity',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DetachAppPolicyFromIdentityResponse(),
-            await self.do_rpcrequest_async('DetachAppPolicyFromIdentity', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def detach_app_policy_from_identity(
@@ -2709,11 +4713,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableVodRealtimeLogDelivery',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DisableVodRealtimeLogDeliveryResponse(),
-            self.do_rpcrequest('DisableVodRealtimeLogDelivery', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def disable_vod_realtime_log_delivery_with_options_async(
@@ -2724,11 +4739,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableVodRealtimeLogDelivery',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.DisableVodRealtimeLogDeliveryResponse(),
-            await self.do_rpcrequest_async('DisableVodRealtimeLogDelivery', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def disable_vod_realtime_log_delivery(
@@ -2753,11 +4779,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableVodRealtimeLogDelivery',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.EnableVodRealtimeLogDeliveryResponse(),
-            self.do_rpcrequest('EnableVodRealtimeLogDelivery', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def enable_vod_realtime_log_delivery_with_options_async(
@@ -2768,11 +4805,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableVodRealtimeLogDelivery',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.EnableVodRealtimeLogDeliveryResponse(),
-            await self.do_rpcrequest_async('EnableVodRealtimeLogDelivery', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def enable_vod_realtime_log_delivery(
@@ -2789,60 +4837,36 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.enable_vod_realtime_log_delivery_with_options_async(request, runtime)
 
-    def get_aicaption_extraction_jobs_with_options(
-        self,
-        request: vod_20170321_models.GetAICaptionExtractionJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.GetAICaptionExtractionJobsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.GetAICaptionExtractionJobsResponse(),
-            self.do_rpcrequest('GetAICaptionExtractionJobs', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_aicaption_extraction_jobs_with_options_async(
-        self,
-        request: vod_20170321_models.GetAICaptionExtractionJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.GetAICaptionExtractionJobsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.GetAICaptionExtractionJobsResponse(),
-            await self.do_rpcrequest_async('GetAICaptionExtractionJobs', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_aicaption_extraction_jobs(
-        self,
-        request: vod_20170321_models.GetAICaptionExtractionJobsRequest,
-    ) -> vod_20170321_models.GetAICaptionExtractionJobsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_aicaption_extraction_jobs_with_options(request, runtime)
-
-    async def get_aicaption_extraction_jobs_async(
-        self,
-        request: vod_20170321_models.GetAICaptionExtractionJobsRequest,
-    ) -> vod_20170321_models.GetAICaptionExtractionJobsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_aicaption_extraction_jobs_with_options_async(request, runtime)
-
     def get_aiimage_jobs_with_options(
         self,
         request: vod_20170321_models.GetAIImageJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAIImageJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobIds'] = request.job_ids
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAIImageJobs',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetAIImageJobsResponse(),
-            self.do_rpcrequest('GetAIImageJobs', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_aiimage_jobs_with_options_async(
@@ -2851,12 +4875,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAIImageJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobIds'] = request.job_ids
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAIImageJobs',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetAIImageJobsResponse(),
-            await self.do_rpcrequest_async('GetAIImageJobs', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_aiimage_jobs(
@@ -2879,12 +4921,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAIMediaAuditJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAIMediaAuditJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetAIMediaAuditJobResponse(),
-            self.do_rpcrequest('GetAIMediaAuditJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_aimedia_audit_job_with_options_async(
@@ -2893,12 +4949,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAIMediaAuditJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAIMediaAuditJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetAIMediaAuditJobResponse(),
-            await self.do_rpcrequest_async('GetAIMediaAuditJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_aimedia_audit_job(
@@ -2921,12 +4991,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAITemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAITemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetAITemplateResponse(),
-            self.do_rpcrequest('GetAITemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_aitemplate_with_options_async(
@@ -2935,12 +5019,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAITemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAITemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetAITemplateResponse(),
-            await self.do_rpcrequest_async('GetAITemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_aitemplate(
@@ -2963,12 +5061,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAIVideoTagResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaId'] = request.media_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAIVideoTagResult',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetAIVideoTagResultResponse(),
-            self.do_rpcrequest('GetAIVideoTagResult', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_aivideo_tag_result_with_options_async(
@@ -2977,12 +5093,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAIVideoTagResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaId'] = request.media_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAIVideoTagResult',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetAIVideoTagResultResponse(),
-            await self.do_rpcrequest_async('GetAIVideoTagResult', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_aivideo_tag_result(
@@ -3005,12 +5139,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAppInfosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppIds'] = request.app_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAppInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetAppInfosResponse(),
-            self.do_rpcrequest('GetAppInfos', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_app_infos_with_options_async(
@@ -3019,12 +5167,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAppInfosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppIds'] = request.app_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAppInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetAppInfosResponse(),
-            await self.do_rpcrequest_async('GetAppInfos', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_app_infos(
@@ -3047,12 +5209,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAttachedMediaInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuthTimeout'] = request.auth_timeout
+        query['MediaIds'] = request.media_ids
+        query['OutputType'] = request.output_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAttachedMediaInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetAttachedMediaInfoResponse(),
-            self.do_rpcrequest('GetAttachedMediaInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_attached_media_info_with_options_async(
@@ -3061,12 +5239,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAttachedMediaInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuthTimeout'] = request.auth_timeout
+        query['MediaIds'] = request.media_ids
+        query['OutputType'] = request.output_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAttachedMediaInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetAttachedMediaInfoResponse(),
-            await self.do_rpcrequest_async('GetAttachedMediaInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_attached_media_info(
@@ -3089,12 +5283,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAuditHistoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['SortBy'] = request.sort_by
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAuditHistory',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetAuditHistoryResponse(),
-            self.do_rpcrequest('GetAuditHistory', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_audit_history_with_options_async(
@@ -3103,12 +5314,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAuditHistoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['SortBy'] = request.sort_by
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAuditHistory',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetAuditHistoryResponse(),
-            await self.do_rpcrequest_async('GetAuditHistory', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_audit_history(
@@ -3131,12 +5359,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetCategoriesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CateId'] = request.cate_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['SortBy'] = request.sort_by
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetCategories',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetCategoriesResponse(),
-            self.do_rpcrequest('GetCategories', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_categories_with_options_async(
@@ -3145,12 +5391,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetCategoriesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CateId'] = request.cate_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['SortBy'] = request.sort_by
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetCategories',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetCategoriesResponse(),
-            await self.do_rpcrequest_async('GetCategories', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_categories(
@@ -3173,12 +5437,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetDefaultAITemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDefaultAITemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetDefaultAITemplateResponse(),
-            self.do_rpcrequest('GetDefaultAITemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_default_aitemplate_with_options_async(
@@ -3187,12 +5465,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetDefaultAITemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDefaultAITemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetDefaultAITemplateResponse(),
-            await self.do_rpcrequest_async('GetDefaultAITemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_default_aitemplate(
@@ -3209,150 +5501,36 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_default_aitemplate_with_options_async(request, runtime)
 
-    def get_detection_job_with_options(
-        self,
-        request: vod_20170321_models.GetDetectionJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.GetDetectionJobResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.GetDetectionJobResponse(),
-            self.do_rpcrequest('GetDetectionJob', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    async def get_detection_job_with_options_async(
-        self,
-        request: vod_20170321_models.GetDetectionJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.GetDetectionJobResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.GetDetectionJobResponse(),
-            await self.do_rpcrequest_async('GetDetectionJob', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    def get_detection_job(
-        self,
-        request: vod_20170321_models.GetDetectionJobRequest,
-    ) -> vod_20170321_models.GetDetectionJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_detection_job_with_options(request, runtime)
-
-    async def get_detection_job_async(
-        self,
-        request: vod_20170321_models.GetDetectionJobRequest,
-    ) -> vod_20170321_models.GetDetectionJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_detection_job_with_options_async(request, runtime)
-
-    def get_detection_result_with_options(
-        self,
-        request: vod_20170321_models.GetDetectionResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.GetDetectionResultResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.GetDetectionResultResponse(),
-            self.do_rpcrequest('GetDetectionResult', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    async def get_detection_result_with_options_async(
-        self,
-        request: vod_20170321_models.GetDetectionResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.GetDetectionResultResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.GetDetectionResultResponse(),
-            await self.do_rpcrequest_async('GetDetectionResult', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    def get_detection_result(
-        self,
-        request: vod_20170321_models.GetDetectionResultRequest,
-    ) -> vod_20170321_models.GetDetectionResultResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_detection_result_with_options(request, runtime)
-
-    async def get_detection_result_async(
-        self,
-        request: vod_20170321_models.GetDetectionResultRequest,
-    ) -> vod_20170321_models.GetDetectionResultResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_detection_result_with_options_async(request, runtime)
-
-    def get_detection_template_with_options(
-        self,
-        request: vod_20170321_models.GetDetectionTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.GetDetectionTemplateResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.GetDetectionTemplateResponse(),
-            self.do_rpcrequest('GetDetectionTemplate', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    async def get_detection_template_with_options_async(
-        self,
-        request: vod_20170321_models.GetDetectionTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.GetDetectionTemplateResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.GetDetectionTemplateResponse(),
-            await self.do_rpcrequest_async('GetDetectionTemplate', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    def get_detection_template(
-        self,
-        request: vod_20170321_models.GetDetectionTemplateRequest,
-    ) -> vod_20170321_models.GetDetectionTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_detection_template_with_options(request, runtime)
-
-    async def get_detection_template_async(
-        self,
-        request: vod_20170321_models.GetDetectionTemplateRequest,
-    ) -> vod_20170321_models.GetDetectionTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_detection_template_with_options_async(request, runtime)
-
     def get_editing_project_with_options(
         self,
         request: vod_20170321_models.GetEditingProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetEditingProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ProjectId'] = request.project_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetEditingProject',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetEditingProjectResponse(),
-            self.do_rpcrequest('GetEditingProject', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_editing_project_with_options_async(
@@ -3361,12 +5539,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetEditingProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ProjectId'] = request.project_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetEditingProject',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetEditingProjectResponse(),
-            await self.do_rpcrequest_async('GetEditingProject', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_editing_project(
@@ -3389,12 +5585,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetEditingProjectMaterialsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaterialType'] = request.material_type
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ProjectId'] = request.project_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetEditingProjectMaterials',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetEditingProjectMaterialsResponse(),
-            self.do_rpcrequest('GetEditingProjectMaterials', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_editing_project_materials_with_options_async(
@@ -3403,12 +5619,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetEditingProjectMaterialsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaterialType'] = request.material_type
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ProjectId'] = request.project_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetEditingProjectMaterials',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetEditingProjectMaterialsResponse(),
-            await self.do_rpcrequest_async('GetEditingProjectMaterials', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_editing_project_materials(
@@ -3431,12 +5667,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetImageInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuthTimeout'] = request.auth_timeout
+        query['ImageId'] = request.image_id
+        query['OutputType'] = request.output_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetImageInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetImageInfoResponse(),
-            self.do_rpcrequest('GetImageInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_image_info_with_options_async(
@@ -3445,12 +5697,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetImageInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuthTimeout'] = request.auth_timeout
+        query['ImageId'] = request.image_id
+        query['OutputType'] = request.output_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetImageInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetImageInfoResponse(),
-            await self.do_rpcrequest_async('GetImageInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_image_info(
@@ -3473,12 +5741,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMediaAuditAudioResultDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaId'] = request.media_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMediaAuditAudioResultDetail',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetMediaAuditAudioResultDetailResponse(),
-            self.do_rpcrequest('GetMediaAuditAudioResultDetail', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_media_audit_audio_result_detail_with_options_async(
@@ -3487,12 +5774,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMediaAuditAudioResultDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaId'] = request.media_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMediaAuditAudioResultDetail',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetMediaAuditAudioResultDetailResponse(),
-            await self.do_rpcrequest_async('GetMediaAuditAudioResultDetail', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_media_audit_audio_result_detail(
@@ -3515,12 +5821,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMediaAuditResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaId'] = request.media_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMediaAuditResult',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetMediaAuditResultResponse(),
-            self.do_rpcrequest('GetMediaAuditResult', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_media_audit_result_with_options_async(
@@ -3529,12 +5849,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMediaAuditResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaId'] = request.media_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMediaAuditResult',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetMediaAuditResultResponse(),
-            await self.do_rpcrequest_async('GetMediaAuditResult', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_media_audit_result(
@@ -3557,12 +5891,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMediaAuditResultDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaId'] = request.media_id
+        query['PageNo'] = request.page_no
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMediaAuditResultDetail',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetMediaAuditResultDetailResponse(),
-            self.do_rpcrequest('GetMediaAuditResultDetail', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_media_audit_result_detail_with_options_async(
@@ -3571,12 +5920,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMediaAuditResultDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaId'] = request.media_id
+        query['PageNo'] = request.page_no
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMediaAuditResultDetail',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetMediaAuditResultDetailResponse(),
-            await self.do_rpcrequest_async('GetMediaAuditResultDetail', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_media_audit_result_detail(
@@ -3599,12 +5963,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMediaAuditResultTimelineResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaId'] = request.media_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMediaAuditResultTimeline',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetMediaAuditResultTimelineResponse(),
-            self.do_rpcrequest('GetMediaAuditResultTimeline', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_media_audit_result_timeline_with_options_async(
@@ -3613,12 +5991,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMediaAuditResultTimelineResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaId'] = request.media_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMediaAuditResultTimeline',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetMediaAuditResultTimelineResponse(),
-            await self.do_rpcrequest_async('GetMediaAuditResultTimeline', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_media_audit_result_timeline(
@@ -3641,12 +6033,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMediaDNAResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaId'] = request.media_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMediaDNAResult',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetMediaDNAResultResponse(),
-            self.do_rpcrequest('GetMediaDNAResult', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_media_dnaresult_with_options_async(
@@ -3655,12 +6065,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMediaDNAResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaId'] = request.media_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMediaDNAResult',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetMediaDNAResultResponse(),
-            await self.do_rpcrequest_async('GetMediaDNAResult', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_media_dnaresult(
@@ -3683,12 +6111,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMessageCallbackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerAccount'] = request.owner_account
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMessageCallback',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetMessageCallbackResponse(),
-            self.do_rpcrequest('GetMessageCallback', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_message_callback_with_options_async(
@@ -3697,12 +6140,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMessageCallbackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerAccount'] = request.owner_account
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMessageCallback',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetMessageCallbackResponse(),
-            await self.do_rpcrequest_async('GetMessageCallback', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_message_callback(
@@ -3725,12 +6183,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMezzanineInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AdditionType'] = request.addition_type
+        query['AuthTimeout'] = request.auth_timeout
+        query['OutputType'] = request.output_type
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMezzanineInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetMezzanineInfoResponse(),
-            self.do_rpcrequest('GetMezzanineInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_mezzanine_info_with_options_async(
@@ -3739,12 +6214,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetMezzanineInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AdditionType'] = request.addition_type
+        query['AuthTimeout'] = request.auth_timeout
+        query['OutputType'] = request.output_type
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMezzanineInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetMezzanineInfoResponse(),
-            await self.do_rpcrequest_async('GetMezzanineInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_mezzanine_info(
@@ -3767,12 +6259,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetPlayInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AdditionType'] = request.addition_type
+        query['AuthTimeout'] = request.auth_timeout
+        query['Definition'] = request.definition
+        query['Formats'] = request.formats
+        query['OutputType'] = request.output_type
+        query['PlayConfig'] = request.play_config
+        query['ReAuthInfo'] = request.re_auth_info
+        query['ResultType'] = request.result_type
+        query['StreamType'] = request.stream_type
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetPlayInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetPlayInfoResponse(),
-            self.do_rpcrequest('GetPlayInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_play_info_with_options_async(
@@ -3781,12 +6296,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetPlayInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AdditionType'] = request.addition_type
+        query['AuthTimeout'] = request.auth_timeout
+        query['Definition'] = request.definition
+        query['Formats'] = request.formats
+        query['OutputType'] = request.output_type
+        query['PlayConfig'] = request.play_config
+        query['ReAuthInfo'] = request.re_auth_info
+        query['ResultType'] = request.result_type
+        query['StreamType'] = request.stream_type
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetPlayInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetPlayInfoResponse(),
-            await self.do_rpcrequest_async('GetPlayInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_play_info(
@@ -3809,12 +6347,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetTranscodeSummaryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTranscodeSummary',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetTranscodeSummaryResponse(),
-            self.do_rpcrequest('GetTranscodeSummary', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_transcode_summary_with_options_async(
@@ -3823,12 +6375,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetTranscodeSummaryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTranscodeSummary',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetTranscodeSummaryResponse(),
-            await self.do_rpcrequest_async('GetTranscodeSummary', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_transcode_summary(
@@ -3851,12 +6417,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetTranscodeTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TranscodeTaskId'] = request.transcode_task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTranscodeTask',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetTranscodeTaskResponse(),
-            self.do_rpcrequest('GetTranscodeTask', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_transcode_task_with_options_async(
@@ -3865,12 +6445,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetTranscodeTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TranscodeTaskId'] = request.transcode_task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTranscodeTask',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetTranscodeTaskResponse(),
-            await self.do_rpcrequest_async('GetTranscodeTask', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_transcode_task(
@@ -3893,12 +6487,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTranscodeTemplateGroup',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetTranscodeTemplateGroupResponse(),
-            self.do_rpcrequest('GetTranscodeTemplateGroup', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_transcode_template_group_with_options_async(
@@ -3907,12 +6515,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTranscodeTemplateGroup',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetTranscodeTemplateGroupResponse(),
-            await self.do_rpcrequest_async('GetTranscodeTemplateGroup', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_transcode_template_group(
@@ -3935,12 +6557,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetURLUploadInfosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobIds'] = request.job_ids
+        query['UploadURLs'] = request.upload_urls
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetURLUploadInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetURLUploadInfosResponse(),
-            self.do_rpcrequest('GetURLUploadInfos', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_urlupload_infos_with_options_async(
@@ -3949,12 +6586,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetURLUploadInfosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobIds'] = request.job_ids
+        query['UploadURLs'] = request.upload_urls
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetURLUploadInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetURLUploadInfosResponse(),
-            await self.do_rpcrequest_async('GetURLUploadInfos', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_urlupload_infos(
@@ -3977,12 +6629,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetUploadDetailsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaIds'] = request.media_ids
+        query['MediaType'] = request.media_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetUploadDetails',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetUploadDetailsResponse(),
-            self.do_rpcrequest('GetUploadDetails', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_upload_details_with_options_async(
@@ -3991,12 +6658,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetUploadDetailsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaIds'] = request.media_ids
+        query['MediaType'] = request.media_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetUploadDetails',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetUploadDetailsResponse(),
-            await self.do_rpcrequest_async('GetUploadDetails', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_upload_details(
@@ -4019,12 +6701,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetVideoInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetVideoInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetVideoInfoResponse(),
-            self.do_rpcrequest('GetVideoInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_video_info_with_options_async(
@@ -4033,12 +6729,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetVideoInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetVideoInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetVideoInfoResponse(),
-            await self.do_rpcrequest_async('GetVideoInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_video_info(
@@ -4061,12 +6771,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetVideoInfosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetVideoInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetVideoInfosResponse(),
-            self.do_rpcrequest('GetVideoInfos', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_video_infos_with_options_async(
@@ -4075,12 +6799,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetVideoInfosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetVideoInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetVideoInfosResponse(),
-            await self.do_rpcrequest_async('GetVideoInfos', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_video_infos(
@@ -4103,12 +6841,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetVideoListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CateId'] = request.cate_id
+        query['EndTime'] = request.end_time
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['SortBy'] = request.sort_by
+        query['StartTime'] = request.start_time
+        query['Status'] = request.status
+        query['StorageLocation'] = request.storage_location
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetVideoList',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetVideoListResponse(),
-            self.do_rpcrequest('GetVideoList', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_video_list_with_options_async(
@@ -4117,12 +6876,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetVideoListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CateId'] = request.cate_id
+        query['EndTime'] = request.end_time
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['SortBy'] = request.sort_by
+        query['StartTime'] = request.start_time
+        query['Status'] = request.status
+        query['StorageLocation'] = request.storage_location
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetVideoList',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetVideoListResponse(),
-            await self.do_rpcrequest_async('GetVideoList', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_video_list(
@@ -4145,12 +6925,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetVideoPlayAuthResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ApiVersion'] = request.api_version
+        query['AuthInfoTimeout'] = request.auth_info_timeout
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetVideoPlayAuth',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetVideoPlayAuthResponse(),
-            self.do_rpcrequest('GetVideoPlayAuth', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_video_play_auth_with_options_async(
@@ -4159,12 +6955,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetVideoPlayAuthResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ApiVersion'] = request.api_version
+        query['AuthInfoTimeout'] = request.auth_info_timeout
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetVideoPlayAuth',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetVideoPlayAuthResponse(),
-            await self.do_rpcrequest_async('GetVideoPlayAuth', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_video_play_auth(
@@ -4187,12 +6999,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetVodTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VodTemplateId'] = request.vod_template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetVodTemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetVodTemplateResponse(),
-            self.do_rpcrequest('GetVodTemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_vod_template_with_options_async(
@@ -4201,12 +7027,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetVodTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VodTemplateId'] = request.vod_template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetVodTemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetVodTemplateResponse(),
-            await self.do_rpcrequest_async('GetVodTemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_vod_template(
@@ -4229,12 +7069,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetWatermarkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['WatermarkId'] = request.watermark_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetWatermark',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetWatermarkResponse(),
-            self.do_rpcrequest('GetWatermark', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_watermark_with_options_async(
@@ -4243,12 +7097,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetWatermarkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['WatermarkId'] = request.watermark_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetWatermark',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.GetWatermarkResponse(),
-            await self.do_rpcrequest_async('GetWatermark', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_watermark(
@@ -4271,12 +7139,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAIImageInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAIImageInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListAIImageInfoResponse(),
-            self.do_rpcrequest('ListAIImageInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_aiimage_info_with_options_async(
@@ -4285,12 +7167,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAIImageInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAIImageInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListAIImageInfoResponse(),
-            await self.do_rpcrequest_async('ListAIImageInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_aiimage_info(
@@ -4313,12 +7209,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAIJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobIds'] = request.job_ids
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAIJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListAIJobResponse(),
-            self.do_rpcrequest('ListAIJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_aijob_with_options_async(
@@ -4327,12 +7241,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAIJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobIds'] = request.job_ids
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAIJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListAIJobResponse(),
-            await self.do_rpcrequest_async('ListAIJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_aijob(
@@ -4355,12 +7287,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAITemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAITemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListAITemplateResponse(),
-            self.do_rpcrequest('ListAITemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_aitemplate_with_options_async(
@@ -4369,12 +7315,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAITemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAITemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListAITemplateResponse(),
-            await self.do_rpcrequest_async('ListAITemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_aitemplate(
@@ -4397,12 +7357,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAppInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAppInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListAppInfoResponse(),
-            self.do_rpcrequest('ListAppInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_app_info_with_options_async(
@@ -4411,12 +7387,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAppInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAppInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListAppInfoResponse(),
-            await self.do_rpcrequest_async('ListAppInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_app_info(
@@ -4439,12 +7431,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAppPoliciesForIdentityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['IdentityName'] = request.identity_name
+        query['IdentityType'] = request.identity_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAppPoliciesForIdentity',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListAppPoliciesForIdentityResponse(),
-            self.do_rpcrequest('ListAppPoliciesForIdentity', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_app_policies_for_identity_with_options_async(
@@ -4453,12 +7461,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAppPoliciesForIdentityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['IdentityName'] = request.identity_name
+        query['IdentityType'] = request.identity_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAppPoliciesForIdentity',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListAppPoliciesForIdentityResponse(),
-            await self.do_rpcrequest_async('ListAppPoliciesForIdentity', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_app_policies_for_identity(
@@ -4481,12 +7505,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAuditSecurityIpResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SecurityGroupName'] = request.security_group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAuditSecurityIp',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListAuditSecurityIpResponse(),
-            self.do_rpcrequest('ListAuditSecurityIp', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_audit_security_ip_with_options_async(
@@ -4495,12 +7533,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListAuditSecurityIpResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SecurityGroupName'] = request.security_group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAuditSecurityIp',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListAuditSecurityIpResponse(),
-            await self.do_rpcrequest_async('ListAuditSecurityIp', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_audit_security_ip(
@@ -4517,106 +7569,32 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_audit_security_ip_with_options_async(request, runtime)
 
-    def list_detection_job_with_options(
-        self,
-        request: vod_20170321_models.ListDetectionJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.ListDetectionJobResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.ListDetectionJobResponse(),
-            self.do_rpcrequest('ListDetectionJob', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    async def list_detection_job_with_options_async(
-        self,
-        request: vod_20170321_models.ListDetectionJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.ListDetectionJobResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.ListDetectionJobResponse(),
-            await self.do_rpcrequest_async('ListDetectionJob', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    def list_detection_job(
-        self,
-        request: vod_20170321_models.ListDetectionJobRequest,
-    ) -> vod_20170321_models.ListDetectionJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_detection_job_with_options(request, runtime)
-
-    async def list_detection_job_async(
-        self,
-        request: vod_20170321_models.ListDetectionJobRequest,
-    ) -> vod_20170321_models.ListDetectionJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_detection_job_with_options_async(request, runtime)
-
-    def list_detection_template_with_options(
-        self,
-        request: vod_20170321_models.ListDetectionTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.ListDetectionTemplateResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.ListDetectionTemplateResponse(),
-            self.do_rpcrequest('ListDetectionTemplate', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    async def list_detection_template_with_options_async(
-        self,
-        request: vod_20170321_models.ListDetectionTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.ListDetectionTemplateResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.ListDetectionTemplateResponse(),
-            await self.do_rpcrequest_async('ListDetectionTemplate', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    def list_detection_template(
-        self,
-        request: vod_20170321_models.ListDetectionTemplateRequest,
-    ) -> vod_20170321_models.ListDetectionTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_detection_template_with_options(request, runtime)
-
-    async def list_detection_template_async(
-        self,
-        request: vod_20170321_models.ListDetectionTemplateRequest,
-    ) -> vod_20170321_models.ListDetectionTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_detection_template_with_options_async(request, runtime)
-
     def list_dynamic_image_with_options(
         self,
         request: vod_20170321_models.ListDynamicImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListDynamicImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDynamicImage',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListDynamicImageResponse(),
-            self.do_rpcrequest('ListDynamicImage', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_dynamic_image_with_options_async(
@@ -4625,12 +7603,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListDynamicImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDynamicImage',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListDynamicImageResponse(),
-            await self.do_rpcrequest_async('ListDynamicImage', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_dynamic_image(
@@ -4647,62 +7639,39 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_dynamic_image_with_options_async(request, runtime)
 
-    def list_letter_send_job_with_options(
-        self,
-        request: vod_20170321_models.ListLetterSendJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.ListLetterSendJobResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.ListLetterSendJobResponse(),
-            self.do_rpcrequest('ListLetterSendJob', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    async def list_letter_send_job_with_options_async(
-        self,
-        request: vod_20170321_models.ListLetterSendJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.ListLetterSendJobResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.ListLetterSendJobResponse(),
-            await self.do_rpcrequest_async('ListLetterSendJob', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    def list_letter_send_job(
-        self,
-        request: vod_20170321_models.ListLetterSendJobRequest,
-    ) -> vod_20170321_models.ListLetterSendJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_letter_send_job_with_options(request, runtime)
-
-    async def list_letter_send_job_async(
-        self,
-        request: vod_20170321_models.ListLetterSendJobRequest,
-    ) -> vod_20170321_models.ListLetterSendJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_letter_send_job_with_options_async(request, runtime)
-
     def list_live_record_video_with_options(
         self,
         request: vod_20170321_models.ListLiveRecordVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListLiveRecordVideoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppName'] = request.app_name
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['SortBy'] = request.sort_by
+        query['StartTime'] = request.start_time
+        query['StreamName'] = request.stream_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListLiveRecordVideo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListLiveRecordVideoResponse(),
-            self.do_rpcrequest('ListLiveRecordVideo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_live_record_video_with_options_async(
@@ -4711,12 +7680,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListLiveRecordVideoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppName'] = request.app_name
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['SortBy'] = request.sort_by
+        query['StartTime'] = request.start_time
+        query['StreamName'] = request.stream_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListLiveRecordVideo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListLiveRecordVideoResponse(),
-            await self.do_rpcrequest_async('ListLiveRecordVideo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_live_record_video(
@@ -4739,12 +7729,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListMediaDNADeleteJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobIds'] = request.job_ids
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListMediaDNADeleteJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListMediaDNADeleteJobResponse(),
-            self.do_rpcrequest('ListMediaDNADeleteJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_media_dnadelete_job_with_options_async(
@@ -4753,12 +7761,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListMediaDNADeleteJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobIds'] = request.job_ids
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListMediaDNADeleteJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListMediaDNADeleteJobResponse(),
-            await self.do_rpcrequest_async('ListMediaDNADeleteJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_media_dnadelete_job(
@@ -4781,12 +7807,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListSnapshotsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuthTimeout'] = request.auth_timeout
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['SnapshotType'] = request.snapshot_type
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListSnapshots',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListSnapshotsResponse(),
-            self.do_rpcrequest('ListSnapshots', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_snapshots_with_options_async(
@@ -4795,12 +7839,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListSnapshotsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuthTimeout'] = request.auth_timeout
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['SnapshotType'] = request.snapshot_type
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListSnapshots',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListSnapshotsResponse(),
-            await self.do_rpcrequest_async('ListSnapshots', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_snapshots(
@@ -4823,12 +7885,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListTranscodeTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTranscodeTask',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListTranscodeTaskResponse(),
-            self.do_rpcrequest('ListTranscodeTask', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_transcode_task_with_options_async(
@@ -4837,12 +7917,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListTranscodeTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTranscodeTask',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListTranscodeTaskResponse(),
-            await self.do_rpcrequest_async('ListTranscodeTask', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_transcode_task(
@@ -4865,12 +7963,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTranscodeTemplateGroup',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListTranscodeTemplateGroupResponse(),
-            self.do_rpcrequest('ListTranscodeTemplateGroup', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_transcode_template_group_with_options_async(
@@ -4879,12 +7991,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTranscodeTemplateGroup',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListTranscodeTemplateGroupResponse(),
-            await self.do_rpcrequest_async('ListTranscodeTemplateGroup', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_transcode_template_group(
@@ -4909,11 +8035,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListVodRealtimeLogDeliveryDomains',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListVodRealtimeLogDeliveryDomainsResponse(),
-            self.do_rpcrequest('ListVodRealtimeLogDeliveryDomains', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_vod_realtime_log_delivery_domains_with_options_async(
@@ -4924,11 +8061,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListVodRealtimeLogDeliveryDomains',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListVodRealtimeLogDeliveryDomainsResponse(),
-            await self.do_rpcrequest_async('ListVodRealtimeLogDeliveryDomains', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_vod_realtime_log_delivery_domains(
@@ -4953,11 +8101,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListVodRealtimeLogDeliveryInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListVodRealtimeLogDeliveryInfosResponse(),
-            self.do_rpcrequest('ListVodRealtimeLogDeliveryInfos', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_vod_realtime_log_delivery_infos_with_options_async(
@@ -4968,11 +8127,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListVodRealtimeLogDeliveryInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListVodRealtimeLogDeliveryInfosResponse(),
-            await self.do_rpcrequest_async('ListVodRealtimeLogDeliveryInfos', '2017-03-21', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_vod_realtime_log_delivery_infos(
@@ -4995,12 +8165,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListVodTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListVodTemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListVodTemplateResponse(),
-            self.do_rpcrequest('ListVodTemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_vod_template_with_options_async(
@@ -5009,12 +8194,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListVodTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListVodTemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListVodTemplateResponse(),
-            await self.do_rpcrequest_async('ListVodTemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_vod_template(
@@ -5037,12 +8237,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListWatermarkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListWatermark',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListWatermarkResponse(),
-            self.do_rpcrequest('ListWatermark', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_watermark_with_options_async(
@@ -5051,12 +8265,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListWatermarkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListWatermark',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ListWatermarkResponse(),
-            await self.do_rpcrequest_async('ListWatermark', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_watermark(
@@ -5079,12 +8307,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.MoveAppResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceIds'] = request.resource_ids
+        query['ResourceType'] = request.resource_type
+        query['TargetAppId'] = request.target_app_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='MoveAppResource',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.MoveAppResourceResponse(),
-            self.do_rpcrequest('MoveAppResource', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def move_app_resource_with_options_async(
@@ -5093,12 +8337,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.MoveAppResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceIds'] = request.resource_ids
+        query['ResourceType'] = request.resource_type
+        query['TargetAppId'] = request.target_app_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='MoveAppResource',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.MoveAppResourceResponse(),
-            await self.do_rpcrequest_async('MoveAppResource', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def move_app_resource(
@@ -5121,12 +8381,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.PreloadVodObjectCachesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ObjectPath'] = request.object_path
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='PreloadVodObjectCaches',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.PreloadVodObjectCachesResponse(),
-            self.do_rpcrequest('PreloadVodObjectCaches', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def preload_vod_object_caches_with_options_async(
@@ -5135,12 +8411,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.PreloadVodObjectCachesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ObjectPath'] = request.object_path
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='PreloadVodObjectCaches',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.PreloadVodObjectCachesResponse(),
-            await self.do_rpcrequest_async('PreloadVodObjectCaches', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def preload_vod_object_caches(
@@ -5163,12 +8455,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ProduceEditingProjectVideoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CoverURL'] = request.cover_url
+        query['Description'] = request.description
+        query['MediaMetadata'] = request.media_metadata
+        query['OwnerId'] = request.owner_id
+        query['ProduceConfig'] = request.produce_config
+        query['ProjectId'] = request.project_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Timeline'] = request.timeline
+        query['Title'] = request.title
+        query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ProduceEditingProjectVideo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ProduceEditingProjectVideoResponse(),
-            self.do_rpcrequest('ProduceEditingProjectVideo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def produce_editing_project_video_with_options_async(
@@ -5177,12 +8493,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ProduceEditingProjectVideoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CoverURL'] = request.cover_url
+        query['Description'] = request.description
+        query['MediaMetadata'] = request.media_metadata
+        query['OwnerId'] = request.owner_id
+        query['ProduceConfig'] = request.produce_config
+        query['ProjectId'] = request.project_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Timeline'] = request.timeline
+        query['Title'] = request.title
+        query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ProduceEditingProjectVideo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.ProduceEditingProjectVideoResponse(),
-            await self.do_rpcrequest_async('ProduceEditingProjectVideo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def produce_editing_project_video(
@@ -5205,12 +8545,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.RefreshUploadVideoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RefreshUploadVideo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.RefreshUploadVideoResponse(),
-            self.do_rpcrequest('RefreshUploadVideo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def refresh_upload_video_with_options_async(
@@ -5219,12 +8576,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.RefreshUploadVideoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RefreshUploadVideo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.RefreshUploadVideoResponse(),
-            await self.do_rpcrequest_async('RefreshUploadVideo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def refresh_upload_video(
@@ -5247,12 +8621,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.RefreshVodObjectCachesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ObjectPath'] = request.object_path
+        query['ObjectType'] = request.object_type
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RefreshVodObjectCaches',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.RefreshVodObjectCachesResponse(),
-            self.do_rpcrequest('RefreshVodObjectCaches', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def refresh_vod_object_caches_with_options_async(
@@ -5261,12 +8652,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.RefreshVodObjectCachesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ObjectPath'] = request.object_path
+        query['ObjectType'] = request.object_type
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RefreshVodObjectCaches',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.RefreshVodObjectCachesResponse(),
-            await self.do_rpcrequest_async('RefreshVodObjectCaches', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def refresh_vod_object_caches(
@@ -5289,12 +8697,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.RegisterMediaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegisterMetadatas'] = request.register_metadatas
+        query['TemplateGroupId'] = request.template_group_id
+        query['UserData'] = request.user_data
+        query['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RegisterMedia',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.RegisterMediaResponse(),
-            self.do_rpcrequest('RegisterMedia', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def register_media_with_options_async(
@@ -5303,12 +8728,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.RegisterMediaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegisterMetadatas'] = request.register_metadatas
+        query['TemplateGroupId'] = request.template_group_id
+        query['UserData'] = request.user_data
+        query['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RegisterMedia',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.RegisterMediaResponse(),
-            await self.do_rpcrequest_async('RegisterMedia', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def register_media(
@@ -5331,12 +8773,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SearchEditingProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SortBy'] = request.sort_by
+        query['StartTime'] = request.start_time
+        query['Status'] = request.status
+        query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SearchEditingProject',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SearchEditingProjectResponse(),
-            self.do_rpcrequest('SearchEditingProject', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def search_editing_project_with_options_async(
@@ -5345,12 +8811,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SearchEditingProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SortBy'] = request.sort_by
+        query['StartTime'] = request.start_time
+        query['Status'] = request.status
+        query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SearchEditingProject',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SearchEditingProjectResponse(),
-            await self.do_rpcrequest_async('SearchEditingProject', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def search_editing_project(
@@ -5373,12 +8863,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SearchMediaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Fields'] = request.fields
+        query['Match'] = request.match
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['ScrollToken'] = request.scroll_token
+        query['SearchType'] = request.search_type
+        query['SortBy'] = request.sort_by
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SearchMedia',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SearchMediaResponse(),
-            self.do_rpcrequest('SearchMedia', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def search_media_with_options_async(
@@ -5387,12 +8897,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SearchMediaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Fields'] = request.fields
+        query['Match'] = request.match
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['ScrollToken'] = request.scroll_token
+        query['SearchType'] = request.search_type
+        query['SortBy'] = request.sort_by
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SearchMedia',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SearchMediaResponse(),
-            await self.do_rpcrequest_async('SearchMedia', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def search_media(
@@ -5415,12 +8945,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetAuditSecurityIpResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Ips'] = request.ips
+        query['OperateMode'] = request.operate_mode
+        query['SecurityGroupName'] = request.security_group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetAuditSecurityIp',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SetAuditSecurityIpResponse(),
-            self.do_rpcrequest('SetAuditSecurityIp', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_audit_security_ip_with_options_async(
@@ -5429,12 +8975,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetAuditSecurityIpResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Ips'] = request.ips
+        query['OperateMode'] = request.operate_mode
+        query['SecurityGroupName'] = request.security_group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetAuditSecurityIp',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SetAuditSecurityIpResponse(),
-            await self.do_rpcrequest_async('SetAuditSecurityIp', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_audit_security_ip(
@@ -5457,12 +9019,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetCrossdomainContentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Content'] = request.content
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceRealOwnerId'] = request.resource_real_owner_id
+        query['StorageLocation'] = request.storage_location
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetCrossdomainContent',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SetCrossdomainContentResponse(),
-            self.do_rpcrequest('SetCrossdomainContent', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_crossdomain_content_with_options_async(
@@ -5471,12 +9053,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetCrossdomainContentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Content'] = request.content
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceRealOwnerId'] = request.resource_real_owner_id
+        query['StorageLocation'] = request.storage_location
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetCrossdomainContent',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SetCrossdomainContentResponse(),
-            await self.do_rpcrequest_async('SetCrossdomainContent', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_crossdomain_content(
@@ -5499,12 +9101,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetDefaultAITemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetDefaultAITemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SetDefaultAITemplateResponse(),
-            self.do_rpcrequest('SetDefaultAITemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_default_aitemplate_with_options_async(
@@ -5513,12 +9129,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetDefaultAITemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetDefaultAITemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SetDefaultAITemplateResponse(),
-            await self.do_rpcrequest_async('SetDefaultAITemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_default_aitemplate(
@@ -5541,12 +9171,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetDefaultTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetDefaultTranscodeTemplateGroup',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SetDefaultTranscodeTemplateGroupResponse(),
-            self.do_rpcrequest('SetDefaultTranscodeTemplateGroup', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_default_transcode_template_group_with_options_async(
@@ -5555,12 +9199,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetDefaultTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetDefaultTranscodeTemplateGroup',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SetDefaultTranscodeTemplateGroupResponse(),
-            await self.do_rpcrequest_async('SetDefaultTranscodeTemplateGroup', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_default_transcode_template_group(
@@ -5583,12 +9241,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetDefaultWatermarkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['WatermarkId'] = request.watermark_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetDefaultWatermark',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SetDefaultWatermarkResponse(),
-            self.do_rpcrequest('SetDefaultWatermark', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_default_watermark_with_options_async(
@@ -5597,12 +9269,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetDefaultWatermarkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['WatermarkId'] = request.watermark_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetDefaultWatermark',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SetDefaultWatermarkResponse(),
-            await self.do_rpcrequest_async('SetDefaultWatermark', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_default_watermark(
@@ -5625,12 +9311,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetEditingProjectMaterialsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaterialIds'] = request.material_ids
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ProjectId'] = request.project_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetEditingProjectMaterials',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SetEditingProjectMaterialsResponse(),
-            self.do_rpcrequest('SetEditingProjectMaterials', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_editing_project_materials_with_options_async(
@@ -5639,12 +9344,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetEditingProjectMaterialsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaterialIds'] = request.material_ids
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ProjectId'] = request.project_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetEditingProjectMaterials',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SetEditingProjectMaterialsResponse(),
-            await self.do_rpcrequest_async('SetEditingProjectMaterials', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_editing_project_materials(
@@ -5667,12 +9391,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetMessageCallbackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['AuthKey'] = request.auth_key
+        query['AuthSwitch'] = request.auth_switch
+        query['CallbackType'] = request.callback_type
+        query['CallbackURL'] = request.callback_url
+        query['EventTypeList'] = request.event_type_list
+        query['MnsEndpoint'] = request.mns_endpoint
+        query['MnsQueueName'] = request.mns_queue_name
+        query['OwnerAccount'] = request.owner_account
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetMessageCallback',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SetMessageCallbackResponse(),
-            self.do_rpcrequest('SetMessageCallback', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_message_callback_with_options_async(
@@ -5681,12 +9427,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetMessageCallbackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['AuthKey'] = request.auth_key
+        query['AuthSwitch'] = request.auth_switch
+        query['CallbackType'] = request.callback_type
+        query['CallbackURL'] = request.callback_url
+        query['EventTypeList'] = request.event_type_list
+        query['MnsEndpoint'] = request.mns_endpoint
+        query['MnsQueueName'] = request.mns_queue_name
+        query['OwnerAccount'] = request.owner_account
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetMessageCallback',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SetMessageCallbackResponse(),
-            await self.do_rpcrequest_async('SetMessageCallback', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_message_callback(
@@ -5709,12 +9477,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetVodDomainCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertName'] = request.cert_name
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SSLPri'] = request.sslpri
+        query['SSLProtocol'] = request.sslprotocol
+        query['SSLPub'] = request.sslpub
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetVodDomainCertificate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SetVodDomainCertificateResponse(),
-            self.do_rpcrequest('SetVodDomainCertificate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_vod_domain_certificate_with_options_async(
@@ -5723,12 +9511,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SetVodDomainCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertName'] = request.cert_name
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SSLPri'] = request.sslpri
+        query['SSLProtocol'] = request.sslprotocol
+        query['SSLPub'] = request.sslpub
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetVodDomainCertificate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SetVodDomainCertificateResponse(),
-            await self.do_rpcrequest_async('SetVodDomainCertificate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_vod_domain_certificate(
@@ -5745,60 +9553,38 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_vod_domain_certificate_with_options_async(request, runtime)
 
-    def submit_aicaption_extraction_job_with_options(
-        self,
-        request: vod_20170321_models.SubmitAICaptionExtractionJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.SubmitAICaptionExtractionJobResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.SubmitAICaptionExtractionJobResponse(),
-            self.do_rpcrequest('SubmitAICaptionExtractionJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def submit_aicaption_extraction_job_with_options_async(
-        self,
-        request: vod_20170321_models.SubmitAICaptionExtractionJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.SubmitAICaptionExtractionJobResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.SubmitAICaptionExtractionJobResponse(),
-            await self.do_rpcrequest_async('SubmitAICaptionExtractionJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def submit_aicaption_extraction_job(
-        self,
-        request: vod_20170321_models.SubmitAICaptionExtractionJobRequest,
-    ) -> vod_20170321_models.SubmitAICaptionExtractionJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.submit_aicaption_extraction_job_with_options(request, runtime)
-
-    async def submit_aicaption_extraction_job_async(
-        self,
-        request: vod_20170321_models.SubmitAICaptionExtractionJobRequest,
-    ) -> vod_20170321_models.SubmitAICaptionExtractionJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.submit_aicaption_extraction_job_with_options_async(request, runtime)
-
     def submit_aiimage_audit_job_with_options(
         self,
         request: vod_20170321_models.SubmitAIImageAuditJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitAIImageAuditJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaAuditConfiguration'] = request.media_audit_configuration
+        query['MediaId'] = request.media_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitAIImageAuditJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitAIImageAuditJobResponse(),
-            self.do_rpcrequest('SubmitAIImageAuditJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def submit_aiimage_audit_job_with_options_async(
@@ -5807,12 +9593,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitAIImageAuditJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaAuditConfiguration'] = request.media_audit_configuration
+        query['MediaId'] = request.media_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitAIImageAuditJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitAIImageAuditJobResponse(),
-            await self.do_rpcrequest_async('SubmitAIImageAuditJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_aiimage_audit_job(
@@ -5835,12 +9641,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitAIImageJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AIPipelineId'] = request.aipipeline_id
+        query['AITemplateId'] = request.aitemplate_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['UserData'] = request.user_data
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitAIImageJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitAIImageJobResponse(),
-            self.do_rpcrequest('SubmitAIImageJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def submit_aiimage_job_with_options_async(
@@ -5849,12 +9676,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitAIImageJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AIPipelineId'] = request.aipipeline_id
+        query['AITemplateId'] = request.aitemplate_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['UserData'] = request.user_data
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitAIImageJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitAIImageJobResponse(),
-            await self.do_rpcrequest_async('SubmitAIImageJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_aiimage_job(
@@ -5877,12 +9725,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitAIJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Config'] = request.config
+        query['MediaId'] = request.media_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Types'] = request.types
+        query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitAIJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitAIJobResponse(),
-            self.do_rpcrequest('SubmitAIJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def submit_aijob_with_options_async(
@@ -5891,12 +9760,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitAIJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Config'] = request.config
+        query['MediaId'] = request.media_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Types'] = request.types
+        query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitAIJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitAIJobResponse(),
-            await self.do_rpcrequest_async('SubmitAIJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_aijob(
@@ -5919,12 +9809,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitAIMediaAuditJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaAuditConfiguration'] = request.media_audit_configuration
+        query['MediaId'] = request.media_id
+        query['MediaType'] = request.media_type
+        query['TemplateId'] = request.template_id
+        query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitAIMediaAuditJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitAIMediaAuditJobResponse(),
-            self.do_rpcrequest('SubmitAIMediaAuditJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def submit_aimedia_audit_job_with_options_async(
@@ -5933,12 +9841,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitAIMediaAuditJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaAuditConfiguration'] = request.media_audit_configuration
+        query['MediaId'] = request.media_id
+        query['MediaType'] = request.media_type
+        query['TemplateId'] = request.template_id
+        query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitAIMediaAuditJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitAIMediaAuditJobResponse(),
-            await self.do_rpcrequest_async('SubmitAIMediaAuditJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_aimedia_audit_job(
@@ -5955,60 +9881,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_aimedia_audit_job_with_options_async(request, runtime)
 
-    def submit_detection_job_with_options(
-        self,
-        request: vod_20170321_models.SubmitDetectionJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.SubmitDetectionJobResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.SubmitDetectionJobResponse(),
-            self.do_rpcrequest('SubmitDetectionJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def submit_detection_job_with_options_async(
-        self,
-        request: vod_20170321_models.SubmitDetectionJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.SubmitDetectionJobResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.SubmitDetectionJobResponse(),
-            await self.do_rpcrequest_async('SubmitDetectionJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def submit_detection_job(
-        self,
-        request: vod_20170321_models.SubmitDetectionJobRequest,
-    ) -> vod_20170321_models.SubmitDetectionJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.submit_detection_job_with_options(request, runtime)
-
-    async def submit_detection_job_async(
-        self,
-        request: vod_20170321_models.SubmitDetectionJobRequest,
-    ) -> vod_20170321_models.SubmitDetectionJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.submit_detection_job_with_options_async(request, runtime)
-
     def submit_dynamic_image_job_with_options(
         self,
         request: vod_20170321_models.SubmitDynamicImageJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitDynamicImageJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DynamicImageTemplateId'] = request.dynamic_image_template_id
+        query['OverrideParams'] = request.override_params
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitDynamicImageJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitDynamicImageJobResponse(),
-            self.do_rpcrequest('SubmitDynamicImageJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def submit_dynamic_image_job_with_options_async(
@@ -6017,12 +9917,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitDynamicImageJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DynamicImageTemplateId'] = request.dynamic_image_template_id
+        query['OverrideParams'] = request.override_params
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitDynamicImageJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitDynamicImageJobResponse(),
-            await self.do_rpcrequest_async('SubmitDynamicImageJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_dynamic_image_job(
@@ -6045,12 +9961,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitLiveEditingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppName'] = request.app_name
+        query['Clips'] = request.clips
+        query['CoverURL'] = request.cover_url
+        query['Description'] = request.description
+        query['DomainName'] = request.domain_name
+        query['MediaMetadata'] = request.media_metadata
+        query['OwnerId'] = request.owner_id
+        query['ProduceConfig'] = request.produce_config
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['StreamName'] = request.stream_name
+        query['Title'] = request.title
+        query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitLiveEditing',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitLiveEditingResponse(),
-            self.do_rpcrequest('SubmitLiveEditing', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def submit_live_editing_with_options_async(
@@ -6059,12 +10001,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitLiveEditingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppName'] = request.app_name
+        query['Clips'] = request.clips
+        query['CoverURL'] = request.cover_url
+        query['Description'] = request.description
+        query['DomainName'] = request.domain_name
+        query['MediaMetadata'] = request.media_metadata
+        query['OwnerId'] = request.owner_id
+        query['ProduceConfig'] = request.produce_config
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['StreamName'] = request.stream_name
+        query['Title'] = request.title
+        query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitLiveEditing',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitLiveEditingResponse(),
-            await self.do_rpcrequest_async('SubmitLiveEditing', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_live_editing(
@@ -6087,12 +10055,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitMediaDNADeleteJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaId'] = request.media_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitMediaDNADeleteJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitMediaDNADeleteJobResponse(),
-            self.do_rpcrequest('SubmitMediaDNADeleteJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def submit_media_dnadelete_job_with_options_async(
@@ -6101,12 +10087,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitMediaDNADeleteJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaId'] = request.media_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitMediaDNADeleteJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitMediaDNADeleteJobResponse(),
-            await self.do_rpcrequest_async('SubmitMediaDNADeleteJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_media_dnadelete_job(
@@ -6129,12 +10133,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitPreprocessJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PreprocessType'] = request.preprocess_type
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitPreprocessJobs',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitPreprocessJobsResponse(),
-            self.do_rpcrequest('SubmitPreprocessJobs', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def submit_preprocess_jobs_with_options_async(
@@ -6143,12 +10162,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitPreprocessJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PreprocessType'] = request.preprocess_type
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitPreprocessJobs',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitPreprocessJobsResponse(),
-            await self.do_rpcrequest_async('SubmitPreprocessJobs', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_preprocess_jobs(
@@ -6171,12 +10205,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitSnapshotJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Count'] = request.count
+        query['Height'] = request.height
+        query['Interval'] = request.interval
+        query['SnapshotTemplateId'] = request.snapshot_template_id
+        query['SpecifiedOffsetTime'] = request.specified_offset_time
+        query['SpriteSnapshotConfig'] = request.sprite_snapshot_config
+        query['UserData'] = request.user_data
+        query['VideoId'] = request.video_id
+        query['Width'] = request.width
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitSnapshotJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitSnapshotJobResponse(),
-            self.do_rpcrequest('SubmitSnapshotJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def submit_snapshot_job_with_options_async(
@@ -6185,12 +10241,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitSnapshotJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Count'] = request.count
+        query['Height'] = request.height
+        query['Interval'] = request.interval
+        query['SnapshotTemplateId'] = request.snapshot_template_id
+        query['SpecifiedOffsetTime'] = request.specified_offset_time
+        query['SpriteSnapshotConfig'] = request.sprite_snapshot_config
+        query['UserData'] = request.user_data
+        query['VideoId'] = request.video_id
+        query['Width'] = request.width
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitSnapshotJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitSnapshotJobResponse(),
-            await self.do_rpcrequest_async('SubmitSnapshotJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_snapshot_job(
@@ -6213,12 +10291,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitTranscodeJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EncryptConfig'] = request.encrypt_config
+        query['OverrideParams'] = request.override_params
+        query['PipelineId'] = request.pipeline_id
+        query['Priority'] = request.priority
+        query['TemplateGroupId'] = request.template_group_id
+        query['UserData'] = request.user_data
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitTranscodeJobs',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitTranscodeJobsResponse(),
-            self.do_rpcrequest('SubmitTranscodeJobs', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def submit_transcode_jobs_with_options_async(
@@ -6227,12 +10325,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitTranscodeJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EncryptConfig'] = request.encrypt_config
+        query['OverrideParams'] = request.override_params
+        query['PipelineId'] = request.pipeline_id
+        query['Priority'] = request.priority
+        query['TemplateGroupId'] = request.template_group_id
+        query['UserData'] = request.user_data
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitTranscodeJobs',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitTranscodeJobsResponse(),
-            await self.do_rpcrequest_async('SubmitTranscodeJobs', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_transcode_jobs(
@@ -6255,12 +10373,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitWorkflowJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaId'] = request.media_id
+        query['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitWorkflowJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitWorkflowJobResponse(),
-            self.do_rpcrequest('SubmitWorkflowJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def submit_workflow_job_with_options_async(
@@ -6269,12 +10402,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitWorkflowJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MediaId'] = request.media_id
+        query['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitWorkflowJob',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.SubmitWorkflowJobResponse(),
-            await self.do_rpcrequest_async('SubmitWorkflowJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_workflow_job(
@@ -6297,12 +10445,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.TagVodResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TagVodResources',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.TagVodResourcesResponse(),
-            self.do_rpcrequest('TagVodResources', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def tag_vod_resources_with_options_async(
@@ -6311,12 +10476,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.TagVodResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TagVodResources',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.TagVodResourcesResponse(),
-            await self.do_rpcrequest_async('TagVodResources', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def tag_vod_resources(
@@ -6339,12 +10521,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UnTagVodResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['All'] = request.all
+        query['OwnerId'] = request.owner_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UnTagVodResources',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UnTagVodResourcesResponse(),
-            self.do_rpcrequest('UnTagVodResources', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def un_tag_vod_resources_with_options_async(
@@ -6353,12 +10553,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UnTagVodResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['All'] = request.all
+        query['OwnerId'] = request.owner_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UnTagVodResources',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UnTagVodResourcesResponse(),
-            await self.do_rpcrequest_async('UnTagVodResources', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def un_tag_vod_resources(
@@ -6381,12 +10599,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateAITemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateConfig'] = request.template_config
+        query['TemplateId'] = request.template_id
+        query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateAITemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateAITemplateResponse(),
-            self.do_rpcrequest('UpdateAITemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_aitemplate_with_options_async(
@@ -6395,12 +10629,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateAITemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateConfig'] = request.template_config
+        query['TemplateId'] = request.template_id
+        query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateAITemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateAITemplateResponse(),
-            await self.do_rpcrequest_async('UpdateAITemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_aitemplate(
@@ -6423,12 +10673,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateAppInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['AppName'] = request.app_name
+        query['Description'] = request.description
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateAppInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateAppInfoResponse(),
-            self.do_rpcrequest('UpdateAppInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_app_info_with_options_async(
@@ -6437,12 +10704,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateAppInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['AppName'] = request.app_name
+        query['Description'] = request.description
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateAppInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateAppInfoResponse(),
-            await self.do_rpcrequest_async('UpdateAppInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_app_info(
@@ -6465,12 +10749,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateAttachedMediaInfosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['UpdateContent'] = request.update_content
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateAttachedMediaInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateAttachedMediaInfosResponse(),
-            self.do_rpcrequest('UpdateAttachedMediaInfos', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_attached_media_infos_with_options_async(
@@ -6479,12 +10777,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateAttachedMediaInfosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['UpdateContent'] = request.update_content
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateAttachedMediaInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateAttachedMediaInfosResponse(),
-            await self.do_rpcrequest_async('UpdateAttachedMediaInfos', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_attached_media_infos(
@@ -6507,12 +10819,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CateId'] = request.cate_id
+        query['CateName'] = request.cate_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateCategory',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateCategoryResponse(),
-            self.do_rpcrequest('UpdateCategory', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_category_with_options_async(
@@ -6521,12 +10848,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CateId'] = request.cate_id
+        query['CateName'] = request.cate_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateCategory',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateCategoryResponse(),
-            await self.do_rpcrequest_async('UpdateCategory', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_category(
@@ -6543,102 +10885,40 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_category_with_options_async(request, runtime)
 
-    def update_detection_job_with_options(
-        self,
-        request: vod_20170321_models.UpdateDetectionJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.UpdateDetectionJobResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.UpdateDetectionJobResponse(),
-            self.do_rpcrequest('UpdateDetectionJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def update_detection_job_with_options_async(
-        self,
-        request: vod_20170321_models.UpdateDetectionJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.UpdateDetectionJobResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.UpdateDetectionJobResponse(),
-            await self.do_rpcrequest_async('UpdateDetectionJob', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def update_detection_job(
-        self,
-        request: vod_20170321_models.UpdateDetectionJobRequest,
-    ) -> vod_20170321_models.UpdateDetectionJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_detection_job_with_options(request, runtime)
-
-    async def update_detection_job_async(
-        self,
-        request: vod_20170321_models.UpdateDetectionJobRequest,
-    ) -> vod_20170321_models.UpdateDetectionJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_detection_job_with_options_async(request, runtime)
-
-    def update_detection_template_with_options(
-        self,
-        request: vod_20170321_models.UpdateDetectionTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.UpdateDetectionTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.UpdateDetectionTemplateResponse(),
-            self.do_rpcrequest('UpdateDetectionTemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def update_detection_template_with_options_async(
-        self,
-        request: vod_20170321_models.UpdateDetectionTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vod_20170321_models.UpdateDetectionTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            vod_20170321_models.UpdateDetectionTemplateResponse(),
-            await self.do_rpcrequest_async('UpdateDetectionTemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def update_detection_template(
-        self,
-        request: vod_20170321_models.UpdateDetectionTemplateRequest,
-    ) -> vod_20170321_models.UpdateDetectionTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_detection_template_with_options(request, runtime)
-
-    async def update_detection_template_async(
-        self,
-        request: vod_20170321_models.UpdateDetectionTemplateRequest,
-    ) -> vod_20170321_models.UpdateDetectionTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_detection_template_with_options_async(request, runtime)
-
     def update_editing_project_with_options(
         self,
         request: vod_20170321_models.UpdateEditingProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateEditingProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CoverURL'] = request.cover_url
+        query['Description'] = request.description
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ProjectId'] = request.project_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Timeline'] = request.timeline
+        query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateEditingProject',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateEditingProjectResponse(),
-            self.do_rpcrequest('UpdateEditingProject', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_editing_project_with_options_async(
@@ -6647,12 +10927,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateEditingProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CoverURL'] = request.cover_url
+        query['Description'] = request.description
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ProjectId'] = request.project_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Timeline'] = request.timeline
+        query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateEditingProject',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateEditingProjectResponse(),
-            await self.do_rpcrequest_async('UpdateEditingProject', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_editing_project(
@@ -6675,12 +10977,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateImageInfosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['UpdateContent'] = request.update_content
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateImageInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateImageInfosResponse(),
-            self.do_rpcrequest('UpdateImageInfos', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_image_infos_with_options_async(
@@ -6689,12 +11005,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateImageInfosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['UpdateContent'] = request.update_content
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateImageInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateImageInfosResponse(),
-            await self.do_rpcrequest_async('UpdateImageInfos', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_image_infos(
@@ -6717,12 +11047,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateStreamInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobId'] = request.job_id
+        query['MediaId'] = request.media_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateStreamInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateStreamInfoResponse(),
-            self.do_rpcrequest('UpdateStreamInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_stream_info_with_options_async(
@@ -6731,12 +11076,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateStreamInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobId'] = request.job_id
+        query['MediaId'] = request.media_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateStreamInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateStreamInfoResponse(),
-            await self.do_rpcrequest_async('UpdateStreamInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_stream_info(
@@ -6759,12 +11119,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Locked'] = request.locked
+        query['Name'] = request.name
+        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
+        query['TranscodeTemplateList'] = request.transcode_template_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateTranscodeTemplateGroup',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateTranscodeTemplateGroupResponse(),
-            self.do_rpcrequest('UpdateTranscodeTemplateGroup', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_transcode_template_group_with_options_async(
@@ -6773,12 +11150,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Locked'] = request.locked
+        query['Name'] = request.name
+        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
+        query['TranscodeTemplateList'] = request.transcode_template_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateTranscodeTemplateGroup',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateTranscodeTemplateGroupResponse(),
-            await self.do_rpcrequest_async('UpdateTranscodeTemplateGroup', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_transcode_template_group(
@@ -6801,12 +11195,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateVideoInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CateId'] = request.cate_id
+        query['CoverURL'] = request.cover_url
+        query['Description'] = request.description
+        query['Tags'] = request.tags
+        query['Title'] = request.title
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateVideoInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateVideoInfoResponse(),
-            self.do_rpcrequest('UpdateVideoInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_video_info_with_options_async(
@@ -6815,12 +11228,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateVideoInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CateId'] = request.cate_id
+        query['CoverURL'] = request.cover_url
+        query['Description'] = request.description
+        query['Tags'] = request.tags
+        query['Title'] = request.title
+        query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateVideoInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateVideoInfoResponse(),
-            await self.do_rpcrequest_async('UpdateVideoInfo', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_video_info(
@@ -6843,12 +11275,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateVideoInfosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['UpdateContent'] = request.update_content
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateVideoInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateVideoInfosResponse(),
-            self.do_rpcrequest('UpdateVideoInfos', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_video_infos_with_options_async(
@@ -6857,12 +11303,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateVideoInfosResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['UpdateContent'] = request.update_content
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateVideoInfos',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateVideoInfosResponse(),
-            await self.do_rpcrequest_async('UpdateVideoInfos', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_video_infos(
@@ -6885,12 +11345,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateVodDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        query['Sources'] = request.sources
+        query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateVodDomain',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateVodDomainResponse(),
-            self.do_rpcrequest('UpdateVodDomain', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_vod_domain_with_options_async(
@@ -6899,12 +11377,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateVodDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        query['Sources'] = request.sources
+        query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateVodDomain',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateVodDomainResponse(),
-            await self.do_rpcrequest_async('UpdateVodDomain', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_vod_domain(
@@ -6927,12 +11423,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateVodTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['TemplateConfig'] = request.template_config
+        query['VodTemplateId'] = request.vod_template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateVodTemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateVodTemplateResponse(),
-            self.do_rpcrequest('UpdateVodTemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_vod_template_with_options_async(
@@ -6941,12 +11453,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateVodTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['TemplateConfig'] = request.template_config
+        query['VodTemplateId'] = request.vod_template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateVodTemplate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateVodTemplateResponse(),
-            await self.do_rpcrequest_async('UpdateVodTemplate', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_vod_template(
@@ -6969,12 +11497,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateWatermarkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['WatermarkConfig'] = request.watermark_config
+        query['WatermarkId'] = request.watermark_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateWatermark',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateWatermarkResponse(),
-            self.do_rpcrequest('UpdateWatermark', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_watermark_with_options_async(
@@ -6983,12 +11527,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateWatermarkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['WatermarkConfig'] = request.watermark_config
+        query['WatermarkId'] = request.watermark_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateWatermark',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UpdateWatermarkResponse(),
-            await self.do_rpcrequest_async('UpdateWatermark', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_watermark(
@@ -7011,12 +11571,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UploadMediaByURLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['StorageLocation'] = request.storage_location
+        query['TemplateGroupId'] = request.template_group_id
+        query['UploadMetadatas'] = request.upload_metadatas
+        query['UploadURLs'] = request.upload_urls
+        query['UserData'] = request.user_data
+        query['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UploadMediaByURL',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UploadMediaByURLResponse(),
-            self.do_rpcrequest('UploadMediaByURL', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def upload_media_by_urlwith_options_async(
@@ -7025,12 +11605,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UploadMediaByURLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['StorageLocation'] = request.storage_location
+        query['TemplateGroupId'] = request.template_group_id
+        query['UploadMetadatas'] = request.upload_metadatas
+        query['UploadURLs'] = request.upload_urls
+        query['UserData'] = request.user_data
+        query['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UploadMediaByURL',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UploadMediaByURLResponse(),
-            await self.do_rpcrequest_async('UploadMediaByURL', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def upload_media_by_url(
@@ -7053,12 +11653,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UploadStreamByURLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Definition'] = request.definition
+        query['FileExtension'] = request.file_extension
+        query['HDRType'] = request.hdrtype
+        query['MediaId'] = request.media_id
+        query['StreamURL'] = request.stream_url
+        query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UploadStreamByURL',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UploadStreamByURLResponse(),
-            self.do_rpcrequest('UploadStreamByURL', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def upload_stream_by_urlwith_options_async(
@@ -7067,12 +11686,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UploadStreamByURLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Definition'] = request.definition
+        query['FileExtension'] = request.file_extension
+        query['HDRType'] = request.hdrtype
+        query['MediaId'] = request.media_id
+        query['StreamURL'] = request.stream_url
+        query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UploadStreamByURL',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.UploadStreamByURLResponse(),
-            await self.do_rpcrequest_async('UploadStreamByURL', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def upload_stream_by_url(
@@ -7095,12 +11733,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.VerifyVodDomainOwnerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['VerifyType'] = request.verify_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='VerifyVodDomainOwner',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.VerifyVodDomainOwnerResponse(),
-            self.do_rpcrequest('VerifyVodDomainOwner', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def verify_vod_domain_owner_with_options_async(
@@ -7109,12 +11763,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.VerifyVodDomainOwnerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['VerifyType'] = request.verify_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='VerifyVodDomainOwner',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             vod_20170321_models.VerifyVodDomainOwnerResponse(),
-            await self.do_rpcrequest_async('VerifyVodDomainOwner', '2017-03-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def verify_vod_domain_owner(
