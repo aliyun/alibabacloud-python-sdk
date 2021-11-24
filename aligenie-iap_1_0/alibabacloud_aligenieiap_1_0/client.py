@@ -83,9 +83,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = headers.x_acs_aligenie_access_token
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
         if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = headers.authorization
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -132,9 +132,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = headers.x_acs_aligenie_access_token
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
         if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = headers.authorization
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -197,9 +197,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = headers.x_acs_aligenie_access_token
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
         if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = headers.authorization
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query)
@@ -246,9 +246,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = headers.x_acs_aligenie_access_token
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
         if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = headers.authorization
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query)
@@ -307,9 +307,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = headers.x_acs_aligenie_access_token
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
         if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = headers.authorization
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query)
@@ -352,9 +352,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = headers.x_acs_aligenie_access_token
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
         if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = headers.authorization
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query)
@@ -417,9 +417,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = headers.x_acs_aligenie_access_token
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
         if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = headers.authorization
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query)
@@ -466,9 +466,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = headers.x_acs_aligenie_access_token
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
         if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = headers.authorization
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query)
@@ -531,9 +531,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = headers.x_acs_aligenie_access_token
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
         if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = headers.authorization
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query)
@@ -580,9 +580,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = headers.x_acs_aligenie_access_token
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
         if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = headers.authorization
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query)
@@ -641,9 +641,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = headers.x_acs_aligenie_access_token
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
         if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = headers.authorization
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -686,9 +686,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = headers.x_acs_aligenie_access_token
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
         if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = headers.authorization
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -755,9 +755,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = headers.x_acs_aligenie_access_token
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
         if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = headers.authorization
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -808,9 +808,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = headers.x_acs_aligenie_access_token
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
         if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = headers.authorization
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -873,9 +873,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = headers.x_acs_aligenie_access_token
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
         if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = headers.authorization
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -922,9 +922,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = headers.x_acs_aligenie_access_token
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
         if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = headers.authorization
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -969,8 +969,6 @@ class Client(OpenApiClient):
     ) -> ali_genieiap__1__0_models.WakeUpAppResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.genie_app_id):
-            body['GenieAppId'] = request.genie_app_id
         if not UtilClient.is_unset(request.is_debug):
             body['IsDebug'] = request.is_debug
         if not UtilClient.is_unset(request.path):
@@ -981,9 +979,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = headers.x_acs_aligenie_access_token
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
         if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = headers.authorization
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1012,8 +1010,6 @@ class Client(OpenApiClient):
     ) -> ali_genieiap__1__0_models.WakeUpAppResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.genie_app_id):
-            body['GenieAppId'] = request.genie_app_id
         if not UtilClient.is_unset(request.is_debug):
             body['IsDebug'] = request.is_debug
         if not UtilClient.is_unset(request.path):
@@ -1024,9 +1020,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
-            real_headers['x-acs-aligenie-access-token'] = headers.x_acs_aligenie_access_token
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
         if not UtilClient.is_unset(headers.authorization):
-            real_headers['Authorization'] = headers.authorization
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)

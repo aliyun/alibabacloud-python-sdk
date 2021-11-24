@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any
+from typing import Dict, List
 
 
 class CreateReminderHeaders(TeaModel):
@@ -2342,7 +2342,7 @@ class PushNotificationsRequestNotificationUnicastRequest(TeaModel):
         is_debug: bool = None,
         message_template_id: str = None,
         organization_id: str = None,
-        place_holder: Dict[str, Any] = None,
+        place_holder: Dict[str, str] = None,
         send_target: PushNotificationsRequestNotificationUnicastRequestSendTarget = None,
     ):
         # 编码类型对应的值，例如：编码类型是SKILLID，其值就为webhook服务中得到的skillId；编码类似是PACKAGENAME，其值就为对应客户端app的packageName。
@@ -2623,12 +2623,33 @@ class SendNotificationsRequestDeviceInfo(TeaModel):
         return self
 
 
+class SendNotificationsRequestNotificationUnicastRequestSendTarget(TeaModel):
+    def __init__(self):
+        pass
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        return self
+
+
 class SendNotificationsRequestNotificationUnicastRequest(TeaModel):
     def __init__(
         self,
         is_debug: bool = None,
         message_template_id: str = None,
-        place_holder: Dict[str, Any] = None,
+        place_holder: Dict[str, str] = None,
+        send_target: SendNotificationsRequestNotificationUnicastRequestSendTarget = None,
     ):
         # 调试标识
         self.is_debug = is_debug
@@ -2636,9 +2657,12 @@ class SendNotificationsRequestNotificationUnicastRequest(TeaModel):
         self.message_template_id = message_template_id
         # 占位符信息，例如：模板是【你好，{nick}！】这里可以是：{"nick":"小甜甜"}
         self.place_holder = place_holder
+        # 消息推送的目标信息。
+        self.send_target = send_target
 
     def validate(self):
-        pass
+        if self.send_target:
+            self.send_target.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2652,6 +2676,8 @@ class SendNotificationsRequestNotificationUnicastRequest(TeaModel):
             result['MessageTemplateId'] = self.message_template_id
         if self.place_holder is not None:
             result['PlaceHolder'] = self.place_holder
+        if self.send_target is not None:
+            result['SendTarget'] = self.send_target.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -2662,6 +2688,9 @@ class SendNotificationsRequestNotificationUnicastRequest(TeaModel):
             self.message_template_id = m.get('MessageTemplateId')
         if m.get('PlaceHolder') is not None:
             self.place_holder = m.get('PlaceHolder')
+        if m.get('SendTarget') is not None:
+            temp_model = SendNotificationsRequestNotificationUnicastRequestSendTarget()
+            self.send_target = temp_model.from_map(m['SendTarget'])
         return self
 
 
@@ -3453,13 +3482,10 @@ class WakeUpAppRequestTargetInfo(TeaModel):
 class WakeUpAppRequest(TeaModel):
     def __init__(
         self,
-        genie_app_id: str = None,
         is_debug: bool = None,
         path: str = None,
         target_info: WakeUpAppRequestTargetInfo = None,
     ):
-        # 猫精应用id，控制台中创建应用后得到的应用id。
-        self.genie_app_id = genie_app_id
         # 是否调试
         self.is_debug = is_debug
         # 应用拉起路径，类似在技能应用控制台中填的唤起链接。
@@ -3477,8 +3503,6 @@ class WakeUpAppRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.genie_app_id is not None:
-            result['GenieAppId'] = self.genie_app_id
         if self.is_debug is not None:
             result['IsDebug'] = self.is_debug
         if self.path is not None:
@@ -3489,8 +3513,6 @@ class WakeUpAppRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GenieAppId') is not None:
-            self.genie_app_id = m.get('GenieAppId')
         if m.get('IsDebug') is not None:
             self.is_debug = m.get('IsDebug')
         if m.get('Path') is not None:
