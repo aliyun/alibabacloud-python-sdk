@@ -1,3 +1,6 @@
+2021-11-24 Version: 1.0.6
+- Update createAccelerator Api.
+
 2021-10-26 Version: 1.0.5
 - Import config from trial global accelerator.
 
