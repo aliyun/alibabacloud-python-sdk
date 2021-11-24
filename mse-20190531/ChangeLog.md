@@ -1,3 +1,6 @@
+2021-11-24 Version: 3.0.0
+- HeterogeInterworking.
+
 2021-10-12 Version: 1.0.1
 - Add AddRoutePolicyRequest.
 
