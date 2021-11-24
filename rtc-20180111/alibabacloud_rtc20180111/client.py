@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_rtc20180111 import models as rtc_20180111_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -46,12 +47,43 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.AddRecordTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['BackgroundColor'] = request.background_color
+        query['Backgrounds'] = request.backgrounds
+        query['ClockWidgets'] = request.clock_widgets
+        query['DelayStopTime'] = request.delay_stop_time
+        query['EnableM3u8DateTime'] = request.enable_m3u_8date_time
+        query['FileSplitInterval'] = request.file_split_interval
+        query['Formats'] = request.formats
+        query['HttpCallbackUrl'] = request.http_callback_url
+        query['LayoutIds'] = request.layout_ids
+        query['MediaEncode'] = request.media_encode
+        query['MnsQueue'] = request.mns_queue
+        query['Name'] = request.name
+        query['OssBucket'] = request.oss_bucket
+        query['OssFilePrefix'] = request.oss_file_prefix
+        query['OwnerId'] = request.owner_id
+        query['TaskProfile'] = request.task_profile
+        query['Watermarks'] = request.watermarks
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddRecordTemplate',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.AddRecordTemplateResponse(),
-            self.do_rpcrequest('AddRecordTemplate', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_record_template_with_options_async(
@@ -60,12 +92,43 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.AddRecordTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['BackgroundColor'] = request.background_color
+        query['Backgrounds'] = request.backgrounds
+        query['ClockWidgets'] = request.clock_widgets
+        query['DelayStopTime'] = request.delay_stop_time
+        query['EnableM3u8DateTime'] = request.enable_m3u_8date_time
+        query['FileSplitInterval'] = request.file_split_interval
+        query['Formats'] = request.formats
+        query['HttpCallbackUrl'] = request.http_callback_url
+        query['LayoutIds'] = request.layout_ids
+        query['MediaEncode'] = request.media_encode
+        query['MnsQueue'] = request.mns_queue
+        query['Name'] = request.name
+        query['OssBucket'] = request.oss_bucket
+        query['OssFilePrefix'] = request.oss_file_prefix
+        query['OwnerId'] = request.owner_id
+        query['TaskProfile'] = request.task_profile
+        query['Watermarks'] = request.watermarks
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddRecordTemplate',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.AddRecordTemplateResponse(),
-            await self.do_rpcrequest_async('AddRecordTemplate', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_record_template(
@@ -88,12 +151,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.CreateAutoLiveStreamRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['CallBack'] = request.call_back
+        query['ChannelIdPrefixes'] = request.channel_id_prefixes
+        query['ChannelIds'] = request.channel_ids
+        query['MediaEncode'] = request.media_encode
+        query['OwnerId'] = request.owner_id
+        query['PlayDomain'] = request.play_domain
+        query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateAutoLiveStreamRule',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.CreateAutoLiveStreamRuleResponse(),
-            self.do_rpcrequest('CreateAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_auto_live_stream_rule_with_options_async(
@@ -102,12 +186,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.CreateAutoLiveStreamRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['CallBack'] = request.call_back
+        query['ChannelIdPrefixes'] = request.channel_id_prefixes
+        query['ChannelIds'] = request.channel_ids
+        query['MediaEncode'] = request.media_encode
+        query['OwnerId'] = request.owner_id
+        query['PlayDomain'] = request.play_domain
+        query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateAutoLiveStreamRule',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.CreateAutoLiveStreamRuleResponse(),
-            await self.do_rpcrequest_async('CreateAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_auto_live_stream_rule(
@@ -130,12 +235,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.CreateEventSubscribeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['CallbackUrl'] = request.callback_url
+        query['ChannelId'] = request.channel_id
+        query['ClientToken'] = request.client_token
+        query['Events'] = request.events
+        query['OwnerId'] = request.owner_id
+        query['Users'] = request.users
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateEventSubscribe',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.CreateEventSubscribeResponse(),
-            self.do_rpcrequest('CreateEventSubscribe', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_event_subscribe_with_options_async(
@@ -144,12 +269,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.CreateEventSubscribeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['CallbackUrl'] = request.callback_url
+        query['ChannelId'] = request.channel_id
+        query['ClientToken'] = request.client_token
+        query['Events'] = request.events
+        query['OwnerId'] = request.owner_id
+        query['Users'] = request.users
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateEventSubscribe',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.CreateEventSubscribeResponse(),
-            await self.do_rpcrequest_async('CreateEventSubscribe', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_event_subscribe(
@@ -172,12 +317,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.CreateMPULayoutResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['AudioMixCount'] = request.audio_mix_count
+        query['Name'] = request.name
+        query['OwnerId'] = request.owner_id
+        query['Panes'] = request.panes
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateMPULayout',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.CreateMPULayoutResponse(),
-            self.do_rpcrequest('CreateMPULayout', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_mpulayout_with_options_async(
@@ -186,12 +349,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.CreateMPULayoutResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['AudioMixCount'] = request.audio_mix_count
+        query['Name'] = request.name
+        query['OwnerId'] = request.owner_id
+        query['Panes'] = request.panes
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateMPULayout',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.CreateMPULayoutResponse(),
-            await self.do_rpcrequest_async('CreateMPULayout', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_mpulayout(
@@ -208,60 +389,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_mpulayout_with_options_async(request, runtime)
 
-    def create_record_index_file_with_options(
-        self,
-        request: rtc_20180111_models.CreateRecordIndexFileRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.CreateRecordIndexFileResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            rtc_20180111_models.CreateRecordIndexFileResponse(),
-            self.do_rpcrequest('CreateRecordIndexFile', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_record_index_file_with_options_async(
-        self,
-        request: rtc_20180111_models.CreateRecordIndexFileRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.CreateRecordIndexFileResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            rtc_20180111_models.CreateRecordIndexFileResponse(),
-            await self.do_rpcrequest_async('CreateRecordIndexFile', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_record_index_file(
-        self,
-        request: rtc_20180111_models.CreateRecordIndexFileRequest,
-    ) -> rtc_20180111_models.CreateRecordIndexFileResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_record_index_file_with_options(request, runtime)
-
-    async def create_record_index_file_async(
-        self,
-        request: rtc_20180111_models.CreateRecordIndexFileRequest,
-    ) -> rtc_20180111_models.CreateRecordIndexFileResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_record_index_file_with_options_async(request, runtime)
-
     def delete_auto_live_stream_rule_with_options(
         self,
         request: rtc_20180111_models.DeleteAutoLiveStreamRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteAutoLiveStreamRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
+        query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteAutoLiveStreamRule',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DeleteAutoLiveStreamRuleResponse(),
-            self.do_rpcrequest('DeleteAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_auto_live_stream_rule_with_options_async(
@@ -270,12 +425,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteAutoLiveStreamRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
+        query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteAutoLiveStreamRule',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DeleteAutoLiveStreamRuleResponse(),
-            await self.do_rpcrequest_async('DeleteAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_auto_live_stream_rule(
@@ -298,12 +469,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteEventSubscribeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
+        query['SubscribeId'] = request.subscribe_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteEventSubscribe',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DeleteEventSubscribeResponse(),
-            self.do_rpcrequest('DeleteEventSubscribe', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_event_subscribe_with_options_async(
@@ -312,12 +499,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteEventSubscribeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
+        query['SubscribeId'] = request.subscribe_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteEventSubscribe',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DeleteEventSubscribeResponse(),
-            await self.do_rpcrequest_async('DeleteEventSubscribe', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_event_subscribe(
@@ -340,12 +543,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteMPULayoutResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['LayoutId'] = request.layout_id
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteMPULayout',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DeleteMPULayoutResponse(),
-            self.do_rpcrequest('DeleteMPULayout', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_mpulayout_with_options_async(
@@ -354,12 +573,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteMPULayoutResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['LayoutId'] = request.layout_id
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteMPULayout',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DeleteMPULayoutResponse(),
-            await self.do_rpcrequest_async('DeleteMPULayout', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_mpulayout(
@@ -382,12 +617,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteRecordTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRecordTemplate',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DeleteRecordTemplateResponse(),
-            self.do_rpcrequest('DeleteRecordTemplate', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_record_template_with_options_async(
@@ -396,12 +647,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteRecordTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRecordTemplate',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DeleteRecordTemplateResponse(),
-            await self.do_rpcrequest_async('DeleteRecordTemplate', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_record_template(
@@ -424,12 +691,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeAutoLiveStreamRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeAutoLiveStreamRule',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DescribeAutoLiveStreamRuleResponse(),
-            self.do_rpcrequest('DescribeAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_auto_live_stream_rule_with_options_async(
@@ -438,12 +720,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeAutoLiveStreamRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeAutoLiveStreamRule',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DescribeAutoLiveStreamRuleResponse(),
-            await self.do_rpcrequest_async('DescribeAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_auto_live_stream_rule(
@@ -466,12 +763,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelParticipantsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['ChannelId'] = request.channel_id
+        query['Order'] = request.order
+        query['OwnerId'] = request.owner_id
+        query['PageNum'] = request.page_num
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeChannelParticipants',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DescribeChannelParticipantsResponse(),
-            self.do_rpcrequest('DescribeChannelParticipants', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_channel_participants_with_options_async(
@@ -480,12 +796,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelParticipantsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['ChannelId'] = request.channel_id
+        query['Order'] = request.order
+        query['OwnerId'] = request.owner_id
+        query['PageNum'] = request.page_num
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeChannelParticipants',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DescribeChannelParticipantsResponse(),
-            await self.do_rpcrequest_async('DescribeChannelParticipants', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_channel_participants(
@@ -508,12 +843,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelUsersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['ChannelId'] = request.channel_id
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeChannelUsers',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DescribeChannelUsersResponse(),
-            self.do_rpcrequest('DescribeChannelUsers', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_channel_users_with_options_async(
@@ -522,12 +873,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelUsersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['ChannelId'] = request.channel_id
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeChannelUsers',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DescribeChannelUsersResponse(),
-            await self.do_rpcrequest_async('DescribeChannelUsers', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_channel_users(
@@ -550,12 +917,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeMPULayoutInfoListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['LayoutId'] = request.layout_id
+        query['Name'] = request.name
+        query['OwnerId'] = request.owner_id
+        query['PageNum'] = request.page_num
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeMPULayoutInfoList',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DescribeMPULayoutInfoListResponse(),
-            self.do_rpcrequest('DescribeMPULayoutInfoList', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_mpulayout_info_list_with_options_async(
@@ -564,12 +950,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeMPULayoutInfoListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['LayoutId'] = request.layout_id
+        query['Name'] = request.name
+        query['OwnerId'] = request.owner_id
+        query['PageNum'] = request.page_num
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeMPULayoutInfoList',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DescribeMPULayoutInfoListResponse(),
-            await self.do_rpcrequest_async('DescribeMPULayoutInfoList', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_mpulayout_info_list(
@@ -592,12 +997,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeRecordFilesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['ChannelId'] = request.channel_id
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['PageNum'] = request.page_num
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
+        query['TaskIds'] = request.task_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeRecordFiles',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DescribeRecordFilesResponse(),
-            self.do_rpcrequest('DescribeRecordFiles', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_record_files_with_options_async(
@@ -606,12 +1032,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeRecordFilesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['ChannelId'] = request.channel_id
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['PageNum'] = request.page_num
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
+        query['TaskIds'] = request.task_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeRecordFiles',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DescribeRecordFilesResponse(),
-            await self.do_rpcrequest_async('DescribeRecordFiles', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_record_files(
@@ -628,60 +1075,36 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_record_files_with_options_async(request, runtime)
 
-    def describe_record_tasks_with_options(
-        self,
-        request: rtc_20180111_models.DescribeRecordTasksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRecordTasksResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            rtc_20180111_models.DescribeRecordTasksResponse(),
-            self.do_rpcrequest('DescribeRecordTasks', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_record_tasks_with_options_async(
-        self,
-        request: rtc_20180111_models.DescribeRecordTasksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.DescribeRecordTasksResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            rtc_20180111_models.DescribeRecordTasksResponse(),
-            await self.do_rpcrequest_async('DescribeRecordTasks', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_record_tasks(
-        self,
-        request: rtc_20180111_models.DescribeRecordTasksRequest,
-    ) -> rtc_20180111_models.DescribeRecordTasksResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_record_tasks_with_options(request, runtime)
-
-    async def describe_record_tasks_async(
-        self,
-        request: rtc_20180111_models.DescribeRecordTasksRequest,
-    ) -> rtc_20180111_models.DescribeRecordTasksResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_record_tasks_with_options_async(request, runtime)
-
     def describe_record_templates_with_options(
         self,
         request: rtc_20180111_models.DescribeRecordTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeRecordTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
+        query['PageNum'] = request.page_num
+        query['PageSize'] = request.page_size
+        query['TemplateIds'] = request.template_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeRecordTemplates',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DescribeRecordTemplatesResponse(),
-            self.do_rpcrequest('DescribeRecordTemplates', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_record_templates_with_options_async(
@@ -690,12 +1113,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeRecordTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
+        query['PageNum'] = request.page_num
+        query['PageSize'] = request.page_size
+        query['TemplateIds'] = request.template_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeRecordTemplates',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DescribeRecordTemplatesResponse(),
-            await self.do_rpcrequest_async('DescribeRecordTemplates', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_record_templates(
@@ -718,12 +1159,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeUserInfoInChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['ChannelId'] = request.channel_id
+        query['OwnerId'] = request.owner_id
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserInfoInChannel',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DescribeUserInfoInChannelResponse(),
-            self.do_rpcrequest('DescribeUserInfoInChannel', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_user_info_in_channel_with_options_async(
@@ -732,12 +1190,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeUserInfoInChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['ChannelId'] = request.channel_id
+        query['OwnerId'] = request.owner_id
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserInfoInChannel',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DescribeUserInfoInChannelResponse(),
-            await self.do_rpcrequest_async('DescribeUserInfoInChannel', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_user_info_in_channel(
@@ -760,12 +1235,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DisableAutoLiveStreamRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
+        query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DisableAutoLiveStreamRule',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DisableAutoLiveStreamRuleResponse(),
-            self.do_rpcrequest('DisableAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def disable_auto_live_stream_rule_with_options_async(
@@ -774,12 +1265,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DisableAutoLiveStreamRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
+        query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DisableAutoLiveStreamRule',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.DisableAutoLiveStreamRuleResponse(),
-            await self.do_rpcrequest_async('DisableAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def disable_auto_live_stream_rule(
@@ -802,12 +1309,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.EnableAutoLiveStreamRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
+        query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='EnableAutoLiveStreamRule',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.EnableAutoLiveStreamRuleResponse(),
-            self.do_rpcrequest('EnableAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def enable_auto_live_stream_rule_with_options_async(
@@ -816,12 +1339,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.EnableAutoLiveStreamRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
+        query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='EnableAutoLiveStreamRule',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.EnableAutoLiveStreamRuleResponse(),
-            await self.do_rpcrequest_async('EnableAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def enable_auto_live_stream_rule(
@@ -844,12 +1383,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.GetMPUTaskStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMPUTaskStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.GetMPUTaskStatusResponse(),
-            self.do_rpcrequest('GetMPUTaskStatus', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_mputask_status_with_options_async(
@@ -858,12 +1413,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.GetMPUTaskStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMPUTaskStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.GetMPUTaskStatusResponse(),
-            await self.do_rpcrequest_async('GetMPUTaskStatus', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_mputask_status(
@@ -886,12 +1457,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.ModifyMPULayoutResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['AudioMixCount'] = request.audio_mix_count
+        query['LayoutId'] = request.layout_id
+        query['Name'] = request.name
+        query['OwnerId'] = request.owner_id
+        query['Panes'] = request.panes
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyMPULayout',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.ModifyMPULayoutResponse(),
-            self.do_rpcrequest('ModifyMPULayout', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_mpulayout_with_options_async(
@@ -900,12 +1490,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.ModifyMPULayoutResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['AudioMixCount'] = request.audio_mix_count
+        query['LayoutId'] = request.layout_id
+        query['Name'] = request.name
+        query['OwnerId'] = request.owner_id
+        query['Panes'] = request.panes
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyMPULayout',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.ModifyMPULayoutResponse(),
-            await self.do_rpcrequest_async('ModifyMPULayout', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_mpulayout(
@@ -928,12 +1537,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.RemoveTerminalsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['ChannelId'] = request.channel_id
+        query['OwnerId'] = request.owner_id
+        query['TerminalIds'] = request.terminal_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RemoveTerminals',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.RemoveTerminalsResponse(),
-            self.do_rpcrequest('RemoveTerminals', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_terminals_with_options_async(
@@ -942,12 +1568,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.RemoveTerminalsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['ChannelId'] = request.channel_id
+        query['OwnerId'] = request.owner_id
+        query['TerminalIds'] = request.terminal_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RemoveTerminals',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.RemoveTerminalsResponse(),
-            await self.do_rpcrequest_async('RemoveTerminals', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_terminals(
@@ -970,12 +1613,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StartMPUTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['BackgroundColor'] = request.background_color
+        query['Backgrounds'] = request.backgrounds
+        query['ChannelId'] = request.channel_id
+        query['ClockWidgets'] = request.clock_widgets
+        query['CropMode'] = request.crop_mode
+        query['LayoutIds'] = request.layout_ids
+        query['MediaEncode'] = request.media_encode
+        query['MixMode'] = request.mix_mode
+        query['OwnerId'] = request.owner_id
+        query['PayloadType'] = request.payload_type
+        query['ReportVad'] = request.report_vad
+        query['RtpExtInfo'] = request.rtp_ext_info
+        query['SourceType'] = request.source_type
+        query['StreamType'] = request.stream_type
+        query['StreamURL'] = request.stream_url
+        query['SubSpecAudioUsers'] = request.sub_spec_audio_users
+        query['SubSpecCameraUsers'] = request.sub_spec_camera_users
+        query['SubSpecShareScreenUsers'] = request.sub_spec_share_screen_users
+        query['SubSpecUsers'] = request.sub_spec_users
+        query['TaskId'] = request.task_id
+        query['TaskType'] = request.task_type
+        query['TimeStampRef'] = request.time_stamp_ref
+        query['UnsubSpecAudioUsers'] = request.unsub_spec_audio_users
+        query['UnsubSpecCameraUsers'] = request.unsub_spec_camera_users
+        query['UnsubSpecShareScreenUsers'] = request.unsub_spec_share_screen_users
+        query['UserPanes'] = request.user_panes
+        query['VadInterval'] = request.vad_interval
+        query['Watermarks'] = request.watermarks
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StartMPUTask',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.StartMPUTaskResponse(),
-            self.do_rpcrequest('StartMPUTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def start_mputask_with_options_async(
@@ -984,12 +1669,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StartMPUTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['BackgroundColor'] = request.background_color
+        query['Backgrounds'] = request.backgrounds
+        query['ChannelId'] = request.channel_id
+        query['ClockWidgets'] = request.clock_widgets
+        query['CropMode'] = request.crop_mode
+        query['LayoutIds'] = request.layout_ids
+        query['MediaEncode'] = request.media_encode
+        query['MixMode'] = request.mix_mode
+        query['OwnerId'] = request.owner_id
+        query['PayloadType'] = request.payload_type
+        query['ReportVad'] = request.report_vad
+        query['RtpExtInfo'] = request.rtp_ext_info
+        query['SourceType'] = request.source_type
+        query['StreamType'] = request.stream_type
+        query['StreamURL'] = request.stream_url
+        query['SubSpecAudioUsers'] = request.sub_spec_audio_users
+        query['SubSpecCameraUsers'] = request.sub_spec_camera_users
+        query['SubSpecShareScreenUsers'] = request.sub_spec_share_screen_users
+        query['SubSpecUsers'] = request.sub_spec_users
+        query['TaskId'] = request.task_id
+        query['TaskType'] = request.task_type
+        query['TimeStampRef'] = request.time_stamp_ref
+        query['UnsubSpecAudioUsers'] = request.unsub_spec_audio_users
+        query['UnsubSpecCameraUsers'] = request.unsub_spec_camera_users
+        query['UnsubSpecShareScreenUsers'] = request.unsub_spec_share_screen_users
+        query['UserPanes'] = request.user_panes
+        query['VadInterval'] = request.vad_interval
+        query['Watermarks'] = request.watermarks
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StartMPUTask',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.StartMPUTaskResponse(),
-            await self.do_rpcrequest_async('StartMPUTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_mputask(
@@ -1012,12 +1739,45 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StartRecordTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['ChannelId'] = request.channel_id
+        query['CropMode'] = request.crop_mode
+        query['LayoutIds'] = request.layout_ids
+        query['MediaEncode'] = request.media_encode
+        query['MixMode'] = request.mix_mode
+        query['OwnerId'] = request.owner_id
+        query['SourceType'] = request.source_type
+        query['StreamType'] = request.stream_type
+        query['SubSpecAudioUsers'] = request.sub_spec_audio_users
+        query['SubSpecCameraUsers'] = request.sub_spec_camera_users
+        query['SubSpecShareScreenUsers'] = request.sub_spec_share_screen_users
+        query['SubSpecUsers'] = request.sub_spec_users
+        query['TaskId'] = request.task_id
+        query['TaskProfile'] = request.task_profile
+        query['TemplateId'] = request.template_id
+        query['UnsubSpecAudioUsers'] = request.unsub_spec_audio_users
+        query['UnsubSpecCameraUsers'] = request.unsub_spec_camera_users
+        query['UnsubSpecShareScreenUsers'] = request.unsub_spec_share_screen_users
+        query['UserPanes'] = request.user_panes
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StartRecordTask',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.StartRecordTaskResponse(),
-            self.do_rpcrequest('StartRecordTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def start_record_task_with_options_async(
@@ -1026,12 +1786,45 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StartRecordTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['ChannelId'] = request.channel_id
+        query['CropMode'] = request.crop_mode
+        query['LayoutIds'] = request.layout_ids
+        query['MediaEncode'] = request.media_encode
+        query['MixMode'] = request.mix_mode
+        query['OwnerId'] = request.owner_id
+        query['SourceType'] = request.source_type
+        query['StreamType'] = request.stream_type
+        query['SubSpecAudioUsers'] = request.sub_spec_audio_users
+        query['SubSpecCameraUsers'] = request.sub_spec_camera_users
+        query['SubSpecShareScreenUsers'] = request.sub_spec_share_screen_users
+        query['SubSpecUsers'] = request.sub_spec_users
+        query['TaskId'] = request.task_id
+        query['TaskProfile'] = request.task_profile
+        query['TemplateId'] = request.template_id
+        query['UnsubSpecAudioUsers'] = request.unsub_spec_audio_users
+        query['UnsubSpecCameraUsers'] = request.unsub_spec_camera_users
+        query['UnsubSpecShareScreenUsers'] = request.unsub_spec_share_screen_users
+        query['UserPanes'] = request.user_panes
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StartRecordTask',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.StartRecordTaskResponse(),
-            await self.do_rpcrequest_async('StartRecordTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_record_task(
@@ -1054,12 +1847,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StopChannelUserPublishResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['ChannelId'] = request.channel_id
+        query['OwnerId'] = request.owner_id
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopChannelUserPublish',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.StopChannelUserPublishResponse(),
-            self.do_rpcrequest('StopChannelUserPublish', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def stop_channel_user_publish_with_options_async(
@@ -1068,12 +1878,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StopChannelUserPublishResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['ChannelId'] = request.channel_id
+        query['OwnerId'] = request.owner_id
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopChannelUserPublish',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.StopChannelUserPublishResponse(),
-            await self.do_rpcrequest_async('StopChannelUserPublish', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_channel_user_publish(
@@ -1096,12 +1923,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StopMPUTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopMPUTask',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.StopMPUTaskResponse(),
-            self.do_rpcrequest('StopMPUTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def stop_mputask_with_options_async(
@@ -1110,12 +1953,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StopMPUTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopMPUTask',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.StopMPUTaskResponse(),
-            await self.do_rpcrequest_async('StopMPUTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_mputask(
@@ -1138,12 +1997,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StopRecordTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopRecordTask',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.StopRecordTaskResponse(),
-            self.do_rpcrequest('StopRecordTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def stop_record_task_with_options_async(
@@ -1152,12 +2027,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StopRecordTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['OwnerId'] = request.owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopRecordTask',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.StopRecordTaskResponse(),
-            await self.do_rpcrequest_async('StopRecordTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_record_task(
@@ -1180,12 +2071,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateAutoLiveStreamRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['CallBack'] = request.call_back
+        query['ChannelIdPrefixes'] = request.channel_id_prefixes
+        query['ChannelIds'] = request.channel_ids
+        query['MediaEncode'] = request.media_encode
+        query['OwnerId'] = request.owner_id
+        query['PlayDomain'] = request.play_domain
+        query['RuleId'] = request.rule_id
+        query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateAutoLiveStreamRule',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.UpdateAutoLiveStreamRuleResponse(),
-            self.do_rpcrequest('UpdateAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_auto_live_stream_rule_with_options_async(
@@ -1194,12 +2107,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateAutoLiveStreamRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['CallBack'] = request.call_back
+        query['ChannelIdPrefixes'] = request.channel_id_prefixes
+        query['ChannelIds'] = request.channel_ids
+        query['MediaEncode'] = request.media_encode
+        query['OwnerId'] = request.owner_id
+        query['PlayDomain'] = request.play_domain
+        query['RuleId'] = request.rule_id
+        query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateAutoLiveStreamRule',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.UpdateAutoLiveStreamRuleResponse(),
-            await self.do_rpcrequest_async('UpdateAutoLiveStreamRule', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_auto_live_stream_rule(
@@ -1222,12 +2157,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateMPUTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['BackgroundColor'] = request.background_color
+        query['Backgrounds'] = request.backgrounds
+        query['ClockWidgets'] = request.clock_widgets
+        query['CropMode'] = request.crop_mode
+        query['LayoutIds'] = request.layout_ids
+        query['MediaEncode'] = request.media_encode
+        query['MixMode'] = request.mix_mode
+        query['OwnerId'] = request.owner_id
+        query['SourceType'] = request.source_type
+        query['StreamType'] = request.stream_type
+        query['SubSpecAudioUsers'] = request.sub_spec_audio_users
+        query['SubSpecCameraUsers'] = request.sub_spec_camera_users
+        query['SubSpecShareScreenUsers'] = request.sub_spec_share_screen_users
+        query['SubSpecUsers'] = request.sub_spec_users
+        query['TaskId'] = request.task_id
+        query['UnsubSpecAudioUsers'] = request.unsub_spec_audio_users
+        query['UnsubSpecCameraUsers'] = request.unsub_spec_camera_users
+        query['UnsubSpecShareScreenUsers'] = request.unsub_spec_share_screen_users
+        query['UserPanes'] = request.user_panes
+        query['Watermarks'] = request.watermarks
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateMPUTask',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.UpdateMPUTaskResponse(),
-            self.do_rpcrequest('UpdateMPUTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_mputask_with_options_async(
@@ -1236,12 +2205,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateMPUTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['BackgroundColor'] = request.background_color
+        query['Backgrounds'] = request.backgrounds
+        query['ClockWidgets'] = request.clock_widgets
+        query['CropMode'] = request.crop_mode
+        query['LayoutIds'] = request.layout_ids
+        query['MediaEncode'] = request.media_encode
+        query['MixMode'] = request.mix_mode
+        query['OwnerId'] = request.owner_id
+        query['SourceType'] = request.source_type
+        query['StreamType'] = request.stream_type
+        query['SubSpecAudioUsers'] = request.sub_spec_audio_users
+        query['SubSpecCameraUsers'] = request.sub_spec_camera_users
+        query['SubSpecShareScreenUsers'] = request.sub_spec_share_screen_users
+        query['SubSpecUsers'] = request.sub_spec_users
+        query['TaskId'] = request.task_id
+        query['UnsubSpecAudioUsers'] = request.unsub_spec_audio_users
+        query['UnsubSpecCameraUsers'] = request.unsub_spec_camera_users
+        query['UnsubSpecShareScreenUsers'] = request.unsub_spec_share_screen_users
+        query['UserPanes'] = request.user_panes
+        query['Watermarks'] = request.watermarks
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateMPUTask',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.UpdateMPUTaskResponse(),
-            await self.do_rpcrequest_async('UpdateMPUTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_mputask(
@@ -1264,12 +2267,39 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateRecordTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['ChannelId'] = request.channel_id
+        query['LayoutIds'] = request.layout_ids
+        query['OwnerId'] = request.owner_id
+        query['SubSpecAudioUsers'] = request.sub_spec_audio_users
+        query['SubSpecCameraUsers'] = request.sub_spec_camera_users
+        query['SubSpecShareScreenUsers'] = request.sub_spec_share_screen_users
+        query['SubSpecUsers'] = request.sub_spec_users
+        query['TaskId'] = request.task_id
+        query['TemplateId'] = request.template_id
+        query['UnsubSpecAudioUsers'] = request.unsub_spec_audio_users
+        query['UnsubSpecCameraUsers'] = request.unsub_spec_camera_users
+        query['UnsubSpecShareScreenUsers'] = request.unsub_spec_share_screen_users
+        query['UserPanes'] = request.user_panes
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecordTask',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.UpdateRecordTaskResponse(),
-            self.do_rpcrequest('UpdateRecordTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_record_task_with_options_async(
@@ -1278,12 +2308,39 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateRecordTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['ChannelId'] = request.channel_id
+        query['LayoutIds'] = request.layout_ids
+        query['OwnerId'] = request.owner_id
+        query['SubSpecAudioUsers'] = request.sub_spec_audio_users
+        query['SubSpecCameraUsers'] = request.sub_spec_camera_users
+        query['SubSpecShareScreenUsers'] = request.sub_spec_share_screen_users
+        query['SubSpecUsers'] = request.sub_spec_users
+        query['TaskId'] = request.task_id
+        query['TemplateId'] = request.template_id
+        query['UnsubSpecAudioUsers'] = request.unsub_spec_audio_users
+        query['UnsubSpecCameraUsers'] = request.unsub_spec_camera_users
+        query['UnsubSpecShareScreenUsers'] = request.unsub_spec_share_screen_users
+        query['UserPanes'] = request.user_panes
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecordTask',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.UpdateRecordTaskResponse(),
-            await self.do_rpcrequest_async('UpdateRecordTask', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_record_task(
@@ -1306,12 +2363,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateRecordTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['BackgroundColor'] = request.background_color
+        query['Backgrounds'] = request.backgrounds
+        query['ClockWidgets'] = request.clock_widgets
+        query['DelayStopTime'] = request.delay_stop_time
+        query['EnableM3u8DateTime'] = request.enable_m3u_8date_time
+        query['FileSplitInterval'] = request.file_split_interval
+        query['Formats'] = request.formats
+        query['HttpCallbackUrl'] = request.http_callback_url
+        query['LayoutIds'] = request.layout_ids
+        query['MediaEncode'] = request.media_encode
+        query['MnsQueue'] = request.mns_queue
+        query['Name'] = request.name
+        query['OssBucket'] = request.oss_bucket
+        query['OssFilePrefix'] = request.oss_file_prefix
+        query['OwnerId'] = request.owner_id
+        query['TaskProfile'] = request.task_profile
+        query['TemplateId'] = request.template_id
+        query['Watermarks'] = request.watermarks
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecordTemplate',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.UpdateRecordTemplateResponse(),
-            self.do_rpcrequest('UpdateRecordTemplate', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_record_template_with_options_async(
@@ -1320,12 +2409,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateRecordTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['BackgroundColor'] = request.background_color
+        query['Backgrounds'] = request.backgrounds
+        query['ClockWidgets'] = request.clock_widgets
+        query['DelayStopTime'] = request.delay_stop_time
+        query['EnableM3u8DateTime'] = request.enable_m3u_8date_time
+        query['FileSplitInterval'] = request.file_split_interval
+        query['Formats'] = request.formats
+        query['HttpCallbackUrl'] = request.http_callback_url
+        query['LayoutIds'] = request.layout_ids
+        query['MediaEncode'] = request.media_encode
+        query['MnsQueue'] = request.mns_queue
+        query['Name'] = request.name
+        query['OssBucket'] = request.oss_bucket
+        query['OssFilePrefix'] = request.oss_file_prefix
+        query['OwnerId'] = request.owner_id
+        query['TaskProfile'] = request.task_profile
+        query['TemplateId'] = request.template_id
+        query['Watermarks'] = request.watermarks
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecordTemplate',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             rtc_20180111_models.UpdateRecordTemplateResponse(),
-            await self.do_rpcrequest_async('UpdateRecordTemplate', '2018-01-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_record_template(
