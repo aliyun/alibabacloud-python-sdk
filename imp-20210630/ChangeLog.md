@@ -1,3 +1,6 @@
+2021-11-24 Version: 2.8.6
+- Add ListClasses API.
+
 2021-11-15 Version: 2.8.5
 - GetLiveRoomStatistics API support LikeCount and OnlineCount.
 
