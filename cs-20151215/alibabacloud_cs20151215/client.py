@@ -136,9 +136,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='AttachInstances',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/attach',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.AttachInstancesResponse(),
-            self.do_roarequest('AttachInstances', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/attach', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def attach_instances_with_options_async(
@@ -181,9 +192,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='AttachInstances',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/attach',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.AttachInstancesResponse(),
-            await self.do_roarequest_async('AttachInstances', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/attach', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def cancel_cluster_upgrade(
@@ -212,9 +234,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CancelClusterUpgrade',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/clusters/{cluster_id}/upgrade/cancel',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.CancelClusterUpgradeResponse(),
-            self.do_roarequest('CancelClusterUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/api/v2/clusters/{cluster_id}/upgrade/cancel', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def cancel_cluster_upgrade_with_options_async(
@@ -227,9 +260,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CancelClusterUpgrade',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/clusters/{cluster_id}/upgrade/cancel',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.CancelClusterUpgradeResponse(),
-            await self.do_roarequest_async('CancelClusterUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/api/v2/clusters/{cluster_id}/upgrade/cancel', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def cancel_component_upgrade(
@@ -262,9 +306,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CancelComponentUpgrade',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/components/{{componentId}}/cancel',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.CancelComponentUpgradeResponse(),
-            self.do_roarequest('CancelComponentUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/components/{component_id}/cancel', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def cancel_component_upgrade_with_options_async(
@@ -279,9 +334,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CancelComponentUpgrade',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/components/{{componentId}}/cancel',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.CancelComponentUpgradeResponse(),
-            await self.do_roarequest_async('CancelComponentUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/components/{component_id}/cancel', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def cancel_workflow(
@@ -318,9 +384,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CancelWorkflow',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/gs/workflow/{workflow_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.CancelWorkflowResponse(),
-            self.do_roarequest('CancelWorkflow', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/gs/workflow/{workflow_name}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def cancel_workflow_with_options_async(
@@ -339,9 +416,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CancelWorkflow',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/gs/workflow/{workflow_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.CancelWorkflowResponse(),
-            await self.do_roarequest_async('CancelWorkflow', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/gs/workflow/{workflow_name}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_autoscaling_config(
@@ -386,9 +474,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateAutoscalingConfig',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/cluster/{cluster_id}/autoscale/config/',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.CreateAutoscalingConfigResponse(),
-            self.do_roarequest('CreateAutoscalingConfig', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/cluster/{cluster_id}/autoscale/config/', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_autoscaling_config_with_options_async(
@@ -415,9 +514,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateAutoscalingConfig',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/cluster/{cluster_id}/autoscale/config/',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.CreateAutoscalingConfigResponse(),
-            await self.do_roarequest_async('CreateAutoscalingConfig', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/cluster/{cluster_id}/autoscale/config/', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_cluster(
@@ -474,6 +584,8 @@ class Client(OpenApiClient):
             body['deletion_protection'] = request.deletion_protection
         if not UtilClient.is_unset(request.disable_rollback):
             body['disable_rollback'] = request.disable_rollback
+        if not UtilClient.is_unset(request.enable_rrsa):
+            body['enable_rrsa'] = request.enable_rrsa
         if not UtilClient.is_unset(request.encryption_provider_key):
             body['encryption_provider_key'] = request.encryption_provider_key
         if not UtilClient.is_unset(request.endpoint_public_access):
@@ -612,9 +724,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateCluster',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.CreateClusterResponse(),
-            self.do_roarequest('CreateCluster', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_cluster_with_options_async(
@@ -655,6 +778,8 @@ class Client(OpenApiClient):
             body['deletion_protection'] = request.deletion_protection
         if not UtilClient.is_unset(request.disable_rollback):
             body['disable_rollback'] = request.disable_rollback
+        if not UtilClient.is_unset(request.enable_rrsa):
+            body['enable_rrsa'] = request.enable_rrsa
         if not UtilClient.is_unset(request.encryption_provider_key):
             body['encryption_provider_key'] = request.encryption_provider_key
         if not UtilClient.is_unset(request.endpoint_public_access):
@@ -793,9 +918,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateCluster',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.CreateClusterResponse(),
-            await self.do_roarequest_async('CreateCluster', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_cluster_node_pool(
@@ -850,9 +986,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateClusterNodePool',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodepools',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.CreateClusterNodePoolResponse(),
-            self.do_roarequest('CreateClusterNodePool', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/nodepools', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_cluster_node_pool_with_options_async(
@@ -889,9 +1036,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateClusterNodePool',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodepools',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.CreateClusterNodePoolResponse(),
-            await self.do_roarequest_async('CreateClusterNodePool', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/nodepools', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_edge_machine(
@@ -928,9 +1086,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateEdgeMachine',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/edge_machines',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.CreateEdgeMachineResponse(),
-            self.do_roarequest('CreateEdgeMachine', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/edge_machines', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_edge_machine_with_options_async(
@@ -951,9 +1120,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateEdgeMachine',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/edge_machines',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.CreateEdgeMachineResponse(),
-            await self.do_roarequest_async('CreateEdgeMachine', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/edge_machines', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_kubernetes_trigger(
@@ -992,9 +1172,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateKubernetesTrigger',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/triggers',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.CreateKubernetesTriggerResponse(),
-            self.do_roarequest('CreateKubernetesTrigger', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/triggers', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_kubernetes_trigger_with_options_async(
@@ -1017,9 +1208,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateKubernetesTrigger',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/triggers',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.CreateKubernetesTriggerResponse(),
-            await self.do_roarequest_async('CreateKubernetesTrigger', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/triggers', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_template(
@@ -1060,9 +1262,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateTemplate',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/templates',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.CreateTemplateResponse(),
-            self.do_roarequest('CreateTemplate', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/templates', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_template_with_options_async(
@@ -1087,9 +1300,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateTemplate',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/templates',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.CreateTemplateResponse(),
-            await self.do_roarequest_async('CreateTemplate', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/templates', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_trigger(
@@ -1132,9 +1356,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateTrigger',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/triggers',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.CreateTriggerResponse(),
-            self.do_roarequest('CreateTrigger', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/triggers', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_trigger_with_options_async(
@@ -1159,9 +1394,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateTrigger',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/triggers',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.CreateTriggerResponse(),
-            await self.do_roarequest_async('CreateTrigger', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/triggers', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_cluster(
@@ -1206,9 +1452,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteCluster',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.DeleteClusterResponse(),
-            self.do_roarequest('DeleteCluster', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_cluster_with_options_async(
@@ -1235,9 +1492,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteCluster',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.DeleteClusterResponse(),
-            await self.do_roarequest_async('DeleteCluster', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_cluster_nodepool(
@@ -1270,9 +1538,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteClusterNodepool',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodepools/{{NodepoolId}}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DeleteClusterNodepoolResponse(),
-            self.do_roarequest('DeleteClusterNodepool', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_cluster_nodepool_with_options_async(
@@ -1287,9 +1566,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteClusterNodepool',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodepools/{{NodepoolId}}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DeleteClusterNodepoolResponse(),
-            await self.do_roarequest_async('DeleteClusterNodepool', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_cluster_nodes(
@@ -1330,9 +1620,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='DeleteClusterNodes',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodes',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DeleteClusterNodesResponse(),
-            self.do_roarequest('DeleteClusterNodes', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/nodes', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_cluster_nodes_with_options_async(
@@ -1355,9 +1656,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='DeleteClusterNodes',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodes',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DeleteClusterNodesResponse(),
-            await self.do_roarequest_async('DeleteClusterNodes', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/nodes', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_edge_machine(
@@ -1394,9 +1706,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteEdgeMachine',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/edge_machines/[edge_machineid]',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.DeleteEdgeMachineResponse(),
-            self.do_roarequest('DeleteEdgeMachine', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/edge_machines/[edge_machineid]', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_edge_machine_with_options_async(
@@ -1415,9 +1738,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteEdgeMachine',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/edge_machines/[edge_machineid]',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.DeleteEdgeMachineResponse(),
-            await self.do_roarequest_async('DeleteEdgeMachine', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/edge_machines/[edge_machineid]', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_kubernetes_trigger(
@@ -1446,9 +1780,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteKubernetesTrigger',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/triggers/revoke/{id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.DeleteKubernetesTriggerResponse(),
-            self.do_roarequest('DeleteKubernetesTrigger', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/triggers/revoke/{id}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_kubernetes_trigger_with_options_async(
@@ -1461,67 +1806,108 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteKubernetesTrigger',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/triggers/revoke/{id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.DeleteKubernetesTriggerResponse(),
-            await self.do_roarequest_async('DeleteKubernetesTrigger', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/triggers/revoke/{id}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_policy_instance(
         self,
         cluster_id: str,
         policy_name: str,
-        instance_id: str,
+        request: cs20151215_models.DeletePolicyInstanceRequest,
     ) -> cs20151215_models.DeletePolicyInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_policy_instance_with_options(cluster_id, policy_name, instance_id, headers, runtime)
+        return self.delete_policy_instance_with_options(cluster_id, policy_name, request, headers, runtime)
 
     async def delete_policy_instance_async(
         self,
         cluster_id: str,
         policy_name: str,
-        instance_id: str,
+        request: cs20151215_models.DeletePolicyInstanceRequest,
     ) -> cs20151215_models.DeletePolicyInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_policy_instance_with_options_async(cluster_id, policy_name, instance_id, headers, runtime)
+        return await self.delete_policy_instance_with_options_async(cluster_id, policy_name, request, headers, runtime)
 
     def delete_policy_instance_with_options(
         self,
         cluster_id: str,
         policy_name: str,
-        instance_id: str,
+        request: cs20151215_models.DeletePolicyInstanceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeletePolicyInstanceResponse:
+        UtilClient.validate_model(request)
         cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         policy_name = OpenApiUtilClient.get_encode_param(policy_name)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        query = {}
+        if not UtilClient.is_unset(request.instance_name):
+            query['instance_name'] = request.instance_name
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePolicyInstance',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/policies/{{policyName}}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cs20151215_models.DeletePolicyInstanceResponse(),
-            self.do_roarequest('DeletePolicyInstance', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}/policies/{policy_name}/instances/{instance_id}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_policy_instance_with_options_async(
         self,
         cluster_id: str,
         policy_name: str,
-        instance_id: str,
+        request: cs20151215_models.DeletePolicyInstanceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeletePolicyInstanceResponse:
+        UtilClient.validate_model(request)
         cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         policy_name = OpenApiUtilClient.get_encode_param(policy_name)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        query = {}
+        if not UtilClient.is_unset(request.instance_name):
+            query['instance_name'] = request.instance_name
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePolicyInstance',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/policies/{{policyName}}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cs20151215_models.DeletePolicyInstanceResponse(),
-            await self.do_roarequest_async('DeletePolicyInstance', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/{cluster_id}/policies/{policy_name}/instances/{instance_id}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_template(
@@ -1550,9 +1936,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteTemplate',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/templates/{template_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.DeleteTemplateResponse(),
-            self.do_roarequest('DeleteTemplate', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/templates/{template_id}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_template_with_options_async(
@@ -1565,9 +1962,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteTemplate',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/templates/{template_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.DeleteTemplateResponse(),
-            await self.do_roarequest_async('DeleteTemplate', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/templates/{template_id}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_trigger(
@@ -1600,9 +2008,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteTrigger',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/[cluster_id]/triggers/[Id]',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.DeleteTriggerResponse(),
-            self.do_roarequest('DeleteTrigger', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/[cluster_id]/triggers/[Id]', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_trigger_with_options_async(
@@ -1617,9 +2036,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteTrigger',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/[cluster_id]/triggers/[Id]',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.DeleteTriggerResponse(),
-            await self.do_roarequest_async('DeleteTrigger', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/clusters/[cluster_id]/triggers/[Id]', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def deploy_policy_instance(
@@ -1664,9 +2094,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='DeployPolicyInstance',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/policies/{{policyName}}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DeployPolicyInstanceResponse(),
-            self.do_roarequest('DeployPolicyInstance', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/policies/{policy_name}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def deploy_policy_instance_with_options_async(
@@ -1691,9 +2132,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='DeployPolicyInstance',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/policies/{{policyName}}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DeployPolicyInstanceResponse(),
-            await self.do_roarequest_async('DeployPolicyInstance', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/policies/{policy_name}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def descirbe_workflow(
@@ -1722,9 +2174,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescirbeWorkflow',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/gs/workflow/{workflow_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescirbeWorkflowResponse(),
-            self.do_roarequest('DescirbeWorkflow', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/gs/workflow/{workflow_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def descirbe_workflow_with_options_async(
@@ -1737,9 +2200,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescirbeWorkflow',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/gs/workflow/{workflow_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescirbeWorkflowResponse(),
-            await self.do_roarequest_async('DescirbeWorkflow', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/gs/workflow/{workflow_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_addons(
@@ -1774,9 +2248,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeAddons',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/components/metadata',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeAddonsResponse(),
-            self.do_roarequest('DescribeAddons', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/components/metadata', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_addons_with_options_async(
@@ -1795,9 +2280,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeAddons',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/components/metadata',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeAddonsResponse(),
-            await self.do_roarequest_async('DescribeAddons', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/components/metadata', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_addon_metadata(
@@ -1834,9 +2330,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeClusterAddonMetadata',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/components/{{componentId}}/metadata',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterAddonMetadataResponse(),
-            self.do_roarequest('DescribeClusterAddonMetadata', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/components/{component_id}/metadata', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_addon_metadata_with_options_async(
@@ -1853,9 +2360,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeClusterAddonMetadata',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/components/{{componentId}}/metadata',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterAddonMetadataResponse(),
-            await self.do_roarequest_async('DescribeClusterAddonMetadata', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/components/{component_id}/metadata', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_addon_upgrade_status(
@@ -1888,9 +2406,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeClusterAddonUpgradeStatus',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/components/{{ComponentId}}/upgradestatus',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterAddonUpgradeStatusResponse(),
-            self.do_roarequest('DescribeClusterAddonUpgradeStatus', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/components/{component_id}/upgradestatus', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_addon_upgrade_status_with_options_async(
@@ -1905,9 +2434,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeClusterAddonUpgradeStatus',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/components/{{ComponentId}}/upgradestatus',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterAddonUpgradeStatusResponse(),
-            await self.do_roarequest_async('DescribeClusterAddonUpgradeStatus', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/components/{component_id}/upgradestatus', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_addons_upgrade_status(
@@ -1948,9 +2488,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeClusterAddonsUpgradeStatus',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/components/upgradestatus',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse(),
-            self.do_roarequest('DescribeClusterAddonsUpgradeStatus', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/components/upgradestatus', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_addons_upgrade_status_with_options_async(
@@ -1973,9 +2524,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeClusterAddonsUpgradeStatus',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/components/upgradestatus',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse(),
-            await self.do_roarequest_async('DescribeClusterAddonsUpgradeStatus', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/components/upgradestatus', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_addons_version(
@@ -2004,9 +2566,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeClusterAddonsVersion',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/components/version',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterAddonsVersionResponse(),
-            self.do_roarequest('DescribeClusterAddonsVersion', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/components/version', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_addons_version_with_options_async(
@@ -2019,9 +2592,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeClusterAddonsVersion',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/components/version',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterAddonsVersionResponse(),
-            await self.do_roarequest_async('DescribeClusterAddonsVersion', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/components/version', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_attach_scripts(
@@ -2068,9 +2652,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='DescribeClusterAttachScripts',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/attachscript',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='string'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterAttachScriptsResponse(),
-            self.do_roarequest('DescribeClusterAttachScripts', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/attachscript', 'string', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_attach_scripts_with_options_async(
@@ -2099,9 +2694,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='DescribeClusterAttachScripts',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/attachscript',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='string'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterAttachScriptsResponse(),
-            await self.do_roarequest_async('DescribeClusterAttachScripts', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/attachscript', 'string', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_detail(
@@ -2130,9 +2736,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeClusterDetail',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterDetailResponse(),
-            self.do_roarequest('DescribeClusterDetail', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_detail_with_options_async(
@@ -2145,9 +2762,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeClusterDetail',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterDetailResponse(),
-            await self.do_roarequest_async('DescribeClusterDetail', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_logs(
@@ -2176,9 +2804,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeClusterLogs',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/logs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterLogsResponse(),
-            self.do_roarequest('DescribeClusterLogs', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/logs', 'array', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_logs_with_options_async(
@@ -2191,9 +2830,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeClusterLogs',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/logs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterLogsResponse(),
-            await self.do_roarequest_async('DescribeClusterLogs', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/logs', 'array', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_namespaces(
@@ -2222,9 +2872,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeClusterNamespaces',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/k8s/{cluster_id}/namespaces',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterNamespacesResponse(),
-            self.do_roarequest('DescribeClusterNamespaces', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/k8s/{cluster_id}/namespaces', 'array', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_namespaces_with_options_async(
@@ -2237,9 +2898,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeClusterNamespaces',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/k8s/{cluster_id}/namespaces',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterNamespacesResponse(),
-            await self.do_roarequest_async('DescribeClusterNamespaces', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/k8s/{cluster_id}/namespaces', 'array', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_node_pool_detail(
@@ -2272,9 +2944,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeClusterNodePoolDetail',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodepools/{{NodepoolId}}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterNodePoolDetailResponse(),
-            self.do_roarequest('DescribeClusterNodePoolDetail', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_node_pool_detail_with_options_async(
@@ -2289,9 +2972,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeClusterNodePoolDetail',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodepools/{{NodepoolId}}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterNodePoolDetailResponse(),
-            await self.do_roarequest_async('DescribeClusterNodePoolDetail', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_node_pools(
@@ -2320,9 +3014,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeClusterNodePools',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodepools',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterNodePoolsResponse(),
-            self.do_roarequest('DescribeClusterNodePools', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/nodepools', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_node_pools_with_options_async(
@@ -2335,9 +3040,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeClusterNodePools',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodepools',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterNodePoolsResponse(),
-            await self.do_roarequest_async('DescribeClusterNodePools', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/nodepools', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_nodes(
@@ -2382,9 +3098,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeClusterNodes',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodes',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterNodesResponse(),
-            self.do_roarequest('DescribeClusterNodes', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/nodes', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_nodes_with_options_async(
@@ -2411,9 +3138,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeClusterNodes',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodes',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterNodesResponse(),
-            await self.do_roarequest_async('DescribeClusterNodes', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/nodes', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_resources(
@@ -2442,9 +3180,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeClusterResources',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/resources',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterResourcesResponse(),
-            self.do_roarequest('DescribeClusterResources', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/resources', 'array', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_resources_with_options_async(
@@ -2457,9 +3206,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeClusterResources',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/resources',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterResourcesResponse(),
-            await self.do_roarequest_async('DescribeClusterResources', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/resources', 'array', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_user_kubeconfig(
@@ -2498,9 +3258,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeClusterUserKubeconfig',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/k8s/{cluster_id}/user_config',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterUserKubeconfigResponse(),
-            self.do_roarequest('DescribeClusterUserKubeconfig', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/k8s/{cluster_id}/user_config', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_user_kubeconfig_with_options_async(
@@ -2521,9 +3292,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeClusterUserKubeconfig',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/k8s/{cluster_id}/user_config',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterUserKubeconfigResponse(),
-            await self.do_roarequest_async('DescribeClusterUserKubeconfig', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/k8s/{cluster_id}/user_config', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_v2user_kubeconfig(
@@ -2560,9 +3342,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeClusterV2UserKubeconfig',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/k8s/{cluster_id}/user_config',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterV2UserKubeconfigResponse(),
-            self.do_roarequest('DescribeClusterV2UserKubeconfig', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/api/v2/k8s/{cluster_id}/user_config', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_v2user_kubeconfig_with_options_async(
@@ -2581,9 +3374,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeClusterV2UserKubeconfig',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/k8s/{cluster_id}/user_config',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterV2UserKubeconfigResponse(),
-            await self.do_roarequest_async('DescribeClusterV2UserKubeconfig', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/api/v2/k8s/{cluster_id}/user_config', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_clusters(
@@ -2618,9 +3422,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeClusters',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClustersResponse(),
-            self.do_roarequest('DescribeClusters', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters', 'array', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_clusters_with_options_async(
@@ -2639,9 +3454,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeClusters',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClustersResponse(),
-            await self.do_roarequest_async('DescribeClusters', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters', 'array', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_clusters_v1(
@@ -2684,9 +3510,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeClustersV1',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v1/clusters',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClustersV1Response(),
-            self.do_roarequest('DescribeClustersV1', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/api/v1/clusters', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_clusters_v1with_options_async(
@@ -2713,9 +3550,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeClustersV1',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v1/clusters',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeClustersV1Response(),
-            await self.do_roarequest_async('DescribeClustersV1', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/api/v1/clusters', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_edge_machine_active_process(
@@ -2744,9 +3592,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeEdgeMachineActiveProcess',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/edge_machines/[edge_machineid]/activeprocess',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeEdgeMachineActiveProcessResponse(),
-            self.do_roarequest('DescribeEdgeMachineActiveProcess', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/edge_machines/[edge_machineid]/activeprocess', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_edge_machine_active_process_with_options_async(
@@ -2759,9 +3618,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeEdgeMachineActiveProcess',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/edge_machines/[edge_machineid]/activeprocess',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeEdgeMachineActiveProcessResponse(),
-            await self.do_roarequest_async('DescribeEdgeMachineActiveProcess', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/edge_machines/[edge_machineid]/activeprocess', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_edge_machine_models(self) -> cs20151215_models.DescribeEdgeMachineModelsResponse:
@@ -2782,9 +3652,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeEdgeMachineModels',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/edge_machines/models',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeEdgeMachineModelsResponse(),
-            self.do_roarequest('DescribeEdgeMachineModels', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/edge_machines/models', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_edge_machine_models_with_options_async(
@@ -2795,9 +3676,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeEdgeMachineModels',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/edge_machines/models',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeEdgeMachineModelsResponse(),
-            await self.do_roarequest_async('DescribeEdgeMachineModels', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/edge_machines/models', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_edge_machine_tunnel_config_detail(
@@ -2826,9 +3718,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeEdgeMachineTunnelConfigDetail',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/edge_machines/[edge_machineid]/tunnelconfig',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeEdgeMachineTunnelConfigDetailResponse(),
-            self.do_roarequest('DescribeEdgeMachineTunnelConfigDetail', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/edge_machines/[edge_machineid]/tunnelconfig', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_edge_machine_tunnel_config_detail_with_options_async(
@@ -2841,9 +3744,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeEdgeMachineTunnelConfigDetail',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/edge_machines/[edge_machineid]/tunnelconfig',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeEdgeMachineTunnelConfigDetailResponse(),
-            await self.do_roarequest_async('DescribeEdgeMachineTunnelConfigDetail', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/edge_machines/[edge_machineid]/tunnelconfig', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_edge_machines(
@@ -2886,9 +3800,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeEdgeMachines',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/edge_machines',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeEdgeMachinesResponse(),
-            self.do_roarequest('DescribeEdgeMachines', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/edge_machines', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_edge_machines_with_options_async(
@@ -2915,9 +3840,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeEdgeMachines',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/edge_machines',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeEdgeMachinesResponse(),
-            await self.do_roarequest_async('DescribeEdgeMachines', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/edge_machines', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_events(
@@ -2956,9 +3892,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeEvents',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/events',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeEventsResponse(),
-            self.do_roarequest('DescribeEvents', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/events', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_events_with_options_async(
@@ -2981,9 +3928,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeEvents',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/events',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeEventsResponse(),
-            await self.do_roarequest_async('DescribeEvents', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/events', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_external_agent(
@@ -3020,9 +3978,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeExternalAgent',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/k8s/{cluster_id}/external/agent/deployment',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeExternalAgentResponse(),
-            self.do_roarequest('DescribeExternalAgent', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/k8s/{cluster_id}/external/agent/deployment', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_external_agent_with_options_async(
@@ -3041,9 +4010,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeExternalAgent',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/k8s/{cluster_id}/external/agent/deployment',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeExternalAgentResponse(),
-            await self.do_roarequest_async('DescribeExternalAgent', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/k8s/{cluster_id}/external/agent/deployment', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_kubernetes_version_metadata(
@@ -3082,9 +4062,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeKubernetesVersionMetadata',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v1/metadata/versions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeKubernetesVersionMetadataResponse(),
-            self.do_roarequest('DescribeKubernetesVersionMetadata', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/api/v1/metadata/versions', 'array', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_kubernetes_version_metadata_with_options_async(
@@ -3107,9 +4098,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeKubernetesVersionMetadata',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v1/metadata/versions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeKubernetesVersionMetadataResponse(),
-            await self.do_roarequest_async('DescribeKubernetesVersionMetadata', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/api/v1/metadata/versions', 'array', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_policies(self) -> cs20151215_models.DescribePoliciesResponse:
@@ -3130,9 +4132,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribePolicies',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/policies',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribePoliciesResponse(),
-            self.do_roarequest('DescribePolicies', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/policies', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_policies_with_options_async(
@@ -3143,9 +4156,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribePolicies',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/policies',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribePoliciesResponse(),
-            await self.do_roarequest_async('DescribePolicies', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/policies', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_policy_details(
@@ -3174,9 +4198,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribePolicyDetails',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/policies/{policy_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribePolicyDetailsResponse(),
-            self.do_roarequest('DescribePolicyDetails', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/policies/{policy_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_policy_details_with_options_async(
@@ -3189,9 +4224,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribePolicyDetails',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/policies/{policy_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribePolicyDetailsResponse(),
-            await self.do_roarequest_async('DescribePolicyDetails', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/policies/{policy_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_policy_governance_in_cluster(
@@ -3220,9 +4266,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribePolicyGovernanceInCluster',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/policygovernance',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribePolicyGovernanceInClusterResponse(),
-            self.do_roarequest('DescribePolicyGovernanceInCluster', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/policygovernance', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_policy_governance_in_cluster_with_options_async(
@@ -3235,9 +4292,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribePolicyGovernanceInCluster',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/policygovernance',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribePolicyGovernanceInClusterResponse(),
-            await self.do_roarequest_async('DescribePolicyGovernanceInCluster', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/policygovernance', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_policy_instances(
@@ -3276,9 +4344,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribePolicyInstances',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/policies',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribePolicyInstancesResponse(),
-            self.do_roarequest('DescribePolicyInstances', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/policies', 'array', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_policy_instances_with_options_async(
@@ -3299,9 +4378,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribePolicyInstances',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/policies',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribePolicyInstancesResponse(),
-            await self.do_roarequest_async('DescribePolicyInstances', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/policies', 'array', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_policy_instances_status(
@@ -3330,9 +4420,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribePolicyInstancesStatus',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/policies/status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribePolicyInstancesStatusResponse(),
-            self.do_roarequest('DescribePolicyInstancesStatus', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/policies/status', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_policy_instances_status_with_options_async(
@@ -3345,9 +4446,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribePolicyInstancesStatus',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/policies/status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribePolicyInstancesStatusResponse(),
-            await self.do_roarequest_async('DescribePolicyInstancesStatus', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/{cluster_id}/policies/status', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_task_info(
@@ -3376,9 +4488,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeTaskInfo',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/tasks/{task_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeTaskInfoResponse(),
-            self.do_roarequest('DescribeTaskInfo', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/tasks/{task_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_task_info_with_options_async(
@@ -3391,9 +4514,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeTaskInfo',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/tasks/{task_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeTaskInfoResponse(),
-            await self.do_roarequest_async('DescribeTaskInfo', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/tasks/{task_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_template_attribute(
@@ -3430,9 +4564,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeTemplateAttribute',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/templates/{template_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeTemplateAttributeResponse(),
-            self.do_roarequest('DescribeTemplateAttribute', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/templates/{template_id}', 'array', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_template_attribute_with_options_async(
@@ -3451,9 +4596,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeTemplateAttribute',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/templates/{template_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeTemplateAttributeResponse(),
-            await self.do_roarequest_async('DescribeTemplateAttribute', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/templates/{template_id}', 'array', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_templates(
@@ -3490,9 +4646,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeTemplates',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/templates',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeTemplatesResponse(),
-            self.do_roarequest('DescribeTemplates', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/templates', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_templates_with_options_async(
@@ -3513,9 +4680,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeTemplates',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/templates',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeTemplatesResponse(),
-            await self.do_roarequest_async('DescribeTemplates', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/templates', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_trigger(
@@ -3558,9 +4736,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeTrigger',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/[cluster_id]/triggers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeTriggerResponse(),
-            self.do_roarequest('DescribeTrigger', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/[cluster_id]/triggers', 'array', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_trigger_with_options_async(
@@ -3585,9 +4774,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeTrigger',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/[cluster_id]/triggers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeTriggerResponse(),
-            await self.do_roarequest_async('DescribeTrigger', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/clusters/[cluster_id]/triggers', 'array', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_user_permission(
@@ -3616,9 +4816,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeUserPermission',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/permissions/users/{uid}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeUserPermissionResponse(),
-            self.do_roarequest('DescribeUserPermission', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/permissions/users/{uid}', 'array', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_user_permission_with_options_async(
@@ -3631,9 +4842,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeUserPermission',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/permissions/users/{uid}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeUserPermissionResponse(),
-            await self.do_roarequest_async('DescribeUserPermission', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/permissions/users/{uid}', 'array', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_user_quota(self) -> cs20151215_models.DescribeUserQuotaResponse:
@@ -3654,9 +4876,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeUserQuota',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/quota',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeUserQuotaResponse(),
-            self.do_roarequest('DescribeUserQuota', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/quota', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_user_quota_with_options_async(
@@ -3667,9 +4900,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeUserQuota',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/quota',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeUserQuotaResponse(),
-            await self.do_roarequest_async('DescribeUserQuota', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/quota', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_workflows(self) -> cs20151215_models.DescribeWorkflowsResponse:
@@ -3690,9 +4934,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeWorkflows',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/gs/workflows',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeWorkflowsResponse(),
-            self.do_roarequest('DescribeWorkflows', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/gs/workflows', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_workflows_with_options_async(
@@ -3703,9 +4958,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeWorkflows',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/gs/workflows',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.DescribeWorkflowsResponse(),
-            await self.do_roarequest_async('DescribeWorkflows', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/gs/workflows', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def edge_cluster_add_edge_machine(
@@ -3750,9 +5016,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='EdgeClusterAddEdgeMachine',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/[clusterid]/attachedgemachine/[edge_machineid]',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.EdgeClusterAddEdgeMachineResponse(),
-            self.do_roarequest('EdgeClusterAddEdgeMachine', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/[clusterid]/attachedgemachine/[edge_machineid]', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def edge_cluster_add_edge_machine_with_options_async(
@@ -3777,9 +5054,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='EdgeClusterAddEdgeMachine',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/[clusterid]/attachedgemachine/[edge_machineid]',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.EdgeClusterAddEdgeMachineResponse(),
-            await self.do_roarequest_async('EdgeClusterAddEdgeMachine', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/[clusterid]/attachedgemachine/[edge_machineid]', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_kubernetes_trigger(
@@ -3822,9 +5110,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetKubernetesTrigger',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/triggers/{cluster_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.GetKubernetesTriggerResponse(),
-            self.do_roarequest('GetKubernetesTrigger', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/triggers/{cluster_id}', 'array', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_kubernetes_trigger_with_options_async(
@@ -3849,9 +5148,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetKubernetesTrigger',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/triggers/{cluster_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
         return TeaCore.from_map(
             cs20151215_models.GetKubernetesTriggerResponse(),
-            await self.do_roarequest_async('GetKubernetesTrigger', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/triggers/{cluster_id}', 'array', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_upgrade_status(
@@ -3880,9 +5190,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetUpgradeStatus',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/clusters/{cluster_id}/upgrade/status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.GetUpgradeStatusResponse(),
-            self.do_roarequest('GetUpgradeStatus', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/api/v2/clusters/{cluster_id}/upgrade/status', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_upgrade_status_with_options_async(
@@ -3895,9 +5216,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetUpgradeStatus',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/clusters/{cluster_id}/upgrade/status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.GetUpgradeStatusResponse(),
-            await self.do_roarequest_async('GetUpgradeStatus', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/api/v2/clusters/{cluster_id}/upgrade/status', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def grant_permissions(
@@ -3931,9 +5263,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=UtilClient.to_array(request.body)
         )
+        params = open_api_models.Params(
+            action='GrantPermissions',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/permissions/users/{uid}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.GrantPermissionsResponse(),
-            self.do_roarequest('GrantPermissions', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/permissions/users/{uid}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def grant_permissions_with_options_async(
@@ -3949,9 +5292,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=UtilClient.to_array(request.body)
         )
+        params = open_api_models.Params(
+            action='GrantPermissions',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/permissions/users/{uid}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.GrantPermissionsResponse(),
-            await self.do_roarequest_async('GrantPermissions', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/permissions/users/{uid}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def install_cluster_addons(
@@ -3985,9 +5339,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=UtilClient.to_array(request.body)
         )
+        params = open_api_models.Params(
+            action='InstallClusterAddons',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/components/install',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.InstallClusterAddonsResponse(),
-            self.do_roarequest('InstallClusterAddons', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/components/install', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def install_cluster_addons_with_options_async(
@@ -4003,9 +5368,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=UtilClient.to_array(request.body)
         )
+        params = open_api_models.Params(
+            action='InstallClusterAddons',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/components/install',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.InstallClusterAddonsResponse(),
-            await self.do_roarequest_async('InstallClusterAddons', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/components/install', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_resources(
@@ -4052,9 +5428,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/tags',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.ListTagResourcesResponse(),
-            self.do_roarequest('ListTagResources', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/tags', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_tag_resources_with_options_async(
@@ -4085,9 +5472,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/tags',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.ListTagResourcesResponse(),
-            await self.do_roarequest_async('ListTagResources', '2015-12-15', 'HTTPS', 'GET', 'AK', f'/tags', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def migrate_cluster(
@@ -4116,9 +5514,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='MigrateCluster',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/migrate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.MigrateClusterResponse(),
-            self.do_roarequest('MigrateCluster', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/migrate', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def migrate_cluster_with_options_async(
@@ -4131,9 +5540,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='MigrateCluster',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/migrate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.MigrateClusterResponse(),
-            await self.do_roarequest_async('MigrateCluster', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/migrate', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_cluster(
@@ -4170,6 +5590,8 @@ class Client(OpenApiClient):
             body['api_server_eip_id'] = request.api_server_eip_id
         if not UtilClient.is_unset(request.deletion_protection):
             body['deletion_protection'] = request.deletion_protection
+        if not UtilClient.is_unset(request.enable_rrsa):
+            body['enable_rrsa'] = request.enable_rrsa
         if not UtilClient.is_unset(request.ingress_domain_rebinding):
             body['ingress_domain_rebinding'] = request.ingress_domain_rebinding
         if not UtilClient.is_unset(request.ingress_loadbalancer_id):
@@ -4184,9 +5606,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ModifyCluster',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/clusters/{cluster_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.ModifyClusterResponse(),
-            self.do_roarequest('ModifyCluster', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/api/v2/clusters/{cluster_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_cluster_with_options_async(
@@ -4205,6 +5638,8 @@ class Client(OpenApiClient):
             body['api_server_eip_id'] = request.api_server_eip_id
         if not UtilClient.is_unset(request.deletion_protection):
             body['deletion_protection'] = request.deletion_protection
+        if not UtilClient.is_unset(request.enable_rrsa):
+            body['enable_rrsa'] = request.enable_rrsa
         if not UtilClient.is_unset(request.ingress_domain_rebinding):
             body['ingress_domain_rebinding'] = request.ingress_domain_rebinding
         if not UtilClient.is_unset(request.ingress_loadbalancer_id):
@@ -4219,9 +5654,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ModifyCluster',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/clusters/{cluster_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.ModifyClusterResponse(),
-            await self.do_roarequest_async('ModifyCluster', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/api/v2/clusters/{cluster_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_cluster_addon(
@@ -4262,9 +5708,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ModifyClusterAddon',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/components/{{componentId}}/config',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.ModifyClusterAddonResponse(),
-            self.do_roarequest('ModifyClusterAddon', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/components/{component_id}/config', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_cluster_addon_with_options_async(
@@ -4285,9 +5742,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ModifyClusterAddon',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/components/{{componentId}}/config',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.ModifyClusterAddonResponse(),
-            await self.do_roarequest_async('ModifyClusterAddon', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/components/{component_id}/config', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_cluster_configuration(
@@ -4324,9 +5792,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ModifyClusterConfiguration',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/configuration',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.ModifyClusterConfigurationResponse(),
-            self.do_roarequest('ModifyClusterConfiguration', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/clusters/{cluster_id}/configuration', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_cluster_configuration_with_options_async(
@@ -4345,9 +5824,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ModifyClusterConfiguration',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/configuration',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.ModifyClusterConfigurationResponse(),
-            await self.do_roarequest_async('ModifyClusterConfiguration', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/clusters/{cluster_id}/configuration', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_cluster_node_pool(
@@ -4400,9 +5890,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ModifyClusterNodePool',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodepools/{{NodepoolId}}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.ModifyClusterNodePoolResponse(),
-            self.do_roarequest('ModifyClusterNodePool', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_cluster_node_pool_with_options_async(
@@ -4435,9 +5936,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ModifyClusterNodePool',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodepools/{{NodepoolId}}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.ModifyClusterNodePoolResponse(),
-            await self.do_roarequest_async('ModifyClusterNodePool', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_cluster_tags(
@@ -4471,9 +5983,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=UtilClient.to_array(request.body)
         )
+        params = open_api_models.Params(
+            action='ModifyClusterTags',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/tags',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.ModifyClusterTagsResponse(),
-            self.do_roarequest('ModifyClusterTags', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/tags', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_cluster_tags_with_options_async(
@@ -4489,9 +6012,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=UtilClient.to_array(request.body)
         )
+        params = open_api_models.Params(
+            action='ModifyClusterTags',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/tags',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.ModifyClusterTagsResponse(),
-            await self.do_roarequest_async('ModifyClusterTags', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/tags', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_policy_instance(
@@ -4538,9 +6072,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ModifyPolicyInstance',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/policies/{{policyName}}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.ModifyPolicyInstanceResponse(),
-            self.do_roarequest('ModifyPolicyInstance', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/clusters/{cluster_id}/policies/{policy_name}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_policy_instance_with_options_async(
@@ -4567,9 +6112,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ModifyPolicyInstance',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/policies/{{policyName}}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.ModifyPolicyInstanceResponse(),
-            await self.do_roarequest_async('ModifyPolicyInstance', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/clusters/{cluster_id}/policies/{policy_name}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def open_ack_service(
@@ -4602,9 +6158,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='OpenAckService',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/service/open',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.OpenAckServiceResponse(),
-            self.do_roarequest('OpenAckService', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/service/open', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def open_ack_service_with_options_async(
@@ -4621,9 +6188,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='OpenAckService',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/service/open',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.OpenAckServiceResponse(),
-            await self.do_roarequest_async('OpenAckService', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/service/open', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def pause_cluster_upgrade(
@@ -4652,9 +6230,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='PauseClusterUpgrade',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/clusters/{cluster_id}/upgrade/pause',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.PauseClusterUpgradeResponse(),
-            self.do_roarequest('PauseClusterUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/api/v2/clusters/{cluster_id}/upgrade/pause', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def pause_cluster_upgrade_with_options_async(
@@ -4667,9 +6256,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='PauseClusterUpgrade',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/clusters/{cluster_id}/upgrade/pause',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.PauseClusterUpgradeResponse(),
-            await self.do_roarequest_async('PauseClusterUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/api/v2/clusters/{cluster_id}/upgrade/pause', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def pause_component_upgrade(
@@ -4702,9 +6302,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='PauseComponentUpgrade',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{clusterid}/components/{{componentid}}/pause',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.PauseComponentUpgradeResponse(),
-            self.do_roarequest('PauseComponentUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{clusterid}/components/{componentid}/pause', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def pause_component_upgrade_with_options_async(
@@ -4719,9 +6330,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='PauseComponentUpgrade',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{clusterid}/components/{{componentid}}/pause',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.PauseComponentUpgradeResponse(),
-            await self.do_roarequest_async('PauseComponentUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{clusterid}/components/{componentid}/pause', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_cluster_nodes(
@@ -4762,9 +6384,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='RemoveClusterNodes',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/clusters/{cluster_id}/nodes/remove',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.RemoveClusterNodesResponse(),
-            self.do_roarequest('RemoveClusterNodes', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/api/v2/clusters/{cluster_id}/nodes/remove', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_cluster_nodes_with_options_async(
@@ -4787,9 +6420,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='RemoveClusterNodes',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/clusters/{cluster_id}/nodes/remove',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.RemoveClusterNodesResponse(),
-            await self.do_roarequest_async('RemoveClusterNodes', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/api/v2/clusters/{cluster_id}/nodes/remove', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_workflow(
@@ -4818,9 +6462,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveWorkflow',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/gs/workflow/{workflow_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.RemoveWorkflowResponse(),
-            self.do_roarequest('RemoveWorkflow', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/gs/workflow/{workflow_name}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_workflow_with_options_async(
@@ -4833,9 +6488,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveWorkflow',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/gs/workflow/{workflow_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.RemoveWorkflowResponse(),
-            await self.do_roarequest_async('RemoveWorkflow', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/gs/workflow/{workflow_name}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def resume_component_upgrade(
@@ -4868,9 +6534,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ResumeComponentUpgrade',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{clusterid}/components/{{componentid}}/resume',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.ResumeComponentUpgradeResponse(),
-            self.do_roarequest('ResumeComponentUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{clusterid}/components/{componentid}/resume', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def resume_component_upgrade_with_options_async(
@@ -4885,9 +6562,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ResumeComponentUpgrade',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{clusterid}/components/{{componentid}}/resume',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.ResumeComponentUpgradeResponse(),
-            await self.do_roarequest_async('ResumeComponentUpgrade', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{clusterid}/components/{componentid}/resume', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def resume_upgrade_cluster(
@@ -4916,9 +6604,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ResumeUpgradeCluster',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/clusters/{cluster_id}/upgrade/resume',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.ResumeUpgradeClusterResponse(),
-            self.do_roarequest('ResumeUpgradeCluster', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/api/v2/clusters/{cluster_id}/upgrade/resume', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def resume_upgrade_cluster_with_options_async(
@@ -4931,9 +6630,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ResumeUpgradeCluster',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/clusters/{cluster_id}/upgrade/resume',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.ResumeUpgradeClusterResponse(),
-            await self.do_roarequest_async('ResumeUpgradeCluster', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/api/v2/clusters/{cluster_id}/upgrade/resume', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def scale_cluster(
@@ -5006,9 +6716,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ScaleCluster',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.ScaleClusterResponse(),
-            self.do_roarequest('ScaleCluster', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/clusters/{cluster_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def scale_cluster_with_options_async(
@@ -5063,9 +6784,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ScaleCluster',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.ScaleClusterResponse(),
-            await self.do_roarequest_async('ScaleCluster', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/clusters/{cluster_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def scale_cluster_node_pool(
@@ -5106,9 +6838,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ScaleClusterNodePool',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodepools/{{NodepoolId}}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.ScaleClusterNodePoolResponse(),
-            self.do_roarequest('ScaleClusterNodePool', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def scale_cluster_node_pool_with_options_async(
@@ -5129,9 +6872,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ScaleClusterNodePool',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodepools/{{NodepoolId}}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.ScaleClusterNodePoolResponse(),
-            await self.do_roarequest_async('ScaleClusterNodePool', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/nodepools/{nodepool_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def scale_out_cluster(
@@ -5208,9 +6962,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ScaleOutCluster',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/clusters/{cluster_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.ScaleOutClusterResponse(),
-            self.do_roarequest('ScaleOutCluster', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/api/v2/clusters/{cluster_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def scale_out_cluster_with_options_async(
@@ -5269,9 +7034,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ScaleOutCluster',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/clusters/{cluster_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.ScaleOutClusterResponse(),
-            await self.do_roarequest_async('ScaleOutCluster', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/api/v2/clusters/{cluster_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_workflow(
@@ -5340,9 +7116,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='StartWorkflow',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/gs/workflow',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.StartWorkflowResponse(),
-            self.do_roarequest('StartWorkflow', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/gs/workflow', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def start_workflow_with_options_async(
@@ -5395,9 +7182,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='StartWorkflow',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/gs/workflow',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cs20151215_models.StartWorkflowResponse(),
-            await self.do_roarequest_async('StartWorkflow', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/gs/workflow', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def tag_resources(
@@ -5436,9 +7234,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/tags',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.TagResourcesResponse(),
-            self.do_roarequest('TagResources', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/tags', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def tag_resources_with_options_async(
@@ -5461,9 +7270,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/tags',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.TagResourcesResponse(),
-            await self.do_roarequest_async('TagResources', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/tags', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def un_install_cluster_addons(
@@ -5497,9 +7317,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=UtilClient.to_array(request.addons)
         )
+        params = open_api_models.Params(
+            action='UnInstallClusterAddons',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/components/uninstall',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.UnInstallClusterAddonsResponse(),
-            self.do_roarequest('UnInstallClusterAddons', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/components/uninstall', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def un_install_cluster_addons_with_options_async(
@@ -5515,9 +7346,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=UtilClient.to_array(request.addons)
         )
+        params = open_api_models.Params(
+            action='UnInstallClusterAddons',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/components/uninstall',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.UnInstallClusterAddonsResponse(),
-            await self.do_roarequest_async('UnInstallClusterAddons', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/components/uninstall', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def untag_resources(
@@ -5556,9 +7398,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/tags',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.UntagResourcesResponse(),
-            self.do_roarequest('UntagResources', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/tags', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def untag_resources_with_options_async(
@@ -5581,9 +7434,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/tags',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.UntagResourcesResponse(),
-            await self.do_roarequest_async('UntagResources', '2015-12-15', 'HTTPS', 'DELETE', 'AK', f'/tags', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_k8s_cluster_user_config_expire(
@@ -5612,9 +7476,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='UpdateK8sClusterUserConfigExpire',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/k8s/{cluster_id}/user_config/expire',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.UpdateK8sClusterUserConfigExpireResponse(),
-            self.do_roarequest('UpdateK8sClusterUserConfigExpire', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/k8s/{cluster_id}/user_config/expire', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_k8s_cluster_user_config_expire_with_options_async(
@@ -5627,9 +7502,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='UpdateK8sClusterUserConfigExpire',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/k8s/{cluster_id}/user_config/expire',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.UpdateK8sClusterUserConfigExpireResponse(),
-            await self.do_roarequest_async('UpdateK8sClusterUserConfigExpire', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/k8s/{cluster_id}/user_config/expire', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_template(
@@ -5674,9 +7560,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateTemplate',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/templates/{template_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.UpdateTemplateResponse(),
-            self.do_roarequest('UpdateTemplate', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/templates/{template_id}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_template_with_options_async(
@@ -5703,9 +7600,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateTemplate',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/templates/{template_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.UpdateTemplateResponse(),
-            await self.do_roarequest_async('UpdateTemplate', '2015-12-15', 'HTTPS', 'PUT', 'AK', f'/templates/{template_id}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def upgrade_cluster(
@@ -5746,9 +7654,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpgradeCluster',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/clusters/{cluster_id}/upgrade',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.UpgradeClusterResponse(),
-            self.do_roarequest('UpgradeCluster', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/api/v2/clusters/{cluster_id}/upgrade', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def upgrade_cluster_with_options_async(
@@ -5771,9 +7690,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpgradeCluster',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/api/v2/clusters/{cluster_id}/upgrade',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.UpgradeClusterResponse(),
-            await self.do_roarequest_async('UpgradeCluster', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/api/v2/clusters/{cluster_id}/upgrade', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def upgrade_cluster_addons(
@@ -5807,9 +7737,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=UtilClient.to_array(request.body)
         )
+        params = open_api_models.Params(
+            action='UpgradeClusterAddons',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/components/upgrade',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.UpgradeClusterAddonsResponse(),
-            self.do_roarequest('UpgradeClusterAddons', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/components/upgrade', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def upgrade_cluster_addons_with_options_async(
@@ -5825,7 +7766,18 @@ class Client(OpenApiClient):
             headers=headers,
             body=UtilClient.to_array(request.body)
         )
+        params = open_api_models.Params(
+            action='UpgradeClusterAddons',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/components/upgrade',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             cs20151215_models.UpgradeClusterAddonsResponse(),
-            await self.do_roarequest_async('UpgradeClusterAddons', '2015-12-15', 'HTTPS', 'POST', 'AK', f'/clusters/{cluster_id}/components/upgrade', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )

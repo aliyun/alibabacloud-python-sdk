@@ -1,3 +1,6 @@
+2021-11-24 Version: 3.0.2
+- Update CreateCluster and ModifyCluster.
+
 2021-11-19 Version: 3.0.1
 - Support edge node pool.
 

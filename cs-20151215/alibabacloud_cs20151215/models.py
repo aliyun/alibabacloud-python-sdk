@@ -766,6 +766,7 @@ class CreateClusterRequest(TeaModel):
         custom_san: str = None,
         deletion_protection: bool = None,
         disable_rollback: bool = None,
+        enable_rrsa: bool = None,
         encryption_provider_key: str = None,
         endpoint_public_access: bool = None,
         format_disk: bool = None,
@@ -864,6 +865,8 @@ class CreateClusterRequest(TeaModel):
         self.deletion_protection = deletion_protection
         # 失败回滚
         self.disable_rollback = disable_rollback
+        # 启用 RRSA 功能
+        self.enable_rrsa = enable_rrsa
         # Secret落盘加密
         self.encryption_provider_key = encryption_provider_key
         # 使用EIP暴露apiServer
@@ -1056,6 +1059,8 @@ class CreateClusterRequest(TeaModel):
             result['deletion_protection'] = self.deletion_protection
         if self.disable_rollback is not None:
             result['disable_rollback'] = self.disable_rollback
+        if self.enable_rrsa is not None:
+            result['enable_rrsa'] = self.enable_rrsa
         if self.encryption_provider_key is not None:
             result['encryption_provider_key'] = self.encryption_provider_key
         if self.endpoint_public_access is not None:
@@ -1233,6 +1238,8 @@ class CreateClusterRequest(TeaModel):
             self.deletion_protection = m.get('deletion_protection')
         if m.get('disable_rollback') is not None:
             self.disable_rollback = m.get('disable_rollback')
+        if m.get('enable_rrsa') is not None:
+            self.enable_rrsa = m.get('enable_rrsa')
         if m.get('encryption_provider_key') is not None:
             self.encryption_provider_key = m.get('encryption_provider_key')
         if m.get('endpoint_public_access') is not None:
@@ -3243,15 +3250,76 @@ class DeleteKubernetesTriggerResponse(TeaModel):
         return self
 
 
+class DeletePolicyInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        instance_name: str = None,
+    ):
+        # 策略规则实例id
+        self.instance_name = instance_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_name is not None:
+            result['instance_name'] = self.instance_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instance_name') is not None:
+            self.instance_name = m.get('instance_name')
+        return self
+
+
+class DeletePolicyInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        instances: List[str] = None,
+    ):
+        # 策略实例列表
+        self.instances = instances
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instances is not None:
+            result['instances'] = self.instances
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instances') is not None:
+            self.instances = m.get('instances')
+        return self
+
+
 class DeletePolicyInstanceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        body: DeletePolicyInstanceResponseBody = None,
     ):
         self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3261,12 +3329,17 @@ class DeletePolicyInstanceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeletePolicyInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -3366,15 +3439,48 @@ class DeployPolicyInstanceRequest(TeaModel):
         return self
 
 
+class DeployPolicyInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        instances: List[str] = None,
+    ):
+        # 策略实例列表
+        self.instances = instances
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instances is not None:
+            result['instances'] = self.instances
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instances') is not None:
+            self.instances = m.get('instances')
+        return self
+
+
 class DeployPolicyInstanceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        body: DeployPolicyInstanceResponseBody = None,
     ):
         self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3384,12 +3490,17 @@ class DeployPolicyInstanceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeployPolicyInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -12064,6 +12175,7 @@ class ModifyClusterRequest(TeaModel):
         api_server_eip: bool = None,
         api_server_eip_id: str = None,
         deletion_protection: bool = None,
+        enable_rrsa: bool = None,
         ingress_domain_rebinding: str = None,
         ingress_loadbalancer_id: str = None,
         instance_deletion_protection: bool = None,
@@ -12076,6 +12188,8 @@ class ModifyClusterRequest(TeaModel):
         self.api_server_eip_id = api_server_eip_id
         # 集群是否开启删除保护。默认值false。
         self.deletion_protection = deletion_protection
+        # 启用或禁用 RRSA 功能。true: 启用，false: 禁用
+        self.enable_rrsa = enable_rrsa
         # 域名是否重新绑定到Ingress的SLB地址。
         self.ingress_domain_rebinding = ingress_domain_rebinding
         # 集群的Ingress SLB的ID。
@@ -12102,6 +12216,8 @@ class ModifyClusterRequest(TeaModel):
             result['api_server_eip_id'] = self.api_server_eip_id
         if self.deletion_protection is not None:
             result['deletion_protection'] = self.deletion_protection
+        if self.enable_rrsa is not None:
+            result['enable_rrsa'] = self.enable_rrsa
         if self.ingress_domain_rebinding is not None:
             result['ingress_domain_rebinding'] = self.ingress_domain_rebinding
         if self.ingress_loadbalancer_id is not None:
@@ -12122,6 +12238,8 @@ class ModifyClusterRequest(TeaModel):
             self.api_server_eip_id = m.get('api_server_eip_id')
         if m.get('deletion_protection') is not None:
             self.deletion_protection = m.get('deletion_protection')
+        if m.get('enable_rrsa') is not None:
+            self.enable_rrsa = m.get('enable_rrsa')
         if m.get('ingress_domain_rebinding') is not None:
             self.ingress_domain_rebinding = m.get('ingress_domain_rebinding')
         if m.get('ingress_loadbalancer_id') is not None:
@@ -13273,15 +13391,47 @@ class ModifyPolicyInstanceRequest(TeaModel):
         return self
 
 
+class ModifyPolicyInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        instances: List[str] = None,
+    ):
+        self.instances = instances
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instances is not None:
+            result['instances'] = self.instances
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instances') is not None:
+            self.instances = m.get('instances')
+        return self
+
+
 class ModifyPolicyInstanceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        body: ModifyPolicyInstanceResponseBody = None,
     ):
         self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -13291,12 +13441,17 @@ class ModifyPolicyInstanceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyPolicyInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
