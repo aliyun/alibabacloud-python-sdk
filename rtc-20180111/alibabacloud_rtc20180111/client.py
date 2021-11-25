@@ -463,6 +463,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_auto_live_stream_rule_with_options_async(request, runtime)
 
+    def delete_channel_with_options(
+        self,
+        request: rtc_20180111_models.DeleteChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DeleteChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['ChannelId'] = request.channel_id
+        query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteChannel',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DeleteChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_channel_with_options_async(
+        self,
+        request: rtc_20180111_models.DeleteChannelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DeleteChannelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['ChannelId'] = request.channel_id
+        query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteChannel',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DeleteChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_channel(
+        self,
+        request: rtc_20180111_models.DeleteChannelRequest,
+    ) -> rtc_20180111_models.DeleteChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_channel_with_options(request, runtime)
+
+    async def delete_channel_async(
+        self,
+        request: rtc_20180111_models.DeleteChannelRequest,
+    ) -> rtc_20180111_models.DeleteChannelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_channel_with_options_async(request, runtime)
+
     def delete_event_subscribe_with_options(
         self,
         request: rtc_20180111_models.DeleteEventSubscribeRequest,
@@ -684,6 +758,86 @@ class Client(OpenApiClient):
     ) -> rtc_20180111_models.DeleteRecordTemplateResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_record_template_with_options_async(request, runtime)
+
+    def describe_apps_with_options(
+        self,
+        request: rtc_20180111_models.DescribeAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['Order'] = request.order
+        query['OwnerId'] = request.owner_id
+        query['PageNum'] = request.page_num
+        query['PageSize'] = request.page_size
+        query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeApps',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apps_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['Order'] = request.order
+        query['OwnerId'] = request.owner_id
+        query['PageNum'] = request.page_num
+        query['PageSize'] = request.page_size
+        query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeApps',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apps(
+        self,
+        request: rtc_20180111_models.DescribeAppsRequest,
+    ) -> rtc_20180111_models.DescribeAppsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_apps_with_options(request, runtime)
+
+    async def describe_apps_async(
+        self,
+        request: rtc_20180111_models.DescribeAppsRequest,
+    ) -> rtc_20180111_models.DescribeAppsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_apps_with_options_async(request, runtime)
 
     def describe_auto_live_stream_rule_with_options(
         self,
@@ -1451,6 +1605,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_mputask_status_with_options_async(request, runtime)
 
+    def modify_app_with_options(
+        self,
+        request: rtc_20180111_models.ModifyAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyAppResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['AppName'] = request.app_name
+        query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyApp',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_app_with_options_async(
+        self,
+        request: rtc_20180111_models.ModifyAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyAppResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AppId'] = request.app_id
+        query['AppName'] = request.app_name
+        query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyApp',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_app(
+        self,
+        request: rtc_20180111_models.ModifyAppRequest,
+    ) -> rtc_20180111_models.ModifyAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_app_with_options(request, runtime)
+
+    async def modify_app_async(
+        self,
+        request: rtc_20180111_models.ModifyAppRequest,
+    ) -> rtc_20180111_models.ModifyAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_app_with_options_async(request, runtime)
+
     def modify_mpulayout_with_options(
         self,
         request: rtc_20180111_models.ModifyMPULayoutRequest,
@@ -1840,82 +2068,6 @@ class Client(OpenApiClient):
     ) -> rtc_20180111_models.StartRecordTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.start_record_task_with_options_async(request, runtime)
-
-    def stop_channel_user_publish_with_options(
-        self,
-        request: rtc_20180111_models.StopChannelUserPublishRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.StopChannelUserPublishResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['AppId'] = request.app_id
-        query['ChannelId'] = request.channel_id
-        query['OwnerId'] = request.owner_id
-        query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='StopChannelUserPublish',
-            version='2018-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rtc_20180111_models.StopChannelUserPublishResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def stop_channel_user_publish_with_options_async(
-        self,
-        request: rtc_20180111_models.StopChannelUserPublishRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rtc_20180111_models.StopChannelUserPublishResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['AppId'] = request.app_id
-        query['ChannelId'] = request.channel_id
-        query['OwnerId'] = request.owner_id
-        query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='StopChannelUserPublish',
-            version='2018-01-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rtc_20180111_models.StopChannelUserPublishResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def stop_channel_user_publish(
-        self,
-        request: rtc_20180111_models.StopChannelUserPublishRequest,
-    ) -> rtc_20180111_models.StopChannelUserPublishResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.stop_channel_user_publish_with_options(request, runtime)
-
-    async def stop_channel_user_publish_async(
-        self,
-        request: rtc_20180111_models.StopChannelUserPublishRequest,
-    ) -> rtc_20180111_models.StopChannelUserPublishResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.stop_channel_user_publish_with_options_async(request, runtime)
 
     def stop_mputask_with_options(
         self,
