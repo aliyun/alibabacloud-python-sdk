@@ -1038,48 +1038,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detect_image_faces_with_options_async(request, runtime)
 
-    def detect_image_logos_with_options(
-        self,
-        request: imm_20170906_models.DetectImageLogosRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20170906_models.DetectImageLogosResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imm_20170906_models.DetectImageLogosResponse(),
-            self.do_rpcrequest('DetectImageLogos', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def detect_image_logos_with_options_async(
-        self,
-        request: imm_20170906_models.DetectImageLogosRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20170906_models.DetectImageLogosResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imm_20170906_models.DetectImageLogosResponse(),
-            await self.do_rpcrequest_async('DetectImageLogos', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def detect_image_logos(
-        self,
-        request: imm_20170906_models.DetectImageLogosRequest,
-    ) -> imm_20170906_models.DetectImageLogosResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.detect_image_logos_with_options(request, runtime)
-
-    async def detect_image_logos_async(
-        self,
-        request: imm_20170906_models.DetectImageLogosRequest,
-    ) -> imm_20170906_models.DetectImageLogosResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.detect_image_logos_with_options_async(request, runtime)
-
     def detect_image_qrcodes_with_options(
         self,
         request: imm_20170906_models.DetectImageQRCodesRequest,
@@ -2214,48 +2172,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_projects_with_options_async(request, runtime)
 
-    def list_sets_with_options(
-        self,
-        request: imm_20170906_models.ListSetsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20170906_models.ListSetsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imm_20170906_models.ListSetsResponse(),
-            self.do_rpcrequest('ListSets', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_sets_with_options_async(
-        self,
-        request: imm_20170906_models.ListSetsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20170906_models.ListSetsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imm_20170906_models.ListSetsResponse(),
-            await self.do_rpcrequest_async('ListSets', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_sets(
-        self,
-        request: imm_20170906_models.ListSetsRequest,
-    ) -> imm_20170906_models.ListSetsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_sets_with_options(request, runtime)
-
-    async def list_sets_async(
-        self,
-        request: imm_20170906_models.ListSetsRequest,
-    ) -> imm_20170906_models.ListSetsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_sets_with_options_async(request, runtime)
-
     def list_set_tags_with_options(
         self,
         request: imm_20170906_models.ListSetTagsRequest,
@@ -2297,6 +2213,48 @@ class Client(OpenApiClient):
     ) -> imm_20170906_models.ListSetTagsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_set_tags_with_options_async(request, runtime)
+
+    def list_sets_with_options(
+        self,
+        request: imm_20170906_models.ListSetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20170906_models.ListSetsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListSetsResponse(),
+            self.do_rpcrequest('ListSets', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_sets_with_options_async(
+        self,
+        request: imm_20170906_models.ListSetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20170906_models.ListSetsResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListSetsResponse(),
+            await self.do_rpcrequest_async('ListSets', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_sets(
+        self,
+        request: imm_20170906_models.ListSetsRequest,
+    ) -> imm_20170906_models.ListSetsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_sets_with_options(request, runtime)
+
+    async def list_sets_async(
+        self,
+        request: imm_20170906_models.ListSetsRequest,
+    ) -> imm_20170906_models.ListSetsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_sets_with_options_async(request, runtime)
 
     def list_video_audios_with_options(
         self,
@@ -2382,48 +2340,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_video_frames_with_options_async(request, runtime)
 
-    def list_videos_with_options(
-        self,
-        request: imm_20170906_models.ListVideosRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20170906_models.ListVideosResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imm_20170906_models.ListVideosResponse(),
-            self.do_rpcrequest('ListVideos', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_videos_with_options_async(
-        self,
-        request: imm_20170906_models.ListVideosRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20170906_models.ListVideosResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imm_20170906_models.ListVideosResponse(),
-            await self.do_rpcrequest_async('ListVideos', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_videos(
-        self,
-        request: imm_20170906_models.ListVideosRequest,
-    ) -> imm_20170906_models.ListVideosResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_videos_with_options(request, runtime)
-
-    async def list_videos_async(
-        self,
-        request: imm_20170906_models.ListVideosRequest,
-    ) -> imm_20170906_models.ListVideosResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_videos_with_options_async(request, runtime)
-
     def list_video_tasks_with_options(
         self,
         request: imm_20170906_models.ListVideoTasksRequest,
@@ -2465,6 +2381,48 @@ class Client(OpenApiClient):
     ) -> imm_20170906_models.ListVideoTasksResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_video_tasks_with_options_async(request, runtime)
+
+    def list_videos_with_options(
+        self,
+        request: imm_20170906_models.ListVideosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20170906_models.ListVideosResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListVideosResponse(),
+            self.do_rpcrequest('ListVideos', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_videos_with_options_async(
+        self,
+        request: imm_20170906_models.ListVideosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20170906_models.ListVideosResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            imm_20170906_models.ListVideosResponse(),
+            await self.do_rpcrequest_async('ListVideos', '2017-09-06', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_videos(
+        self,
+        request: imm_20170906_models.ListVideosRequest,
+    ) -> imm_20170906_models.ListVideosResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_videos_with_options(request, runtime)
+
+    async def list_videos_async(
+        self,
+        request: imm_20170906_models.ListVideosRequest,
+    ) -> imm_20170906_models.ListVideosResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_videos_with_options_async(request, runtime)
 
     def open_imm_service_with_options(
         self,
