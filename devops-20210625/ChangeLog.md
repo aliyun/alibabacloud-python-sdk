@@ -1,3 +1,6 @@
+2021-11-25 Version: 1.1.2
+- Add Deploy Api.
+
 2021-11-17 Version: 1.0.4
 - Add PipelineValidate API.
 

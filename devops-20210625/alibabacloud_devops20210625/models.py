@@ -2733,6 +2733,422 @@ class GetPipelineRunResponse(TeaModel):
         return self
 
 
+class GetVMDeployOrderResponseBodyDeployOrderActions(TeaModel):
+    def __init__(
+        self,
+        disable: bool = None,
+        params: Dict[str, Any] = None,
+        type: str = None,
+    ):
+        # 是否可用
+        self.disable = disable
+        # 参数
+        self.params = params
+        # Action
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disable is not None:
+            result['disable'] = self.disable
+        if self.params is not None:
+            result['params'] = self.params
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('disable') is not None:
+            self.disable = m.get('disable')
+        if m.get('params') is not None:
+            self.params = m.get('params')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions(TeaModel):
+    def __init__(
+        self,
+        disable: bool = None,
+        params: Dict[str, Any] = None,
+        type: str = None,
+    ):
+        # 是否可用
+        self.disable = disable
+        # 参数
+        self.params = params
+        # Action
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disable is not None:
+            result['disable'] = self.disable
+        if self.params is not None:
+            result['params'] = self.params
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('disable') is not None:
+            self.disable = m.get('disable')
+        if m.get('params') is not None:
+            self.params = m.get('params')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines(TeaModel):
+    def __init__(
+        self,
+        actions: List[GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions] = None,
+        batch_num: int = None,
+        client_status: str = None,
+        create_time: int = None,
+        ip: str = None,
+        machine_sn: str = None,
+        status: str = None,
+        update_time: int = None,
+    ):
+        # 后续action
+        self.actions = actions
+        # 部署批次
+        self.batch_num = batch_num
+        # 机器状态
+        self.client_status = client_status
+        # 开始时间
+        self.create_time = create_time
+        # 机器IP
+        self.ip = ip
+        # 机器sn
+        self.machine_sn = machine_sn
+        # 部署状态
+        self.status = status
+        # 修改时间
+        self.update_time = update_time
+
+    def validate(self):
+        if self.actions:
+            for k in self.actions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['actions'] = []
+        if self.actions is not None:
+            for k in self.actions:
+                result['actions'].append(k.to_map() if k else None)
+        if self.batch_num is not None:
+            result['batchNum'] = self.batch_num
+        if self.client_status is not None:
+            result['clientStatus'] = self.client_status
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.ip is not None:
+            result['ip'] = self.ip
+        if self.machine_sn is not None:
+            result['machineSn'] = self.machine_sn
+        if self.status is not None:
+            result['status'] = self.status
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.actions = []
+        if m.get('actions') is not None:
+            for k in m.get('actions'):
+                temp_model = GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachinesActions()
+                self.actions.append(temp_model.from_map(k))
+        if m.get('batchNum') is not None:
+            self.batch_num = m.get('batchNum')
+        if m.get('clientStatus') is not None:
+            self.client_status = m.get('clientStatus')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('ip') is not None:
+            self.ip = m.get('ip')
+        if m.get('machineSn') is not None:
+            self.machine_sn = m.get('machineSn')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        return self
+
+
+class GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfo(TeaModel):
+    def __init__(
+        self,
+        batch_num: int = None,
+        deploy_machines: List[GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines] = None,
+        host_group_id: int = None,
+    ):
+        # 发布批次
+        self.batch_num = batch_num
+        # 部署机器列表
+        self.deploy_machines = deploy_machines
+        # 主机组ID
+        self.host_group_id = host_group_id
+
+    def validate(self):
+        if self.deploy_machines:
+            for k in self.deploy_machines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.batch_num is not None:
+            result['batchNum'] = self.batch_num
+        result['deployMachines'] = []
+        if self.deploy_machines is not None:
+            for k in self.deploy_machines:
+                result['deployMachines'].append(k.to_map() if k else None)
+        if self.host_group_id is not None:
+            result['hostGroupId'] = self.host_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('batchNum') is not None:
+            self.batch_num = m.get('batchNum')
+        self.deploy_machines = []
+        if m.get('deployMachines') is not None:
+            for k in m.get('deployMachines'):
+                temp_model = GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfoDeployMachines()
+                self.deploy_machines.append(temp_model.from_map(k))
+        if m.get('hostGroupId') is not None:
+            self.host_group_id = m.get('hostGroupId')
+        return self
+
+
+class GetVMDeployOrderResponseBodyDeployOrder(TeaModel):
+    def __init__(
+        self,
+        actions: List[GetVMDeployOrderResponseBodyDeployOrderActions] = None,
+        create_time: int = None,
+        creator: str = None,
+        current_batch: int = None,
+        deploy_machine_info: GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfo = None,
+        deploy_order_id: str = None,
+        exception_code: str = None,
+        status: str = None,
+        total_batch: int = None,
+        update_time: int = None,
+    ):
+        # 后续action
+        self.actions = actions
+        # 创建时时间
+        self.create_time = create_time
+        # 创建人
+        self.creator = creator
+        # 当前发布批次
+        self.current_batch = current_batch
+        # 部署机器信息
+        self.deploy_machine_info = deploy_machine_info
+        # 部署单ID
+        self.deploy_order_id = deploy_order_id
+        # 错误码
+        self.exception_code = exception_code
+        # 发布状态
+        self.status = status
+        # 总发布批次
+        self.total_batch = total_batch
+        # 修改时间
+        self.update_time = update_time
+
+    def validate(self):
+        if self.actions:
+            for k in self.actions:
+                if k:
+                    k.validate()
+        if self.deploy_machine_info:
+            self.deploy_machine_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['actions'] = []
+        if self.actions is not None:
+            for k in self.actions:
+                result['actions'].append(k.to_map() if k else None)
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.current_batch is not None:
+            result['currentBatch'] = self.current_batch
+        if self.deploy_machine_info is not None:
+            result['deployMachineInfo'] = self.deploy_machine_info.to_map()
+        if self.deploy_order_id is not None:
+            result['deployOrderId'] = self.deploy_order_id
+        if self.exception_code is not None:
+            result['exceptionCode'] = self.exception_code
+        if self.status is not None:
+            result['status'] = self.status
+        if self.total_batch is not None:
+            result['totalBatch'] = self.total_batch
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.actions = []
+        if m.get('actions') is not None:
+            for k in m.get('actions'):
+                temp_model = GetVMDeployOrderResponseBodyDeployOrderActions()
+                self.actions.append(temp_model.from_map(k))
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('currentBatch') is not None:
+            self.current_batch = m.get('currentBatch')
+        if m.get('deployMachineInfo') is not None:
+            temp_model = GetVMDeployOrderResponseBodyDeployOrderDeployMachineInfo()
+            self.deploy_machine_info = temp_model.from_map(m['deployMachineInfo'])
+        if m.get('deployOrderId') is not None:
+            self.deploy_order_id = m.get('deployOrderId')
+        if m.get('exceptionCode') is not None:
+            self.exception_code = m.get('exceptionCode')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('totalBatch') is not None:
+            self.total_batch = m.get('totalBatch')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        return self
+
+
+class GetVMDeployOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        deploy_order: GetVMDeployOrderResponseBodyDeployOrder = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 部署单
+        self.deploy_order = deploy_order
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        if self.deploy_order:
+            self.deploy_order.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deploy_order is not None:
+            result['deployOrder'] = self.deploy_order.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('deployOrder') is not None:
+            temp_model = GetVMDeployOrderResponseBodyDeployOrder()
+            self.deploy_order = temp_model.from_map(m['deployOrder'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetVMDeployOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetVMDeployOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetVMDeployOrderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetVariableGroupResponseBodyVariableGroupRelatedPipelines(TeaModel):
     def __init__(
         self,
@@ -5313,6 +5729,280 @@ class ListWorkspacesResponse(TeaModel):
         return self
 
 
+class LogPipelineJobRunResponseBodyLog(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        more: bool = None,
+    ):
+        self.content = content
+        self.more = more
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.more is not None:
+            result['more'] = self.more
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('more') is not None:
+            self.more = m.get('more')
+        return self
+
+
+class LogPipelineJobRunResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        log: LogPipelineJobRunResponseBodyLog = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.log = log
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.log:
+            self.log.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.log is not None:
+            result['log'] = self.log.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('log') is not None:
+            temp_model = LogPipelineJobRunResponseBodyLog()
+            self.log = temp_model.from_map(m['log'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class LogPipelineJobRunResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: LogPipelineJobRunResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = LogPipelineJobRunResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class LogVMDeployMachineResponseBodyDeployMachineLog(TeaModel):
+    def __init__(
+        self,
+        aliyun_region: str = None,
+        deploy_begin_time: int = None,
+        deploy_end_time: int = None,
+        deploy_log: str = None,
+        deploy_log_path: str = None,
+    ):
+        # 部署地域
+        self.aliyun_region = aliyun_region
+        # 部署开始时间
+        self.deploy_begin_time = deploy_begin_time
+        # 部署结束时间
+        self.deploy_end_time = deploy_end_time
+        # 部署日志
+        self.deploy_log = deploy_log
+        # 部署日志路径
+        self.deploy_log_path = deploy_log_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_region is not None:
+            result['aliyunRegion'] = self.aliyun_region
+        if self.deploy_begin_time is not None:
+            result['deployBeginTime'] = self.deploy_begin_time
+        if self.deploy_end_time is not None:
+            result['deployEndTime'] = self.deploy_end_time
+        if self.deploy_log is not None:
+            result['deployLog'] = self.deploy_log
+        if self.deploy_log_path is not None:
+            result['deployLogPath'] = self.deploy_log_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunRegion') is not None:
+            self.aliyun_region = m.get('aliyunRegion')
+        if m.get('deployBeginTime') is not None:
+            self.deploy_begin_time = m.get('deployBeginTime')
+        if m.get('deployEndTime') is not None:
+            self.deploy_end_time = m.get('deployEndTime')
+        if m.get('deployLog') is not None:
+            self.deploy_log = m.get('deployLog')
+        if m.get('deployLogPath') is not None:
+            self.deploy_log_path = m.get('deployLogPath')
+        return self
+
+
+class LogVMDeployMachineResponseBody(TeaModel):
+    def __init__(
+        self,
+        deploy_machine_log: LogVMDeployMachineResponseBodyDeployMachineLog = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 部署单
+        self.deploy_machine_log = deploy_machine_log
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        if self.deploy_machine_log:
+            self.deploy_machine_log.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deploy_machine_log is not None:
+            result['deployMachineLog'] = self.deploy_machine_log.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('deployMachineLog') is not None:
+            temp_model = LogVMDeployMachineResponseBodyDeployMachineLog()
+            self.deploy_machine_log = temp_model.from_map(m['deployMachineLog'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class LogVMDeployMachineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: LogVMDeployMachineResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = LogVMDeployMachineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PassPipelineValidateResponseBody(TeaModel):
     def __init__(
         self,
@@ -5701,6 +6391,92 @@ class ResetSshKeyResponse(TeaModel):
         return self
 
 
+class ResumeVMDeployOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ResumeVMDeployOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ResumeVMDeployOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ResumeVMDeployOrderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RetryPipelineJobRunResponseBody(TeaModel):
     def __init__(
         self,
@@ -5783,6 +6559,92 @@ class RetryPipelineJobRunResponse(TeaModel):
         return self
 
 
+class RetryVMDeployMachineResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class RetryVMDeployMachineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RetryVMDeployMachineResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RetryVMDeployMachineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SkipPipelineJobRunResponseBody(TeaModel):
     def __init__(
         self,
@@ -5861,6 +6723,92 @@ class SkipPipelineJobRunResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = SkipPipelineJobRunResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SkipVMDeployMachineResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class SkipVMDeployMachineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SkipVMDeployMachineResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SkipVMDeployMachineResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6154,6 +7102,92 @@ class StopPipelineRunResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = StopPipelineRunResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopVMDeployOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class StopVMDeployOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: StopVMDeployOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = StopVMDeployOrderResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
