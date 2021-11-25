@@ -1,3 +1,6 @@
+2021-11-25 Version: 1.14.11
+- Set withoutAgent param in CreateCluster API.
+
 2021-10-26 Version: 1.14.10
 - Set VSwitchId and ZoneId docrequired in ApplyNodes API.
 
