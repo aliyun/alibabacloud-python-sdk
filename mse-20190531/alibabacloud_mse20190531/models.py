@@ -11051,6 +11051,7 @@ class QueryClusterDetailRequest(TeaModel):
 class QueryClusterDetailResponseBodyDataInstanceModels(TeaModel):
     def __init__(
         self,
+        creation_timestamp: str = None,
         health_status: str = None,
         internet_ip: str = None,
         ip: str = None,
@@ -11058,6 +11059,7 @@ class QueryClusterDetailResponseBodyDataInstanceModels(TeaModel):
         role: str = None,
         single_tunnel_vip: str = None,
     ):
+        self.creation_timestamp = creation_timestamp
         self.health_status = health_status
         self.internet_ip = internet_ip
         self.ip = ip
@@ -11074,6 +11076,8 @@ class QueryClusterDetailResponseBodyDataInstanceModels(TeaModel):
             return _map
 
         result = dict()
+        if self.creation_timestamp is not None:
+            result['CreationTimestamp'] = self.creation_timestamp
         if self.health_status is not None:
             result['HealthStatus'] = self.health_status
         if self.internet_ip is not None:
@@ -11090,6 +11094,8 @@ class QueryClusterDetailResponseBodyDataInstanceModels(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreationTimestamp') is not None:
+            self.creation_timestamp = m.get('CreationTimestamp')
         if m.get('HealthStatus') is not None:
             self.health_status = m.get('HealthStatus')
         if m.get('InternetIp') is not None:
@@ -12723,10 +12729,12 @@ class RestartClusterRequest(TeaModel):
         self,
         cluster_id: str = None,
         instance_id: str = None,
+        pod_name_list: str = None,
         request_pars: str = None,
     ):
         self.cluster_id = cluster_id
         self.instance_id = instance_id
+        self.pod_name_list = pod_name_list
         self.request_pars = request_pars
 
     def validate(self):
@@ -12742,6 +12750,8 @@ class RestartClusterRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.pod_name_list is not None:
+            result['PodNameList'] = self.pod_name_list
         if self.request_pars is not None:
             result['RequestPars'] = self.request_pars
         return result
@@ -12752,6 +12762,8 @@ class RestartClusterRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('PodNameList') is not None:
+            self.pod_name_list = m.get('PodNameList')
         if m.get('RequestPars') is not None:
             self.request_pars = m.get('RequestPars')
         return self
