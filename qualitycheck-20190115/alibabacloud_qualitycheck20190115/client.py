@@ -21,10 +21,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = 'central'
-        self._endpoint_map = {
-            'cn-hangzhou': 'qualitycheck.cn-hangzhou.aliyuncs.com'
-        }
+        self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('qualitycheck', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -884,6 +881,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_warning_config_with_options_async(request, runtime)
 
+    def del_rule_category_with_options(
+        self,
+        request: qualitycheck_20190115_models.DelRuleCategoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> qualitycheck_20190115_models.DelRuleCategoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['JsonStr'] = request.json_str
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DelRuleCategory',
+            version='2019-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            qualitycheck_20190115_models.DelRuleCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def del_rule_category_with_options_async(
+        self,
+        request: qualitycheck_20190115_models.DelRuleCategoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> qualitycheck_20190115_models.DelRuleCategoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['JsonStr'] = request.json_str
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DelRuleCategory',
+            version='2019-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            qualitycheck_20190115_models.DelRuleCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def del_rule_category(
+        self,
+        request: qualitycheck_20190115_models.DelRuleCategoryRequest,
+    ) -> qualitycheck_20190115_models.DelRuleCategoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.del_rule_category_with_options(request, runtime)
+
+    async def del_rule_category_async(
+        self,
+        request: qualitycheck_20190115_models.DelRuleCategoryRequest,
+    ) -> qualitycheck_20190115_models.DelRuleCategoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.del_rule_category_with_options_async(request, runtime)
+
+    def del_thesaurus_for_api_with_options(
+        self,
+        request: qualitycheck_20190115_models.DelThesaurusForApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> qualitycheck_20190115_models.DelThesaurusForApiResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['JsonStr'] = request.json_str
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DelThesaurusForApi',
+            version='2019-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            qualitycheck_20190115_models.DelThesaurusForApiResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def del_thesaurus_for_api_with_options_async(
+        self,
+        request: qualitycheck_20190115_models.DelThesaurusForApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> qualitycheck_20190115_models.DelThesaurusForApiResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['JsonStr'] = request.json_str
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DelThesaurusForApi',
+            version='2019-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            qualitycheck_20190115_models.DelThesaurusForApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def del_thesaurus_for_api(
+        self,
+        request: qualitycheck_20190115_models.DelThesaurusForApiRequest,
+    ) -> qualitycheck_20190115_models.DelThesaurusForApiResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.del_thesaurus_for_api_with_options(request, runtime)
+
+    async def del_thesaurus_for_api_async(
+        self,
+        request: qualitycheck_20190115_models.DelThesaurusForApiRequest,
+    ) -> qualitycheck_20190115_models.DelThesaurusForApiResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.del_thesaurus_for_api_with_options_async(request, runtime)
+
     def delete_asr_vocab_with_options(
         self,
         request: qualitycheck_20190115_models.DeleteAsrVocabRequest,
@@ -1653,146 +1790,6 @@ class Client(OpenApiClient):
     ) -> qualitycheck_20190115_models.DeleteWarningConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_warning_config_with_options_async(request, runtime)
-
-    def del_rule_category_with_options(
-        self,
-        request: qualitycheck_20190115_models.DelRuleCategoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> qualitycheck_20190115_models.DelRuleCategoryResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['JsonStr'] = request.json_str
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DelRuleCategory',
-            version='2019-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            qualitycheck_20190115_models.DelRuleCategoryResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def del_rule_category_with_options_async(
-        self,
-        request: qualitycheck_20190115_models.DelRuleCategoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> qualitycheck_20190115_models.DelRuleCategoryResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['JsonStr'] = request.json_str
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DelRuleCategory',
-            version='2019-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            qualitycheck_20190115_models.DelRuleCategoryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def del_rule_category(
-        self,
-        request: qualitycheck_20190115_models.DelRuleCategoryRequest,
-    ) -> qualitycheck_20190115_models.DelRuleCategoryResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.del_rule_category_with_options(request, runtime)
-
-    async def del_rule_category_async(
-        self,
-        request: qualitycheck_20190115_models.DelRuleCategoryRequest,
-    ) -> qualitycheck_20190115_models.DelRuleCategoryResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.del_rule_category_with_options_async(request, runtime)
-
-    def del_thesaurus_for_api_with_options(
-        self,
-        request: qualitycheck_20190115_models.DelThesaurusForApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> qualitycheck_20190115_models.DelThesaurusForApiResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['JsonStr'] = request.json_str
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DelThesaurusForApi',
-            version='2019-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            qualitycheck_20190115_models.DelThesaurusForApiResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def del_thesaurus_for_api_with_options_async(
-        self,
-        request: qualitycheck_20190115_models.DelThesaurusForApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> qualitycheck_20190115_models.DelThesaurusForApiResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['JsonStr'] = request.json_str
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DelThesaurusForApi',
-            version='2019-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            qualitycheck_20190115_models.DelThesaurusForApiResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def del_thesaurus_for_api(
-        self,
-        request: qualitycheck_20190115_models.DelThesaurusForApiRequest,
-    ) -> qualitycheck_20190115_models.DelThesaurusForApiResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.del_thesaurus_for_api_with_options(request, runtime)
-
-    async def del_thesaurus_for_api_async(
-        self,
-        request: qualitycheck_20190115_models.DelThesaurusForApiRequest,
-    ) -> qualitycheck_20190115_models.DelThesaurusForApiResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.del_thesaurus_for_api_with_options_async(request, runtime)
 
     def edit_thesaurus_for_api_with_options(
         self,

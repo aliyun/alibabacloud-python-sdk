@@ -1,3 +1,6 @@
+2021-11-26 Version: 4.1.0
+- Update GetSyncResult.
+
 2021-03-30 Version: 1.0.2
 - Generated python 2019-01-15 for Qualitycheck.
 
