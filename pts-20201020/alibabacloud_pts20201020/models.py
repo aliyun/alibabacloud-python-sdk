@@ -872,7 +872,6 @@ class GetJMeterSampleMetricsResponseBody(TeaModel):
         sample_metric_list: List[str] = None,
         sampler_map: Dict[str, Any] = None,
         success: bool = None,
-        total_count: int = None,
     ):
         self.code = code
         self.message = message
@@ -882,7 +881,6 @@ class GetJMeterSampleMetricsResponseBody(TeaModel):
         # 采样器列表，可根据该列表传递需要查询的采样器
         self.sampler_map = sampler_map
         self.success = success
-        self.total_count = total_count
 
     def validate(self):
         pass
@@ -905,8 +903,6 @@ class GetJMeterSampleMetricsResponseBody(TeaModel):
             result['SamplerMap'] = self.sampler_map
         if self.success is not None:
             result['Success'] = self.success
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -923,8 +919,6 @@ class GetJMeterSampleMetricsResponseBody(TeaModel):
             self.sampler_map = m.get('SamplerMap')
         if m.get('Success') is not None:
             self.success = m.get('Success')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         return self
 
 
