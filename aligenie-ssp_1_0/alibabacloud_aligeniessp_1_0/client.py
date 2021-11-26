@@ -637,30 +637,30 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_device_id_by_identitys(
+    def list_device_id_by_identities(
         self,
-        request: ali_geniessp__1__0_models.ListDeviceIdByIdentitysRequest,
-    ) -> ali_geniessp__1__0_models.ListDeviceIdByIdentitysResponse:
+        request: ali_geniessp__1__0_models.ListDeviceIdByIdentitiesRequest,
+    ) -> ali_geniessp__1__0_models.ListDeviceIdByIdentitiesResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListDeviceIdByIdentitysHeaders()
-        return self.list_device_id_by_identitys_with_options(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListDeviceIdByIdentitiesHeaders()
+        return self.list_device_id_by_identities_with_options(request, headers, runtime)
 
-    async def list_device_id_by_identitys_async(
+    async def list_device_id_by_identities_async(
         self,
-        request: ali_geniessp__1__0_models.ListDeviceIdByIdentitysRequest,
-    ) -> ali_geniessp__1__0_models.ListDeviceIdByIdentitysResponse:
+        request: ali_geniessp__1__0_models.ListDeviceIdByIdentitiesRequest,
+    ) -> ali_geniessp__1__0_models.ListDeviceIdByIdentitiesResponse:
         runtime = util_models.RuntimeOptions()
-        headers = ali_geniessp__1__0_models.ListDeviceIdByIdentitysHeaders()
-        return await self.list_device_id_by_identitys_with_options_async(request, headers, runtime)
+        headers = ali_geniessp__1__0_models.ListDeviceIdByIdentitiesHeaders()
+        return await self.list_device_id_by_identities_with_options_async(request, headers, runtime)
 
-    def list_device_id_by_identitys_with_options(
+    def list_device_id_by_identities_with_options(
         self,
-        tmp_req: ali_geniessp__1__0_models.ListDeviceIdByIdentitysRequest,
-        headers: ali_geniessp__1__0_models.ListDeviceIdByIdentitysHeaders,
+        tmp_req: ali_geniessp__1__0_models.ListDeviceIdByIdentitiesRequest,
+        headers: ali_geniessp__1__0_models.ListDeviceIdByIdentitiesHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_geniessp__1__0_models.ListDeviceIdByIdentitysResponse:
+    ) -> ali_geniessp__1__0_models.ListDeviceIdByIdentitiesResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_geniessp__1__0_models.ListDeviceIdByIdentitysShrinkRequest()
+        request = ali_geniessp__1__0_models.ListDeviceIdByIdentitiesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.identity_ids):
             request.identity_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.identity_ids, 'IdentityIds', 'json')
@@ -687,10 +687,10 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListDeviceIdByIdentitys',
+            action='ListDeviceIdByIdentities',
             version='ssp_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/ssp/listDeviceIdByIdentitys',
+            pathname=f'/v1.0/ssp/listDeviceIdByIdentities',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -698,18 +698,18 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ali_geniessp__1__0_models.ListDeviceIdByIdentitysResponse(),
+            ali_geniessp__1__0_models.ListDeviceIdByIdentitiesResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def list_device_id_by_identitys_with_options_async(
+    async def list_device_id_by_identities_with_options_async(
         self,
-        tmp_req: ali_geniessp__1__0_models.ListDeviceIdByIdentitysRequest,
-        headers: ali_geniessp__1__0_models.ListDeviceIdByIdentitysHeaders,
+        tmp_req: ali_geniessp__1__0_models.ListDeviceIdByIdentitiesRequest,
+        headers: ali_geniessp__1__0_models.ListDeviceIdByIdentitiesHeaders,
         runtime: util_models.RuntimeOptions,
-    ) -> ali_geniessp__1__0_models.ListDeviceIdByIdentitysResponse:
+    ) -> ali_geniessp__1__0_models.ListDeviceIdByIdentitiesResponse:
         UtilClient.validate_model(tmp_req)
-        request = ali_geniessp__1__0_models.ListDeviceIdByIdentitysShrinkRequest()
+        request = ali_geniessp__1__0_models.ListDeviceIdByIdentitiesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.identity_ids):
             request.identity_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.identity_ids, 'IdentityIds', 'json')
@@ -736,10 +736,10 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListDeviceIdByIdentitys',
+            action='ListDeviceIdByIdentities',
             version='ssp_1.0',
             protocol='HTTPS',
-            pathname=f'/v1.0/ssp/listDeviceIdByIdentitys',
+            pathname=f'/v1.0/ssp/listDeviceIdByIdentities',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -747,7 +747,7 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ali_geniessp__1__0_models.ListDeviceIdByIdentitysResponse(),
+            ali_geniessp__1__0_models.ListDeviceIdByIdentitiesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 

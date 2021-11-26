@@ -1715,7 +1715,7 @@ class ListDeviceByUserIdResponse(TeaModel):
         return self
 
 
-class ListDeviceIdByIdentitysHeaders(TeaModel):
+class ListDeviceIdByIdentitiesHeaders(TeaModel):
     def __init__(
         self,
         common_headers: Dict[str, str] = None,
@@ -1754,7 +1754,7 @@ class ListDeviceIdByIdentitysHeaders(TeaModel):
         return self
 
 
-class ListDeviceIdByIdentitysRequest(TeaModel):
+class ListDeviceIdByIdentitiesRequest(TeaModel):
     def __init__(
         self,
         encode_key: str = None,
@@ -1809,7 +1809,7 @@ class ListDeviceIdByIdentitysRequest(TeaModel):
         return self
 
 
-class ListDeviceIdByIdentitysShrinkRequest(TeaModel):
+class ListDeviceIdByIdentitiesShrinkRequest(TeaModel):
     def __init__(
         self,
         encode_key: str = None,
@@ -1864,7 +1864,7 @@ class ListDeviceIdByIdentitysShrinkRequest(TeaModel):
         return self
 
 
-class ListDeviceIdByIdentitysResponseBody(TeaModel):
+class ListDeviceIdByIdentitiesResponseBody(TeaModel):
     def __init__(
         self,
         code: int = None,
@@ -1921,11 +1921,11 @@ class ListDeviceIdByIdentitysResponseBody(TeaModel):
         return self
 
 
-class ListDeviceIdByIdentitysResponse(TeaModel):
+class ListDeviceIdByIdentitiesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: ListDeviceIdByIdentitysResponseBody = None,
+        body: ListDeviceIdByIdentitiesResponseBody = None,
     ):
         self.headers = headers
         self.body = body
@@ -1953,7 +1953,7 @@ class ListDeviceIdByIdentitysResponse(TeaModel):
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('body') is not None:
-            temp_model = ListDeviceIdByIdentitysResponseBody()
+            temp_model = ListDeviceIdByIdentitiesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
