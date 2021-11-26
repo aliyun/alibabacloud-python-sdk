@@ -1,3 +1,9 @@
+2021-11-26 Version: 1.0.11
+- CreateVpcEndpoint change body format.
+- UpdateBlackIps Offline.
+- UpdateDescription format string.
+- UpdateWhiteIps complete reqeustBody.
+
 2021-11-17 Version: 1.0.10
 -  Update apm interface parameter.
 
