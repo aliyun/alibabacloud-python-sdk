@@ -1,3 +1,15 @@
+2021-11-26 Version: 1.1.5
+- Add a new API called GetPublicMediaInfo, which gets information of copyrighted public media.
+- Add a new API called DescribeMaterialPackageInfo, which describes the available material packages.
+- Add a new API called AddFavoritePublicMedia, which adds public media to favorite for the user.
+- Add a new API called CancelFavoritePublicMedia, which removes public media from user favorite.
+- Add a new API called SearchPublicMediaInfo, which searches copyrighted public media.
+- Update the return value of an existed API called ListAllPublicMediaTags, adding field Options.
+- Update the return value of an existed API called GetMediaInfo, adding field DynamicMetaData.
+- Modify the data type of the return value of an existed API called GetEditingProjectMaterials, where ProjectMaterials should be a list instead of a string.
+- Modify the data type of the return value of an existed API called AddEditingProjectMaterials, where ProjectMaterials should be a list instead of a string.
+- Update the input params of an existing API called SubmitMediaProducingJob, adding field EditingProduceConfig.
+
 2021-11-16 Version: 1.1.4
 - Add a new API called BatchGetMediaInfos, which get multi media infos through mediaids.
 - Add a new API called GetTemplateMaterials, which get material urls of VeTemplates.
