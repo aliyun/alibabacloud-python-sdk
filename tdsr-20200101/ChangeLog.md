@@ -1,3 +1,6 @@
+2021-11-26 Version: 3.0.3
+- Add mix scene.
+
 2021-11-16 Version: 3.0.2
 - Modify Some Interface.
 

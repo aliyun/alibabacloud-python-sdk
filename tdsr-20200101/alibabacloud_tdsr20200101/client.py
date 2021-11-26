@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_tdsr20200101 import models as tdsr_20200101_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -49,12 +50,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.AddMosaicsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MarkPosition'] = request.mark_position
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddMosaics',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.AddMosaicsResponse(),
-            self.do_rpcrequest('AddMosaics', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_mosaics_with_options_async(
@@ -63,12 +79,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.AddMosaicsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MarkPosition'] = request.mark_position
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddMosaics',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.AddMosaicsResponse(),
-            await self.do_rpcrequest_async('AddMosaics', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_mosaics(
@@ -91,12 +122,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.AddProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BusinessId'] = request.business_id
+        query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddProject',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.AddProjectResponse(),
-            self.do_rpcrequest('AddProject', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_project_with_options_async(
@@ -105,12 +151,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.AddProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BusinessId'] = request.business_id
+        query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddProject',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.AddProjectResponse(),
-            await self.do_rpcrequest_async('AddProject', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_project(
@@ -133,12 +194,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.AddRelativePositionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RelativePosition'] = request.relative_position
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddRelativePosition',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.AddRelativePositionResponse(),
-            self.do_rpcrequest('AddRelativePosition', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_relative_position_with_options_async(
@@ -147,12 +223,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.AddRelativePositionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RelativePosition'] = request.relative_position
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddRelativePosition',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.AddRelativePositionResponse(),
-            await self.do_rpcrequest_async('AddRelativePosition', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_relative_position(
@@ -175,12 +266,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.AddSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['ProjectId'] = request.project_id
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.AddSceneResponse(),
-            self.do_rpcrequest('AddScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_scene_with_options_async(
@@ -189,12 +296,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.AddSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['ProjectId'] = request.project_id
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.AddSceneResponse(),
-            await self.do_rpcrequest_async('AddScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_scene(
@@ -217,12 +340,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.AddSubSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['SceneId'] = request.scene_id
+        query['UploadType'] = request.upload_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddSubScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.AddSubSceneResponse(),
-            self.do_rpcrequest('AddSubScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_sub_scene_with_options_async(
@@ -231,12 +370,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.AddSubSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['SceneId'] = request.scene_id
+        query['UploadType'] = request.upload_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddSubScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.AddSubSceneResponse(),
-            await self.do_rpcrequest_async('AddSubScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_sub_scene(
@@ -259,12 +414,39 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.CheckResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Bid'] = request.bid
+        query['Country'] = request.country
+        query['GmtWakeup'] = request.gmt_wakeup
+        query['Hid'] = request.hid
+        query['Interrupt'] = request.interrupt
+        query['Invoker'] = request.invoker
+        query['Level'] = request.level
+        query['Message'] = request.message
+        query['Pk'] = request.pk
+        query['Prompt'] = request.prompt
+        query['Success'] = request.success
+        query['TaskExtraData'] = request.task_extra_data
+        query['TaskIdentifier'] = request.task_identifier
+        query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CheckResource',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.CheckResourceResponse(),
-            self.do_rpcrequest('CheckResource', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def check_resource_with_options_async(
@@ -273,12 +455,39 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.CheckResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Bid'] = request.bid
+        query['Country'] = request.country
+        query['GmtWakeup'] = request.gmt_wakeup
+        query['Hid'] = request.hid
+        query['Interrupt'] = request.interrupt
+        query['Invoker'] = request.invoker
+        query['Level'] = request.level
+        query['Message'] = request.message
+        query['Pk'] = request.pk
+        query['Prompt'] = request.prompt
+        query['Success'] = request.success
+        query['TaskExtraData'] = request.task_extra_data
+        query['TaskIdentifier'] = request.task_identifier
+        query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CheckResource',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.CheckResourceResponse(),
-            await self.do_rpcrequest_async('CheckResource', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def check_resource(
@@ -301,12 +510,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.CreateProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BuilderUserIdList'] = request.builder_user_id_list
+        query['BusinessId'] = request.business_id
+        query['BusinessUserIdList'] = request.business_user_id_list
+        query['GatherUserIdList'] = request.gather_user_id_list
+        query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateProject',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.CreateProjectResponse(),
-            self.do_rpcrequest('CreateProject', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_project_with_options_async(
@@ -315,12 +542,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.CreateProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BuilderUserIdList'] = request.builder_user_id_list
+        query['BusinessId'] = request.business_id
+        query['BusinessUserIdList'] = request.business_user_id_list
+        query['GatherUserIdList'] = request.gather_user_id_list
+        query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateProject',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.CreateProjectResponse(),
-            await self.do_rpcrequest_async('CreateProject', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_project(
@@ -343,12 +588,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.CreateSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.CreateSceneResponse(),
-            self.do_rpcrequest('CreateScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_scene_with_options_async(
@@ -357,12 +617,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.CreateSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.CreateSceneResponse(),
-            await self.do_rpcrequest_async('CreateScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_scene(
@@ -385,12 +660,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.DeleteFileResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ParamFile'] = request.param_file
+        query['SubSceneUuid'] = request.sub_scene_uuid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteFile',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.DeleteFileResponse(),
-            self.do_rpcrequest('DeleteFile', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_file_with_options_async(
@@ -399,12 +689,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.DeleteFileResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ParamFile'] = request.param_file
+        query['SubSceneUuid'] = request.sub_scene_uuid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteFile',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.DeleteFileResponse(),
-            await self.do_rpcrequest_async('DeleteFile', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_file(
@@ -427,12 +732,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.DeleteProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteProject',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.DeleteProjectResponse(),
-            self.do_rpcrequest('DeleteProject', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_project_with_options_async(
@@ -441,12 +760,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.DeleteProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteProject',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.DeleteProjectResponse(),
-            await self.do_rpcrequest_async('DeleteProject', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_project(
@@ -469,12 +802,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.DetailProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DetailProject',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.DetailProjectResponse(),
-            self.do_rpcrequest('DetailProject', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def detail_project_with_options_async(
@@ -483,12 +830,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.DetailProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DetailProject',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.DetailProjectResponse(),
-            await self.do_rpcrequest_async('DetailProject', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def detail_project(
@@ -511,12 +872,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.DetailSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DetailScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.DetailSceneResponse(),
-            self.do_rpcrequest('DetailScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def detail_scene_with_options_async(
@@ -525,12 +900,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.DetailSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DetailScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.DetailSceneResponse(),
-            await self.do_rpcrequest_async('DetailScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def detail_scene(
@@ -553,12 +942,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.DetailSubSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DetailSubScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.DetailSubSceneResponse(),
-            self.do_rpcrequest('DetailSubScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def detail_sub_scene_with_options_async(
@@ -567,12 +970,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.DetailSubSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DetailSubScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.DetailSubSceneResponse(),
-            await self.do_rpcrequest_async('DetailSubScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def detail_sub_scene(
@@ -595,12 +1012,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.DropProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DropProject',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.DropProjectResponse(),
-            self.do_rpcrequest('DropProject', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def drop_project_with_options_async(
@@ -609,12 +1040,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.DropProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DropProject',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.DropProjectResponse(),
-            await self.do_rpcrequest_async('DropProject', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def drop_project(
@@ -637,12 +1082,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.DropSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DropScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.DropSceneResponse(),
-            self.do_rpcrequest('DropScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def drop_scene_with_options_async(
@@ -651,12 +1110,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.DropSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DropScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.DropSceneResponse(),
-            await self.do_rpcrequest_async('DropScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def drop_scene(
@@ -679,12 +1152,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.DropSubSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DropSubScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.DropSubSceneResponse(),
-            self.do_rpcrequest('DropSubScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def drop_sub_scene_with_options_async(
@@ -693,12 +1180,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.DropSubSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DropSubScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.DropSubSceneResponse(),
-            await self.do_rpcrequest_async('DropSubScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def drop_sub_scene(
@@ -721,12 +1222,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetConnDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetConnData',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetConnDataResponse(),
-            self.do_rpcrequest('GetConnData', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_conn_data_with_options_async(
@@ -735,12 +1250,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetConnDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetConnData',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetConnDataResponse(),
-            await self.do_rpcrequest_async('GetConnData', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_conn_data(
@@ -763,12 +1292,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetHotspotConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['Enabled'] = request.enabled
+        query['PreviewToken'] = request.preview_token
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetHotspotConfig',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetHotspotConfigResponse(),
-            self.do_rpcrequest('GetHotspotConfig', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_hotspot_config_with_options_async(
@@ -777,12 +1323,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetHotspotConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['Enabled'] = request.enabled
+        query['PreviewToken'] = request.preview_token
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetHotspotConfig',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetHotspotConfigResponse(),
-            await self.do_rpcrequest_async('GetHotspotConfig', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_hotspot_config(
@@ -805,12 +1368,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetHotspotSceneDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['Enabled'] = request.enabled
+        query['PreviewToken'] = request.preview_token
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetHotspotSceneData',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetHotspotSceneDataResponse(),
-            self.do_rpcrequest('GetHotspotSceneData', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_hotspot_scene_data_with_options_async(
@@ -819,12 +1399,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetHotspotSceneDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['Enabled'] = request.enabled
+        query['PreviewToken'] = request.preview_token
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetHotspotSceneData',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetHotspotSceneDataResponse(),
-            await self.do_rpcrequest_async('GetHotspotSceneData', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_hotspot_scene_data(
@@ -847,12 +1444,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetHotspotTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['Enabled'] = request.enabled
+        query['PreviewToken'] = request.preview_token
+        query['SubSceneUuid'] = request.sub_scene_uuid
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetHotspotTag',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetHotspotTagResponse(),
-            self.do_rpcrequest('GetHotspotTag', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_hotspot_tag_with_options_async(
@@ -861,12 +1476,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetHotspotTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['Enabled'] = request.enabled
+        query['PreviewToken'] = request.preview_token
+        query['SubSceneUuid'] = request.sub_scene_uuid
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetHotspotTag',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetHotspotTagResponse(),
-            await self.do_rpcrequest_async('GetHotspotTag', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_hotspot_tag(
@@ -889,12 +1522,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetLayoutDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetLayoutData',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetLayoutDataResponse(),
-            self.do_rpcrequest('GetLayoutData', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_layout_data_with_options_async(
@@ -903,12 +1550,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetLayoutDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetLayoutData',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetLayoutDataResponse(),
-            await self.do_rpcrequest_async('GetLayoutData', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_layout_data(
@@ -931,12 +1592,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetOriginLayoutDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetOriginLayoutData',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetOriginLayoutDataResponse(),
-            self.do_rpcrequest('GetOriginLayoutData', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_origin_layout_data_with_options_async(
@@ -945,12 +1620,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetOriginLayoutDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetOriginLayoutData',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetOriginLayoutDataResponse(),
-            await self.do_rpcrequest_async('GetOriginLayoutData', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_origin_layout_data(
@@ -973,12 +1662,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetOssPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetOssPolicy',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetOssPolicyResponse(),
-            self.do_rpcrequest('GetOssPolicy', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_oss_policy_with_options_async(
@@ -987,12 +1690,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetOssPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetOssPolicy',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetOssPolicyResponse(),
-            await self.do_rpcrequest_async('GetOssPolicy', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_oss_policy(
@@ -1015,12 +1732,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubSceneUuid'] = request.sub_scene_uuid
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetPolicy',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetPolicyResponse(),
-            self.do_rpcrequest('GetPolicy', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_policy_with_options_async(
@@ -1029,12 +1761,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubSceneUuid'] = request.sub_scene_uuid
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetPolicy',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetPolicyResponse(),
-            await self.do_rpcrequest_async('GetPolicy', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_policy(
@@ -1057,12 +1804,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetRectifyImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRectifyImage',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetRectifyImageResponse(),
-            self.do_rpcrequest('GetRectifyImage', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_rectify_image_with_options_async(
@@ -1071,12 +1832,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetRectifyImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRectifyImage',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetRectifyImageResponse(),
-            await self.do_rpcrequest_async('GetRectifyImage', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_rectify_image(
@@ -1099,12 +1874,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetSceneBuildTaskStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetSceneBuildTaskStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetSceneBuildTaskStatusResponse(),
-            self.do_rpcrequest('GetSceneBuildTaskStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_scene_build_task_status_with_options_async(
@@ -1113,12 +1902,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetSceneBuildTaskStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetSceneBuildTaskStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetSceneBuildTaskStatusResponse(),
-            await self.do_rpcrequest_async('GetSceneBuildTaskStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_scene_build_task_status(
@@ -1141,12 +1944,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetScenePreviewInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['Enabled'] = request.enabled
+        query['ModelToken'] = request.model_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetScenePreviewInfo',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetScenePreviewInfoResponse(),
-            self.do_rpcrequest('GetScenePreviewInfo', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_scene_preview_info_with_options_async(
@@ -1155,12 +1974,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetScenePreviewInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['Enabled'] = request.enabled
+        query['ModelToken'] = request.model_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetScenePreviewInfo',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetScenePreviewInfoResponse(),
-            await self.do_rpcrequest_async('GetScenePreviewInfo', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_scene_preview_info(
@@ -1183,12 +2018,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetSingleConnDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetSingleConnData',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetSingleConnDataResponse(),
-            self.do_rpcrequest('GetSingleConnData', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_single_conn_data_with_options_async(
@@ -1197,12 +2046,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetSingleConnDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetSingleConnData',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetSingleConnDataResponse(),
-            await self.do_rpcrequest_async('GetSingleConnData', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_single_conn_data(
@@ -1225,12 +2088,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetSubSceneTaskStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetSubSceneTaskStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetSubSceneTaskStatusResponse(),
-            self.do_rpcrequest('GetSubSceneTaskStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_sub_scene_task_status_with_options_async(
@@ -1239,12 +2116,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetSubSceneTaskStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetSubSceneTaskStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetSubSceneTaskStatusResponse(),
-            await self.do_rpcrequest_async('GetSubSceneTaskStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_sub_scene_task_status(
@@ -1267,12 +2158,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetTaskStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTaskStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetTaskStatusResponse(),
-            self.do_rpcrequest('GetTaskStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_task_status_with_options_async(
@@ -1281,12 +2186,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetTaskStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTaskStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetTaskStatusResponse(),
-            await self.do_rpcrequest_async('GetTaskStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_task_status(
@@ -1309,12 +2228,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetWindowConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PreviewToken'] = request.preview_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetWindowConfig',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetWindowConfigResponse(),
-            self.do_rpcrequest('GetWindowConfig', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_window_config_with_options_async(
@@ -1323,12 +2256,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.GetWindowConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PreviewToken'] = request.preview_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetWindowConfig',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.GetWindowConfigResponse(),
-            await self.do_rpcrequest_async('GetWindowConfig', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_window_config(
@@ -1351,12 +2298,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.LabelBuildResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Mode'] = request.mode
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='LabelBuild',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.LabelBuildResponse(),
-            self.do_rpcrequest('LabelBuild', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def label_build_with_options_async(
@@ -1365,12 +2327,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.LabelBuildResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Mode'] = request.mode
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='LabelBuild',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.LabelBuildResponse(),
-            await self.do_rpcrequest_async('LabelBuild', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def label_build(
@@ -1393,12 +2370,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.LinkImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CameraHeight'] = request.camera_height
+        query['FileName'] = request.file_name
+        query['Platform'] = request.platform
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='LinkImage',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.LinkImageResponse(),
-            self.do_rpcrequest('LinkImage', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def link_image_with_options_async(
@@ -1407,12 +2401,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.LinkImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CameraHeight'] = request.camera_height
+        query['FileName'] = request.file_name
+        query['Platform'] = request.platform
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='LinkImage',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.LinkImageResponse(),
-            await self.do_rpcrequest_async('LinkImage', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def link_image(
@@ -1435,12 +2446,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.ListProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['PageNum'] = request.page_num
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListProject',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.ListProjectResponse(),
-            self.do_rpcrequest('ListProject', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_project_with_options_async(
@@ -1449,12 +2476,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.ListProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['PageNum'] = request.page_num
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListProject',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.ListProjectResponse(),
-            await self.do_rpcrequest_async('ListProject', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_project(
@@ -1477,12 +2520,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.ListSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['PageNum'] = request.page_num
+        query['PageSize'] = request.page_size
+        query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.ListSceneResponse(),
-            self.do_rpcrequest('ListScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_scene_with_options_async(
@@ -1491,12 +2551,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.ListSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Name'] = request.name
+        query['PageNum'] = request.page_num
+        query['PageSize'] = request.page_size
+        query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.ListSceneResponse(),
-            await self.do_rpcrequest_async('ListScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_scene(
@@ -1519,12 +2596,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.ListScenesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsPublishQuery'] = request.is_publish_query
+        query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListScenes',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.ListScenesResponse(),
-            self.do_rpcrequest('ListScenes', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_scenes_with_options_async(
@@ -1533,12 +2625,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.ListScenesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IsPublishQuery'] = request.is_publish_query
+        query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListScenes',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.ListScenesResponse(),
-            await self.do_rpcrequest_async('ListScenes', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_scenes(
@@ -1561,12 +2668,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.ListSubSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNum'] = request.page_num
+        query['PageSize'] = request.page_size
+        query['SceneId'] = request.scene_id
+        query['ShowLayoutData'] = request.show_layout_data
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListSubScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.ListSubSceneResponse(),
-            self.do_rpcrequest('ListSubScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_sub_scene_with_options_async(
@@ -1575,12 +2699,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.ListSubSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNum'] = request.page_num
+        query['PageSize'] = request.page_size
+        query['SceneId'] = request.scene_id
+        query['ShowLayoutData'] = request.show_layout_data
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListSubScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.ListSubSceneResponse(),
-            await self.do_rpcrequest_async('ListSubScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_sub_scene(
@@ -1603,12 +2744,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.OptimizeRightAngleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='OptimizeRightAngle',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.OptimizeRightAngleResponse(),
-            self.do_rpcrequest('OptimizeRightAngle', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def optimize_right_angle_with_options_async(
@@ -1617,12 +2772,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.OptimizeRightAngleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='OptimizeRightAngle',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.OptimizeRightAngleResponse(),
-            await self.do_rpcrequest_async('OptimizeRightAngle', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def optimize_right_angle(
@@ -1645,12 +2814,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.PredImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CorrectVertical'] = request.correct_vertical
+        query['CountDetectDoor'] = request.count_detect_door
+        query['DetectDoor'] = request.detect_door
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='PredImage',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.PredImageResponse(),
-            self.do_rpcrequest('PredImage', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def pred_image_with_options_async(
@@ -1659,12 +2845,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.PredImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CorrectVertical'] = request.correct_vertical
+        query['CountDetectDoor'] = request.count_detect_door
+        query['DetectDoor'] = request.detect_door
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='PredImage',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.PredImageResponse(),
-            await self.do_rpcrequest_async('PredImage', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def pred_image(
@@ -1687,12 +2890,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.PredictionWallLineResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CameraHeight'] = request.camera_height
+        query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='PredictionWallLine',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.PredictionWallLineResponse(),
-            self.do_rpcrequest('PredictionWallLine', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def prediction_wall_line_with_options_async(
@@ -1701,12 +2919,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.PredictionWallLineResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CameraHeight'] = request.camera_height
+        query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='PredictionWallLine',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.PredictionWallLineResponse(),
-            await self.do_rpcrequest_async('PredictionWallLine', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def prediction_wall_line(
@@ -1729,12 +2962,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.PublishHotspotResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ParamTag'] = request.param_tag
+        query['SubSceneUuid'] = request.sub_scene_uuid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='PublishHotspot',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.PublishHotspotResponse(),
-            self.do_rpcrequest('PublishHotspot', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def publish_hotspot_with_options_async(
@@ -1743,12 +2991,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.PublishHotspotResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ParamTag'] = request.param_tag
+        query['SubSceneUuid'] = request.sub_scene_uuid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='PublishHotspot',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.PublishHotspotResponse(),
-            await self.do_rpcrequest_async('PublishHotspot', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def publish_hotspot(
@@ -1771,12 +3034,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.PublishSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='PublishScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.PublishSceneResponse(),
-            self.do_rpcrequest('PublishScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def publish_scene_with_options_async(
@@ -1785,12 +3062,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.PublishSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='PublishScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.PublishSceneResponse(),
-            await self.do_rpcrequest_async('PublishScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def publish_scene(
@@ -1813,12 +3104,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.PublishStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='PublishStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.PublishStatusResponse(),
-            self.do_rpcrequest('PublishStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def publish_status_with_options_async(
@@ -1827,12 +3132,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.PublishStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='PublishStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.PublishStatusResponse(),
-            await self.do_rpcrequest_async('PublishStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def publish_status(
@@ -1855,12 +3174,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.RecoveryOriginImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RecoveryOriginImage',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.RecoveryOriginImageResponse(),
-            self.do_rpcrequest('RecoveryOriginImage', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recovery_origin_image_with_options_async(
@@ -1869,12 +3202,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.RecoveryOriginImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RecoveryOriginImage',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.RecoveryOriginImageResponse(),
-            await self.do_rpcrequest_async('RecoveryOriginImage', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recovery_origin_image(
@@ -1897,12 +3244,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.RectVerticalResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CountDetectDoor'] = request.count_detect_door
+        query['DetectDoor'] = request.detect_door
+        query['SubSceneId'] = request.sub_scene_id
+        query['VerticalRect'] = request.vertical_rect
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RectVertical',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.RectVerticalResponse(),
-            self.do_rpcrequest('RectVertical', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def rect_vertical_with_options_async(
@@ -1911,12 +3275,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.RectVerticalResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CountDetectDoor'] = request.count_detect_door
+        query['DetectDoor'] = request.detect_door
+        query['SubSceneId'] = request.sub_scene_id
+        query['VerticalRect'] = request.vertical_rect
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RectVertical',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.RectVerticalResponse(),
-            await self.do_rpcrequest_async('RectVertical', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def rect_vertical(
@@ -1939,12 +3320,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.RectifyImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CameraHeight'] = request.camera_height
+        query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RectifyImage',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.RectifyImageResponse(),
-            self.do_rpcrequest('RectifyImage', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def rectify_image_with_options_async(
@@ -1953,12 +3349,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.RectifyImageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CameraHeight'] = request.camera_height
+        query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RectifyImage',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.RectifyImageResponse(),
-            await self.do_rpcrequest_async('RectifyImage', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def rectify_image(
@@ -1981,12 +3392,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.RollbackSubSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RollbackSubScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.RollbackSubSceneResponse(),
-            self.do_rpcrequest('RollbackSubScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def rollback_sub_scene_with_options_async(
@@ -1995,12 +3420,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.RollbackSubSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RollbackSubScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.RollbackSubSceneResponse(),
-            await self.do_rpcrequest_async('RollbackSubScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def rollback_sub_scene(
@@ -2023,12 +3462,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.SaveHotspotConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ParamTag'] = request.param_tag
+        query['PreviewToken'] = request.preview_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SaveHotspotConfig',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.SaveHotspotConfigResponse(),
-            self.do_rpcrequest('SaveHotspotConfig', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def save_hotspot_config_with_options_async(
@@ -2037,12 +3491,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.SaveHotspotConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ParamTag'] = request.param_tag
+        query['PreviewToken'] = request.preview_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SaveHotspotConfig',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.SaveHotspotConfigResponse(),
-            await self.do_rpcrequest_async('SaveHotspotConfig', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def save_hotspot_config(
@@ -2065,12 +3534,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.SaveHotspotTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ParamTag'] = request.param_tag
+        query['SubSceneUuid'] = request.sub_scene_uuid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SaveHotspotTag',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.SaveHotspotTagResponse(),
-            self.do_rpcrequest('SaveHotspotTag', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def save_hotspot_tag_with_options_async(
@@ -2079,12 +3563,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.SaveHotspotTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ParamTag'] = request.param_tag
+        query['SubSceneUuid'] = request.sub_scene_uuid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SaveHotspotTag',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.SaveHotspotTagResponse(),
-            await self.do_rpcrequest_async('SaveHotspotTag', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def save_hotspot_tag(
@@ -2107,12 +3606,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.ScenePublishResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ScenePublish',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.ScenePublishResponse(),
-            self.do_rpcrequest('ScenePublish', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def scene_publish_with_options_async(
@@ -2121,12 +3634,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.ScenePublishResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ScenePublish',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.ScenePublishResponse(),
-            await self.do_rpcrequest_async('ScenePublish', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def scene_publish(
@@ -2149,12 +3676,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.TempPreviewResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TempPreview',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.TempPreviewResponse(),
-            self.do_rpcrequest('TempPreview', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def temp_preview_with_options_async(
@@ -2163,12 +3704,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.TempPreviewResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TempPreview',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.TempPreviewResponse(),
-            await self.do_rpcrequest_async('TempPreview', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def temp_preview(
@@ -2191,12 +3746,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.TempPreviewStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TempPreviewStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.TempPreviewStatusResponse(),
-            self.do_rpcrequest('TempPreviewStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def temp_preview_status_with_options_async(
@@ -2205,12 +3774,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.TempPreviewStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TempPreviewStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.TempPreviewStatusResponse(),
-            await self.do_rpcrequest_async('TempPreviewStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def temp_preview_status(
@@ -2233,12 +3816,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.UpdateConnDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConnData'] = request.conn_data
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateConnData',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.UpdateConnDataResponse(),
-            self.do_rpcrequest('UpdateConnData', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_conn_data_with_options_async(
@@ -2247,12 +3845,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.UpdateConnDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConnData'] = request.conn_data
+        query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateConnData',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.UpdateConnDataResponse(),
-            await self.do_rpcrequest_async('UpdateConnData', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_conn_data(
@@ -2275,12 +3888,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.UpdateLayoutDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['LayoutData'] = request.layout_data
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateLayoutData',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.UpdateLayoutDataResponse(),
-            self.do_rpcrequest('UpdateLayoutData', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_layout_data_with_options_async(
@@ -2289,12 +3917,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.UpdateLayoutDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['LayoutData'] = request.layout_data
+        query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateLayoutData',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.UpdateLayoutDataResponse(),
-            await self.do_rpcrequest_async('UpdateLayoutData', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_layout_data(
@@ -2317,12 +3960,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.UpdateProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BusinessId'] = request.business_id
+        query['Id'] = request.id
+        query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateProject',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.UpdateProjectResponse(),
-            self.do_rpcrequest('UpdateProject', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_project_with_options_async(
@@ -2331,12 +3990,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.UpdateProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BusinessId'] = request.business_id
+        query['Id'] = request.id
+        query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateProject',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.UpdateProjectResponse(),
-            await self.do_rpcrequest_async('UpdateProject', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_project(
@@ -2359,12 +4034,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.UpdateSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
+        query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.UpdateSceneResponse(),
-            self.do_rpcrequest('UpdateScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_scene_with_options_async(
@@ -2373,12 +4063,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.UpdateSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
+        query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.UpdateSceneResponse(),
-            await self.do_rpcrequest_async('UpdateScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_scene(
@@ -2401,12 +4106,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.UpdateSubSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
+        query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateSubScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.UpdateSubSceneResponse(),
-            self.do_rpcrequest('UpdateSubScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_sub_scene_with_options_async(
@@ -2415,12 +4135,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tdsr_20200101_models.UpdateSubSceneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
+        query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateSubScene',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             tdsr_20200101_models.UpdateSubSceneResponse(),
-            await self.do_rpcrequest_async('UpdateSubScene', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_sub_scene(
