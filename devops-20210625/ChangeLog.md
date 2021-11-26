@@ -1,3 +1,6 @@
+2021-11-26 Version: 1.1.5
+- Add Deploy Api.
+
 2021-11-26 Version: 1.1.4
 - Add Deploy Api.
 
