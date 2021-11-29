@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_dyvmsapi20170525 import models as dyvmsapi_20170525_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -46,12 +47,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.AddRtcAccountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DeviceId'] = request.device_id
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddRtcAccount',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.AddRtcAccountResponse(),
-            self.do_rpcrequest('AddRtcAccount', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_rtc_account_with_options_async(
@@ -60,12 +78,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.AddRtcAccountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DeviceId'] = request.device_id
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddRtcAccount',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.AddRtcAccountResponse(),
-            await self.do_rpcrequest_async('AddRtcAccount', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_rtc_account(
@@ -88,12 +123,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.AddVirtualNumberRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CorpNameList'] = request.corp_name_list
+        query['NumberList'] = request.number_list
+        query['OwnerId'] = request.owner_id
+        query['PhoneNum'] = request.phone_num
+        query['ProdCode'] = request.prod_code
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RouteType'] = request.route_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddVirtualNumberRelation',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.AddVirtualNumberRelationResponse(),
-            self.do_rpcrequest('AddVirtualNumberRelation', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_virtual_number_relation_with_options_async(
@@ -102,12 +158,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.AddVirtualNumberRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CorpNameList'] = request.corp_name_list
+        query['NumberList'] = request.number_list
+        query['OwnerId'] = request.owner_id
+        query['PhoneNum'] = request.phone_num
+        query['ProdCode'] = request.prod_code
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RouteType'] = request.route_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddVirtualNumberRelation',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.AddVirtualNumberRelationResponse(),
-            await self.do_rpcrequest_async('AddVirtualNumberRelation', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_virtual_number_relation(
@@ -130,12 +207,39 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.BatchRobotSmartCallResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CalledNumber'] = request.called_number
+        query['CalledShowNumber'] = request.called_show_number
+        query['CorpName'] = request.corp_name
+        query['DialogId'] = request.dialog_id
+        query['EarlyMediaAsr'] = request.early_media_asr
+        query['IsSelfLine'] = request.is_self_line
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ScheduleCall'] = request.schedule_call
+        query['ScheduleTime'] = request.schedule_time
+        query['TaskName'] = request.task_name
+        query['TtsParam'] = request.tts_param
+        query['TtsParamHead'] = request.tts_param_head
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchRobotSmartCall',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.BatchRobotSmartCallResponse(),
-            self.do_rpcrequest('BatchRobotSmartCall', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_robot_smart_call_with_options_async(
@@ -144,12 +248,39 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.BatchRobotSmartCallResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CalledNumber'] = request.called_number
+        query['CalledShowNumber'] = request.called_show_number
+        query['CorpName'] = request.corp_name
+        query['DialogId'] = request.dialog_id
+        query['EarlyMediaAsr'] = request.early_media_asr
+        query['IsSelfLine'] = request.is_self_line
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ScheduleCall'] = request.schedule_call
+        query['ScheduleTime'] = request.schedule_time
+        query['TaskName'] = request.task_name
+        query['TtsParam'] = request.tts_param
+        query['TtsParamHead'] = request.tts_param_head
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchRobotSmartCall',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.BatchRobotSmartCallResponse(),
-            await self.do_rpcrequest_async('BatchRobotSmartCall', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_robot_smart_call(
@@ -166,60 +297,35 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_robot_smart_call_with_options_async(request, runtime)
 
-    def bind_number_and_voip_id_with_options(
-        self,
-        request: dyvmsapi_20170525_models.BindNumberAndVoipIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.BindNumberAndVoipIdResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.BindNumberAndVoipIdResponse(),
-            self.do_rpcrequest('BindNumberAndVoipId', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def bind_number_and_voip_id_with_options_async(
-        self,
-        request: dyvmsapi_20170525_models.BindNumberAndVoipIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.BindNumberAndVoipIdResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.BindNumberAndVoipIdResponse(),
-            await self.do_rpcrequest_async('BindNumberAndVoipId', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def bind_number_and_voip_id(
-        self,
-        request: dyvmsapi_20170525_models.BindNumberAndVoipIdRequest,
-    ) -> dyvmsapi_20170525_models.BindNumberAndVoipIdResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.bind_number_and_voip_id_with_options(request, runtime)
-
-    async def bind_number_and_voip_id_async(
-        self,
-        request: dyvmsapi_20170525_models.BindNumberAndVoipIdRequest,
-    ) -> dyvmsapi_20170525_models.BindNumberAndVoipIdResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.bind_number_and_voip_id_with_options_async(request, runtime)
-
     def cancel_call_with_options(
         self,
         request: dyvmsapi_20170525_models.CancelCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.CancelCallResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CallId'] = request.call_id
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CancelCall',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.CancelCallResponse(),
-            self.do_rpcrequest('CancelCall', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def cancel_call_with_options_async(
@@ -228,12 +334,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.CancelCallResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CallId'] = request.call_id
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CancelCall',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.CancelCallResponse(),
-            await self.do_rpcrequest_async('CancelCall', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def cancel_call(
@@ -256,12 +379,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.CancelOrderRobotTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CancelOrderRobotTask',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.CancelOrderRobotTaskResponse(),
-            self.do_rpcrequest('CancelOrderRobotTask', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def cancel_order_robot_task_with_options_async(
@@ -270,12 +410,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.CancelOrderRobotTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CancelOrderRobotTask',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.CancelOrderRobotTaskResponse(),
-            await self.do_rpcrequest_async('CancelOrderRobotTask', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def cancel_order_robot_task(
@@ -298,12 +455,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.CancelRobotTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CancelRobotTask',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.CancelRobotTaskResponse(),
-            self.do_rpcrequest('CancelRobotTask', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def cancel_robot_task_with_options_async(
@@ -312,12 +486,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.CancelRobotTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CancelRobotTask',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.CancelRobotTaskResponse(),
-            await self.do_rpcrequest_async('CancelRobotTask', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def cancel_robot_task(
@@ -340,12 +531,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ClickToDialResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AsrFlag'] = request.asr_flag
+        query['AsrModelId'] = request.asr_model_id
+        query['CalledNumber'] = request.called_number
+        query['CalledShowNumber'] = request.called_show_number
+        query['CallerNumber'] = request.caller_number
+        query['CallerShowNumber'] = request.caller_show_number
+        query['OutId'] = request.out_id
+        query['OwnerId'] = request.owner_id
+        query['RecordFlag'] = request.record_flag
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SessionTimeout'] = request.session_timeout
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ClickToDial',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.ClickToDialResponse(),
-            self.do_rpcrequest('ClickToDial', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def click_to_dial_with_options_async(
@@ -354,12 +570,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ClickToDialResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AsrFlag'] = request.asr_flag
+        query['AsrModelId'] = request.asr_model_id
+        query['CalledNumber'] = request.called_number
+        query['CalledShowNumber'] = request.called_show_number
+        query['CallerNumber'] = request.caller_number
+        query['CallerShowNumber'] = request.caller_show_number
+        query['OutId'] = request.out_id
+        query['OwnerId'] = request.owner_id
+        query['RecordFlag'] = request.record_flag
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SessionTimeout'] = request.session_timeout
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ClickToDial',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.ClickToDialResponse(),
-            await self.do_rpcrequest_async('ClickToDial', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def click_to_dial(
@@ -376,60 +617,45 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.click_to_dial_with_options_async(request, runtime)
 
-    def close_sip_account_with_options(
-        self,
-        request: dyvmsapi_20170525_models.CloseSipAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.CloseSipAccountResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.CloseSipAccountResponse(),
-            self.do_rpcrequest('CloseSipAccount', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def close_sip_account_with_options_async(
-        self,
-        request: dyvmsapi_20170525_models.CloseSipAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.CloseSipAccountResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.CloseSipAccountResponse(),
-            await self.do_rpcrequest_async('CloseSipAccount', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def close_sip_account(
-        self,
-        request: dyvmsapi_20170525_models.CloseSipAccountRequest,
-    ) -> dyvmsapi_20170525_models.CloseSipAccountResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.close_sip_account_with_options(request, runtime)
-
-    async def close_sip_account_async(
-        self,
-        request: dyvmsapi_20170525_models.CloseSipAccountRequest,
-    ) -> dyvmsapi_20170525_models.CloseSipAccountResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.close_sip_account_with_options_async(request, runtime)
-
     def create_call_task_with_options(
         self,
         request: dyvmsapi_20170525_models.CreateCallTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.CreateCallTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizType'] = request.biz_type
+        query['Data'] = request.data
+        query['DataType'] = request.data_type
+        query['FireTime'] = request.fire_time
+        query['OwnerId'] = request.owner_id
+        query['Resource'] = request.resource
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceType'] = request.resource_type
+        query['ScheduleType'] = request.schedule_type
+        query['StopTime'] = request.stop_time
+        query['TaskName'] = request.task_name
+        query['TemplateCode'] = request.template_code
+        query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCallTask',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.CreateCallTaskResponse(),
-            self.do_rpcrequest('CreateCallTask', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_call_task_with_options_async(
@@ -438,12 +664,39 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.CreateCallTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizType'] = request.biz_type
+        query['Data'] = request.data
+        query['DataType'] = request.data_type
+        query['FireTime'] = request.fire_time
+        query['OwnerId'] = request.owner_id
+        query['Resource'] = request.resource
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceType'] = request.resource_type
+        query['ScheduleType'] = request.schedule_type
+        query['StopTime'] = request.stop_time
+        query['TaskName'] = request.task_name
+        query['TemplateCode'] = request.template_code
+        query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCallTask',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.CreateCallTaskResponse(),
-            await self.do_rpcrequest_async('CreateCallTask', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_call_task(
@@ -466,12 +719,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.CreateRobotTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Caller'] = request.caller
+        query['CorpName'] = request.corp_name
+        query['DialogId'] = request.dialog_id
+        query['IsSelfLine'] = request.is_self_line
+        query['NumberStatusIdent'] = request.number_status_ident
+        query['OwnerId'] = request.owner_id
+        query['RecallInterval'] = request.recall_interval
+        query['RecallStateCodes'] = request.recall_state_codes
+        query['RecallTimes'] = request.recall_times
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RetryType'] = request.retry_type
+        query['TaskName'] = request.task_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRobotTask',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.CreateRobotTaskResponse(),
-            self.do_rpcrequest('CreateRobotTask', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_robot_task_with_options_async(
@@ -480,12 +759,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.CreateRobotTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Caller'] = request.caller
+        query['CorpName'] = request.corp_name
+        query['DialogId'] = request.dialog_id
+        query['IsSelfLine'] = request.is_self_line
+        query['NumberStatusIdent'] = request.number_status_ident
+        query['OwnerId'] = request.owner_id
+        query['RecallInterval'] = request.recall_interval
+        query['RecallStateCodes'] = request.recall_state_codes
+        query['RecallTimes'] = request.recall_times
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RetryType'] = request.retry_type
+        query['TaskName'] = request.task_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRobotTask',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.CreateRobotTaskResponse(),
-            await self.do_rpcrequest_async('CreateRobotTask', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_robot_task(
@@ -502,60 +807,35 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_robot_task_with_options_async(request, runtime)
 
-    def create_sip_account_with_options(
-        self,
-        request: dyvmsapi_20170525_models.CreateSipAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.CreateSipAccountResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.CreateSipAccountResponse(),
-            self.do_rpcrequest('CreateSipAccount', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_sip_account_with_options_async(
-        self,
-        request: dyvmsapi_20170525_models.CreateSipAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.CreateSipAccountResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.CreateSipAccountResponse(),
-            await self.do_rpcrequest_async('CreateSipAccount', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_sip_account(
-        self,
-        request: dyvmsapi_20170525_models.CreateSipAccountRequest,
-    ) -> dyvmsapi_20170525_models.CreateSipAccountResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_sip_account_with_options(request, runtime)
-
-    async def create_sip_account_async(
-        self,
-        request: dyvmsapi_20170525_models.CreateSipAccountRequest,
-    ) -> dyvmsapi_20170525_models.CreateSipAccountResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_sip_account_with_options_async(request, runtime)
-
     def delete_robot_task_with_options(
         self,
         request: dyvmsapi_20170525_models.DeleteRobotTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.DeleteRobotTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRobotTask',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.DeleteRobotTaskResponse(),
-            self.do_rpcrequest('DeleteRobotTask', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_robot_task_with_options_async(
@@ -564,12 +844,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.DeleteRobotTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRobotTask',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.DeleteRobotTaskResponse(),
-            await self.do_rpcrequest_async('DeleteRobotTask', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_robot_task(
@@ -586,144 +883,37 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_robot_task_with_options_async(request, runtime)
 
-    def describe_record_data_with_options(
-        self,
-        request: dyvmsapi_20170525_models.DescribeRecordDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.DescribeRecordDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.DescribeRecordDataResponse(),
-            self.do_rpcrequest('DescribeRecordData', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_record_data_with_options_async(
-        self,
-        request: dyvmsapi_20170525_models.DescribeRecordDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.DescribeRecordDataResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.DescribeRecordDataResponse(),
-            await self.do_rpcrequest_async('DescribeRecordData', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_record_data(
-        self,
-        request: dyvmsapi_20170525_models.DescribeRecordDataRequest,
-    ) -> dyvmsapi_20170525_models.DescribeRecordDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_record_data_with_options(request, runtime)
-
-    async def describe_record_data_async(
-        self,
-        request: dyvmsapi_20170525_models.DescribeRecordDataRequest,
-    ) -> dyvmsapi_20170525_models.DescribeRecordDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_record_data_with_options_async(request, runtime)
-
-    def do_rtc_number_auth_with_options(
-        self,
-        request: dyvmsapi_20170525_models.DoRtcNumberAuthRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.DoRtcNumberAuthResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.DoRtcNumberAuthResponse(),
-            self.do_rpcrequest('DoRtcNumberAuth', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def do_rtc_number_auth_with_options_async(
-        self,
-        request: dyvmsapi_20170525_models.DoRtcNumberAuthRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.DoRtcNumberAuthResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.DoRtcNumberAuthResponse(),
-            await self.do_rpcrequest_async('DoRtcNumberAuth', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def do_rtc_number_auth(
-        self,
-        request: dyvmsapi_20170525_models.DoRtcNumberAuthRequest,
-    ) -> dyvmsapi_20170525_models.DoRtcNumberAuthResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.do_rtc_number_auth_with_options(request, runtime)
-
-    async def do_rtc_number_auth_async(
-        self,
-        request: dyvmsapi_20170525_models.DoRtcNumberAuthRequest,
-    ) -> dyvmsapi_20170525_models.DoRtcNumberAuthResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.do_rtc_number_auth_with_options_async(request, runtime)
-
-    def double_call_seat_with_options(
-        self,
-        request: dyvmsapi_20170525_models.DoubleCallSeatRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.DoubleCallSeatResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.DoubleCallSeatResponse(),
-            self.do_rpcrequest('DoubleCallSeat', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def double_call_seat_with_options_async(
-        self,
-        request: dyvmsapi_20170525_models.DoubleCallSeatRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.DoubleCallSeatResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.DoubleCallSeatResponse(),
-            await self.do_rpcrequest_async('DoubleCallSeat', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def double_call_seat(
-        self,
-        request: dyvmsapi_20170525_models.DoubleCallSeatRequest,
-    ) -> dyvmsapi_20170525_models.DoubleCallSeatResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.double_call_seat_with_options(request, runtime)
-
-    async def double_call_seat_async(
-        self,
-        request: dyvmsapi_20170525_models.DoubleCallSeatRequest,
-    ) -> dyvmsapi_20170525_models.DoubleCallSeatResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.double_call_seat_with_options_async(request, runtime)
-
     def execute_call_task_with_options(
         self,
         request: dyvmsapi_20170525_models.ExecuteCallTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ExecuteCallTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FireTime'] = request.fire_time
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Status'] = request.status
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ExecuteCallTask',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.ExecuteCallTaskResponse(),
-            self.do_rpcrequest('ExecuteCallTask', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def execute_call_task_with_options_async(
@@ -732,12 +922,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ExecuteCallTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FireTime'] = request.fire_time
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Status'] = request.status
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ExecuteCallTask',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.ExecuteCallTaskResponse(),
-            await self.do_rpcrequest_async('ExecuteCallTask', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def execute_call_task(
@@ -760,12 +969,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetCallInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RtcId'] = request.rtc_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetCallInfo',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.GetCallInfoResponse(),
-            self.do_rpcrequest('GetCallInfo', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_call_info_with_options_async(
@@ -774,12 +1000,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetCallInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RtcId'] = request.rtc_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetCallInfo',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.GetCallInfoResponse(),
-            await self.do_rpcrequest_async('GetCallInfo', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_call_info(
@@ -802,12 +1045,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetHotlineQualificationByOrderResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetHotlineQualificationByOrder',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.GetHotlineQualificationByOrderResponse(),
-            self.do_rpcrequest('GetHotlineQualificationByOrder', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_hotline_qualification_by_order_with_options_async(
@@ -816,12 +1076,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetHotlineQualificationByOrderResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetHotlineQualificationByOrder',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.GetHotlineQualificationByOrderResponse(),
-            await self.do_rpcrequest_async('GetHotlineQualificationByOrder', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_hotline_qualification_by_order(
@@ -838,18 +1115,111 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_hotline_qualification_by_order_with_options_async(request, runtime)
 
+    def get_mqtt_token_with_options(
+        self,
+        request: dyvmsapi_20170525_models.GetMqttTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.GetMqttTokenResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMqttToken',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.GetMqttTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mqtt_token_with_options_async(
+        self,
+        request: dyvmsapi_20170525_models.GetMqttTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dyvmsapi_20170525_models.GetMqttTokenResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMqttToken',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dyvmsapi_20170525_models.GetMqttTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mqtt_token(
+        self,
+        request: dyvmsapi_20170525_models.GetMqttTokenRequest,
+    ) -> dyvmsapi_20170525_models.GetMqttTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_mqtt_token_with_options(request, runtime)
+
+    async def get_mqtt_token_async(
+        self,
+        request: dyvmsapi_20170525_models.GetMqttTokenRequest,
+    ) -> dyvmsapi_20170525_models.GetMqttTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_mqtt_token_with_options_async(request, runtime)
+
     def get_rtc_token_with_options(
         self,
         request: dyvmsapi_20170525_models.GetRtcTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetRtcTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DeviceId'] = request.device_id
+        query['IsCustomAccount'] = request.is_custom_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRtcToken',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.GetRtcTokenResponse(),
-            self.do_rpcrequest('GetRtcToken', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_rtc_token_with_options_async(
@@ -858,12 +1228,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetRtcTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DeviceId'] = request.device_id
+        query['IsCustomAccount'] = request.is_custom_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRtcToken',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.GetRtcTokenResponse(),
-            await self.do_rpcrequest_async('GetRtcToken', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_rtc_token(
@@ -886,12 +1275,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TokenType'] = request.token_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetToken',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.GetTokenResponse(),
-            self.do_rpcrequest('GetToken', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_token_with_options_async(
@@ -900,12 +1306,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.GetTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TokenType'] = request.token_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetToken',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.GetTokenResponse(),
-            await self.do_rpcrequest_async('GetToken', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_token(
@@ -928,12 +1351,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.IvrCallResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ByeCode'] = request.bye_code
+        query['ByeTtsParams'] = request.bye_tts_params
+        query['CalledNumber'] = request.called_number
+        query['CalledShowNumber'] = request.called_show_number
+        query['MenuKeyMap'] = request.menu_key_map
+        query['OutId'] = request.out_id
+        query['OwnerId'] = request.owner_id
+        query['PlayTimes'] = request.play_times
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['StartCode'] = request.start_code
+        query['StartTtsParams'] = request.start_tts_params
+        query['Timeout'] = request.timeout
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='IvrCall',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.IvrCallResponse(),
-            self.do_rpcrequest('IvrCall', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def ivr_call_with_options_async(
@@ -942,12 +1391,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.IvrCallResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ByeCode'] = request.bye_code
+        query['ByeTtsParams'] = request.bye_tts_params
+        query['CalledNumber'] = request.called_number
+        query['CalledShowNumber'] = request.called_show_number
+        query['MenuKeyMap'] = request.menu_key_map
+        query['OutId'] = request.out_id
+        query['OwnerId'] = request.owner_id
+        query['PlayTimes'] = request.play_times
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['StartCode'] = request.start_code
+        query['StartTtsParams'] = request.start_tts_params
+        query['Timeout'] = request.timeout
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='IvrCall',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.IvrCallResponse(),
-            await self.do_rpcrequest_async('IvrCall', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def ivr_call(
@@ -970,12 +1445,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ListCallTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizType'] = request.biz_type
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Status'] = request.status
+        query['TaskId'] = request.task_id
+        query['TaskName'] = request.task_name
+        query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListCallTask',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.ListCallTaskResponse(),
-            self.do_rpcrequest('ListCallTask', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_call_task_with_options_async(
@@ -984,12 +1482,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ListCallTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizType'] = request.biz_type
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Status'] = request.status
+        query['TaskId'] = request.task_id
+        query['TaskName'] = request.task_name
+        query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListCallTask',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.ListCallTaskResponse(),
-            await self.do_rpcrequest_async('ListCallTask', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_call_task(
@@ -1012,12 +1533,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ListCallTaskDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CalledNum'] = request.called_num
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Status'] = request.status
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListCallTaskDetail',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.ListCallTaskDetailResponse(),
-            self.do_rpcrequest('ListCallTaskDetail', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_call_task_detail_with_options_async(
@@ -1026,12 +1568,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ListCallTaskDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CalledNum'] = request.called_num
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Status'] = request.status
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListCallTaskDetail',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.ListCallTaskDetailResponse(),
-            await self.do_rpcrequest_async('ListCallTaskDetail', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_call_task_detail(
@@ -1054,12 +1617,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ListHotlineTransferNumberResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['HotlineNumber'] = request.hotline_number
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['QualificationId'] = request.qualification_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListHotlineTransferNumber',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.ListHotlineTransferNumberResponse(),
-            self.do_rpcrequest('ListHotlineTransferNumber', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_hotline_transfer_number_with_options_async(
@@ -1068,12 +1651,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ListHotlineTransferNumberResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['HotlineNumber'] = request.hotline_number
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['QualificationId'] = request.qualification_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListHotlineTransferNumber',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.ListHotlineTransferNumberResponse(),
-            await self.do_rpcrequest_async('ListHotlineTransferNumber', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_hotline_transfer_number(
@@ -1096,12 +1699,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ListHotlineTransferRegisterFileResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['HotlineNumber'] = request.hotline_number
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['QualificationId'] = request.qualification_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListHotlineTransferRegisterFile',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.ListHotlineTransferRegisterFileResponse(),
-            self.do_rpcrequest('ListHotlineTransferRegisterFile', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_hotline_transfer_register_file_with_options_async(
@@ -1110,12 +1733,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.ListHotlineTransferRegisterFileResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['HotlineNumber'] = request.hotline_number
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['QualificationId'] = request.qualification_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListHotlineTransferRegisterFile',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.ListHotlineTransferRegisterFileResponse(),
-            await self.do_rpcrequest_async('ListHotlineTransferRegisterFile', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_hotline_transfer_register_file(
@@ -1132,144 +1775,37 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_hotline_transfer_register_file_with_options_async(request, runtime)
 
-    def list_ordered_numbers_with_options(
-        self,
-        request: dyvmsapi_20170525_models.ListOrderedNumbersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.ListOrderedNumbersResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.ListOrderedNumbersResponse(),
-            self.do_rpcrequest('ListOrderedNumbers', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_ordered_numbers_with_options_async(
-        self,
-        request: dyvmsapi_20170525_models.ListOrderedNumbersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.ListOrderedNumbersResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.ListOrderedNumbersResponse(),
-            await self.do_rpcrequest_async('ListOrderedNumbers', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_ordered_numbers(
-        self,
-        request: dyvmsapi_20170525_models.ListOrderedNumbersRequest,
-    ) -> dyvmsapi_20170525_models.ListOrderedNumbersResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_ordered_numbers_with_options(request, runtime)
-
-    async def list_ordered_numbers_async(
-        self,
-        request: dyvmsapi_20170525_models.ListOrderedNumbersRequest,
-    ) -> dyvmsapi_20170525_models.ListOrderedNumbersResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_ordered_numbers_with_options_async(request, runtime)
-
-    def list_outbound_strategies_with_options(
-        self,
-        request: dyvmsapi_20170525_models.ListOutboundStrategiesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.ListOutboundStrategiesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.ListOutboundStrategiesResponse(),
-            self.do_rpcrequest('ListOutboundStrategies', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_outbound_strategies_with_options_async(
-        self,
-        request: dyvmsapi_20170525_models.ListOutboundStrategiesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.ListOutboundStrategiesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.ListOutboundStrategiesResponse(),
-            await self.do_rpcrequest_async('ListOutboundStrategies', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_outbound_strategies(
-        self,
-        request: dyvmsapi_20170525_models.ListOutboundStrategiesRequest,
-    ) -> dyvmsapi_20170525_models.ListOutboundStrategiesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_outbound_strategies_with_options(request, runtime)
-
-    async def list_outbound_strategies_async(
-        self,
-        request: dyvmsapi_20170525_models.ListOutboundStrategiesRequest,
-    ) -> dyvmsapi_20170525_models.ListOutboundStrategiesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_outbound_strategies_with_options_async(request, runtime)
-
-    def list_robot_task_calls_with_options(
-        self,
-        request: dyvmsapi_20170525_models.ListRobotTaskCallsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.ListRobotTaskCallsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.ListRobotTaskCallsResponse(),
-            self.do_rpcrequest('ListRobotTaskCalls', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_robot_task_calls_with_options_async(
-        self,
-        request: dyvmsapi_20170525_models.ListRobotTaskCallsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.ListRobotTaskCallsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.ListRobotTaskCallsResponse(),
-            await self.do_rpcrequest_async('ListRobotTaskCalls', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_robot_task_calls(
-        self,
-        request: dyvmsapi_20170525_models.ListRobotTaskCallsRequest,
-    ) -> dyvmsapi_20170525_models.ListRobotTaskCallsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_robot_task_calls_with_options(request, runtime)
-
-    async def list_robot_task_calls_async(
-        self,
-        request: dyvmsapi_20170525_models.ListRobotTaskCallsRequest,
-    ) -> dyvmsapi_20170525_models.ListRobotTaskCallsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_robot_task_calls_with_options_async(request, runtime)
-
     def query_call_detail_by_call_id_with_options(
         self,
         request: dyvmsapi_20170525_models.QueryCallDetailByCallIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryCallDetailByCallIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CallId'] = request.call_id
+        query['OwnerId'] = request.owner_id
+        query['ProdId'] = request.prod_id
+        query['QueryDate'] = request.query_date
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryCallDetailByCallId',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryCallDetailByCallIdResponse(),
-            self.do_rpcrequest('QueryCallDetailByCallId', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_call_detail_by_call_id_with_options_async(
@@ -1278,12 +1814,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryCallDetailByCallIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CallId'] = request.call_id
+        query['OwnerId'] = request.owner_id
+        query['ProdId'] = request.prod_id
+        query['QueryDate'] = request.query_date
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryCallDetailByCallId',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryCallDetailByCallIdResponse(),
-            await self.do_rpcrequest_async('QueryCallDetailByCallId', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_call_detail_by_call_id(
@@ -1306,12 +1861,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryCallDetailByTaskIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Callee'] = request.callee
+        query['OwnerId'] = request.owner_id
+        query['QueryDate'] = request.query_date
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryCallDetailByTaskId',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryCallDetailByTaskIdResponse(),
-            self.do_rpcrequest('QueryCallDetailByTaskId', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_call_detail_by_task_id_with_options_async(
@@ -1320,12 +1894,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryCallDetailByTaskIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Callee'] = request.callee
+        query['OwnerId'] = request.owner_id
+        query['QueryDate'] = request.query_date
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryCallDetailByTaskId',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryCallDetailByTaskIdResponse(),
-            await self.do_rpcrequest_async('QueryCallDetailByTaskId', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_call_detail_by_task_id(
@@ -1348,12 +1941,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryCallInPoolTransferConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['PhoneNumber'] = request.phone_number
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryCallInPoolTransferConfig',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryCallInPoolTransferConfigResponse(),
-            self.do_rpcrequest('QueryCallInPoolTransferConfig', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_call_in_pool_transfer_config_with_options_async(
@@ -1362,12 +1972,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryCallInPoolTransferConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['PhoneNumber'] = request.phone_number
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryCallInPoolTransferConfig',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryCallInPoolTransferConfigResponse(),
-            await self.do_rpcrequest_async('QueryCallInPoolTransferConfig', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_call_in_pool_transfer_config(
@@ -1390,12 +2017,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryCallInTransferRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CallInCaller'] = request.call_in_caller
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['PhoneNumber'] = request.phone_number
+        query['QueryDate'] = request.query_date
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryCallInTransferRecord',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryCallInTransferRecordResponse(),
-            self.do_rpcrequest('QueryCallInTransferRecord', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_call_in_transfer_record_with_options_async(
@@ -1404,12 +2052,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryCallInTransferRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CallInCaller'] = request.call_in_caller
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['PhoneNumber'] = request.phone_number
+        query['QueryDate'] = request.query_date
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryCallInTransferRecord',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryCallInTransferRecordResponse(),
-            await self.do_rpcrequest_async('QueryCallInTransferRecord', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_call_in_transfer_record(
@@ -1432,12 +2101,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotInfoListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuditStatus'] = request.audit_status
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryRobotInfoList',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryRobotInfoListResponse(),
-            self.do_rpcrequest('QueryRobotInfoList', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_robot_info_list_with_options_async(
@@ -1446,12 +2132,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotInfoListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuditStatus'] = request.audit_status
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryRobotInfoList',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryRobotInfoListResponse(),
-            await self.do_rpcrequest_async('QueryRobotInfoList', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_robot_info_list(
@@ -1474,12 +2177,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskCallDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Callee'] = request.callee
+        query['OwnerId'] = request.owner_id
+        query['QueryDate'] = request.query_date
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryRobotTaskCallDetail',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryRobotTaskCallDetailResponse(),
-            self.do_rpcrequest('QueryRobotTaskCallDetail', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_robot_task_call_detail_with_options_async(
@@ -1488,12 +2210,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskCallDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Callee'] = request.callee
+        query['OwnerId'] = request.owner_id
+        query['QueryDate'] = request.query_date
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryRobotTaskCallDetail',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryRobotTaskCallDetailResponse(),
-            await self.do_rpcrequest_async('QueryRobotTaskCallDetail', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_robot_task_call_detail(
@@ -1516,12 +2257,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskCallListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CallResult'] = request.call_result
+        query['Called'] = request.called
+        query['DialogCountFrom'] = request.dialog_count_from
+        query['DialogCountTo'] = request.dialog_count_to
+        query['DurationFrom'] = request.duration_from
+        query['DurationTo'] = request.duration_to
+        query['HangupDirection'] = request.hangup_direction
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryRobotTaskCallList',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryRobotTaskCallListResponse(),
-            self.do_rpcrequest('QueryRobotTaskCallList', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_robot_task_call_list_with_options_async(
@@ -1530,12 +2297,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskCallListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CallResult'] = request.call_result
+        query['Called'] = request.called
+        query['DialogCountFrom'] = request.dialog_count_from
+        query['DialogCountTo'] = request.dialog_count_to
+        query['DurationFrom'] = request.duration_from
+        query['DurationTo'] = request.duration_to
+        query['HangupDirection'] = request.hangup_direction
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryRobotTaskCallList',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryRobotTaskCallListResponse(),
-            await self.do_rpcrequest_async('QueryRobotTaskCallList', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_robot_task_call_list(
@@ -1558,12 +2351,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryRobotTaskDetail',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryRobotTaskDetailResponse(),
-            self.do_rpcrequest('QueryRobotTaskDetail', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_robot_task_detail_with_options_async(
@@ -1572,12 +2382,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Id'] = request.id
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryRobotTaskDetail',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryRobotTaskDetailResponse(),
-            await self.do_rpcrequest_async('QueryRobotTaskDetail', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_robot_task_detail(
@@ -1600,12 +2427,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Status'] = request.status
+        query['TaskName'] = request.task_name
+        query['Time'] = request.time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryRobotTaskList',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryRobotTaskListResponse(),
-            self.do_rpcrequest('QueryRobotTaskList', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_robot_task_list_with_options_async(
@@ -1614,12 +2462,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotTaskListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Status'] = request.status
+        query['TaskName'] = request.task_name
+        query['Time'] = request.time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryRobotTaskList',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryRobotTaskListResponse(),
-            await self.do_rpcrequest_async('QueryRobotTaskList', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_robot_task_list(
@@ -1642,12 +2511,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotv2AllListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryRobotv2AllList',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryRobotv2AllListResponse(),
-            self.do_rpcrequest('QueryRobotv2AllList', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_robotv_2all_list_with_options_async(
@@ -1656,12 +2541,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryRobotv2AllListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryRobotv2AllList',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryRobotv2AllListResponse(),
-            await self.do_rpcrequest_async('QueryRobotv2AllList', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_robotv_2all_list(
@@ -1678,60 +2579,38 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_robotv_2all_list_with_options_async(request, runtime)
 
-    def query_rtc_number_auth_status_with_options(
-        self,
-        request: dyvmsapi_20170525_models.QueryRtcNumberAuthStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.QueryRtcNumberAuthStatusResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.QueryRtcNumberAuthStatusResponse(),
-            self.do_rpcrequest('QueryRtcNumberAuthStatus', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def query_rtc_number_auth_status_with_options_async(
-        self,
-        request: dyvmsapi_20170525_models.QueryRtcNumberAuthStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.QueryRtcNumberAuthStatusResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.QueryRtcNumberAuthStatusResponse(),
-            await self.do_rpcrequest_async('QueryRtcNumberAuthStatus', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def query_rtc_number_auth_status(
-        self,
-        request: dyvmsapi_20170525_models.QueryRtcNumberAuthStatusRequest,
-    ) -> dyvmsapi_20170525_models.QueryRtcNumberAuthStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_rtc_number_auth_status_with_options(request, runtime)
-
-    async def query_rtc_number_auth_status_async(
-        self,
-        request: dyvmsapi_20170525_models.QueryRtcNumberAuthStatusRequest,
-    ) -> dyvmsapi_20170525_models.QueryRtcNumberAuthStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_rtc_number_auth_status_with_options_async(request, runtime)
-
     def query_virtual_number_with_options(
         self,
         request: dyvmsapi_20170525_models.QueryVirtualNumberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryVirtualNumberResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['ProdCode'] = request.prod_code
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RouteType'] = request.route_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryVirtualNumber',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryVirtualNumberResponse(),
-            self.do_rpcrequest('QueryVirtualNumber', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_virtual_number_with_options_async(
@@ -1740,12 +2619,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryVirtualNumberResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['ProdCode'] = request.prod_code
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RouteType'] = request.route_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryVirtualNumber',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryVirtualNumberResponse(),
-            await self.do_rpcrequest_async('QueryVirtualNumber', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_virtual_number(
@@ -1768,12 +2667,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryVirtualNumberRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['PhoneNum'] = request.phone_num
+        query['ProdCode'] = request.prod_code
+        query['QualificationId'] = request.qualification_id
+        query['RegionNameCity'] = request.region_name_city
+        query['RelatedNum'] = request.related_num
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RouteType'] = request.route_type
+        query['SpecId'] = request.spec_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryVirtualNumberRelation',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryVirtualNumberRelationResponse(),
-            self.do_rpcrequest('QueryVirtualNumberRelation', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_virtual_number_relation_with_options_async(
@@ -1782,12 +2706,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.QueryVirtualNumberRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['PhoneNum'] = request.phone_num
+        query['ProdCode'] = request.prod_code
+        query['QualificationId'] = request.qualification_id
+        query['RegionNameCity'] = request.region_name_city
+        query['RelatedNum'] = request.related_num
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RouteType'] = request.route_type
+        query['SpecId'] = request.spec_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryVirtualNumberRelation',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.QueryVirtualNumberRelationResponse(),
-            await self.do_rpcrequest_async('QueryVirtualNumberRelation', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_virtual_number_relation(
@@ -1804,89 +2753,81 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_virtual_number_relation_with_options_async(request, runtime)
 
-    def query_voip_number_bind_infos_with_options(
+    def refresh_mqtt_token_with_options(
         self,
-        request: dyvmsapi_20170525_models.QueryVoipNumberBindInfosRequest,
+        request: dyvmsapi_20170525_models.RefreshMqttTokenRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.QueryVoipNumberBindInfosResponse:
+    ) -> dyvmsapi_20170525_models.RefreshMqttTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientId'] = request.client_id
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
+        params = open_api_models.Params(
+            action='RefreshMqttToken',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
-            dyvmsapi_20170525_models.QueryVoipNumberBindInfosResponse(),
-            self.do_rpcrequest('QueryVoipNumberBindInfos', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            dyvmsapi_20170525_models.RefreshMqttTokenResponse(),
+            self.call_api(params, req, runtime)
         )
 
-    async def query_voip_number_bind_infos_with_options_async(
+    async def refresh_mqtt_token_with_options_async(
         self,
-        request: dyvmsapi_20170525_models.QueryVoipNumberBindInfosRequest,
+        request: dyvmsapi_20170525_models.RefreshMqttTokenRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.QueryVoipNumberBindInfosResponse:
+    ) -> dyvmsapi_20170525_models.RefreshMqttTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientId'] = request.client_id
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.QueryVoipNumberBindInfosResponse(),
-            await self.do_rpcrequest_async('QueryVoipNumberBindInfos', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def query_voip_number_bind_infos(
-        self,
-        request: dyvmsapi_20170525_models.QueryVoipNumberBindInfosRequest,
-    ) -> dyvmsapi_20170525_models.QueryVoipNumberBindInfosResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_voip_number_bind_infos_with_options(request, runtime)
-
-    async def query_voip_number_bind_infos_async(
-        self,
-        request: dyvmsapi_20170525_models.QueryVoipNumberBindInfosRequest,
-    ) -> dyvmsapi_20170525_models.QueryVoipNumberBindInfosResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_voip_number_bind_infos_with_options_async(request, runtime)
-
-    def report_voip_problems_with_options(
-        self,
-        request: dyvmsapi_20170525_models.ReportVoipProblemsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.ReportVoipProblemsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+        params = open_api_models.Params(
+            action='RefreshMqttToken',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
-            dyvmsapi_20170525_models.ReportVoipProblemsResponse(),
-            self.do_rpcrequest('ReportVoipProblems', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            dyvmsapi_20170525_models.RefreshMqttTokenResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    async def report_voip_problems_with_options_async(
+    def refresh_mqtt_token(
         self,
-        request: dyvmsapi_20170525_models.ReportVoipProblemsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.ReportVoipProblemsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.ReportVoipProblemsResponse(),
-            await self.do_rpcrequest_async('ReportVoipProblems', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def report_voip_problems(
-        self,
-        request: dyvmsapi_20170525_models.ReportVoipProblemsRequest,
-    ) -> dyvmsapi_20170525_models.ReportVoipProblemsResponse:
+        request: dyvmsapi_20170525_models.RefreshMqttTokenRequest,
+    ) -> dyvmsapi_20170525_models.RefreshMqttTokenResponse:
         runtime = util_models.RuntimeOptions()
-        return self.report_voip_problems_with_options(request, runtime)
+        return self.refresh_mqtt_token_with_options(request, runtime)
 
-    async def report_voip_problems_async(
+    async def refresh_mqtt_token_async(
         self,
-        request: dyvmsapi_20170525_models.ReportVoipProblemsRequest,
-    ) -> dyvmsapi_20170525_models.ReportVoipProblemsResponse:
+        request: dyvmsapi_20170525_models.RefreshMqttTokenRequest,
+    ) -> dyvmsapi_20170525_models.RefreshMqttTokenResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.report_voip_problems_with_options_async(request, runtime)
+        return await self.refresh_mqtt_token_with_options_async(request, runtime)
 
     def send_verification_with_options(
         self,
@@ -1894,12 +2835,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SendVerificationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizType'] = request.biz_type
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Target'] = request.target
+        query['VerifyType'] = request.verify_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SendVerification',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.SendVerificationResponse(),
-            self.do_rpcrequest('SendVerification', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def send_verification_with_options_async(
@@ -1908,12 +2868,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SendVerificationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizType'] = request.biz_type
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Target'] = request.target
+        query['VerifyType'] = request.verify_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SendVerification',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.SendVerificationResponse(),
-            await self.do_rpcrequest_async('SendVerification', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def send_verification(
@@ -1936,12 +2915,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SetTransferCalleePoolConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CalledRouteMode'] = request.called_route_mode
+        query['Details'] = request.details
+        query['OwnerId'] = request.owner_id
+        query['PhoneNumber'] = request.phone_number
+        query['QualificationId'] = request.qualification_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetTransferCalleePoolConfig',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.SetTransferCalleePoolConfigResponse(),
-            self.do_rpcrequest('SetTransferCalleePoolConfig', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_transfer_callee_pool_config_with_options_async(
@@ -1950,12 +2949,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SetTransferCalleePoolConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CalledRouteMode'] = request.called_route_mode
+        query['Details'] = request.details
+        query['OwnerId'] = request.owner_id
+        query['PhoneNumber'] = request.phone_number
+        query['QualificationId'] = request.qualification_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetTransferCalleePoolConfig',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.SetTransferCalleePoolConfigResponse(),
-            await self.do_rpcrequest_async('SetTransferCalleePoolConfig', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_transfer_callee_pool_config(
@@ -1978,12 +2997,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SingleCallByTtsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CalledNumber'] = request.called_number
+        query['CalledShowNumber'] = request.called_show_number
+        query['OutId'] = request.out_id
+        query['OwnerId'] = request.owner_id
+        query['PlayTimes'] = request.play_times
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Speed'] = request.speed
+        query['TtsCode'] = request.tts_code
+        query['TtsParam'] = request.tts_param
+        query['Volume'] = request.volume
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SingleCallByTts',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.SingleCallByTtsResponse(),
-            self.do_rpcrequest('SingleCallByTts', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def single_call_by_tts_with_options_async(
@@ -1992,12 +3035,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SingleCallByTtsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CalledNumber'] = request.called_number
+        query['CalledShowNumber'] = request.called_show_number
+        query['OutId'] = request.out_id
+        query['OwnerId'] = request.owner_id
+        query['PlayTimes'] = request.play_times
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Speed'] = request.speed
+        query['TtsCode'] = request.tts_code
+        query['TtsParam'] = request.tts_param
+        query['Volume'] = request.volume
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SingleCallByTts',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.SingleCallByTtsResponse(),
-            await self.do_rpcrequest_async('SingleCallByTts', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def single_call_by_tts(
@@ -2020,12 +3087,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SingleCallByVoiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CalledNumber'] = request.called_number
+        query['CalledShowNumber'] = request.called_show_number
+        query['OutId'] = request.out_id
+        query['OwnerId'] = request.owner_id
+        query['PlayTimes'] = request.play_times
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Speed'] = request.speed
+        query['VoiceCode'] = request.voice_code
+        query['Volume'] = request.volume
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SingleCallByVoice',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.SingleCallByVoiceResponse(),
-            self.do_rpcrequest('SingleCallByVoice', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def single_call_by_voice_with_options_async(
@@ -2034,12 +3124,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SingleCallByVoiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CalledNumber'] = request.called_number
+        query['CalledShowNumber'] = request.called_show_number
+        query['OutId'] = request.out_id
+        query['OwnerId'] = request.owner_id
+        query['PlayTimes'] = request.play_times
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Speed'] = request.speed
+        query['VoiceCode'] = request.voice_code
+        query['Volume'] = request.volume
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SingleCallByVoice',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.SingleCallByVoiceResponse(),
-            await self.do_rpcrequest_async('SingleCallByVoice', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def single_call_by_voice(
@@ -2062,12 +3175,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SmartCallResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ActionCodeBreak'] = request.action_code_break
+        query['ActionCodeTimeBreak'] = request.action_code_time_break
+        query['AsrBaseId'] = request.asr_base_id
+        query['AsrModelId'] = request.asr_model_id
+        query['BackgroundFileCode'] = request.background_file_code
+        query['BackgroundSpeed'] = request.background_speed
+        query['BackgroundVolume'] = request.background_volume
+        query['CalledNumber'] = request.called_number
+        query['CalledShowNumber'] = request.called_show_number
+        query['DynamicId'] = request.dynamic_id
+        query['EarlyMediaAsr'] = request.early_media_asr
+        query['EnableITN'] = request.enable_itn
+        query['MuteTime'] = request.mute_time
+        query['OutId'] = request.out_id
+        query['OwnerId'] = request.owner_id
+        query['PauseTime'] = request.pause_time
+        query['RecordFlag'] = request.record_flag
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SessionTimeout'] = request.session_timeout
+        query['Speed'] = request.speed
+        query['StreamAsr'] = request.stream_asr
+        query['TtsConf'] = request.tts_conf
+        query['TtsSpeed'] = request.tts_speed
+        query['TtsStyle'] = request.tts_style
+        query['TtsVolume'] = request.tts_volume
+        query['VoiceCode'] = request.voice_code
+        query['VoiceCodeParam'] = request.voice_code_param
+        query['Volume'] = request.volume
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SmartCall',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.SmartCallResponse(),
-            self.do_rpcrequest('SmartCall', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def smart_call_with_options_async(
@@ -2076,12 +3231,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SmartCallResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ActionCodeBreak'] = request.action_code_break
+        query['ActionCodeTimeBreak'] = request.action_code_time_break
+        query['AsrBaseId'] = request.asr_base_id
+        query['AsrModelId'] = request.asr_model_id
+        query['BackgroundFileCode'] = request.background_file_code
+        query['BackgroundSpeed'] = request.background_speed
+        query['BackgroundVolume'] = request.background_volume
+        query['CalledNumber'] = request.called_number
+        query['CalledShowNumber'] = request.called_show_number
+        query['DynamicId'] = request.dynamic_id
+        query['EarlyMediaAsr'] = request.early_media_asr
+        query['EnableITN'] = request.enable_itn
+        query['MuteTime'] = request.mute_time
+        query['OutId'] = request.out_id
+        query['OwnerId'] = request.owner_id
+        query['PauseTime'] = request.pause_time
+        query['RecordFlag'] = request.record_flag
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SessionTimeout'] = request.session_timeout
+        query['Speed'] = request.speed
+        query['StreamAsr'] = request.stream_asr
+        query['TtsConf'] = request.tts_conf
+        query['TtsSpeed'] = request.tts_speed
+        query['TtsStyle'] = request.tts_style
+        query['TtsVolume'] = request.tts_volume
+        query['VoiceCode'] = request.voice_code
+        query['VoiceCodeParam'] = request.voice_code_param
+        query['Volume'] = request.volume
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SmartCall',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.SmartCallResponse(),
-            await self.do_rpcrequest_async('SmartCall', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def smart_call(
@@ -2104,12 +3301,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SmartCallOperateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CallId'] = request.call_id
+        query['Command'] = request.command
+        query['OwnerId'] = request.owner_id
+        query['Param'] = request.param
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SmartCallOperate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.SmartCallOperateResponse(),
-            self.do_rpcrequest('SmartCallOperate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def smart_call_operate_with_options_async(
@@ -2118,12 +3334,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SmartCallOperateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CallId'] = request.call_id
+        query['Command'] = request.command
+        query['OwnerId'] = request.owner_id
+        query['Param'] = request.param
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SmartCallOperate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.SmartCallOperateResponse(),
-            await self.do_rpcrequest_async('SmartCallOperate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def smart_call_operate(
@@ -2140,60 +3375,36 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.smart_call_operate_with_options_async(request, runtime)
 
-    def start_micro_outbound_with_options(
-        self,
-        request: dyvmsapi_20170525_models.StartMicroOutboundRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.StartMicroOutboundResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.StartMicroOutboundResponse(),
-            self.do_rpcrequest('StartMicroOutbound', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def start_micro_outbound_with_options_async(
-        self,
-        request: dyvmsapi_20170525_models.StartMicroOutboundRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.StartMicroOutboundResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.StartMicroOutboundResponse(),
-            await self.do_rpcrequest_async('StartMicroOutbound', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def start_micro_outbound(
-        self,
-        request: dyvmsapi_20170525_models.StartMicroOutboundRequest,
-    ) -> dyvmsapi_20170525_models.StartMicroOutboundResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.start_micro_outbound_with_options(request, runtime)
-
-    async def start_micro_outbound_async(
-        self,
-        request: dyvmsapi_20170525_models.StartMicroOutboundRequest,
-    ) -> dyvmsapi_20170525_models.StartMicroOutboundResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.start_micro_outbound_with_options_async(request, runtime)
-
     def start_robot_task_with_options(
         self,
         request: dyvmsapi_20170525_models.StartRobotTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.StartRobotTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ScheduleTime'] = request.schedule_time
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StartRobotTask',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.StartRobotTaskResponse(),
-            self.do_rpcrequest('StartRobotTask', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def start_robot_task_with_options_async(
@@ -2202,12 +3413,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.StartRobotTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ScheduleTime'] = request.schedule_time
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StartRobotTask',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.StartRobotTaskResponse(),
-            await self.do_rpcrequest_async('StartRobotTask', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_robot_task(
@@ -2230,12 +3459,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.StopRobotTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopRobotTask',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.StopRobotTaskResponse(),
-            self.do_rpcrequest('StopRobotTask', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def stop_robot_task_with_options_async(
@@ -2244,12 +3490,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.StopRobotTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopRobotTask',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.StopRobotTaskResponse(),
-            await self.do_rpcrequest_async('StopRobotTask', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_robot_task(
@@ -2272,12 +3535,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SubmitHotlineTransferRegisterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Agreement'] = request.agreement
+        query['HotlineNumber'] = request.hotline_number
+        query['OperatorIdentityCard'] = request.operator_identity_card
+        query['OperatorMail'] = request.operator_mail
+        query['OperatorMailVerifyCode'] = request.operator_mail_verify_code
+        query['OperatorMobile'] = request.operator_mobile
+        query['OperatorMobileVerifyCode'] = request.operator_mobile_verify_code
+        query['OperatorName'] = request.operator_name
+        query['OwnerId'] = request.owner_id
+        query['QualificationId'] = request.qualification_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TransferPhoneNumberInfos'] = request.transfer_phone_number_infos
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitHotlineTransferRegister',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.SubmitHotlineTransferRegisterResponse(),
-            self.do_rpcrequest('SubmitHotlineTransferRegister', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def submit_hotline_transfer_register_with_options_async(
@@ -2286,12 +3575,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.SubmitHotlineTransferRegisterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Agreement'] = request.agreement
+        query['HotlineNumber'] = request.hotline_number
+        query['OperatorIdentityCard'] = request.operator_identity_card
+        query['OperatorMail'] = request.operator_mail
+        query['OperatorMailVerifyCode'] = request.operator_mail_verify_code
+        query['OperatorMobile'] = request.operator_mobile
+        query['OperatorMobileVerifyCode'] = request.operator_mobile_verify_code
+        query['OperatorName'] = request.operator_name
+        query['OwnerId'] = request.owner_id
+        query['QualificationId'] = request.qualification_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TransferPhoneNumberInfos'] = request.transfer_phone_number_infos
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitHotlineTransferRegister',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.SubmitHotlineTransferRegisterResponse(),
-            await self.do_rpcrequest_async('SubmitHotlineTransferRegister', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_hotline_transfer_register(
@@ -2308,102 +3623,38 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_hotline_transfer_register_with_options_async(request, runtime)
 
-    def unbind_number_and_voip_id_with_options(
-        self,
-        request: dyvmsapi_20170525_models.UnbindNumberAndVoipIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.UnbindNumberAndVoipIdResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.UnbindNumberAndVoipIdResponse(),
-            self.do_rpcrequest('UnbindNumberAndVoipId', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def unbind_number_and_voip_id_with_options_async(
-        self,
-        request: dyvmsapi_20170525_models.UnbindNumberAndVoipIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.UnbindNumberAndVoipIdResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.UnbindNumberAndVoipIdResponse(),
-            await self.do_rpcrequest_async('UnbindNumberAndVoipId', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def unbind_number_and_voip_id(
-        self,
-        request: dyvmsapi_20170525_models.UnbindNumberAndVoipIdRequest,
-    ) -> dyvmsapi_20170525_models.UnbindNumberAndVoipIdResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.unbind_number_and_voip_id_with_options(request, runtime)
-
-    async def unbind_number_and_voip_id_async(
-        self,
-        request: dyvmsapi_20170525_models.UnbindNumberAndVoipIdRequest,
-    ) -> dyvmsapi_20170525_models.UnbindNumberAndVoipIdResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.unbind_number_and_voip_id_with_options_async(request, runtime)
-
-    def undo_rtc_number_auth_with_options(
-        self,
-        request: dyvmsapi_20170525_models.UndoRtcNumberAuthRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.UndoRtcNumberAuthResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.UndoRtcNumberAuthResponse(),
-            self.do_rpcrequest('UndoRtcNumberAuth', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def undo_rtc_number_auth_with_options_async(
-        self,
-        request: dyvmsapi_20170525_models.UndoRtcNumberAuthRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.UndoRtcNumberAuthResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.UndoRtcNumberAuthResponse(),
-            await self.do_rpcrequest_async('UndoRtcNumberAuth', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def undo_rtc_number_auth(
-        self,
-        request: dyvmsapi_20170525_models.UndoRtcNumberAuthRequest,
-    ) -> dyvmsapi_20170525_models.UndoRtcNumberAuthResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.undo_rtc_number_auth_with_options(request, runtime)
-
-    async def undo_rtc_number_auth_async(
-        self,
-        request: dyvmsapi_20170525_models.UndoRtcNumberAuthRequest,
-    ) -> dyvmsapi_20170525_models.UndoRtcNumberAuthResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.undo_rtc_number_auth_with_options_async(request, runtime)
-
     def upload_robot_task_called_file_with_options(
         self,
         request: dyvmsapi_20170525_models.UploadRobotTaskCalledFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.UploadRobotTaskCalledFileResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CalledNumber'] = request.called_number
+        query['Id'] = request.id
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TtsParam'] = request.tts_param
+        query['TtsParamHead'] = request.tts_param_head
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UploadRobotTaskCalledFile',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.UploadRobotTaskCalledFileResponse(),
-            self.do_rpcrequest('UploadRobotTaskCalledFile', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def upload_robot_task_called_file_with_options_async(
@@ -2412,12 +3663,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dyvmsapi_20170525_models.UploadRobotTaskCalledFileResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CalledNumber'] = request.called_number
+        query['Id'] = request.id
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TtsParam'] = request.tts_param
+        query['TtsParamHead'] = request.tts_param_head
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UploadRobotTaskCalledFile',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dyvmsapi_20170525_models.UploadRobotTaskCalledFileResponse(),
-            await self.do_rpcrequest_async('UploadRobotTaskCalledFile', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def upload_robot_task_called_file(
@@ -2433,87 +3704,3 @@ class Client(OpenApiClient):
     ) -> dyvmsapi_20170525_models.UploadRobotTaskCalledFileResponse:
         runtime = util_models.RuntimeOptions()
         return await self.upload_robot_task_called_file_with_options_async(request, runtime)
-
-    def voip_add_account_with_options(
-        self,
-        request: dyvmsapi_20170525_models.VoipAddAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.VoipAddAccountResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.VoipAddAccountResponse(),
-            self.do_rpcrequest('VoipAddAccount', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def voip_add_account_with_options_async(
-        self,
-        request: dyvmsapi_20170525_models.VoipAddAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.VoipAddAccountResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.VoipAddAccountResponse(),
-            await self.do_rpcrequest_async('VoipAddAccount', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def voip_add_account(
-        self,
-        request: dyvmsapi_20170525_models.VoipAddAccountRequest,
-    ) -> dyvmsapi_20170525_models.VoipAddAccountResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.voip_add_account_with_options(request, runtime)
-
-    async def voip_add_account_async(
-        self,
-        request: dyvmsapi_20170525_models.VoipAddAccountRequest,
-    ) -> dyvmsapi_20170525_models.VoipAddAccountResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.voip_add_account_with_options_async(request, runtime)
-
-    def voip_get_token_with_options(
-        self,
-        request: dyvmsapi_20170525_models.VoipGetTokenRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.VoipGetTokenResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.VoipGetTokenResponse(),
-            self.do_rpcrequest('VoipGetToken', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def voip_get_token_with_options_async(
-        self,
-        request: dyvmsapi_20170525_models.VoipGetTokenRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyvmsapi_20170525_models.VoipGetTokenResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dyvmsapi_20170525_models.VoipGetTokenResponse(),
-            await self.do_rpcrequest_async('VoipGetToken', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def voip_get_token(
-        self,
-        request: dyvmsapi_20170525_models.VoipGetTokenRequest,
-    ) -> dyvmsapi_20170525_models.VoipGetTokenResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.voip_get_token_with_options(request, runtime)
-
-    async def voip_get_token_async(
-        self,
-        request: dyvmsapi_20170525_models.VoipGetTokenRequest,
-    ) -> dyvmsapi_20170525_models.VoipGetTokenResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.voip_get_token_with_options_async(request, runtime)

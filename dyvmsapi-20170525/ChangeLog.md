@@ -1,3 +1,6 @@
+2021-11-29 Version: 2.1.1
+- Update Dyvmsapi SDK.
+
 2021-10-26 Version: 2.1.0
 - Update Dyvmsapi SDK.
 
