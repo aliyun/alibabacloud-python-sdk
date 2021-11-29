@@ -4,6 +4,133 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
+class AddLogicTableRouteConfigRequest(TeaModel):
+    def __init__(
+        self,
+        route_expr: str = None,
+        route_key: str = None,
+        table_id: int = None,
+        tid: int = None,
+    ):
+        self.route_expr = route_expr
+        self.route_key = route_key
+        self.table_id = table_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.route_expr is not None:
+            result['RouteExpr'] = self.route_expr
+        if self.route_key is not None:
+            result['RouteKey'] = self.route_key
+        if self.table_id is not None:
+            result['TableId'] = self.table_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RouteExpr') is not None:
+            self.route_expr = m.get('RouteExpr')
+        if m.get('RouteKey') is not None:
+            self.route_key = m.get('RouteKey')
+        if m.get('TableId') is not None:
+            self.table_id = m.get('TableId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class AddLogicTableRouteConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddLogicTableRouteConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: AddLogicTableRouteConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = AddLogicTableRouteConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ApproveOrderRequest(TeaModel):
     def __init__(
         self,
@@ -3703,6 +3830,127 @@ class DeleteLogicDatabaseResponse(TeaModel):
         return self
 
 
+class DeleteLogicTableRouteConfigRequest(TeaModel):
+    def __init__(
+        self,
+        route_key: str = None,
+        table_id: int = None,
+        tid: int = None,
+    ):
+        self.route_key = route_key
+        self.table_id = table_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.route_key is not None:
+            result['RouteKey'] = self.route_key
+        if self.table_id is not None:
+            result['TableId'] = self.table_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RouteKey') is not None:
+            self.route_key = m.get('RouteKey')
+        if m.get('TableId') is not None:
+            self.table_id = m.get('TableId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class DeleteLogicTableRouteConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteLogicTableRouteConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteLogicTableRouteConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteLogicTableRouteConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteProxyRequest(TeaModel):
     def __init__(
         self,
@@ -5505,6 +5753,128 @@ class GetApprovalDetailResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetApprovalDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDBTaskSQLJobLogRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: int = None,
+        tid: int = None,
+    ):
+        self.job_id = job_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class GetDBTaskSQLJobLogResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        log: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.log = log
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.log is not None:
+            result['Log'] = self.log
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Log') is not None:
+            self.log = m.get('Log')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetDBTaskSQLJobLogResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetDBTaskSQLJobLogResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetDBTaskSQLJobLogResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14333,6 +14703,7 @@ class ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList(TeaModel):
         execute_count: int = None,
         job_detail_id: int = None,
         job_id: int = None,
+        log: str = None,
         logic: bool = None,
         skip: bool = None,
         sql_type: str = None,
@@ -14343,6 +14714,7 @@ class ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList(TeaModel):
         self.execute_count = execute_count
         self.job_detail_id = job_detail_id
         self.job_id = job_id
+        self.log = log
         self.logic = logic
         self.skip = skip
         self.sql_type = sql_type
@@ -14367,6 +14739,8 @@ class ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList(TeaModel):
             result['JobDetailId'] = self.job_detail_id
         if self.job_id is not None:
             result['JobId'] = self.job_id
+        if self.log is not None:
+            result['Log'] = self.log
         if self.logic is not None:
             result['Logic'] = self.logic
         if self.skip is not None:
@@ -14389,6 +14763,8 @@ class ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList(TeaModel):
             self.job_detail_id = m.get('JobDetailId')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
+        if m.get('Log') is not None:
+            self.log = m.get('Log')
         if m.get('Logic') is not None:
             self.logic = m.get('Logic')
         if m.get('Skip') is not None:
@@ -17546,6 +17922,203 @@ class ListLogicDatabasesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListLogicDatabasesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListLogicTableRouteConfigRequest(TeaModel):
+    def __init__(
+        self,
+        table_id: int = None,
+        tid: int = None,
+    ):
+        self.table_id = table_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.table_id is not None:
+            result['TableId'] = self.table_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TableId') is not None:
+            self.table_id = m.get('TableId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListLogicTableRouteConfigResponseBodyLogicTableRouteConfigListLogicTableRouteConfig(TeaModel):
+    def __init__(
+        self,
+        route_expr: str = None,
+        route_key: str = None,
+        table_id: int = None,
+    ):
+        self.route_expr = route_expr
+        self.route_key = route_key
+        self.table_id = table_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.route_expr is not None:
+            result['RouteExpr'] = self.route_expr
+        if self.route_key is not None:
+            result['RouteKey'] = self.route_key
+        if self.table_id is not None:
+            result['TableId'] = self.table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RouteExpr') is not None:
+            self.route_expr = m.get('RouteExpr')
+        if m.get('RouteKey') is not None:
+            self.route_key = m.get('RouteKey')
+        if m.get('TableId') is not None:
+            self.table_id = m.get('TableId')
+        return self
+
+
+class ListLogicTableRouteConfigResponseBodyLogicTableRouteConfigList(TeaModel):
+    def __init__(
+        self,
+        logic_table_route_config: List[ListLogicTableRouteConfigResponseBodyLogicTableRouteConfigListLogicTableRouteConfig] = None,
+    ):
+        self.logic_table_route_config = logic_table_route_config
+
+    def validate(self):
+        if self.logic_table_route_config:
+            for k in self.logic_table_route_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['LogicTableRouteConfig'] = []
+        if self.logic_table_route_config is not None:
+            for k in self.logic_table_route_config:
+                result['LogicTableRouteConfig'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.logic_table_route_config = []
+        if m.get('LogicTableRouteConfig') is not None:
+            for k in m.get('LogicTableRouteConfig'):
+                temp_model = ListLogicTableRouteConfigResponseBodyLogicTableRouteConfigListLogicTableRouteConfig()
+                self.logic_table_route_config.append(temp_model.from_map(k))
+        return self
+
+
+class ListLogicTableRouteConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        logic_table_route_config_list: ListLogicTableRouteConfigResponseBodyLogicTableRouteConfigList = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.logic_table_route_config_list = logic_table_route_config_list
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.logic_table_route_config_list:
+            self.logic_table_route_config_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.logic_table_route_config_list is not None:
+            result['LogicTableRouteConfigList'] = self.logic_table_route_config_list.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('LogicTableRouteConfigList') is not None:
+            temp_model = ListLogicTableRouteConfigResponseBodyLogicTableRouteConfigList()
+            self.logic_table_route_config_list = temp_model.from_map(m['LogicTableRouteConfigList'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListLogicTableRouteConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListLogicTableRouteConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListLogicTableRouteConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21991,6 +22564,128 @@ class ListWorkFlowTemplatesResponse(TeaModel):
         return self
 
 
+class ModifyDataCorrectExecSQLRequest(TeaModel):
+    def __init__(
+        self,
+        exec_sql: str = None,
+        order_id: int = None,
+        tid: int = None,
+    ):
+        self.exec_sql = exec_sql
+        self.order_id = order_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exec_sql is not None:
+            result['ExecSQL'] = self.exec_sql
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExecSQL') is not None:
+            self.exec_sql = m.get('ExecSQL')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ModifyDataCorrectExecSQLResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyDataCorrectExecSQLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyDataCorrectExecSQLResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyDataCorrectExecSQLResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RegisterInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -22355,6 +23050,122 @@ class RegisterUserResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = RegisterUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RetryDataCorrectPreCheckRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        tid: int = None,
+    ):
+        self.order_id = order_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class RetryDataCorrectPreCheckResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RetryDataCorrectPreCheckResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RetryDataCorrectPreCheckResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RetryDataCorrectPreCheckResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

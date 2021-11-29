@@ -41,18 +41,111 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_logic_table_route_config_with_options(
+        self,
+        request: dms_enterprise_20181101_models.AddLogicTableRouteConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.AddLogicTableRouteConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['RouteExpr'] = request.route_expr
+        query['RouteKey'] = request.route_key
+        query['TableId'] = request.table_id
+        query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddLogicTableRouteConfig',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.AddLogicTableRouteConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_logic_table_route_config_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.AddLogicTableRouteConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.AddLogicTableRouteConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['RouteExpr'] = request.route_expr
+        query['RouteKey'] = request.route_key
+        query['TableId'] = request.table_id
+        query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddLogicTableRouteConfig',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.AddLogicTableRouteConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_logic_table_route_config(
+        self,
+        request: dms_enterprise_20181101_models.AddLogicTableRouteConfigRequest,
+    ) -> dms_enterprise_20181101_models.AddLogicTableRouteConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_logic_table_route_config_with_options(request, runtime)
+
+    async def add_logic_table_route_config_async(
+        self,
+        request: dms_enterprise_20181101_models.AddLogicTableRouteConfigRequest,
+    ) -> dms_enterprise_20181101_models.AddLogicTableRouteConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_logic_table_route_config_with_options_async(request, runtime)
+
     def approve_order_with_options(
         self,
         request: dms_enterprise_20181101_models.ApproveOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ApproveOrderResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ApprovalType'] = request.approval_type
+        query['Comment'] = request.comment
+        query['Tid'] = request.tid
+        query['WorkflowInstanceId'] = request.workflow_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ApproveOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ApproveOrderResponse(),
-            self.do_rpcrequest('ApproveOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def approve_order_with_options_async(
@@ -61,12 +154,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ApproveOrderResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ApprovalType'] = request.approval_type
+        query['Comment'] = request.comment
+        query['Tid'] = request.tid
+        query['WorkflowInstanceId'] = request.workflow_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ApproveOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ApproveOrderResponse(),
-            await self.do_rpcrequest_async('ApproveOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def approve_order(
@@ -89,12 +199,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ChangeColumnSecLevelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ColumnName'] = request.column_name
+        query['DbId'] = request.db_id
+        query['IsLogic'] = request.is_logic
+        query['NewLevel'] = request.new_level
+        query['SchemaName'] = request.schema_name
+        query['TableName'] = request.table_name
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ChangeColumnSecLevel',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ChangeColumnSecLevelResponse(),
-            self.do_rpcrequest('ChangeColumnSecLevel', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def change_column_sec_level_with_options_async(
@@ -103,12 +233,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ChangeColumnSecLevelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ColumnName'] = request.column_name
+        query['DbId'] = request.db_id
+        query['IsLogic'] = request.is_logic
+        query['NewLevel'] = request.new_level
+        query['SchemaName'] = request.schema_name
+        query['TableName'] = request.table_name
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ChangeColumnSecLevel',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ChangeColumnSecLevelResponse(),
-            await self.do_rpcrequest_async('ChangeColumnSecLevel', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def change_column_sec_level(
@@ -131,12 +281,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CloseOrderResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CloseReason'] = request.close_reason
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CloseOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CloseOrderResponse(),
-            self.do_rpcrequest('CloseOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def close_order_with_options_async(
@@ -145,12 +311,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CloseOrderResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CloseReason'] = request.close_reason
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CloseOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CloseOrderResponse(),
-            await self.do_rpcrequest_async('CloseOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def close_order(
@@ -179,12 +361,30 @@ class Client(OpenApiClient):
             request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        query['AttachmentKey'] = request.attachment_key
+        query['Comment'] = request.comment
+        query['Param'] = request.param_shrink
+        query['RelatedUserList'] = request.related_user_list_shrink
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateDataCorrectOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateDataCorrectOrderResponse(),
-            self.do_rpcrequest('CreateDataCorrectOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_data_correct_order_with_options_async(
@@ -199,12 +399,30 @@ class Client(OpenApiClient):
             request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        query['AttachmentKey'] = request.attachment_key
+        query['Comment'] = request.comment
+        query['Param'] = request.param_shrink
+        query['RelatedUserList'] = request.related_user_list_shrink
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateDataCorrectOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateDataCorrectOrderResponse(),
-            await self.do_rpcrequest_async('CreateDataCorrectOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_data_correct_order(
@@ -233,12 +451,30 @@ class Client(OpenApiClient):
             request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        query['AttachmentKey'] = request.attachment_key
+        query['Comment'] = request.comment
+        query['Param'] = request.param_shrink
+        query['RelatedUserList'] = request.related_user_list_shrink
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateDataCronClearOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateDataCronClearOrderResponse(),
-            self.do_rpcrequest('CreateDataCronClearOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_data_cron_clear_order_with_options_async(
@@ -253,12 +489,30 @@ class Client(OpenApiClient):
             request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        query['AttachmentKey'] = request.attachment_key
+        query['Comment'] = request.comment
+        query['Param'] = request.param_shrink
+        query['RelatedUserList'] = request.related_user_list_shrink
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateDataCronClearOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateDataCronClearOrderResponse(),
-            await self.do_rpcrequest_async('CreateDataCronClearOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_data_cron_clear_order(
@@ -287,12 +541,30 @@ class Client(OpenApiClient):
             request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        query['AttachmentKey'] = request.attachment_key
+        query['Comment'] = request.comment
+        query['Param'] = request.param_shrink
+        query['RelatedUserList'] = request.related_user_list_shrink
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateDataImportOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateDataImportOrderResponse(),
-            self.do_rpcrequest('CreateDataImportOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_data_import_order_with_options_async(
@@ -307,12 +579,30 @@ class Client(OpenApiClient):
             request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        query['AttachmentKey'] = request.attachment_key
+        query['Comment'] = request.comment
+        query['Param'] = request.param_shrink
+        query['RelatedUserList'] = request.related_user_list_shrink
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateDataImportOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateDataImportOrderResponse(),
-            await self.do_rpcrequest_async('CreateDataImportOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_data_import_order(
@@ -341,12 +631,30 @@ class Client(OpenApiClient):
             request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        query['AttachmentKey'] = request.attachment_key
+        query['Comment'] = request.comment
+        query['Param'] = request.param_shrink
+        query['RelatedUserList'] = request.related_user_list_shrink
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateFreeLockCorrectOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateFreeLockCorrectOrderResponse(),
-            self.do_rpcrequest('CreateFreeLockCorrectOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_free_lock_correct_order_with_options_async(
@@ -361,12 +669,30 @@ class Client(OpenApiClient):
             request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        query['AttachmentKey'] = request.attachment_key
+        query['Comment'] = request.comment
+        query['Param'] = request.param_shrink
+        query['RelatedUserList'] = request.related_user_list_shrink
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateFreeLockCorrectOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateFreeLockCorrectOrderResponse(),
-            await self.do_rpcrequest_async('CreateFreeLockCorrectOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_free_lock_correct_order(
@@ -393,12 +719,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.database_ids):
             request.database_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.database_ids, 'DatabaseIds', 'json')
+        query = {}
+        query['Alias'] = request.alias
+        query['DatabaseIds'] = request.database_ids_shrink
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateLogicDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateLogicDatabaseResponse(),
-            self.do_rpcrequest('CreateLogicDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_logic_database_with_options_async(
@@ -411,12 +753,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.database_ids):
             request.database_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.database_ids, 'DatabaseIds', 'json')
+        query = {}
+        query['Alias'] = request.alias
+        query['DatabaseIds'] = request.database_ids_shrink
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateLogicDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateLogicDatabaseResponse(),
-            await self.do_rpcrequest_async('CreateLogicDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_logic_database(
@@ -443,12 +801,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.plugin_param):
             request.plugin_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.plugin_param, 'PluginParam', 'json')
+        query = {}
+        query['AttachmentKey'] = request.attachment_key
+        query['Comment'] = request.comment
+        query['PluginType'] = request.plugin_type
+        query['RelatedUserList'] = request.related_user_list
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateOrderResponse(),
-            self.do_rpcrequest('CreateOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_order_with_options_async(
@@ -461,12 +837,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.plugin_param):
             request.plugin_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.plugin_param, 'PluginParam', 'json')
+        query = {}
+        query['AttachmentKey'] = request.attachment_key
+        query['Comment'] = request.comment
+        query['PluginType'] = request.plugin_type
+        query['RelatedUserList'] = request.related_user_list
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateOrderResponse(),
-            await self.do_rpcrequest_async('CreateOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_order(
@@ -489,12 +883,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateProxyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['Password'] = request.password
+        query['Tid'] = request.tid
+        query['Username'] = request.username
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateProxy',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateProxyResponse(),
-            self.do_rpcrequest('CreateProxy', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_proxy_with_options_async(
@@ -503,12 +914,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateProxyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['Password'] = request.password
+        query['Tid'] = request.tid
+        query['Username'] = request.username
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateProxy',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateProxyResponse(),
-            await self.do_rpcrequest_async('CreateProxy', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_proxy(
@@ -531,12 +959,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateProxyAccessResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IndepAccount'] = request.indep_account
+        query['IndepPassword'] = request.indep_password
+        query['ProxyId'] = request.proxy_id
+        query['Tid'] = request.tid
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateProxyAccess',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateProxyAccessResponse(),
-            self.do_rpcrequest('CreateProxyAccess', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_proxy_access_with_options_async(
@@ -545,12 +991,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateProxyAccessResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IndepAccount'] = request.indep_account
+        query['IndepPassword'] = request.indep_password
+        query['ProxyId'] = request.proxy_id
+        query['Tid'] = request.tid
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateProxyAccess',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateProxyAccessResponse(),
-            await self.do_rpcrequest_async('CreateProxyAccess', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_proxy_access(
@@ -573,12 +1037,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreatePublishGroupTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbId'] = request.db_id
+        query['Logic'] = request.logic
+        query['OrderId'] = request.order_id
+        query['PlanTime'] = request.plan_time
+        query['PublishStrategy'] = request.publish_strategy
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreatePublishGroupTask',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreatePublishGroupTaskResponse(),
-            self.do_rpcrequest('CreatePublishGroupTask', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_publish_group_task_with_options_async(
@@ -587,12 +1070,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreatePublishGroupTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbId'] = request.db_id
+        query['Logic'] = request.logic
+        query['OrderId'] = request.order_id
+        query['PlanTime'] = request.plan_time
+        query['PublishStrategy'] = request.publish_strategy
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreatePublishGroupTask',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreatePublishGroupTaskResponse(),
-            await self.do_rpcrequest_async('CreatePublishGroupTask', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_publish_group_task(
@@ -621,12 +1123,29 @@ class Client(OpenApiClient):
             request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        query['Comment'] = request.comment
+        query['Param'] = request.param_shrink
+        query['RelatedUserList'] = request.related_user_list_shrink
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateSQLReviewOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateSQLReviewOrderResponse(),
-            self.do_rpcrequest('CreateSQLReviewOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_sqlreview_order_with_options_async(
@@ -641,12 +1160,29 @@ class Client(OpenApiClient):
             request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        query['Comment'] = request.comment
+        query['Param'] = request.param_shrink
+        query['RelatedUserList'] = request.related_user_list_shrink
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateSQLReviewOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateSQLReviewOrderResponse(),
-            await self.do_rpcrequest_async('CreateSQLReviewOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_sqlreview_order(
@@ -675,12 +1211,30 @@ class Client(OpenApiClient):
             request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        query['AttachmentKey'] = request.attachment_key
+        query['Comment'] = request.comment
+        query['Param'] = request.param_shrink
+        query['RelatedUserList'] = request.related_user_list_shrink
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateStructSyncOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateStructSyncOrderResponse(),
-            self.do_rpcrequest('CreateStructSyncOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_struct_sync_order_with_options_async(
@@ -695,12 +1249,30 @@ class Client(OpenApiClient):
             request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        query['AttachmentKey'] = request.attachment_key
+        query['Comment'] = request.comment
+        query['Param'] = request.param_shrink
+        query['RelatedUserList'] = request.related_user_list_shrink
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateStructSyncOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateStructSyncOrderResponse(),
-            await self.do_rpcrequest_async('CreateStructSyncOrder', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_struct_sync_order(
@@ -723,12 +1295,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateUploadFileJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FileName'] = request.file_name
+        query['FileSource'] = request.file_source
+        query['Tid'] = request.tid
+        query['UploadURL'] = request.upload_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateUploadFileJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateUploadFileJobResponse(),
-            self.do_rpcrequest('CreateUploadFileJob', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_upload_file_job_with_options_async(
@@ -737,12 +1326,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateUploadFileJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FileName'] = request.file_name
+        query['FileSource'] = request.file_source
+        query['Tid'] = request.tid
+        query['UploadURL'] = request.upload_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateUploadFileJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateUploadFileJobResponse(),
-            await self.do_rpcrequest_async('CreateUploadFileJob', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_upload_file_job(
@@ -769,12 +1375,29 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.upload_target):
             request.upload_target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.upload_target), 'UploadTarget', 'json')
+        query = {}
+        query['FileName'] = request.file_name
+        query['FileSource'] = request.file_source
+        query['Tid'] = request.tid
+        query['UploadTarget'] = request.upload_target_shrink
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateUploadOSSFileJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateUploadOSSFileJobResponse(),
-            self.do_rpcrequest('CreateUploadOSSFileJob', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_upload_ossfile_job_with_options_async(
@@ -787,12 +1410,29 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.upload_target):
             request.upload_target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.upload_target), 'UploadTarget', 'json')
+        query = {}
+        query['FileName'] = request.file_name
+        query['FileSource'] = request.file_source
+        query['Tid'] = request.tid
+        query['UploadTarget'] = request.upload_target_shrink
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateUploadOSSFileJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.CreateUploadOSSFileJobResponse(),
-            await self.do_rpcrequest_async('CreateUploadOSSFileJob', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_upload_ossfile_job(
@@ -815,12 +1455,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Host'] = request.host
+        query['Port'] = request.port
+        query['Sid'] = request.sid
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.DeleteInstanceResponse(),
-            self.do_rpcrequest('DeleteInstance', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_instance_with_options_async(
@@ -829,12 +1486,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Host'] = request.host
+        query['Port'] = request.port
+        query['Sid'] = request.sid
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.DeleteInstanceResponse(),
-            await self.do_rpcrequest_async('DeleteInstance', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_instance(
@@ -857,12 +1531,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteLogicDatabaseResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['LogicDbId'] = request.logic_db_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteLogicDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.DeleteLogicDatabaseResponse(),
-            self.do_rpcrequest('DeleteLogicDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_logic_database_with_options_async(
@@ -871,12 +1560,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteLogicDatabaseResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['LogicDbId'] = request.logic_db_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteLogicDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.DeleteLogicDatabaseResponse(),
-            await self.do_rpcrequest_async('DeleteLogicDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_logic_database(
@@ -893,18 +1597,107 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_logic_database_with_options_async(request, runtime)
 
+    def delete_logic_table_route_config_with_options(
+        self,
+        request: dms_enterprise_20181101_models.DeleteLogicTableRouteConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteLogicTableRouteConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['RouteKey'] = request.route_key
+        query['TableId'] = request.table_id
+        query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteLogicTableRouteConfig',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteLogicTableRouteConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_logic_table_route_config_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteLogicTableRouteConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteLogicTableRouteConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['RouteKey'] = request.route_key
+        query['TableId'] = request.table_id
+        query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteLogicTableRouteConfig',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteLogicTableRouteConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_logic_table_route_config(
+        self,
+        request: dms_enterprise_20181101_models.DeleteLogicTableRouteConfigRequest,
+    ) -> dms_enterprise_20181101_models.DeleteLogicTableRouteConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_logic_table_route_config_with_options(request, runtime)
+
+    async def delete_logic_table_route_config_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteLogicTableRouteConfigRequest,
+    ) -> dms_enterprise_20181101_models.DeleteLogicTableRouteConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_logic_table_route_config_with_options_async(request, runtime)
+
     def delete_proxy_with_options(
         self,
         request: dms_enterprise_20181101_models.DeleteProxyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteProxyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProxyId'] = request.proxy_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteProxy',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.DeleteProxyResponse(),
-            self.do_rpcrequest('DeleteProxy', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_proxy_with_options_async(
@@ -913,12 +1706,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteProxyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProxyId'] = request.proxy_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteProxy',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.DeleteProxyResponse(),
-            await self.do_rpcrequest_async('DeleteProxy', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_proxy(
@@ -941,12 +1749,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteProxyAccessResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProxyAccessId'] = request.proxy_access_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteProxyAccess',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.DeleteProxyAccessResponse(),
-            self.do_rpcrequest('DeleteProxyAccess', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_proxy_access_with_options_async(
@@ -955,12 +1778,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteProxyAccessResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProxyAccessId'] = request.proxy_access_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteProxyAccess',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.DeleteProxyAccessResponse(),
-            await self.do_rpcrequest_async('DeleteProxyAccess', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_proxy_access(
@@ -983,12 +1821,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Tid'] = request.tid
+        query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteUser',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.DeleteUserResponse(),
-            self.do_rpcrequest('DeleteUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_user_with_options_async(
@@ -997,12 +1850,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Tid'] = request.tid
+        query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteUser',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.DeleteUserResponse(),
-            await self.do_rpcrequest_async('DeleteUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_user(
@@ -1025,12 +1893,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DisableUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Tid'] = request.tid
+        query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DisableUser',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.DisableUserResponse(),
-            self.do_rpcrequest('DisableUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def disable_user_with_options_async(
@@ -1039,12 +1922,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DisableUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Tid'] = request.tid
+        query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DisableUser',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.DisableUserResponse(),
-            await self.do_rpcrequest_async('DisableUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def disable_user(
@@ -1071,12 +1969,29 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.database_ids):
             request.database_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.database_ids, 'DatabaseIds', 'json')
+        query = {}
+        query['Alias'] = request.alias
+        query['DatabaseIds'] = request.database_ids_shrink
+        query['LogicDbId'] = request.logic_db_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='EditLogicDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.EditLogicDatabaseResponse(),
-            self.do_rpcrequest('EditLogicDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def edit_logic_database_with_options_async(
@@ -1089,12 +2004,29 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.database_ids):
             request.database_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.database_ids, 'DatabaseIds', 'json')
+        query = {}
+        query['Alias'] = request.alias
+        query['DatabaseIds'] = request.database_ids_shrink
+        query['LogicDbId'] = request.logic_db_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='EditLogicDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.EditLogicDatabaseResponse(),
-            await self.do_rpcrequest_async('EditLogicDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def edit_logic_database(
@@ -1117,12 +2049,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.EnableUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Tid'] = request.tid
+        query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='EnableUser',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.EnableUserResponse(),
-            self.do_rpcrequest('EnableUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def enable_user_with_options_async(
@@ -1131,12 +2078,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.EnableUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Tid'] = request.tid
+        query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='EnableUser',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.EnableUserResponse(),
-            await self.do_rpcrequest_async('EnableUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def enable_user(
@@ -1163,12 +2125,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.action_detail):
             request.action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.action_detail, 'ActionDetail', 'json')
+        query = {}
+        query['ActionDetail'] = request.action_detail_shrink
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ExecuteDataCorrect',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ExecuteDataCorrectResponse(),
-            self.do_rpcrequest('ExecuteDataCorrect', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def execute_data_correct_with_options_async(
@@ -1181,12 +2159,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.action_detail):
             request.action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.action_detail, 'ActionDetail', 'json')
+        query = {}
+        query['ActionDetail'] = request.action_detail_shrink
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ExecuteDataCorrect',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ExecuteDataCorrectResponse(),
-            await self.do_rpcrequest_async('ExecuteDataCorrect', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def execute_data_correct(
@@ -1213,12 +2207,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.action_detail):
             request.action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.action_detail, 'ActionDetail', 'json')
+        query = {}
+        query['ActionDetail'] = request.action_detail_shrink
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ExecuteDataExport',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ExecuteDataExportResponse(),
-            self.do_rpcrequest('ExecuteDataExport', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def execute_data_export_with_options_async(
@@ -1231,12 +2241,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.action_detail):
             request.action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.action_detail, 'ActionDetail', 'json')
+        query = {}
+        query['ActionDetail'] = request.action_detail_shrink
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ExecuteDataExport',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ExecuteDataExportResponse(),
-            await self.do_rpcrequest_async('ExecuteDataExport', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def execute_data_export(
@@ -1259,12 +2285,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ExecuteScriptResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbId'] = request.db_id
+        query['Logic'] = request.logic
+        query['Script'] = request.script
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ExecuteScript',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ExecuteScriptResponse(),
-            self.do_rpcrequest('ExecuteScript', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def execute_script_with_options_async(
@@ -1273,12 +2316,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ExecuteScriptResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbId'] = request.db_id
+        query['Logic'] = request.logic
+        query['Script'] = request.script
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ExecuteScript',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ExecuteScriptResponse(),
-            await self.do_rpcrequest_async('ExecuteScript', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def execute_script(
@@ -1301,12 +2361,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ExecuteStructSyncResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ExecuteStructSync',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ExecuteStructSyncResponse(),
-            self.do_rpcrequest('ExecuteStructSync', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def execute_struct_sync_with_options_async(
@@ -1315,12 +2390,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ExecuteStructSyncResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ExecuteStructSync',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ExecuteStructSyncResponse(),
-            await self.do_rpcrequest_async('ExecuteStructSync', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def execute_struct_sync(
@@ -1343,12 +2433,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetApprovalDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Tid'] = request.tid
+        query['WorkflowInstanceId'] = request.workflow_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetApprovalDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetApprovalDetailResponse(),
-            self.do_rpcrequest('GetApprovalDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_approval_detail_with_options_async(
@@ -1357,12 +2462,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetApprovalDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Tid'] = request.tid
+        query['WorkflowInstanceId'] = request.workflow_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetApprovalDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetApprovalDetailResponse(),
-            await self.do_rpcrequest_async('GetApprovalDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_approval_detail(
@@ -1379,18 +2499,105 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_approval_detail_with_options_async(request, runtime)
 
+    def get_dbtask_sqljob_log_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetDBTaskSQLJobLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDBTaskSQLJobLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['JobId'] = request.job_id
+        query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDBTaskSQLJobLog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDBTaskSQLJobLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dbtask_sqljob_log_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDBTaskSQLJobLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDBTaskSQLJobLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['JobId'] = request.job_id
+        query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDBTaskSQLJobLog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDBTaskSQLJobLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dbtask_sqljob_log(
+        self,
+        request: dms_enterprise_20181101_models.GetDBTaskSQLJobLogRequest,
+    ) -> dms_enterprise_20181101_models.GetDBTaskSQLJobLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_dbtask_sqljob_log_with_options(request, runtime)
+
+    async def get_dbtask_sqljob_log_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDBTaskSQLJobLogRequest,
+    ) -> dms_enterprise_20181101_models.GetDBTaskSQLJobLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_dbtask_sqljob_log_with_options_async(request, runtime)
+
     def get_dbtopology_with_options(
         self,
         request: dms_enterprise_20181101_models.GetDBTopologyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDBTopologyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['LogicDbId'] = request.logic_db_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDBTopology',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetDBTopologyResponse(),
-            self.do_rpcrequest('GetDBTopology', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_dbtopology_with_options_async(
@@ -1399,12 +2606,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDBTopologyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['LogicDbId'] = request.logic_db_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDBTopology',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetDBTopologyResponse(),
-            await self.do_rpcrequest_async('GetDBTopology', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_dbtopology(
@@ -1431,12 +2653,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.action_detail):
             request.action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.action_detail, 'ActionDetail', 'json')
+        query = {}
+        query['ActionDetail'] = request.action_detail_shrink
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDataCorrectBackupFiles',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetDataCorrectBackupFilesResponse(),
-            self.do_rpcrequest('GetDataCorrectBackupFiles', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_data_correct_backup_files_with_options_async(
@@ -1449,12 +2687,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.action_detail):
             request.action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.action_detail, 'ActionDetail', 'json')
+        query = {}
+        query['ActionDetail'] = request.action_detail_shrink
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDataCorrectBackupFiles',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetDataCorrectBackupFilesResponse(),
-            await self.do_rpcrequest_async('GetDataCorrectBackupFiles', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_data_correct_backup_files(
@@ -1477,12 +2731,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCorrectOrderDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDataCorrectOrderDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetDataCorrectOrderDetailResponse(),
-            self.do_rpcrequest('GetDataCorrectOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_data_correct_order_detail_with_options_async(
@@ -1491,12 +2760,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCorrectOrderDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDataCorrectOrderDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetDataCorrectOrderDetailResponse(),
-            await self.do_rpcrequest_async('GetDataCorrectOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_data_correct_order_detail(
@@ -1519,12 +2803,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCorrectSQLFileResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDataCorrectSQLFile',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetDataCorrectSQLFileResponse(),
-            self.do_rpcrequest('GetDataCorrectSQLFile', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_data_correct_sqlfile_with_options_async(
@@ -1533,12 +2832,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCorrectSQLFileResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDataCorrectSQLFile',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetDataCorrectSQLFileResponse(),
-            await self.do_rpcrequest_async('GetDataCorrectSQLFile', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_data_correct_sqlfile(
@@ -1561,12 +2875,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDataCorrectTaskDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse(),
-            self.do_rpcrequest('GetDataCorrectTaskDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_data_correct_task_detail_with_options_async(
@@ -1575,12 +2904,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDataCorrectTaskDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse(),
-            await self.do_rpcrequest_async('GetDataCorrectTaskDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_data_correct_task_detail(
@@ -1603,12 +2947,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDataCronClearTaskDetailList',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse(),
-            self.do_rpcrequest('GetDataCronClearTaskDetailList', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_data_cron_clear_task_detail_list_with_options_async(
@@ -1617,12 +2978,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDataCronClearTaskDetailList',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse(),
-            await self.do_rpcrequest_async('GetDataCronClearTaskDetailList', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_data_cron_clear_task_detail_list(
@@ -1645,12 +3023,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataExportDownloadURLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDataExportDownloadURL',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetDataExportDownloadURLResponse(),
-            self.do_rpcrequest('GetDataExportDownloadURL', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_data_export_download_urlwith_options_async(
@@ -1659,12 +3052,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataExportDownloadURLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDataExportDownloadURL',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetDataExportDownloadURLResponse(),
-            await self.do_rpcrequest_async('GetDataExportDownloadURL', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_data_export_download_url(
@@ -1687,12 +3095,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataExportOrderDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDataExportOrderDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetDataExportOrderDetailResponse(),
-            self.do_rpcrequest('GetDataExportOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_data_export_order_detail_with_options_async(
@@ -1701,12 +3123,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataExportOrderDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDataExportOrderDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetDataExportOrderDetailResponse(),
-            await self.do_rpcrequest_async('GetDataExportOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_data_export_order_detail(
@@ -1729,12 +3165,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDatabaseResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Host'] = request.host
+        query['Port'] = request.port
+        query['SchemaName'] = request.schema_name
+        query['Sid'] = request.sid
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetDatabaseResponse(),
-            self.do_rpcrequest('GetDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_database_with_options_async(
@@ -1743,12 +3197,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDatabaseResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Host'] = request.host
+        query['Port'] = request.port
+        query['SchemaName'] = request.schema_name
+        query['Sid'] = request.sid
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetDatabaseResponse(),
-            await self.do_rpcrequest_async('GetDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_database(
@@ -1771,12 +3243,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Host'] = request.host
+        query['Port'] = request.port
+        query['Sid'] = request.sid
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetInstanceResponse(),
-            self.do_rpcrequest('GetInstance', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_instance_with_options_async(
@@ -1785,12 +3274,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Host'] = request.host
+        query['Port'] = request.port
+        query['Sid'] = request.sid
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetInstanceResponse(),
-            await self.do_rpcrequest_async('GetInstance', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_instance(
@@ -1813,12 +3319,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetLogicDatabaseResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbId'] = request.db_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetLogicDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetLogicDatabaseResponse(),
-            self.do_rpcrequest('GetLogicDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_logic_database_with_options_async(
@@ -1827,12 +3348,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetLogicDatabaseResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbId'] = request.db_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetLogicDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetLogicDatabaseResponse(),
-            await self.do_rpcrequest_async('GetLogicDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_logic_database(
@@ -1855,12 +3391,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetMetaTableColumnResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TableGuid'] = request.table_guid
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMetaTableColumn',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetMetaTableColumnResponse(),
-            self.do_rpcrequest('GetMetaTableColumn', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_meta_table_column_with_options_async(
@@ -1869,12 +3420,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetMetaTableColumnResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TableGuid'] = request.table_guid
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMetaTableColumn',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetMetaTableColumnResponse(),
-            await self.do_rpcrequest_async('GetMetaTableColumn', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_meta_table_column(
@@ -1897,12 +3463,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetMetaTableDetailInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TableGuid'] = request.table_guid
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMetaTableDetailInfo',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetMetaTableDetailInfoResponse(),
-            self.do_rpcrequest('GetMetaTableDetailInfo', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_meta_table_detail_info_with_options_async(
@@ -1911,12 +3492,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetMetaTableDetailInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TableGuid'] = request.table_guid
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMetaTableDetailInfo',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetMetaTableDetailInfoResponse(),
-            await self.do_rpcrequest_async('GetMetaTableDetailInfo', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_meta_table_detail_info(
@@ -1939,12 +3535,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetOpLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['Module'] = request.module
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetOpLog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetOpLogResponse(),
-            self.do_rpcrequest('GetOpLog', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_op_log_with_options_async(
@@ -1953,12 +3568,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetOpLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['Module'] = request.module
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetOpLog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetOpLogResponse(),
-            await self.do_rpcrequest_async('GetOpLog', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_op_log(
@@ -1981,12 +3615,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetOrderBaseInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetOrderBaseInfo',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetOrderBaseInfoResponse(),
-            self.do_rpcrequest('GetOrderBaseInfo', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_order_base_info_with_options_async(
@@ -1995,12 +3644,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetOrderBaseInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetOrderBaseInfo',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetOrderBaseInfoResponse(),
-            await self.do_rpcrequest_async('GetOrderBaseInfo', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_order_base_info(
@@ -2023,12 +3687,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetOwnerApplyOrderDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetOwnerApplyOrderDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetOwnerApplyOrderDetailResponse(),
-            self.do_rpcrequest('GetOwnerApplyOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_owner_apply_order_detail_with_options_async(
@@ -2037,12 +3716,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetOwnerApplyOrderDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetOwnerApplyOrderDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetOwnerApplyOrderDetailResponse(),
-            await self.do_rpcrequest_async('GetOwnerApplyOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_owner_apply_order_detail(
@@ -2065,12 +3759,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetPermApplyOrderDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse(),
-            self.do_rpcrequest('GetPermApplyOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_perm_apply_order_detail_with_options_async(
@@ -2079,12 +3788,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetPermApplyOrderDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse(),
-            await self.do_rpcrequest_async('GetPermApplyOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_perm_apply_order_detail(
@@ -2107,12 +3831,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetPhysicalDatabaseResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbId'] = request.db_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetPhysicalDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetPhysicalDatabaseResponse(),
-            self.do_rpcrequest('GetPhysicalDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_physical_database_with_options_async(
@@ -2121,12 +3860,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetPhysicalDatabaseResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbId'] = request.db_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetPhysicalDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetPhysicalDatabaseResponse(),
-            await self.do_rpcrequest_async('GetPhysicalDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_physical_database(
@@ -2149,12 +3903,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetProxyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ProxyId'] = request.proxy_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetProxy',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetProxyResponse(),
-            self.do_rpcrequest('GetProxy', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_proxy_with_options_async(
@@ -2163,12 +3933,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetProxyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ProxyId'] = request.proxy_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetProxy',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetProxyResponse(),
-            await self.do_rpcrequest_async('GetProxy', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_proxy(
@@ -2191,12 +3977,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetSQLReviewCheckResultStatus',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusResponse(),
-            self.do_rpcrequest('GetSQLReviewCheckResultStatus', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_sqlreview_check_result_status_with_options_async(
@@ -2205,12 +4006,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetSQLReviewCheckResultStatus',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusResponse(),
-            await self.do_rpcrequest_async('GetSQLReviewCheckResultStatus', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_sqlreview_check_result_status(
@@ -2233,12 +4049,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SQLReviewQueryKey'] = request.sqlreview_query_key
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetSQLReviewOptimizeDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse(),
-            self.do_rpcrequest('GetSQLReviewOptimizeDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_sqlreview_optimize_detail_with_options_async(
@@ -2247,12 +4078,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SQLReviewQueryKey'] = request.sqlreview_query_key
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetSQLReviewOptimizeDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse(),
-            await self.do_rpcrequest_async('GetSQLReviewOptimizeDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_sqlreview_optimize_detail(
@@ -2275,12 +4121,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStructSyncExecSqlDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStructSyncExecSqlDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetStructSyncExecSqlDetailResponse(),
-            self.do_rpcrequest('GetStructSyncExecSqlDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_struct_sync_exec_sql_detail_with_options_async(
@@ -2289,12 +4152,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStructSyncExecSqlDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStructSyncExecSqlDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetStructSyncExecSqlDetailResponse(),
-            await self.do_rpcrequest_async('GetStructSyncExecSqlDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_struct_sync_exec_sql_detail(
@@ -2317,12 +4197,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStructSyncJobAnalyzeResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CompareType'] = request.compare_type
+        query['OrderId'] = request.order_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStructSyncJobAnalyzeResult',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetStructSyncJobAnalyzeResultResponse(),
-            self.do_rpcrequest('GetStructSyncJobAnalyzeResult', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_struct_sync_job_analyze_result_with_options_async(
@@ -2331,12 +4229,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStructSyncJobAnalyzeResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CompareType'] = request.compare_type
+        query['OrderId'] = request.order_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStructSyncJobAnalyzeResult',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetStructSyncJobAnalyzeResultResponse(),
-            await self.do_rpcrequest_async('GetStructSyncJobAnalyzeResult', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_struct_sync_job_analyze_result(
@@ -2359,12 +4275,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStructSyncJobDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStructSyncJobDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetStructSyncJobDetailResponse(),
-            self.do_rpcrequest('GetStructSyncJobDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_struct_sync_job_detail_with_options_async(
@@ -2373,12 +4304,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStructSyncJobDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStructSyncJobDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetStructSyncJobDetailResponse(),
-            await self.do_rpcrequest_async('GetStructSyncJobDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_struct_sync_job_detail(
@@ -2401,12 +4347,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStructSyncOrderDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStructSyncOrderDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetStructSyncOrderDetailResponse(),
-            self.do_rpcrequest('GetStructSyncOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_struct_sync_order_detail_with_options_async(
@@ -2415,12 +4376,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStructSyncOrderDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStructSyncOrderDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetStructSyncOrderDetailResponse(),
-            await self.do_rpcrequest_async('GetStructSyncOrderDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_struct_sync_order_detail(
@@ -2443,12 +4419,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTableDBTopologyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TableGuid'] = request.table_guid
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTableDBTopology',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetTableDBTopologyResponse(),
-            self.do_rpcrequest('GetTableDBTopology', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_table_dbtopology_with_options_async(
@@ -2457,12 +4448,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTableDBTopologyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TableGuid'] = request.table_guid
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTableDBTopology',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetTableDBTopologyResponse(),
-            await self.do_rpcrequest_async('GetTableDBTopology', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_table_dbtopology(
@@ -2485,12 +4491,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTableTopologyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TableGuid'] = request.table_guid
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTableTopology',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetTableTopologyResponse(),
-            self.do_rpcrequest('GetTableTopology', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_table_topology_with_options_async(
@@ -2499,12 +4520,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTableTopologyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TableGuid'] = request.table_guid
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTableTopology',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetTableTopologyResponse(),
-            await self.do_rpcrequest_async('GetTableTopology', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_table_topology(
@@ -2527,12 +4563,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Tid'] = request.tid
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetUser',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetUserResponse(),
-            self.do_rpcrequest('GetUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_user_with_options_async(
@@ -2541,12 +4593,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Tid'] = request.tid
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetUser',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetUserResponse(),
-            await self.do_rpcrequest_async('GetUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_user(
@@ -2569,12 +4637,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetUserActiveTenantResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetUserActiveTenant',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetUserActiveTenantResponse(),
-            self.do_rpcrequest('GetUserActiveTenant', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_user_active_tenant_with_options_async(
@@ -2583,12 +4665,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetUserActiveTenantResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetUserActiveTenant',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetUserActiveTenantResponse(),
-            await self.do_rpcrequest_async('GetUserActiveTenant', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_user_active_tenant(
@@ -2611,12 +4707,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetUserUploadFileJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobKey'] = request.job_key
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetUserUploadFileJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetUserUploadFileJobResponse(),
-            self.do_rpcrequest('GetUserUploadFileJob', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_user_upload_file_job_with_options_async(
@@ -2625,12 +4736,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetUserUploadFileJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobKey'] = request.job_key
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetUserUploadFileJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GetUserUploadFileJobResponse(),
-            await self.do_rpcrequest_async('GetUserUploadFileJob', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_user_upload_file_job(
@@ -2653,12 +4779,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GrantUserPermissionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbId'] = request.db_id
+        query['DsType'] = request.ds_type
+        query['ExpireDate'] = request.expire_date
+        query['InstanceId'] = request.instance_id
+        query['Logic'] = request.logic
+        query['PermTypes'] = request.perm_types
+        query['TableId'] = request.table_id
+        query['TableName'] = request.table_name
+        query['Tid'] = request.tid
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GrantUserPermission',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GrantUserPermissionResponse(),
-            self.do_rpcrequest('GrantUserPermission', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def grant_user_permission_with_options_async(
@@ -2667,12 +4816,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GrantUserPermissionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbId'] = request.db_id
+        query['DsType'] = request.ds_type
+        query['ExpireDate'] = request.expire_date
+        query['InstanceId'] = request.instance_id
+        query['Logic'] = request.logic
+        query['PermTypes'] = request.perm_types
+        query['TableId'] = request.table_id
+        query['TableName'] = request.table_name
+        query['Tid'] = request.tid
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GrantUserPermission',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.GrantUserPermissionResponse(),
-            await self.do_rpcrequest_async('GrantUserPermission', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def grant_user_permission(
@@ -2695,12 +4867,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.InspectProxyAccessSecretResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProxyAccessId'] = request.proxy_access_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='InspectProxyAccessSecret',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.InspectProxyAccessSecretResponse(),
-            self.do_rpcrequest('InspectProxyAccessSecret', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def inspect_proxy_access_secret_with_options_async(
@@ -2709,12 +4896,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.InspectProxyAccessSecretResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProxyAccessId'] = request.proxy_access_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='InspectProxyAccessSecret',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.InspectProxyAccessSecretResponse(),
-            await self.do_rpcrequest_async('InspectProxyAccessSecret', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def inspect_proxy_access_secret(
@@ -2737,12 +4939,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListColumnsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Logic'] = request.logic
+        query['TableId'] = request.table_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListColumns',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListColumnsResponse(),
-            self.do_rpcrequest('ListColumns', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_columns_with_options_async(
@@ -2751,12 +4969,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListColumnsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Logic'] = request.logic
+        query['TableId'] = request.table_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListColumns',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListColumnsResponse(),
-            await self.do_rpcrequest_async('ListColumns', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_columns(
@@ -2779,12 +5013,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDBTaskSQLJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DBTaskGroupId'] = request.dbtask_group_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDBTaskSQLJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListDBTaskSQLJobResponse(),
-            self.do_rpcrequest('ListDBTaskSQLJob', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_dbtask_sqljob_with_options_async(
@@ -2793,12 +5044,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDBTaskSQLJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DBTaskGroupId'] = request.dbtask_group_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDBTaskSQLJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListDBTaskSQLJobResponse(),
-            await self.do_rpcrequest_async('ListDBTaskSQLJob', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_dbtask_sqljob(
@@ -2821,12 +5089,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDBTaskSQLJobDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobId'] = request.job_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDBTaskSQLJobDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListDBTaskSQLJobDetailResponse(),
-            self.do_rpcrequest('ListDBTaskSQLJobDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_dbtask_sqljob_detail_with_options_async(
@@ -2835,12 +5120,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDBTaskSQLJobDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['JobId'] = request.job_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDBTaskSQLJobDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListDBTaskSQLJobDetailResponse(),
-            await self.do_rpcrequest_async('ListDBTaskSQLJobDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_dbtask_sqljob_detail(
@@ -2863,12 +5165,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDDLPublishRecordsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDDLPublishRecords',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListDDLPublishRecordsResponse(),
-            self.do_rpcrequest('ListDDLPublishRecords', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_ddlpublish_records_with_options_async(
@@ -2877,12 +5194,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDDLPublishRecordsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDDLPublishRecords',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListDDLPublishRecordsResponse(),
-            await self.do_rpcrequest_async('ListDDLPublishRecords', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_ddlpublish_records(
@@ -2905,12 +5237,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckDBResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDataCorrectPreCheckDB',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListDataCorrectPreCheckDBResponse(),
-            self.do_rpcrequest('ListDataCorrectPreCheckDB', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_data_correct_pre_check_dbwith_options_async(
@@ -2919,12 +5268,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckDBResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDataCorrectPreCheckDB',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListDataCorrectPreCheckDBResponse(),
-            await self.do_rpcrequest_async('ListDataCorrectPreCheckDB', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_data_correct_pre_check_db(
@@ -2947,12 +5313,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbId'] = request.db_id
+        query['OrderId'] = request.order_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDataCorrectPreCheckSQL',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLResponse(),
-            self.do_rpcrequest('ListDataCorrectPreCheckSQL', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_data_correct_pre_check_sqlwith_options_async(
@@ -2961,12 +5345,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbId'] = request.db_id
+        query['OrderId'] = request.order_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDataCorrectPreCheckSQL',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLResponse(),
-            await self.do_rpcrequest_async('ListDataCorrectPreCheckSQL', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_data_correct_pre_check_sql(
@@ -2989,12 +5391,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDatabaseUserPermssionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbId'] = request.db_id
+        query['Logic'] = request.logic
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['PermType'] = request.perm_type
+        query['Tid'] = request.tid
+        query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDatabaseUserPermssions',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListDatabaseUserPermssionsResponse(),
-            self.do_rpcrequest('ListDatabaseUserPermssions', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_database_user_permssions_with_options_async(
@@ -3003,12 +5425,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDatabaseUserPermssionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbId'] = request.db_id
+        query['Logic'] = request.logic
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['PermType'] = request.perm_type
+        query['Tid'] = request.tid
+        query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDatabaseUserPermssions',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListDatabaseUserPermssionsResponse(),
-            await self.do_rpcrequest_async('ListDatabaseUserPermssions', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_database_user_permssions(
@@ -3031,12 +5473,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDatabasesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDatabases',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListDatabasesResponse(),
-            self.do_rpcrequest('ListDatabases', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_databases_with_options_async(
@@ -3045,12 +5504,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDatabasesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDatabases',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListDatabasesResponse(),
-            await self.do_rpcrequest_async('ListDatabases', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_databases(
@@ -3073,12 +5549,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListIndexesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Logic'] = request.logic
+        query['TableId'] = request.table_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListIndexes',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListIndexesResponse(),
-            self.do_rpcrequest('ListIndexes', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_indexes_with_options_async(
@@ -3087,12 +5579,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListIndexesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Logic'] = request.logic
+        query['TableId'] = request.table_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListIndexes',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListIndexesResponse(),
-            await self.do_rpcrequest_async('ListIndexes', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_indexes(
@@ -3115,12 +5623,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListInstanceLoginAuditLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OpUserName'] = request.op_user_name
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['SearchName'] = request.search_name
+        query['StartTime'] = request.start_time
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceLoginAuditLog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListInstanceLoginAuditLogResponse(),
-            self.do_rpcrequest('ListInstanceLoginAuditLog', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_instance_login_audit_log_with_options_async(
@@ -3129,12 +5657,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListInstanceLoginAuditLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OpUserName'] = request.op_user_name
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['SearchName'] = request.search_name
+        query['StartTime'] = request.start_time
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceLoginAuditLog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListInstanceLoginAuditLogResponse(),
-            await self.do_rpcrequest_async('ListInstanceLoginAuditLog', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_instance_login_audit_log(
@@ -3157,12 +5705,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListInstanceUserPermissionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
+        query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceUserPermissions',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListInstanceUserPermissionsResponse(),
-            self.do_rpcrequest('ListInstanceUserPermissions', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_instance_user_permissions_with_options_async(
@@ -3171,12 +5737,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListInstanceUserPermissionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
+        query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceUserPermissions',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListInstanceUserPermissionsResponse(),
-            await self.do_rpcrequest_async('ListInstanceUserPermissions', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_instance_user_permissions(
@@ -3199,12 +5783,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbType'] = request.db_type
+        query['EnvType'] = request.env_type
+        query['InstanceSource'] = request.instance_source
+        query['InstanceState'] = request.instance_state
+        query['NetType'] = request.net_type
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['SearchKey'] = request.search_key
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListInstances',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListInstancesResponse(),
-            self.do_rpcrequest('ListInstances', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_instances_with_options_async(
@@ -3213,12 +5819,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbType'] = request.db_type
+        query['EnvType'] = request.env_type
+        query['InstanceSource'] = request.instance_source
+        query['InstanceState'] = request.instance_state
+        query['NetType'] = request.net_type
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['SearchKey'] = request.search_key
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListInstances',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListInstancesResponse(),
-            await self.do_rpcrequest_async('ListInstances', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_instances(
@@ -3241,12 +5869,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListLogicDatabasesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListLogicDatabases',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListLogicDatabasesResponse(),
-            self.do_rpcrequest('ListLogicDatabases', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_logic_databases_with_options_async(
@@ -3255,12 +5899,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListLogicDatabasesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListLogicDatabases',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListLogicDatabasesResponse(),
-            await self.do_rpcrequest_async('ListLogicDatabases', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_logic_databases(
@@ -3277,18 +5937,109 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_logic_databases_with_options_async(request, runtime)
 
+    def list_logic_table_route_config_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListLogicTableRouteConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListLogicTableRouteConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['TableId'] = request.table_id
+        query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListLogicTableRouteConfig',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListLogicTableRouteConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_logic_table_route_config_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListLogicTableRouteConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListLogicTableRouteConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['TableId'] = request.table_id
+        query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListLogicTableRouteConfig',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListLogicTableRouteConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_logic_table_route_config(
+        self,
+        request: dms_enterprise_20181101_models.ListLogicTableRouteConfigRequest,
+    ) -> dms_enterprise_20181101_models.ListLogicTableRouteConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_logic_table_route_config_with_options(request, runtime)
+
+    async def list_logic_table_route_config_async(
+        self,
+        request: dms_enterprise_20181101_models.ListLogicTableRouteConfigRequest,
+    ) -> dms_enterprise_20181101_models.ListLogicTableRouteConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_logic_table_route_config_with_options_async(request, runtime)
+
     def list_logic_tables_with_options(
         self,
         request: dms_enterprise_20181101_models.ListLogicTablesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListLogicTablesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DatabaseId'] = request.database_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ReturnGuid'] = request.return_guid
+        query['SearchName'] = request.search_name
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListLogicTables',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListLogicTablesResponse(),
-            self.do_rpcrequest('ListLogicTables', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_logic_tables_with_options_async(
@@ -3297,12 +6048,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListLogicTablesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DatabaseId'] = request.database_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ReturnGuid'] = request.return_guid
+        query['SearchName'] = request.search_name
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListLogicTables',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListLogicTablesResponse(),
-            await self.do_rpcrequest_async('ListLogicTables', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_logic_tables(
@@ -3325,12 +6095,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListOrdersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OrderResultType'] = request.order_result_type
+        query['OrderStatus'] = request.order_status
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['PluginType'] = request.plugin_type
+        query['SearchContent'] = request.search_content
+        query['SearchDateType'] = request.search_date_type
+        query['StartTime'] = request.start_time
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListOrders',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListOrdersResponse(),
-            self.do_rpcrequest('ListOrders', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_orders_with_options_async(
@@ -3339,12 +6132,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListOrdersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OrderResultType'] = request.order_result_type
+        query['OrderStatus'] = request.order_status
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['PluginType'] = request.plugin_type
+        query['SearchContent'] = request.search_content
+        query['SearchDateType'] = request.search_date_type
+        query['StartTime'] = request.start_time
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListOrders',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListOrdersResponse(),
-            await self.do_rpcrequest_async('ListOrders', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_orders(
@@ -3367,12 +6183,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListProxiesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListProxies',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListProxiesResponse(),
-            self.do_rpcrequest('ListProxies', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_proxies_with_options_async(
@@ -3381,12 +6211,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListProxiesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListProxies',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListProxiesResponse(),
-            await self.do_rpcrequest_async('ListProxies', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_proxies(
@@ -3409,12 +6253,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListProxyAccessesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProxyId'] = request.proxy_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListProxyAccesses',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListProxyAccessesResponse(),
-            self.do_rpcrequest('ListProxyAccesses', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_proxy_accesses_with_options_async(
@@ -3423,12 +6282,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListProxyAccessesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ProxyId'] = request.proxy_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListProxyAccesses',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListProxyAccessesResponse(),
-            await self.do_rpcrequest_async('ListProxyAccesses', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_proxy_accesses(
@@ -3451,12 +6325,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListProxySQLExecAuditLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['ExecState'] = request.exec_state
+        query['OpUserName'] = request.op_user_name
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['SQLType'] = request.sqltype
+        query['SearchName'] = request.search_name
+        query['StartTime'] = request.start_time
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListProxySQLExecAuditLog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListProxySQLExecAuditLogResponse(),
-            self.do_rpcrequest('ListProxySQLExecAuditLog', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_proxy_sqlexec_audit_log_with_options_async(
@@ -3465,12 +6361,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListProxySQLExecAuditLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['ExecState'] = request.exec_state
+        query['OpUserName'] = request.op_user_name
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['SQLType'] = request.sqltype
+        query['SearchName'] = request.search_name
+        query['StartTime'] = request.start_time
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListProxySQLExecAuditLog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListProxySQLExecAuditLogResponse(),
-            await self.do_rpcrequest_async('ListProxySQLExecAuditLog', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_proxy_sqlexec_audit_log(
@@ -3493,12 +6411,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSQLExecAuditLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['ExecState'] = request.exec_state
+        query['OpUserName'] = request.op_user_name
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['SearchName'] = request.search_name
+        query['SqlType'] = request.sql_type
+        query['StartTime'] = request.start_time
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListSQLExecAuditLog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListSQLExecAuditLogResponse(),
-            self.do_rpcrequest('ListSQLExecAuditLog', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_sqlexec_audit_log_with_options_async(
@@ -3507,12 +6447,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSQLExecAuditLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['ExecState'] = request.exec_state
+        query['OpUserName'] = request.op_user_name
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['SearchName'] = request.search_name
+        query['SqlType'] = request.sql_type
+        query['StartTime'] = request.start_time
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListSQLExecAuditLog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListSQLExecAuditLogResponse(),
-            await self.do_rpcrequest_async('ListSQLExecAuditLog', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_sqlexec_audit_log(
@@ -3539,12 +6501,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.order_action_detail):
             request.order_action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.order_action_detail), 'OrderActionDetail', 'json')
+        query = {}
+        query['OrderActionDetail'] = request.order_action_detail_shrink
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListSQLReviewOriginSQL',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListSQLReviewOriginSQLResponse(),
-            self.do_rpcrequest('ListSQLReviewOriginSQL', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_sqlreview_origin_sqlwith_options_async(
@@ -3557,12 +6535,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.order_action_detail):
             request.order_action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.order_action_detail), 'OrderActionDetail', 'json')
+        query = {}
+        query['OrderActionDetail'] = request.order_action_detail_shrink
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListSQLReviewOriginSQL',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListSQLReviewOriginSQLResponse(),
-            await self.do_rpcrequest_async('ListSQLReviewOriginSQL', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_sqlreview_origin_sql(
@@ -3585,12 +6579,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ColumnName'] = request.column_name
+        query['DbId'] = request.db_id
+        query['Logic'] = request.logic
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['SchemaName'] = request.schema_name
+        query['SecurityLevel'] = request.security_level
+        query['TableName'] = request.table_name
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListSensitiveColumns',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListSensitiveColumnsResponse(),
-            self.do_rpcrequest('ListSensitiveColumns', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_sensitive_columns_with_options_async(
@@ -3599,12 +6615,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ColumnName'] = request.column_name
+        query['DbId'] = request.db_id
+        query['Logic'] = request.logic
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['SchemaName'] = request.schema_name
+        query['SecurityLevel'] = request.security_level
+        query['TableName'] = request.table_name
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListSensitiveColumns',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListSensitiveColumnsResponse(),
-            await self.do_rpcrequest_async('ListSensitiveColumns', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_sensitive_columns(
@@ -3627,12 +6665,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnsDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ColumnName'] = request.column_name
+        query['DbId'] = request.db_id
+        query['Logic'] = request.logic
+        query['SchemaName'] = request.schema_name
+        query['TableName'] = request.table_name
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListSensitiveColumnsDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListSensitiveColumnsDetailResponse(),
-            self.do_rpcrequest('ListSensitiveColumnsDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_sensitive_columns_detail_with_options_async(
@@ -3641,12 +6698,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnsDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ColumnName'] = request.column_name
+        query['DbId'] = request.db_id
+        query['Logic'] = request.logic
+        query['SchemaName'] = request.schema_name
+        query['TableName'] = request.table_name
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListSensitiveColumnsDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListSensitiveColumnsDetailResponse(),
-            await self.do_rpcrequest_async('ListSensitiveColumnsDetail', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_sensitive_columns_detail(
@@ -3669,12 +6745,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTablesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DatabaseId'] = request.database_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ReturnGuid'] = request.return_guid
+        query['SearchName'] = request.search_name
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTables',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListTablesResponse(),
-            self.do_rpcrequest('ListTables', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_tables_with_options_async(
@@ -3683,12 +6778,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTablesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DatabaseId'] = request.database_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ReturnGuid'] = request.return_guid
+        query['SearchName'] = request.search_name
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTables',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListTablesResponse(),
-            await self.do_rpcrequest_async('ListTables', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tables(
@@ -3711,12 +6825,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListUserPermissionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DatabaseName'] = request.database_name
+        query['DbType'] = request.db_type
+        query['EnvType'] = request.env_type
+        query['Logic'] = request.logic
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['PermType'] = request.perm_type
+        query['SearchKey'] = request.search_key
+        query['Tid'] = request.tid
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListUserPermissions',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListUserPermissionsResponse(),
-            self.do_rpcrequest('ListUserPermissions', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_user_permissions_with_options_async(
@@ -3725,12 +6862,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListUserPermissionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DatabaseName'] = request.database_name
+        query['DbType'] = request.db_type
+        query['EnvType'] = request.env_type
+        query['Logic'] = request.logic
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['PermType'] = request.perm_type
+        query['SearchKey'] = request.search_key
+        query['Tid'] = request.tid
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListUserPermissions',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListUserPermissionsResponse(),
-            await self.do_rpcrequest_async('ListUserPermissions', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_user_permissions(
@@ -3753,12 +6913,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListUserTenantsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListUserTenants',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListUserTenantsResponse(),
-            self.do_rpcrequest('ListUserTenants', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_user_tenants_with_options_async(
@@ -3767,12 +6941,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListUserTenantsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListUserTenants',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListUserTenantsResponse(),
-            await self.do_rpcrequest_async('ListUserTenants', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_user_tenants(
@@ -3795,12 +6983,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListUsersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Role'] = request.role
+        query['SearchKey'] = request.search_key
+        query['Tid'] = request.tid
+        query['UserState'] = request.user_state
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListUsers',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListUsersResponse(),
-            self.do_rpcrequest('ListUsers', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_users_with_options_async(
@@ -3809,12 +7016,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListUsersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Role'] = request.role
+        query['SearchKey'] = request.search_key
+        query['Tid'] = request.tid
+        query['UserState'] = request.user_state
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListUsers',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListUsersResponse(),
-            await self.do_rpcrequest_async('ListUsers', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_users(
@@ -3837,12 +7063,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListWorkFlowNodesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SearchName'] = request.search_name
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListWorkFlowNodes',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListWorkFlowNodesResponse(),
-            self.do_rpcrequest('ListWorkFlowNodes', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_work_flow_nodes_with_options_async(
@@ -3851,12 +7092,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListWorkFlowNodesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SearchName'] = request.search_name
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListWorkFlowNodes',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListWorkFlowNodesResponse(),
-            await self.do_rpcrequest_async('ListWorkFlowNodes', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_work_flow_nodes(
@@ -3879,12 +7135,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListWorkFlowTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SearchName'] = request.search_name
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListWorkFlowTemplates',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListWorkFlowTemplatesResponse(),
-            self.do_rpcrequest('ListWorkFlowTemplates', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_work_flow_templates_with_options_async(
@@ -3893,12 +7164,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListWorkFlowTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SearchName'] = request.search_name
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListWorkFlowTemplates',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.ListWorkFlowTemplatesResponse(),
-            await self.do_rpcrequest_async('ListWorkFlowTemplates', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_work_flow_templates(
@@ -3915,18 +7201,127 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_work_flow_templates_with_options_async(request, runtime)
 
+    def modify_data_correct_exec_sqlwith_options(
+        self,
+        request: dms_enterprise_20181101_models.ModifyDataCorrectExecSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ModifyDataCorrectExecSQLResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ExecSQL'] = request.exec_sql
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyDataCorrectExecSQL',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ModifyDataCorrectExecSQLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_data_correct_exec_sqlwith_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ModifyDataCorrectExecSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ModifyDataCorrectExecSQLResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ExecSQL'] = request.exec_sql
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyDataCorrectExecSQL',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ModifyDataCorrectExecSQLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_data_correct_exec_sql(
+        self,
+        request: dms_enterprise_20181101_models.ModifyDataCorrectExecSQLRequest,
+    ) -> dms_enterprise_20181101_models.ModifyDataCorrectExecSQLResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_data_correct_exec_sqlwith_options(request, runtime)
+
+    async def modify_data_correct_exec_sql_async(
+        self,
+        request: dms_enterprise_20181101_models.ModifyDataCorrectExecSQLRequest,
+    ) -> dms_enterprise_20181101_models.ModifyDataCorrectExecSQLResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_data_correct_exec_sqlwith_options_async(request, runtime)
+
     def register_instance_with_options(
         self,
         request: dms_enterprise_20181101_models.RegisterInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RegisterInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DataLinkName'] = request.data_link_name
+        query['DatabasePassword'] = request.database_password
+        query['DatabaseUser'] = request.database_user
+        query['DbaUid'] = request.dba_uid
+        query['DdlOnline'] = request.ddl_online
+        query['EcsInstanceId'] = request.ecs_instance_id
+        query['EcsRegion'] = request.ecs_region
+        query['EnvType'] = request.env_type
+        query['ExportTimeout'] = request.export_timeout
+        query['Host'] = request.host
+        query['InstanceAlias'] = request.instance_alias
+        query['InstanceSource'] = request.instance_source
+        query['InstanceType'] = request.instance_type
+        query['NetworkType'] = request.network_type
+        query['Port'] = request.port
+        query['QueryTimeout'] = request.query_timeout
+        query['SafeRule'] = request.safe_rule
+        query['Sid'] = request.sid
+        query['SkipTest'] = request.skip_test
+        query['Tid'] = request.tid
+        query['UseDsql'] = request.use_dsql
+        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RegisterInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.RegisterInstanceResponse(),
-            self.do_rpcrequest('RegisterInstance', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def register_instance_with_options_async(
@@ -3935,12 +7330,47 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RegisterInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DataLinkName'] = request.data_link_name
+        query['DatabasePassword'] = request.database_password
+        query['DatabaseUser'] = request.database_user
+        query['DbaUid'] = request.dba_uid
+        query['DdlOnline'] = request.ddl_online
+        query['EcsInstanceId'] = request.ecs_instance_id
+        query['EcsRegion'] = request.ecs_region
+        query['EnvType'] = request.env_type
+        query['ExportTimeout'] = request.export_timeout
+        query['Host'] = request.host
+        query['InstanceAlias'] = request.instance_alias
+        query['InstanceSource'] = request.instance_source
+        query['InstanceType'] = request.instance_type
+        query['NetworkType'] = request.network_type
+        query['Port'] = request.port
+        query['QueryTimeout'] = request.query_timeout
+        query['SafeRule'] = request.safe_rule
+        query['Sid'] = request.sid
+        query['SkipTest'] = request.skip_test
+        query['Tid'] = request.tid
+        query['UseDsql'] = request.use_dsql
+        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RegisterInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.RegisterInstanceResponse(),
-            await self.do_rpcrequest_async('RegisterInstance', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def register_instance(
@@ -3963,12 +7393,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RegisterUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Mobile'] = request.mobile
+        query['RoleNames'] = request.role_names
+        query['Tid'] = request.tid
+        query['Uid'] = request.uid
+        query['UserNick'] = request.user_nick
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RegisterUser',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.RegisterUserResponse(),
-            self.do_rpcrequest('RegisterUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def register_user_with_options_async(
@@ -3977,12 +7425,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RegisterUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Mobile'] = request.mobile
+        query['RoleNames'] = request.role_names
+        query['Tid'] = request.tid
+        query['Uid'] = request.uid
+        query['UserNick'] = request.user_nick
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RegisterUser',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.RegisterUserResponse(),
-            await self.do_rpcrequest_async('RegisterUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def register_user(
@@ -3999,18 +7465,113 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.register_user_with_options_async(request, runtime)
 
+    def retry_data_correct_pre_check_with_options(
+        self,
+        request: dms_enterprise_20181101_models.RetryDataCorrectPreCheckRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.RetryDataCorrectPreCheckResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RetryDataCorrectPreCheck',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RetryDataCorrectPreCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retry_data_correct_pre_check_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.RetryDataCorrectPreCheckRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.RetryDataCorrectPreCheckResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RetryDataCorrectPreCheck',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RetryDataCorrectPreCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retry_data_correct_pre_check(
+        self,
+        request: dms_enterprise_20181101_models.RetryDataCorrectPreCheckRequest,
+    ) -> dms_enterprise_20181101_models.RetryDataCorrectPreCheckResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.retry_data_correct_pre_check_with_options(request, runtime)
+
+    async def retry_data_correct_pre_check_async(
+        self,
+        request: dms_enterprise_20181101_models.RetryDataCorrectPreCheckRequest,
+    ) -> dms_enterprise_20181101_models.RetryDataCorrectPreCheckResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.retry_data_correct_pre_check_with_options_async(request, runtime)
+
     def revoke_user_permission_with_options(
         self,
         request: dms_enterprise_20181101_models.RevokeUserPermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RevokeUserPermissionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbId'] = request.db_id
+        query['DsType'] = request.ds_type
+        query['InstanceId'] = request.instance_id
+        query['Logic'] = request.logic
+        query['PermTypes'] = request.perm_types
+        query['TableId'] = request.table_id
+        query['TableName'] = request.table_name
+        query['Tid'] = request.tid
+        query['UserAccessId'] = request.user_access_id
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RevokeUserPermission',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.RevokeUserPermissionResponse(),
-            self.do_rpcrequest('RevokeUserPermission', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def revoke_user_permission_with_options_async(
@@ -4019,12 +7580,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RevokeUserPermissionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbId'] = request.db_id
+        query['DsType'] = request.ds_type
+        query['InstanceId'] = request.instance_id
+        query['Logic'] = request.logic
+        query['PermTypes'] = request.perm_types
+        query['TableId'] = request.table_id
+        query['TableName'] = request.table_name
+        query['Tid'] = request.tid
+        query['UserAccessId'] = request.user_access_id
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RevokeUserPermission',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.RevokeUserPermissionResponse(),
-            await self.do_rpcrequest_async('RevokeUserPermission', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def revoke_user_permission(
@@ -4047,12 +7631,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SearchDatabaseResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbType'] = request.db_type
+        query['EnvType'] = request.env_type
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['SearchKey'] = request.search_key
+        query['SearchRange'] = request.search_range
+        query['SearchTarget'] = request.search_target
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SearchDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.SearchDatabaseResponse(),
-            self.do_rpcrequest('SearchDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def search_database_with_options_async(
@@ -4061,12 +7666,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SearchDatabaseResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbType'] = request.db_type
+        query['EnvType'] = request.env_type
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['SearchKey'] = request.search_key
+        query['SearchRange'] = request.search_range
+        query['SearchTarget'] = request.search_target
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SearchDatabase',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.SearchDatabaseResponse(),
-            await self.do_rpcrequest_async('SearchDatabase', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def search_database(
@@ -4089,12 +7715,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SearchTableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbType'] = request.db_type
+        query['EnvType'] = request.env_type
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ReturnGuid'] = request.return_guid
+        query['SearchKey'] = request.search_key
+        query['SearchRange'] = request.search_range
+        query['SearchTarget'] = request.search_target
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SearchTable',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.SearchTableResponse(),
-            self.do_rpcrequest('SearchTable', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def search_table_with_options_async(
@@ -4103,12 +7751,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SearchTableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbType'] = request.db_type
+        query['EnvType'] = request.env_type
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ReturnGuid'] = request.return_guid
+        query['SearchKey'] = request.search_key
+        query['SearchRange'] = request.search_range
+        query['SearchTarget'] = request.search_target
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SearchTable',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.SearchTableResponse(),
-            await self.do_rpcrequest_async('SearchTable', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def search_table(
@@ -4131,12 +7801,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SetOwnersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerIds'] = request.owner_ids
+        query['OwnerType'] = request.owner_type
+        query['ResourceId'] = request.resource_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetOwners',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.SetOwnersResponse(),
-            self.do_rpcrequest('SetOwners', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_owners_with_options_async(
@@ -4145,12 +7832,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SetOwnersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerIds'] = request.owner_ids
+        query['OwnerType'] = request.owner_type
+        query['ResourceId'] = request.resource_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetOwners',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.SetOwnersResponse(),
-            await self.do_rpcrequest_async('SetOwners', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_owners(
@@ -4173,12 +7877,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SubmitOrderApprovalResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitOrderApproval',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.SubmitOrderApprovalResponse(),
-            self.do_rpcrequest('SubmitOrderApproval', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def submit_order_approval_with_options_async(
@@ -4187,12 +7906,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SubmitOrderApprovalResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitOrderApproval',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.SubmitOrderApprovalResponse(),
-            await self.do_rpcrequest_async('SubmitOrderApproval', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_order_approval(
@@ -4215,12 +7949,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitStructSyncOrderApproval',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalResponse(),
-            self.do_rpcrequest('SubmitStructSyncOrderApproval', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def submit_struct_sync_order_approval_with_options_async(
@@ -4229,12 +7978,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OrderId'] = request.order_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SubmitStructSyncOrderApproval',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalResponse(),
-            await self.do_rpcrequest_async('SubmitStructSyncOrderApproval', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def submit_struct_sync_order_approval(
@@ -4257,12 +8021,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SyncDatabaseMetaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbId'] = request.db_id
+        query['Logic'] = request.logic
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SyncDatabaseMeta',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.SyncDatabaseMetaResponse(),
-            self.do_rpcrequest('SyncDatabaseMeta', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def sync_database_meta_with_options_async(
@@ -4271,12 +8051,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SyncDatabaseMetaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbId'] = request.db_id
+        query['Logic'] = request.logic
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SyncDatabaseMeta',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.SyncDatabaseMetaResponse(),
-            await self.do_rpcrequest_async('SyncDatabaseMeta', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def sync_database_meta(
@@ -4299,12 +8095,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SyncInstanceMetaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IgnoreTable'] = request.ignore_table
+        query['InstanceId'] = request.instance_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SyncInstanceMeta',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.SyncInstanceMetaResponse(),
-            self.do_rpcrequest('SyncInstanceMeta', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def sync_instance_meta_with_options_async(
@@ -4313,12 +8125,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SyncInstanceMetaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IgnoreTable'] = request.ignore_table
+        query['InstanceId'] = request.instance_id
+        query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SyncInstanceMeta',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.SyncInstanceMetaResponse(),
-            await self.do_rpcrequest_async('SyncInstanceMeta', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def sync_instance_meta(
@@ -4341,12 +8169,47 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DataLinkName'] = request.data_link_name
+        query['DatabasePassword'] = request.database_password
+        query['DatabaseUser'] = request.database_user
+        query['DbaId'] = request.dba_id
+        query['DdlOnline'] = request.ddl_online
+        query['EcsInstanceId'] = request.ecs_instance_id
+        query['EcsRegion'] = request.ecs_region
+        query['EnvType'] = request.env_type
+        query['ExportTimeout'] = request.export_timeout
+        query['Host'] = request.host
+        query['InstanceAlias'] = request.instance_alias
+        query['InstanceId'] = request.instance_id
+        query['InstanceSource'] = request.instance_source
+        query['InstanceType'] = request.instance_type
+        query['Port'] = request.port
+        query['QueryTimeout'] = request.query_timeout
+        query['SafeRuleId'] = request.safe_rule_id
+        query['Sid'] = request.sid
+        query['SkipTest'] = request.skip_test
+        query['Tid'] = request.tid
+        query['UseDsql'] = request.use_dsql
+        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.UpdateInstanceResponse(),
-            self.do_rpcrequest('UpdateInstance', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_instance_with_options_async(
@@ -4355,12 +8218,47 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DataLinkName'] = request.data_link_name
+        query['DatabasePassword'] = request.database_password
+        query['DatabaseUser'] = request.database_user
+        query['DbaId'] = request.dba_id
+        query['DdlOnline'] = request.ddl_online
+        query['EcsInstanceId'] = request.ecs_instance_id
+        query['EcsRegion'] = request.ecs_region
+        query['EnvType'] = request.env_type
+        query['ExportTimeout'] = request.export_timeout
+        query['Host'] = request.host
+        query['InstanceAlias'] = request.instance_alias
+        query['InstanceId'] = request.instance_id
+        query['InstanceSource'] = request.instance_source
+        query['InstanceType'] = request.instance_type
+        query['Port'] = request.port
+        query['QueryTimeout'] = request.query_timeout
+        query['SafeRuleId'] = request.safe_rule_id
+        query['Sid'] = request.sid
+        query['SkipTest'] = request.skip_test
+        query['Tid'] = request.tid
+        query['UseDsql'] = request.use_dsql
+        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.UpdateInstanceResponse(),
-            await self.do_rpcrequest_async('UpdateInstance', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_instance(
@@ -4383,12 +8281,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaxExecuteCount'] = request.max_execute_count
+        query['MaxResultCount'] = request.max_result_count
+        query['Mobile'] = request.mobile
+        query['RoleNames'] = request.role_names
+        query['Tid'] = request.tid
+        query['Uid'] = request.uid
+        query['UserNick'] = request.user_nick
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateUser',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.UpdateUserResponse(),
-            self.do_rpcrequest('UpdateUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_user_with_options_async(
@@ -4397,12 +8315,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateUserResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaxExecuteCount'] = request.max_execute_count
+        query['MaxResultCount'] = request.max_result_count
+        query['Mobile'] = request.mobile
+        query['RoleNames'] = request.role_names
+        query['Tid'] = request.tid
+        query['Uid'] = request.uid
+        query['UserNick'] = request.user_nick
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateUser',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dms_enterprise_20181101_models.UpdateUserResponse(),
-            await self.do_rpcrequest_async('UpdateUser', '2018-11-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_user(
