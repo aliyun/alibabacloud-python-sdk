@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_dysmsapi20170525 import models as dysmsapi_20170525_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -52,12 +53,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.AddShortUrlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddShortUrl',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.AddShortUrlResponse(),
-            self.do_rpcrequest('AddShortUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_short_url_with_options_async(
@@ -66,12 +83,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.AddShortUrlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddShortUrl',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.AddShortUrlResponse(),
-            await self.do_rpcrequest_async('AddShortUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_short_url(
@@ -94,12 +127,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.AddSmsSignResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['Remark'] = request.remark
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SignName'] = request.sign_name
+        query['SignSource'] = request.sign_source
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddSmsSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.AddSmsSignResponse(),
-            self.do_rpcrequest('AddSmsSign', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_sms_sign_with_options_async(
@@ -108,12 +160,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.AddSmsSignResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['Remark'] = request.remark
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SignName'] = request.sign_name
+        query['SignSource'] = request.sign_source
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddSmsSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.AddSmsSignResponse(),
-            await self.do_rpcrequest_async('AddSmsSign', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_sms_sign(
@@ -136,12 +207,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.AddSmsTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['Remark'] = request.remark
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TemplateContent'] = request.template_content
+        query['TemplateName'] = request.template_name
+        query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddSmsTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.AddSmsTemplateResponse(),
-            self.do_rpcrequest('AddSmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_sms_template_with_options_async(
@@ -150,12 +241,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.AddSmsTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['Remark'] = request.remark
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TemplateContent'] = request.template_content
+        query['TemplateName'] = request.template_name
+        query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddSmsTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.AddSmsTemplateResponse(),
-            await self.do_rpcrequest_async('AddSmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_sms_template(
@@ -172,18 +283,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_sms_template_with_options_async(request, runtime)
 
+    def create_card_sms_template_with_options(
+        self,
+        tmp_req: dysmsapi_20170525_models.CreateCardSmsTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.CreateCardSmsTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.CreateCardSmsTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.template):
+            request.template_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template, 'Template', 'json')
+        query = {}
+        query['Memo'] = request.memo
+        query['Template'] = request.template_shrink
+        query['TemplateName'] = request.template_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCardSmsTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.CreateCardSmsTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_card_sms_template_with_options_async(
+        self,
+        tmp_req: dysmsapi_20170525_models.CreateCardSmsTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.CreateCardSmsTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.CreateCardSmsTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.template):
+            request.template_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template, 'Template', 'json')
+        query = {}
+        query['Memo'] = request.memo
+        query['Template'] = request.template_shrink
+        query['TemplateName'] = request.template_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCardSmsTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.CreateCardSmsTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_card_sms_template(
+        self,
+        request: dysmsapi_20170525_models.CreateCardSmsTemplateRequest,
+    ) -> dysmsapi_20170525_models.CreateCardSmsTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_card_sms_template_with_options(request, runtime)
+
+    async def create_card_sms_template_async(
+        self,
+        request: dysmsapi_20170525_models.CreateCardSmsTemplateRequest,
+    ) -> dysmsapi_20170525_models.CreateCardSmsTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_card_sms_template_with_options_async(request, runtime)
+
     def delete_short_url_with_options(
         self,
         request: dysmsapi_20170525_models.DeleteShortUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.DeleteShortUrlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteShortUrl',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.DeleteShortUrlResponse(),
-            self.do_rpcrequest('DeleteShortUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_short_url_with_options_async(
@@ -192,12 +401,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.DeleteShortUrlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteShortUrl',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.DeleteShortUrlResponse(),
-            await self.do_rpcrequest_async('DeleteShortUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_short_url(
@@ -220,12 +445,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.DeleteSmsSignResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SignName'] = request.sign_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteSmsSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.DeleteSmsSignResponse(),
-            self.do_rpcrequest('DeleteSmsSign', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_sms_sign_with_options_async(
@@ -234,12 +476,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.DeleteSmsSignResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SignName'] = request.sign_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteSmsSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.DeleteSmsSignResponse(),
-            await self.do_rpcrequest_async('DeleteSmsSign', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_sms_sign(
@@ -262,12 +521,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.DeleteSmsTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteSmsTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.DeleteSmsTemplateResponse(),
-            self.do_rpcrequest('DeleteSmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_sms_template_with_options_async(
@@ -276,12 +552,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.DeleteSmsTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteSmsTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.DeleteSmsTemplateResponse(),
-            await self.do_rpcrequest_async('DeleteSmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_sms_template(
@@ -298,18 +591,253 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_sms_template_with_options_async(request, runtime)
 
+    def get_media_resource_id_with_options(
+        self,
+        request: dysmsapi_20170525_models.GetMediaResourceIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetMediaResourceIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ExtendInfo'] = request.extend_info
+        query['FileSize'] = request.file_size
+        query['Memo'] = request.memo
+        query['OssKey'] = request.oss_key
+        query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMediaResourceId',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetMediaResourceIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_media_resource_id_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.GetMediaResourceIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetMediaResourceIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ExtendInfo'] = request.extend_info
+        query['FileSize'] = request.file_size
+        query['Memo'] = request.memo
+        query['OssKey'] = request.oss_key
+        query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetMediaResourceId',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetMediaResourceIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_media_resource_id(
+        self,
+        request: dysmsapi_20170525_models.GetMediaResourceIdRequest,
+    ) -> dysmsapi_20170525_models.GetMediaResourceIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_media_resource_id_with_options(request, runtime)
+
+    async def get_media_resource_id_async(
+        self,
+        request: dysmsapi_20170525_models.GetMediaResourceIdRequest,
+    ) -> dysmsapi_20170525_models.GetMediaResourceIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_media_resource_id_with_options_async(request, runtime)
+
+    def get_ossinfo_for_card_template_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetOSSInfoForCardTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ossinfo_for_card_template_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetOSSInfoForCardTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ossinfo_for_card_template(self) -> dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_ossinfo_for_card_template_with_options(runtime)
+
+    async def get_ossinfo_for_card_template_async(self) -> dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ossinfo_for_card_template_with_options_async(runtime)
+
+    def list_tag_resources_with_options(
+        self,
+        request: dysmsapi_20170525_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['NextToken'] = request.next_token
+        query['OwnerId'] = request.owner_id
+        query['PageSize'] = request.page_size
+        query['ProdCode'] = request.prod_code
+        query['RegionId'] = request.region_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['NextToken'] = request.next_token
+        query['OwnerId'] = request.owner_id
+        query['PageSize'] = request.page_size
+        query['ProdCode'] = request.prod_code
+        query['RegionId'] = request.region_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: dysmsapi_20170525_models.ListTagResourcesRequest,
+    ) -> dysmsapi_20170525_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: dysmsapi_20170525_models.ListTagResourcesRequest,
+    ) -> dysmsapi_20170525_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
+
     def modify_sms_sign_with_options(
         self,
         request: dysmsapi_20170525_models.ModifySmsSignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.ModifySmsSignResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['Remark'] = request.remark
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SignName'] = request.sign_name
+        query['SignSource'] = request.sign_source
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifySmsSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.ModifySmsSignResponse(),
-            self.do_rpcrequest('ModifySmsSign', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_sms_sign_with_options_async(
@@ -318,12 +846,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.ModifySmsSignResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['Remark'] = request.remark
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SignName'] = request.sign_name
+        query['SignSource'] = request.sign_source
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifySmsSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.ModifySmsSignResponse(),
-            await self.do_rpcrequest_async('ModifySmsSign', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_sms_sign(
@@ -346,12 +893,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.ModifySmsTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['Remark'] = request.remark
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TemplateCode'] = request.template_code
+        query['TemplateContent'] = request.template_content
+        query['TemplateName'] = request.template_name
+        query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifySmsTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.ModifySmsTemplateResponse(),
-            self.do_rpcrequest('ModifySmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_sms_template_with_options_async(
@@ -360,12 +928,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.ModifySmsTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['Remark'] = request.remark
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TemplateCode'] = request.template_code
+        query['TemplateContent'] = request.template_content
+        query['TemplateName'] = request.template_name
+        query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifySmsTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.ModifySmsTemplateResponse(),
-            await self.do_rpcrequest_async('ModifySmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_sms_template(
@@ -382,18 +971,109 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_sms_template_with_options_async(request, runtime)
 
+    def query_card_sms_template_with_options(
+        self,
+        request: dysmsapi_20170525_models.QueryCardSmsTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QueryCardSmsTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['TemplateCode'] = request.template_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryCardSmsTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QueryCardSmsTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_card_sms_template_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.QueryCardSmsTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QueryCardSmsTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['TemplateCode'] = request.template_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryCardSmsTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QueryCardSmsTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_card_sms_template(
+        self,
+        request: dysmsapi_20170525_models.QueryCardSmsTemplateRequest,
+    ) -> dysmsapi_20170525_models.QueryCardSmsTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_card_sms_template_with_options(request, runtime)
+
+    async def query_card_sms_template_async(
+        self,
+        request: dysmsapi_20170525_models.QueryCardSmsTemplateRequest,
+    ) -> dysmsapi_20170525_models.QueryCardSmsTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_card_sms_template_with_options_async(request, runtime)
+
     def query_send_details_with_options(
         self,
         request: dysmsapi_20170525_models.QuerySendDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QuerySendDetailsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizId'] = request.biz_id
+        query['CurrentPage'] = request.current_page
+        query['OwnerId'] = request.owner_id
+        query['PageSize'] = request.page_size
+        query['PhoneNumber'] = request.phone_number
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SendDate'] = request.send_date
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QuerySendDetails',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.QuerySendDetailsResponse(),
-            self.do_rpcrequest('QuerySendDetails', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_send_details_with_options_async(
@@ -402,12 +1082,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QuerySendDetailsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BizId'] = request.biz_id
+        query['CurrentPage'] = request.current_page
+        query['OwnerId'] = request.owner_id
+        query['PageSize'] = request.page_size
+        query['PhoneNumber'] = request.phone_number
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SendDate'] = request.send_date
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QuerySendDetails',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.QuerySendDetailsResponse(),
-            await self.do_rpcrequest_async('QuerySendDetails', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_send_details(
@@ -430,12 +1131,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QueryShortUrlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryShortUrl',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.QueryShortUrlResponse(),
-            self.do_rpcrequest('QueryShortUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_short_url_with_options_async(
@@ -444,12 +1161,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QueryShortUrlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryShortUrl',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.QueryShortUrlResponse(),
-            await self.do_rpcrequest_async('QueryShortUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_short_url(
@@ -472,12 +1205,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QuerySmsSignResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SignName'] = request.sign_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QuerySmsSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.QuerySmsSignResponse(),
-            self.do_rpcrequest('QuerySmsSign', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_sms_sign_with_options_async(
@@ -486,12 +1236,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QuerySmsSignResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SignName'] = request.sign_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QuerySmsSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.QuerySmsSignResponse(),
-            await self.do_rpcrequest_async('QuerySmsSign', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_sms_sign(
@@ -514,12 +1281,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QuerySmsTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QuerySmsTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.QuerySmsTemplateResponse(),
-            self.do_rpcrequest('QuerySmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_sms_template_with_options_async(
@@ -528,12 +1312,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QuerySmsTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QuerySmsTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.QuerySmsTemplateResponse(),
-            await self.do_rpcrequest_async('QuerySmsTemplate', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_sms_template(
@@ -556,12 +1357,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.SendBatchSmsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['PhoneNumberJson'] = request.phone_number_json
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SignNameJson'] = request.sign_name_json
+        query['SmsUpExtendCodeJson'] = request.sms_up_extend_code_json
+        query['TemplateCode'] = request.template_code
+        query['TemplateParamJson'] = request.template_param_json
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SendBatchSms',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.SendBatchSmsResponse(),
-            self.do_rpcrequest('SendBatchSms', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def send_batch_sms_with_options_async(
@@ -570,12 +1392,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.SendBatchSmsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['PhoneNumberJson'] = request.phone_number_json
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SignNameJson'] = request.sign_name_json
+        query['SmsUpExtendCodeJson'] = request.sms_up_extend_code_json
+        query['TemplateCode'] = request.template_code
+        query['TemplateParamJson'] = request.template_param_json
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SendBatchSms',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.SendBatchSmsResponse(),
-            await self.do_rpcrequest_async('SendBatchSms', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def send_batch_sms(
@@ -592,18 +1435,128 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.send_batch_sms_with_options_async(request, runtime)
 
+    def send_card_sms_with_options(
+        self,
+        request: dysmsapi_20170525_models.SendCardSmsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.SendCardSmsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['CardObjects'] = request.card_objects
+        query['CardTemplateCode'] = request.card_template_code
+        query['DigitalTemplateCode'] = request.digital_template_code
+        query['DigitalTemplateParam'] = request.digital_template_param
+        query['FallbackType'] = request.fallback_type
+        query['OutId'] = request.out_id
+        query['SignName'] = request.sign_name
+        query['SmsTemplateCode'] = request.sms_template_code
+        query['SmsTemplateParam'] = request.sms_template_param
+        query['SmsUpExtendCode'] = request.sms_up_extend_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SendCardSms',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.SendCardSmsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_card_sms_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.SendCardSmsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.SendCardSmsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['CardObjects'] = request.card_objects
+        query['CardTemplateCode'] = request.card_template_code
+        query['DigitalTemplateCode'] = request.digital_template_code
+        query['DigitalTemplateParam'] = request.digital_template_param
+        query['FallbackType'] = request.fallback_type
+        query['OutId'] = request.out_id
+        query['SignName'] = request.sign_name
+        query['SmsTemplateCode'] = request.sms_template_code
+        query['SmsTemplateParam'] = request.sms_template_param
+        query['SmsUpExtendCode'] = request.sms_up_extend_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SendCardSms',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.SendCardSmsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_card_sms(
+        self,
+        request: dysmsapi_20170525_models.SendCardSmsRequest,
+    ) -> dysmsapi_20170525_models.SendCardSmsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_card_sms_with_options(request, runtime)
+
+    async def send_card_sms_async(
+        self,
+        request: dysmsapi_20170525_models.SendCardSmsRequest,
+    ) -> dysmsapi_20170525_models.SendCardSmsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_card_sms_with_options_async(request, runtime)
+
     def send_sms_with_options(
         self,
         request: dysmsapi_20170525_models.SendSmsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.SendSmsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OutId'] = request.out_id
+        query['OwnerId'] = request.owner_id
+        query['PhoneNumbers'] = request.phone_numbers
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SignName'] = request.sign_name
+        query['SmsUpExtendCode'] = request.sms_up_extend_code
+        query['TemplateCode'] = request.template_code
+        query['TemplateParam'] = request.template_param
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SendSms',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.SendSmsResponse(),
-            self.do_rpcrequest('SendSms', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def send_sms_with_options_async(
@@ -612,12 +1565,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.SendSmsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OutId'] = request.out_id
+        query['OwnerId'] = request.owner_id
+        query['PhoneNumbers'] = request.phone_numbers
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SignName'] = request.sign_name
+        query['SmsUpExtendCode'] = request.sms_up_extend_code
+        query['TemplateCode'] = request.template_code
+        query['TemplateParam'] = request.template_param
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SendSms',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20170525_models.SendSmsResponse(),
-            await self.do_rpcrequest_async('SendSms', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def send_sms(
@@ -633,3 +1608,173 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.SendSmsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.send_sms_with_options_async(request, runtime)
+
+    def tag_resources_with_options(
+        self,
+        request: dysmsapi_20170525_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ProdCode'] = request.prod_code
+        query['RegionId'] = request.region_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ProdCode'] = request.prod_code
+        query['RegionId'] = request.region_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: dysmsapi_20170525_models.TagResourcesRequest,
+    ) -> dysmsapi_20170525_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: dysmsapi_20170525_models.TagResourcesRequest,
+    ) -> dysmsapi_20170525_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
+
+    def untag_resources_with_options(
+        self,
+        request: dysmsapi_20170525_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.UntagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['All'] = request.all
+        query['OwnerId'] = request.owner_id
+        query['ProdCode'] = request.prod_code
+        query['RegionId'] = request.region_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceType'] = request.resource_type
+        query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.UntagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['All'] = request.all
+        query['OwnerId'] = request.owner_id
+        query['ProdCode'] = request.prod_code
+        query['RegionId'] = request.region_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceType'] = request.resource_type
+        query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: dysmsapi_20170525_models.UntagResourcesRequest,
+    ) -> dysmsapi_20170525_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.untag_resources_with_options(request, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: dysmsapi_20170525_models.UntagResourcesRequest,
+    ) -> dysmsapi_20170525_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.untag_resources_with_options_async(request, runtime)
