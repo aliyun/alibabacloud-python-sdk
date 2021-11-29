@@ -59,10 +59,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.AddClusterServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Comment'] = request.comment
         query['ClusterId'] = request.cluster_id
+        query['Comment'] = request.comment
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['Service'] = request.service
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -91,10 +91,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.AddClusterServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Comment'] = request.comment
         query['ClusterId'] = request.cluster_id
+        query['Comment'] = request.comment
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['Service'] = request.service
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -137,12 +137,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.AddScalingConfigItemV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ConfigItemInformation'] = request.config_item_information
+        query['ConfigItemType'] = request.config_item_type
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingGroupBizId'] = request.scaling_group_biz_id
-        query['ConfigItemType'] = request.config_item_type
-        query['ConfigItemInformation'] = request.config_item_information
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -170,12 +170,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.AddScalingConfigItemV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ConfigItemInformation'] = request.config_item_information
+        query['ConfigItemType'] = request.config_item_type
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingGroupBizId'] = request.scaling_group_biz_id
-        query['ConfigItemType'] = request.config_item_type
-        query['ConfigItemInformation'] = request.config_item_information
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -217,11 +217,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.AuthorizeSecurityGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ClusterId'] = request.cluster_id
-        query['BizType'] = request.biz_type
         query['BizContent'] = request.biz_content
+        query['BizType'] = request.biz_type
+        query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -249,11 +249,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.AuthorizeSecurityGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ClusterId'] = request.cluster_id
-        query['BizType'] = request.biz_type
         query['BizContent'] = request.biz_content
+        query['BizType'] = request.biz_type
+        query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -295,9 +295,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CancelOrderResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -325,9 +325,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CancelOrderResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -369,8 +369,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CloneFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
         query['Id'] = request.id
+        query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -399,8 +399,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CloneFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
         query['Id'] = request.id
+        query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -443,9 +443,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CloneFlowJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
         query['Id'] = request.id
         query['Name'] = request.name
+        query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -474,9 +474,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CloneFlowJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
         query['Id'] = request.id
         query['Name'] = request.name
+        query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -519,10 +519,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateBackupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['BackupPlanId'] = request.backup_plan_id
         query['MetadataType'] = request.metadata_type
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -550,10 +550,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateBackupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['BackupPlanId'] = request.backup_plan_id
         query['MetadataType'] = request.metadata_type
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -595,11 +595,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateBackupPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Name'] = request.name
-        query['Description'] = request.description
         query['ClusterId'] = request.cluster_id
+        query['Description'] = request.description
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['RootPath'] = request.root_path
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -628,11 +628,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateBackupPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Name'] = request.name
-        query['Description'] = request.description
         query['ClusterId'] = request.cluster_id
+        query['Description'] = request.description
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['RootPath'] = request.root_path
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -675,10 +675,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateClusterBootstrapActionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ClusterId'] = request.cluster_id
         query['BootstrapAction'] = request.bootstrap_action
+        query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -706,10 +706,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateClusterBootstrapActionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ClusterId'] = request.cluster_id
         query['BootstrapAction'] = request.bootstrap_action
+        query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -744,6 +744,94 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_cluster_bootstrap_action_with_options_async(request, runtime)
 
+    def create_cluster_host_group_with_options(
+        self,
+        request: emr_20160408_models.CreateClusterHostGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20160408_models.CreateClusterHostGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClusterId'] = request.cluster_id
+        query['Comment'] = request.comment
+        query['HostGroupName'] = request.host_group_name
+        query['HostGroupParams'] = request.host_group_params
+        query['HostGroupType'] = request.host_group_type
+        query['PayType'] = request.pay_type
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityGroupId'] = request.security_group_id
+        query['VswitchId'] = request.vswitch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateClusterHostGroup',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateClusterHostGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cluster_host_group_with_options_async(
+        self,
+        request: emr_20160408_models.CreateClusterHostGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20160408_models.CreateClusterHostGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClusterId'] = request.cluster_id
+        query['Comment'] = request.comment
+        query['HostGroupName'] = request.host_group_name
+        query['HostGroupParams'] = request.host_group_params
+        query['HostGroupType'] = request.host_group_type
+        query['PayType'] = request.pay_type
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityGroupId'] = request.security_group_id
+        query['VswitchId'] = request.vswitch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateClusterHostGroup',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.CreateClusterHostGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cluster_host_group(
+        self,
+        request: emr_20160408_models.CreateClusterHostGroupRequest,
+    ) -> emr_20160408_models.CreateClusterHostGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_cluster_host_group_with_options(request, runtime)
+
+    async def create_cluster_host_group_async(
+        self,
+        request: emr_20160408_models.CreateClusterHostGroupRequest,
+    ) -> emr_20160408_models.CreateClusterHostGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_cluster_host_group_with_options_async(request, runtime)
+
     def create_cluster_template_with_options(
         self,
         request: emr_20160408_models.CreateClusterTemplateRequest,
@@ -751,43 +839,44 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateClusterTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateName'] = request.template_name
-        query['RegionId'] = request.region_id
-        query['ZoneId'] = request.zone_id
-        query['LogPath'] = request.log_path
-        query['SecurityGroupId'] = request.security_group_id
-        query['IsOpenPublicIp'] = request.is_open_public_ip
-        query['SecurityGroupName'] = request.security_group_name
-        query['Period'] = request.period
         query['AutoRenew'] = request.auto_renew
-        query['VpcId'] = request.vpc_id
-        query['VSwitchId'] = request.v_switch_id
-        query['NetType'] = request.net_type
-        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
-        query['EmrVer'] = request.emr_ver
-        query['ClusterType'] = request.cluster_type
-        query['HighAvailabilityEnable'] = request.high_availability_enable
-        query['UseLocalMetaDb'] = request.use_local_meta_db
-        query['IoOptimized'] = request.io_optimized
-        query['SshEnable'] = request.ssh_enable
-        query['InstanceGeneration'] = request.instance_generation
-        query['MasterPwd'] = request.master_pwd
-        query['KeyPairName'] = request.key_pair_name
-        query['MetaStoreType'] = request.meta_store_type
-        query['MetaStoreConf'] = request.meta_store_conf
-        query['Configurations'] = request.configurations
-        query['EasEnable'] = request.eas_enable
-        query['DepositType'] = request.deposit_type
-        query['MachineType'] = request.machine_type
-        query['UseCustomHiveMetaDb'] = request.use_custom_hive_meta_db
-        query['InitCustomHiveMetaDb'] = request.init_custom_hive_meta_db
-        query['ResourceGroupId'] = request.resource_group_id
-        query['OptionSoftWareList'] = request.option_soft_ware_list
-        query['HostGroup'] = request.host_group
         query['BootstrapAction'] = request.bootstrap_action
+        query['ClientToken'] = request.client_token
+        query['ClusterType'] = request.cluster_type
         query['Config'] = request.config
+        query['Configurations'] = request.configurations
+        query['DepositType'] = request.deposit_type
+        query['EasEnable'] = request.eas_enable
+        query['EmrVer'] = request.emr_ver
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['HostGroup'] = request.host_group
+        query['InitCustomHiveMetaDb'] = request.init_custom_hive_meta_db
+        query['InstanceGeneration'] = request.instance_generation
+        query['IoOptimized'] = request.io_optimized
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['KeyPairName'] = request.key_pair_name
+        query['LogPath'] = request.log_path
+        query['MachineType'] = request.machine_type
+        query['MasterPwd'] = request.master_pwd
+        query['MetaStoreConf'] = request.meta_store_conf
+        query['MetaStoreType'] = request.meta_store_type
+        query['NetType'] = request.net_type
+        query['OptionSoftWareList'] = request.option_soft_ware_list
+        query['Period'] = request.period
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityGroupId'] = request.security_group_id
+        query['SecurityGroupName'] = request.security_group_name
+        query['SshEnable'] = request.ssh_enable
         query['Tag'] = request.tag
+        query['TemplateName'] = request.template_name
+        query['UseCustomHiveMetaDb'] = request.use_custom_hive_meta_db
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['VSwitchId'] = request.v_switch_id
+        query['VpcId'] = request.vpc_id
+        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -815,43 +904,44 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateClusterTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateName'] = request.template_name
-        query['RegionId'] = request.region_id
-        query['ZoneId'] = request.zone_id
-        query['LogPath'] = request.log_path
-        query['SecurityGroupId'] = request.security_group_id
-        query['IsOpenPublicIp'] = request.is_open_public_ip
-        query['SecurityGroupName'] = request.security_group_name
-        query['Period'] = request.period
         query['AutoRenew'] = request.auto_renew
-        query['VpcId'] = request.vpc_id
-        query['VSwitchId'] = request.v_switch_id
-        query['NetType'] = request.net_type
-        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
-        query['EmrVer'] = request.emr_ver
-        query['ClusterType'] = request.cluster_type
-        query['HighAvailabilityEnable'] = request.high_availability_enable
-        query['UseLocalMetaDb'] = request.use_local_meta_db
-        query['IoOptimized'] = request.io_optimized
-        query['SshEnable'] = request.ssh_enable
-        query['InstanceGeneration'] = request.instance_generation
-        query['MasterPwd'] = request.master_pwd
-        query['KeyPairName'] = request.key_pair_name
-        query['MetaStoreType'] = request.meta_store_type
-        query['MetaStoreConf'] = request.meta_store_conf
-        query['Configurations'] = request.configurations
-        query['EasEnable'] = request.eas_enable
-        query['DepositType'] = request.deposit_type
-        query['MachineType'] = request.machine_type
-        query['UseCustomHiveMetaDb'] = request.use_custom_hive_meta_db
-        query['InitCustomHiveMetaDb'] = request.init_custom_hive_meta_db
-        query['ResourceGroupId'] = request.resource_group_id
-        query['OptionSoftWareList'] = request.option_soft_ware_list
-        query['HostGroup'] = request.host_group
         query['BootstrapAction'] = request.bootstrap_action
+        query['ClientToken'] = request.client_token
+        query['ClusterType'] = request.cluster_type
         query['Config'] = request.config
+        query['Configurations'] = request.configurations
+        query['DepositType'] = request.deposit_type
+        query['EasEnable'] = request.eas_enable
+        query['EmrVer'] = request.emr_ver
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['HostGroup'] = request.host_group
+        query['InitCustomHiveMetaDb'] = request.init_custom_hive_meta_db
+        query['InstanceGeneration'] = request.instance_generation
+        query['IoOptimized'] = request.io_optimized
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['KeyPairName'] = request.key_pair_name
+        query['LogPath'] = request.log_path
+        query['MachineType'] = request.machine_type
+        query['MasterPwd'] = request.master_pwd
+        query['MetaStoreConf'] = request.meta_store_conf
+        query['MetaStoreType'] = request.meta_store_type
+        query['NetType'] = request.net_type
+        query['OptionSoftWareList'] = request.option_soft_ware_list
+        query['Period'] = request.period
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityGroupId'] = request.security_group_id
+        query['SecurityGroupName'] = request.security_group_name
+        query['SshEnable'] = request.ssh_enable
         query['Tag'] = request.tag
+        query['TemplateName'] = request.template_name
+        query['UseCustomHiveMetaDb'] = request.use_custom_hive_meta_db
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['VSwitchId'] = request.v_switch_id
+        query['VpcId'] = request.vpc_id
+        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -893,54 +983,55 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateClusterV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Name'] = request.name
-        query['RegionId'] = request.region_id
-        query['ZoneId'] = request.zone_id
-        query['LogPath'] = request.log_path
-        query['SecurityGroupId'] = request.security_group_id
-        query['IsOpenPublicIp'] = request.is_open_public_ip
-        query['SecurityGroupName'] = request.security_group_name
-        query['ChargeType'] = request.charge_type
-        query['Period'] = request.period
-        query['AutoRenew'] = request.auto_renew
-        query['AutoPayOrder'] = request.auto_pay_order
-        query['VpcId'] = request.vpc_id
-        query['VSwitchId'] = request.v_switch_id
-        query['NetType'] = request.net_type
-        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
-        query['EmrVer'] = request.emr_ver
-        query['ClusterType'] = request.cluster_type
-        query['HighAvailabilityEnable'] = request.high_availability_enable
-        query['UseLocalMetaDb'] = request.use_local_meta_db
-        query['IoOptimized'] = request.io_optimized
-        query['SshEnable'] = request.ssh_enable
-        query['InstanceGeneration'] = request.instance_generation
-        query['MasterPwd'] = request.master_pwd
-        query['KeyPairName'] = request.key_pair_name
-        query['MetaStoreType'] = request.meta_store_type
-        query['MetaStoreConf'] = request.meta_store_conf
-        query['ClickHouseConf'] = request.click_house_conf
-        query['ExtraAttributes'] = request.extra_attributes
-        query['DepositType'] = request.deposit_type
-        query['MachineType'] = request.machine_type
-        query['UseCustomHiveMetaDB'] = request.use_custom_hive_meta_db
-        query['InitCustomHiveMetaDB'] = request.init_custom_hive_meta_db
-        query['Configurations'] = request.configurations
-        query['EasEnable'] = request.eas_enable
-        query['RelatedClusterId'] = request.related_cluster_id
-        query['WhiteListType'] = request.white_list_type
         query['AuthorizeContent'] = request.authorize_content
-        query['ResourceGroupId'] = request.resource_group_id
-        query['OptionSoftWareList'] = request.option_soft_ware_list
-        query['UserInfo'] = request.user_info
-        query['HostComponentInfo'] = request.host_component_info
-        query['ServiceInfo'] = request.service_info
-        query['PromotionInfo'] = request.promotion_info
-        query['HostGroup'] = request.host_group
+        query['AutoPayOrder'] = request.auto_pay_order
+        query['AutoRenew'] = request.auto_renew
         query['BootstrapAction'] = request.bootstrap_action
+        query['ChargeType'] = request.charge_type
+        query['ClickHouseConf'] = request.click_house_conf
+        query['ClientToken'] = request.client_token
+        query['ClusterType'] = request.cluster_type
         query['Config'] = request.config
+        query['Configurations'] = request.configurations
+        query['DepositType'] = request.deposit_type
+        query['EasEnable'] = request.eas_enable
+        query['EmrVer'] = request.emr_ver
+        query['ExtraAttributes'] = request.extra_attributes
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['HostComponentInfo'] = request.host_component_info
+        query['HostGroup'] = request.host_group
+        query['InitCustomHiveMetaDB'] = request.init_custom_hive_meta_db
+        query['InstanceGeneration'] = request.instance_generation
+        query['IoOptimized'] = request.io_optimized
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['KeyPairName'] = request.key_pair_name
+        query['LogPath'] = request.log_path
+        query['MachineType'] = request.machine_type
+        query['MasterPwd'] = request.master_pwd
+        query['MetaStoreConf'] = request.meta_store_conf
+        query['MetaStoreType'] = request.meta_store_type
+        query['Name'] = request.name
+        query['NetType'] = request.net_type
+        query['OptionSoftWareList'] = request.option_soft_ware_list
+        query['Period'] = request.period
+        query['PromotionInfo'] = request.promotion_info
+        query['RegionId'] = request.region_id
+        query['RelatedClusterId'] = request.related_cluster_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityGroupId'] = request.security_group_id
+        query['SecurityGroupName'] = request.security_group_name
+        query['ServiceInfo'] = request.service_info
+        query['SshEnable'] = request.ssh_enable
         query['Tag'] = request.tag
+        query['UseCustomHiveMetaDB'] = request.use_custom_hive_meta_db
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['UserInfo'] = request.user_info
+        query['VSwitchId'] = request.v_switch_id
+        query['VpcId'] = request.vpc_id
+        query['WhiteListType'] = request.white_list_type
+        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -968,54 +1059,55 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateClusterV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Name'] = request.name
-        query['RegionId'] = request.region_id
-        query['ZoneId'] = request.zone_id
-        query['LogPath'] = request.log_path
-        query['SecurityGroupId'] = request.security_group_id
-        query['IsOpenPublicIp'] = request.is_open_public_ip
-        query['SecurityGroupName'] = request.security_group_name
-        query['ChargeType'] = request.charge_type
-        query['Period'] = request.period
-        query['AutoRenew'] = request.auto_renew
-        query['AutoPayOrder'] = request.auto_pay_order
-        query['VpcId'] = request.vpc_id
-        query['VSwitchId'] = request.v_switch_id
-        query['NetType'] = request.net_type
-        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
-        query['EmrVer'] = request.emr_ver
-        query['ClusterType'] = request.cluster_type
-        query['HighAvailabilityEnable'] = request.high_availability_enable
-        query['UseLocalMetaDb'] = request.use_local_meta_db
-        query['IoOptimized'] = request.io_optimized
-        query['SshEnable'] = request.ssh_enable
-        query['InstanceGeneration'] = request.instance_generation
-        query['MasterPwd'] = request.master_pwd
-        query['KeyPairName'] = request.key_pair_name
-        query['MetaStoreType'] = request.meta_store_type
-        query['MetaStoreConf'] = request.meta_store_conf
-        query['ClickHouseConf'] = request.click_house_conf
-        query['ExtraAttributes'] = request.extra_attributes
-        query['DepositType'] = request.deposit_type
-        query['MachineType'] = request.machine_type
-        query['UseCustomHiveMetaDB'] = request.use_custom_hive_meta_db
-        query['InitCustomHiveMetaDB'] = request.init_custom_hive_meta_db
-        query['Configurations'] = request.configurations
-        query['EasEnable'] = request.eas_enable
-        query['RelatedClusterId'] = request.related_cluster_id
-        query['WhiteListType'] = request.white_list_type
         query['AuthorizeContent'] = request.authorize_content
-        query['ResourceGroupId'] = request.resource_group_id
-        query['OptionSoftWareList'] = request.option_soft_ware_list
-        query['UserInfo'] = request.user_info
-        query['HostComponentInfo'] = request.host_component_info
-        query['ServiceInfo'] = request.service_info
-        query['PromotionInfo'] = request.promotion_info
-        query['HostGroup'] = request.host_group
+        query['AutoPayOrder'] = request.auto_pay_order
+        query['AutoRenew'] = request.auto_renew
         query['BootstrapAction'] = request.bootstrap_action
+        query['ChargeType'] = request.charge_type
+        query['ClickHouseConf'] = request.click_house_conf
+        query['ClientToken'] = request.client_token
+        query['ClusterType'] = request.cluster_type
         query['Config'] = request.config
+        query['Configurations'] = request.configurations
+        query['DepositType'] = request.deposit_type
+        query['EasEnable'] = request.eas_enable
+        query['EmrVer'] = request.emr_ver
+        query['ExtraAttributes'] = request.extra_attributes
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['HostComponentInfo'] = request.host_component_info
+        query['HostGroup'] = request.host_group
+        query['InitCustomHiveMetaDB'] = request.init_custom_hive_meta_db
+        query['InstanceGeneration'] = request.instance_generation
+        query['IoOptimized'] = request.io_optimized
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['KeyPairName'] = request.key_pair_name
+        query['LogPath'] = request.log_path
+        query['MachineType'] = request.machine_type
+        query['MasterPwd'] = request.master_pwd
+        query['MetaStoreConf'] = request.meta_store_conf
+        query['MetaStoreType'] = request.meta_store_type
+        query['Name'] = request.name
+        query['NetType'] = request.net_type
+        query['OptionSoftWareList'] = request.option_soft_ware_list
+        query['Period'] = request.period
+        query['PromotionInfo'] = request.promotion_info
+        query['RegionId'] = request.region_id
+        query['RelatedClusterId'] = request.related_cluster_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityGroupId'] = request.security_group_id
+        query['SecurityGroupName'] = request.security_group_name
+        query['ServiceInfo'] = request.service_info
+        query['SshEnable'] = request.ssh_enable
         query['Tag'] = request.tag
+        query['UseCustomHiveMetaDB'] = request.use_custom_hive_meta_db
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['UserInfo'] = request.user_info
+        query['VSwitchId'] = request.v_switch_id
+        query['VpcId'] = request.vpc_id
+        query['WhiteListType'] = request.white_list_type
+        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -1057,11 +1149,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateClusterWithTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['ClusterName'] = request.cluster_name
+        query['ResourceGroupId'] = request.resource_group_id
         query['ResourceOwnerId'] = request.resource_owner_id
         query['TemplateBizId'] = request.template_biz_id
         query['UniqueTag'] = request.unique_tag
-        query['ClusterName'] = request.cluster_name
-        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -1089,11 +1181,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateClusterWithTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['ClusterName'] = request.cluster_name
+        query['ResourceGroupId'] = request.resource_group_id
         query['ResourceOwnerId'] = request.resource_owner_id
         query['TemplateBizId'] = request.template_biz_id
         query['UniqueTag'] = request.unique_tag
-        query['ClusterName'] = request.cluster_name
-        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -1135,15 +1227,15 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateDataSourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Name'] = request.name
-        query['SourceType'] = request.source_type
-        query['Description'] = request.description
-        query['Conf'] = request.conf
         query['ClusterId'] = request.cluster_id
+        query['Conf'] = request.conf
+        query['Description'] = request.description
+        query['Name'] = request.name
         query['NavParentId'] = request.nav_parent_id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -1171,15 +1263,15 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateDataSourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Name'] = request.name
-        query['SourceType'] = request.source_type
-        query['Description'] = request.description
-        query['Conf'] = request.conf
         query['ClusterId'] = request.cluster_id
+        query['Conf'] = request.conf
+        query['Description'] = request.description
+        query['Name'] = request.name
         query['NavParentId'] = request.nav_parent_id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -1221,43 +1313,43 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateExecutionPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Name'] = request.name
-        query['Strategy'] = request.strategy
-        query['TimeInterval'] = request.time_interval
-        query['StartTime'] = request.start_time
-        query['TimeUnit'] = request.time_unit
-        query['DayOfWeek'] = request.day_of_week
-        query['DayOfMonth'] = request.day_of_month
+        query['BootstrapAction'] = request.bootstrap_action
         query['ClusterId'] = request.cluster_id
-        query['CreateClusterOnDemand'] = request.create_cluster_on_demand
         query['ClusterName'] = request.cluster_name
-        query['ZoneId'] = request.zone_id
+        query['ClusterType'] = request.cluster_type
+        query['Config'] = request.config
+        query['Configurations'] = request.configurations
+        query['CreateClusterOnDemand'] = request.create_cluster_on_demand
+        query['DayOfMonth'] = request.day_of_month
+        query['DayOfWeek'] = request.day_of_week
+        query['EasEnable'] = request.eas_enable
+        query['EcsOrder'] = request.ecs_order
+        query['EmrVer'] = request.emr_ver
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['InitCustomHiveMetaDB'] = request.init_custom_hive_meta_db
+        query['InstanceGeneration'] = request.instance_generation
+        query['IoOptimized'] = request.io_optimized
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['JobIdList'] = request.job_id_list
         query['LogEnable'] = request.log_enable
         query['LogPath'] = request.log_path
-        query['SecurityGroupId'] = request.security_group_id
-        query['IsOpenPublicIp'] = request.is_open_public_ip
-        query['EmrVer'] = request.emr_ver
-        query['ClusterType'] = request.cluster_type
-        query['HighAvailabilityEnable'] = request.high_availability_enable
-        query['UseLocalMetaDb'] = request.use_local_meta_db
-        query['VpcId'] = request.vpc_id
-        query['VSwitchId'] = request.v_switch_id
+        query['Name'] = request.name
         query['NetType'] = request.net_type
-        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
-        query['IoOptimized'] = request.io_optimized
-        query['InstanceGeneration'] = request.instance_generation
-        query['UseCustomHiveMetaDB'] = request.use_custom_hive_meta_db
-        query['InitCustomHiveMetaDB'] = request.init_custom_hive_meta_db
-        query['Configurations'] = request.configurations
-        query['EasEnable'] = request.eas_enable
-        query['WorkflowDefinition'] = request.workflow_definition
-        query['JobIdList'] = request.job_id_list
         query['OptionSoftWareList'] = request.option_soft_ware_list
-        query['EcsOrder'] = request.ecs_order
-        query['BootstrapAction'] = request.bootstrap_action
-        query['Config'] = request.config
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityGroupId'] = request.security_group_id
+        query['StartTime'] = request.start_time
+        query['Strategy'] = request.strategy
+        query['TimeInterval'] = request.time_interval
+        query['TimeUnit'] = request.time_unit
+        query['UseCustomHiveMetaDB'] = request.use_custom_hive_meta_db
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['VSwitchId'] = request.v_switch_id
+        query['VpcId'] = request.vpc_id
+        query['WorkflowDefinition'] = request.workflow_definition
+        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -1285,43 +1377,43 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateExecutionPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Name'] = request.name
-        query['Strategy'] = request.strategy
-        query['TimeInterval'] = request.time_interval
-        query['StartTime'] = request.start_time
-        query['TimeUnit'] = request.time_unit
-        query['DayOfWeek'] = request.day_of_week
-        query['DayOfMonth'] = request.day_of_month
+        query['BootstrapAction'] = request.bootstrap_action
         query['ClusterId'] = request.cluster_id
-        query['CreateClusterOnDemand'] = request.create_cluster_on_demand
         query['ClusterName'] = request.cluster_name
-        query['ZoneId'] = request.zone_id
+        query['ClusterType'] = request.cluster_type
+        query['Config'] = request.config
+        query['Configurations'] = request.configurations
+        query['CreateClusterOnDemand'] = request.create_cluster_on_demand
+        query['DayOfMonth'] = request.day_of_month
+        query['DayOfWeek'] = request.day_of_week
+        query['EasEnable'] = request.eas_enable
+        query['EcsOrder'] = request.ecs_order
+        query['EmrVer'] = request.emr_ver
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['InitCustomHiveMetaDB'] = request.init_custom_hive_meta_db
+        query['InstanceGeneration'] = request.instance_generation
+        query['IoOptimized'] = request.io_optimized
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['JobIdList'] = request.job_id_list
         query['LogEnable'] = request.log_enable
         query['LogPath'] = request.log_path
-        query['SecurityGroupId'] = request.security_group_id
-        query['IsOpenPublicIp'] = request.is_open_public_ip
-        query['EmrVer'] = request.emr_ver
-        query['ClusterType'] = request.cluster_type
-        query['HighAvailabilityEnable'] = request.high_availability_enable
-        query['UseLocalMetaDb'] = request.use_local_meta_db
-        query['VpcId'] = request.vpc_id
-        query['VSwitchId'] = request.v_switch_id
+        query['Name'] = request.name
         query['NetType'] = request.net_type
-        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
-        query['IoOptimized'] = request.io_optimized
-        query['InstanceGeneration'] = request.instance_generation
-        query['UseCustomHiveMetaDB'] = request.use_custom_hive_meta_db
-        query['InitCustomHiveMetaDB'] = request.init_custom_hive_meta_db
-        query['Configurations'] = request.configurations
-        query['EasEnable'] = request.eas_enable
-        query['WorkflowDefinition'] = request.workflow_definition
-        query['JobIdList'] = request.job_id_list
         query['OptionSoftWareList'] = request.option_soft_ware_list
-        query['EcsOrder'] = request.ecs_order
-        query['BootstrapAction'] = request.bootstrap_action
-        query['Config'] = request.config
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityGroupId'] = request.security_group_id
+        query['StartTime'] = request.start_time
+        query['Strategy'] = request.strategy
+        query['TimeInterval'] = request.time_interval
+        query['TimeUnit'] = request.time_unit
+        query['UseCustomHiveMetaDB'] = request.use_custom_hive_meta_db
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['VSwitchId'] = request.v_switch_id
+        query['VpcId'] = request.vpc_id
+        query['WorkflowDefinition'] = request.workflow_definition
+        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -1363,25 +1455,25 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
-        query['Name'] = request.name
-        query['Description'] = request.description
-        query['StartSchedule'] = request.start_schedule
-        query['EndSchedule'] = request.end_schedule
-        query['CronExpr'] = request.cron_expr
-        query['CreateCluster'] = request.create_cluster
-        query['ClusterId'] = request.cluster_id
-        query['HostName'] = request.host_name
-        query['Namespace'] = request.namespace
-        query['LogArchiveLocation'] = request.log_archive_location
-        query['Lifecycle'] = request.lifecycle
-        query['Application'] = request.application
         query['AlertConf'] = request.alert_conf
-        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
         query['AlertDingDingGroupBizId'] = request.alert_ding_ding_group_biz_id
-        query['ParentFlowList'] = request.parent_flow_list
+        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
+        query['Application'] = request.application
+        query['ClusterId'] = request.cluster_id
+        query['CreateCluster'] = request.create_cluster
+        query['CronExpr'] = request.cron_expr
+        query['Description'] = request.description
+        query['EndSchedule'] = request.end_schedule
+        query['HostName'] = request.host_name
+        query['Lifecycle'] = request.lifecycle
+        query['LogArchiveLocation'] = request.log_archive_location
+        query['Name'] = request.name
+        query['Namespace'] = request.namespace
         query['ParentCategory'] = request.parent_category
+        query['ParentFlowList'] = request.parent_flow_list
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['StartSchedule'] = request.start_schedule
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -1409,25 +1501,25 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
-        query['Name'] = request.name
-        query['Description'] = request.description
-        query['StartSchedule'] = request.start_schedule
-        query['EndSchedule'] = request.end_schedule
-        query['CronExpr'] = request.cron_expr
-        query['CreateCluster'] = request.create_cluster
-        query['ClusterId'] = request.cluster_id
-        query['HostName'] = request.host_name
-        query['Namespace'] = request.namespace
-        query['LogArchiveLocation'] = request.log_archive_location
-        query['Lifecycle'] = request.lifecycle
-        query['Application'] = request.application
         query['AlertConf'] = request.alert_conf
-        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
         query['AlertDingDingGroupBizId'] = request.alert_ding_ding_group_biz_id
-        query['ParentFlowList'] = request.parent_flow_list
+        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
+        query['Application'] = request.application
+        query['ClusterId'] = request.cluster_id
+        query['CreateCluster'] = request.create_cluster
+        query['CronExpr'] = request.cron_expr
+        query['Description'] = request.description
+        query['EndSchedule'] = request.end_schedule
+        query['HostName'] = request.host_name
+        query['Lifecycle'] = request.lifecycle
+        query['LogArchiveLocation'] = request.log_archive_location
+        query['Name'] = request.name
+        query['Namespace'] = request.namespace
         query['ParentCategory'] = request.parent_category
+        query['ParentFlowList'] = request.parent_flow_list
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['StartSchedule'] = request.start_schedule
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -1469,11 +1561,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateFlowCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['Name'] = request.name
-        query['Type'] = request.type
         query['ParentId'] = request.parent_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -1501,11 +1593,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateFlowCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['Name'] = request.name
-        query['Type'] = request.type
         query['ParentId'] = request.parent_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -1547,25 +1639,25 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateFlowForWebResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
-        query['Name'] = request.name
-        query['Description'] = request.description
-        query['StartSchedule'] = request.start_schedule
-        query['EndSchedule'] = request.end_schedule
-        query['CronExpr'] = request.cron_expr
-        query['CreateCluster'] = request.create_cluster
-        query['ClusterId'] = request.cluster_id
-        query['HostName'] = request.host_name
-        query['Namespace'] = request.namespace
-        query['LogArchiveLocation'] = request.log_archive_location
-        query['Lifecycle'] = request.lifecycle
-        query['Graph'] = request.graph
         query['AlertConf'] = request.alert_conf
-        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
         query['AlertDingDingGroupBizId'] = request.alert_ding_ding_group_biz_id
-        query['ParentFlowList'] = request.parent_flow_list
+        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
+        query['ClusterId'] = request.cluster_id
+        query['CreateCluster'] = request.create_cluster
+        query['CronExpr'] = request.cron_expr
+        query['Description'] = request.description
+        query['EndSchedule'] = request.end_schedule
+        query['Graph'] = request.graph
+        query['HostName'] = request.host_name
+        query['Lifecycle'] = request.lifecycle
+        query['LogArchiveLocation'] = request.log_archive_location
+        query['Name'] = request.name
+        query['Namespace'] = request.namespace
         query['ParentCategory'] = request.parent_category
+        query['ParentFlowList'] = request.parent_flow_list
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['StartSchedule'] = request.start_schedule
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -1593,25 +1685,25 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateFlowForWebResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
-        query['Name'] = request.name
-        query['Description'] = request.description
-        query['StartSchedule'] = request.start_schedule
-        query['EndSchedule'] = request.end_schedule
-        query['CronExpr'] = request.cron_expr
-        query['CreateCluster'] = request.create_cluster
-        query['ClusterId'] = request.cluster_id
-        query['HostName'] = request.host_name
-        query['Namespace'] = request.namespace
-        query['LogArchiveLocation'] = request.log_archive_location
-        query['Lifecycle'] = request.lifecycle
-        query['Graph'] = request.graph
         query['AlertConf'] = request.alert_conf
-        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
         query['AlertDingDingGroupBizId'] = request.alert_ding_ding_group_biz_id
-        query['ParentFlowList'] = request.parent_flow_list
+        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
+        query['ClusterId'] = request.cluster_id
+        query['CreateCluster'] = request.create_cluster
+        query['CronExpr'] = request.cron_expr
+        query['Description'] = request.description
+        query['EndSchedule'] = request.end_schedule
+        query['Graph'] = request.graph
+        query['HostName'] = request.host_name
+        query['Lifecycle'] = request.lifecycle
+        query['LogArchiveLocation'] = request.log_archive_location
+        query['Name'] = request.name
+        query['Namespace'] = request.namespace
         query['ParentCategory'] = request.parent_category
+        query['ParentFlowList'] = request.parent_flow_list
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['StartSchedule'] = request.start_schedule
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -1653,20 +1745,20 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateFlowJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
-        query['Name'] = request.name
-        query['Type'] = request.type
+        query['Adhoc'] = request.adhoc
+        query['AlertConf'] = request.alert_conf
+        query['ClusterId'] = request.cluster_id
         query['FailAct'] = request.fail_act
         query['MaxRetry'] = request.max_retry
-        query['RetryPolicy'] = request.retry_policy
         query['MaxRunningTimeSec'] = request.max_running_time_sec
-        query['RetryInterval'] = request.retry_interval
         query['Mode'] = request.mode
+        query['Name'] = request.name
         query['ParentCategory'] = request.parent_category
-        query['Adhoc'] = request.adhoc
-        query['ClusterId'] = request.cluster_id
-        query['AlertConf'] = request.alert_conf
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['RetryInterval'] = request.retry_interval
+        query['RetryPolicy'] = request.retry_policy
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -1694,20 +1786,20 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateFlowJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
-        query['Name'] = request.name
-        query['Type'] = request.type
+        query['Adhoc'] = request.adhoc
+        query['AlertConf'] = request.alert_conf
+        query['ClusterId'] = request.cluster_id
         query['FailAct'] = request.fail_act
         query['MaxRetry'] = request.max_retry
-        query['RetryPolicy'] = request.retry_policy
         query['MaxRunningTimeSec'] = request.max_running_time_sec
-        query['RetryInterval'] = request.retry_interval
         query['Mode'] = request.mode
+        query['Name'] = request.name
         query['ParentCategory'] = request.parent_category
-        query['Adhoc'] = request.adhoc
-        query['ClusterId'] = request.cluster_id
-        query['AlertConf'] = request.alert_conf
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['RetryInterval'] = request.retry_interval
+        query['RetryPolicy'] = request.retry_policy
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -1749,10 +1841,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateFlowProjectResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['Description'] = request.description
+        query['Name'] = request.name
         query['ProductType'] = request.product_type
         query['RegionId'] = request.region_id
-        query['Name'] = request.name
-        query['Description'] = request.description
         query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -1781,10 +1873,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateFlowProjectResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['Description'] = request.description
+        query['Name'] = request.name
         query['ProductType'] = request.product_type
         query['RegionId'] = request.region_id
-        query['Name'] = request.name
-        query['Description'] = request.description
         query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -1827,14 +1919,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['ClusterId'] = request.cluster_id
-        query['DefaultUser'] = request.default_user
         query['DefaultQueue'] = request.default_queue
-        query['UserList'] = request.user_list
-        query['QueueList'] = request.queue_list
+        query['DefaultUser'] = request.default_user
         query['HostList'] = request.host_list
+        query['ProjectId'] = request.project_id
+        query['QueueList'] = request.queue_list
+        query['RegionId'] = request.region_id
+        query['UserList'] = request.user_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -1862,14 +1954,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['ClusterId'] = request.cluster_id
-        query['DefaultUser'] = request.default_user
         query['DefaultQueue'] = request.default_queue
-        query['UserList'] = request.user_list
-        query['QueueList'] = request.queue_list
+        query['DefaultUser'] = request.default_user
         query['HostList'] = request.host_list
+        query['ProjectId'] = request.project_id
+        query['QueueList'] = request.queue_list
+        query['RegionId'] = request.region_id
+        query['UserList'] = request.user_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -1911,8 +2003,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateFlowProjectUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
         query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['User'] = request.user
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -1941,8 +2033,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateFlowProjectUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
         query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['User'] = request.user
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -1985,15 +2077,15 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Name'] = request.name
-        query['RegionId'] = request.region_id
-        query['Type'] = request.type
-        query['RunParameter'] = request.run_parameter
         query['FailAct'] = request.fail_act
         query['MaxRetry'] = request.max_retry
-        query['RetryInterval'] = request.retry_interval
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RetryInterval'] = request.retry_interval
+        query['RunParameter'] = request.run_parameter
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2021,15 +2113,15 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Name'] = request.name
-        query['RegionId'] = request.region_id
-        query['Type'] = request.type
-        query['RunParameter'] = request.run_parameter
         query['FailAct'] = request.fail_act
         query['MaxRetry'] = request.max_retry
-        query['RetryInterval'] = request.retry_interval
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RetryInterval'] = request.retry_interval
+        query['RunParameter'] = request.run_parameter
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2071,15 +2163,15 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateLibraryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Type'] = request.type
-        query['Name'] = request.name
         query['LibraryVersion'] = request.library_version
-        query['SourceType'] = request.source_type
-        query['SourceLocation'] = request.source_location
-        query['Scope'] = request.scope
+        query['Name'] = request.name
         query['Properties'] = request.properties
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Scope'] = request.scope
+        query['SourceLocation'] = request.source_location
+        query['SourceType'] = request.source_type
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2107,15 +2199,15 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateLibraryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Type'] = request.type
-        query['Name'] = request.name
         query['LibraryVersion'] = request.library_version
-        query['SourceType'] = request.source_type
-        query['SourceLocation'] = request.source_location
-        query['Scope'] = request.scope
+        query['Name'] = request.name
         query['Properties'] = request.properties
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Scope'] = request.scope
+        query['SourceLocation'] = request.source_location
+        query['SourceType'] = request.source_type
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2157,14 +2249,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateMetaTablePreviewTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['DatabaseId'] = request.database_id
+        query['Password'] = request.password
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['TableId'] = request.table_id
         query['User'] = request.user
-        query['Password'] = request.password
-        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2192,14 +2284,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateMetaTablePreviewTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['DatabaseId'] = request.database_id
+        query['Password'] = request.password
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['TableId'] = request.table_id
         query['User'] = request.user
-        query['Password'] = request.password
-        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2241,15 +2333,15 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateResourcePoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Name'] = request.name
-        query['ClusterId'] = request.cluster_id
-        query['PoolType'] = request.pool_type
         query['Active'] = request.active
-        query['Note'] = request.note
-        query['YarnSiteConfig'] = request.yarn_site_config
+        query['ClusterId'] = request.cluster_id
         query['Config'] = request.config
+        query['Name'] = request.name
+        query['Note'] = request.note
+        query['PoolType'] = request.pool_type
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['YarnSiteConfig'] = request.yarn_site_config
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2277,15 +2369,15 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateResourcePoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Name'] = request.name
-        query['ClusterId'] = request.cluster_id
-        query['PoolType'] = request.pool_type
         query['Active'] = request.active
-        query['Note'] = request.note
-        query['YarnSiteConfig'] = request.yarn_site_config
+        query['ClusterId'] = request.cluster_id
         query['Config'] = request.config
+        query['Name'] = request.name
+        query['Note'] = request.note
+        query['PoolType'] = request.pool_type
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['YarnSiteConfig'] = request.yarn_site_config
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2327,15 +2419,15 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateResourceQueueResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Name'] = request.name
-        query['QualifiedName'] = request.qualified_name
         query['ClusterId'] = request.cluster_id
-        query['ParentQueueId'] = request.parent_queue_id
-        query['Leaf'] = request.leaf
-        query['ResourcePoolId'] = request.resource_pool_id
         query['Config'] = request.config
+        query['Leaf'] = request.leaf
+        query['Name'] = request.name
+        query['ParentQueueId'] = request.parent_queue_id
+        query['QualifiedName'] = request.qualified_name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourcePoolId'] = request.resource_pool_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2363,15 +2455,15 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateResourceQueueResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Name'] = request.name
-        query['QualifiedName'] = request.qualified_name
         query['ClusterId'] = request.cluster_id
-        query['ParentQueueId'] = request.parent_queue_id
-        query['Leaf'] = request.leaf
-        query['ResourcePoolId'] = request.resource_pool_id
         query['Config'] = request.config
+        query['Leaf'] = request.leaf
+        query['Name'] = request.name
+        query['ParentQueueId'] = request.parent_queue_id
+        query['QualifiedName'] = request.qualified_name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourcePoolId'] = request.resource_pool_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2413,12 +2505,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateScalingGroupV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Name'] = request.name
         query['Description'] = request.description
         query['HostGroupId'] = request.host_group_id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2446,12 +2538,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateScalingGroupV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Name'] = request.name
         query['Description'] = request.description
         query['HostGroupId'] = request.host_group_id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2493,24 +2585,24 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateScalingRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ClusterId'] = request.cluster_id
-        query['HostGroupId'] = request.host_group_id
-        query['RuleCategory'] = request.rule_category
-        query['RuleName'] = request.rule_name
         query['AdjustmentType'] = request.adjustment_type
         query['AdjustmentValue'] = request.adjustment_value
+        query['CloudWatchTrigger'] = request.cloud_watch_trigger
+        query['ClusterId'] = request.cluster_id
         query['Cooldown'] = request.cooldown
-        query['LaunchTime'] = request.launch_time
+        query['HostGroupId'] = request.host_group_id
         query['LaunchExpirationTime'] = request.launch_expiration_time
+        query['LaunchTime'] = request.launch_time
+        query['RecurrenceEndTime'] = request.recurrence_end_time
         query['RecurrenceType'] = request.recurrence_type
         query['RecurrenceValue'] = request.recurrence_value
-        query['RecurrenceEndTime'] = request.recurrence_end_time
-        query['WithGrace'] = request.with_grace
-        query['TimeoutWithGrace'] = request.timeout_with_grace
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RuleCategory'] = request.rule_category
+        query['RuleName'] = request.rule_name
         query['SchedulerTrigger'] = request.scheduler_trigger
-        query['CloudWatchTrigger'] = request.cloud_watch_trigger
+        query['TimeoutWithGrace'] = request.timeout_with_grace
+        query['WithGrace'] = request.with_grace
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2538,24 +2630,24 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateScalingRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ClusterId'] = request.cluster_id
-        query['HostGroupId'] = request.host_group_id
-        query['RuleCategory'] = request.rule_category
-        query['RuleName'] = request.rule_name
         query['AdjustmentType'] = request.adjustment_type
         query['AdjustmentValue'] = request.adjustment_value
+        query['CloudWatchTrigger'] = request.cloud_watch_trigger
+        query['ClusterId'] = request.cluster_id
         query['Cooldown'] = request.cooldown
-        query['LaunchTime'] = request.launch_time
+        query['HostGroupId'] = request.host_group_id
         query['LaunchExpirationTime'] = request.launch_expiration_time
+        query['LaunchTime'] = request.launch_time
+        query['RecurrenceEndTime'] = request.recurrence_end_time
         query['RecurrenceType'] = request.recurrence_type
         query['RecurrenceValue'] = request.recurrence_value
-        query['RecurrenceEndTime'] = request.recurrence_end_time
-        query['WithGrace'] = request.with_grace
-        query['TimeoutWithGrace'] = request.timeout_with_grace
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RuleCategory'] = request.rule_category
+        query['RuleName'] = request.rule_name
         query['SchedulerTrigger'] = request.scheduler_trigger
-        query['CloudWatchTrigger'] = request.cloud_watch_trigger
+        query['TimeoutWithGrace'] = request.timeout_with_grace
+        query['WithGrace'] = request.with_grace
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2597,12 +2689,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Id'] = request.id
-        query['Name'] = request.name
         query['Category'] = request.category
         query['Description'] = request.description
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2630,12 +2722,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Id'] = request.id
-        query['Name'] = request.name
         query['Category'] = request.category
         query['Description'] = request.description
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2677,16 +2769,16 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['AliyunUserId'] = request.aliyun_user_id
+        query['Description'] = request.description
+        query['GroupIdList'] = request.group_id_list
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RoleIdList'] = request.role_id_list
+        query['Status'] = request.status
+        query['UserAccountParamList'] = request.user_account_param_list
         query['UserName'] = request.user_name
         query['UserType'] = request.user_type
-        query['Status'] = request.status
-        query['Description'] = request.description
-        query['RoleIdList'] = request.role_id_list
-        query['GroupIdList'] = request.group_id_list
-        query['UserAccountParamList'] = request.user_account_param_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2714,16 +2806,16 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['AliyunUserId'] = request.aliyun_user_id
+        query['Description'] = request.description
+        query['GroupIdList'] = request.group_id_list
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RoleIdList'] = request.role_id_list
+        query['Status'] = request.status
+        query['UserAccountParamList'] = request.user_account_param_list
         query['UserName'] = request.user_name
         query['UserType'] = request.user_type
-        query['Status'] = request.status
-        query['Description'] = request.description
-        query['RoleIdList'] = request.role_id_list
-        query['GroupIdList'] = request.group_id_list
-        query['UserAccountParamList'] = request.user_account_param_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2765,9 +2857,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateUsersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['UserInfo'] = request.user_info
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -2796,9 +2888,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.CreateUsersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['UserInfo'] = request.user_info
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -2841,12 +2933,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DecommissionHostComponentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['HostInstanceId'] = request.host_instance_id
-        query['ServiceName'] = request.service_name
         query['ComponentName'] = request.component_name
+        query['HostInstanceId'] = request.host_instance_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         query['TimeoutSeconds'] = request.timeout_seconds
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -2875,12 +2967,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DecommissionHostComponentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['HostInstanceId'] = request.host_instance_id
-        query['ServiceName'] = request.service_name
         query['ComponentName'] = request.component_name
+        query['HostInstanceId'] = request.host_instance_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         query['TimeoutSeconds'] = request.timeout_seconds
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -2923,10 +3015,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteClusterTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['BizId'] = request.biz_id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2954,10 +3046,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteClusterTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['BizId'] = request.biz_id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -2999,9 +3091,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteExecutionPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3029,9 +3121,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteExecutionPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3148,8 +3240,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = {}
         query['Id'] = request.id
-        query['RegionId'] = request.region_id
         query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3178,8 +3270,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = {}
         query['Id'] = request.id
-        query['RegionId'] = request.region_id
         query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3221,9 +3313,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteFlowJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['Id'] = request.id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3251,9 +3343,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteFlowJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['Id'] = request.id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3295,8 +3387,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteFlowProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
         query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3324,8 +3416,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteFlowProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
         query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3367,9 +3459,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['ClusterId'] = request.cluster_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3397,9 +3489,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['ClusterId'] = request.cluster_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3441,8 +3533,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteFlowProjectUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
         query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -3471,8 +3563,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteFlowProjectUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
         query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -3515,10 +3607,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['Id'] = request.id
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3546,10 +3638,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['Id'] = request.id
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3591,9 +3683,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteLibrariesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['LibraryBizIdList'] = request.library_biz_id_list
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3621,9 +3713,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteLibrariesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['LibraryBizIdList'] = request.library_biz_id_list
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3665,10 +3757,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteResourcePoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourcePoolId'] = request.resource_pool_id
         query['ClusterId'] = request.cluster_id
         query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourcePoolId'] = request.resource_pool_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3696,10 +3788,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteResourcePoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourcePoolId'] = request.resource_pool_id
         query['ClusterId'] = request.cluster_id
         query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourcePoolId'] = request.resource_pool_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3741,10 +3833,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteResourceQueueResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceQueueId'] = request.resource_queue_id
         query['ClusterId'] = request.cluster_id
         query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceQueueId'] = request.resource_queue_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3772,10 +3864,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteResourceQueueResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceQueueId'] = request.resource_queue_id
         query['ClusterId'] = request.cluster_id
         query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceQueueId'] = request.resource_queue_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3817,10 +3909,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteScalingRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['HostGroupId'] = request.host_group_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingRuleId'] = request.scaling_rule_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -3849,10 +3941,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteScalingRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['HostGroupId'] = request.host_group_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingRuleId'] = request.scaling_rule_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -3895,12 +3987,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Id'] = request.id
-        query['Name'] = request.name
         query['Category'] = request.category
         query['Description'] = request.description
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3928,12 +4020,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Id'] = request.id
-        query['Name'] = request.name
         query['Category'] = request.category
         query['Description'] = request.description
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -3975,11 +4067,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['UserId'] = request.user_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['Type'] = request.type
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4007,11 +4099,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DeleteUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['UserId'] = request.user_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['Type'] = request.type
+        query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4053,9 +4145,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterBasicInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4083,9 +4175,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterBasicInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4127,9 +4219,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterMetaCollectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4157,9 +4249,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterMetaCollectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4201,13 +4293,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterOperationHostTaskLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['OperationId'] = request.operation_id
         query['HostId'] = request.host_id
-        query['TaskId'] = request.task_id
+        query['OperationId'] = request.operation_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['Status'] = request.status
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4235,13 +4327,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterOperationHostTaskLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['OperationId'] = request.operation_id
         query['HostId'] = request.host_id
-        query['TaskId'] = request.task_id
+        query['OperationId'] = request.operation_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['Status'] = request.status
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4283,9 +4375,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterResourcePoolSchedulerTypeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4313,9 +4405,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterResourcePoolSchedulerTypeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4357,9 +4449,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -4388,9 +4480,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -4433,13 +4525,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterServiceConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['ServiceName'] = request.service_name
         query['ConfigVersion'] = request.config_version
         query['GroupId'] = request.group_id
         query['HostInstanceId'] = request.host_instance_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         query['TagValue'] = request.tag_value
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -4468,13 +4560,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterServiceConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['ServiceName'] = request.service_name
         query['ConfigVersion'] = request.config_version
         query['GroupId'] = request.group_id
         query['HostInstanceId'] = request.host_instance_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         query['TagValue'] = request.tag_value
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -4517,11 +4609,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterServiceConfigHistoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['ServiceName'] = request.service_name
         query['ConfigVersion'] = request.config_version
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4549,11 +4641,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterServiceConfigHistoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['ServiceName'] = request.service_name
         query['ConfigVersion'] = request.config_version
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4595,11 +4687,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterServiceConfigTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['ServiceName'] = request.service_name
         query['ConfigTag'] = request.config_tag
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4627,11 +4719,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterServiceConfigTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['ServiceName'] = request.service_name
         query['ConfigTag'] = request.config_tag
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4673,9 +4765,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['BizId'] = request.biz_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4703,9 +4795,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['BizId'] = request.biz_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4747,9 +4839,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4777,9 +4869,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeClusterV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4821,10 +4913,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeDataSourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['Id'] = request.id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4852,10 +4944,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeDataSourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['Id'] = request.id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4890,6 +4982,164 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_data_source_with_options_async(request, runtime)
 
+    def describe_disk_ops_activity_with_options(
+        self,
+        request: emr_20160408_models.DescribeDiskOpsActivityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20160408_models.DescribeDiskOpsActivityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClusterId'] = request.cluster_id
+        query['CurrentStage'] = request.current_stage
+        query['CurrentState'] = request.current_state
+        query['DiskId'] = request.disk_id
+        query['EventId'] = request.event_id
+        query['InstanceId'] = request.instance_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiskOpsActivity',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeDiskOpsActivityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_disk_ops_activity_with_options_async(
+        self,
+        request: emr_20160408_models.DescribeDiskOpsActivityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20160408_models.DescribeDiskOpsActivityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClusterId'] = request.cluster_id
+        query['CurrentStage'] = request.current_stage
+        query['CurrentState'] = request.current_state
+        query['DiskId'] = request.disk_id
+        query['EventId'] = request.event_id
+        query['InstanceId'] = request.instance_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiskOpsActivity',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeDiskOpsActivityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_disk_ops_activity(
+        self,
+        request: emr_20160408_models.DescribeDiskOpsActivityRequest,
+    ) -> emr_20160408_models.DescribeDiskOpsActivityResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_disk_ops_activity_with_options(request, runtime)
+
+    async def describe_disk_ops_activity_async(
+        self,
+        request: emr_20160408_models.DescribeDiskOpsActivityRequest,
+    ) -> emr_20160408_models.DescribeDiskOpsActivityResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_disk_ops_activity_with_options_async(request, runtime)
+
+    def describe_emr_main_version_with_options(
+        self,
+        request: emr_20160408_models.DescribeEmrMainVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20160408_models.DescribeEmrMainVersionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['EmrVersion'] = request.emr_version
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeEmrMainVersion',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeEmrMainVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_emr_main_version_with_options_async(
+        self,
+        request: emr_20160408_models.DescribeEmrMainVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20160408_models.DescribeEmrMainVersionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['EmrVersion'] = request.emr_version
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeEmrMainVersion',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.DescribeEmrMainVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_emr_main_version(
+        self,
+        request: emr_20160408_models.DescribeEmrMainVersionRequest,
+    ) -> emr_20160408_models.DescribeEmrMainVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_emr_main_version_with_options(request, runtime)
+
+    async def describe_emr_main_version_async(
+        self,
+        request: emr_20160408_models.DescribeEmrMainVersionRequest,
+    ) -> emr_20160408_models.DescribeEmrMainVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_emr_main_version_with_options_async(request, runtime)
+
     def describe_execution_plan_with_options(
         self,
         request: emr_20160408_models.DescribeExecutionPlanRequest,
@@ -4897,9 +5147,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeExecutionPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4927,9 +5177,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeExecutionPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -4971,8 +5221,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
         query['Id'] = request.id
+        query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -5001,8 +5251,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
         query['Id'] = request.id
+        query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -5045,8 +5295,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeFlowCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
         query['Id'] = request.id
+        query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -5075,8 +5325,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeFlowCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
         query['Id'] = request.id
+        query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -5119,12 +5369,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeFlowCategoryTreeResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['CategoryId'] = request.category_id
+        query['Keyword'] = request.keyword
+        query['Mode'] = request.mode
         query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         query['Type'] = request.type
-        query['Mode'] = request.mode
-        query['Keyword'] = request.keyword
-        query['CategoryId'] = request.category_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -5152,12 +5402,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeFlowCategoryTreeResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['CategoryId'] = request.category_id
+        query['Keyword'] = request.keyword
+        query['Mode'] = request.mode
         query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         query['Type'] = request.type
-        query['Mode'] = request.mode
-        query['Keyword'] = request.keyword
-        query['CategoryId'] = request.category_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -5199,8 +5449,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeFlowInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
         query['Id'] = request.id
+        query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -5229,8 +5479,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeFlowInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
         query['Id'] = request.id
+        query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -5273,8 +5523,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeFlowJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
         query['Id'] = request.id
+        query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -5303,8 +5553,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeFlowJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
         query['Id'] = request.id
+        query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -5347,8 +5597,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeFlowNodeInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
         query['Id'] = request.id
+        query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -5377,8 +5627,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeFlowNodeInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
         query['Id'] = request.id
+        query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -5421,12 +5671,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeFlowNodeInstanceContainerLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Offset'] = request.offset
-        query['Length'] = request.length
-        query['NodeInstanceId'] = request.node_instance_id
         query['AppId'] = request.app_id
         query['ContainerId'] = request.container_id
+        query['Length'] = request.length
         query['LogName'] = request.log_name
+        query['NodeInstanceId'] = request.node_instance_id
+        query['Offset'] = request.offset
         query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -5456,12 +5706,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeFlowNodeInstanceContainerLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Offset'] = request.offset
-        query['Length'] = request.length
-        query['NodeInstanceId'] = request.node_instance_id
         query['AppId'] = request.app_id
         query['ContainerId'] = request.container_id
+        query['Length'] = request.length
         query['LogName'] = request.log_name
+        query['NodeInstanceId'] = request.node_instance_id
+        query['Offset'] = request.offset
         query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -5505,16 +5755,16 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeFlowNodeInstanceLauncherLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Start'] = request.start
-        query['Lines'] = request.lines
-        query['Offset'] = request.offset
-        query['Length'] = request.length
-        query['Reverse'] = request.reverse
-        query['StartTime'] = request.start_time
         query['EndTime'] = request.end_time
+        query['Length'] = request.length
+        query['Lines'] = request.lines
         query['NodeInstanceId'] = request.node_instance_id
+        query['Offset'] = request.offset
         query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
+        query['Reverse'] = request.reverse
+        query['Start'] = request.start
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -5542,16 +5792,16 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeFlowNodeInstanceLauncherLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Start'] = request.start
-        query['Lines'] = request.lines
-        query['Offset'] = request.offset
-        query['Length'] = request.length
-        query['Reverse'] = request.reverse
-        query['StartTime'] = request.start_time
         query['EndTime'] = request.end_time
+        query['Length'] = request.length
+        query['Lines'] = request.lines
         query['NodeInstanceId'] = request.node_instance_id
+        query['Offset'] = request.offset
         query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
+        query['Reverse'] = request.reverse
+        query['Start'] = request.start
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -5665,9 +5915,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['ClusterId'] = request.cluster_id
         query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
-        query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -5695,9 +5945,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['ClusterId'] = request.cluster_id
         query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
-        query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -5739,10 +5989,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['Id'] = request.id
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -5770,10 +6020,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['Id'] = request.id
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -5815,9 +6065,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeLibraryDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['LibraryBizId'] = request.library_biz_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -5845,9 +6095,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeLibraryDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['LibraryBizId'] = request.library_biz_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -5889,8 +6139,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeLibraryInstallTaskDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['TaskBizId'] = request.task_biz_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -5919,8 +6169,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeLibraryInstallTaskDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['TaskBizId'] = request.task_biz_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -5963,10 +6213,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeMetaTablePreviewTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['RegionId'] = request.region_id
-        query['TaskId'] = request.task_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -5994,10 +6244,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeMetaTablePreviewTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['RegionId'] = request.region_id
-        query['TaskId'] = request.task_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -6039,10 +6289,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeScalingActivityResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['HostGroupId'] = request.host_group_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingActivityId'] = request.scaling_activity_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -6071,10 +6321,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeScalingActivityResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['HostGroupId'] = request.host_group_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingActivityId'] = request.scaling_activity_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -6117,9 +6367,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeScalingCommonConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -6147,9 +6397,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeScalingCommonConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -6191,12 +6441,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeScalingConfigItemV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ConfigItemType'] = request.config_item_type
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
-        query['ScalingGroupBizId'] = request.scaling_group_biz_id
-        query['ConfigItemType'] = request.config_item_type
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingConfigItemId'] = request.scaling_config_item_id
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -6224,12 +6474,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeScalingConfigItemV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ConfigItemType'] = request.config_item_type
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
-        query['ScalingGroupBizId'] = request.scaling_group_biz_id
-        query['ConfigItemType'] = request.config_item_type
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingConfigItemId'] = request.scaling_config_item_id
+        query['ScalingGroupBizId'] = request.scaling_group_biz_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -6271,11 +6521,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeScalingGroupInstanceV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['HostGroupBizId'] = request.host_group_biz_id
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingGroupBizId'] = request.scaling_group_biz_id
-        query['HostGroupBizId'] = request.host_group_biz_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -6303,11 +6553,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeScalingGroupInstanceV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['HostGroupBizId'] = request.host_group_biz_id
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingGroupBizId'] = request.scaling_group_biz_id
-        query['HostGroupBizId'] = request.host_group_biz_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -6349,11 +6599,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeScalingGroupV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['HostGroupBizId'] = request.host_group_biz_id
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingGroupBizId'] = request.scaling_group_biz_id
-        query['HostGroupBizId'] = request.host_group_biz_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -6381,11 +6631,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeScalingGroupV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['HostGroupBizId'] = request.host_group_biz_id
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingGroupBizId'] = request.scaling_group_biz_id
-        query['HostGroupBizId'] = request.host_group_biz_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -6427,10 +6677,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeScalingRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['HostGroupId'] = request.host_group_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingRuleId'] = request.scaling_rule_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -6459,10 +6709,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeScalingRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['HostGroupId'] = request.host_group_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingRuleId'] = request.scaling_rule_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -6505,10 +6755,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeSecurityGroupAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -6536,10 +6786,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DescribeSecurityGroupAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -6581,8 +6831,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DetachAndReleaseClusterEniResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['TargetClusterId'] = request.target_cluster_id
         query['VswitchId'] = request.vswitch_id
         req = open_api_models.OpenApiRequest(
@@ -6612,8 +6862,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.DetachAndReleaseClusterEniResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['TargetClusterId'] = request.target_cluster_id
         query['VswitchId'] = request.vswitch_id
         req = open_api_models.OpenApiRequest(
@@ -6657,10 +6907,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetHdfsCapacityStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['FromDatetime'] = request.from_datetime
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -6689,10 +6939,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetHdfsCapacityStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['FromDatetime'] = request.from_datetime
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -6735,13 +6985,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetJobInputStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['FromDatetime'] = request.from_datetime
-        query['ToDatetime'] = request.to_datetime
-        query['PageSize'] = request.page_size
         query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -6769,13 +7019,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetJobInputStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['FromDatetime'] = request.from_datetime
-        query['ToDatetime'] = request.to_datetime
-        query['PageSize'] = request.page_size
         query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -6817,13 +7067,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetJobOutputStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['FromDatetime'] = request.from_datetime
-        query['ToDatetime'] = request.to_datetime
-        query['PageSize'] = request.page_size
         query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -6851,13 +7101,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetJobOutputStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['FromDatetime'] = request.from_datetime
-        query['ToDatetime'] = request.to_datetime
-        query['PageSize'] = request.page_size
         query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -6899,13 +7149,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetJobRunningTimeStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['FromDatetime'] = request.from_datetime
-        query['ToDatetime'] = request.to_datetime
-        query['PageSize'] = request.page_size
         query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -6933,13 +7183,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetJobRunningTimeStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['FromDatetime'] = request.from_datetime
-        query['ToDatetime'] = request.to_datetime
-        query['PageSize'] = request.page_size
         query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -6981,10 +7231,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetQueueInputStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['FromDatetime'] = request.from_datetime
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -7013,10 +7263,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetQueueInputStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['FromDatetime'] = request.from_datetime
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -7059,10 +7309,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetQueueOutputStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['FromDatetime'] = request.from_datetime
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -7091,10 +7341,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetQueueOutputStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['FromDatetime'] = request.from_datetime
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -7137,13 +7387,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetQueueSubmissionStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ClusterId'] = request.cluster_id
-        query['FromDatetime'] = request.from_datetime
-        query['ToDatetime'] = request.to_datetime
         query['ApplicationType'] = request.application_type
+        query['ClusterId'] = request.cluster_id
         query['FinalStatus'] = request.final_status
+        query['FromDatetime'] = request.from_datetime
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -7171,13 +7421,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetQueueSubmissionStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ClusterId'] = request.cluster_id
-        query['FromDatetime'] = request.from_datetime
-        query['ToDatetime'] = request.to_datetime
         query['ApplicationType'] = request.application_type
+        query['ClusterId'] = request.cluster_id
         query['FinalStatus'] = request.final_status
+        query['FromDatetime'] = request.from_datetime
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -7219,10 +7469,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetUserInputStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['FromDatetime'] = request.from_datetime
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -7251,10 +7501,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetUserInputStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['FromDatetime'] = request.from_datetime
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -7297,10 +7547,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetUserOutputStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['FromDatetime'] = request.from_datetime
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -7329,10 +7579,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetUserOutputStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['FromDatetime'] = request.from_datetime
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -7375,13 +7625,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetUserSubmissionStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ClusterId'] = request.cluster_id
-        query['FromDatetime'] = request.from_datetime
-        query['ToDatetime'] = request.to_datetime
         query['ApplicationType'] = request.application_type
+        query['ClusterId'] = request.cluster_id
         query['FinalStatus'] = request.final_status
+        query['FromDatetime'] = request.from_datetime
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -7409,13 +7659,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.GetUserSubmissionStatisticInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ClusterId'] = request.cluster_id
-        query['FromDatetime'] = request.from_datetime
-        query['ToDatetime'] = request.to_datetime
         query['ApplicationType'] = request.application_type
+        query['ClusterId'] = request.cluster_id
         query['FinalStatus'] = request.final_status
+        query['FromDatetime'] = request.from_datetime
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ToDatetime'] = request.to_datetime
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -7457,10 +7707,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.InstallLibrariesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['LibraryBizId'] = request.library_biz_id
         query['ClusterBizIdList'] = request.cluster_biz_id_list
+        query['LibraryBizId'] = request.library_biz_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -7488,10 +7738,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.InstallLibrariesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['LibraryBizId'] = request.library_biz_id
         query['ClusterBizIdList'] = request.cluster_biz_id_list
+        query['LibraryBizId'] = request.library_biz_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -7533,11 +7783,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.JoinResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['RegionId'] = request.region_id
-        query['ResourceType'] = request.resource_type
-        query['ResourceId'] = request.resource_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -7565,11 +7815,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.JoinResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['RegionId'] = request.region_id
-        query['ResourceType'] = request.resource_type
-        query['ResourceId'] = request.resource_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -7611,9 +7861,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.KillFlowJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['JobInstanceId'] = request.job_instance_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -7641,9 +7891,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.KillFlowJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['JobInstanceId'] = request.job_instance_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -7685,13 +7935,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListAdviceActionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['ServiceName'] = request.service_name
         query['Component'] = request.component
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -7719,13 +7969,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListAdviceActionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['ServiceName'] = request.service_name
         query['Component'] = request.component
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -7767,24 +8017,24 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListApmApplicationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['StartTimeFrom'] = request.start_time_from
-        query['StartTimeTo'] = request.start_time_to
+        query['AppId'] = request.app_id
+        query['ClusterId'] = request.cluster_id
+        query['DiagnoseResult'] = request.diagnose_result
         query['EndTimeFrom'] = request.end_time_from
         query['EndTimeTo'] = request.end_time_to
-        query['ClusterId'] = request.cluster_id
-        query['AppId'] = request.app_id
-        query['State'] = request.state
         query['FinalStatus'] = request.final_status
-        query['User'] = request.user
-        query['Queue'] = request.queue
-        query['Name'] = request.name
         query['JobType'] = request.job_type
+        query['Name'] = request.name
         query['OrderBy'] = request.order_by
-        query['DiagnoseResult'] = request.diagnose_result
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['Queue'] = request.queue
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['StartTimeFrom'] = request.start_time_from
+        query['StartTimeTo'] = request.start_time_to
+        query['State'] = request.state
+        query['User'] = request.user
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -7812,24 +8062,24 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListApmApplicationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['StartTimeFrom'] = request.start_time_from
-        query['StartTimeTo'] = request.start_time_to
+        query['AppId'] = request.app_id
+        query['ClusterId'] = request.cluster_id
+        query['DiagnoseResult'] = request.diagnose_result
         query['EndTimeFrom'] = request.end_time_from
         query['EndTimeTo'] = request.end_time_to
-        query['ClusterId'] = request.cluster_id
-        query['AppId'] = request.app_id
-        query['State'] = request.state
         query['FinalStatus'] = request.final_status
-        query['User'] = request.user
-        query['Queue'] = request.queue
-        query['Name'] = request.name
         query['JobType'] = request.job_type
+        query['Name'] = request.name
         query['OrderBy'] = request.order_by
-        query['DiagnoseResult'] = request.diagnose_result
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['Queue'] = request.queue
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['StartTimeFrom'] = request.start_time_from
+        query['StartTimeTo'] = request.start_time_to
+        query['State'] = request.state
+        query['User'] = request.user
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -7871,22 +8121,22 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListBackupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
+        query['BackupId'] = request.backup_id
+        query['BackupPlanId'] = request.backup_plan_id
+        query['BizId'] = request.biz_id
+        query['ClusterId'] = request.cluster_id
+        query['CurrentSize'] = request.current_size
+        query['Id'] = request.id
         query['Limit'] = request.limit
+        query['MetadataType'] = request.metadata_type
+        query['OrderMode'] = request.order_mode
+        query['PageCount'] = request.page_count
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
-        query['CurrentSize'] = request.current_size
-        query['PageCount'] = request.page_count
-        query['OrderMode'] = request.order_mode
-        query['Id'] = request.id
-        query['BizId'] = request.biz_id
-        query['MetadataType'] = request.metadata_type
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ServiceName'] = request.service_name
-        query['BackupPlanId'] = request.backup_plan_id
-        query['ClusterId'] = request.cluster_id
         query['Status'] = request.status
-        query['BackupId'] = request.backup_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -7914,22 +8164,22 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListBackupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
+        query['BackupId'] = request.backup_id
+        query['BackupPlanId'] = request.backup_plan_id
+        query['BizId'] = request.biz_id
+        query['ClusterId'] = request.cluster_id
+        query['CurrentSize'] = request.current_size
+        query['Id'] = request.id
         query['Limit'] = request.limit
+        query['MetadataType'] = request.metadata_type
+        query['OrderMode'] = request.order_mode
+        query['PageCount'] = request.page_count
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
-        query['CurrentSize'] = request.current_size
-        query['PageCount'] = request.page_count
-        query['OrderMode'] = request.order_mode
-        query['Id'] = request.id
-        query['BizId'] = request.biz_id
-        query['MetadataType'] = request.metadata_type
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ServiceName'] = request.service_name
-        query['BackupPlanId'] = request.backup_plan_id
-        query['ClusterId'] = request.cluster_id
         query['Status'] = request.status
-        query['BackupId'] = request.backup_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -7971,18 +8221,18 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterHostResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['HostInstanceId'] = request.host_instance_id
-        query['HostGroupId'] = request.host_group_id
-        query['HostName'] = request.host_name
-        query['PrivateIp'] = request.private_ip
-        query['PublicIp'] = request.public_ip
-        query['GroupType'] = request.group_type
         query['ComponentName'] = request.component_name
+        query['GroupType'] = request.group_type
+        query['HostGroupId'] = request.host_group_id
+        query['HostInstanceId'] = request.host_instance_id
+        query['HostName'] = request.host_name
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['PrivateIp'] = request.private_ip
+        query['PublicIp'] = request.public_ip
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -8011,18 +8261,18 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterHostResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['HostInstanceId'] = request.host_instance_id
-        query['HostGroupId'] = request.host_group_id
-        query['HostName'] = request.host_name
-        query['PrivateIp'] = request.private_ip
-        query['PublicIp'] = request.public_ip
-        query['GroupType'] = request.group_type
         query['ComponentName'] = request.component_name
+        query['GroupType'] = request.group_type
+        query['HostGroupId'] = request.host_group_id
+        query['HostInstanceId'] = request.host_instance_id
+        query['HostName'] = request.host_name
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['PrivateIp'] = request.private_ip
+        query['PublicIp'] = request.public_ip
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -8065,17 +8315,17 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterHostComponentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['HostInstanceId'] = request.host_instance_id
-        query['HostName'] = request.host_name
-        query['ServiceName'] = request.service_name
         query['ComponentName'] = request.component_name
         query['ComponentStatus'] = request.component_status
+        query['HostInstanceId'] = request.host_instance_id
+        query['HostName'] = request.host_name
         query['HostRole'] = request.host_role
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -8103,17 +8353,17 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterHostComponentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['HostInstanceId'] = request.host_instance_id
-        query['HostName'] = request.host_name
-        query['ServiceName'] = request.service_name
         query['ComponentName'] = request.component_name
         query['ComponentStatus'] = request.component_status
+        query['HostInstanceId'] = request.host_instance_id
+        query['HostName'] = request.host_name
         query['HostRole'] = request.host_role
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -8155,14 +8405,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterHostGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['HostGroupId'] = request.host_group_id
         query['HostGroupName'] = request.host_group_name
         query['HostGroupType'] = request.host_group_type
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -8191,14 +8441,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterHostGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['HostGroupId'] = request.host_group_id
         query['HostGroupName'] = request.host_group_name
         query['HostGroupType'] = request.host_group_type
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -8241,11 +8491,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterInstalledServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -8273,11 +8523,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterInstalledServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -8319,14 +8569,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterOperationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['OperationId'] = request.operation_id
-        query['ServiceName'] = request.service_name
-        query['Status'] = request.status
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -8354,14 +8604,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterOperationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['OperationId'] = request.operation_id
-        query['ServiceName'] = request.service_name
-        query['Status'] = request.status
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -8403,13 +8653,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterOperationHostResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['OperationId'] = request.operation_id
-        query['Status'] = request.status
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -8437,13 +8687,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterOperationHostResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['OperationId'] = request.operation_id
-        query['Status'] = request.status
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -8485,14 +8735,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterOperationHostTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['OperationId'] = request.operation_id
         query['HostId'] = request.host_id
-        query['Status'] = request.status
+        query['OperationId'] = request.operation_id
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -8520,14 +8770,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterOperationHostTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['OperationId'] = request.operation_id
         query['HostId'] = request.host_id
-        query['Status'] = request.status
+        query['OperationId'] = request.operation_id
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -8569,13 +8819,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterOperationTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['OperationId'] = request.operation_id
-        query['Status'] = request.status
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -8603,13 +8853,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterOperationTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['OperationId'] = request.operation_id
-        query['Status'] = request.status
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -8644,106 +8894,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_cluster_operation_task_with_options_async(request, runtime)
 
-    def list_clusters_with_options(
-        self,
-        request: emr_20160408_models.ListClustersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.ListClustersResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['CreateType'] = request.create_type
-        query['MachineType'] = request.machine_type
-        query['IsDesc'] = request.is_desc
-        query['DepositType'] = request.deposit_type
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['DefaultStatus'] = request.default_status
-        query['Name'] = request.name
-        query['VpcId'] = request.vpc_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ClusterTypeList'] = request.cluster_type_list
-        query['StatusList'] = request.status_list
-        query['Tag'] = request.tag
-        query['ExpiredTagList'] = request.expired_tag_list
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListClusters',
-            version='2016-04-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            emr_20160408_models.ListClustersResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_clusters_with_options_async(
-        self,
-        request: emr_20160408_models.ListClustersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> emr_20160408_models.ListClustersResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['CreateType'] = request.create_type
-        query['MachineType'] = request.machine_type
-        query['IsDesc'] = request.is_desc
-        query['DepositType'] = request.deposit_type
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['DefaultStatus'] = request.default_status
-        query['Name'] = request.name
-        query['VpcId'] = request.vpc_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ClusterTypeList'] = request.cluster_type_list
-        query['StatusList'] = request.status_list
-        query['Tag'] = request.tag
-        query['ExpiredTagList'] = request.expired_tag_list
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListClusters',
-            version='2016-04-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            emr_20160408_models.ListClustersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_clusters(
-        self,
-        request: emr_20160408_models.ListClustersRequest,
-    ) -> emr_20160408_models.ListClustersResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_clusters_with_options(request, runtime)
-
-    async def list_clusters_async(
-        self,
-        request: emr_20160408_models.ListClustersRequest,
-    ) -> emr_20160408_models.ListClustersResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_clusters_with_options_async(request, runtime)
-
     def list_cluster_service_with_options(
         self,
         request: emr_20160408_models.ListClusterServiceRequest,
@@ -8751,11 +8901,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -8783,11 +8933,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -8829,15 +8979,15 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterServiceComponentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['PodName'] = request.pod_name
-        query['ServiceName'] = request.service_name
         query['ComponentName'] = request.component_name
         query['ComponentStatus'] = request.component_status
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['PodName'] = request.pod_name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -8865,15 +9015,15 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterServiceComponentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['PodName'] = request.pod_name
-        query['ServiceName'] = request.service_name
         query['ComponentName'] = request.component_name
         query['ComponentStatus'] = request.component_status
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['PodName'] = request.pod_name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -8915,9 +9065,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterServiceComponentHealthInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['ComponentName'] = request.component_name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -8946,9 +9097,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterServiceComponentHealthInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['ComponentName'] = request.component_name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -8991,19 +9143,19 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterServiceConfigHistoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
+        query['Author'] = request.author
         query['ClusterId'] = request.cluster_id
-        query['ServiceName'] = request.service_name
+        query['Comment'] = request.comment
+        query['ConfigFileName'] = request.config_file_name
+        query['ConfigItemKey'] = request.config_item_key
         query['ConfigVersion'] = request.config_version
         query['HostGroupId'] = request.host_group_id
         query['HostInstanceId'] = request.host_instance_id
-        query['ConfigFileName'] = request.config_file_name
-        query['ConfigItemKey'] = request.config_item_key
-        query['Author'] = request.author
-        query['Comment'] = request.comment
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9031,19 +9183,19 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterServiceConfigHistoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
+        query['Author'] = request.author
         query['ClusterId'] = request.cluster_id
-        query['ServiceName'] = request.service_name
+        query['Comment'] = request.comment
+        query['ConfigFileName'] = request.config_file_name
+        query['ConfigItemKey'] = request.config_item_key
         query['ConfigVersion'] = request.config_version
         query['HostGroupId'] = request.host_group_id
         query['HostInstanceId'] = request.host_instance_id
-        query['ConfigFileName'] = request.config_file_name
-        query['ConfigItemKey'] = request.config_item_key
-        query['Author'] = request.author
-        query['Comment'] = request.comment
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9085,11 +9237,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterServiceQuickLinkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['ServiceName'] = request.service_name
         query['DirectType'] = request.direct_type
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9117,11 +9269,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterServiceQuickLinkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['ServiceName'] = request.service_name
         query['DirectType'] = request.direct_type
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9163,13 +9315,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['BizId'] = request.biz_id
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
         query['ProductType'] = request.product_type
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9197,13 +9349,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListClusterTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['BizId'] = request.biz_id
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
         query['ProductType'] = request.product_type
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9238,6 +9390,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_cluster_templates_with_options_async(request, runtime)
 
+    def list_clusters_with_options(
+        self,
+        request: emr_20160408_models.ListClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20160408_models.ListClustersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClusterTypeList'] = request.cluster_type_list
+        query['CreateType'] = request.create_type
+        query['DefaultStatus'] = request.default_status
+        query['DepositType'] = request.deposit_type
+        query['ExpiredTagList'] = request.expired_tag_list
+        query['IsDesc'] = request.is_desc
+        query['MachineType'] = request.machine_type
+        query['Name'] = request.name
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['StatusList'] = request.status_list
+        query['Tag'] = request.tag
+        query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListClusters',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_clusters_with_options_async(
+        self,
+        request: emr_20160408_models.ListClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20160408_models.ListClustersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClusterTypeList'] = request.cluster_type_list
+        query['CreateType'] = request.create_type
+        query['DefaultStatus'] = request.default_status
+        query['DepositType'] = request.deposit_type
+        query['ExpiredTagList'] = request.expired_tag_list
+        query['IsDesc'] = request.is_desc
+        query['MachineType'] = request.machine_type
+        query['Name'] = request.name
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['StatusList'] = request.status_list
+        query['Tag'] = request.tag
+        query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListClusters',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_clusters(
+        self,
+        request: emr_20160408_models.ListClustersRequest,
+    ) -> emr_20160408_models.ListClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_clusters_with_options(request, runtime)
+
+    async def list_clusters_async(
+        self,
+        request: emr_20160408_models.ListClustersRequest,
+    ) -> emr_20160408_models.ListClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_clusters_with_options_async(request, runtime)
+
     def list_data_source_with_options(
         self,
         request: emr_20160408_models.ListDataSourceRequest,
@@ -9245,16 +9497,16 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListDataSourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['PageSize'] = request.page_size
-        query['PageNumber'] = request.page_number
-        query['Id'] = request.id
-        query['ProjectId'] = request.project_id
-        query['Name'] = request.name
-        query['SourceType'] = request.source_type
         query['CreateFrom'] = request.create_from
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9282,16 +9534,16 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListDataSourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['PageSize'] = request.page_size
-        query['PageNumber'] = request.page_number
-        query['Id'] = request.id
-        query['ProjectId'] = request.project_id
-        query['Name'] = request.name
-        query['SourceType'] = request.source_type
         query['CreateFrom'] = request.create_from
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9333,14 +9585,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListDiskOpsEventsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ClusterId'] = request.cluster_id
+        query['EndTime'] = request.end_time
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
         query['RegionId'] = request.region_id
-        query['UserId'] = request.user_id
-        query['ClusterId'] = request.cluster_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9368,14 +9619,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListDiskOpsEventsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ClusterId'] = request.cluster_id
+        query['EndTime'] = request.end_time
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
         query['RegionId'] = request.region_id
-        query['UserId'] = request.user_id
-        query['ClusterId'] = request.cluster_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9417,9 +9667,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListEmrAvailableConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9447,9 +9697,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListEmrAvailableConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9491,20 +9741,21 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListEmrAvailableResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['DestinationResource'] = request.destination_resource
+        query['ClusterId'] = request.cluster_id
         query['ClusterType'] = request.cluster_type
-        query['InstanceChargeType'] = request.instance_charge_type
-        query['SpotStrategy'] = request.spot_strategy
-        query['ZoneId'] = request.zone_id
-        query['NetType'] = request.net_type
-        query['InstanceType'] = request.instance_type
-        query['SystemDiskType'] = request.system_disk_type
         query['DataDiskType'] = request.data_disk_type
         query['DepositType'] = request.deposit_type
-        query['ClusterId'] = request.cluster_id
+        query['DestinationResource'] = request.destination_resource
+        query['EmrVersion'] = request.emr_version
+        query['InstanceChargeType'] = request.instance_charge_type
+        query['InstanceType'] = request.instance_type
+        query['NetType'] = request.net_type
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SpotStrategy'] = request.spot_strategy
+        query['SystemDiskType'] = request.system_disk_type
+        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9532,20 +9783,21 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListEmrAvailableResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['DestinationResource'] = request.destination_resource
+        query['ClusterId'] = request.cluster_id
         query['ClusterType'] = request.cluster_type
-        query['InstanceChargeType'] = request.instance_charge_type
-        query['SpotStrategy'] = request.spot_strategy
-        query['ZoneId'] = request.zone_id
-        query['NetType'] = request.net_type
-        query['InstanceType'] = request.instance_type
-        query['SystemDiskType'] = request.system_disk_type
         query['DataDiskType'] = request.data_disk_type
         query['DepositType'] = request.deposit_type
-        query['ClusterId'] = request.cluster_id
+        query['DestinationResource'] = request.destination_resource
+        query['EmrVersion'] = request.emr_version
+        query['InstanceChargeType'] = request.instance_charge_type
+        query['InstanceType'] = request.instance_type
+        query['NetType'] = request.net_type
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SpotStrategy'] = request.spot_strategy
+        query['SystemDiskType'] = request.system_disk_type
+        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9587,13 +9839,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListEmrMainVersionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['EmrVersion'] = request.emr_version
-        query['StackName'] = request.stack_name
-        query['StackVersion'] = request.stack_version
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['StackName'] = request.stack_name
+        query['StackVersion'] = request.stack_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9621,13 +9873,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListEmrMainVersionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['EmrVersion'] = request.emr_version
-        query['StackName'] = request.stack_name
-        query['StackVersion'] = request.stack_version
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['StackName'] = request.stack_name
+        query['StackVersion'] = request.stack_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9669,13 +9921,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListExecutionPlanInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['OnlyLastInstance'] = request.only_last_instance
+        query['ExecutionPlanIdList'] = request.execution_plan_id_list
         query['IsDesc'] = request.is_desc
+        query['OnlyLastInstance'] = request.only_last_instance
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
-        query['ExecutionPlanIdList'] = request.execution_plan_id_list
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -9704,13 +9956,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListExecutionPlanInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['OnlyLastInstance'] = request.only_last_instance
+        query['ExecutionPlanIdList'] = request.execution_plan_id_list
         query['IsDesc'] = request.is_desc
+        query['OnlyLastInstance'] = request.only_last_instance
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
-        query['ExecutionPlanIdList'] = request.execution_plan_id_list
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -9753,16 +10005,16 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
+        query['ClusterId'] = request.cluster_id
+        query['Id'] = request.id
         query['JobId'] = request.job_id
         query['Name'] = request.name
-        query['Id'] = request.id
-        query['ClusterId'] = request.cluster_id
-        query['Status'] = request.status
-        query['Periodic'] = request.periodic
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['Periodic'] = request.periodic
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9790,16 +10042,16 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
+        query['ClusterId'] = request.cluster_id
+        query['Id'] = request.id
         query['JobId'] = request.job_id
         query['Name'] = request.name
-        query['Id'] = request.id
-        query['ClusterId'] = request.cluster_id
-        query['Status'] = request.status
-        query['Periodic'] = request.periodic
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['Periodic'] = request.periodic
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9841,12 +10093,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
-        query['ParentId'] = request.parent_id
-        query['Root'] = request.root
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['ParentId'] = request.parent_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['Root'] = request.root
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9874,12 +10126,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
-        query['ParentId'] = request.parent_id
-        query['Root'] = request.root
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['ParentId'] = request.parent_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['Root'] = request.root
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -9921,10 +10173,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowClusterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -9953,10 +10205,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowClusterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -10073,9 +10325,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowClusterAllHostsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['ClusterId'] = request.cluster_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -10104,9 +10356,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowClusterAllHostsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['ClusterId'] = request.cluster_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -10149,9 +10401,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowClusterHostResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['ClusterId'] = request.cluster_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -10180,9 +10432,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowClusterHostResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['ClusterId'] = request.cluster_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -10225,20 +10477,20 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
         query['FlowId'] = request.flow_id
         query['FlowName'] = request.flow_name
-        query['Owner'] = request.owner
+        query['Id'] = request.id
         query['InstanceId'] = request.instance_id
         query['NodeInstanceId'] = request.node_instance_id
-        query['TimeRange'] = request.time_range
         query['OrderBy'] = request.order_by
         query['OrderType'] = request.order_type
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
+        query['Owner'] = request.owner
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['StatusList'] = request.status_list
+        query['TimeRange'] = request.time_range
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -10266,20 +10518,20 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
         query['FlowId'] = request.flow_id
         query['FlowName'] = request.flow_name
-        query['Owner'] = request.owner
+        query['Id'] = request.id
         query['InstanceId'] = request.instance_id
         query['NodeInstanceId'] = request.node_instance_id
-        query['TimeRange'] = request.time_range
         query['OrderBy'] = request.order_by
         query['OrderType'] = request.order_type
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
+        query['Owner'] = request.owner
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['StatusList'] = request.status_list
+        query['TimeRange'] = request.time_range
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -10321,14 +10573,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
+        query['Adhoc'] = request.adhoc
         query['Id'] = request.id
         query['Name'] = request.name
-        query['Type'] = request.type
-        query['Adhoc'] = request.adhoc
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -10356,14 +10608,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
+        query['Adhoc'] = request.adhoc
         query['Id'] = request.id
         query['Name'] = request.name
-        query['Type'] = request.type
-        query['Adhoc'] = request.adhoc
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -10405,15 +10657,15 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowJobHistoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['Id'] = request.id
-        query['JobType'] = request.job_type
         query['InstanceId'] = request.instance_id
-        query['TimeRange'] = request.time_range
+        query['JobType'] = request.job_type
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['StatusList'] = request.status_list
+        query['TimeRange'] = request.time_range
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -10441,15 +10693,15 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowJobHistoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['Id'] = request.id
-        query['JobType'] = request.job_type
         query['InstanceId'] = request.instance_id
-        query['TimeRange'] = request.time_range
+        query['JobType'] = request.job_type
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['StatusList'] = request.status_list
+        query['TimeRange'] = request.time_range
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -10491,14 +10743,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowNodeInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
-        query['StartTime'] = request.start_time
         query['OrderBy'] = request.order_by
         query['OrderType'] = request.order_type
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['StartTime'] = request.start_time
         query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -10527,14 +10779,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowNodeInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
-        query['StartTime'] = request.start_time
         query['OrderBy'] = request.order_by
         query['OrderType'] = request.order_type
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['StartTime'] = request.start_time
         query['StatusList'] = request.status_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -10577,9 +10829,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowNodeInstanceContainerStatusResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['NodeInstanceId'] = request.node_instance_id
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
-        query['NodeInstanceId'] = request.node_instance_id
         query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -10609,9 +10861,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowNodeInstanceContainerStatusResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['NodeInstanceId'] = request.node_instance_id
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
-        query['NodeInstanceId'] = request.node_instance_id
         query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -10655,12 +10907,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowNodeSqlResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NodeInstanceId'] = request.node_instance_id
-        query['SqlIndex'] = request.sql_index
-        query['Offset'] = request.offset
         query['Length'] = request.length
+        query['NodeInstanceId'] = request.node_instance_id
+        query['Offset'] = request.offset
         query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
+        query['SqlIndex'] = request.sql_index
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -10688,12 +10940,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowNodeSqlResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NodeInstanceId'] = request.node_instance_id
-        query['SqlIndex'] = request.sql_index
-        query['Offset'] = request.offset
         query['Length'] = request.length
+        query['NodeInstanceId'] = request.node_instance_id
+        query['Offset'] = request.offset
         query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
+        query['SqlIndex'] = request.sql_index
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -10735,12 +10987,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProductType'] = request.product_type
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['Name'] = request.name
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['ProductType'] = request.product_type
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -10769,12 +11021,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProductType'] = request.product_type
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['Name'] = request.name
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['ProductType'] = request.product_type
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -10817,10 +11069,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -10848,10 +11100,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -10893,10 +11145,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowProjectUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -10924,10 +11176,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListFlowProjectUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -10969,12 +11221,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListJobExecutionInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ExecutionPlanInstanceId'] = request.execution_plan_instance_id
         query['IsDesc'] = request.is_desc
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11002,12 +11254,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListJobExecutionInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ExecutionPlanInstanceId'] = request.execution_plan_instance_id
         query['IsDesc'] = request.is_desc
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11049,14 +11301,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['IsDesc'] = request.is_desc
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
-        query['QueryType'] = request.query_type
         query['QueryString'] = request.query_string
+        query['QueryType'] = request.query_type
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11084,14 +11336,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['IsDesc'] = request.is_desc
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
-        query['QueryType'] = request.query_type
         query['QueryString'] = request.query_string
+        query['QueryType'] = request.query_type
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11133,16 +11385,16 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListLibrariesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Limit'] = request.limit
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        query['ClusterBizId'] = request.cluster_biz_id
         query['CurrentSize'] = request.current_size
-        query['PageCount'] = request.page_count
+        query['Limit'] = request.limit
         query['OrderField'] = request.order_field
         query['OrderMode'] = request.order_mode
-        query['ClusterBizId'] = request.cluster_biz_id
+        query['PageCount'] = request.page_count
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11170,16 +11422,16 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListLibrariesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Limit'] = request.limit
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        query['ClusterBizId'] = request.cluster_biz_id
         query['CurrentSize'] = request.current_size
-        query['PageCount'] = request.page_count
+        query['Limit'] = request.limit
         query['OrderField'] = request.order_field
         query['OrderMode'] = request.order_mode
-        query['ClusterBizId'] = request.cluster_biz_id
+        query['PageCount'] = request.page_count
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11221,17 +11473,17 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListLibraryInstallTasksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Limit'] = request.limit
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        query['ClusterBizId'] = request.cluster_biz_id
         query['CurrentSize'] = request.current_size
-        query['PageCount'] = request.page_count
+        query['LibraryBizId'] = request.library_biz_id
+        query['Limit'] = request.limit
         query['OrderField'] = request.order_field
         query['OrderMode'] = request.order_mode
-        query['LibraryBizId'] = request.library_biz_id
-        query['ClusterBizId'] = request.cluster_biz_id
+        query['PageCount'] = request.page_count
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11259,17 +11511,17 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListLibraryInstallTasksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Limit'] = request.limit
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        query['ClusterBizId'] = request.cluster_biz_id
         query['CurrentSize'] = request.current_size
-        query['PageCount'] = request.page_count
+        query['LibraryBizId'] = request.library_biz_id
+        query['Limit'] = request.limit
         query['OrderField'] = request.order_field
         query['OrderMode'] = request.order_mode
-        query['LibraryBizId'] = request.library_biz_id
-        query['ClusterBizId'] = request.cluster_biz_id
+        query['PageCount'] = request.page_count
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11311,17 +11563,17 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListLibraryStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Limit'] = request.limit
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        query['ClusterBizId'] = request.cluster_biz_id
         query['CurrentSize'] = request.current_size
-        query['PageCount'] = request.page_count
+        query['LibraryBizId'] = request.library_biz_id
+        query['Limit'] = request.limit
         query['OrderField'] = request.order_field
         query['OrderMode'] = request.order_mode
-        query['LibraryBizId'] = request.library_biz_id
-        query['ClusterBizId'] = request.cluster_biz_id
+        query['PageCount'] = request.page_count
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11349,17 +11601,17 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListLibraryStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Limit'] = request.limit
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        query['ClusterBizId'] = request.cluster_biz_id
         query['CurrentSize'] = request.current_size
-        query['PageCount'] = request.page_count
+        query['LibraryBizId'] = request.library_biz_id
+        query['Limit'] = request.limit
         query['OrderField'] = request.order_field
         query['OrderMode'] = request.order_mode
-        query['LibraryBizId'] = request.library_biz_id
-        query['ClusterBizId'] = request.cluster_biz_id
+        query['PageCount'] = request.page_count
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11394,6 +11646,82 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_library_status_with_options_async(request, runtime)
 
+    def list_local_disk_component_info_with_options(
+        self,
+        request: emr_20160408_models.ListLocalDiskComponentInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20160408_models.ListLocalDiskComponentInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClusterId'] = request.cluster_id
+        query['InstanceId'] = request.instance_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListLocalDiskComponentInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListLocalDiskComponentInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_local_disk_component_info_with_options_async(
+        self,
+        request: emr_20160408_models.ListLocalDiskComponentInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20160408_models.ListLocalDiskComponentInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClusterId'] = request.cluster_id
+        query['InstanceId'] = request.instance_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListLocalDiskComponentInfo',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.ListLocalDiskComponentInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_local_disk_component_info(
+        self,
+        request: emr_20160408_models.ListLocalDiskComponentInfoRequest,
+    ) -> emr_20160408_models.ListLocalDiskComponentInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_local_disk_component_info_with_options(request, runtime)
+
+    async def list_local_disk_component_info_async(
+        self,
+        request: emr_20160408_models.ListLocalDiskComponentInfoRequest,
+    ) -> emr_20160408_models.ListLocalDiskComponentInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_local_disk_component_info_with_options_async(request, runtime)
+
     def list_resource_pool_with_options(
         self,
         request: emr_20160408_models.ListResourcePoolRequest,
@@ -11401,12 +11729,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListResourcePoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['PoolType'] = request.pool_type
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['PoolType'] = request.pool_type
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11434,12 +11762,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListResourcePoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['PoolType'] = request.pool_type
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['PoolType'] = request.pool_type
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11481,8 +11809,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListRolesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -11511,8 +11839,8 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListRolesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -11555,21 +11883,21 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListScalingActivityV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Limit'] = request.limit
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        query['ClusterBizId'] = request.cluster_biz_id
         query['CurrentSize'] = request.current_size
-        query['PageCount'] = request.page_count
+        query['HostGroupId'] = request.host_group_id
+        query['HostGroupName'] = request.host_group_name
+        query['Limit'] = request.limit
         query['OrderField'] = request.order_field
         query['OrderMode'] = request.order_mode
-        query['ClusterBizId'] = request.cluster_biz_id
-        query['HostGroupId'] = request.host_group_id
+        query['PageCount'] = request.page_count
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingGroupBizId'] = request.scaling_group_biz_id
         query['ScalingRuleName'] = request.scaling_rule_name
-        query['HostGroupName'] = request.host_group_name
         query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -11598,21 +11926,21 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListScalingActivityV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Limit'] = request.limit
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        query['ClusterBizId'] = request.cluster_biz_id
         query['CurrentSize'] = request.current_size
-        query['PageCount'] = request.page_count
+        query['HostGroupId'] = request.host_group_id
+        query['HostGroupName'] = request.host_group_name
+        query['Limit'] = request.limit
         query['OrderField'] = request.order_field
         query['OrderMode'] = request.order_mode
-        query['ClusterBizId'] = request.cluster_biz_id
-        query['HostGroupId'] = request.host_group_id
+        query['PageCount'] = request.page_count
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingGroupBizId'] = request.scaling_group_biz_id
         query['ScalingRuleName'] = request.scaling_rule_name
-        query['HostGroupName'] = request.host_group_name
         query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -11655,18 +11983,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListScalingConfigItemV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Limit'] = request.limit
+        query['ConfigItemType'] = request.config_item_type
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
-        query['CurrentSize'] = request.current_size
-        query['PageCount'] = request.page_count
-        query['OrderField'] = request.order_field
-        query['OrderMode'] = request.order_mode
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingGroupBizId'] = request.scaling_group_biz_id
-        query['ConfigItemType'] = request.config_item_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11694,18 +12017,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListScalingConfigItemV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Limit'] = request.limit
+        query['ConfigItemType'] = request.config_item_type
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
-        query['CurrentSize'] = request.current_size
-        query['PageCount'] = request.page_count
-        query['OrderField'] = request.order_field
-        query['OrderMode'] = request.order_mode
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingGroupBizId'] = request.scaling_group_biz_id
-        query['ConfigItemType'] = request.config_item_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11747,17 +12065,17 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListScalingGroupV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Limit'] = request.limit
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        query['ClusterBizId'] = request.cluster_biz_id
         query['CurrentSize'] = request.current_size
-        query['PageCount'] = request.page_count
+        query['Limit'] = request.limit
         query['OrderField'] = request.order_field
         query['OrderMode'] = request.order_mode
-        query['ClusterBizId'] = request.cluster_biz_id
+        query['PageCount'] = request.page_count
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11785,17 +12103,17 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListScalingGroupV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Limit'] = request.limit
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        query['ClusterBizId'] = request.cluster_biz_id
         query['CurrentSize'] = request.current_size
-        query['PageCount'] = request.page_count
+        query['Limit'] = request.limit
         query['OrderField'] = request.order_field
         query['OrderMode'] = request.order_mode
-        query['ClusterBizId'] = request.cluster_biz_id
+        query['PageCount'] = request.page_count
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11837,11 +12155,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListSecurityGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['NetType'] = request.net_type
-        query['VpcId'] = request.vpc_id
         query['DepositType'] = request.deposit_type
+        query['NetType'] = request.net_type
         query['ProductType'] = request.product_type
+        query['RegionId'] = request.region_id
+        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11869,11 +12187,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListSecurityGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['NetType'] = request.net_type
-        query['VpcId'] = request.vpc_id
         query['DepositType'] = request.deposit_type
+        query['NetType'] = request.net_type
         query['ProductType'] = request.product_type
+        query['RegionId'] = request.region_id
+        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11915,12 +12233,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListStackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['StackName'] = request.stack_name
-        query['StackVersion'] = request.stack_version
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['StackName'] = request.stack_name
+        query['StackVersion'] = request.stack_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11948,12 +12266,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListStackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['StackName'] = request.stack_name
-        query['StackVersion'] = request.stack_version
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['StackName'] = request.stack_name
+        query['StackVersion'] = request.stack_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -11995,12 +12313,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListTagKeysResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
+        query['Category'] = request.category
         query['NextToken'] = request.next_token
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ResourceType'] = request.resource_type
-        query['Category'] = request.category
         query['Scope'] = request.scope
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -12029,12 +12347,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListTagKeysResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
+        query['Category'] = request.category
         query['NextToken'] = request.next_token
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ResourceType'] = request.resource_type
-        query['Category'] = request.category
         query['Scope'] = request.scope
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -12077,11 +12395,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceType'] = request.resource_type
         query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
         query['ResourceId'] = request.resource_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceType'] = request.resource_type
         query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -12110,11 +12428,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceType'] = request.resource_type
         query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
         query['ResourceId'] = request.resource_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceType'] = request.resource_type
         query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -12157,11 +12475,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListTagValuesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['Key'] = request.key
         query['NextToken'] = request.next_token
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ResourceType'] = request.resource_type
         query['Scope'] = request.scope
         req = open_api_models.OpenApiRequest(
@@ -12191,11 +12509,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListTagValuesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['Key'] = request.key
         query['NextToken'] = request.next_token
         query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ResourceType'] = request.resource_type
         query['Scope'] = request.scope
         req = open_api_models.OpenApiRequest(
@@ -12239,9 +12557,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListUsersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -12270,9 +12588,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListUsersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -12315,11 +12633,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListVswitchResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['DepositType'] = request.deposit_type
+        query['ProductType'] = request.product_type
         query['RegionId'] = request.region_id
         query['VpcId'] = request.vpc_id
         query['ZoneId'] = request.zone_id
-        query['DepositType'] = request.deposit_type
-        query['ProductType'] = request.product_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -12347,11 +12665,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ListVswitchResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['DepositType'] = request.deposit_type
+        query['ProductType'] = request.product_type
         query['RegionId'] = request.region_id
         query['VpcId'] = request.vpc_id
         query['ZoneId'] = request.zone_id
-        query['DepositType'] = request.deposit_type
-        query['ProductType'] = request.product_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -12393,11 +12711,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyClusterBootstrapActionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
+        query['BootstrapAction'] = request.bootstrap_action
         query['ClusterId'] = request.cluster_id
         query['Id'] = request.id
-        query['BootstrapAction'] = request.bootstrap_action
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -12425,11 +12743,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyClusterBootstrapActionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
+        query['BootstrapAction'] = request.bootstrap_action
         query['ClusterId'] = request.cluster_id
         query['Id'] = request.id
-        query['BootstrapAction'] = request.bootstrap_action
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -12471,14 +12789,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyClusterHostGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['Comment'] = request.comment
         query['HostGroupId'] = request.host_group_id
         query['HostGroupName'] = request.host_group_name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['SecurityGroupId'] = request.security_group_id
         query['VswitchId'] = request.vswitch_id
-        query['Comment'] = request.comment
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -12506,14 +12824,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyClusterHostGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['Comment'] = request.comment
         query['HostGroupId'] = request.host_group_id
         query['HostGroupName'] = request.host_group_name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['SecurityGroupId'] = request.security_group_id
         query['VswitchId'] = request.vswitch_id
-        query['Comment'] = request.comment
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -12555,9 +12873,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyClusterMetaCollectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['SwitchOn'] = request.switch_on
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -12586,9 +12904,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyClusterMetaCollectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['SwitchOn'] = request.switch_on
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -12631,10 +12949,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyClusterNameResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['Id'] = request.id
         query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -12662,10 +12980,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyClusterNameResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['Id'] = request.id
         query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -12707,13 +13025,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyClusterSecurityGroupRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['IpProtocol'] = request.ip_protocol
         query['ModifyType'] = request.modify_type
         query['NicType'] = request.nic_type
-        query['IpProtocol'] = request.ip_protocol
         query['PortRange'] = request.port_range
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['WhiteIp'] = request.white_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -12742,13 +13060,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyClusterSecurityGroupRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['IpProtocol'] = request.ip_protocol
         query['ModifyType'] = request.modify_type
         query['NicType'] = request.nic_type
-        query['IpProtocol'] = request.ip_protocol
         query['PortRange'] = request.port_range
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['WhiteIp'] = request.white_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -12791,18 +13109,18 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyClusterServiceConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['ServiceName'] = request.service_name
         query['Comment'] = request.comment
         query['ConfigParams'] = request.config_params
+        query['ConfigType'] = request.config_type
         query['CustomConfigParams'] = request.custom_config_params
+        query['GatewayClusterIdList'] = request.gateway_cluster_id_list
         query['GroupId'] = request.group_id
         query['HostInstanceId'] = request.host_instance_id
-        query['ConfigType'] = request.config_type
         query['RefreshHostConfig'] = request.refresh_host_config
-        query['GatewayClusterIdList'] = request.gateway_cluster_id_list
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -12830,18 +13148,18 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyClusterServiceConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['ServiceName'] = request.service_name
         query['Comment'] = request.comment
         query['ConfigParams'] = request.config_params
+        query['ConfigType'] = request.config_type
         query['CustomConfigParams'] = request.custom_config_params
+        query['GatewayClusterIdList'] = request.gateway_cluster_id_list
         query['GroupId'] = request.group_id
         query['HostInstanceId'] = request.host_instance_id
-        query['ConfigType'] = request.config_type
         query['RefreshHostConfig'] = request.refresh_host_config
-        query['GatewayClusterIdList'] = request.gateway_cluster_id_list
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -12883,45 +13201,45 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyClusterTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['BizId'] = request.biz_id
-        query['TemplateName'] = request.template_name
-        query['RegionId'] = request.region_id
-        query['ZoneId'] = request.zone_id
-        query['LogPath'] = request.log_path
-        query['SecurityGroupId'] = request.security_group_id
-        query['IsOpenPublicIp'] = request.is_open_public_ip
-        query['SecurityGroupName'] = request.security_group_name
-        query['ChargeType'] = request.charge_type
-        query['Period'] = request.period
         query['AutoRenew'] = request.auto_renew
-        query['VpcId'] = request.vpc_id
-        query['VSwitchId'] = request.v_switch_id
-        query['NetType'] = request.net_type
-        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
-        query['EmrVer'] = request.emr_ver
-        query['ClusterType'] = request.cluster_type
-        query['HighAvailabilityEnable'] = request.high_availability_enable
-        query['UseLocalMetaDb'] = request.use_local_meta_db
-        query['IoOptimized'] = request.io_optimized
-        query['SshEnable'] = request.ssh_enable
-        query['InstanceGeneration'] = request.instance_generation
-        query['MasterPwd'] = request.master_pwd
-        query['KeyPairName'] = request.key_pair_name
-        query['MetaStoreType'] = request.meta_store_type
-        query['MetaStoreConf'] = request.meta_store_conf
-        query['Configurations'] = request.configurations
-        query['EasEnable'] = request.eas_enable
-        query['DepositType'] = request.deposit_type
-        query['MachineType'] = request.machine_type
-        query['UseCustomHiveMetaDb'] = request.use_custom_hive_meta_db
-        query['InitCustomHiveMetaDb'] = request.init_custom_hive_meta_db
-        query['ResourceGroupId'] = request.resource_group_id
-        query['OptionSoftWareList'] = request.option_soft_ware_list
-        query['HostGroup'] = request.host_group
+        query['BizId'] = request.biz_id
         query['BootstrapAction'] = request.bootstrap_action
+        query['ChargeType'] = request.charge_type
+        query['ClusterType'] = request.cluster_type
         query['Config'] = request.config
+        query['Configurations'] = request.configurations
+        query['DepositType'] = request.deposit_type
+        query['EasEnable'] = request.eas_enable
+        query['EmrVer'] = request.emr_ver
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['HostGroup'] = request.host_group
+        query['InitCustomHiveMetaDb'] = request.init_custom_hive_meta_db
+        query['InstanceGeneration'] = request.instance_generation
+        query['IoOptimized'] = request.io_optimized
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['KeyPairName'] = request.key_pair_name
+        query['LogPath'] = request.log_path
+        query['MachineType'] = request.machine_type
+        query['MasterPwd'] = request.master_pwd
+        query['MetaStoreConf'] = request.meta_store_conf
+        query['MetaStoreType'] = request.meta_store_type
+        query['NetType'] = request.net_type
+        query['OptionSoftWareList'] = request.option_soft_ware_list
+        query['Period'] = request.period
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityGroupId'] = request.security_group_id
+        query['SecurityGroupName'] = request.security_group_name
+        query['SshEnable'] = request.ssh_enable
         query['Tag'] = request.tag
+        query['TemplateName'] = request.template_name
+        query['UseCustomHiveMetaDb'] = request.use_custom_hive_meta_db
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['VSwitchId'] = request.v_switch_id
+        query['VpcId'] = request.vpc_id
+        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -12949,45 +13267,45 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyClusterTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['BizId'] = request.biz_id
-        query['TemplateName'] = request.template_name
-        query['RegionId'] = request.region_id
-        query['ZoneId'] = request.zone_id
-        query['LogPath'] = request.log_path
-        query['SecurityGroupId'] = request.security_group_id
-        query['IsOpenPublicIp'] = request.is_open_public_ip
-        query['SecurityGroupName'] = request.security_group_name
-        query['ChargeType'] = request.charge_type
-        query['Period'] = request.period
         query['AutoRenew'] = request.auto_renew
-        query['VpcId'] = request.vpc_id
-        query['VSwitchId'] = request.v_switch_id
-        query['NetType'] = request.net_type
-        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
-        query['EmrVer'] = request.emr_ver
-        query['ClusterType'] = request.cluster_type
-        query['HighAvailabilityEnable'] = request.high_availability_enable
-        query['UseLocalMetaDb'] = request.use_local_meta_db
-        query['IoOptimized'] = request.io_optimized
-        query['SshEnable'] = request.ssh_enable
-        query['InstanceGeneration'] = request.instance_generation
-        query['MasterPwd'] = request.master_pwd
-        query['KeyPairName'] = request.key_pair_name
-        query['MetaStoreType'] = request.meta_store_type
-        query['MetaStoreConf'] = request.meta_store_conf
-        query['Configurations'] = request.configurations
-        query['EasEnable'] = request.eas_enable
-        query['DepositType'] = request.deposit_type
-        query['MachineType'] = request.machine_type
-        query['UseCustomHiveMetaDb'] = request.use_custom_hive_meta_db
-        query['InitCustomHiveMetaDb'] = request.init_custom_hive_meta_db
-        query['ResourceGroupId'] = request.resource_group_id
-        query['OptionSoftWareList'] = request.option_soft_ware_list
-        query['HostGroup'] = request.host_group
+        query['BizId'] = request.biz_id
         query['BootstrapAction'] = request.bootstrap_action
+        query['ChargeType'] = request.charge_type
+        query['ClusterType'] = request.cluster_type
         query['Config'] = request.config
+        query['Configurations'] = request.configurations
+        query['DepositType'] = request.deposit_type
+        query['EasEnable'] = request.eas_enable
+        query['EmrVer'] = request.emr_ver
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['HostGroup'] = request.host_group
+        query['InitCustomHiveMetaDb'] = request.init_custom_hive_meta_db
+        query['InstanceGeneration'] = request.instance_generation
+        query['IoOptimized'] = request.io_optimized
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['KeyPairName'] = request.key_pair_name
+        query['LogPath'] = request.log_path
+        query['MachineType'] = request.machine_type
+        query['MasterPwd'] = request.master_pwd
+        query['MetaStoreConf'] = request.meta_store_conf
+        query['MetaStoreType'] = request.meta_store_type
+        query['NetType'] = request.net_type
+        query['OptionSoftWareList'] = request.option_soft_ware_list
+        query['Period'] = request.period
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityGroupId'] = request.security_group_id
+        query['SecurityGroupName'] = request.security_group_name
+        query['SshEnable'] = request.ssh_enable
         query['Tag'] = request.tag
+        query['TemplateName'] = request.template_name
+        query['UseCustomHiveMetaDb'] = request.use_custom_hive_meta_db
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['VSwitchId'] = request.v_switch_id
+        query['VpcId'] = request.vpc_id
+        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -13029,45 +13347,45 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyExecutionPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ClusterName'] = request.cluster_name
+        query['BootstrapAction'] = request.bootstrap_action
         query['ClusterId'] = request.cluster_id
-        query['RegionId'] = request.region_id
-        query['ZoneId'] = request.zone_id
+        query['ClusterName'] = request.cluster_name
+        query['ClusterType'] = request.cluster_type
+        query['Config'] = request.config
+        query['Configurations'] = request.configurations
+        query['CreateClusterOnDemand'] = request.create_cluster_on_demand
+        query['DayOfMonth'] = request.day_of_month
+        query['DayOfWeek'] = request.day_of_week
+        query['EasEnable'] = request.eas_enable
+        query['EcsOrder'] = request.ecs_order
+        query['EmrVer'] = request.emr_ver
+        query['ExecutionPlanVersion'] = request.execution_plan_version
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['Id'] = request.id
+        query['InitCustomHiveMetaDB'] = request.init_custom_hive_meta_db
+        query['InstanceGeneration'] = request.instance_generation
+        query['IoOptimized'] = request.io_optimized
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['JobIdList'] = request.job_id_list
         query['LogEnable'] = request.log_enable
         query['LogPath'] = request.log_path
-        query['SecurityGroupId'] = request.security_group_id
-        query['IsOpenPublicIp'] = request.is_open_public_ip
-        query['CreateClusterOnDemand'] = request.create_cluster_on_demand
-        query['EmrVer'] = request.emr_ver
-        query['ClusterType'] = request.cluster_type
-        query['HighAvailabilityEnable'] = request.high_availability_enable
-        query['UseLocalMetaDb'] = request.use_local_meta_db
-        query['VpcId'] = request.vpc_id
-        query['VSwitchId'] = request.v_switch_id
-        query['NetType'] = request.net_type
-        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
-        query['IoOptimized'] = request.io_optimized
-        query['InstanceGeneration'] = request.instance_generation
-        query['EasEnable'] = request.eas_enable
-        query['WorkflowDefinition'] = request.workflow_definition
-        query['UseCustomHiveMetaDB'] = request.use_custom_hive_meta_db
-        query['InitCustomHiveMetaDB'] = request.init_custom_hive_meta_db
-        query['Configurations'] = request.configurations
-        query['Id'] = request.id
-        query['ExecutionPlanVersion'] = request.execution_plan_version
         query['Name'] = request.name
+        query['NetType'] = request.net_type
+        query['OptionSoftWareList'] = request.option_soft_ware_list
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityGroupId'] = request.security_group_id
+        query['StartTime'] = request.start_time
         query['Strategy'] = request.strategy
         query['TimeInterval'] = request.time_interval
-        query['StartTime'] = request.start_time
         query['TimeUnit'] = request.time_unit
-        query['DayOfWeek'] = request.day_of_week
-        query['DayOfMonth'] = request.day_of_month
-        query['OptionSoftWareList'] = request.option_soft_ware_list
-        query['EcsOrder'] = request.ecs_order
-        query['BootstrapAction'] = request.bootstrap_action
-        query['Config'] = request.config
-        query['JobIdList'] = request.job_id_list
+        query['UseCustomHiveMetaDB'] = request.use_custom_hive_meta_db
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['VSwitchId'] = request.v_switch_id
+        query['VpcId'] = request.vpc_id
+        query['WorkflowDefinition'] = request.workflow_definition
+        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -13095,45 +13413,45 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyExecutionPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ClusterName'] = request.cluster_name
+        query['BootstrapAction'] = request.bootstrap_action
         query['ClusterId'] = request.cluster_id
-        query['RegionId'] = request.region_id
-        query['ZoneId'] = request.zone_id
+        query['ClusterName'] = request.cluster_name
+        query['ClusterType'] = request.cluster_type
+        query['Config'] = request.config
+        query['Configurations'] = request.configurations
+        query['CreateClusterOnDemand'] = request.create_cluster_on_demand
+        query['DayOfMonth'] = request.day_of_month
+        query['DayOfWeek'] = request.day_of_week
+        query['EasEnable'] = request.eas_enable
+        query['EcsOrder'] = request.ecs_order
+        query['EmrVer'] = request.emr_ver
+        query['ExecutionPlanVersion'] = request.execution_plan_version
+        query['HighAvailabilityEnable'] = request.high_availability_enable
+        query['Id'] = request.id
+        query['InitCustomHiveMetaDB'] = request.init_custom_hive_meta_db
+        query['InstanceGeneration'] = request.instance_generation
+        query['IoOptimized'] = request.io_optimized
+        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['JobIdList'] = request.job_id_list
         query['LogEnable'] = request.log_enable
         query['LogPath'] = request.log_path
-        query['SecurityGroupId'] = request.security_group_id
-        query['IsOpenPublicIp'] = request.is_open_public_ip
-        query['CreateClusterOnDemand'] = request.create_cluster_on_demand
-        query['EmrVer'] = request.emr_ver
-        query['ClusterType'] = request.cluster_type
-        query['HighAvailabilityEnable'] = request.high_availability_enable
-        query['UseLocalMetaDb'] = request.use_local_meta_db
-        query['VpcId'] = request.vpc_id
-        query['VSwitchId'] = request.v_switch_id
-        query['NetType'] = request.net_type
-        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
-        query['IoOptimized'] = request.io_optimized
-        query['InstanceGeneration'] = request.instance_generation
-        query['EasEnable'] = request.eas_enable
-        query['WorkflowDefinition'] = request.workflow_definition
-        query['UseCustomHiveMetaDB'] = request.use_custom_hive_meta_db
-        query['InitCustomHiveMetaDB'] = request.init_custom_hive_meta_db
-        query['Configurations'] = request.configurations
-        query['Id'] = request.id
-        query['ExecutionPlanVersion'] = request.execution_plan_version
         query['Name'] = request.name
+        query['NetType'] = request.net_type
+        query['OptionSoftWareList'] = request.option_soft_ware_list
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityGroupId'] = request.security_group_id
+        query['StartTime'] = request.start_time
         query['Strategy'] = request.strategy
         query['TimeInterval'] = request.time_interval
-        query['StartTime'] = request.start_time
         query['TimeUnit'] = request.time_unit
-        query['DayOfWeek'] = request.day_of_week
-        query['DayOfMonth'] = request.day_of_month
-        query['OptionSoftWareList'] = request.option_soft_ware_list
-        query['EcsOrder'] = request.ecs_order
-        query['BootstrapAction'] = request.bootstrap_action
-        query['Config'] = request.config
-        query['JobIdList'] = request.job_id_list
+        query['UseCustomHiveMetaDB'] = request.use_custom_hive_meta_db
+        query['UseLocalMetaDb'] = request.use_local_meta_db
+        query['UserDefinedEmrEcsRole'] = request.user_defined_emr_ecs_role
+        query['VSwitchId'] = request.v_switch_id
+        query['VpcId'] = request.vpc_id
+        query['WorkflowDefinition'] = request.workflow_definition
+        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -13175,28 +13493,28 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
-        query['Id'] = request.id
-        query['Name'] = request.name
-        query['Status'] = request.status
-        query['Description'] = request.description
-        query['Periodic'] = request.periodic
-        query['StartSchedule'] = request.start_schedule
-        query['EndSchedule'] = request.end_schedule
-        query['CronExpr'] = request.cron_expr
-        query['CreateCluster'] = request.create_cluster
-        query['ClusterId'] = request.cluster_id
-        query['HostName'] = request.host_name
-        query['Namespace'] = request.namespace
-        query['LogArchiveLocation'] = request.log_archive_location
-        query['Lifecycle'] = request.lifecycle
-        query['Application'] = request.application
         query['AlertConf'] = request.alert_conf
-        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
         query['AlertDingDingGroupBizId'] = request.alert_ding_ding_group_biz_id
-        query['ParentFlowList'] = request.parent_flow_list
+        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
+        query['Application'] = request.application
+        query['ClusterId'] = request.cluster_id
+        query['CreateCluster'] = request.create_cluster
+        query['CronExpr'] = request.cron_expr
+        query['Description'] = request.description
+        query['EndSchedule'] = request.end_schedule
+        query['HostName'] = request.host_name
+        query['Id'] = request.id
+        query['Lifecycle'] = request.lifecycle
+        query['LogArchiveLocation'] = request.log_archive_location
+        query['Name'] = request.name
+        query['Namespace'] = request.namespace
         query['ParentCategory'] = request.parent_category
+        query['ParentFlowList'] = request.parent_flow_list
+        query['Periodic'] = request.periodic
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['StartSchedule'] = request.start_schedule
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -13224,28 +13542,28 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
-        query['Id'] = request.id
-        query['Name'] = request.name
-        query['Status'] = request.status
-        query['Description'] = request.description
-        query['Periodic'] = request.periodic
-        query['StartSchedule'] = request.start_schedule
-        query['EndSchedule'] = request.end_schedule
-        query['CronExpr'] = request.cron_expr
-        query['CreateCluster'] = request.create_cluster
-        query['ClusterId'] = request.cluster_id
-        query['HostName'] = request.host_name
-        query['Namespace'] = request.namespace
-        query['LogArchiveLocation'] = request.log_archive_location
-        query['Lifecycle'] = request.lifecycle
-        query['Application'] = request.application
         query['AlertConf'] = request.alert_conf
-        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
         query['AlertDingDingGroupBizId'] = request.alert_ding_ding_group_biz_id
-        query['ParentFlowList'] = request.parent_flow_list
+        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
+        query['Application'] = request.application
+        query['ClusterId'] = request.cluster_id
+        query['CreateCluster'] = request.create_cluster
+        query['CronExpr'] = request.cron_expr
+        query['Description'] = request.description
+        query['EndSchedule'] = request.end_schedule
+        query['HostName'] = request.host_name
+        query['Id'] = request.id
+        query['Lifecycle'] = request.lifecycle
+        query['LogArchiveLocation'] = request.log_archive_location
+        query['Name'] = request.name
+        query['Namespace'] = request.namespace
         query['ParentCategory'] = request.parent_category
+        query['ParentFlowList'] = request.parent_flow_list
+        query['Periodic'] = request.periodic
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['StartSchedule'] = request.start_schedule
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -13287,11 +13605,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyFlowCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
-        query['RegionId'] = request.region_id
         query['Id'] = request.id
         query['Name'] = request.name
         query['ParentId'] = request.parent_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -13319,11 +13637,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyFlowCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
-        query['RegionId'] = request.region_id
         query['Id'] = request.id
         query['Name'] = request.name
         query['ParentId'] = request.parent_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -13365,28 +13683,28 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyFlowForWebResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
-        query['Id'] = request.id
-        query['Name'] = request.name
-        query['Status'] = request.status
-        query['Description'] = request.description
-        query['Periodic'] = request.periodic
-        query['StartSchedule'] = request.start_schedule
-        query['EndSchedule'] = request.end_schedule
-        query['CronExpr'] = request.cron_expr
-        query['CreateCluster'] = request.create_cluster
-        query['ClusterId'] = request.cluster_id
-        query['HostName'] = request.host_name
-        query['Namespace'] = request.namespace
-        query['LogArchiveLocation'] = request.log_archive_location
-        query['Lifecycle'] = request.lifecycle
-        query['Graph'] = request.graph
         query['AlertConf'] = request.alert_conf
-        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
         query['AlertDingDingGroupBizId'] = request.alert_ding_ding_group_biz_id
-        query['ParentFlowList'] = request.parent_flow_list
+        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
+        query['ClusterId'] = request.cluster_id
+        query['CreateCluster'] = request.create_cluster
+        query['CronExpr'] = request.cron_expr
+        query['Description'] = request.description
+        query['EndSchedule'] = request.end_schedule
+        query['Graph'] = request.graph
+        query['HostName'] = request.host_name
+        query['Id'] = request.id
+        query['Lifecycle'] = request.lifecycle
+        query['LogArchiveLocation'] = request.log_archive_location
+        query['Name'] = request.name
+        query['Namespace'] = request.namespace
         query['ParentCategory'] = request.parent_category
+        query['ParentFlowList'] = request.parent_flow_list
+        query['Periodic'] = request.periodic
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['StartSchedule'] = request.start_schedule
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -13414,28 +13732,28 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyFlowForWebResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
-        query['Id'] = request.id
-        query['Name'] = request.name
-        query['Status'] = request.status
-        query['Description'] = request.description
-        query['Periodic'] = request.periodic
-        query['StartSchedule'] = request.start_schedule
-        query['EndSchedule'] = request.end_schedule
-        query['CronExpr'] = request.cron_expr
-        query['CreateCluster'] = request.create_cluster
-        query['ClusterId'] = request.cluster_id
-        query['HostName'] = request.host_name
-        query['Namespace'] = request.namespace
-        query['LogArchiveLocation'] = request.log_archive_location
-        query['Lifecycle'] = request.lifecycle
-        query['Graph'] = request.graph
         query['AlertConf'] = request.alert_conf
-        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
         query['AlertDingDingGroupBizId'] = request.alert_ding_ding_group_biz_id
-        query['ParentFlowList'] = request.parent_flow_list
+        query['AlertUserGroupBizId'] = request.alert_user_group_biz_id
+        query['ClusterId'] = request.cluster_id
+        query['CreateCluster'] = request.create_cluster
+        query['CronExpr'] = request.cron_expr
+        query['Description'] = request.description
+        query['EndSchedule'] = request.end_schedule
+        query['Graph'] = request.graph
+        query['HostName'] = request.host_name
+        query['Id'] = request.id
+        query['Lifecycle'] = request.lifecycle
+        query['LogArchiveLocation'] = request.log_archive_location
+        query['Name'] = request.name
+        query['Namespace'] = request.namespace
         query['ParentCategory'] = request.parent_category
+        query['ParentFlowList'] = request.parent_flow_list
+        query['Periodic'] = request.periodic
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
+        query['StartSchedule'] = request.start_schedule
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -13477,26 +13795,26 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyFlowJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
-        query['Id'] = request.id
-        query['Name'] = request.name
-        query['Description'] = request.description
-        query['FailAct'] = request.fail_act
-        query['MaxRetry'] = request.max_retry
-        query['RetryPolicy'] = request.retry_policy
-        query['MaxRunningTimeSec'] = request.max_running_time_sec
-        query['RetryInterval'] = request.retry_interval
-        query['Params'] = request.params
-        query['ParamConf'] = request.param_conf
-        query['CustomVariables'] = request.custom_variables
-        query['EnvConf'] = request.env_conf
-        query['RunConf'] = request.run_conf
-        query['MonitorConf'] = request.monitor_conf
-        query['Mode'] = request.mode
-        query['ClusterId'] = request.cluster_id
         query['AlertConf'] = request.alert_conf
+        query['ClusterId'] = request.cluster_id
+        query['CustomVariables'] = request.custom_variables
+        query['Description'] = request.description
+        query['EnvConf'] = request.env_conf
+        query['FailAct'] = request.fail_act
+        query['Id'] = request.id
+        query['MaxRetry'] = request.max_retry
+        query['MaxRunningTimeSec'] = request.max_running_time_sec
+        query['Mode'] = request.mode
+        query['MonitorConf'] = request.monitor_conf
+        query['Name'] = request.name
+        query['ParamConf'] = request.param_conf
+        query['Params'] = request.params
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['ResourceList'] = request.resource_list
+        query['RetryInterval'] = request.retry_interval
+        query['RetryPolicy'] = request.retry_policy
+        query['RunConf'] = request.run_conf
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -13524,26 +13842,26 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyFlowJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
-        query['Id'] = request.id
-        query['Name'] = request.name
-        query['Description'] = request.description
-        query['FailAct'] = request.fail_act
-        query['MaxRetry'] = request.max_retry
-        query['RetryPolicy'] = request.retry_policy
-        query['MaxRunningTimeSec'] = request.max_running_time_sec
-        query['RetryInterval'] = request.retry_interval
-        query['Params'] = request.params
-        query['ParamConf'] = request.param_conf
-        query['CustomVariables'] = request.custom_variables
-        query['EnvConf'] = request.env_conf
-        query['RunConf'] = request.run_conf
-        query['MonitorConf'] = request.monitor_conf
-        query['Mode'] = request.mode
-        query['ClusterId'] = request.cluster_id
         query['AlertConf'] = request.alert_conf
+        query['ClusterId'] = request.cluster_id
+        query['CustomVariables'] = request.custom_variables
+        query['Description'] = request.description
+        query['EnvConf'] = request.env_conf
+        query['FailAct'] = request.fail_act
+        query['Id'] = request.id
+        query['MaxRetry'] = request.max_retry
+        query['MaxRunningTimeSec'] = request.max_running_time_sec
+        query['Mode'] = request.mode
+        query['MonitorConf'] = request.monitor_conf
+        query['Name'] = request.name
+        query['ParamConf'] = request.param_conf
+        query['Params'] = request.params
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         query['ResourceList'] = request.resource_list
+        query['RetryInterval'] = request.retry_interval
+        query['RetryPolicy'] = request.retry_policy
+        query['RunConf'] = request.run_conf
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -13585,10 +13903,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyFlowProjectResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['Description'] = request.description
+        query['Name'] = request.name
         query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
-        query['Name'] = request.name
-        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -13616,10 +13934,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyFlowProjectResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['Description'] = request.description
+        query['Name'] = request.name
         query['ProjectId'] = request.project_id
         query['RegionId'] = request.region_id
-        query['Name'] = request.name
-        query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -13661,14 +13979,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['ClusterId'] = request.cluster_id
-        query['DefaultUser'] = request.default_user
         query['DefaultQueue'] = request.default_queue
-        query['UserList'] = request.user_list
-        query['QueueList'] = request.queue_list
+        query['DefaultUser'] = request.default_user
         query['HostList'] = request.host_list
+        query['ProjectId'] = request.project_id
+        query['QueueList'] = request.queue_list
+        query['RegionId'] = request.region_id
+        query['UserList'] = request.user_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -13696,14 +14014,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyFlowProjectClusterSettingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['ClusterId'] = request.cluster_id
-        query['DefaultUser'] = request.default_user
         query['DefaultQueue'] = request.default_queue
-        query['UserList'] = request.user_list
-        query['QueueList'] = request.queue_list
+        query['DefaultUser'] = request.default_user
         query['HostList'] = request.host_list
+        query['ProjectId'] = request.project_id
+        query['QueueList'] = request.queue_list
+        query['RegionId'] = request.region_id
+        query['UserList'] = request.user_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -13745,16 +14063,16 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['FailAct'] = request.fail_act
         query['Id'] = request.id
+        query['MaxRetry'] = request.max_retry
         query['Name'] = request.name
         query['RegionId'] = request.region_id
-        query['Type'] = request.type
-        query['RunParameter'] = request.run_parameter
-        query['FailAct'] = request.fail_act
-        query['MaxRetry'] = request.max_retry
-        query['RetryInterval'] = request.retry_interval
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RetryInterval'] = request.retry_interval
+        query['RunParameter'] = request.run_parameter
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -13782,16 +14100,16 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['FailAct'] = request.fail_act
         query['Id'] = request.id
+        query['MaxRetry'] = request.max_retry
         query['Name'] = request.name
         query['RegionId'] = request.region_id
-        query['Type'] = request.type
-        query['RunParameter'] = request.run_parameter
-        query['FailAct'] = request.fail_act
-        query['MaxRetry'] = request.max_retry
-        query['RetryInterval'] = request.retry_interval
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RetryInterval'] = request.retry_interval
+        query['RunParameter'] = request.run_parameter
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -13833,14 +14151,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyResourcePoolResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['Active'] = request.active
+        query['ClusterId'] = request.cluster_id
+        query['Config'] = request.config
+        query['Id'] = request.id
+        query['Name'] = request.name
         query['RegionId'] = request.region_id
         query['ResourceOwnerId'] = request.resource_owner_id
-        query['Id'] = request.id
-        query['Active'] = request.active
-        query['Name'] = request.name
-        query['ClusterId'] = request.cluster_id
         query['Yarnsiteconfig'] = request.yarnsiteconfig
-        query['Config'] = request.config
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -13868,14 +14186,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyResourcePoolResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['Active'] = request.active
+        query['ClusterId'] = request.cluster_id
+        query['Config'] = request.config
+        query['Id'] = request.id
+        query['Name'] = request.name
         query['RegionId'] = request.region_id
         query['ResourceOwnerId'] = request.resource_owner_id
-        query['Id'] = request.id
-        query['Active'] = request.active
-        query['Name'] = request.name
-        query['ClusterId'] = request.cluster_id
         query['Yarnsiteconfig'] = request.yarnsiteconfig
-        query['Config'] = request.config
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -13917,9 +14235,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyResourcePoolSchedulerTypeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['SchedulerType'] = request.scheduler_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -13948,9 +14266,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyResourcePoolSchedulerTypeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['SchedulerType'] = request.scheduler_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -13993,16 +14311,16 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyResourceQueueResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['ClusterId'] = request.cluster_id
+        query['Config'] = request.config
+        query['Id'] = request.id
+        query['Leaf'] = request.leaf
+        query['Name'] = request.name
+        query['ParentQueueId'] = request.parent_queue_id
+        query['QualifiedName'] = request.qualified_name
         query['RegionId'] = request.region_id
         query['ResourceOwnerId'] = request.resource_owner_id
-        query['Id'] = request.id
-        query['Name'] = request.name
-        query['QualifiedName'] = request.qualified_name
-        query['ClusterId'] = request.cluster_id
-        query['ParentQueueId'] = request.parent_queue_id
-        query['Leaf'] = request.leaf
         query['ResourcePoolId'] = request.resource_pool_id
-        query['Config'] = request.config
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -14030,16 +14348,16 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyResourceQueueResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['ClusterId'] = request.cluster_id
+        query['Config'] = request.config
+        query['Id'] = request.id
+        query['Leaf'] = request.leaf
+        query['Name'] = request.name
+        query['ParentQueueId'] = request.parent_queue_id
+        query['QualifiedName'] = request.qualified_name
         query['RegionId'] = request.region_id
         query['ResourceOwnerId'] = request.resource_owner_id
-        query['Id'] = request.id
-        query['Name'] = request.name
-        query['QualifiedName'] = request.qualified_name
-        query['ClusterId'] = request.cluster_id
-        query['ParentQueueId'] = request.parent_queue_id
-        query['Leaf'] = request.leaf
         query['ResourcePoolId'] = request.resource_pool_id
-        query['Config'] = request.config
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -14081,13 +14399,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyScalingConfigItemV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ConfigItemBizId'] = request.config_item_biz_id
+        query['ConfigItemInformation'] = request.config_item_information
+        query['ConfigItemType'] = request.config_item_type
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingGroupBizId'] = request.scaling_group_biz_id
-        query['ConfigItemBizId'] = request.config_item_biz_id
-        query['ConfigItemType'] = request.config_item_type
-        query['ConfigItemInformation'] = request.config_item_information
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -14115,13 +14433,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyScalingConfigItemV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ConfigItemBizId'] = request.config_item_biz_id
+        query['ConfigItemInformation'] = request.config_item_information
+        query['ConfigItemType'] = request.config_item_type
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingGroupBizId'] = request.scaling_group_biz_id
-        query['ConfigItemBizId'] = request.config_item_biz_id
-        query['ConfigItemType'] = request.config_item_type
-        query['ConfigItemInformation'] = request.config_item_information
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -14163,11 +14481,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyScalingGroupV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Description'] = request.description
+        query['Name'] = request.name
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
-        query['Name'] = request.name
-        query['Description'] = request.description
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingGroupBizId'] = request.scaling_group_biz_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -14196,11 +14514,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyScalingGroupV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['Description'] = request.description
+        query['Name'] = request.name
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
-        query['Name'] = request.name
-        query['Description'] = request.description
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingGroupBizId'] = request.scaling_group_biz_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -14243,24 +14561,24 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyScalingRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ScalingRuleId'] = request.scaling_rule_id
-        query['ClusterId'] = request.cluster_id
-        query['HostGroupId'] = request.host_group_id
-        query['RuleName'] = request.rule_name
         query['AdjustmentType'] = request.adjustment_type
         query['AdjustmentValue'] = request.adjustment_value
+        query['CloudWatchTrigger'] = request.cloud_watch_trigger
+        query['ClusterId'] = request.cluster_id
         query['Cooldown'] = request.cooldown
-        query['LaunchTime'] = request.launch_time
+        query['HostGroupId'] = request.host_group_id
         query['LaunchExpirationTime'] = request.launch_expiration_time
+        query['LaunchTime'] = request.launch_time
+        query['RecurrenceEndTime'] = request.recurrence_end_time
         query['RecurrenceType'] = request.recurrence_type
         query['RecurrenceValue'] = request.recurrence_value
-        query['RecurrenceEndTime'] = request.recurrence_end_time
-        query['WithGrace'] = request.with_grace
-        query['TimeoutWithGrace'] = request.timeout_with_grace
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RuleName'] = request.rule_name
+        query['ScalingRuleId'] = request.scaling_rule_id
         query['SchedulerTrigger'] = request.scheduler_trigger
-        query['CloudWatchTrigger'] = request.cloud_watch_trigger
+        query['TimeoutWithGrace'] = request.timeout_with_grace
+        query['WithGrace'] = request.with_grace
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -14288,24 +14606,24 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyScalingRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ScalingRuleId'] = request.scaling_rule_id
-        query['ClusterId'] = request.cluster_id
-        query['HostGroupId'] = request.host_group_id
-        query['RuleName'] = request.rule_name
         query['AdjustmentType'] = request.adjustment_type
         query['AdjustmentValue'] = request.adjustment_value
+        query['CloudWatchTrigger'] = request.cloud_watch_trigger
+        query['ClusterId'] = request.cluster_id
         query['Cooldown'] = request.cooldown
-        query['LaunchTime'] = request.launch_time
+        query['HostGroupId'] = request.host_group_id
         query['LaunchExpirationTime'] = request.launch_expiration_time
+        query['LaunchTime'] = request.launch_time
+        query['RecurrenceEndTime'] = request.recurrence_end_time
         query['RecurrenceType'] = request.recurrence_type
         query['RecurrenceValue'] = request.recurrence_value
-        query['RecurrenceEndTime'] = request.recurrence_end_time
-        query['WithGrace'] = request.with_grace
-        query['TimeoutWithGrace'] = request.timeout_with_grace
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RuleName'] = request.rule_name
+        query['ScalingRuleId'] = request.scaling_rule_id
         query['SchedulerTrigger'] = request.scheduler_trigger
-        query['CloudWatchTrigger'] = request.cloud_watch_trigger
+        query['TimeoutWithGrace'] = request.timeout_with_grace
+        query['WithGrace'] = request.with_grace
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -14347,16 +14665,16 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyScalingTaskGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ClusterId'] = request.cluster_id
-        query['HostGroupId'] = request.host_group_id
-        query['MinSize'] = request.min_size
-        query['MaxSize'] = request.max_size
-        query['DefaultCooldown'] = request.default_cooldown
         query['ActiveRuleCategory'] = request.active_rule_category
-        query['WithGrace'] = request.with_grace
+        query['ClusterId'] = request.cluster_id
+        query['DefaultCooldown'] = request.default_cooldown
+        query['HostGroupId'] = request.host_group_id
+        query['MaxSize'] = request.max_size
+        query['MinSize'] = request.min_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['TimeoutWithGrace'] = request.timeout_with_grace
+        query['WithGrace'] = request.with_grace
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -14384,16 +14702,16 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ModifyScalingTaskGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ClusterId'] = request.cluster_id
-        query['HostGroupId'] = request.host_group_id
-        query['MinSize'] = request.min_size
-        query['MaxSize'] = request.max_size
-        query['DefaultCooldown'] = request.default_cooldown
         query['ActiveRuleCategory'] = request.active_rule_category
-        query['WithGrace'] = request.with_grace
+        query['ClusterId'] = request.cluster_id
+        query['DefaultCooldown'] = request.default_cooldown
+        query['HostGroupId'] = request.host_group_id
+        query['MaxSize'] = request.max_size
+        query['MinSize'] = request.min_size
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['TimeoutWithGrace'] = request.timeout_with_grace
+        query['WithGrace'] = request.with_grace
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -14435,12 +14753,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.QueryEntityResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Id'] = request.id
-        query['Name'] = request.name
         query['Category'] = request.category
         query['Description'] = request.description
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -14468,12 +14786,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.QueryEntityResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Id'] = request.id
-        query['Name'] = request.name
         query['Category'] = request.category
         query['Description'] = request.description
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -14515,10 +14833,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.QueryTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['EntityId'] = request.entity_id
         query['EntityType'] = request.entity_type
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['TagId'] = request.tag_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -14547,10 +14865,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.QueryTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['EntityId'] = request.entity_id
         query['EntityType'] = request.entity_type
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['TagId'] = request.tag_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -14593,9 +14911,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.RefreshClusterResourcePoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ResourcePoolId'] = request.resource_pool_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -14624,9 +14942,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.RefreshClusterResourcePoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ResourcePoolId'] = request.resource_pool_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -14669,10 +14987,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ReleaseClusterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Id'] = request.id
         query['ForceRelease'] = request.force_release
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -14700,10 +15018,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ReleaseClusterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Id'] = request.id
         query['ForceRelease'] = request.force_release
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -14745,11 +15063,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ReleaseClusterHostGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['HostGroupId'] = request.host_group_id
         query['InstanceIdList'] = request.instance_id_list
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -14777,11 +15095,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ReleaseClusterHostGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
         query['HostGroupId'] = request.host_group_id
         query['InstanceIdList'] = request.instance_id_list
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -14823,12 +15141,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.RemoveScalingConfigItemV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ConfigItemBizId'] = request.config_item_biz_id
+        query['ConfigItemType'] = request.config_item_type
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingGroupBizId'] = request.scaling_group_biz_id
-        query['ConfigItemType'] = request.config_item_type
-        query['ConfigItemBizId'] = request.config_item_biz_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -14856,12 +15174,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.RemoveScalingConfigItemV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ConfigItemBizId'] = request.config_item_biz_id
+        query['ConfigItemType'] = request.config_item_type
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingGroupBizId'] = request.scaling_group_biz_id
-        query['ConfigItemType'] = request.config_item_type
-        query['ConfigItemBizId'] = request.config_item_biz_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -14903,10 +15221,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.RerunFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['FlowInstanceId'] = request.flow_instance_id
+        query['ProjectId'] = request.project_id
         query['ReRunFail'] = request.re_run_fail
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -14934,10 +15252,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.RerunFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['FlowInstanceId'] = request.flow_instance_id
+        query['ProjectId'] = request.project_id
         query['ReRunFail'] = request.re_run_fail
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -14979,14 +15297,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ResizeClusterV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ClusterId'] = request.cluster_id
         query['AutoPayOrder'] = request.auto_pay_order
-        query['VswitchId'] = request.vswitch_id
-        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['ClusterId'] = request.cluster_id
         query['HostComponentInfo'] = request.host_component_info
         query['HostGroup'] = request.host_group
+        query['IsOpenPublicIp'] = request.is_open_public_ip
         query['PromotionInfo'] = request.promotion_info
+        query['RegionId'] = request.region_id
+        query['VswitchId'] = request.vswitch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15014,14 +15332,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ResizeClusterV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ClusterId'] = request.cluster_id
         query['AutoPayOrder'] = request.auto_pay_order
-        query['VswitchId'] = request.vswitch_id
-        query['IsOpenPublicIp'] = request.is_open_public_ip
+        query['ClusterId'] = request.cluster_id
         query['HostComponentInfo'] = request.host_component_info
         query['HostGroup'] = request.host_group
+        query['IsOpenPublicIp'] = request.is_open_public_ip
         query['PromotionInfo'] = request.promotion_info
+        query['RegionId'] = request.region_id
+        query['VswitchId'] = request.vswitch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15063,9 +15381,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ResumeExecutionPlanSchedulerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15093,9 +15411,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ResumeExecutionPlanSchedulerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15137,9 +15455,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ResumeFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['FlowInstanceId'] = request.flow_instance_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15167,9 +15485,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.ResumeFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['FlowInstanceId'] = request.flow_instance_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15211,9 +15529,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.RetryOperationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['OperationId'] = request.operation_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15241,9 +15559,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.RetryOperationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['OperationId'] = request.operation_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15285,24 +15603,24 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.RunClusterServiceActionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['HostIdList'] = request.host_id_list
-        query['ServiceName'] = request.service_name
-        query['ServiceActionName'] = request.service_action_name
-        query['CustomCommand'] = request.custom_command
-        query['ComponentNameList'] = request.component_name_list
         query['Comment'] = request.comment
-        query['IsRolling'] = request.is_rolling
-        query['ExecuteStrategy'] = request.execute_strategy
+        query['ComponentNameList'] = request.component_name_list
+        query['CustomCommand'] = request.custom_command
         query['CustomParams'] = request.custom_params
-        query['Interval'] = request.interval
-        query['NodeCountPerBatch'] = request.node_count_per_batch
-        query['TotlerateFailCount'] = request.totlerate_fail_count
-        query['OnlyRestartStaleConfigNodes'] = request.only_restart_stale_config_nodes
-        query['TurnOnMaintenanceMode'] = request.turn_on_maintenance_mode
+        query['ExecuteStrategy'] = request.execute_strategy
         query['HostGroupIdList'] = request.host_group_id_list
+        query['HostIdList'] = request.host_id_list
+        query['Interval'] = request.interval
+        query['IsRolling'] = request.is_rolling
+        query['NodeCountPerBatch'] = request.node_count_per_batch
+        query['OnlyRestartStaleConfigNodes'] = request.only_restart_stale_config_nodes
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceActionName'] = request.service_action_name
+        query['ServiceName'] = request.service_name
+        query['TotlerateFailCount'] = request.totlerate_fail_count
+        query['TurnOnMaintenanceMode'] = request.turn_on_maintenance_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15330,24 +15648,24 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.RunClusterServiceActionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
-        query['HostIdList'] = request.host_id_list
-        query['ServiceName'] = request.service_name
-        query['ServiceActionName'] = request.service_action_name
-        query['CustomCommand'] = request.custom_command
-        query['ComponentNameList'] = request.component_name_list
         query['Comment'] = request.comment
-        query['IsRolling'] = request.is_rolling
-        query['ExecuteStrategy'] = request.execute_strategy
+        query['ComponentNameList'] = request.component_name_list
+        query['CustomCommand'] = request.custom_command
         query['CustomParams'] = request.custom_params
-        query['Interval'] = request.interval
-        query['NodeCountPerBatch'] = request.node_count_per_batch
-        query['TotlerateFailCount'] = request.totlerate_fail_count
-        query['OnlyRestartStaleConfigNodes'] = request.only_restart_stale_config_nodes
-        query['TurnOnMaintenanceMode'] = request.turn_on_maintenance_mode
+        query['ExecuteStrategy'] = request.execute_strategy
         query['HostGroupIdList'] = request.host_group_id_list
+        query['HostIdList'] = request.host_id_list
+        query['Interval'] = request.interval
+        query['IsRolling'] = request.is_rolling
+        query['NodeCountPerBatch'] = request.node_count_per_batch
+        query['OnlyRestartStaleConfigNodes'] = request.only_restart_stale_config_nodes
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ServiceActionName'] = request.service_action_name
+        query['ServiceName'] = request.service_name
+        query['TotlerateFailCount'] = request.totlerate_fail_count
+        query['TurnOnMaintenanceMode'] = request.turn_on_maintenance_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15382,6 +15700,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.run_cluster_service_action_with_options_async(request, runtime)
 
+    def run_disk_ops_activity_with_options(
+        self,
+        request: emr_20160408_models.RunDiskOpsActivityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20160408_models.RunDiskOpsActivityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClusterId'] = request.cluster_id
+        query['CurrentStage'] = request.current_stage
+        query['CurrentState'] = request.current_state
+        query['DiskId'] = request.disk_id
+        query['EventId'] = request.event_id
+        query['InstanceId'] = request.instance_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RunDiskOpsActivity',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.RunDiskOpsActivityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_disk_ops_activity_with_options_async(
+        self,
+        request: emr_20160408_models.RunDiskOpsActivityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20160408_models.RunDiskOpsActivityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClusterId'] = request.cluster_id
+        query['CurrentStage'] = request.current_stage
+        query['CurrentState'] = request.current_state
+        query['DiskId'] = request.disk_id
+        query['EventId'] = request.event_id
+        query['InstanceId'] = request.instance_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RunDiskOpsActivity',
+            version='2016-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20160408_models.RunDiskOpsActivityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_disk_ops_activity(
+        self,
+        request: emr_20160408_models.RunDiskOpsActivityRequest,
+    ) -> emr_20160408_models.RunDiskOpsActivityResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.run_disk_ops_activity_with_options(request, runtime)
+
+    async def run_disk_ops_activity_async(
+        self,
+        request: emr_20160408_models.RunDiskOpsActivityRequest,
+    ) -> emr_20160408_models.RunDiskOpsActivityResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.run_disk_ops_activity_with_options_async(request, runtime)
+
     def run_execution_plan_with_options(
         self,
         tmp_req: emr_20160408_models.RunExecutionPlanRequest,
@@ -15393,10 +15795,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.arguments):
             request.arguments_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.arguments, 'Arguments', 'json')
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Id'] = request.id
         query['Arguments'] = request.arguments_shrink
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15428,10 +15830,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.arguments):
             request.arguments_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.arguments, 'Arguments', 'json')
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Id'] = request.id
         query['Arguments'] = request.arguments_shrink
+        query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15473,12 +15875,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.RunScalingActionV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ActionParam'] = request.action_param
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingActionType'] = request.scaling_action_type
         query['ScalingGroupBizId'] = request.scaling_group_biz_id
-        query['ActionParam'] = request.action_param
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15506,12 +15908,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.RunScalingActionV2Response:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ActionParam'] = request.action_param
         query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['ScalingActionType'] = request.scaling_action_type
         query['ScalingGroupBizId'] = request.scaling_group_biz_id
-        query['ActionParam'] = request.action_param
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15553,18 +15955,18 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.SearchLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['FromTimestamp'] = request.from_timestamp
         query['HostInnerIp'] = request.host_inner_ip
         query['HostName'] = request.host_name
-        query['LogstoreName'] = request.logstore_name
-        query['FromTimestamp'] = request.from_timestamp
-        query['ToTimestamp'] = request.to_timestamp
-        query['SlsQueryString'] = request.sls_query_string
-        query['Offset'] = request.offset
         query['Line'] = request.line
+        query['LogstoreName'] = request.logstore_name
+        query['Offset'] = request.offset
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['Reverse'] = request.reverse
+        query['SlsQueryString'] = request.sls_query_string
+        query['ToTimestamp'] = request.to_timestamp
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15592,18 +15994,18 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.SearchLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['ClusterId'] = request.cluster_id
+        query['FromTimestamp'] = request.from_timestamp
         query['HostInnerIp'] = request.host_inner_ip
         query['HostName'] = request.host_name
-        query['LogstoreName'] = request.logstore_name
-        query['FromTimestamp'] = request.from_timestamp
-        query['ToTimestamp'] = request.to_timestamp
-        query['SlsQueryString'] = request.sls_query_string
-        query['Offset'] = request.offset
         query['Line'] = request.line
+        query['LogstoreName'] = request.logstore_name
+        query['Offset'] = request.offset
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['Reverse'] = request.reverse
+        query['SlsQueryString'] = request.sls_query_string
+        query['ToTimestamp'] = request.to_timestamp
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15645,9 +16047,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.StartFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['FlowInstanceId'] = request.flow_instance_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15675,9 +16077,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.StartFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['FlowInstanceId'] = request.flow_instance_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15719,10 +16121,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.SubmitFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
-        query['FlowId'] = request.flow_id
         query['Conf'] = request.conf
+        query['FlowId'] = request.flow_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15750,10 +16152,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.SubmitFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
-        query['FlowId'] = request.flow_id
         query['Conf'] = request.conf
+        query['FlowId'] = request.flow_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15795,14 +16197,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.SubmitFlowJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
+        query['ClusterId'] = request.cluster_id
+        query['Conf'] = request.conf
+        query['HostName'] = request.host_name
         query['JobId'] = request.job_id
         query['JobInstanceId'] = request.job_instance_id
-        query['ClusterId'] = request.cluster_id
-        query['HostName'] = request.host_name
         query['Namespace'] = request.namespace
-        query['Conf'] = request.conf
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15830,14 +16232,14 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.SubmitFlowJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
+        query['ClusterId'] = request.cluster_id
+        query['Conf'] = request.conf
+        query['HostName'] = request.host_name
         query['JobId'] = request.job_id
         query['JobInstanceId'] = request.job_instance_id
-        query['ClusterId'] = request.cluster_id
-        query['HostName'] = request.host_name
         query['Namespace'] = request.namespace
-        query['Conf'] = request.conf
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15879,9 +16281,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.SuspendExecutionPlanSchedulerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15909,9 +16311,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.SuspendExecutionPlanSchedulerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['Id'] = request.id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15953,9 +16355,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.SuspendFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['FlowInstanceId'] = request.flow_instance_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -15983,9 +16385,9 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.SuspendFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ProjectId'] = request.project_id
         query['FlowInstanceId'] = request.flow_instance_id
+        query['ProjectId'] = request.project_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -16027,10 +16429,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.TagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['RegionId'] = request.region_id
-        query['ResourceType'] = request.resource_type
         query['ResourceId'] = request.resource_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceType'] = request.resource_type
         query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -16059,10 +16461,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.TagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['RegionId'] = request.region_id
-        query['ResourceType'] = request.resource_type
         query['ResourceId'] = request.resource_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceType'] = request.resource_type
         query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -16105,10 +16507,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.UninstallLibrariesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['LibraryBizId'] = request.library_biz_id
         query['ClusterBizIdList'] = request.cluster_biz_id_list
+        query['LibraryBizId'] = request.library_biz_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -16136,10 +16538,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.UninstallLibrariesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['LibraryBizId'] = request.library_biz_id
         query['ClusterBizIdList'] = request.cluster_biz_id_list
+        query['LibraryBizId'] = request.library_biz_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -16181,11 +16583,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceType'] = request.resource_type
         query['All'] = request.all
+        query['RegionId'] = request.region_id
         query['ResourceId'] = request.resource_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceType'] = request.resource_type
         query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -16214,11 +16616,11 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceType'] = request.resource_type
         query['All'] = request.all
+        query['RegionId'] = request.region_id
         query['ResourceId'] = request.resource_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['ResourceType'] = request.resource_type
         query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
@@ -16261,13 +16663,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.UpdateDataSourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
+        query['Conf'] = request.conf
+        query['Description'] = request.description
         query['Id'] = request.id
         query['Name'] = request.name
-        query['Description'] = request.description
-        query['Conf'] = request.conf
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -16295,13 +16697,13 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.UpdateDataSourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
+        query['Conf'] = request.conf
+        query['Description'] = request.description
         query['Id'] = request.id
         query['Name'] = request.name
-        query['Description'] = request.description
-        query['Conf'] = request.conf
+        query['RegionId'] = request.region_id
         query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -16343,10 +16745,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.UpdateLibraryInstallTaskStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['RegionId'] = request.region_id
-        query['TaskBizId'] = request.task_biz_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['Status'] = request.status
+        query['TaskBizId'] = request.task_biz_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -16374,10 +16776,10 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.UpdateLibraryInstallTaskStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
         query['RegionId'] = request.region_id
-        query['TaskBizId'] = request.task_biz_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         query['Status'] = request.status
+        query['TaskBizId'] = request.task_biz_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -16419,12 +16821,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.UpdateTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Id'] = request.id
-        query['Name'] = request.name
         query['Category'] = request.category
         query['Description'] = request.description
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -16452,12 +16854,12 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.UpdateTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
-        query['Id'] = request.id
-        query['Name'] = request.name
         query['Category'] = request.category
         query['Description'] = request.description
+        query['Id'] = request.id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -16499,16 +16901,16 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.UpdateUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['AliyunUserId'] = request.aliyun_user_id
+        query['Description'] = request.description
+        query['GroupIdList'] = request.group_id_list
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RoleIdList'] = request.role_id_list
+        query['Status'] = request.status
+        query['UserAccountParamList'] = request.user_account_param_list
         query['UserName'] = request.user_name
         query['UserType'] = request.user_type
-        query['Status'] = request.status
-        query['Description'] = request.description
-        query['RoleIdList'] = request.role_id_list
-        query['GroupIdList'] = request.group_id_list
-        query['UserAccountParamList'] = request.user_account_param_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -16536,16 +16938,16 @@ class Client(OpenApiClient):
     ) -> emr_20160408_models.UpdateUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RegionId'] = request.region_id
         query['AliyunUserId'] = request.aliyun_user_id
+        query['Description'] = request.description
+        query['GroupIdList'] = request.group_id_list
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['RoleIdList'] = request.role_id_list
+        query['Status'] = request.status
+        query['UserAccountParamList'] = request.user_account_param_list
         query['UserName'] = request.user_name
         query['UserType'] = request.user_type
-        query['Status'] = request.status
-        query['Description'] = request.description
-        query['RoleIdList'] = request.role_id_list
-        query['GroupIdList'] = request.group_id_list
-        query['UserAccountParamList'] = request.user_account_param_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
