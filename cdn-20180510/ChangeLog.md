@@ -1,3 +1,6 @@
+2021-11-29 Version: 1.0.3
+- AMP version.
+
 2021-06-16 Version: 1.0.2
 - Generated python 2018-05-10 for Cdn.
 

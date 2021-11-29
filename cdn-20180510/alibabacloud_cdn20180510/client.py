@@ -60,12 +60,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.AddCdnDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CdnType'] = request.cdn_type
+        query['CheckUrl'] = request.check_url
+        query['DomainName'] = request.domain_name
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Scope'] = request.scope
+        query['SecurityToken'] = request.security_token
+        query['Sources'] = request.sources
+        query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddCdnDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.AddCdnDomainResponse(),
-            self.do_rpcrequest('AddCdnDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_cdn_domain_with_options_async(
@@ -74,12 +97,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.AddCdnDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CdnType'] = request.cdn_type
+        query['CheckUrl'] = request.check_url
+        query['DomainName'] = request.domain_name
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Scope'] = request.scope
+        query['SecurityToken'] = request.security_token
+        query['Sources'] = request.sources
+        query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddCdnDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.AddCdnDomainResponse(),
-            await self.do_rpcrequest_async('AddCdnDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_cdn_domain(
@@ -102,12 +148,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.AddFCTriggerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['TriggerARN'] = request.trigger_arn
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddFCTrigger',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.AddFCTriggerResponse(),
-            self.do_rpcrequest('AddFCTrigger', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_fctrigger_with_options_async(
@@ -116,12 +177,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.AddFCTriggerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['TriggerARN'] = request.trigger_arn
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddFCTrigger',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.AddFCTriggerResponse(),
-            await self.do_rpcrequest_async('AddFCTrigger', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_fctrigger(
@@ -144,12 +220,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.BatchAddCdnDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CdnType'] = request.cdn_type
+        query['CheckUrl'] = request.check_url
+        query['DomainName'] = request.domain_name
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Scope'] = request.scope
+        query['SecurityToken'] = request.security_token
+        query['Sources'] = request.sources
+        query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchAddCdnDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.BatchAddCdnDomainResponse(),
-            self.do_rpcrequest('BatchAddCdnDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_add_cdn_domain_with_options_async(
@@ -158,12 +257,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.BatchAddCdnDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CdnType'] = request.cdn_type
+        query['CheckUrl'] = request.check_url
+        query['DomainName'] = request.domain_name
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Scope'] = request.scope
+        query['SecurityToken'] = request.security_token
+        query['Sources'] = request.sources
+        query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchAddCdnDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.BatchAddCdnDomainResponse(),
-            await self.do_rpcrequest_async('BatchAddCdnDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_add_cdn_domain(
@@ -180,18 +302,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_add_cdn_domain_with_options_async(request, runtime)
 
+    def batch_delete_cdn_domain_config_with_options(
+        self,
+        request: cdn_20180510_models.BatchDeleteCdnDomainConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.BatchDeleteCdnDomainConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['FunctionNames'] = request.function_names
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteCdnDomainConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.BatchDeleteCdnDomainConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_delete_cdn_domain_config_with_options_async(
+        self,
+        request: cdn_20180510_models.BatchDeleteCdnDomainConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.BatchDeleteCdnDomainConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['FunctionNames'] = request.function_names
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteCdnDomainConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.BatchDeleteCdnDomainConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_delete_cdn_domain_config(
+        self,
+        request: cdn_20180510_models.BatchDeleteCdnDomainConfigRequest,
+    ) -> cdn_20180510_models.BatchDeleteCdnDomainConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_delete_cdn_domain_config_with_options(request, runtime)
+
+    async def batch_delete_cdn_domain_config_async(
+        self,
+        request: cdn_20180510_models.BatchDeleteCdnDomainConfigRequest,
+    ) -> cdn_20180510_models.BatchDeleteCdnDomainConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_delete_cdn_domain_config_with_options_async(request, runtime)
+
     def batch_set_cdn_domain_config_with_options(
         self,
         request: cdn_20180510_models.BatchSetCdnDomainConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.BatchSetCdnDomainConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['Functions'] = request.functions
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchSetCdnDomainConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.BatchSetCdnDomainConfigResponse(),
-            self.do_rpcrequest('BatchSetCdnDomainConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_set_cdn_domain_config_with_options_async(
@@ -200,12 +418,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.BatchSetCdnDomainConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['Functions'] = request.functions
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchSetCdnDomainConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.BatchSetCdnDomainConfigResponse(),
-            await self.do_rpcrequest_async('BatchSetCdnDomainConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_set_cdn_domain_config(
@@ -228,12 +464,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.BatchSetCdnDomainServerCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertName'] = request.cert_name
+        query['CertType'] = request.cert_type
+        query['DomainName'] = request.domain_name
+        query['ForceSet'] = request.force_set
+        query['OwnerId'] = request.owner_id
+        query['Region'] = request.region
+        query['SSLPri'] = request.sslpri
+        query['SSLProtocol'] = request.sslprotocol
+        query['SSLPub'] = request.sslpub
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchSetCdnDomainServerCertificate',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.BatchSetCdnDomainServerCertificateResponse(),
-            self.do_rpcrequest('BatchSetCdnDomainServerCertificate', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_set_cdn_domain_server_certificate_with_options_async(
@@ -242,12 +501,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.BatchSetCdnDomainServerCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertName'] = request.cert_name
+        query['CertType'] = request.cert_type
+        query['DomainName'] = request.domain_name
+        query['ForceSet'] = request.force_set
+        query['OwnerId'] = request.owner_id
+        query['Region'] = request.region
+        query['SSLPri'] = request.sslpri
+        query['SSLProtocol'] = request.sslprotocol
+        query['SSLPub'] = request.sslpub
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchSetCdnDomainServerCertificate',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.BatchSetCdnDomainServerCertificateResponse(),
-            await self.do_rpcrequest_async('BatchSetCdnDomainServerCertificate', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_set_cdn_domain_server_certificate(
@@ -270,12 +552,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.BatchStartCdnDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchStartCdnDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.BatchStartCdnDomainResponse(),
-            self.do_rpcrequest('BatchStartCdnDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_start_cdn_domain_with_options_async(
@@ -284,12 +582,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.BatchStartCdnDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchStartCdnDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.BatchStartCdnDomainResponse(),
-            await self.do_rpcrequest_async('BatchStartCdnDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_start_cdn_domain(
@@ -312,12 +626,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.BatchStopCdnDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchStopCdnDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.BatchStopCdnDomainResponse(),
-            self.do_rpcrequest('BatchStopCdnDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_stop_cdn_domain_with_options_async(
@@ -326,12 +656,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.BatchStopCdnDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchStopCdnDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.BatchStopCdnDomainResponse(),
-            await self.do_rpcrequest_async('BatchStopCdnDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_stop_cdn_domain(
@@ -354,12 +700,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.BatchUpdateCdnDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['SecurityToken'] = request.security_token
+        query['Sources'] = request.sources
+        query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchUpdateCdnDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.BatchUpdateCdnDomainResponse(),
-            self.do_rpcrequest('BatchUpdateCdnDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_update_cdn_domain_with_options_async(
@@ -368,12 +733,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.BatchUpdateCdnDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['SecurityToken'] = request.security_token
+        query['Sources'] = request.sources
+        query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='BatchUpdateCdnDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.BatchUpdateCdnDomainResponse(),
-            await self.do_rpcrequest_async('BatchUpdateCdnDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_update_cdn_domain(
@@ -396,12 +780,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.CreateCdnCertificateSigningRequestResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['City'] = request.city
+        query['CommonName'] = request.common_name
+        query['Country'] = request.country
+        query['Email'] = request.email
+        query['Organization'] = request.organization
+        query['OrganizationUnit'] = request.organization_unit
+        query['OwnerId'] = request.owner_id
+        query['SANs'] = request.sans
+        query['State'] = request.state
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCdnCertificateSigningRequest',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.CreateCdnCertificateSigningRequestResponse(),
-            self.do_rpcrequest('CreateCdnCertificateSigningRequest', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_cdn_certificate_signing_request_with_options_async(
@@ -410,12 +816,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.CreateCdnCertificateSigningRequestResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['City'] = request.city
+        query['CommonName'] = request.common_name
+        query['Country'] = request.country
+        query['Email'] = request.email
+        query['Organization'] = request.organization
+        query['OrganizationUnit'] = request.organization_unit
+        query['OwnerId'] = request.owner_id
+        query['SANs'] = request.sans
+        query['State'] = request.state
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCdnCertificateSigningRequest',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.CreateCdnCertificateSigningRequestResponse(),
-            await self.do_rpcrequest_async('CreateCdnCertificateSigningRequest', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_cdn_certificate_signing_request(
@@ -434,42 +862,58 @@ class Client(OpenApiClient):
 
     def create_cdn_deliver_task_with_options(
         self,
-        tmp_req: cdn_20180510_models.CreateCdnDeliverTaskRequest,
+        request: cdn_20180510_models.CreateCdnDeliverTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.CreateCdnDeliverTaskResponse:
-        UtilClient.validate_model(tmp_req)
-        request = cdn_20180510_models.CreateCdnDeliverTaskShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.deliver):
-            request.deliver_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deliver, 'Deliver', 'json')
-        if not UtilClient.is_unset(tmp_req.schedule):
-            request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'Schedule', 'json')
+        UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCdnDeliverTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.CreateCdnDeliverTaskResponse(),
-            self.do_rpcrequest('CreateCdnDeliverTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_cdn_deliver_task_with_options_async(
         self,
-        tmp_req: cdn_20180510_models.CreateCdnDeliverTaskRequest,
+        request: cdn_20180510_models.CreateCdnDeliverTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.CreateCdnDeliverTaskResponse:
-        UtilClient.validate_model(tmp_req)
-        request = cdn_20180510_models.CreateCdnDeliverTaskShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.deliver):
-            request.deliver_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deliver, 'Deliver', 'json')
-        if not UtilClient.is_unset(tmp_req.schedule):
-            request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'Schedule', 'json')
+        UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCdnDeliverTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.CreateCdnDeliverTaskResponse(),
-            await self.do_rpcrequest_async('CreateCdnDeliverTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_cdn_deliver_task(
@@ -492,12 +936,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.CreateCdnSubTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCdnSubTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.CreateCdnSubTaskResponse(),
-            self.do_rpcrequest('CreateCdnSubTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_cdn_sub_task_with_options_async(
@@ -506,12 +964,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.CreateCdnSubTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCdnSubTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.CreateCdnSubTaskResponse(),
-            await self.do_rpcrequest_async('CreateCdnSubTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_cdn_sub_task(
@@ -534,12 +1006,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.CreateIllegalUrlExportTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['TaskName'] = request.task_name
+        query['TimePoint'] = request.time_point
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateIllegalUrlExportTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.CreateIllegalUrlExportTaskResponse(),
-            self.do_rpcrequest('CreateIllegalUrlExportTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_illegal_url_export_task_with_options_async(
@@ -548,12 +1036,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.CreateIllegalUrlExportTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['TaskName'] = request.task_name
+        query['TimePoint'] = request.time_point
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateIllegalUrlExportTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.CreateIllegalUrlExportTaskResponse(),
-            await self.do_rpcrequest_async('CreateIllegalUrlExportTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_illegal_url_export_task(
@@ -578,11 +1082,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRealTimeLogDelivery',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.CreateRealTimeLogDeliveryResponse(),
-            self.do_rpcrequest('CreateRealTimeLogDelivery', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_real_time_log_delivery_with_options_async(
@@ -593,11 +1108,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRealTimeLogDelivery',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.CreateRealTimeLogDeliveryResponse(),
-            await self.do_rpcrequest_async('CreateRealTimeLogDelivery', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_real_time_log_delivery(
@@ -620,12 +1146,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.CreateUsageDetailDataExportTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['EndTime'] = request.end_time
+        query['Group'] = request.group
+        query['Language'] = request.language
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        query['TaskName'] = request.task_name
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateUsageDetailDataExportTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.CreateUsageDetailDataExportTaskResponse(),
-            self.do_rpcrequest('CreateUsageDetailDataExportTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_usage_detail_data_export_task_with_options_async(
@@ -634,12 +1181,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.CreateUsageDetailDataExportTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['EndTime'] = request.end_time
+        query['Group'] = request.group
+        query['Language'] = request.language
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        query['TaskName'] = request.task_name
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateUsageDetailDataExportTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.CreateUsageDetailDataExportTaskResponse(),
-            await self.do_rpcrequest_async('CreateUsageDetailDataExportTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_usage_detail_data_export_task(
@@ -662,12 +1230,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.CreateUserUsageDataExportTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['Language'] = request.language
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        query['TaskName'] = request.task_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateUserUsageDataExportTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.CreateUserUsageDataExportTaskResponse(),
-            self.do_rpcrequest('CreateUserUsageDataExportTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_user_usage_data_export_task_with_options_async(
@@ -676,12 +1262,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.CreateUserUsageDataExportTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['Language'] = request.language
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        query['TaskName'] = request.task_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateUserUsageDataExportTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.CreateUserUsageDataExportTaskResponse(),
-            await self.do_rpcrequest_async('CreateUserUsageDataExportTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_user_usage_data_export_task(
@@ -704,12 +1308,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DeleteCdnDeliverTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DeliverId'] = request.deliver_id
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteCdnDeliverTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DeleteCdnDeliverTaskResponse(),
-            self.do_rpcrequest('DeleteCdnDeliverTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_cdn_deliver_task_with_options_async(
@@ -718,12 +1337,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DeleteCdnDeliverTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DeliverId'] = request.deliver_id
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteCdnDeliverTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DeleteCdnDeliverTaskResponse(),
-            await self.do_rpcrequest_async('DeleteCdnDeliverTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_cdn_deliver_task(
@@ -746,12 +1380,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DeleteCdnDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteCdnDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DeleteCdnDomainResponse(),
-            self.do_rpcrequest('DeleteCdnDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_cdn_domain_with_options_async(
@@ -760,12 +1411,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DeleteCdnDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteCdnDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DeleteCdnDomainResponse(),
-            await self.do_rpcrequest_async('DeleteCdnDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_cdn_domain(
@@ -788,12 +1456,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DeleteCdnSubTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteCdnSubTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DeleteCdnSubTaskResponse(),
-            self.do_rpcrequest('DeleteCdnSubTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_cdn_sub_task_with_options_async(
@@ -802,12 +1484,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DeleteCdnSubTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteCdnSubTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DeleteCdnSubTaskResponse(),
-            await self.do_rpcrequest_async('DeleteCdnSubTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_cdn_sub_task(
@@ -830,12 +1526,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DeleteFCTriggerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['TriggerARN'] = request.trigger_arn
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteFCTrigger',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DeleteFCTriggerResponse(),
-            self.do_rpcrequest('DeleteFCTrigger', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_fctrigger_with_options_async(
@@ -844,12 +1555,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DeleteFCTriggerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['TriggerARN'] = request.trigger_arn
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteFCTrigger',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DeleteFCTriggerResponse(),
-            await self.do_rpcrequest_async('DeleteFCTrigger', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_fctrigger(
@@ -874,11 +1600,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRealtimeLogDelivery',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DeleteRealtimeLogDeliveryResponse(),
-            self.do_rpcrequest('DeleteRealtimeLogDelivery', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_realtime_log_delivery_with_options_async(
@@ -889,11 +1626,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRealtimeLogDelivery',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DeleteRealtimeLogDeliveryResponse(),
-            await self.do_rpcrequest_async('DeleteRealtimeLogDelivery', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_realtime_log_delivery(
@@ -916,12 +1664,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DeleteSpecificConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteSpecificConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DeleteSpecificConfigResponse(),
-            self.do_rpcrequest('DeleteSpecificConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_specific_config_with_options_async(
@@ -930,12 +1695,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DeleteSpecificConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteSpecificConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DeleteSpecificConfigResponse(),
-            await self.do_rpcrequest_async('DeleteSpecificConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_specific_config(
@@ -958,12 +1740,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DeleteSpecificStagingConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteSpecificStagingConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DeleteSpecificStagingConfigResponse(),
-            self.do_rpcrequest('DeleteSpecificStagingConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_specific_staging_config_with_options_async(
@@ -972,12 +1771,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DeleteSpecificStagingConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteSpecificStagingConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DeleteSpecificStagingConfigResponse(),
-            await self.do_rpcrequest_async('DeleteSpecificStagingConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_specific_staging_config(
@@ -1000,12 +1816,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DeleteUsageDetailDataExportTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteUsageDetailDataExportTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DeleteUsageDetailDataExportTaskResponse(),
-            self.do_rpcrequest('DeleteUsageDetailDataExportTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_usage_detail_data_export_task_with_options_async(
@@ -1014,12 +1845,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DeleteUsageDetailDataExportTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteUsageDetailDataExportTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DeleteUsageDetailDataExportTaskResponse(),
-            await self.do_rpcrequest_async('DeleteUsageDetailDataExportTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_usage_detail_data_export_task(
@@ -1042,12 +1888,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DeleteUserUsageDataExportTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteUserUsageDataExportTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DeleteUserUsageDataExportTaskResponse(),
-            self.do_rpcrequest('DeleteUserUsageDataExportTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_user_usage_data_export_task_with_options_async(
@@ -1056,12 +1917,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DeleteUserUsageDataExportTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteUserUsageDataExportTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DeleteUserUsageDataExportTaskResponse(),
-            await self.do_rpcrequest_async('DeleteUserUsageDataExportTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_user_usage_data_export_task(
@@ -1084,12 +1960,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeActiveVersionOfConfigGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigGroupId'] = request.config_group_id
+        query['Env'] = request.env
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveVersionOfConfigGroup',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeActiveVersionOfConfigGroupResponse(),
-            self.do_rpcrequest('DescribeActiveVersionOfConfigGroup', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_active_version_of_config_group_with_options_async(
@@ -1098,12 +1990,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeActiveVersionOfConfigGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigGroupId'] = request.config_group_id
+        query['Env'] = request.env
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveVersionOfConfigGroup',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeActiveVersionOfConfigGroupResponse(),
-            await self.do_rpcrequest_async('DescribeActiveVersionOfConfigGroup', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_active_version_of_config_group(
@@ -1120,18 +2028,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_active_version_of_config_group_with_options_async(request, runtime)
 
+    def describe_blocked_regions_with_options(
+        self,
+        request: cdn_20180510_models.DescribeBlockedRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeBlockedRegionsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBlockedRegions',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeBlockedRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_blocked_regions_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeBlockedRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeBlockedRegionsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBlockedRegions',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeBlockedRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_blocked_regions(
+        self,
+        request: cdn_20180510_models.DescribeBlockedRegionsRequest,
+    ) -> cdn_20180510_models.DescribeBlockedRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_blocked_regions_with_options(request, runtime)
+
+    async def describe_blocked_regions_async(
+        self,
+        request: cdn_20180510_models.DescribeBlockedRegionsRequest,
+    ) -> cdn_20180510_models.DescribeBlockedRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_blocked_regions_with_options_async(request, runtime)
+
     def describe_cdn_certificate_detail_with_options(
         self,
         request: cdn_20180510_models.DescribeCdnCertificateDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnCertificateDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertName'] = request.cert_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnCertificateDetail',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnCertificateDetailResponse(),
-            self.do_rpcrequest('DescribeCdnCertificateDetail', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_certificate_detail_with_options_async(
@@ -1140,12 +2130,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnCertificateDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertName'] = request.cert_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnCertificateDetail',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnCertificateDetailResponse(),
-            await self.do_rpcrequest_async('DescribeCdnCertificateDetail', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_certificate_detail(
@@ -1168,12 +2174,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnCertificateListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnCertificateList',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnCertificateListResponse(),
-            self.do_rpcrequest('DescribeCdnCertificateList', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_certificate_list_with_options_async(
@@ -1182,12 +2204,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnCertificateListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnCertificateList',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnCertificateListResponse(),
-            await self.do_rpcrequest_async('DescribeCdnCertificateList', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_certificate_list(
@@ -1204,18 +2242,107 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cdn_certificate_list_with_options_async(request, runtime)
 
+    def describe_cdn_deleted_domains_with_options(
+        self,
+        request: cdn_20180510_models.DescribeCdnDeletedDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnDeletedDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnDeletedDomains',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnDeletedDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cdn_deleted_domains_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnDeletedDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnDeletedDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnDeletedDomains',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnDeletedDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cdn_deleted_domains(
+        self,
+        request: cdn_20180510_models.DescribeCdnDeletedDomainsRequest,
+    ) -> cdn_20180510_models.DescribeCdnDeletedDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cdn_deleted_domains_with_options(request, runtime)
+
+    async def describe_cdn_deleted_domains_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnDeletedDomainsRequest,
+    ) -> cdn_20180510_models.DescribeCdnDeletedDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cdn_deleted_domains_with_options_async(request, runtime)
+
     def describe_cdn_deliver_list_with_options(
         self,
         request: cdn_20180510_models.DescribeCdnDeliverListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnDeliverListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DeliverId'] = request.deliver_id
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnDeliverList',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnDeliverListResponse(),
-            self.do_rpcrequest('DescribeCdnDeliverList', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_deliver_list_with_options_async(
@@ -1224,12 +2351,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnDeliverListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DeliverId'] = request.deliver_id
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnDeliverList',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnDeliverListResponse(),
-            await self.do_rpcrequest_async('DescribeCdnDeliverList', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_deliver_list(
@@ -1252,12 +2394,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnDomainByCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['SSLPub'] = request.sslpub
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnDomainByCertificate',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnDomainByCertificateResponse(),
-            self.do_rpcrequest('DescribeCdnDomainByCertificate', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_domain_by_certificate_with_options_async(
@@ -1266,12 +2423,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnDomainByCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['SSLPub'] = request.sslpub
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnDomainByCertificate',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnDomainByCertificateResponse(),
-            await self.do_rpcrequest_async('DescribeCdnDomainByCertificate', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_domain_by_certificate(
@@ -1294,12 +2466,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnDomainConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['FunctionNames'] = request.function_names
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnDomainConfigs',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnDomainConfigsResponse(),
-            self.do_rpcrequest('DescribeCdnDomainConfigs', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_domain_configs_with_options_async(
@@ -1308,12 +2498,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnDomainConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['FunctionNames'] = request.function_names
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnDomainConfigs',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnDomainConfigsResponse(),
-            await self.do_rpcrequest_async('DescribeCdnDomainConfigs', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_domain_configs(
@@ -1336,12 +2544,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnDomainDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnDomainDetail',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnDomainDetailResponse(),
-            self.do_rpcrequest('DescribeCdnDomainDetail', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_domain_detail_with_options_async(
@@ -1350,12 +2574,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnDomainDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnDomainDetail',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnDomainDetailResponse(),
-            await self.do_rpcrequest_async('DescribeCdnDomainDetail', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_domain_detail(
@@ -1378,12 +2618,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnDomainLogsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnDomainLogs',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnDomainLogsResponse(),
-            self.do_rpcrequest('DescribeCdnDomainLogs', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_domain_logs_with_options_async(
@@ -1392,12 +2651,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnDomainLogsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnDomainLogs',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnDomainLogsResponse(),
-            await self.do_rpcrequest_async('DescribeCdnDomainLogs', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_domain_logs(
@@ -1420,12 +2698,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnDomainStagingConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['FunctionNames'] = request.function_names
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnDomainStagingConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnDomainStagingConfigResponse(),
-            self.do_rpcrequest('DescribeCdnDomainStagingConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_domain_staging_config_with_options_async(
@@ -1434,12 +2728,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnDomainStagingConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['FunctionNames'] = request.function_names
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnDomainStagingConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnDomainStagingConfigResponse(),
-            await self.do_rpcrequest_async('DescribeCdnDomainStagingConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_domain_staging_config(
@@ -1462,12 +2772,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnHttpsDomainListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Keyword'] = request.keyword
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnHttpsDomainList',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnHttpsDomainListResponse(),
-            self.do_rpcrequest('DescribeCdnHttpsDomainList', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_https_domain_list_with_options_async(
@@ -1476,12 +2803,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnHttpsDomainListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Keyword'] = request.keyword
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnHttpsDomainList',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnHttpsDomainListResponse(),
-            await self.do_rpcrequest_async('DescribeCdnHttpsDomainList', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_https_domain_list(
@@ -1504,12 +2848,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnRegionAndIspResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnRegionAndIsp',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnRegionAndIspResponse(),
-            self.do_rpcrequest('DescribeCdnRegionAndIsp', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_region_and_isp_with_options_async(
@@ -1518,12 +2877,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnRegionAndIspResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnRegionAndIsp',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnRegionAndIspResponse(),
-            await self.do_rpcrequest_async('DescribeCdnRegionAndIsp', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_region_and_isp(
@@ -1546,12 +2920,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnReportResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Area'] = request.area
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['HttpCode'] = request.http_code
+        query['IsOverseas'] = request.is_overseas
+        query['OwnerId'] = request.owner_id
+        query['ReportId'] = request.report_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnReport',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnReportResponse(),
-            self.do_rpcrequest('DescribeCdnReport', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_report_with_options_async(
@@ -1560,12 +2955,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnReportResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Area'] = request.area
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['HttpCode'] = request.http_code
+        query['IsOverseas'] = request.is_overseas
+        query['OwnerId'] = request.owner_id
+        query['ReportId'] = request.report_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnReport',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnReportResponse(),
-            await self.do_rpcrequest_async('DescribeCdnReport', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_report(
@@ -1588,12 +3004,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnReportListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ReportId'] = request.report_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnReportList',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnReportListResponse(),
-            self.do_rpcrequest('DescribeCdnReportList', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_report_list_with_options_async(
@@ -1602,12 +3033,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnReportListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ReportId'] = request.report_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnReportList',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnReportListResponse(),
-            await self.do_rpcrequest_async('DescribeCdnReportList', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_report_list(
@@ -1624,18 +3070,181 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cdn_report_list_with_options_async(request, runtime)
 
+    def describe_cdn_smcertificate_detail_with_options(
+        self,
+        request: cdn_20180510_models.DescribeCdnSMCertificateDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnSMCertificateDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['CertIdentifier'] = request.cert_identifier
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnSMCertificateDetail',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnSMCertificateDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cdn_smcertificate_detail_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnSMCertificateDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnSMCertificateDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['CertIdentifier'] = request.cert_identifier
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnSMCertificateDetail',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnSMCertificateDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cdn_smcertificate_detail(
+        self,
+        request: cdn_20180510_models.DescribeCdnSMCertificateDetailRequest,
+    ) -> cdn_20180510_models.DescribeCdnSMCertificateDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cdn_smcertificate_detail_with_options(request, runtime)
+
+    async def describe_cdn_smcertificate_detail_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnSMCertificateDetailRequest,
+    ) -> cdn_20180510_models.DescribeCdnSMCertificateDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cdn_smcertificate_detail_with_options_async(request, runtime)
+
+    def describe_cdn_smcertificate_list_with_options(
+        self,
+        request: cdn_20180510_models.DescribeCdnSMCertificateListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnSMCertificateListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnSMCertificateList',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnSMCertificateListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cdn_smcertificate_list_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnSMCertificateListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnSMCertificateListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnSMCertificateList',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnSMCertificateListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cdn_smcertificate_list(
+        self,
+        request: cdn_20180510_models.DescribeCdnSMCertificateListRequest,
+    ) -> cdn_20180510_models.DescribeCdnSMCertificateListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cdn_smcertificate_list_with_options(request, runtime)
+
+    async def describe_cdn_smcertificate_list_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnSMCertificateListRequest,
+    ) -> cdn_20180510_models.DescribeCdnSMCertificateListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cdn_smcertificate_list_with_options_async(request, runtime)
+
     def describe_cdn_service_with_options(
         self,
         request: cdn_20180510_models.DescribeCdnServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnService',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnServiceResponse(),
-            self.do_rpcrequest('DescribeCdnService', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_service_with_options_async(
@@ -1644,12 +3253,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnService',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnServiceResponse(),
-            await self.do_rpcrequest_async('DescribeCdnService', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_service(
@@ -1672,12 +3296,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnSubListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnSubList',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnSubListResponse(),
-            self.do_rpcrequest('DescribeCdnSubList', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_sub_list_with_options_async(
@@ -1686,12 +3324,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnSubListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnSubList',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnSubListResponse(),
-            await self.do_rpcrequest_async('DescribeCdnSubList', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_sub_list(
@@ -1714,12 +3366,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnUserBillHistoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnUserBillHistory',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnUserBillHistoryResponse(),
-            self.do_rpcrequest('DescribeCdnUserBillHistory', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_user_bill_history_with_options_async(
@@ -1728,12 +3396,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnUserBillHistoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnUserBillHistory',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnUserBillHistoryResponse(),
-            await self.do_rpcrequest_async('DescribeCdnUserBillHistory', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_user_bill_history(
@@ -1756,12 +3440,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnUserBillPredictionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Area'] = request.area
+        query['Dimension'] = request.dimension
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnUserBillPrediction',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnUserBillPredictionResponse(),
-            self.do_rpcrequest('DescribeCdnUserBillPrediction', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_user_bill_prediction_with_options_async(
@@ -1770,12 +3472,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnUserBillPredictionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Area'] = request.area
+        query['Dimension'] = request.dimension
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnUserBillPrediction',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnUserBillPredictionResponse(),
-            await self.do_rpcrequest_async('DescribeCdnUserBillPrediction', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_user_bill_prediction(
@@ -1798,12 +3518,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnUserBillTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnUserBillType',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnUserBillTypeResponse(),
-            self.do_rpcrequest('DescribeCdnUserBillType', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_user_bill_type_with_options_async(
@@ -1812,12 +3548,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnUserBillTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnUserBillType',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnUserBillTypeResponse(),
-            await self.do_rpcrequest_async('DescribeCdnUserBillType', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_user_bill_type(
@@ -1840,12 +3592,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnUserConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FunctionName'] = request.function_name
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnUserConfigs',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnUserConfigsResponse(),
-            self.do_rpcrequest('DescribeCdnUserConfigs', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_user_configs_with_options_async(
@@ -1854,12 +3621,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnUserConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FunctionName'] = request.function_name
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnUserConfigs',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnUserConfigsResponse(),
-            await self.do_rpcrequest_async('DescribeCdnUserConfigs', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_user_configs(
@@ -1882,12 +3664,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnUserDomainsByFuncResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FuncId'] = request.func_id
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnUserDomainsByFunc',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnUserDomainsByFuncResponse(),
-            self.do_rpcrequest('DescribeCdnUserDomainsByFunc', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_user_domains_by_func_with_options_async(
@@ -1896,12 +3696,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnUserDomainsByFuncResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FuncId'] = request.func_id
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnUserDomainsByFunc',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnUserDomainsByFuncResponse(),
-            await self.do_rpcrequest_async('DescribeCdnUserDomainsByFunc', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_user_domains_by_func(
@@ -1924,12 +3742,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnUserQuotaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnUserQuota',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnUserQuotaResponse(),
-            self.do_rpcrequest('DescribeCdnUserQuota', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_user_quota_with_options_async(
@@ -1938,12 +3771,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnUserQuotaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnUserQuota',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnUserQuotaResponse(),
-            await self.do_rpcrequest_async('DescribeCdnUserQuota', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_user_quota(
@@ -1966,12 +3814,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnUserResourcePackageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnUserResourcePackage',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnUserResourcePackageResponse(),
-            self.do_rpcrequest('DescribeCdnUserResourcePackage', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_user_resource_package_with_options_async(
@@ -1980,12 +3844,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnUserResourcePackageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnUserResourcePackage',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnUserResourcePackageResponse(),
-            await self.do_rpcrequest_async('DescribeCdnUserResourcePackage', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_user_resource_package(
@@ -2008,12 +3888,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnWafDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnWafDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnWafDomainResponse(),
-            self.do_rpcrequest('DescribeCdnWafDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cdn_waf_domain_with_options_async(
@@ -2022,12 +3919,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnWafDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnWafDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCdnWafDomainResponse(),
-            await self.do_rpcrequest_async('DescribeCdnWafDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cdn_waf_domain(
@@ -2052,11 +3966,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCertificateInfoByID',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCertificateInfoByIDResponse(),
-            self.do_rpcrequest('DescribeCertificateInfoByID', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_certificate_info_by_idwith_options_async(
@@ -2067,11 +3992,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCertificateInfoByID',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCertificateInfoByIDResponse(),
-            await self.do_rpcrequest_async('DescribeCertificateInfoByID', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_certificate_info_by_id(
@@ -2088,18 +4024,111 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_certificate_info_by_idwith_options_async(request, runtime)
 
+    def describe_config_group_detail_with_options(
+        self,
+        request: cdn_20180510_models.DescribeConfigGroupDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeConfigGroupDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ConfigGroupId'] = request.config_group_id
+        query['ConfigGroupName'] = request.config_group_name
+        query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeConfigGroupDetail',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeConfigGroupDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_config_group_detail_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeConfigGroupDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeConfigGroupDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ConfigGroupId'] = request.config_group_id
+        query['ConfigGroupName'] = request.config_group_name
+        query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeConfigGroupDetail',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeConfigGroupDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_config_group_detail(
+        self,
+        request: cdn_20180510_models.DescribeConfigGroupDetailRequest,
+    ) -> cdn_20180510_models.DescribeConfigGroupDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_config_group_detail_with_options(request, runtime)
+
+    async def describe_config_group_detail_async(
+        self,
+        request: cdn_20180510_models.DescribeConfigGroupDetailRequest,
+    ) -> cdn_20180510_models.DescribeConfigGroupDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_config_group_detail_with_options_async(request, runtime)
+
     def describe_config_of_version_with_options(
         self,
         request: cdn_20180510_models.DescribeConfigOfVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeConfigOfVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FunctionId'] = request.function_id
+        query['FunctionName'] = request.function_name
+        query['GroupId'] = request.group_id
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeConfigOfVersion',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeConfigOfVersionResponse(),
-            self.do_rpcrequest('DescribeConfigOfVersion', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_config_of_version_with_options_async(
@@ -2108,12 +4137,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeConfigOfVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FunctionId'] = request.function_id
+        query['FunctionName'] = request.function_name
+        query['GroupId'] = request.group_id
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeConfigOfVersion',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeConfigOfVersionResponse(),
-            await self.do_rpcrequest_async('DescribeConfigOfVersion', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_config_of_version(
@@ -2138,11 +4186,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomLogConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCustomLogConfigResponse(),
-            self.do_rpcrequest('DescribeCustomLogConfig', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_custom_log_config_with_options_async(
@@ -2153,11 +4212,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomLogConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeCustomLogConfigResponse(),
-            await self.do_rpcrequest_async('DescribeCustomLogConfig', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_custom_log_config(
@@ -2180,12 +4250,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainAverageResponseTimeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['DomainType'] = request.domain_type
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['IspNameEn'] = request.isp_name_en
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        query['TimeMerge'] = request.time_merge
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainAverageResponseTime',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainAverageResponseTimeResponse(),
-            self.do_rpcrequest('DescribeDomainAverageResponseTime', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_average_response_time_with_options_async(
@@ -2194,12 +4286,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainAverageResponseTimeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['DomainType'] = request.domain_type
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['IspNameEn'] = request.isp_name_en
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        query['TimeMerge'] = request.time_merge
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainAverageResponseTime',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainAverageResponseTimeResponse(),
-            await self.do_rpcrequest_async('DescribeDomainAverageResponseTime', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_average_response_time(
@@ -2222,12 +4336,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainBpsDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['IspNameEn'] = request.isp_name_en
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainBpsData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainBpsDataResponse(),
-            self.do_rpcrequest('DescribeDomainBpsData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_bps_data_with_options_async(
@@ -2236,12 +4370,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainBpsDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['IspNameEn'] = request.isp_name_en
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainBpsData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainBpsDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainBpsData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_bps_data(
@@ -2264,12 +4418,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainBpsDataByLayerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['IspNameEn'] = request.isp_name_en
+        query['Layer'] = request.layer
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainBpsDataByLayer',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainBpsDataByLayerResponse(),
-            self.do_rpcrequest('DescribeDomainBpsDataByLayer', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_bps_data_by_layer_with_options_async(
@@ -2278,12 +4453,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainBpsDataByLayerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['IspNameEn'] = request.isp_name_en
+        query['Layer'] = request.layer
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainBpsDataByLayer',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainBpsDataByLayerResponse(),
-            await self.do_rpcrequest_async('DescribeDomainBpsDataByLayer', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_bps_data_by_layer(
@@ -2306,12 +4502,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainBpsDataByTimeStampResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['IspNames'] = request.isp_names
+        query['LocationNames'] = request.location_names
+        query['OwnerId'] = request.owner_id
+        query['TimePoint'] = request.time_point
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainBpsDataByTimeStamp',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainBpsDataByTimeStampResponse(),
-            self.do_rpcrequest('DescribeDomainBpsDataByTimeStamp', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_bps_data_by_time_stamp_with_options_async(
@@ -2320,12 +4534,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainBpsDataByTimeStampResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['IspNames'] = request.isp_names
+        query['LocationNames'] = request.location_names
+        query['OwnerId'] = request.owner_id
+        query['TimePoint'] = request.time_point
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainBpsDataByTimeStamp',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainBpsDataByTimeStampResponse(),
-            await self.do_rpcrequest_async('DescribeDomainBpsDataByTimeStamp', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_bps_data_by_time_stamp(
@@ -2348,12 +4580,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainCcActivityLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RuleName'] = request.rule_name
+        query['StartTime'] = request.start_time
+        query['TriggerObject'] = request.trigger_object
+        query['Value'] = request.value
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainCcActivityLog',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainCcActivityLogResponse(),
-            self.do_rpcrequest('DescribeDomainCcActivityLog', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_cc_activity_log_with_options_async(
@@ -2362,12 +4616,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainCcActivityLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RuleName'] = request.rule_name
+        query['StartTime'] = request.start_time
+        query['TriggerObject'] = request.trigger_object
+        query['Value'] = request.value
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainCcActivityLog',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainCcActivityLogResponse(),
-            await self.do_rpcrequest_async('DescribeDomainCcActivityLog', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_cc_activity_log(
@@ -2390,12 +4666,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainCertificateInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainCertificateInfo',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainCertificateInfoResponse(),
-            self.do_rpcrequest('DescribeDomainCertificateInfo', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_certificate_info_with_options_async(
@@ -2404,12 +4695,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainCertificateInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainCertificateInfo',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainCertificateInfoResponse(),
-            await self.do_rpcrequest_async('DescribeDomainCertificateInfo', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_certificate_info(
@@ -2434,11 +4740,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainCustomLogConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainCustomLogConfigResponse(),
-            self.do_rpcrequest('DescribeDomainCustomLogConfig', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_custom_log_config_with_options_async(
@@ -2449,11 +4766,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainCustomLogConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainCustomLogConfigResponse(),
-            await self.do_rpcrequest_async('DescribeDomainCustomLogConfig', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_custom_log_config(
@@ -2478,11 +4806,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainDetailDataByLayer',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainDetailDataByLayerResponse(),
-            self.do_rpcrequest('DescribeDomainDetailDataByLayer', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_detail_data_by_layer_with_options_async(
@@ -2493,11 +4832,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainDetailDataByLayer',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainDetailDataByLayerResponse(),
-            await self.do_rpcrequest_async('DescribeDomainDetailDataByLayer', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_detail_data_by_layer(
@@ -2520,12 +4870,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainFileSizeProportionDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainFileSizeProportionData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainFileSizeProportionDataResponse(),
-            self.do_rpcrequest('DescribeDomainFileSizeProportionData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_file_size_proportion_data_with_options_async(
@@ -2534,12 +4902,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainFileSizeProportionDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainFileSizeProportionData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainFileSizeProportionDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainFileSizeProportionData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_file_size_proportion_data(
@@ -2562,12 +4948,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainHitRateDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainHitRateData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainHitRateDataResponse(),
-            self.do_rpcrequest('DescribeDomainHitRateData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_hit_rate_data_with_options_async(
@@ -2576,12 +4980,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainHitRateDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainHitRateData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainHitRateDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainHitRateData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_hit_rate_data(
@@ -2604,12 +5026,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainHttpCodeDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainHttpCodeData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainHttpCodeDataResponse(),
-            self.do_rpcrequest('DescribeDomainHttpCodeData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_http_code_data_with_options_async(
@@ -2618,12 +5058,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainHttpCodeDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainHttpCodeData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainHttpCodeDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainHttpCodeData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_http_code_data(
@@ -2646,12 +5104,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainHttpCodeDataByLayerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['IspNameEn'] = request.isp_name_en
+        query['Layer'] = request.layer
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainHttpCodeDataByLayer',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainHttpCodeDataByLayerResponse(),
-            self.do_rpcrequest('DescribeDomainHttpCodeDataByLayer', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_http_code_data_by_layer_with_options_async(
@@ -2660,12 +5139,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainHttpCodeDataByLayerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['IspNameEn'] = request.isp_name_en
+        query['Layer'] = request.layer
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainHttpCodeDataByLayer',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainHttpCodeDataByLayerResponse(),
-            await self.do_rpcrequest_async('DescribeDomainHttpCodeDataByLayer', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_http_code_data_by_layer(
@@ -2688,12 +5188,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainISPDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainISPData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainISPDataResponse(),
-            self.do_rpcrequest('DescribeDomainISPData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_ispdata_with_options_async(
@@ -2702,12 +5219,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainISPDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainISPData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainISPDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainISPData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_ispdata(
@@ -2730,12 +5264,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainMax95BpsDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Cycle'] = request.cycle
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        query['TimePoint'] = request.time_point
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainMax95BpsData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainMax95BpsDataResponse(),
-            self.do_rpcrequest('DescribeDomainMax95BpsData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_max_95bps_data_with_options_async(
@@ -2744,12 +5297,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainMax95BpsDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Cycle'] = request.cycle
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        query['TimePoint'] = request.time_point
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainMax95BpsData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainMax95BpsDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainMax95BpsData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_max_95bps_data(
@@ -2766,18 +5338,111 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_max_95bps_data_with_options_async(request, runtime)
 
+    def describe_domain_multi_usage_data_with_options(
+        self,
+        request: cdn_20180510_models.DescribeDomainMultiUsageDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeDomainMultiUsageDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainMultiUsageData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeDomainMultiUsageDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_domain_multi_usage_data_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeDomainMultiUsageDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeDomainMultiUsageDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainMultiUsageData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeDomainMultiUsageDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_domain_multi_usage_data(
+        self,
+        request: cdn_20180510_models.DescribeDomainMultiUsageDataRequest,
+    ) -> cdn_20180510_models.DescribeDomainMultiUsageDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domain_multi_usage_data_with_options(request, runtime)
+
+    async def describe_domain_multi_usage_data_async(
+        self,
+        request: cdn_20180510_models.DescribeDomainMultiUsageDataRequest,
+    ) -> cdn_20180510_models.DescribeDomainMultiUsageDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domain_multi_usage_data_with_options_async(request, runtime)
+
     def describe_domain_names_of_version_with_options(
         self,
         request: cdn_20180510_models.DescribeDomainNamesOfVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainNamesOfVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['PageIndex'] = request.page_index
+        query['PageSize'] = request.page_size
+        query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainNamesOfVersion',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainNamesOfVersionResponse(),
-            self.do_rpcrequest('DescribeDomainNamesOfVersion', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_names_of_version_with_options_async(
@@ -2786,12 +5451,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainNamesOfVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['PageIndex'] = request.page_index
+        query['PageSize'] = request.page_size
+        query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainNamesOfVersion',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainNamesOfVersionResponse(),
-            await self.do_rpcrequest_async('DescribeDomainNamesOfVersion', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_names_of_version(
@@ -2816,11 +5498,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainPathData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainPathDataResponse(),
-            self.do_rpcrequest('DescribeDomainPathData', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_path_data_with_options_async(
@@ -2831,11 +5524,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainPathData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainPathDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainPathData', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_path_data(
@@ -2858,12 +5562,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainPvDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainPvData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainPvDataResponse(),
-            self.do_rpcrequest('DescribeDomainPvData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_pv_data_with_options_async(
@@ -2872,12 +5593,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainPvDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainPvData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainPvDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainPvData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_pv_data(
@@ -2900,12 +5638,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainQpsDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['IspNameEn'] = request.isp_name_en
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainQpsData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainQpsDataResponse(),
-            self.do_rpcrequest('DescribeDomainQpsData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_qps_data_with_options_async(
@@ -2914,12 +5672,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainQpsDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['IspNameEn'] = request.isp_name_en
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainQpsData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainQpsDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainQpsData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_qps_data(
@@ -2942,12 +5720,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainQpsDataByLayerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['IspNameEn'] = request.isp_name_en
+        query['Layer'] = request.layer
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainQpsDataByLayer',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainQpsDataByLayerResponse(),
-            self.do_rpcrequest('DescribeDomainQpsDataByLayer', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_qps_data_by_layer_with_options_async(
@@ -2956,12 +5755,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainQpsDataByLayerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['IspNameEn'] = request.isp_name_en
+        query['Layer'] = request.layer
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainQpsDataByLayer',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainQpsDataByLayerResponse(),
-            await self.do_rpcrequest_async('DescribeDomainQpsDataByLayer', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_qps_data_by_layer(
@@ -2986,11 +5806,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeBpsData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeBpsDataResponse(),
-            self.do_rpcrequest('DescribeDomainRealTimeBpsData', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_real_time_bps_data_with_options_async(
@@ -3001,11 +5832,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeBpsData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeBpsDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainRealTimeBpsData', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_real_time_bps_data(
@@ -3030,11 +5872,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeByteHitRateData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeByteHitRateDataResponse(),
-            self.do_rpcrequest('DescribeDomainRealTimeByteHitRateData', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_real_time_byte_hit_rate_data_with_options_async(
@@ -3045,11 +5898,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeByteHitRateData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeByteHitRateDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainRealTimeByteHitRateData', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_real_time_byte_hit_rate_data(
@@ -3074,11 +5938,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeDetailData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeDetailDataResponse(),
-            self.do_rpcrequest('DescribeDomainRealTimeDetailData', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_real_time_detail_data_with_options_async(
@@ -3089,11 +5964,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeDetailData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeDetailDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainRealTimeDetailData', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_real_time_detail_data(
@@ -3116,12 +6002,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainRealTimeHttpCodeDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['IspNameEn'] = request.isp_name_en
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeHttpCodeData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeHttpCodeDataResponse(),
-            self.do_rpcrequest('DescribeDomainRealTimeHttpCodeData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_real_time_http_code_data_with_options_async(
@@ -3130,12 +6035,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainRealTimeHttpCodeDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['IspNameEn'] = request.isp_name_en
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeHttpCodeData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeHttpCodeDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainRealTimeHttpCodeData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_real_time_http_code_data(
@@ -3152,50 +6076,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_real_time_http_code_data_with_options_async(request, runtime)
 
-    def describe_domain_realtime_log_delivery_with_options(
-        self,
-        request: cdn_20180510_models.DescribeDomainRealtimeLogDeliveryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse(),
-            self.do_rpcrequest('DescribeDomainRealtimeLogDelivery', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_domain_realtime_log_delivery_with_options_async(
-        self,
-        request: cdn_20180510_models.DescribeDomainRealtimeLogDeliveryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse(),
-            await self.do_rpcrequest_async('DescribeDomainRealtimeLogDelivery', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    def describe_domain_realtime_log_delivery(
-        self,
-        request: cdn_20180510_models.DescribeDomainRealtimeLogDeliveryRequest,
-    ) -> cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_domain_realtime_log_delivery_with_options(request, runtime)
-
-    async def describe_domain_realtime_log_delivery_async(
-        self,
-        request: cdn_20180510_models.DescribeDomainRealtimeLogDeliveryRequest,
-    ) -> cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_domain_realtime_log_delivery_with_options_async(request, runtime)
-
     def describe_domain_real_time_qps_data_with_options(
         self,
         request: cdn_20180510_models.DescribeDomainRealTimeQpsDataRequest,
@@ -3204,11 +6084,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeQpsData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeQpsDataResponse(),
-            self.do_rpcrequest('DescribeDomainRealTimeQpsData', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_real_time_qps_data_with_options_async(
@@ -3219,11 +6110,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeQpsData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeQpsDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainRealTimeQpsData', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_real_time_qps_data(
@@ -3248,11 +6150,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeReqHitRateData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeReqHitRateDataResponse(),
-            self.do_rpcrequest('DescribeDomainRealTimeReqHitRateData', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_real_time_req_hit_rate_data_with_options_async(
@@ -3263,11 +6176,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeReqHitRateData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeReqHitRateDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainRealTimeReqHitRateData', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_real_time_req_hit_rate_data(
@@ -3290,12 +6214,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainRealTimeSrcBpsDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeSrcBpsData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeSrcBpsDataResponse(),
-            self.do_rpcrequest('DescribeDomainRealTimeSrcBpsData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_real_time_src_bps_data_with_options_async(
@@ -3304,12 +6245,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainRealTimeSrcBpsDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeSrcBpsData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeSrcBpsDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainRealTimeSrcBpsData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_real_time_src_bps_data(
@@ -3332,12 +6290,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainRealTimeSrcHttpCodeDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['IspNameEn'] = request.isp_name_en
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeSrcHttpCodeData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeSrcHttpCodeDataResponse(),
-            self.do_rpcrequest('DescribeDomainRealTimeSrcHttpCodeData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_real_time_src_http_code_data_with_options_async(
@@ -3346,12 +6323,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainRealTimeSrcHttpCodeDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['IspNameEn'] = request.isp_name_en
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeSrcHttpCodeData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeSrcHttpCodeDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainRealTimeSrcHttpCodeData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_real_time_src_http_code_data(
@@ -3374,12 +6370,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainRealTimeSrcTrafficDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeSrcTrafficData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeSrcTrafficDataResponse(),
-            self.do_rpcrequest('DescribeDomainRealTimeSrcTrafficData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_real_time_src_traffic_data_with_options_async(
@@ -3388,12 +6401,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainRealTimeSrcTrafficDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeSrcTrafficData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeSrcTrafficDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainRealTimeSrcTrafficData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_real_time_src_traffic_data(
@@ -3416,12 +6446,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainRealTimeTrafficDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['IspNameEn'] = request.isp_name_en
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeTrafficData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeTrafficDataResponse(),
-            self.do_rpcrequest('DescribeDomainRealTimeTrafficData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_real_time_traffic_data_with_options_async(
@@ -3430,12 +6479,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainRealTimeTrafficDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['IspNameEn'] = request.isp_name_en
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealTimeTrafficData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRealTimeTrafficDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainRealTimeTrafficData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_real_time_traffic_data(
@@ -3452,18 +6520,101 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_real_time_traffic_data_with_options_async(request, runtime)
 
+    def describe_domain_realtime_log_delivery_with_options(
+        self,
+        request: cdn_20180510_models.DescribeDomainRealtimeLogDeliveryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealtimeLogDelivery',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_domain_realtime_log_delivery_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeDomainRealtimeLogDeliveryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRealtimeLogDelivery',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_domain_realtime_log_delivery(
+        self,
+        request: cdn_20180510_models.DescribeDomainRealtimeLogDeliveryRequest,
+    ) -> cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domain_realtime_log_delivery_with_options(request, runtime)
+
+    async def describe_domain_realtime_log_delivery_async(
+        self,
+        request: cdn_20180510_models.DescribeDomainRealtimeLogDeliveryRequest,
+    ) -> cdn_20180510_models.DescribeDomainRealtimeLogDeliveryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domain_realtime_log_delivery_with_options_async(request, runtime)
+
     def describe_domain_region_data_with_options(
         self,
         request: cdn_20180510_models.DescribeDomainRegionDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainRegionDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRegionData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRegionDataResponse(),
-            self.do_rpcrequest('DescribeDomainRegionData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_region_data_with_options_async(
@@ -3472,12 +6623,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainRegionDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRegionData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainRegionDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainRegionData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_region_data(
@@ -3500,12 +6668,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainReqHitRateDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainReqHitRateData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainReqHitRateDataResponse(),
-            self.do_rpcrequest('DescribeDomainReqHitRateData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_req_hit_rate_data_with_options_async(
@@ -3514,12 +6700,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainReqHitRateDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainReqHitRateData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainReqHitRateDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainReqHitRateData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_req_hit_rate_data(
@@ -3536,60 +6740,36 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_req_hit_rate_data_with_options_async(request, runtime)
 
-    def describe_domains_by_source_with_options(
-        self,
-        request: cdn_20180510_models.DescribeDomainsBySourceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.DescribeDomainsBySourceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.DescribeDomainsBySourceResponse(),
-            self.do_rpcrequest('DescribeDomainsBySource', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_domains_by_source_with_options_async(
-        self,
-        request: cdn_20180510_models.DescribeDomainsBySourceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.DescribeDomainsBySourceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.DescribeDomainsBySourceResponse(),
-            await self.do_rpcrequest_async('DescribeDomainsBySource', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_domains_by_source(
-        self,
-        request: cdn_20180510_models.DescribeDomainsBySourceRequest,
-    ) -> cdn_20180510_models.DescribeDomainsBySourceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_domains_by_source_with_options(request, runtime)
-
-    async def describe_domains_by_source_async(
-        self,
-        request: cdn_20180510_models.DescribeDomainsBySourceRequest,
-    ) -> cdn_20180510_models.DescribeDomainsBySourceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_domains_by_source_with_options_async(request, runtime)
-
     def describe_domain_src_bps_data_with_options(
         self,
         request: cdn_20180510_models.DescribeDomainSrcBpsDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainSrcBpsDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSrcBpsData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainSrcBpsDataResponse(),
-            self.do_rpcrequest('DescribeDomainSrcBpsData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_src_bps_data_with_options_async(
@@ -3598,12 +6778,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainSrcBpsDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSrcBpsData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainSrcBpsDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainSrcBpsData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_src_bps_data(
@@ -3626,12 +6824,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainSrcHttpCodeDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSrcHttpCodeData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainSrcHttpCodeDataResponse(),
-            self.do_rpcrequest('DescribeDomainSrcHttpCodeData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_src_http_code_data_with_options_async(
@@ -3640,12 +6856,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainSrcHttpCodeDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSrcHttpCodeData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainSrcHttpCodeDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainSrcHttpCodeData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_src_http_code_data(
@@ -3668,12 +6902,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainSrcQpsDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSrcQpsData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainSrcQpsDataResponse(),
-            self.do_rpcrequest('DescribeDomainSrcQpsData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_src_qps_data_with_options_async(
@@ -3682,12 +6934,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainSrcQpsDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSrcQpsData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainSrcQpsDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainSrcQpsData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_src_qps_data(
@@ -3710,12 +6980,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainSrcTopUrlVisitResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['SortBy'] = request.sort_by
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSrcTopUrlVisit',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainSrcTopUrlVisitResponse(),
-            self.do_rpcrequest('DescribeDomainSrcTopUrlVisit', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_src_top_url_visit_with_options_async(
@@ -3724,12 +7012,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainSrcTopUrlVisitResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['SortBy'] = request.sort_by
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSrcTopUrlVisit',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainSrcTopUrlVisitResponse(),
-            await self.do_rpcrequest_async('DescribeDomainSrcTopUrlVisit', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_src_top_url_visit(
@@ -3752,12 +7058,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainSrcTrafficDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSrcTrafficData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainSrcTrafficDataResponse(),
-            self.do_rpcrequest('DescribeDomainSrcTrafficData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_src_traffic_data_with_options_async(
@@ -3766,12 +7090,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainSrcTrafficDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSrcTrafficData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainSrcTrafficDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainSrcTrafficData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_src_traffic_data(
@@ -3788,60 +7130,38 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_src_traffic_data_with_options_async(request, runtime)
 
-    def describe_domains_usage_by_day_with_options(
-        self,
-        request: cdn_20180510_models.DescribeDomainsUsageByDayRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.DescribeDomainsUsageByDayResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.DescribeDomainsUsageByDayResponse(),
-            self.do_rpcrequest('DescribeDomainsUsageByDay', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_domains_usage_by_day_with_options_async(
-        self,
-        request: cdn_20180510_models.DescribeDomainsUsageByDayRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.DescribeDomainsUsageByDayResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.DescribeDomainsUsageByDayResponse(),
-            await self.do_rpcrequest_async('DescribeDomainsUsageByDay', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_domains_usage_by_day(
-        self,
-        request: cdn_20180510_models.DescribeDomainsUsageByDayRequest,
-    ) -> cdn_20180510_models.DescribeDomainsUsageByDayResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_domains_usage_by_day_with_options(request, runtime)
-
-    async def describe_domains_usage_by_day_async(
-        self,
-        request: cdn_20180510_models.DescribeDomainsUsageByDayRequest,
-    ) -> cdn_20180510_models.DescribeDomainsUsageByDayResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_domains_usage_by_day_with_options_async(request, runtime)
-
     def describe_domain_top_client_ip_visit_with_options(
         self,
         request: cdn_20180510_models.DescribeDomainTopClientIpVisitRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainTopClientIpVisitResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Limit'] = request.limit
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['SortBy'] = request.sort_by
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainTopClientIpVisit',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainTopClientIpVisitResponse(),
-            self.do_rpcrequest('DescribeDomainTopClientIpVisit', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_top_client_ip_visit_with_options_async(
@@ -3850,12 +7170,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainTopClientIpVisitResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Limit'] = request.limit
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['SortBy'] = request.sort_by
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainTopClientIpVisit',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainTopClientIpVisitResponse(),
-            await self.do_rpcrequest_async('DescribeDomainTopClientIpVisit', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_top_client_ip_visit(
@@ -3878,12 +7218,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainTopReferVisitResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['Percent'] = request.percent
+        query['SortBy'] = request.sort_by
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainTopReferVisit',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainTopReferVisitResponse(),
-            self.do_rpcrequest('DescribeDomainTopReferVisit', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_top_refer_visit_with_options_async(
@@ -3892,12 +7251,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainTopReferVisitResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['Percent'] = request.percent
+        query['SortBy'] = request.sort_by
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainTopReferVisit',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainTopReferVisitResponse(),
-            await self.do_rpcrequest_async('DescribeDomainTopReferVisit', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_top_refer_visit(
@@ -3920,12 +7298,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainTopUrlVisitResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['SortBy'] = request.sort_by
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainTopUrlVisit',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainTopUrlVisitResponse(),
-            self.do_rpcrequest('DescribeDomainTopUrlVisit', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_top_url_visit_with_options_async(
@@ -3934,12 +7330,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainTopUrlVisitResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['SortBy'] = request.sort_by
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainTopUrlVisit',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainTopUrlVisitResponse(),
-            await self.do_rpcrequest_async('DescribeDomainTopUrlVisit', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_top_url_visit(
@@ -3962,12 +7376,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainTrafficDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['IspNameEn'] = request.isp_name_en
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainTrafficData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainTrafficDataResponse(),
-            self.do_rpcrequest('DescribeDomainTrafficData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_traffic_data_with_options_async(
@@ -3976,12 +7410,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainTrafficDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['IspNameEn'] = request.isp_name_en
+        query['LocationNameEn'] = request.location_name_en
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainTrafficData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainTrafficDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainTrafficData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_traffic_data(
@@ -4004,12 +7458,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainUsageDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Area'] = request.area
+        query['DataProtocol'] = request.data_protocol
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Field'] = request.field
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainUsageData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainUsageDataResponse(),
-            self.do_rpcrequest('DescribeDomainUsageData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_usage_data_with_options_async(
@@ -4018,12 +7494,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainUsageDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Area'] = request.area
+        query['DataProtocol'] = request.data_protocol
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Field'] = request.field
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainUsageData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainUsageDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainUsageData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_usage_data(
@@ -4046,12 +7544,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainUvDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainUvData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainUvDataResponse(),
-            self.do_rpcrequest('DescribeDomainUvData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_uv_data_with_options_async(
@@ -4060,12 +7575,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeDomainUvDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainUvData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeDomainUvDataResponse(),
-            await self.do_rpcrequest_async('DescribeDomainUvData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_uv_data(
@@ -4082,18 +7614,185 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_uv_data_with_options_async(request, runtime)
 
+    def describe_domains_by_source_with_options(
+        self,
+        request: cdn_20180510_models.DescribeDomainsBySourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeDomainsBySourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        query['Sources'] = request.sources
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainsBySource',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeDomainsBySourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_domains_by_source_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeDomainsBySourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeDomainsBySourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        query['Sources'] = request.sources
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainsBySource',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeDomainsBySourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_domains_by_source(
+        self,
+        request: cdn_20180510_models.DescribeDomainsBySourceRequest,
+    ) -> cdn_20180510_models.DescribeDomainsBySourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domains_by_source_with_options(request, runtime)
+
+    async def describe_domains_by_source_async(
+        self,
+        request: cdn_20180510_models.DescribeDomainsBySourceRequest,
+    ) -> cdn_20180510_models.DescribeDomainsBySourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domains_by_source_with_options_async(request, runtime)
+
+    def describe_domains_usage_by_day_with_options(
+        self,
+        request: cdn_20180510_models.DescribeDomainsUsageByDayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeDomainsUsageByDayResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainsUsageByDay',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeDomainsUsageByDayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_domains_usage_by_day_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeDomainsUsageByDayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeDomainsUsageByDayResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainsUsageByDay',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeDomainsUsageByDayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_domains_usage_by_day(
+        self,
+        request: cdn_20180510_models.DescribeDomainsUsageByDayRequest,
+    ) -> cdn_20180510_models.DescribeDomainsUsageByDayResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domains_usage_by_day_with_options(request, runtime)
+
+    async def describe_domains_usage_by_day_async(
+        self,
+        request: cdn_20180510_models.DescribeDomainsUsageByDayRequest,
+    ) -> cdn_20180510_models.DescribeDomainsUsageByDayResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domains_usage_by_day_with_options_async(request, runtime)
+
     def describe_es_exception_data_with_options(
         self,
         request: cdn_20180510_models.DescribeEsExceptionDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeEsExceptionDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['RuleId'] = request.rule_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeEsExceptionData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeEsExceptionDataResponse(),
-            self.do_rpcrequest('DescribeEsExceptionData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_es_exception_data_with_options_async(
@@ -4102,12 +7801,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeEsExceptionDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['RuleId'] = request.rule_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeEsExceptionData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeEsExceptionDataResponse(),
-            await self.do_rpcrequest_async('DescribeEsExceptionData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_es_exception_data(
@@ -4130,12 +7846,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeEsExecuteDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['RuleId'] = request.rule_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeEsExecuteData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeEsExecuteDataResponse(),
-            self.do_rpcrequest('DescribeEsExecuteData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_es_execute_data_with_options_async(
@@ -4144,12 +7877,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeEsExecuteDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['OwnerId'] = request.owner_id
+        query['RuleId'] = request.rule_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeEsExecuteData',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeEsExecuteDataResponse(),
-            await self.do_rpcrequest_async('DescribeEsExecuteData', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_es_execute_data(
@@ -4174,11 +7924,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFCTrigger',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeFCTriggerResponse(),
-            self.do_rpcrequest('DescribeFCTrigger', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fctrigger_with_options_async(
@@ -4189,11 +7950,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFCTrigger',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeFCTriggerResponse(),
-            await self.do_rpcrequest_async('DescribeFCTrigger', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fctrigger(
@@ -4216,12 +7988,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeIllegalUrlExportTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeIllegalUrlExportTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeIllegalUrlExportTaskResponse(),
-            self.do_rpcrequest('DescribeIllegalUrlExportTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_illegal_url_export_task_with_options_async(
@@ -4230,12 +8017,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeIllegalUrlExportTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeIllegalUrlExportTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeIllegalUrlExportTaskResponse(),
-            await self.do_rpcrequest_async('DescribeIllegalUrlExportTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_illegal_url_export_task(
@@ -4258,12 +8060,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeIpInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IP'] = request.ip
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeIpInfo',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeIpInfoResponse(),
-            self.do_rpcrequest('DescribeIpInfo', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ip_info_with_options_async(
@@ -4272,12 +8090,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeIpInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IP'] = request.ip
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeIpInfo',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeIpInfoResponse(),
-            await self.do_rpcrequest_async('DescribeIpInfo', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ip_info(
@@ -4300,12 +8134,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeL2VipsByDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeL2VipsByDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeL2VipsByDomainResponse(),
-            self.do_rpcrequest('DescribeL2VipsByDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_l2vips_by_domain_with_options_async(
@@ -4314,12 +8164,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeL2VipsByDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeL2VipsByDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeL2VipsByDomainResponse(),
-            await self.do_rpcrequest_async('DescribeL2VipsByDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_l2vips_by_domain(
@@ -4342,12 +8208,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeRangeDataByLocateAndIspServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['EndTime'] = request.end_time
+        query['IspNames'] = request.isp_names
+        query['LocationNames'] = request.location_names
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeRangeDataByLocateAndIspService',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeRangeDataByLocateAndIspServiceResponse(),
-            self.do_rpcrequest('DescribeRangeDataByLocateAndIspService', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_range_data_by_locate_and_isp_service_with_options_async(
@@ -4356,12 +8241,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeRangeDataByLocateAndIspServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['EndTime'] = request.end_time
+        query['IspNames'] = request.isp_names
+        query['LocationNames'] = request.location_names
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeRangeDataByLocateAndIspService',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeRangeDataByLocateAndIspServiceResponse(),
-            await self.do_rpcrequest_async('DescribeRangeDataByLocateAndIspService', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_range_data_by_locate_and_isp_service(
@@ -4384,12 +8288,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeRealtimeDeliveryAccResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['LogStore'] = request.log_store
+        query['OwnerId'] = request.owner_id
+        query['Project'] = request.project
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeRealtimeDeliveryAcc',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeRealtimeDeliveryAccResponse(),
-            self.do_rpcrequest('DescribeRealtimeDeliveryAcc', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_realtime_delivery_acc_with_options_async(
@@ -4398,12 +8321,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeRealtimeDeliveryAccResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['LogStore'] = request.log_store
+        query['OwnerId'] = request.owner_id
+        query['Project'] = request.project
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeRealtimeDeliveryAcc',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeRealtimeDeliveryAccResponse(),
-            await self.do_rpcrequest_async('DescribeRealtimeDeliveryAcc', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_realtime_delivery_acc(
@@ -4426,12 +8368,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeRefreshQuotaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeRefreshQuota',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeRefreshQuotaResponse(),
-            self.do_rpcrequest('DescribeRefreshQuota', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_refresh_quota_with_options_async(
@@ -4440,12 +8397,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeRefreshQuotaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeRefreshQuota',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeRefreshQuotaResponse(),
-            await self.do_rpcrequest_async('DescribeRefreshQuota', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_refresh_quota(
@@ -4468,12 +8440,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeRefreshTaskByIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeRefreshTaskById',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeRefreshTaskByIdResponse(),
-            self.do_rpcrequest('DescribeRefreshTaskById', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_refresh_task_by_id_with_options_async(
@@ -4482,12 +8469,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeRefreshTaskByIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeRefreshTaskById',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeRefreshTaskByIdResponse(),
-            await self.do_rpcrequest_async('DescribeRefreshTaskById', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_refresh_task_by_id(
@@ -4510,12 +8512,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeRefreshTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['ObjectPath'] = request.object_path
+        query['ObjectType'] = request.object_type
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
+        query['SecurityToken'] = request.security_token
+        query['StartTime'] = request.start_time
+        query['Status'] = request.status
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeRefreshTasks',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeRefreshTasksResponse(),
-            self.do_rpcrequest('DescribeRefreshTasks', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_refresh_tasks_with_options_async(
@@ -4524,12 +8551,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeRefreshTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['ObjectPath'] = request.object_path
+        query['ObjectType'] = request.object_type
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
+        query['SecurityToken'] = request.security_token
+        query['StartTime'] = request.start_time
+        query['Status'] = request.status
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeRefreshTasks',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeRefreshTasksResponse(),
-            await self.do_rpcrequest_async('DescribeRefreshTasks', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_refresh_tasks(
@@ -4552,12 +8604,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeStagingIpResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeStagingIp',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeStagingIpResponse(),
-            self.do_rpcrequest('DescribeStagingIp', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_staging_ip_with_options_async(
@@ -4566,12 +8632,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeStagingIpResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeStagingIp',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeStagingIpResponse(),
-            await self.do_rpcrequest_async('DescribeStagingIp', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_staging_ip(
@@ -4594,12 +8674,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeTagResources',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeTagResourcesResponse(),
-            self.do_rpcrequest('DescribeTagResources', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_tag_resources_with_options_async(
@@ -4608,12 +8705,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeTagResources',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeTagResourcesResponse(),
-            await self.do_rpcrequest_async('DescribeTagResources', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_tag_resources(
@@ -4636,12 +8750,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeTopDomainsByFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['Limit'] = request.limit
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeTopDomainsByFlow',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeTopDomainsByFlowResponse(),
-            self.do_rpcrequest('DescribeTopDomainsByFlow', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_top_domains_by_flow_with_options_async(
@@ -4650,12 +8781,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeTopDomainsByFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['Limit'] = request.limit
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeTopDomainsByFlow',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeTopDomainsByFlowResponse(),
-            await self.do_rpcrequest_async('DescribeTopDomainsByFlow', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_top_domains_by_flow(
@@ -4678,12 +8826,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserCertificateExpireCountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserCertificateExpireCount',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeUserCertificateExpireCountResponse(),
-            self.do_rpcrequest('DescribeUserCertificateExpireCount', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_user_certificate_expire_count_with_options_async(
@@ -4692,12 +8854,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserCertificateExpireCountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserCertificateExpireCount',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeUserCertificateExpireCountResponse(),
-            await self.do_rpcrequest_async('DescribeUserCertificateExpireCount', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_user_certificate_expire_count(
@@ -4720,12 +8896,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Config'] = request.config
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserConfigs',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeUserConfigsResponse(),
-            self.do_rpcrequest('DescribeUserConfigs', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_user_configs_with_options_async(
@@ -4734,12 +8926,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Config'] = request.config
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserConfigs',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeUserConfigsResponse(),
-            await self.do_rpcrequest_async('DescribeUserConfigs', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_user_configs(
@@ -4762,12 +8970,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserDomainsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CdnType'] = request.cdn_type
+        query['ChangeEndTime'] = request.change_end_time
+        query['ChangeStartTime'] = request.change_start_time
+        query['CheckDomainShow'] = request.check_domain_show
+        query['Coverage'] = request.coverage
+        query['DomainName'] = request.domain_name
+        query['DomainSearchType'] = request.domain_search_type
+        query['DomainStatus'] = request.domain_status
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
+        query['SecurityToken'] = request.security_token
+        query['Source'] = request.source
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserDomains',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeUserDomainsResponse(),
-            self.do_rpcrequest('DescribeUserDomains', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_user_domains_with_options_async(
@@ -4776,12 +9012,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserDomainsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CdnType'] = request.cdn_type
+        query['ChangeEndTime'] = request.change_end_time
+        query['ChangeStartTime'] = request.change_start_time
+        query['CheckDomainShow'] = request.check_domain_show
+        query['Coverage'] = request.coverage
+        query['DomainName'] = request.domain_name
+        query['DomainSearchType'] = request.domain_search_type
+        query['DomainStatus'] = request.domain_status
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
+        query['SecurityToken'] = request.security_token
+        query['Source'] = request.source
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserDomains',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeUserDomainsResponse(),
-            await self.do_rpcrequest_async('DescribeUserDomains', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_user_domains(
@@ -4804,12 +9068,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserTags',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeUserTagsResponse(),
-            self.do_rpcrequest('DescribeUserTags', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_user_tags_with_options_async(
@@ -4818,12 +9096,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserTags',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeUserTagsResponse(),
-            await self.do_rpcrequest_async('DescribeUserTags', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_user_tags(
@@ -4846,12 +9138,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserUsageDataExportTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserUsageDataExportTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeUserUsageDataExportTaskResponse(),
-            self.do_rpcrequest('DescribeUserUsageDataExportTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_user_usage_data_export_task_with_options_async(
@@ -4860,12 +9168,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserUsageDataExportTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserUsageDataExportTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeUserUsageDataExportTaskResponse(),
-            await self.do_rpcrequest_async('DescribeUserUsageDataExportTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_user_usage_data_export_task(
@@ -4888,12 +9212,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserUsageDetailDataExportTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserUsageDetailDataExportTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeUserUsageDetailDataExportTaskResponse(),
-            self.do_rpcrequest('DescribeUserUsageDetailDataExportTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_user_usage_detail_data_export_task_with_options_async(
@@ -4902,12 +9242,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeUserUsageDetailDataExportTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserUsageDetailDataExportTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeUserUsageDetailDataExportTaskResponse(),
-            await self.do_rpcrequest_async('DescribeUserUsageDetailDataExportTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_user_usage_detail_data_export_task(
@@ -4932,11 +9288,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserVipsByDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeUserVipsByDomainResponse(),
-            self.do_rpcrequest('DescribeUserVipsByDomain', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_user_vips_by_domain_with_options_async(
@@ -4947,11 +9314,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserVipsByDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeUserVipsByDomainResponse(),
-            await self.do_rpcrequest_async('DescribeUserVipsByDomain', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_user_vips_by_domain(
@@ -4974,12 +9352,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeVerifyContentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifyContent',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeVerifyContentResponse(),
-            self.do_rpcrequest('DescribeVerifyContent', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_verify_content_with_options_async(
@@ -4988,12 +9381,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeVerifyContentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifyContent',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DescribeVerifyContentResponse(),
-            await self.do_rpcrequest_async('DescribeVerifyContent', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_verify_content(
@@ -5018,11 +9426,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableRealtimeLogDelivery',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DisableRealtimeLogDeliveryResponse(),
-            self.do_rpcrequest('DisableRealtimeLogDelivery', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def disable_realtime_log_delivery_with_options_async(
@@ -5033,11 +9452,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableRealtimeLogDelivery',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.DisableRealtimeLogDeliveryResponse(),
-            await self.do_rpcrequest_async('DisableRealtimeLogDelivery', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def disable_realtime_log_delivery(
@@ -5062,11 +9492,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableRealtimeLogDelivery',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.EnableRealtimeLogDeliveryResponse(),
-            self.do_rpcrequest('EnableRealtimeLogDelivery', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def enable_realtime_log_delivery_with_options_async(
@@ -5077,11 +9518,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableRealtimeLogDelivery',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.EnableRealtimeLogDeliveryResponse(),
-            await self.do_rpcrequest_async('EnableRealtimeLogDelivery', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def enable_realtime_log_delivery(
@@ -5106,11 +9558,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDomainsByLogConfigId',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ListDomainsByLogConfigIdResponse(),
-            self.do_rpcrequest('ListDomainsByLogConfigId', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_domains_by_log_config_id_with_options_async(
@@ -5121,11 +9584,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDomainsByLogConfigId',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ListDomainsByLogConfigIdResponse(),
-            await self.do_rpcrequest_async('ListDomainsByLogConfigId', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_domains_by_log_config_id(
@@ -5150,11 +9624,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFCTrigger',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ListFCTriggerResponse(),
-            self.do_rpcrequest('ListFCTrigger', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_fctrigger_with_options_async(
@@ -5165,11 +9650,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFCTrigger',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ListFCTriggerResponse(),
-            await self.do_rpcrequest_async('ListFCTrigger', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_fctrigger(
@@ -5194,11 +9690,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRealtimeLogDeliveryDomains',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ListRealtimeLogDeliveryDomainsResponse(),
-            self.do_rpcrequest('ListRealtimeLogDeliveryDomains', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_realtime_log_delivery_domains_with_options_async(
@@ -5209,11 +9716,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRealtimeLogDeliveryDomains',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ListRealtimeLogDeliveryDomainsResponse(),
-            await self.do_rpcrequest_async('ListRealtimeLogDeliveryDomains', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_realtime_log_delivery_domains(
@@ -5238,11 +9756,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRealtimeLogDeliveryInfos',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ListRealtimeLogDeliveryInfosResponse(),
-            self.do_rpcrequest('ListRealtimeLogDeliveryInfos', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_realtime_log_delivery_infos_with_options_async(
@@ -5253,11 +9782,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRealtimeLogDeliveryInfos',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ListRealtimeLogDeliveryInfosResponse(),
-            await self.do_rpcrequest_async('ListRealtimeLogDeliveryInfos', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_realtime_log_delivery_infos(
@@ -5282,11 +9822,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserCustomLogConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ListUserCustomLogConfigResponse(),
-            self.do_rpcrequest('ListUserCustomLogConfig', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_user_custom_log_config_with_options_async(
@@ -5297,11 +9848,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserCustomLogConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ListUserCustomLogConfigResponse(),
-            await self.do_rpcrequest_async('ListUserCustomLogConfig', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_user_custom_log_config(
@@ -5324,12 +9886,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.ModifyCdnDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['SecurityToken'] = request.security_token
+        query['Sources'] = request.sources
+        query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyCdnDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ModifyCdnDomainResponse(),
-            self.do_rpcrequest('ModifyCdnDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_cdn_domain_with_options_async(
@@ -5338,12 +9919,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.ModifyCdnDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['SecurityToken'] = request.security_token
+        query['Sources'] = request.sources
+        query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyCdnDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ModifyCdnDomainResponse(),
-            await self.do_rpcrequest_async('ModifyCdnDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_cdn_domain(
@@ -5366,12 +9966,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.ModifyCdnDomainSchdmByPropertyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['Property'] = request.property
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyCdnDomainSchdmByProperty',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ModifyCdnDomainSchdmByPropertyResponse(),
-            self.do_rpcrequest('ModifyCdnDomainSchdmByProperty', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_cdn_domain_schdm_by_property_with_options_async(
@@ -5380,12 +9996,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.ModifyCdnDomainSchdmByPropertyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['Property'] = request.property
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyCdnDomainSchdmByProperty',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ModifyCdnDomainSchdmByPropertyResponse(),
-            await self.do_rpcrequest_async('ModifyCdnDomainSchdmByProperty', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_cdn_domain_schdm_by_property(
@@ -5410,11 +10042,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDomainCustomLogConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ModifyDomainCustomLogConfigResponse(),
-            self.do_rpcrequest('ModifyDomainCustomLogConfig', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_domain_custom_log_config_with_options_async(
@@ -5425,11 +10068,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDomainCustomLogConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ModifyDomainCustomLogConfigResponse(),
-            await self.do_rpcrequest_async('ModifyDomainCustomLogConfig', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_domain_custom_log_config(
@@ -5454,11 +10108,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyRealtimeLogDelivery',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ModifyRealtimeLogDeliveryResponse(),
-            self.do_rpcrequest('ModifyRealtimeLogDelivery', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_realtime_log_delivery_with_options_async(
@@ -5469,11 +10134,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyRealtimeLogDelivery',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ModifyRealtimeLogDeliveryResponse(),
-            await self.do_rpcrequest_async('ModifyRealtimeLogDelivery', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_realtime_log_delivery(
@@ -5498,11 +10174,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyUserCustomLogConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ModifyUserCustomLogConfigResponse(),
-            self.do_rpcrequest('ModifyUserCustomLogConfig', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_user_custom_log_config_with_options_async(
@@ -5513,11 +10200,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyUserCustomLogConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.ModifyUserCustomLogConfigResponse(),
-            await self.do_rpcrequest_async('ModifyUserCustomLogConfig', '2018-05-10', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_user_custom_log_config(
@@ -5540,12 +10238,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.OpenCdnServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InternetChargeType'] = request.internet_charge_type
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='OpenCdnService',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.OpenCdnServiceResponse(),
-            self.do_rpcrequest('OpenCdnService', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def open_cdn_service_with_options_async(
@@ -5554,12 +10268,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.OpenCdnServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InternetChargeType'] = request.internet_charge_type
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='OpenCdnService',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.OpenCdnServiceResponse(),
-            await self.do_rpcrequest_async('OpenCdnService', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def open_cdn_service(
@@ -5582,12 +10312,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.PublishStagingConfigToProductionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['FunctionName'] = request.function_name
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='PublishStagingConfigToProduction',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.PublishStagingConfigToProductionResponse(),
-            self.do_rpcrequest('PublishStagingConfigToProduction', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def publish_staging_config_to_production_with_options_async(
@@ -5596,12 +10342,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.PublishStagingConfigToProductionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['FunctionName'] = request.function_name
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='PublishStagingConfigToProduction',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.PublishStagingConfigToProductionResponse(),
-            await self.do_rpcrequest_async('PublishStagingConfigToProduction', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def publish_staging_config_to_production(
@@ -5624,12 +10386,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.PushObjectCacheResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Area'] = request.area
+        query['ObjectPath'] = request.object_path
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='PushObjectCache',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.PushObjectCacheResponse(),
-            self.do_rpcrequest('PushObjectCache', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def push_object_cache_with_options_async(
@@ -5638,12 +10417,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.PushObjectCacheResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Area'] = request.area
+        query['ObjectPath'] = request.object_path
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='PushObjectCache',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.PushObjectCacheResponse(),
-            await self.do_rpcrequest_async('PushObjectCache', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def push_object_cache(
@@ -5666,12 +10462,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.RefreshObjectCachesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ObjectPath'] = request.object_path
+        query['ObjectType'] = request.object_type
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RefreshObjectCaches',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.RefreshObjectCachesResponse(),
-            self.do_rpcrequest('RefreshObjectCaches', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def refresh_object_caches_with_options_async(
@@ -5680,12 +10493,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.RefreshObjectCachesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ObjectPath'] = request.object_path
+        query['ObjectType'] = request.object_type
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RefreshObjectCaches',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.RefreshObjectCachesResponse(),
-            await self.do_rpcrequest_async('RefreshObjectCaches', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def refresh_object_caches(
@@ -5708,12 +10538,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.RollbackStagingConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['FunctionName'] = request.function_name
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RollbackStagingConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.RollbackStagingConfigResponse(),
-            self.do_rpcrequest('RollbackStagingConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def rollback_staging_config_with_options_async(
@@ -5722,12 +10568,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.RollbackStagingConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['FunctionName'] = request.function_name
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RollbackStagingConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.RollbackStagingConfigResponse(),
-            await self.do_rpcrequest_async('RollbackStagingConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def rollback_staging_config(
@@ -5750,12 +10612,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetCcConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AllowIps'] = request.allow_ips
+        query['BlockIps'] = request.block_ips
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetCcConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetCcConfigResponse(),
-            self.do_rpcrequest('SetCcConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_cc_config_with_options_async(
@@ -5764,12 +10644,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetCcConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AllowIps'] = request.allow_ips
+        query['BlockIps'] = request.block_ips
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetCcConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetCcConfigResponse(),
-            await self.do_rpcrequest_async('SetCcConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_cc_config(
@@ -5792,12 +10690,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetCdnDomainCSRCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['ServerCertificate'] = request.server_certificate
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetCdnDomainCSRCertificate',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetCdnDomainCSRCertificateResponse(),
-            self.do_rpcrequest('SetCdnDomainCSRCertificate', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_cdn_domain_csrcertificate_with_options_async(
@@ -5806,12 +10720,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetCdnDomainCSRCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['ServerCertificate'] = request.server_certificate
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetCdnDomainCSRCertificate',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetCdnDomainCSRCertificateResponse(),
-            await self.do_rpcrequest_async('SetCdnDomainCSRCertificate', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_cdn_domain_csrcertificate(
@@ -5828,18 +10758,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_cdn_domain_csrcertificate_with_options_async(request, runtime)
 
+    def set_cdn_domain_smcertificate_with_options(
+        self,
+        request: cdn_20180510_models.SetCdnDomainSMCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.SetCdnDomainSMCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['CertIdentifier'] = request.cert_identifier
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SSLProtocol'] = request.sslprotocol
+        query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetCdnDomainSMCertificate',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.SetCdnDomainSMCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_cdn_domain_smcertificate_with_options_async(
+        self,
+        request: cdn_20180510_models.SetCdnDomainSMCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.SetCdnDomainSMCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['CertIdentifier'] = request.cert_identifier
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SSLProtocol'] = request.sslprotocol
+        query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetCdnDomainSMCertificate',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.SetCdnDomainSMCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_cdn_domain_smcertificate(
+        self,
+        request: cdn_20180510_models.SetCdnDomainSMCertificateRequest,
+    ) -> cdn_20180510_models.SetCdnDomainSMCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_cdn_domain_smcertificate_with_options(request, runtime)
+
+    async def set_cdn_domain_smcertificate_async(
+        self,
+        request: cdn_20180510_models.SetCdnDomainSMCertificateRequest,
+    ) -> cdn_20180510_models.SetCdnDomainSMCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_cdn_domain_smcertificate_with_options_async(request, runtime)
+
     def set_cdn_domain_staging_config_with_options(
         self,
         request: cdn_20180510_models.SetCdnDomainStagingConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetCdnDomainStagingConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['Functions'] = request.functions
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetCdnDomainStagingConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetCdnDomainStagingConfigResponse(),
-            self.do_rpcrequest('SetCdnDomainStagingConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_cdn_domain_staging_config_with_options_async(
@@ -5848,12 +10872,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetCdnDomainStagingConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['Functions'] = request.functions
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetCdnDomainStagingConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetCdnDomainStagingConfigResponse(),
-            await self.do_rpcrequest_async('SetCdnDomainStagingConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_cdn_domain_staging_config(
@@ -5876,12 +10916,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetConfigOfVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['FunctionArgs'] = request.function_args
+        query['FunctionId'] = request.function_id
+        query['FunctionMatches'] = request.function_matches
+        query['FunctionName'] = request.function_name
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetConfigOfVersion',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetConfigOfVersionResponse(),
-            self.do_rpcrequest('SetConfigOfVersion', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_config_of_version_with_options_async(
@@ -5890,12 +10952,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetConfigOfVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['FunctionArgs'] = request.function_args
+        query['FunctionId'] = request.function_id
+        query['FunctionMatches'] = request.function_matches
+        query['FunctionName'] = request.function_name
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetConfigOfVersion',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetConfigOfVersionResponse(),
-            await self.do_rpcrequest_async('SetConfigOfVersion', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_config_of_version(
@@ -5918,12 +11002,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetDomainGreenManagerConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['Enable'] = request.enable
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetDomainGreenManagerConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetDomainGreenManagerConfigResponse(),
-            self.do_rpcrequest('SetDomainGreenManagerConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_domain_green_manager_config_with_options_async(
@@ -5932,12 +11032,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetDomainGreenManagerConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['Enable'] = request.enable
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetDomainGreenManagerConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetDomainGreenManagerConfigResponse(),
-            await self.do_rpcrequest_async('SetDomainGreenManagerConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_domain_green_manager_config(
@@ -5960,12 +11076,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetDomainServerCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertName'] = request.cert_name
+        query['CertType'] = request.cert_type
+        query['DomainName'] = request.domain_name
+        query['ForceSet'] = request.force_set
+        query['OwnerId'] = request.owner_id
+        query['PrivateKey'] = request.private_key
+        query['SecurityToken'] = request.security_token
+        query['ServerCertificate'] = request.server_certificate
+        query['ServerCertificateStatus'] = request.server_certificate_status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetDomainServerCertificate',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetDomainServerCertificateResponse(),
-            self.do_rpcrequest('SetDomainServerCertificate', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_domain_server_certificate_with_options_async(
@@ -5974,12 +11112,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetDomainServerCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertName'] = request.cert_name
+        query['CertType'] = request.cert_type
+        query['DomainName'] = request.domain_name
+        query['ForceSet'] = request.force_set
+        query['OwnerId'] = request.owner_id
+        query['PrivateKey'] = request.private_key
+        query['SecurityToken'] = request.security_token
+        query['ServerCertificate'] = request.server_certificate
+        query['ServerCertificateStatus'] = request.server_certificate_status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetDomainServerCertificate',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetDomainServerCertificateResponse(),
-            await self.do_rpcrequest_async('SetDomainServerCertificate', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_domain_server_certificate(
@@ -6002,12 +11162,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetErrorPageConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CustomPageUrl'] = request.custom_page_url
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['PageType'] = request.page_type
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetErrorPageConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetErrorPageConfigResponse(),
-            self.do_rpcrequest('SetErrorPageConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_error_page_config_with_options_async(
@@ -6016,12 +11194,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetErrorPageConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CustomPageUrl'] = request.custom_page_url
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['PageType'] = request.page_type
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetErrorPageConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetErrorPageConfigResponse(),
-            await self.do_rpcrequest_async('SetErrorPageConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_error_page_config(
@@ -6044,12 +11240,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetFileCacheExpiredConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CacheContent'] = request.cache_content
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        query['TTL'] = request.ttl
+        query['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetFileCacheExpiredConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetFileCacheExpiredConfigResponse(),
-            self.do_rpcrequest('SetFileCacheExpiredConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_file_cache_expired_config_with_options_async(
@@ -6058,12 +11273,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetFileCacheExpiredConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CacheContent'] = request.cache_content
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        query['TTL'] = request.ttl
+        query['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetFileCacheExpiredConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetFileCacheExpiredConfigResponse(),
-            await self.do_rpcrequest_async('SetFileCacheExpiredConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_file_cache_expired_config(
@@ -6086,12 +11320,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetForceRedirectConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['RedirectType'] = request.redirect_type
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetForceRedirectConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetForceRedirectConfigResponse(),
-            self.do_rpcrequest('SetForceRedirectConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_force_redirect_config_with_options_async(
@@ -6100,12 +11351,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetForceRedirectConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['RedirectType'] = request.redirect_type
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetForceRedirectConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetForceRedirectConfigResponse(),
-            await self.do_rpcrequest_async('SetForceRedirectConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_force_redirect_config(
@@ -6128,12 +11396,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetForwardSchemeConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['Enable'] = request.enable
+        query['OwnerId'] = request.owner_id
+        query['SchemeOrigin'] = request.scheme_origin
+        query['SchemeOriginPort'] = request.scheme_origin_port
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetForwardSchemeConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetForwardSchemeConfigResponse(),
-            self.do_rpcrequest('SetForwardSchemeConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_forward_scheme_config_with_options_async(
@@ -6142,12 +11429,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetForwardSchemeConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['Enable'] = request.enable
+        query['OwnerId'] = request.owner_id
+        query['SchemeOrigin'] = request.scheme_origin
+        query['SchemeOriginPort'] = request.scheme_origin_port
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetForwardSchemeConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetForwardSchemeConfigResponse(),
-            await self.do_rpcrequest_async('SetForwardSchemeConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_forward_scheme_config(
@@ -6170,12 +11476,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetHttpErrorPageConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['ErrorCode'] = request.error_code
+        query['OwnerId'] = request.owner_id
+        query['PageUrl'] = request.page_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetHttpErrorPageConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetHttpErrorPageConfigResponse(),
-            self.do_rpcrequest('SetHttpErrorPageConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_http_error_page_config_with_options_async(
@@ -6184,12 +11508,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetHttpErrorPageConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['ErrorCode'] = request.error_code
+        query['OwnerId'] = request.owner_id
+        query['PageUrl'] = request.page_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetHttpErrorPageConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetHttpErrorPageConfigResponse(),
-            await self.do_rpcrequest_async('SetHttpErrorPageConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_http_error_page_config(
@@ -6212,12 +11554,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetHttpHeaderConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['HeaderKey'] = request.header_key
+        query['HeaderValue'] = request.header_value
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetHttpHeaderConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetHttpHeaderConfigResponse(),
-            self.do_rpcrequest('SetHttpHeaderConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_http_header_config_with_options_async(
@@ -6226,12 +11587,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetHttpHeaderConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['HeaderKey'] = request.header_key
+        query['HeaderValue'] = request.header_value
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetHttpHeaderConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetHttpHeaderConfigResponse(),
-            await self.do_rpcrequest_async('SetHttpHeaderConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_http_header_config(
@@ -6254,12 +11634,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetHttpsOptionConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['Http2'] = request.http_2
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetHttpsOptionConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetHttpsOptionConfigResponse(),
-            self.do_rpcrequest('SetHttpsOptionConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_https_option_config_with_options_async(
@@ -6268,12 +11665,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetHttpsOptionConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['Http2'] = request.http_2
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetHttpsOptionConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetHttpsOptionConfigResponse(),
-            await self.do_rpcrequest_async('SetHttpsOptionConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_https_option_config(
@@ -6296,12 +11710,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetIgnoreQueryStringConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['Enable'] = request.enable
+        query['HashKeyArgs'] = request.hash_key_args
+        query['KeepOssArgs'] = request.keep_oss_args
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetIgnoreQueryStringConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetIgnoreQueryStringConfigResponse(),
-            self.do_rpcrequest('SetIgnoreQueryStringConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_ignore_query_string_config_with_options_async(
@@ -6310,12 +11743,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetIgnoreQueryStringConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['Enable'] = request.enable
+        query['HashKeyArgs'] = request.hash_key_args
+        query['KeepOssArgs'] = request.keep_oss_args
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetIgnoreQueryStringConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetIgnoreQueryStringConfigResponse(),
-            await self.do_rpcrequest_async('SetIgnoreQueryStringConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_ignore_query_string_config(
@@ -6338,12 +11790,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetIpAllowListConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AllowIps'] = request.allow_ips
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetIpAllowListConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetIpAllowListConfigResponse(),
-            self.do_rpcrequest('SetIpAllowListConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_ip_allow_list_config_with_options_async(
@@ -6352,12 +11821,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetIpAllowListConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AllowIps'] = request.allow_ips
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetIpAllowListConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetIpAllowListConfigResponse(),
-            await self.do_rpcrequest_async('SetIpAllowListConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_ip_allow_list_config(
@@ -6380,12 +11866,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetIpBlackListConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BlockIps'] = request.block_ips
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetIpBlackListConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetIpBlackListConfigResponse(),
-            self.do_rpcrequest('SetIpBlackListConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_ip_black_list_config_with_options_async(
@@ -6394,12 +11897,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetIpBlackListConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BlockIps'] = request.block_ips
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetIpBlackListConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetIpBlackListConfigResponse(),
-            await self.do_rpcrequest_async('SetIpBlackListConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_ip_black_list_config(
@@ -6422,12 +11942,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetOptimizeConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['Enable'] = request.enable
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetOptimizeConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetOptimizeConfigResponse(),
-            self.do_rpcrequest('SetOptimizeConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_optimize_config_with_options_async(
@@ -6436,12 +11973,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetOptimizeConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['Enable'] = request.enable
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetOptimizeConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetOptimizeConfigResponse(),
-            await self.do_rpcrequest_async('SetOptimizeConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_optimize_config(
@@ -6464,12 +12018,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetPageCompressConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['Enable'] = request.enable
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetPageCompressConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetPageCompressConfigResponse(),
-            self.do_rpcrequest('SetPageCompressConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_page_compress_config_with_options_async(
@@ -6478,12 +12049,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetPageCompressConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['Enable'] = request.enable
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetPageCompressConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetPageCompressConfigResponse(),
-            await self.do_rpcrequest_async('SetPageCompressConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_page_compress_config(
@@ -6506,12 +12094,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetRangeConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['Enable'] = request.enable
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetRangeConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetRangeConfigResponse(),
-            self.do_rpcrequest('SetRangeConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_range_config_with_options_async(
@@ -6520,12 +12125,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetRangeConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['Enable'] = request.enable
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetRangeConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetRangeConfigResponse(),
-            await self.do_rpcrequest_async('SetRangeConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_range_config(
@@ -6548,12 +12170,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetRefererConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AllowEmpty'] = request.allow_empty
+        query['DisableAst'] = request.disable_ast
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['ReferList'] = request.refer_list
+        query['ReferType'] = request.refer_type
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetRefererConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetRefererConfigResponse(),
-            self.do_rpcrequest('SetRefererConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_referer_config_with_options_async(
@@ -6562,12 +12204,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetRefererConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AllowEmpty'] = request.allow_empty
+        query['DisableAst'] = request.disable_ast
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['ReferList'] = request.refer_list
+        query['ReferType'] = request.refer_type
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetRefererConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetRefererConfigResponse(),
-            await self.do_rpcrequest_async('SetRefererConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_referer_config(
@@ -6590,12 +12252,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetRemoveQueryStringConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AliRemoveArgs'] = request.ali_remove_args
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['KeepOssArgs'] = request.keep_oss_args
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetRemoveQueryStringConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetRemoveQueryStringConfigResponse(),
-            self.do_rpcrequest('SetRemoveQueryStringConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_remove_query_string_config_with_options_async(
@@ -6604,12 +12284,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetRemoveQueryStringConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AliRemoveArgs'] = request.ali_remove_args
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['KeepOssArgs'] = request.keep_oss_args
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetRemoveQueryStringConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetRemoveQueryStringConfigResponse(),
-            await self.do_rpcrequest_async('SetRemoveQueryStringConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_remove_query_string_config(
@@ -6632,12 +12330,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetReqAuthConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuthRemoteDesc'] = request.auth_remote_desc
+        query['AuthType'] = request.auth_type
+        query['DomainName'] = request.domain_name
+        query['Key1'] = request.key_1
+        query['Key2'] = request.key_2
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        query['TimeOut'] = request.time_out
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetReqAuthConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetReqAuthConfigResponse(),
-            self.do_rpcrequest('SetReqAuthConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_req_auth_config_with_options_async(
@@ -6646,12 +12365,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetReqAuthConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuthRemoteDesc'] = request.auth_remote_desc
+        query['AuthType'] = request.auth_type
+        query['DomainName'] = request.domain_name
+        query['Key1'] = request.key_1
+        query['Key2'] = request.key_2
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        query['TimeOut'] = request.time_out
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetReqAuthConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetReqAuthConfigResponse(),
-            await self.do_rpcrequest_async('SetReqAuthConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_req_auth_config(
@@ -6674,12 +12414,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetReqHeaderConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['Key'] = request.key
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        query['Value'] = request.value
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetReqHeaderConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetReqHeaderConfigResponse(),
-            self.do_rpcrequest('SetReqHeaderConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_req_header_config_with_options_async(
@@ -6688,12 +12447,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetReqHeaderConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConfigId'] = request.config_id
+        query['DomainName'] = request.domain_name
+        query['Key'] = request.key
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
+        query['Value'] = request.value
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetReqHeaderConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetReqHeaderConfigResponse(),
-            await self.do_rpcrequest_async('SetReqHeaderConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_req_header_config(
@@ -6716,12 +12494,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetSourceHostConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BackSrcDomain'] = request.back_src_domain
+        query['DomainName'] = request.domain_name
+        query['Enable'] = request.enable
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetSourceHostConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetSourceHostConfigResponse(),
-            self.do_rpcrequest('SetSourceHostConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_source_host_config_with_options_async(
@@ -6730,12 +12526,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetSourceHostConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BackSrcDomain'] = request.back_src_domain
+        query['DomainName'] = request.domain_name
+        query['Enable'] = request.enable
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetSourceHostConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetSourceHostConfigResponse(),
-            await self.do_rpcrequest_async('SetSourceHostConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_source_host_config(
@@ -6752,18 +12566,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_source_host_config_with_options_async(request, runtime)
 
+    def set_user_green_manager_config_with_options(
+        self,
+        request: cdn_20180510_models.SetUserGreenManagerConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.SetUserGreenManagerConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['Quota'] = request.quota
+        query['Ratio'] = request.ratio
+        query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetUserGreenManagerConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.SetUserGreenManagerConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_user_green_manager_config_with_options_async(
+        self,
+        request: cdn_20180510_models.SetUserGreenManagerConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.SetUserGreenManagerConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['Quota'] = request.quota
+        query['Ratio'] = request.ratio
+        query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetUserGreenManagerConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.SetUserGreenManagerConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_user_green_manager_config(
+        self,
+        request: cdn_20180510_models.SetUserGreenManagerConfigRequest,
+    ) -> cdn_20180510_models.SetUserGreenManagerConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_user_green_manager_config_with_options(request, runtime)
+
+    async def set_user_green_manager_config_async(
+        self,
+        request: cdn_20180510_models.SetUserGreenManagerConfigRequest,
+    ) -> cdn_20180510_models.SetUserGreenManagerConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_user_green_manager_config_with_options_async(request, runtime)
+
     def set_waiting_room_config_with_options(
         self,
         request: cdn_20180510_models.SetWaitingRoomConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetWaitingRoomConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AllowPct'] = request.allow_pct
+        query['DomainName'] = request.domain_name
+        query['GapTime'] = request.gap_time
+        query['MaxTimeWait'] = request.max_time_wait
+        query['OwnerId'] = request.owner_id
+        query['WaitUri'] = request.wait_uri
+        query['WaitUrl'] = request.wait_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetWaitingRoomConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetWaitingRoomConfigResponse(),
-            self.do_rpcrequest('SetWaitingRoomConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_waiting_room_config_with_options_async(
@@ -6772,12 +12682,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.SetWaitingRoomConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AllowPct'] = request.allow_pct
+        query['DomainName'] = request.domain_name
+        query['GapTime'] = request.gap_time
+        query['MaxTimeWait'] = request.max_time_wait
+        query['OwnerId'] = request.owner_id
+        query['WaitUri'] = request.wait_uri
+        query['WaitUrl'] = request.wait_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetWaitingRoomConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.SetWaitingRoomConfigResponse(),
-            await self.do_rpcrequest_async('SetWaitingRoomConfig', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_waiting_room_config(
@@ -6800,12 +12730,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.StartCdnDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StartCdnDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.StartCdnDomainResponse(),
-            self.do_rpcrequest('StartCdnDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def start_cdn_domain_with_options_async(
@@ -6814,12 +12760,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.StartCdnDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StartCdnDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.StartCdnDomainResponse(),
-            await self.do_rpcrequest_async('StartCdnDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_cdn_domain(
@@ -6842,12 +12804,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.StopCdnDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopCdnDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.StopCdnDomainResponse(),
-            self.do_rpcrequest('StopCdnDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def stop_cdn_domain_with_options_async(
@@ -6856,12 +12834,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.StopCdnDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopCdnDomain',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.StopCdnDomainResponse(),
-            await self.do_rpcrequest_async('StopCdnDomain', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_cdn_domain(
@@ -6884,12 +12878,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.TagResourcesResponse(),
-            self.do_rpcrequest('TagResources', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def tag_resources_with_options_async(
@@ -6898,12 +12909,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.TagResourcesResponse(),
-            await self.do_rpcrequest_async('TagResources', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def tag_resources(
@@ -6926,12 +12954,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['All'] = request.all
+        query['OwnerId'] = request.owner_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.UntagResourcesResponse(),
-            self.do_rpcrequest('UntagResources', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def untag_resources_with_options_async(
@@ -6940,12 +12986,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['All'] = request.all
+        query['OwnerId'] = request.owner_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.UntagResourcesResponse(),
-            await self.do_rpcrequest_async('UntagResources', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def untag_resources(
@@ -6964,42 +13028,58 @@ class Client(OpenApiClient):
 
     def update_cdn_deliver_task_with_options(
         self,
-        tmp_req: cdn_20180510_models.UpdateCdnDeliverTaskRequest,
+        request: cdn_20180510_models.UpdateCdnDeliverTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.UpdateCdnDeliverTaskResponse:
-        UtilClient.validate_model(tmp_req)
-        request = cdn_20180510_models.UpdateCdnDeliverTaskShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.deliver):
-            request.deliver_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deliver, 'Deliver', 'json')
-        if not UtilClient.is_unset(tmp_req.schedule):
-            request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'Schedule', 'json')
+        UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateCdnDeliverTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.UpdateCdnDeliverTaskResponse(),
-            self.do_rpcrequest('UpdateCdnDeliverTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_cdn_deliver_task_with_options_async(
         self,
-        tmp_req: cdn_20180510_models.UpdateCdnDeliverTaskRequest,
+        request: cdn_20180510_models.UpdateCdnDeliverTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.UpdateCdnDeliverTaskResponse:
-        UtilClient.validate_model(tmp_req)
-        request = cdn_20180510_models.UpdateCdnDeliverTaskShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.deliver):
-            request.deliver_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.deliver, 'Deliver', 'json')
-        if not UtilClient.is_unset(tmp_req.schedule):
-            request.schedule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule, 'Schedule', 'json')
+        UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateCdnDeliverTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.UpdateCdnDeliverTaskResponse(),
-            await self.do_rpcrequest_async('UpdateCdnDeliverTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_cdn_deliver_task(
@@ -7022,12 +13102,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.UpdateCdnSubTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateCdnSubTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.UpdateCdnSubTaskResponse(),
-            self.do_rpcrequest('UpdateCdnSubTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_cdn_sub_task_with_options_async(
@@ -7036,12 +13130,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.UpdateCdnSubTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateCdnSubTask',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.UpdateCdnSubTaskResponse(),
-            await self.do_rpcrequest_async('UpdateCdnSubTask', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_cdn_sub_task(
@@ -7064,12 +13172,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.UpdateFCTriggerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['TriggerARN'] = request.trigger_arn
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateFCTrigger',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.UpdateFCTriggerResponse(),
-            self.do_rpcrequest('UpdateFCTrigger', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_fctrigger_with_options_async(
@@ -7078,12 +13201,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.UpdateFCTriggerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerId'] = request.owner_id
+        query['TriggerARN'] = request.trigger_arn
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateFCTrigger',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.UpdateFCTriggerResponse(),
-            await self.do_rpcrequest_async('UpdateFCTrigger', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_fctrigger(
@@ -7106,12 +13244,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.VerifyDomainOwnerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['VerifyType'] = request.verify_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='VerifyDomainOwner',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.VerifyDomainOwnerResponse(),
-            self.do_rpcrequest('VerifyDomainOwner', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def verify_domain_owner_with_options_async(
@@ -7120,12 +13274,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.VerifyDomainOwnerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['OwnerId'] = request.owner_id
+        query['VerifyType'] = request.verify_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='VerifyDomainOwner',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cdn_20180510_models.VerifyDomainOwnerResponse(),
-            await self.do_rpcrequest_async('VerifyDomainOwner', '2018-05-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def verify_domain_owner(
