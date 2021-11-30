@@ -104,9 +104,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateAlias',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/aliases',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.CreateAliasResponse(),
-            self.do_roarequest('CreateAlias', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/services/{service_name}/aliases', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_alias_with_options_async(
@@ -131,9 +142,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateAlias',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/aliases',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.CreateAliasResponse(),
-            await self.do_roarequest_async('CreateAlias', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/services/{service_name}/aliases', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_custom_domain(
@@ -172,9 +194,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateCustomDomain',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/custom-domains',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.CreateCustomDomainResponse(),
-            self.do_roarequest('CreateCustomDomain', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/custom-domains', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_custom_domain_with_options_async(
@@ -197,9 +230,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateCustomDomain',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/custom-domains',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.CreateCustomDomainResponse(),
-            await self.do_roarequest_async('CreateCustomDomain', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/custom-domains', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_function(
@@ -236,6 +280,10 @@ class Client(OpenApiClient):
             body['code'] = request.code
         if not UtilClient.is_unset(request.custom_container_config):
             body['customContainerConfig'] = request.custom_container_config
+        if not UtilClient.is_unset(request.custom_dns):
+            body['customDNS'] = request.custom_dns
+        if not UtilClient.is_unset(request.custom_runtime_config):
+            body['customRuntimeConfig'] = request.custom_runtime_config
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.environment_variables):
@@ -266,14 +314,25 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_fc_code_checksum):
-            real_headers['x-fc-code-checksum'] = headers.x_fc_code_checksum
+            real_headers['x-fc-code-checksum'] = UtilClient.to_jsonstring(headers.x_fc_code_checksum)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateFunction',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.CreateFunctionResponse(),
-            self.do_roarequest('CreateFunction', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/services/{service_name}/functions', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_function_with_options_async(
@@ -292,6 +351,10 @@ class Client(OpenApiClient):
             body['code'] = request.code
         if not UtilClient.is_unset(request.custom_container_config):
             body['customContainerConfig'] = request.custom_container_config
+        if not UtilClient.is_unset(request.custom_dns):
+            body['customDNS'] = request.custom_dns
+        if not UtilClient.is_unset(request.custom_runtime_config):
+            body['customRuntimeConfig'] = request.custom_runtime_config
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.environment_variables):
@@ -322,14 +385,25 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_fc_code_checksum):
-            real_headers['x-fc-code-checksum'] = headers.x_fc_code_checksum
+            real_headers['x-fc-code-checksum'] = UtilClient.to_jsonstring(headers.x_fc_code_checksum)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateFunction',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.CreateFunctionResponse(),
-            await self.do_roarequest_async('CreateFunction', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/services/{service_name}/functions', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_layer_version(
@@ -370,9 +444,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateLayerVersion',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/layers/{layer_name}/versions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.CreateLayerVersionResponse(),
-            self.do_roarequest('CreateLayerVersion', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/layers/{layer_name}/versions', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_layer_version_with_options_async(
@@ -395,9 +480,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateLayerVersion',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/layers/{layer_name}/versions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.CreateLayerVersionResponse(),
-            await self.do_roarequest_async('CreateLayerVersion', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/layers/{layer_name}/versions', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_service(
@@ -444,9 +540,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateService',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.CreateServiceResponse(),
-            self.do_roarequest('CreateService', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/services', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_service_with_options_async(
@@ -477,9 +584,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateService',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.CreateServiceResponse(),
-            await self.do_roarequest_async('CreateService', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/services', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_trigger(
@@ -532,9 +650,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateTrigger',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.CreateTriggerResponse(),
-            self.do_roarequest('CreateTrigger', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_trigger_with_options_async(
@@ -567,9 +696,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateTrigger',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.CreateTriggerResponse(),
-            await self.do_roarequest_async('CreateTrigger', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_vpc_binding(
@@ -606,9 +746,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateVpcBinding',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/bindings',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.CreateVpcBindingResponse(),
-            self.do_roarequest('CreateVpcBinding', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/services/{service_name}/bindings', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_vpc_binding_with_options_async(
@@ -627,9 +778,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateVpcBinding',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/bindings',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.CreateVpcBindingResponse(),
-            await self.do_roarequest_async('CreateVpcBinding', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/services/{service_name}/bindings', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_alias(
@@ -663,13 +825,24 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         req = open_api_models.OpenApiRequest(
             headers=real_headers
         )
+        params = open_api_models.Params(
+            action='DeleteAlias',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/aliases/{alias_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteAliasResponse(),
-            self.do_roarequest('DeleteAlias', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/services/{service_name}/aliases/{alias_name}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_alias_with_options_async(
@@ -685,13 +858,24 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         req = open_api_models.OpenApiRequest(
             headers=real_headers
         )
+        params = open_api_models.Params(
+            action='DeleteAlias',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/aliases/{alias_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteAliasResponse(),
-            await self.do_roarequest_async('DeleteAlias', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/services/{service_name}/aliases/{alias_name}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_custom_domain(
@@ -720,9 +904,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteCustomDomain',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/custom-domains/{domain_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteCustomDomainResponse(),
-            self.do_roarequest('DeleteCustomDomain', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/custom-domains/{domain_name}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_custom_domain_with_options_async(
@@ -735,9 +930,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteCustomDomain',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/custom-domains/{domain_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteCustomDomainResponse(),
-            await self.do_roarequest_async('DeleteCustomDomain', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/custom-domains/{domain_name}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_function(
@@ -771,13 +977,24 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         req = open_api_models.OpenApiRequest(
             headers=real_headers
         )
+        params = open_api_models.Params(
+            action='DeleteFunction',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteFunctionResponse(),
-            self.do_roarequest('DeleteFunction', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_function_with_options_async(
@@ -793,13 +1010,24 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         req = open_api_models.OpenApiRequest(
             headers=real_headers
         )
+        params = open_api_models.Params(
+            action='DeleteFunction',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteFunctionResponse(),
-            await self.do_roarequest_async('DeleteFunction', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_function_async_invoke_config(
@@ -840,9 +1068,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteFunctionAsyncInvokeConfig',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-config',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteFunctionAsyncInvokeConfigResponse(),
-            self.do_roarequest('DeleteFunctionAsyncInvokeConfig', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-config', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_function_async_invoke_config_with_options_async(
@@ -863,9 +1102,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteFunctionAsyncInvokeConfig',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-config',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteFunctionAsyncInvokeConfigResponse(),
-            await self.do_roarequest_async('DeleteFunctionAsyncInvokeConfig', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-config', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_function_on_demand_config(
@@ -906,14 +1156,25 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteFunctionOnDemandConfig',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/on-demand-config',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteFunctionOnDemandConfigResponse(),
-            self.do_roarequest('DeleteFunctionOnDemandConfig', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/on-demand-config', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_function_on_demand_config_with_options_async(
@@ -934,14 +1195,25 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteFunctionOnDemandConfig',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/on-demand-config',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteFunctionOnDemandConfigResponse(),
-            await self.do_roarequest_async('DeleteFunctionOnDemandConfig', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/on-demand-config', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_layer_version(
@@ -974,9 +1246,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteLayerVersion',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/layers/{layer_name}/versions/{version}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteLayerVersionResponse(),
-            self.do_roarequest('DeleteLayerVersion', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/layers/{layer_name}/versions/{version}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_layer_version_with_options_async(
@@ -991,9 +1274,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteLayerVersion',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/layers/{layer_name}/versions/{version}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteLayerVersionResponse(),
-            await self.do_roarequest_async('DeleteLayerVersion', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/layers/{layer_name}/versions/{version}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_service(
@@ -1023,13 +1317,24 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         req = open_api_models.OpenApiRequest(
             headers=real_headers
         )
+        params = open_api_models.Params(
+            action='DeleteService',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteServiceResponse(),
-            self.do_roarequest('DeleteService', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/services/{service_name}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_service_with_options_async(
@@ -1043,13 +1348,24 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         req = open_api_models.OpenApiRequest(
             headers=real_headers
         )
+        params = open_api_models.Params(
+            action='DeleteService',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteServiceResponse(),
-            await self.do_roarequest_async('DeleteService', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/services/{service_name}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_service_version(
@@ -1082,9 +1398,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteServiceVersion',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/versions/{version_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteServiceVersionResponse(),
-            self.do_roarequest('DeleteServiceVersion', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/services/{service_name}/versions/{version_id}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_service_version_with_options_async(
@@ -1099,9 +1426,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteServiceVersion',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/versions/{version_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteServiceVersionResponse(),
-            await self.do_roarequest_async('DeleteServiceVersion', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/services/{service_name}/versions/{version_id}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_trigger(
@@ -1139,13 +1477,24 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         req = open_api_models.OpenApiRequest(
             headers=real_headers
         )
+        params = open_api_models.Params(
+            action='DeleteTrigger',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers/{trigger_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteTriggerResponse(),
-            self.do_roarequest('DeleteTrigger', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers/{trigger_name}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_trigger_with_options_async(
@@ -1163,13 +1512,24 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         req = open_api_models.OpenApiRequest(
             headers=real_headers
         )
+        params = open_api_models.Params(
+            action='DeleteTrigger',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers/{trigger_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteTriggerResponse(),
-            await self.do_roarequest_async('DeleteTrigger', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers/{trigger_name}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_vpc_binding(
@@ -1202,9 +1562,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteVpcBinding',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/bindings/{vpc_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteVpcBindingResponse(),
-            self.do_roarequest('DeleteVpcBinding', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/services/{service_name}/bindings/{vpc_id}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_vpc_binding_with_options_async(
@@ -1219,9 +1590,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteVpcBinding',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/bindings/{vpc_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeleteVpcBindingResponse(),
-            await self.do_roarequest_async('DeleteVpcBinding', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/services/{service_name}/bindings/{vpc_id}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def deregister_event_source(
@@ -1266,9 +1648,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeregisterEventSource',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/event-sources/{source_arn}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeregisterEventSourceResponse(),
-            self.do_roarequest('DeregisterEventSource', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/event-sources/{source_arn}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def deregister_event_source_with_options_async(
@@ -1291,9 +1684,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeregisterEventSource',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/event-sources/{source_arn}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.DeregisterEventSourceResponse(),
-            await self.do_roarequest_async('DeregisterEventSource', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/event-sources/{source_arn}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_account_settings(self) -> fc__open_20210406_models.GetAccountSettingsResponse:
@@ -1314,9 +1718,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetAccountSettings',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/account-settings',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetAccountSettingsResponse(),
-            self.do_roarequest('GetAccountSettings', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/account-settings', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_account_settings_with_options_async(
@@ -1327,9 +1742,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetAccountSettings',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/account-settings',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetAccountSettingsResponse(),
-            await self.do_roarequest_async('GetAccountSettings', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/account-settings', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_alias(
@@ -1362,9 +1788,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetAlias',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/aliases/{alias_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetAliasResponse(),
-            self.do_roarequest('GetAlias', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/aliases/{alias_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_alias_with_options_async(
@@ -1379,9 +1816,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetAlias',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/aliases/{alias_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetAliasResponse(),
-            await self.do_roarequest_async('GetAlias', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/aliases/{alias_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_custom_domain(
@@ -1410,9 +1858,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetCustomDomain',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/custom-domains/{domain_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetCustomDomainResponse(),
-            self.do_roarequest('GetCustomDomain', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/custom-domains/{domain_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_custom_domain_with_options_async(
@@ -1425,9 +1884,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetCustomDomain',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/custom-domains/{domain_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetCustomDomainResponse(),
-            await self.do_roarequest_async('GetCustomDomain', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/custom-domains/{domain_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_function(
@@ -1468,9 +1938,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetFunction',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetFunctionResponse(),
-            self.do_roarequest('GetFunction', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_function_with_options_async(
@@ -1491,9 +1972,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetFunction',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetFunctionResponse(),
-            await self.do_roarequest_async('GetFunction', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_function_async_invoke_config(
@@ -1534,9 +2026,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetFunctionAsyncInvokeConfig',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-config',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetFunctionAsyncInvokeConfigResponse(),
-            self.do_roarequest('GetFunctionAsyncInvokeConfig', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-config', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_function_async_invoke_config_with_options_async(
@@ -1557,9 +2060,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetFunctionAsyncInvokeConfig',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-config',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetFunctionAsyncInvokeConfigResponse(),
-            await self.do_roarequest_async('GetFunctionAsyncInvokeConfig', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-config', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_function_code(
@@ -1600,9 +2114,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetFunctionCode',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/code',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetFunctionCodeResponse(),
-            self.do_roarequest('GetFunctionCode', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/code', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_function_code_with_options_async(
@@ -1623,9 +2148,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetFunctionCode',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/code',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetFunctionCodeResponse(),
-            await self.do_roarequest_async('GetFunctionCode', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/code', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_function_on_demand_config(
@@ -1666,9 +2202,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetFunctionOnDemandConfig',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/on-demand-config',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetFunctionOnDemandConfigResponse(),
-            self.do_roarequest('GetFunctionOnDemandConfig', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/on-demand-config', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_function_on_demand_config_with_options_async(
@@ -1689,9 +2236,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetFunctionOnDemandConfig',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/on-demand-config',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetFunctionOnDemandConfigResponse(),
-            await self.do_roarequest_async('GetFunctionOnDemandConfig', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/on-demand-config', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_layer_version(
@@ -1724,9 +2282,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetLayerVersion',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/layers/{layer_name}/versions/{version}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetLayerVersionResponse(),
-            self.do_roarequest('GetLayerVersion', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/layers/{layer_name}/versions/{version}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_layer_version_with_options_async(
@@ -1741,9 +2310,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetLayerVersion',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/layers/{layer_name}/versions/{version}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetLayerVersionResponse(),
-            await self.do_roarequest_async('GetLayerVersion', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/layers/{layer_name}/versions/{version}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_layer_version_by_arn(
@@ -1772,9 +2352,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetLayerVersionByArn',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/layerarn/{arn}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetLayerVersionByArnResponse(),
-            self.do_roarequest('GetLayerVersionByArn', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/layerarn/{arn}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_layer_version_by_arn_with_options_async(
@@ -1787,9 +2378,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetLayerVersionByArn',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/layerarn/{arn}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetLayerVersionByArnResponse(),
-            await self.do_roarequest_async('GetLayerVersionByArn', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/layerarn/{arn}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_provision_config(
@@ -1834,9 +2436,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='GetProvisionConfig',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/provision-config',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetProvisionConfigResponse(),
-            self.do_roarequest('GetProvisionConfig', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/provision-config', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_provision_config_with_options_async(
@@ -1861,9 +2474,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='GetProvisionConfig',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/provision-config',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetProvisionConfigResponse(),
-            await self.do_roarequest_async('GetProvisionConfig', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/provision-config', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_resource_tags(
@@ -1896,9 +2520,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetResourceTags',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/tag',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetResourceTagsResponse(),
-            self.do_roarequest('GetResourceTags', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/tag', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_resource_tags_with_options_async(
@@ -1915,9 +2550,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetResourceTags',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/tag',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetResourceTagsResponse(),
-            await self.do_roarequest_async('GetResourceTags', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/tag', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_service(
@@ -1954,9 +2600,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetService',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetServiceResponse(),
-            self.do_roarequest('GetService', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_service_with_options_async(
@@ -1975,9 +2632,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetService',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetServiceResponse(),
-            await self.do_roarequest_async('GetService', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_stateful_async_invocation(
@@ -2022,9 +2690,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetStatefulAsyncInvocation',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/stateful-async-invocations/{invocation_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetStatefulAsyncInvocationResponse(),
-            self.do_roarequest('GetStatefulAsyncInvocation', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/stateful-async-invocations/{invocation_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_stateful_async_invocation_with_options_async(
@@ -2047,9 +2726,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetStatefulAsyncInvocation',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/stateful-async-invocations/{invocation_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetStatefulAsyncInvocationResponse(),
-            await self.do_roarequest_async('GetStatefulAsyncInvocation', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/stateful-async-invocations/{invocation_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_trigger(
@@ -2086,9 +2776,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetTrigger',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers/{trigger_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetTriggerResponse(),
-            self.do_roarequest('GetTrigger', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers/{trigger_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_trigger_with_options_async(
@@ -2105,9 +2806,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetTrigger',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers/{trigger_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.GetTriggerResponse(),
-            await self.do_roarequest_async('GetTrigger', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers/{trigger_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def invoke_function(
@@ -2148,21 +2860,32 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_fc_account_id):
-            real_headers['X-Fc-Account-Id'] = headers.x_fc_account_id
+            real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
         if not UtilClient.is_unset(headers.x_fc_invocation_type):
-            real_headers['x-fc-invocation-type'] = headers.x_fc_invocation_type
+            real_headers['x-fc-invocation-type'] = UtilClient.to_jsonstring(headers.x_fc_invocation_type)
         if not UtilClient.is_unset(headers.x_fc_log_type):
-            real_headers['x-fc-log-type'] = headers.x_fc_log_type
+            real_headers['x-fc-log-type'] = UtilClient.to_jsonstring(headers.x_fc_log_type)
         if not UtilClient.is_unset(headers.x_fc_stateful_async_invocation_id):
-            real_headers['x-fc-stateful-async-invocation-id'] = headers.x_fc_stateful_async_invocation_id
+            real_headers['x-fc-stateful-async-invocation-id'] = UtilClient.to_jsonstring(headers.x_fc_stateful_async_invocation_id)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query),
             body=request.body
         )
+        params = open_api_models.Params(
+            action='InvokeFunction',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/invocations',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='byte'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.InvokeFunctionResponse(),
-            self.do_roarequest('InvokeFunction', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/invocations', 'byte', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def invoke_function_with_options_async(
@@ -2183,21 +2906,32 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.x_fc_account_id):
-            real_headers['X-Fc-Account-Id'] = headers.x_fc_account_id
+            real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
         if not UtilClient.is_unset(headers.x_fc_invocation_type):
-            real_headers['x-fc-invocation-type'] = headers.x_fc_invocation_type
+            real_headers['x-fc-invocation-type'] = UtilClient.to_jsonstring(headers.x_fc_invocation_type)
         if not UtilClient.is_unset(headers.x_fc_log_type):
-            real_headers['x-fc-log-type'] = headers.x_fc_log_type
+            real_headers['x-fc-log-type'] = UtilClient.to_jsonstring(headers.x_fc_log_type)
         if not UtilClient.is_unset(headers.x_fc_stateful_async_invocation_id):
-            real_headers['x-fc-stateful-async-invocation-id'] = headers.x_fc_stateful_async_invocation_id
+            real_headers['x-fc-stateful-async-invocation-id'] = UtilClient.to_jsonstring(headers.x_fc_stateful_async_invocation_id)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query),
             body=request.body
         )
+        params = open_api_models.Params(
+            action='InvokeFunction',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/invocations',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='byte'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.InvokeFunctionResponse(),
-            await self.do_roarequest_async('InvokeFunction', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/invocations', 'byte', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_aliases(
@@ -2240,9 +2974,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListAliases',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/aliases',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListAliasesResponse(),
-            self.do_roarequest('ListAliases', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/aliases', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_aliases_with_options_async(
@@ -2267,9 +3012,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListAliases',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/aliases',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListAliasesResponse(),
-            await self.do_roarequest_async('ListAliases', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/aliases', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_custom_domains(
@@ -2308,9 +3064,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListCustomDomains',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/custom-domains',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListCustomDomainsResponse(),
-            self.do_roarequest('ListCustomDomains', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/custom-domains', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_custom_domains_with_options_async(
@@ -2333,9 +3100,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListCustomDomains',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/custom-domains',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListCustomDomainsResponse(),
-            await self.do_roarequest_async('ListCustomDomains', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/custom-domains', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_event_sources(
@@ -2376,9 +3154,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListEventSources',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/event-sources',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListEventSourcesResponse(),
-            self.do_roarequest('ListEventSources', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/event-sources', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_event_sources_with_options_async(
@@ -2399,9 +3188,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListEventSources',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/event-sources',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListEventSourcesResponse(),
-            await self.do_roarequest_async('ListEventSources', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/event-sources', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_function_async_invoke_configs(
@@ -2444,9 +3244,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListFunctionAsyncInvokeConfigs',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-configs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListFunctionAsyncInvokeConfigsResponse(),
-            self.do_roarequest('ListFunctionAsyncInvokeConfigs', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-configs', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_function_async_invoke_configs_with_options_async(
@@ -2469,9 +3280,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListFunctionAsyncInvokeConfigs',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-configs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListFunctionAsyncInvokeConfigsResponse(),
-            await self.do_roarequest_async('ListFunctionAsyncInvokeConfigs', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-configs', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_functions(
@@ -2516,9 +3338,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListFunctions',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListFunctionsResponse(),
-            self.do_roarequest('ListFunctions', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_functions_with_options_async(
@@ -2545,9 +3378,126 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListFunctions',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListFunctionsResponse(),
-            await self.do_roarequest_async('ListFunctions', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instances(
+        self,
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.ListInstancesRequest,
+    ) -> fc__open_20210406_models.ListInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = fc__open_20210406_models.ListInstancesHeaders()
+        return self.list_instances_with_options(service_name, function_name, request, headers, runtime)
+
+    async def list_instances_async(
+        self,
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.ListInstancesRequest,
+    ) -> fc__open_20210406_models.ListInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = fc__open_20210406_models.ListInstancesHeaders()
+        return await self.list_instances_with_options_async(service_name, function_name, request, headers, runtime)
+
+    def list_instances_with_options(
+        self,
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.ListInstancesRequest,
+        headers: fc__open_20210406_models.ListInstancesHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> fc__open_20210406_models.ListInstancesResponse:
+        UtilClient.validate_model(request)
+        service_name = OpenApiUtilClient.get_encode_param(service_name)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        query = {}
+        if not UtilClient.is_unset(request.limit):
+            query['limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_fc_account_id):
+            real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstances',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/instances',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc__open_20210406_models.ListInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instances_with_options_async(
+        self,
+        service_name: str,
+        function_name: str,
+        request: fc__open_20210406_models.ListInstancesRequest,
+        headers: fc__open_20210406_models.ListInstancesHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> fc__open_20210406_models.ListInstancesResponse:
+        UtilClient.validate_model(request)
+        service_name = OpenApiUtilClient.get_encode_param(service_name)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        query = {}
+        if not UtilClient.is_unset(request.limit):
+            query['limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_fc_account_id):
+            real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstances',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/instances',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc__open_20210406_models.ListInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_layer_versions(
@@ -2586,9 +3536,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListLayerVersions',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/layers/{layer_name}/versions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListLayerVersionsResponse(),
-            self.do_roarequest('ListLayerVersions', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/layers/{layer_name}/versions', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_layer_versions_with_options_async(
@@ -2609,9 +3570,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListLayerVersions',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/layers/{layer_name}/versions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListLayerVersionsResponse(),
-            await self.do_roarequest_async('ListLayerVersions', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/layers/{layer_name}/versions', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_layers(
@@ -2650,9 +3622,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListLayers',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/layers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListLayersResponse(),
-            self.do_roarequest('ListLayers', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/layers', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_layers_with_options_async(
@@ -2675,9 +3658,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListLayers',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/layers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListLayersResponse(),
-            await self.do_roarequest_async('ListLayers', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/layers', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_on_demand_configs(
@@ -2716,9 +3710,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListOnDemandConfigs',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/on-demand-configs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListOnDemandConfigsResponse(),
-            self.do_roarequest('ListOnDemandConfigs', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/on-demand-configs', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_on_demand_configs_with_options_async(
@@ -2741,9 +3746,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListOnDemandConfigs',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/on-demand-configs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListOnDemandConfigsResponse(),
-            await self.do_roarequest_async('ListOnDemandConfigs', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/on-demand-configs', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_provision_configs(
@@ -2782,9 +3798,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListProvisionConfigs',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/provision-configs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListProvisionConfigsResponse(),
-            self.do_roarequest('ListProvisionConfigs', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/provision-configs', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_provision_configs_with_options_async(
@@ -2807,9 +3834,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListProvisionConfigs',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/provision-configs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListProvisionConfigsResponse(),
-            await self.do_roarequest_async('ListProvisionConfigs', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/provision-configs', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_reserved_capacities(
@@ -2844,9 +3882,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListReservedCapacities',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/reserved-capacities',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListReservedCapacitiesResponse(),
-            self.do_roarequest('ListReservedCapacities', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/reserved-capacities', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_reserved_capacities_with_options_async(
@@ -2865,9 +3914,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListReservedCapacities',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/reserved-capacities',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListReservedCapacitiesResponse(),
-            await self.do_roarequest_async('ListReservedCapacities', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/reserved-capacities', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_service_versions(
@@ -2910,9 +3970,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListServiceVersions',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/versions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListServiceVersionsResponse(),
-            self.do_roarequest('ListServiceVersions', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/versions', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_service_versions_with_options_async(
@@ -2937,9 +4008,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListServiceVersions',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/versions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListServiceVersionsResponse(),
-            await self.do_roarequest_async('ListServiceVersions', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/versions', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_services(
@@ -2978,9 +4060,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListServices',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListServicesResponse(),
-            self.do_roarequest('ListServices', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_services_with_options_async(
@@ -3003,9 +4096,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListServices',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListServicesResponse(),
-            await self.do_roarequest_async('ListServices', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_stateful_async_invocations(
@@ -3062,9 +4166,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListStatefulAsyncInvocations',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/stateful-async-invocations',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListStatefulAsyncInvocationsResponse(),
-            self.do_roarequest('ListStatefulAsyncInvocations', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/stateful-async-invocations', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_stateful_async_invocations_with_options_async(
@@ -3101,9 +4216,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListStatefulAsyncInvocations',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/stateful-async-invocations',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListStatefulAsyncInvocationsResponse(),
-            await self.do_roarequest_async('ListStatefulAsyncInvocations', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/stateful-async-invocations', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tagged_resources(
@@ -3138,9 +4264,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListTaggedResources',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/tags',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListTaggedResourcesResponse(),
-            self.do_roarequest('ListTaggedResources', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/tags', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_tagged_resources_with_options_async(
@@ -3159,9 +4296,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListTaggedResources',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/tags',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListTaggedResourcesResponse(),
-            await self.do_roarequest_async('ListTaggedResources', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/tags', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_triggers(
@@ -3208,9 +4356,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListTriggers',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListTriggersResponse(),
-            self.do_roarequest('ListTriggers', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_triggers_with_options_async(
@@ -3237,9 +4396,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListTriggers',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListTriggersResponse(),
-            await self.do_roarequest_async('ListTriggers', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_vpc_bindings(
@@ -3268,9 +4438,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListVpcBindings',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/bindings',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListVpcBindingsResponse(),
-            self.do_roarequest('ListVpcBindings', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/bindings', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_vpc_bindings_with_options_async(
@@ -3283,9 +4464,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListVpcBindings',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/bindings',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.ListVpcBindingsResponse(),
-            await self.do_roarequest_async('ListVpcBindings', '2021-04-06', 'HTTPS', 'GET', 'AK', f'/2021-04-06/services/{service_name}/bindings', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def permanent_delete_layer_version(
@@ -3322,9 +4514,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='PermanentDeleteLayerVersion',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/adminlayers/{user_id}/{layer_name}/versions/{version}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.PermanentDeleteLayerVersionResponse(),
-            self.do_roarequest('PermanentDeleteLayerVersion', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/adminlayers/{user_id}/{layer_name}/versions/{version}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def permanent_delete_layer_version_with_options_async(
@@ -3341,9 +4544,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='PermanentDeleteLayerVersion',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/adminlayers/{user_id}/{layer_name}/versions/{version}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.PermanentDeleteLayerVersionResponse(),
-            await self.do_roarequest_async('PermanentDeleteLayerVersion', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/adminlayers/{user_id}/{layer_name}/versions/{version}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def publish_layer_as_public(
@@ -3376,9 +4590,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='PublishLayerAsPublic',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/layers/{layer_name}/versions/{version}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.PublishLayerAsPublicResponse(),
-            self.do_roarequest('PublishLayerAsPublic', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/layers/{layer_name}/versions/{version}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def publish_layer_as_public_with_options_async(
@@ -3393,9 +4618,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='PublishLayerAsPublic',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/layers/{layer_name}/versions/{version}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.PublishLayerAsPublicResponse(),
-            await self.do_roarequest_async('PublishLayerAsPublic', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/layers/{layer_name}/versions/{version}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def publish_service_version(
@@ -3432,14 +4668,25 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='PublishServiceVersion',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/versions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.PublishServiceVersionResponse(),
-            self.do_roarequest('PublishServiceVersion', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/services/{service_name}/versions', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def publish_service_version_with_options_async(
@@ -3458,14 +4705,25 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='PublishServiceVersion',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/versions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.PublishServiceVersionResponse(),
-            await self.do_roarequest_async('PublishServiceVersion', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/services/{service_name}/versions', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def put_function_async_invoke_config(
@@ -3516,9 +4774,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='PutFunctionAsyncInvokeConfig',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-config',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.PutFunctionAsyncInvokeConfigResponse(),
-            self.do_roarequest('PutFunctionAsyncInvokeConfig', '2021-04-06', 'HTTPS', 'PUT', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-config', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def put_function_async_invoke_config_with_options_async(
@@ -3549,9 +4818,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='PutFunctionAsyncInvokeConfig',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-config',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.PutFunctionAsyncInvokeConfigResponse(),
-            await self.do_roarequest_async('PutFunctionAsyncInvokeConfig', '2021-04-06', 'HTTPS', 'PUT', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-config', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def put_function_on_demand_config(
@@ -3595,15 +4875,26 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='PutFunctionOnDemandConfig',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/on-demand-config',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.PutFunctionOnDemandConfigResponse(),
-            self.do_roarequest('PutFunctionOnDemandConfig', '2021-04-06', 'HTTPS', 'PUT', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/on-demand-config', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def put_function_on_demand_config_with_options_async(
@@ -3627,15 +4918,26 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='PutFunctionOnDemandConfig',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/on-demand-config',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.PutFunctionOnDemandConfigResponse(),
-            await self.do_roarequest_async('PutFunctionOnDemandConfig', '2021-04-06', 'HTTPS', 'PUT', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/on-demand-config', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def put_provision_config(
@@ -3684,9 +4986,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='PutProvisionConfig',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/provision-config',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.PutProvisionConfigResponse(),
-            self.do_roarequest('PutProvisionConfig', '2021-04-06', 'HTTPS', 'PUT', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/provision-config', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def put_provision_config_with_options_async(
@@ -3715,9 +5028,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='PutProvisionConfig',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/provision-config',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.PutProvisionConfigResponse(),
-            await self.do_roarequest_async('PutProvisionConfig', '2021-04-06', 'HTTPS', 'PUT', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/provision-config', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def register_event_source(
@@ -3762,9 +5086,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='RegisterEventSource',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/event-sources',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.RegisterEventSourceResponse(),
-            self.do_roarequest('RegisterEventSource', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/event-sources', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def register_event_source_with_options_async(
@@ -3789,9 +5124,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='RegisterEventSource',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/event-sources',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.RegisterEventSourceResponse(),
-            await self.do_roarequest_async('RegisterEventSource', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/event-sources', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_stateful_async_invocation(
@@ -3836,9 +5182,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='StopStatefulAsyncInvocation',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/stateful-async-invocations/{invocation_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.StopStatefulAsyncInvocationResponse(),
-            self.do_roarequest('StopStatefulAsyncInvocation', '2021-04-06', 'HTTPS', 'PUT', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/stateful-async-invocations/{invocation_id}', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def stop_stateful_async_invocation_with_options_async(
@@ -3861,9 +5218,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='StopStatefulAsyncInvocation',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/stateful-async-invocations/{invocation_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.StopStatefulAsyncInvocationResponse(),
-            await self.do_roarequest_async('StopStatefulAsyncInvocation', '2021-04-06', 'HTTPS', 'PUT', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/stateful-async-invocations/{invocation_id}', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def tag_resource(
@@ -3898,9 +5266,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='TagResource',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/tag',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.TagResourceResponse(),
-            self.do_roarequest('TagResource', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/tag', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def tag_resource_with_options_async(
@@ -3919,9 +5298,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='TagResource',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/tag',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.TagResourceResponse(),
-            await self.do_roarequest_async('TagResource', '2021-04-06', 'HTTPS', 'POST', 'AK', f'/2021-04-06/tag', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def untag_resource(
@@ -3958,9 +5348,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UntagResource',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/tag',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.UntagResourceResponse(),
-            self.do_roarequest('UntagResource', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/tag', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def untag_resource_with_options_async(
@@ -3981,9 +5382,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UntagResource',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/tag',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.UntagResourceResponse(),
-            await self.do_roarequest_async('UntagResource', '2021-04-06', 'HTTPS', 'DELETE', 'AK', f'/2021-04-06/tag', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_alias(
@@ -4028,14 +5440,25 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateAlias',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/aliases/{alias_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.UpdateAliasResponse(),
-            self.do_roarequest('UpdateAlias', '2021-04-06', 'HTTPS', 'PUT', 'AK', f'/2021-04-06/services/{service_name}/aliases/{alias_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_alias_with_options_async(
@@ -4060,14 +5483,25 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateAlias',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/aliases/{alias_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.UpdateAliasResponse(),
-            await self.do_roarequest_async('UpdateAlias', '2021-04-06', 'HTTPS', 'PUT', 'AK', f'/2021-04-06/services/{service_name}/aliases/{alias_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_custom_domain(
@@ -4108,9 +5542,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateCustomDomain',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/custom-domains/{domain_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.UpdateCustomDomainResponse(),
-            self.do_roarequest('UpdateCustomDomain', '2021-04-06', 'HTTPS', 'PUT', 'AK', f'/2021-04-06/custom-domains/{domain_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_custom_domain_with_options_async(
@@ -4133,9 +5578,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateCustomDomain',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/custom-domains/{domain_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.UpdateCustomDomainResponse(),
-            await self.do_roarequest_async('UpdateCustomDomain', '2021-04-06', 'HTTPS', 'PUT', 'AK', f'/2021-04-06/custom-domains/{domain_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_function(
@@ -4178,6 +5634,10 @@ class Client(OpenApiClient):
             body['code'] = request.code
         if not UtilClient.is_unset(request.custom_container_config):
             body['customContainerConfig'] = request.custom_container_config
+        if not UtilClient.is_unset(request.custom_dns):
+            body['customDNS'] = request.custom_dns
+        if not UtilClient.is_unset(request.custom_runtime_config):
+            body['customRuntimeConfig'] = request.custom_runtime_config
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.environment_variables):
@@ -4204,18 +5664,29 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         if not UtilClient.is_unset(headers.x_fc_account_id):
-            real_headers['X-Fc-Account-Id'] = headers.x_fc_account_id
+            real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
         if not UtilClient.is_unset(headers.x_fc_code_checksum):
-            real_headers['x-fc-code-checksum'] = headers.x_fc_code_checksum
+            real_headers['x-fc-code-checksum'] = UtilClient.to_jsonstring(headers.x_fc_code_checksum)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateFunction',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.UpdateFunctionResponse(),
-            self.do_roarequest('UpdateFunction', '2021-04-06', 'HTTPS', 'PUT', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_function_with_options_async(
@@ -4238,6 +5709,10 @@ class Client(OpenApiClient):
             body['code'] = request.code
         if not UtilClient.is_unset(request.custom_container_config):
             body['customContainerConfig'] = request.custom_container_config
+        if not UtilClient.is_unset(request.custom_dns):
+            body['customDNS'] = request.custom_dns
+        if not UtilClient.is_unset(request.custom_runtime_config):
+            body['customRuntimeConfig'] = request.custom_runtime_config
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.environment_variables):
@@ -4264,18 +5739,29 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         if not UtilClient.is_unset(headers.x_fc_account_id):
-            real_headers['X-Fc-Account-Id'] = headers.x_fc_account_id
+            real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
         if not UtilClient.is_unset(headers.x_fc_code_checksum):
-            real_headers['x-fc-code-checksum'] = headers.x_fc_code_checksum
+            real_headers['x-fc-code-checksum'] = UtilClient.to_jsonstring(headers.x_fc_code_checksum)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateFunction',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.UpdateFunctionResponse(),
-            await self.do_roarequest_async('UpdateFunction', '2021-04-06', 'HTTPS', 'PUT', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_service(
@@ -4324,16 +5810,27 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         if not UtilClient.is_unset(headers.x_fc_account_id):
-            real_headers['X-Fc-Account-Id'] = headers.x_fc_account_id
+            real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateService',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.UpdateServiceResponse(),
-            self.do_roarequest('UpdateService', '2021-04-06', 'HTTPS', 'PUT', 'AK', f'/2021-04-06/services/{service_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_service_with_options_async(
@@ -4364,16 +5861,27 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         if not UtilClient.is_unset(headers.x_fc_account_id):
-            real_headers['X-Fc-Account-Id'] = headers.x_fc_account_id
+            real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateService',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.UpdateServiceResponse(),
-            await self.do_roarequest_async('UpdateService', '2021-04-06', 'HTTPS', 'PUT', 'AK', f'/2021-04-06/services/{service_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_trigger(
@@ -4424,16 +5932,27 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         if not UtilClient.is_unset(headers.x_fc_account_id):
-            real_headers['X-Fc-Account-Id'] = headers.x_fc_account_id
+            real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateTrigger',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers/{trigger_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.UpdateTriggerResponse(),
-            self.do_roarequest('UpdateTrigger', '2021-04-06', 'HTTPS', 'PUT', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers/{trigger_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_trigger_with_options_async(
@@ -4462,14 +5981,25 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
         if not UtilClient.is_unset(headers.if_match):
-            real_headers['If-Match'] = headers.if_match
+            real_headers['If-Match'] = UtilClient.to_jsonstring(headers.if_match)
         if not UtilClient.is_unset(headers.x_fc_account_id):
-            real_headers['X-Fc-Account-Id'] = headers.x_fc_account_id
+            real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
         req = open_api_models.OpenApiRequest(
             headers=real_headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateTrigger',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers/{trigger_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             fc__open_20210406_models.UpdateTriggerResponse(),
-            await self.do_roarequest_async('UpdateTrigger', '2021-04-06', 'HTTPS', 'PUT', 'AK', f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers/{trigger_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
