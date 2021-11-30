@@ -1592,6 +1592,8 @@ class CreateBasicAcceleratorRequest(TeaModel):
     def __init__(
         self,
         auto_pay: bool = None,
+        auto_renew: bool = None,
+        auto_renew_duration: int = None,
         auto_use_coupon: str = None,
         client_token: str = None,
         duration: int = None,
@@ -1600,6 +1602,10 @@ class CreateBasicAcceleratorRequest(TeaModel):
     ):
         # 自动续费
         self.auto_pay = auto_pay
+        # 自动续费
+        self.auto_renew = auto_renew
+        # 续费周期
+        self.auto_renew_duration = auto_renew_duration
         # 自动使用优惠券
         self.auto_use_coupon = auto_use_coupon
         # 客户端Token
@@ -1622,6 +1628,10 @@ class CreateBasicAcceleratorRequest(TeaModel):
         result = dict()
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.auto_renew_duration is not None:
+            result['AutoRenewDuration'] = self.auto_renew_duration
         if self.auto_use_coupon is not None:
             result['AutoUseCoupon'] = self.auto_use_coupon
         if self.client_token is not None:
@@ -1638,6 +1648,10 @@ class CreateBasicAcceleratorRequest(TeaModel):
         m = m or dict()
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('AutoRenewDuration') is not None:
+            self.auto_renew_duration = m.get('AutoRenewDuration')
         if m.get('AutoUseCoupon') is not None:
             self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('ClientToken') is not None:
@@ -5384,6 +5398,127 @@ class DescribeAcceleratorResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeAcceleratorResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAcceleratorAutoRenewAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        accelerator_id: str = None,
+        region_id: str = None,
+    ):
+        self.accelerator_id = accelerator_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accelerator_id is not None:
+            result['AcceleratorId'] = self.accelerator_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceleratorId') is not None:
+            self.accelerator_id = m.get('AcceleratorId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeAcceleratorAutoRenewAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        accelerator_id: str = None,
+        auto_renew: bool = None,
+        auto_renew_duration: int = None,
+        renewal_status: str = None,
+        request_id: str = None,
+    ):
+        self.accelerator_id = accelerator_id
+        self.auto_renew = auto_renew
+        self.auto_renew_duration = auto_renew_duration
+        self.renewal_status = renewal_status
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accelerator_id is not None:
+            result['AcceleratorId'] = self.accelerator_id
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.auto_renew_duration is not None:
+            result['AutoRenewDuration'] = self.auto_renew_duration
+        if self.renewal_status is not None:
+            result['RenewalStatus'] = self.renewal_status
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceleratorId') is not None:
+            self.accelerator_id = m.get('AcceleratorId')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('AutoRenewDuration') is not None:
+            self.auto_renew_duration = m.get('AutoRenewDuration')
+        if m.get('RenewalStatus') is not None:
+            self.renewal_status = m.get('RenewalStatus')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeAcceleratorAutoRenewAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeAcceleratorAutoRenewAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeAcceleratorAutoRenewAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9254,9 +9389,11 @@ class ListAvailableBusiRegionsResponseBodyRegions(TeaModel):
     def __init__(
         self,
         local_name: str = None,
+        pop: bool = None,
         region_id: str = None,
     ):
         self.local_name = local_name
+        self.pop = pop
         self.region_id = region_id
 
     def validate(self):
@@ -9270,6 +9407,8 @@ class ListAvailableBusiRegionsResponseBodyRegions(TeaModel):
         result = dict()
         if self.local_name is not None:
             result['LocalName'] = self.local_name
+        if self.pop is not None:
+            result['Pop'] = self.pop
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -9278,6 +9417,8 @@ class ListAvailableBusiRegionsResponseBodyRegions(TeaModel):
         m = m or dict()
         if m.get('LocalName') is not None:
             self.local_name = m.get('LocalName')
+        if m.get('Pop') is not None:
+            self.pop = m.get('Pop')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -12737,6 +12878,139 @@ class UpdateAcceleratorResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = UpdateAcceleratorResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAcceleratorAutoRenewAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        accelerator_id: str = None,
+        auto_renew: bool = None,
+        auto_renew_duration: int = None,
+        client_token: str = None,
+        name: str = None,
+        region_id: str = None,
+        renewal_status: str = None,
+    ):
+        self.accelerator_id = accelerator_id
+        self.auto_renew = auto_renew
+        self.auto_renew_duration = auto_renew_duration
+        self.client_token = client_token
+        self.name = name
+        self.region_id = region_id
+        self.renewal_status = renewal_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accelerator_id is not None:
+            result['AcceleratorId'] = self.accelerator_id
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.auto_renew_duration is not None:
+            result['AutoRenewDuration'] = self.auto_renew_duration
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.renewal_status is not None:
+            result['RenewalStatus'] = self.renewal_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceleratorId') is not None:
+            self.accelerator_id = m.get('AcceleratorId')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('AutoRenewDuration') is not None:
+            self.auto_renew_duration = m.get('AutoRenewDuration')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RenewalStatus') is not None:
+            self.renewal_status = m.get('RenewalStatus')
+        return self
+
+
+class UpdateAcceleratorAutoRenewAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        accelerator_id: str = None,
+        request_id: str = None,
+    ):
+        self.accelerator_id = accelerator_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accelerator_id is not None:
+            result['AcceleratorId'] = self.accelerator_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceleratorId') is not None:
+            self.accelerator_id = m.get('AcceleratorId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateAcceleratorAutoRenewAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateAcceleratorAutoRenewAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateAcceleratorAutoRenewAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
