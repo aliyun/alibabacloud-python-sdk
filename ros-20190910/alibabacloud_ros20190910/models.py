@@ -1816,6 +1816,393 @@ class CreateTemplateResponse(TeaModel):
         return self
 
 
+class CreateTemplateScratchRequestPreferenceParameters(TeaModel):
+    def __init__(
+        self,
+        parameter_key: str = None,
+        parameter_value: str = None,
+    ):
+        self.parameter_key = parameter_key
+        self.parameter_value = parameter_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameter_key is not None:
+            result['ParameterKey'] = self.parameter_key
+        if self.parameter_value is not None:
+            result['ParameterValue'] = self.parameter_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParameterKey') is not None:
+            self.parameter_key = m.get('ParameterKey')
+        if m.get('ParameterValue') is not None:
+            self.parameter_value = m.get('ParameterValue')
+        return self
+
+
+class CreateTemplateScratchRequestSourceResourceGroup(TeaModel):
+    def __init__(
+        self,
+        resource_group_id: str = None,
+        resource_type_filter: List[str] = None,
+    ):
+        self.resource_group_id = resource_group_id
+        self.resource_type_filter = resource_type_filter
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_type_filter is not None:
+            result['ResourceTypeFilter'] = self.resource_type_filter
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceTypeFilter') is not None:
+            self.resource_type_filter = m.get('ResourceTypeFilter')
+        return self
+
+
+class CreateTemplateScratchRequestSourceResources(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class CreateTemplateScratchRequestSourceTag(TeaModel):
+    def __init__(
+        self,
+        resource_tags: Dict[str, Any] = None,
+        resource_type_filter: List[str] = None,
+    ):
+        self.resource_tags = resource_tags
+        self.resource_type_filter = resource_type_filter
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_tags is not None:
+            result['ResourceTags'] = self.resource_tags
+        if self.resource_type_filter is not None:
+            result['ResourceTypeFilter'] = self.resource_type_filter
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceTags') is not None:
+            self.resource_tags = m.get('ResourceTags')
+        if m.get('ResourceTypeFilter') is not None:
+            self.resource_type_filter = m.get('ResourceTypeFilter')
+        return self
+
+
+class CreateTemplateScratchRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        description: str = None,
+        execution_mode: str = None,
+        logical_id_strategy: str = None,
+        preference_parameters: List[CreateTemplateScratchRequestPreferenceParameters] = None,
+        region_id: str = None,
+        source_resource_group: CreateTemplateScratchRequestSourceResourceGroup = None,
+        source_resources: List[CreateTemplateScratchRequestSourceResources] = None,
+        source_tag: CreateTemplateScratchRequestSourceTag = None,
+        template_scratch_type: str = None,
+    ):
+        self.client_token = client_token
+        self.description = description
+        self.execution_mode = execution_mode
+        self.logical_id_strategy = logical_id_strategy
+        self.preference_parameters = preference_parameters
+        self.region_id = region_id
+        self.source_resource_group = source_resource_group
+        self.source_resources = source_resources
+        self.source_tag = source_tag
+        self.template_scratch_type = template_scratch_type
+
+    def validate(self):
+        if self.preference_parameters:
+            for k in self.preference_parameters:
+                if k:
+                    k.validate()
+        if self.source_resource_group:
+            self.source_resource_group.validate()
+        if self.source_resources:
+            for k in self.source_resources:
+                if k:
+                    k.validate()
+        if self.source_tag:
+            self.source_tag.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.execution_mode is not None:
+            result['ExecutionMode'] = self.execution_mode
+        if self.logical_id_strategy is not None:
+            result['LogicalIdStrategy'] = self.logical_id_strategy
+        result['PreferenceParameters'] = []
+        if self.preference_parameters is not None:
+            for k in self.preference_parameters:
+                result['PreferenceParameters'].append(k.to_map() if k else None)
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.source_resource_group is not None:
+            result['SourceResourceGroup'] = self.source_resource_group.to_map()
+        result['SourceResources'] = []
+        if self.source_resources is not None:
+            for k in self.source_resources:
+                result['SourceResources'].append(k.to_map() if k else None)
+        if self.source_tag is not None:
+            result['SourceTag'] = self.source_tag.to_map()
+        if self.template_scratch_type is not None:
+            result['TemplateScratchType'] = self.template_scratch_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ExecutionMode') is not None:
+            self.execution_mode = m.get('ExecutionMode')
+        if m.get('LogicalIdStrategy') is not None:
+            self.logical_id_strategy = m.get('LogicalIdStrategy')
+        self.preference_parameters = []
+        if m.get('PreferenceParameters') is not None:
+            for k in m.get('PreferenceParameters'):
+                temp_model = CreateTemplateScratchRequestPreferenceParameters()
+                self.preference_parameters.append(temp_model.from_map(k))
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SourceResourceGroup') is not None:
+            temp_model = CreateTemplateScratchRequestSourceResourceGroup()
+            self.source_resource_group = temp_model.from_map(m['SourceResourceGroup'])
+        self.source_resources = []
+        if m.get('SourceResources') is not None:
+            for k in m.get('SourceResources'):
+                temp_model = CreateTemplateScratchRequestSourceResources()
+                self.source_resources.append(temp_model.from_map(k))
+        if m.get('SourceTag') is not None:
+            temp_model = CreateTemplateScratchRequestSourceTag()
+            self.source_tag = temp_model.from_map(m['SourceTag'])
+        if m.get('TemplateScratchType') is not None:
+            self.template_scratch_type = m.get('TemplateScratchType')
+        return self
+
+
+class CreateTemplateScratchShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        description: str = None,
+        execution_mode: str = None,
+        logical_id_strategy: str = None,
+        preference_parameters_shrink: str = None,
+        region_id: str = None,
+        source_resource_group_shrink: str = None,
+        source_resources_shrink: str = None,
+        source_tag_shrink: str = None,
+        template_scratch_type: str = None,
+    ):
+        self.client_token = client_token
+        self.description = description
+        self.execution_mode = execution_mode
+        self.logical_id_strategy = logical_id_strategy
+        self.preference_parameters_shrink = preference_parameters_shrink
+        self.region_id = region_id
+        self.source_resource_group_shrink = source_resource_group_shrink
+        self.source_resources_shrink = source_resources_shrink
+        self.source_tag_shrink = source_tag_shrink
+        self.template_scratch_type = template_scratch_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.execution_mode is not None:
+            result['ExecutionMode'] = self.execution_mode
+        if self.logical_id_strategy is not None:
+            result['LogicalIdStrategy'] = self.logical_id_strategy
+        if self.preference_parameters_shrink is not None:
+            result['PreferenceParameters'] = self.preference_parameters_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.source_resource_group_shrink is not None:
+            result['SourceResourceGroup'] = self.source_resource_group_shrink
+        if self.source_resources_shrink is not None:
+            result['SourceResources'] = self.source_resources_shrink
+        if self.source_tag_shrink is not None:
+            result['SourceTag'] = self.source_tag_shrink
+        if self.template_scratch_type is not None:
+            result['TemplateScratchType'] = self.template_scratch_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ExecutionMode') is not None:
+            self.execution_mode = m.get('ExecutionMode')
+        if m.get('LogicalIdStrategy') is not None:
+            self.logical_id_strategy = m.get('LogicalIdStrategy')
+        if m.get('PreferenceParameters') is not None:
+            self.preference_parameters_shrink = m.get('PreferenceParameters')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SourceResourceGroup') is not None:
+            self.source_resource_group_shrink = m.get('SourceResourceGroup')
+        if m.get('SourceResources') is not None:
+            self.source_resources_shrink = m.get('SourceResources')
+        if m.get('SourceTag') is not None:
+            self.source_tag_shrink = m.get('SourceTag')
+        if m.get('TemplateScratchType') is not None:
+            self.template_scratch_type = m.get('TemplateScratchType')
+        return self
+
+
+class CreateTemplateScratchResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        template_scratch_id: str = None,
+    ):
+        self.request_id = request_id
+        self.template_scratch_id = template_scratch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.template_scratch_id is not None:
+            result['TemplateScratchId'] = self.template_scratch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TemplateScratchId') is not None:
+            self.template_scratch_id = m.get('TemplateScratchId')
+        return self
+
+
+class CreateTemplateScratchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateTemplateScratchResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateTemplateScratchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteChangeSetRequest(TeaModel):
     def __init__(
         self,
@@ -2461,6 +2848,103 @@ class DeleteTemplateResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DeleteTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteTemplateScratchRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        template_scratch_id: str = None,
+    ):
+        self.region_id = region_id
+        self.template_scratch_id = template_scratch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.template_scratch_id is not None:
+            result['TemplateScratchId'] = self.template_scratch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TemplateScratchId') is not None:
+            self.template_scratch_id = m.get('TemplateScratchId')
+        return self
+
+
+class DeleteTemplateScratchResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteTemplateScratchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteTemplateScratchResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteTemplateScratchResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3199,6 +3683,168 @@ class ExecuteChangeSetResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ExecuteChangeSetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GenerateTemplateByScratchRequest(TeaModel):
+    def __init__(
+        self,
+        provision_region_id: str = None,
+        region_id: str = None,
+        template_scratch_id: str = None,
+    ):
+        self.provision_region_id = provision_region_id
+        self.region_id = region_id
+        self.template_scratch_id = template_scratch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.provision_region_id is not None:
+            result['ProvisionRegionId'] = self.provision_region_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.template_scratch_id is not None:
+            result['TemplateScratchId'] = self.template_scratch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProvisionRegionId') is not None:
+            self.provision_region_id = m.get('ProvisionRegionId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TemplateScratchId') is not None:
+            self.template_scratch_id = m.get('TemplateScratchId')
+        return self
+
+
+class GenerateTemplateByScratchResponseBodyResourcesToImport(TeaModel):
+    def __init__(
+        self,
+        logical_resource_id: str = None,
+        resource_identifier: Dict[str, Any] = None,
+        resource_type: str = None,
+    ):
+        self.logical_resource_id = logical_resource_id
+        self.resource_identifier = resource_identifier
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logical_resource_id is not None:
+            result['LogicalResourceId'] = self.logical_resource_id
+        if self.resource_identifier is not None:
+            result['ResourceIdentifier'] = self.resource_identifier
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogicalResourceId') is not None:
+            self.logical_resource_id = m.get('LogicalResourceId')
+        if m.get('ResourceIdentifier') is not None:
+            self.resource_identifier = m.get('ResourceIdentifier')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class GenerateTemplateByScratchResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resources_to_import: List[GenerateTemplateByScratchResponseBodyResourcesToImport] = None,
+        template_body: str = None,
+    ):
+        self.request_id = request_id
+        self.resources_to_import = resources_to_import
+        self.template_body = template_body
+
+    def validate(self):
+        if self.resources_to_import:
+            for k in self.resources_to_import:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResourcesToImport'] = []
+        if self.resources_to_import is not None:
+            for k in self.resources_to_import:
+                result['ResourcesToImport'].append(k.to_map() if k else None)
+        if self.template_body is not None:
+            result['TemplateBody'] = self.template_body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.resources_to_import = []
+        if m.get('ResourcesToImport') is not None:
+            for k in m.get('ResourcesToImport'):
+                temp_model = GenerateTemplateByScratchResponseBodyResourcesToImport()
+                self.resources_to_import.append(temp_model.from_map(k))
+        if m.get('TemplateBody') is not None:
+            self.template_body = m.get('TemplateBody')
+        return self
+
+
+class GenerateTemplateByScratchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GenerateTemplateByScratchResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GenerateTemplateByScratchResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7171,6 +7817,425 @@ class GetTemplateParameterConstraintsResponse(TeaModel):
         return self
 
 
+class GetTemplateScratchRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        show_data_option: str = None,
+        template_scratch_id: str = None,
+    ):
+        self.region_id = region_id
+        self.show_data_option = show_data_option
+        self.template_scratch_id = template_scratch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.show_data_option is not None:
+            result['ShowDataOption'] = self.show_data_option
+        if self.template_scratch_id is not None:
+            result['TemplateScratchId'] = self.template_scratch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ShowDataOption') is not None:
+            self.show_data_option = m.get('ShowDataOption')
+        if m.get('TemplateScratchId') is not None:
+            self.template_scratch_id = m.get('TemplateScratchId')
+        return self
+
+
+class GetTemplateScratchResponseBodyTemplateScratchPreferenceParameters(TeaModel):
+    def __init__(
+        self,
+        parameter_key: str = None,
+        parameter_value: str = None,
+    ):
+        self.parameter_key = parameter_key
+        self.parameter_value = parameter_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameter_key is not None:
+            result['ParameterKey'] = self.parameter_key
+        if self.parameter_value is not None:
+            result['ParameterValue'] = self.parameter_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParameterKey') is not None:
+            self.parameter_key = m.get('ParameterKey')
+        if m.get('ParameterValue') is not None:
+            self.parameter_value = m.get('ParameterValue')
+        return self
+
+
+class GetTemplateScratchResponseBodyTemplateScratchSourceResourceGroup(TeaModel):
+    def __init__(
+        self,
+        resource_group_id: str = None,
+        resource_type_filter: List[str] = None,
+    ):
+        self.resource_group_id = resource_group_id
+        self.resource_type_filter = resource_type_filter
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_type_filter is not None:
+            result['ResourceTypeFilter'] = self.resource_type_filter
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceTypeFilter') is not None:
+            self.resource_type_filter = m.get('ResourceTypeFilter')
+        return self
+
+
+class GetTemplateScratchResponseBodyTemplateScratchSourceResources(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class GetTemplateScratchResponseBodyTemplateScratchSourceTag(TeaModel):
+    def __init__(
+        self,
+        resource_tags: Dict[str, Any] = None,
+        resource_type_filter: List[str] = None,
+    ):
+        self.resource_tags = resource_tags
+        self.resource_type_filter = resource_type_filter
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_tags is not None:
+            result['ResourceTags'] = self.resource_tags
+        if self.resource_type_filter is not None:
+            result['ResourceTypeFilter'] = self.resource_type_filter
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceTags') is not None:
+            self.resource_tags = m.get('ResourceTags')
+        if m.get('ResourceTypeFilter') is not None:
+            self.resource_type_filter = m.get('ResourceTypeFilter')
+        return self
+
+
+class GetTemplateScratchResponseBodyTemplateScratchStacks(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        stack_id: str = None,
+    ):
+        self.region_id = region_id
+        self.stack_id = stack_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.stack_id is not None:
+            result['StackId'] = self.stack_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StackId') is not None:
+            self.stack_id = m.get('StackId')
+        return self
+
+
+class GetTemplateScratchResponseBodyTemplateScratch(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        failed_code: str = None,
+        logical_id_strategy: str = None,
+        preference_parameters: List[GetTemplateScratchResponseBodyTemplateScratchPreferenceParameters] = None,
+        source_resource_group: GetTemplateScratchResponseBodyTemplateScratchSourceResourceGroup = None,
+        source_resources: List[GetTemplateScratchResponseBodyTemplateScratchSourceResources] = None,
+        source_tag: GetTemplateScratchResponseBodyTemplateScratchSourceTag = None,
+        stacks: List[GetTemplateScratchResponseBodyTemplateScratchStacks] = None,
+        status: str = None,
+        status_reason: str = None,
+        template_scratch_data: Dict[str, Any] = None,
+        template_scratch_id: str = None,
+        template_scratch_type: str = None,
+        update_time: str = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.failed_code = failed_code
+        self.logical_id_strategy = logical_id_strategy
+        self.preference_parameters = preference_parameters
+        self.source_resource_group = source_resource_group
+        self.source_resources = source_resources
+        self.source_tag = source_tag
+        self.stacks = stacks
+        self.status = status
+        self.status_reason = status_reason
+        self.template_scratch_data = template_scratch_data
+        self.template_scratch_id = template_scratch_id
+        self.template_scratch_type = template_scratch_type
+        self.update_time = update_time
+
+    def validate(self):
+        if self.preference_parameters:
+            for k in self.preference_parameters:
+                if k:
+                    k.validate()
+        if self.source_resource_group:
+            self.source_resource_group.validate()
+        if self.source_resources:
+            for k in self.source_resources:
+                if k:
+                    k.validate()
+        if self.source_tag:
+            self.source_tag.validate()
+        if self.stacks:
+            for k in self.stacks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.failed_code is not None:
+            result['FailedCode'] = self.failed_code
+        if self.logical_id_strategy is not None:
+            result['LogicalIdStrategy'] = self.logical_id_strategy
+        result['PreferenceParameters'] = []
+        if self.preference_parameters is not None:
+            for k in self.preference_parameters:
+                result['PreferenceParameters'].append(k.to_map() if k else None)
+        if self.source_resource_group is not None:
+            result['SourceResourceGroup'] = self.source_resource_group.to_map()
+        result['SourceResources'] = []
+        if self.source_resources is not None:
+            for k in self.source_resources:
+                result['SourceResources'].append(k.to_map() if k else None)
+        if self.source_tag is not None:
+            result['SourceTag'] = self.source_tag.to_map()
+        result['Stacks'] = []
+        if self.stacks is not None:
+            for k in self.stacks:
+                result['Stacks'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_reason is not None:
+            result['StatusReason'] = self.status_reason
+        if self.template_scratch_data is not None:
+            result['TemplateScratchData'] = self.template_scratch_data
+        if self.template_scratch_id is not None:
+            result['TemplateScratchId'] = self.template_scratch_id
+        if self.template_scratch_type is not None:
+            result['TemplateScratchType'] = self.template_scratch_type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FailedCode') is not None:
+            self.failed_code = m.get('FailedCode')
+        if m.get('LogicalIdStrategy') is not None:
+            self.logical_id_strategy = m.get('LogicalIdStrategy')
+        self.preference_parameters = []
+        if m.get('PreferenceParameters') is not None:
+            for k in m.get('PreferenceParameters'):
+                temp_model = GetTemplateScratchResponseBodyTemplateScratchPreferenceParameters()
+                self.preference_parameters.append(temp_model.from_map(k))
+        if m.get('SourceResourceGroup') is not None:
+            temp_model = GetTemplateScratchResponseBodyTemplateScratchSourceResourceGroup()
+            self.source_resource_group = temp_model.from_map(m['SourceResourceGroup'])
+        self.source_resources = []
+        if m.get('SourceResources') is not None:
+            for k in m.get('SourceResources'):
+                temp_model = GetTemplateScratchResponseBodyTemplateScratchSourceResources()
+                self.source_resources.append(temp_model.from_map(k))
+        if m.get('SourceTag') is not None:
+            temp_model = GetTemplateScratchResponseBodyTemplateScratchSourceTag()
+            self.source_tag = temp_model.from_map(m['SourceTag'])
+        self.stacks = []
+        if m.get('Stacks') is not None:
+            for k in m.get('Stacks'):
+                temp_model = GetTemplateScratchResponseBodyTemplateScratchStacks()
+                self.stacks.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusReason') is not None:
+            self.status_reason = m.get('StatusReason')
+        if m.get('TemplateScratchData') is not None:
+            self.template_scratch_data = m.get('TemplateScratchData')
+        if m.get('TemplateScratchId') is not None:
+            self.template_scratch_id = m.get('TemplateScratchId')
+        if m.get('TemplateScratchType') is not None:
+            self.template_scratch_type = m.get('TemplateScratchType')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetTemplateScratchResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        template_scratch: GetTemplateScratchResponseBodyTemplateScratch = None,
+    ):
+        self.request_id = request_id
+        self.template_scratch = template_scratch
+
+    def validate(self):
+        if self.template_scratch:
+            self.template_scratch.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.template_scratch is not None:
+            result['TemplateScratch'] = self.template_scratch.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TemplateScratch') is not None:
+            temp_model = GetTemplateScratchResponseBodyTemplateScratch()
+            self.template_scratch = temp_model.from_map(m['TemplateScratch'])
+        return self
+
+
+class GetTemplateScratchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetTemplateScratchResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetTemplateScratchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTemplateSummaryRequest(TeaModel):
     def __init__(
         self,
@@ -10340,6 +11405,413 @@ class ListTagValuesResponse(TeaModel):
         return self
 
 
+class ListTemplateScratchesRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        status: str = None,
+        template_scratch_id: str = None,
+        template_scratch_type: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.status = status
+        self.template_scratch_id = template_scratch_id
+        self.template_scratch_type = template_scratch_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.template_scratch_id is not None:
+            result['TemplateScratchId'] = self.template_scratch_id
+        if self.template_scratch_type is not None:
+            result['TemplateScratchType'] = self.template_scratch_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TemplateScratchId') is not None:
+            self.template_scratch_id = m.get('TemplateScratchId')
+        if m.get('TemplateScratchType') is not None:
+            self.template_scratch_type = m.get('TemplateScratchType')
+        return self
+
+
+class ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters(TeaModel):
+    def __init__(
+        self,
+        parameter_key: str = None,
+        parameter_value: str = None,
+    ):
+        self.parameter_key = parameter_key
+        self.parameter_value = parameter_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameter_key is not None:
+            result['ParameterKey'] = self.parameter_key
+        if self.parameter_value is not None:
+            result['ParameterValue'] = self.parameter_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParameterKey') is not None:
+            self.parameter_key = m.get('ParameterKey')
+        if m.get('ParameterValue') is not None:
+            self.parameter_value = m.get('ParameterValue')
+        return self
+
+
+class ListTemplateScratchesResponseBodyTemplateScratchesSourceResourceGroup(TeaModel):
+    def __init__(
+        self,
+        resource_group_id: str = None,
+        resource_type_filter: List[str] = None,
+    ):
+        self.resource_group_id = resource_group_id
+        self.resource_type_filter = resource_type_filter
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_type_filter is not None:
+            result['ResourceTypeFilter'] = self.resource_type_filter
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceTypeFilter') is not None:
+            self.resource_type_filter = m.get('ResourceTypeFilter')
+        return self
+
+
+class ListTemplateScratchesResponseBodyTemplateScratchesSourceResources(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class ListTemplateScratchesResponseBodyTemplateScratchesSourceTag(TeaModel):
+    def __init__(
+        self,
+        resource_tags: Dict[str, Any] = None,
+        resource_type_filter: List[str] = None,
+    ):
+        self.resource_tags = resource_tags
+        self.resource_type_filter = resource_type_filter
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_tags is not None:
+            result['ResourceTags'] = self.resource_tags
+        if self.resource_type_filter is not None:
+            result['ResourceTypeFilter'] = self.resource_type_filter
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceTags') is not None:
+            self.resource_tags = m.get('ResourceTags')
+        if m.get('ResourceTypeFilter') is not None:
+            self.resource_type_filter = m.get('ResourceTypeFilter')
+        return self
+
+
+class ListTemplateScratchesResponseBodyTemplateScratches(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        failed_code: str = None,
+        logical_id_strategy: str = None,
+        preference_parameters: List[ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters] = None,
+        source_resource_group: ListTemplateScratchesResponseBodyTemplateScratchesSourceResourceGroup = None,
+        source_resources: List[ListTemplateScratchesResponseBodyTemplateScratchesSourceResources] = None,
+        source_tag: ListTemplateScratchesResponseBodyTemplateScratchesSourceTag = None,
+        status: str = None,
+        status_reason: str = None,
+        template_scratch_id: str = None,
+        template_scratch_type: str = None,
+        update_time: str = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.failed_code = failed_code
+        self.logical_id_strategy = logical_id_strategy
+        self.preference_parameters = preference_parameters
+        self.source_resource_group = source_resource_group
+        self.source_resources = source_resources
+        self.source_tag = source_tag
+        self.status = status
+        self.status_reason = status_reason
+        self.template_scratch_id = template_scratch_id
+        self.template_scratch_type = template_scratch_type
+        self.update_time = update_time
+
+    def validate(self):
+        if self.preference_parameters:
+            for k in self.preference_parameters:
+                if k:
+                    k.validate()
+        if self.source_resource_group:
+            self.source_resource_group.validate()
+        if self.source_resources:
+            for k in self.source_resources:
+                if k:
+                    k.validate()
+        if self.source_tag:
+            self.source_tag.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.failed_code is not None:
+            result['FailedCode'] = self.failed_code
+        if self.logical_id_strategy is not None:
+            result['LogicalIdStrategy'] = self.logical_id_strategy
+        result['PreferenceParameters'] = []
+        if self.preference_parameters is not None:
+            for k in self.preference_parameters:
+                result['PreferenceParameters'].append(k.to_map() if k else None)
+        if self.source_resource_group is not None:
+            result['SourceResourceGroup'] = self.source_resource_group.to_map()
+        result['SourceResources'] = []
+        if self.source_resources is not None:
+            for k in self.source_resources:
+                result['SourceResources'].append(k.to_map() if k else None)
+        if self.source_tag is not None:
+            result['SourceTag'] = self.source_tag.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_reason is not None:
+            result['StatusReason'] = self.status_reason
+        if self.template_scratch_id is not None:
+            result['TemplateScratchId'] = self.template_scratch_id
+        if self.template_scratch_type is not None:
+            result['TemplateScratchType'] = self.template_scratch_type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FailedCode') is not None:
+            self.failed_code = m.get('FailedCode')
+        if m.get('LogicalIdStrategy') is not None:
+            self.logical_id_strategy = m.get('LogicalIdStrategy')
+        self.preference_parameters = []
+        if m.get('PreferenceParameters') is not None:
+            for k in m.get('PreferenceParameters'):
+                temp_model = ListTemplateScratchesResponseBodyTemplateScratchesPreferenceParameters()
+                self.preference_parameters.append(temp_model.from_map(k))
+        if m.get('SourceResourceGroup') is not None:
+            temp_model = ListTemplateScratchesResponseBodyTemplateScratchesSourceResourceGroup()
+            self.source_resource_group = temp_model.from_map(m['SourceResourceGroup'])
+        self.source_resources = []
+        if m.get('SourceResources') is not None:
+            for k in m.get('SourceResources'):
+                temp_model = ListTemplateScratchesResponseBodyTemplateScratchesSourceResources()
+                self.source_resources.append(temp_model.from_map(k))
+        if m.get('SourceTag') is not None:
+            temp_model = ListTemplateScratchesResponseBodyTemplateScratchesSourceTag()
+            self.source_tag = temp_model.from_map(m['SourceTag'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusReason') is not None:
+            self.status_reason = m.get('StatusReason')
+        if m.get('TemplateScratchId') is not None:
+            self.template_scratch_id = m.get('TemplateScratchId')
+        if m.get('TemplateScratchType') is not None:
+            self.template_scratch_type = m.get('TemplateScratchType')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListTemplateScratchesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        template_scratches: List[ListTemplateScratchesResponseBodyTemplateScratches] = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.template_scratches = template_scratches
+        self.total_count = total_count
+
+    def validate(self):
+        if self.template_scratches:
+            for k in self.template_scratches:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TemplateScratches'] = []
+        if self.template_scratches is not None:
+            for k in self.template_scratches:
+                result['TemplateScratches'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.template_scratches = []
+        if m.get('TemplateScratches') is not None:
+            for k in m.get('TemplateScratches'):
+                temp_model = ListTemplateScratchesResponseBodyTemplateScratches()
+                self.template_scratches.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListTemplateScratchesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListTemplateScratchesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListTemplateScratchesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTemplateVersionsRequest(TeaModel):
     def __init__(
         self,
@@ -13479,6 +14951,393 @@ class UpdateTemplateResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = UpdateTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateTemplateScratchRequestPreferenceParameters(TeaModel):
+    def __init__(
+        self,
+        parameter_key: str = None,
+        parameter_value: str = None,
+    ):
+        self.parameter_key = parameter_key
+        self.parameter_value = parameter_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameter_key is not None:
+            result['ParameterKey'] = self.parameter_key
+        if self.parameter_value is not None:
+            result['ParameterValue'] = self.parameter_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParameterKey') is not None:
+            self.parameter_key = m.get('ParameterKey')
+        if m.get('ParameterValue') is not None:
+            self.parameter_value = m.get('ParameterValue')
+        return self
+
+
+class UpdateTemplateScratchRequestSourceResourceGroup(TeaModel):
+    def __init__(
+        self,
+        resource_group_id: str = None,
+        resource_type_filter: List[str] = None,
+    ):
+        self.resource_group_id = resource_group_id
+        self.resource_type_filter = resource_type_filter
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_type_filter is not None:
+            result['ResourceTypeFilter'] = self.resource_type_filter
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceTypeFilter') is not None:
+            self.resource_type_filter = m.get('ResourceTypeFilter')
+        return self
+
+
+class UpdateTemplateScratchRequestSourceResources(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class UpdateTemplateScratchRequestSourceTag(TeaModel):
+    def __init__(
+        self,
+        resource_tags: Dict[str, Any] = None,
+        resource_type_filter: List[str] = None,
+    ):
+        self.resource_tags = resource_tags
+        self.resource_type_filter = resource_type_filter
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_tags is not None:
+            result['ResourceTags'] = self.resource_tags
+        if self.resource_type_filter is not None:
+            result['ResourceTypeFilter'] = self.resource_type_filter
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceTags') is not None:
+            self.resource_tags = m.get('ResourceTags')
+        if m.get('ResourceTypeFilter') is not None:
+            self.resource_type_filter = m.get('ResourceTypeFilter')
+        return self
+
+
+class UpdateTemplateScratchRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        description: str = None,
+        execution_mode: str = None,
+        logical_id_strategy: str = None,
+        preference_parameters: List[UpdateTemplateScratchRequestPreferenceParameters] = None,
+        region_id: str = None,
+        source_resource_group: UpdateTemplateScratchRequestSourceResourceGroup = None,
+        source_resources: List[UpdateTemplateScratchRequestSourceResources] = None,
+        source_tag: UpdateTemplateScratchRequestSourceTag = None,
+        template_scratch_id: str = None,
+    ):
+        self.client_token = client_token
+        self.description = description
+        self.execution_mode = execution_mode
+        self.logical_id_strategy = logical_id_strategy
+        self.preference_parameters = preference_parameters
+        self.region_id = region_id
+        self.source_resource_group = source_resource_group
+        self.source_resources = source_resources
+        self.source_tag = source_tag
+        self.template_scratch_id = template_scratch_id
+
+    def validate(self):
+        if self.preference_parameters:
+            for k in self.preference_parameters:
+                if k:
+                    k.validate()
+        if self.source_resource_group:
+            self.source_resource_group.validate()
+        if self.source_resources:
+            for k in self.source_resources:
+                if k:
+                    k.validate()
+        if self.source_tag:
+            self.source_tag.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.execution_mode is not None:
+            result['ExecutionMode'] = self.execution_mode
+        if self.logical_id_strategy is not None:
+            result['LogicalIdStrategy'] = self.logical_id_strategy
+        result['PreferenceParameters'] = []
+        if self.preference_parameters is not None:
+            for k in self.preference_parameters:
+                result['PreferenceParameters'].append(k.to_map() if k else None)
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.source_resource_group is not None:
+            result['SourceResourceGroup'] = self.source_resource_group.to_map()
+        result['SourceResources'] = []
+        if self.source_resources is not None:
+            for k in self.source_resources:
+                result['SourceResources'].append(k.to_map() if k else None)
+        if self.source_tag is not None:
+            result['SourceTag'] = self.source_tag.to_map()
+        if self.template_scratch_id is not None:
+            result['TemplateScratchId'] = self.template_scratch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ExecutionMode') is not None:
+            self.execution_mode = m.get('ExecutionMode')
+        if m.get('LogicalIdStrategy') is not None:
+            self.logical_id_strategy = m.get('LogicalIdStrategy')
+        self.preference_parameters = []
+        if m.get('PreferenceParameters') is not None:
+            for k in m.get('PreferenceParameters'):
+                temp_model = UpdateTemplateScratchRequestPreferenceParameters()
+                self.preference_parameters.append(temp_model.from_map(k))
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SourceResourceGroup') is not None:
+            temp_model = UpdateTemplateScratchRequestSourceResourceGroup()
+            self.source_resource_group = temp_model.from_map(m['SourceResourceGroup'])
+        self.source_resources = []
+        if m.get('SourceResources') is not None:
+            for k in m.get('SourceResources'):
+                temp_model = UpdateTemplateScratchRequestSourceResources()
+                self.source_resources.append(temp_model.from_map(k))
+        if m.get('SourceTag') is not None:
+            temp_model = UpdateTemplateScratchRequestSourceTag()
+            self.source_tag = temp_model.from_map(m['SourceTag'])
+        if m.get('TemplateScratchId') is not None:
+            self.template_scratch_id = m.get('TemplateScratchId')
+        return self
+
+
+class UpdateTemplateScratchShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        description: str = None,
+        execution_mode: str = None,
+        logical_id_strategy: str = None,
+        preference_parameters_shrink: str = None,
+        region_id: str = None,
+        source_resource_group_shrink: str = None,
+        source_resources_shrink: str = None,
+        source_tag_shrink: str = None,
+        template_scratch_id: str = None,
+    ):
+        self.client_token = client_token
+        self.description = description
+        self.execution_mode = execution_mode
+        self.logical_id_strategy = logical_id_strategy
+        self.preference_parameters_shrink = preference_parameters_shrink
+        self.region_id = region_id
+        self.source_resource_group_shrink = source_resource_group_shrink
+        self.source_resources_shrink = source_resources_shrink
+        self.source_tag_shrink = source_tag_shrink
+        self.template_scratch_id = template_scratch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.execution_mode is not None:
+            result['ExecutionMode'] = self.execution_mode
+        if self.logical_id_strategy is not None:
+            result['LogicalIdStrategy'] = self.logical_id_strategy
+        if self.preference_parameters_shrink is not None:
+            result['PreferenceParameters'] = self.preference_parameters_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.source_resource_group_shrink is not None:
+            result['SourceResourceGroup'] = self.source_resource_group_shrink
+        if self.source_resources_shrink is not None:
+            result['SourceResources'] = self.source_resources_shrink
+        if self.source_tag_shrink is not None:
+            result['SourceTag'] = self.source_tag_shrink
+        if self.template_scratch_id is not None:
+            result['TemplateScratchId'] = self.template_scratch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ExecutionMode') is not None:
+            self.execution_mode = m.get('ExecutionMode')
+        if m.get('LogicalIdStrategy') is not None:
+            self.logical_id_strategy = m.get('LogicalIdStrategy')
+        if m.get('PreferenceParameters') is not None:
+            self.preference_parameters_shrink = m.get('PreferenceParameters')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SourceResourceGroup') is not None:
+            self.source_resource_group_shrink = m.get('SourceResourceGroup')
+        if m.get('SourceResources') is not None:
+            self.source_resources_shrink = m.get('SourceResources')
+        if m.get('SourceTag') is not None:
+            self.source_tag_shrink = m.get('SourceTag')
+        if m.get('TemplateScratchId') is not None:
+            self.template_scratch_id = m.get('TemplateScratchId')
+        return self
+
+
+class UpdateTemplateScratchResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        template_scratch_id: str = None,
+    ):
+        self.request_id = request_id
+        self.template_scratch_id = template_scratch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.template_scratch_id is not None:
+            result['TemplateScratchId'] = self.template_scratch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TemplateScratchId') is not None:
+            self.template_scratch_id = m.get('TemplateScratchId')
+        return self
+
+
+class UpdateTemplateScratchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateTemplateScratchResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateTemplateScratchResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

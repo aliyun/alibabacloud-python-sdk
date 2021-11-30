@@ -47,12 +47,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.CancelUpdateStackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CancelType'] = request.cancel_type
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CancelUpdateStack',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.CancelUpdateStackResponse(),
-            self.do_rpcrequest('CancelUpdateStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def cancel_update_stack_with_options_async(
@@ -61,12 +77,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.CancelUpdateStackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CancelType'] = request.cancel_type
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CancelUpdateStack',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.CancelUpdateStackResponse(),
-            await self.do_rpcrequest_async('CancelUpdateStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def cancel_update_stack(
@@ -89,12 +121,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ContinueCreateStackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DryRun'] = request.dry_run
+        query['Mode'] = request.mode
+        query['Parallelism'] = request.parallelism
+        query['Parameters'] = request.parameters
+        query['RamRoleName'] = request.ram_role_name
+        query['RecreatingResources'] = request.recreating_resources
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ContinueCreateStack',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ContinueCreateStackResponse(),
-            self.do_rpcrequest('ContinueCreateStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def continue_create_stack_with_options_async(
@@ -103,12 +160,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ContinueCreateStackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DryRun'] = request.dry_run
+        query['Mode'] = request.mode
+        query['Parallelism'] = request.parallelism
+        query['Parameters'] = request.parameters
+        query['RamRoleName'] = request.ram_role_name
+        query['RecreatingResources'] = request.recreating_resources
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ContinueCreateStack',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ContinueCreateStackResponse(),
-            await self.do_rpcrequest_async('ContinueCreateStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def continue_create_stack(
@@ -131,12 +213,50 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.CreateChangeSetResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ChangeSetName'] = request.change_set_name
+        query['ChangeSetType'] = request.change_set_type
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['DisableRollback'] = request.disable_rollback
+        query['NotificationURLs'] = request.notification_urls
+        query['Parallelism'] = request.parallelism
+        query['Parameters'] = request.parameters
+        query['RamRoleName'] = request.ram_role_name
+        query['RegionId'] = request.region_id
+        query['ReplacementOption'] = request.replacement_option
+        query['ResourcesToImport'] = request.resources_to_import
+        query['StackId'] = request.stack_id
+        query['StackName'] = request.stack_name
+        query['StackPolicyBody'] = request.stack_policy_body
+        query['StackPolicyDuringUpdateBody'] = request.stack_policy_during_update_body
+        query['StackPolicyDuringUpdateURL'] = request.stack_policy_during_update_url
+        query['StackPolicyURL'] = request.stack_policy_url
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateScratchId'] = request.template_scratch_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
+        query['TimeoutInMinutes'] = request.timeout_in_minutes
+        query['UsePreviousParameters'] = request.use_previous_parameters
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateChangeSet',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.CreateChangeSetResponse(),
-            self.do_rpcrequest('CreateChangeSet', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_change_set_with_options_async(
@@ -145,12 +265,50 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.CreateChangeSetResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ChangeSetName'] = request.change_set_name
+        query['ChangeSetType'] = request.change_set_type
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['DisableRollback'] = request.disable_rollback
+        query['NotificationURLs'] = request.notification_urls
+        query['Parallelism'] = request.parallelism
+        query['Parameters'] = request.parameters
+        query['RamRoleName'] = request.ram_role_name
+        query['RegionId'] = request.region_id
+        query['ReplacementOption'] = request.replacement_option
+        query['ResourcesToImport'] = request.resources_to_import
+        query['StackId'] = request.stack_id
+        query['StackName'] = request.stack_name
+        query['StackPolicyBody'] = request.stack_policy_body
+        query['StackPolicyDuringUpdateBody'] = request.stack_policy_during_update_body
+        query['StackPolicyDuringUpdateURL'] = request.stack_policy_during_update_url
+        query['StackPolicyURL'] = request.stack_policy_url
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateScratchId'] = request.template_scratch_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
+        query['TimeoutInMinutes'] = request.timeout_in_minutes
+        query['UsePreviousParameters'] = request.use_previous_parameters
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateChangeSet',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.CreateChangeSetResponse(),
-            await self.do_rpcrequest_async('CreateChangeSet', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_change_set(
@@ -173,12 +331,45 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.CreateStackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['CreateOption'] = request.create_option
+        query['DeletionProtection'] = request.deletion_protection
+        query['DisableRollback'] = request.disable_rollback
+        query['NotificationURLs'] = request.notification_urls
+        query['Parallelism'] = request.parallelism
+        query['Parameters'] = request.parameters
+        query['RamRoleName'] = request.ram_role_name
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['StackName'] = request.stack_name
+        query['StackPolicyBody'] = request.stack_policy_body
+        query['StackPolicyURL'] = request.stack_policy_url
+        query['Tags'] = request.tags
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateScratchId'] = request.template_scratch_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
+        query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateStack',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.CreateStackResponse(),
-            self.do_rpcrequest('CreateStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_stack_with_options_async(
@@ -187,12 +378,45 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.CreateStackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['CreateOption'] = request.create_option
+        query['DeletionProtection'] = request.deletion_protection
+        query['DisableRollback'] = request.disable_rollback
+        query['NotificationURLs'] = request.notification_urls
+        query['Parallelism'] = request.parallelism
+        query['Parameters'] = request.parameters
+        query['RamRoleName'] = request.ram_role_name
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['StackName'] = request.stack_name
+        query['StackPolicyBody'] = request.stack_policy_body
+        query['StackPolicyURL'] = request.stack_policy_url
+        query['Tags'] = request.tags
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateScratchId'] = request.template_scratch_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
+        query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateStack',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.CreateStackResponse(),
-            await self.do_rpcrequest_async('CreateStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_stack(
@@ -219,12 +443,39 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.auto_deployment):
             request.auto_deployment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.auto_deployment), 'AutoDeployment', 'json')
+        query = {}
+        query['AdministrationRoleName'] = request.administration_role_name
+        query['AutoDeployment'] = request.auto_deployment_shrink
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['ExecutionRoleName'] = request.execution_role_name
+        query['Parameters'] = request.parameters
+        query['PermissionModel'] = request.permission_model
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['StackGroupName'] = request.stack_group_name
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateStackGroup',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.CreateStackGroupResponse(),
-            self.do_rpcrequest('CreateStackGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_stack_group_with_options_async(
@@ -237,12 +488,39 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.auto_deployment):
             request.auto_deployment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.auto_deployment), 'AutoDeployment', 'json')
+        query = {}
+        query['AdministrationRoleName'] = request.administration_role_name
+        query['AutoDeployment'] = request.auto_deployment_shrink
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['ExecutionRoleName'] = request.execution_role_name
+        query['Parameters'] = request.parameters
+        query['PermissionModel'] = request.permission_model
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['StackGroupName'] = request.stack_group_name
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateStackGroup',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.CreateStackGroupResponse(),
-            await self.do_rpcrequest_async('CreateStackGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_stack_group(
@@ -275,12 +553,36 @@ class Client(OpenApiClient):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
+        query = {}
+        query['AccountIds'] = request.account_ids_shrink
+        query['ClientToken'] = request.client_token
+        query['DeploymentTargets'] = request.deployment_targets_shrink
+        query['DisableRollback'] = request.disable_rollback
+        query['OperationDescription'] = request.operation_description
+        query['OperationPreferences'] = request.operation_preferences_shrink
+        query['ParameterOverrides'] = request.parameter_overrides
+        query['RegionId'] = request.region_id
+        query['RegionIds'] = request.region_ids_shrink
+        query['StackGroupName'] = request.stack_group_name
+        query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateStackInstances',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.CreateStackInstancesResponse(),
-            self.do_rpcrequest('CreateStackInstances', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_stack_instances_with_options_async(
@@ -299,12 +601,36 @@ class Client(OpenApiClient):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
+        query = {}
+        query['AccountIds'] = request.account_ids_shrink
+        query['ClientToken'] = request.client_token
+        query['DeploymentTargets'] = request.deployment_targets_shrink
+        query['DisableRollback'] = request.disable_rollback
+        query['OperationDescription'] = request.operation_description
+        query['OperationPreferences'] = request.operation_preferences_shrink
+        query['ParameterOverrides'] = request.parameter_overrides
+        query['RegionId'] = request.region_id
+        query['RegionIds'] = request.region_ids_shrink
+        query['StackGroupName'] = request.stack_group_name
+        query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateStackInstances',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.CreateStackInstancesResponse(),
-            await self.do_rpcrequest_async('CreateStackInstances', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_stack_instances(
@@ -327,12 +653,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.CreateTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Description'] = request.description
+        query['ResourceGroupId'] = request.resource_group_id
+        query['TemplateBody'] = request.template_body
+        query['TemplateName'] = request.template_name
+        query['TemplateURL'] = request.template_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateTemplate',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.CreateTemplateResponse(),
-            self.do_rpcrequest('CreateTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_template_with_options_async(
@@ -341,12 +685,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.CreateTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Description'] = request.description
+        query['ResourceGroupId'] = request.resource_group_id
+        query['TemplateBody'] = request.template_body
+        query['TemplateName'] = request.template_name
+        query['TemplateURL'] = request.template_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateTemplate',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.CreateTemplateResponse(),
-            await self.do_rpcrequest_async('CreateTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_template(
@@ -363,18 +725,141 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_template_with_options_async(request, runtime)
 
+    def create_template_scratch_with_options(
+        self,
+        tmp_req: ros20190910_models.CreateTemplateScratchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.CreateTemplateScratchResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ros20190910_models.CreateTemplateScratchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.preference_parameters):
+            request.preference_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.preference_parameters, 'PreferenceParameters', 'json')
+        if not UtilClient.is_unset(tmp_req.source_resource_group):
+            request.source_resource_group_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.source_resource_group), 'SourceResourceGroup', 'json')
+        if not UtilClient.is_unset(tmp_req.source_resources):
+            request.source_resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_resources, 'SourceResources', 'json')
+        if not UtilClient.is_unset(tmp_req.source_tag):
+            request.source_tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.source_tag), 'SourceTag', 'json')
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['ExecutionMode'] = request.execution_mode
+        query['LogicalIdStrategy'] = request.logical_id_strategy
+        query['PreferenceParameters'] = request.preference_parameters_shrink
+        query['RegionId'] = request.region_id
+        query['SourceResourceGroup'] = request.source_resource_group_shrink
+        query['SourceResources'] = request.source_resources_shrink
+        query['SourceTag'] = request.source_tag_shrink
+        query['TemplateScratchType'] = request.template_scratch_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateTemplateScratch',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.CreateTemplateScratchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_template_scratch_with_options_async(
+        self,
+        tmp_req: ros20190910_models.CreateTemplateScratchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.CreateTemplateScratchResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ros20190910_models.CreateTemplateScratchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.preference_parameters):
+            request.preference_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.preference_parameters, 'PreferenceParameters', 'json')
+        if not UtilClient.is_unset(tmp_req.source_resource_group):
+            request.source_resource_group_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.source_resource_group), 'SourceResourceGroup', 'json')
+        if not UtilClient.is_unset(tmp_req.source_resources):
+            request.source_resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_resources, 'SourceResources', 'json')
+        if not UtilClient.is_unset(tmp_req.source_tag):
+            request.source_tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.source_tag), 'SourceTag', 'json')
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['ExecutionMode'] = request.execution_mode
+        query['LogicalIdStrategy'] = request.logical_id_strategy
+        query['PreferenceParameters'] = request.preference_parameters_shrink
+        query['RegionId'] = request.region_id
+        query['SourceResourceGroup'] = request.source_resource_group_shrink
+        query['SourceResources'] = request.source_resources_shrink
+        query['SourceTag'] = request.source_tag_shrink
+        query['TemplateScratchType'] = request.template_scratch_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateTemplateScratch',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.CreateTemplateScratchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_template_scratch(
+        self,
+        request: ros20190910_models.CreateTemplateScratchRequest,
+    ) -> ros20190910_models.CreateTemplateScratchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_template_scratch_with_options(request, runtime)
+
+    async def create_template_scratch_async(
+        self,
+        request: ros20190910_models.CreateTemplateScratchRequest,
+    ) -> ros20190910_models.CreateTemplateScratchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_template_scratch_with_options_async(request, runtime)
+
     def delete_change_set_with_options(
         self,
         request: ros20190910_models.DeleteChangeSetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DeleteChangeSetResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ChangeSetId'] = request.change_set_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteChangeSet',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.DeleteChangeSetResponse(),
-            self.do_rpcrequest('DeleteChangeSet', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_change_set_with_options_async(
@@ -383,12 +868,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DeleteChangeSetResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ChangeSetId'] = request.change_set_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteChangeSet',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.DeleteChangeSetResponse(),
-            await self.do_rpcrequest_async('DeleteChangeSet', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_change_set(
@@ -411,12 +911,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DeleteStackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RamRoleName'] = request.ram_role_name
+        query['RegionId'] = request.region_id
+        query['RetainAllResources'] = request.retain_all_resources
+        query['RetainResources'] = request.retain_resources
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteStack',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.DeleteStackResponse(),
-            self.do_rpcrequest('DeleteStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_stack_with_options_async(
@@ -425,12 +943,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DeleteStackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RamRoleName'] = request.ram_role_name
+        query['RegionId'] = request.region_id
+        query['RetainAllResources'] = request.retain_all_resources
+        query['RetainResources'] = request.retain_resources
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteStack',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.DeleteStackResponse(),
-            await self.do_rpcrequest_async('DeleteStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_stack(
@@ -453,12 +989,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DeleteStackGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteStackGroup',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.DeleteStackGroupResponse(),
-            self.do_rpcrequest('DeleteStackGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_stack_group_with_options_async(
@@ -467,12 +1018,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DeleteStackGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteStackGroup',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.DeleteStackGroupResponse(),
-            await self.do_rpcrequest_async('DeleteStackGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_stack_group(
@@ -505,12 +1071,34 @@ class Client(OpenApiClient):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
+        query = {}
+        query['AccountIds'] = request.account_ids_shrink
+        query['ClientToken'] = request.client_token
+        query['DeploymentTargets'] = request.deployment_targets_shrink
+        query['OperationDescription'] = request.operation_description
+        query['OperationPreferences'] = request.operation_preferences_shrink
+        query['RegionId'] = request.region_id
+        query['RegionIds'] = request.region_ids_shrink
+        query['RetainStacks'] = request.retain_stacks
+        query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteStackInstances',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.DeleteStackInstancesResponse(),
-            self.do_rpcrequest('DeleteStackInstances', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_stack_instances_with_options_async(
@@ -529,12 +1117,34 @@ class Client(OpenApiClient):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
+        query = {}
+        query['AccountIds'] = request.account_ids_shrink
+        query['ClientToken'] = request.client_token
+        query['DeploymentTargets'] = request.deployment_targets_shrink
+        query['OperationDescription'] = request.operation_description
+        query['OperationPreferences'] = request.operation_preferences_shrink
+        query['RegionId'] = request.region_id
+        query['RegionIds'] = request.region_ids_shrink
+        query['RetainStacks'] = request.retain_stacks
+        query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteStackInstances',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.DeleteStackInstancesResponse(),
-            await self.do_rpcrequest_async('DeleteStackInstances', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_stack_instances(
@@ -557,12 +1167,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DeleteTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteTemplate',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.DeleteTemplateResponse(),
-            self.do_rpcrequest('DeleteTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_template_with_options_async(
@@ -571,12 +1195,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DeleteTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteTemplate',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.DeleteTemplateResponse(),
-            await self.do_rpcrequest_async('DeleteTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_template(
@@ -593,18 +1231,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_template_with_options_async(request, runtime)
 
+    def delete_template_scratch_with_options(
+        self,
+        request: ros20190910_models.DeleteTemplateScratchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.DeleteTemplateScratchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['TemplateScratchId'] = request.template_scratch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteTemplateScratch',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.DeleteTemplateScratchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_template_scratch_with_options_async(
+        self,
+        request: ros20190910_models.DeleteTemplateScratchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.DeleteTemplateScratchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['TemplateScratchId'] = request.template_scratch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteTemplateScratch',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.DeleteTemplateScratchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_template_scratch(
+        self,
+        request: ros20190910_models.DeleteTemplateScratchRequest,
+    ) -> ros20190910_models.DeleteTemplateScratchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_template_scratch_with_options(request, runtime)
+
+    async def delete_template_scratch_async(
+        self,
+        request: ros20190910_models.DeleteTemplateScratchRequest,
+    ) -> ros20190910_models.DeleteTemplateScratchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_template_scratch_with_options_async(request, runtime)
+
     def describe_regions_with_options(
         self,
         request: ros20190910_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AcceptLanguage'] = request.accept_language
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.DescribeRegionsResponse(),
-            self.do_rpcrequest('DescribeRegions', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_regions_with_options_async(
@@ -613,12 +1337,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AcceptLanguage'] = request.accept_language
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.DescribeRegionsResponse(),
-            await self.do_rpcrequest_async('DescribeRegions', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_regions(
@@ -641,12 +1379,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DetectStackDriftResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['LogicalResourceId'] = request.logical_resource_id
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DetectStackDrift',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.DetectStackDriftResponse(),
-            self.do_rpcrequest('DetectStackDrift', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def detect_stack_drift_with_options_async(
@@ -655,12 +1410,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DetectStackDriftResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['LogicalResourceId'] = request.logical_resource_id
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DetectStackDrift',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.DetectStackDriftResponse(),
-            await self.do_rpcrequest_async('DetectStackDrift', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def detect_stack_drift(
@@ -687,12 +1459,29 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['OperationPreferences'] = request.operation_preferences_shrink
+        query['RegionId'] = request.region_id
+        query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DetectStackGroupDrift',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.DetectStackGroupDriftResponse(),
-            self.do_rpcrequest('DetectStackGroupDrift', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def detect_stack_group_drift_with_options_async(
@@ -705,12 +1494,29 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['OperationPreferences'] = request.operation_preferences_shrink
+        query['RegionId'] = request.region_id
+        query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DetectStackGroupDrift',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.DetectStackGroupDriftResponse(),
-            await self.do_rpcrequest_async('DetectStackGroupDrift', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def detect_stack_group_drift(
@@ -733,12 +1539,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DetectStackResourceDriftResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['LogicalResourceId'] = request.logical_resource_id
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DetectStackResourceDrift',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.DetectStackResourceDriftResponse(),
-            self.do_rpcrequest('DetectStackResourceDrift', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def detect_stack_resource_drift_with_options_async(
@@ -747,12 +1570,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.DetectStackResourceDriftResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['LogicalResourceId'] = request.logical_resource_id
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DetectStackResourceDrift',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.DetectStackResourceDriftResponse(),
-            await self.do_rpcrequest_async('DetectStackResourceDrift', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def detect_stack_resource_drift(
@@ -775,12 +1615,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ExecuteChangeSetResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ChangeSetId'] = request.change_set_id
+        query['ClientToken'] = request.client_token
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ExecuteChangeSet',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ExecuteChangeSetResponse(),
-            self.do_rpcrequest('ExecuteChangeSet', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def execute_change_set_with_options_async(
@@ -789,12 +1645,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ExecuteChangeSetResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ChangeSetId'] = request.change_set_id
+        query['ClientToken'] = request.client_token
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ExecuteChangeSet',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ExecuteChangeSetResponse(),
-            await self.do_rpcrequest_async('ExecuteChangeSet', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def execute_change_set(
@@ -811,18 +1683,109 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.execute_change_set_with_options_async(request, runtime)
 
+    def generate_template_by_scratch_with_options(
+        self,
+        request: ros20190910_models.GenerateTemplateByScratchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.GenerateTemplateByScratchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ProvisionRegionId'] = request.provision_region_id
+        query['RegionId'] = request.region_id
+        query['TemplateScratchId'] = request.template_scratch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GenerateTemplateByScratch',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.GenerateTemplateByScratchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_template_by_scratch_with_options_async(
+        self,
+        request: ros20190910_models.GenerateTemplateByScratchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.GenerateTemplateByScratchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ProvisionRegionId'] = request.provision_region_id
+        query['RegionId'] = request.region_id
+        query['TemplateScratchId'] = request.template_scratch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GenerateTemplateByScratch',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.GenerateTemplateByScratchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_template_by_scratch(
+        self,
+        request: ros20190910_models.GenerateTemplateByScratchRequest,
+    ) -> ros20190910_models.GenerateTemplateByScratchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.generate_template_by_scratch_with_options(request, runtime)
+
+    async def generate_template_by_scratch_async(
+        self,
+        request: ros20190910_models.GenerateTemplateByScratchRequest,
+    ) -> ros20190910_models.GenerateTemplateByScratchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.generate_template_by_scratch_with_options_async(request, runtime)
+
     def generate_template_policy_with_options(
         self,
         request: ros20190910_models.GenerateTemplatePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GenerateTemplatePolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GenerateTemplatePolicy',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GenerateTemplatePolicyResponse(),
-            self.do_rpcrequest('GenerateTemplatePolicy', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def generate_template_policy_with_options_async(
@@ -831,12 +1794,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GenerateTemplatePolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GenerateTemplatePolicy',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GenerateTemplatePolicyResponse(),
-            await self.do_rpcrequest_async('GenerateTemplatePolicy', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def generate_template_policy(
@@ -859,12 +1839,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetChangeSetResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ChangeSetId'] = request.change_set_id
+        query['RegionId'] = request.region_id
+        query['ShowTemplate'] = request.show_template
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetChangeSet',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetChangeSetResponse(),
-            self.do_rpcrequest('GetChangeSet', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_change_set_with_options_async(
@@ -873,12 +1869,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetChangeSetResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ChangeSetId'] = request.change_set_id
+        query['RegionId'] = request.region_id
+        query['ShowTemplate'] = request.show_template
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetChangeSet',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetChangeSetResponse(),
-            await self.do_rpcrequest_async('GetChangeSet', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_change_set(
@@ -901,12 +1913,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetFeatureDetailsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Feature'] = request.feature
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetFeatureDetails',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetFeatureDetailsResponse(),
-            self.do_rpcrequest('GetFeatureDetails', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_feature_details_with_options_async(
@@ -915,12 +1942,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetFeatureDetailsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Feature'] = request.feature
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetFeatureDetails',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetFeatureDetailsResponse(),
-            await self.do_rpcrequest_async('GetFeatureDetails', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_feature_details(
@@ -943,12 +1985,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetResourceTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetResourceType',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetResourceTypeResponse(),
-            self.do_rpcrequest('GetResourceType', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_resource_type_with_options_async(
@@ -957,12 +2013,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetResourceTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetResourceType',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetResourceTypeResponse(),
-            await self.do_rpcrequest_async('GetResourceType', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_resource_type(
@@ -985,12 +2055,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetResourceTypeTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetResourceTypeTemplate',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetResourceTypeTemplateResponse(),
-            self.do_rpcrequest('GetResourceTypeTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_resource_type_template_with_options_async(
@@ -999,12 +2083,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetResourceTypeTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetResourceTypeTemplate',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetResourceTypeTemplateResponse(),
-            await self.do_rpcrequest_async('GetResourceTypeTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_resource_type_template(
@@ -1027,12 +2125,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetServiceProvisionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Parameters'] = request.parameters
+        query['RegionId'] = request.region_id
+        query['Services'] = request.services
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetServiceProvisions',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetServiceProvisionsResponse(),
-            self.do_rpcrequest('GetServiceProvisions', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_service_provisions_with_options_async(
@@ -1041,12 +2159,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetServiceProvisionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Parameters'] = request.parameters
+        query['RegionId'] = request.region_id
+        query['Services'] = request.services
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetServiceProvisions',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetServiceProvisionsResponse(),
-            await self.do_rpcrequest_async('GetServiceProvisions', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_service_provisions(
@@ -1069,12 +2207,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['OutputOption'] = request.output_option
+        query['RegionId'] = request.region_id
+        query['ShowResourceProgress'] = request.show_resource_progress
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStack',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetStackResponse(),
-            self.do_rpcrequest('GetStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_stack_with_options_async(
@@ -1083,12 +2239,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['OutputOption'] = request.output_option
+        query['RegionId'] = request.region_id
+        query['ShowResourceProgress'] = request.show_resource_progress
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStack',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetStackResponse(),
-            await self.do_rpcrequest_async('GetStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_stack(
@@ -1111,12 +2285,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackDriftDetectionStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DriftDetectionId'] = request.drift_detection_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStackDriftDetectionStatus',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetStackDriftDetectionStatusResponse(),
-            self.do_rpcrequest('GetStackDriftDetectionStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_stack_drift_detection_status_with_options_async(
@@ -1125,12 +2314,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackDriftDetectionStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DriftDetectionId'] = request.drift_detection_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStackDriftDetectionStatus',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetStackDriftDetectionStatusResponse(),
-            await self.do_rpcrequest_async('GetStackDriftDetectionStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_stack_drift_detection_status(
@@ -1153,12 +2357,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['StackGroupId'] = request.stack_group_id
+        query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStackGroup',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetStackGroupResponse(),
-            self.do_rpcrequest('GetStackGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_stack_group_with_options_async(
@@ -1167,12 +2387,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['StackGroupId'] = request.stack_group_id
+        query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStackGroup',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetStackGroupResponse(),
-            await self.do_rpcrequest_async('GetStackGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_stack_group(
@@ -1195,12 +2431,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackGroupOperationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OperationId'] = request.operation_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStackGroupOperation',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetStackGroupOperationResponse(),
-            self.do_rpcrequest('GetStackGroupOperation', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_stack_group_operation_with_options_async(
@@ -1209,12 +2460,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackGroupOperationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OperationId'] = request.operation_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStackGroupOperation',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetStackGroupOperationResponse(),
-            await self.do_rpcrequest_async('GetStackGroupOperation', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_stack_group_operation(
@@ -1237,12 +2503,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['StackGroupName'] = request.stack_group_name
+        query['StackInstanceAccountId'] = request.stack_instance_account_id
+        query['StackInstanceRegionId'] = request.stack_instance_region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStackInstance',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetStackInstanceResponse(),
-            self.do_rpcrequest('GetStackInstance', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_stack_instance_with_options_async(
@@ -1251,12 +2534,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['StackGroupName'] = request.stack_group_name
+        query['StackInstanceAccountId'] = request.stack_instance_account_id
+        query['StackInstanceRegionId'] = request.stack_instance_region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStackInstance',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetStackInstanceResponse(),
-            await self.do_rpcrequest_async('GetStackInstance', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_stack_instance(
@@ -1279,12 +2579,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStackPolicy',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetStackPolicyResponse(),
-            self.do_rpcrequest('GetStackPolicy', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_stack_policy_with_options_async(
@@ -1293,12 +2608,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStackPolicy',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetStackPolicyResponse(),
-            await self.do_rpcrequest_async('GetStackPolicy', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_stack_policy(
@@ -1321,12 +2651,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['LogicalResourceId'] = request.logical_resource_id
+        query['RegionId'] = request.region_id
+        query['ShowResourceAttributes'] = request.show_resource_attributes
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStackResource',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetStackResourceResponse(),
-            self.do_rpcrequest('GetStackResource', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_stack_resource_with_options_async(
@@ -1335,12 +2683,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetStackResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['LogicalResourceId'] = request.logical_resource_id
+        query['RegionId'] = request.region_id
+        query['ShowResourceAttributes'] = request.show_resource_attributes
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetStackResource',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetStackResourceResponse(),
-            await self.do_rpcrequest_async('GetStackResource', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_stack_resource(
@@ -1363,12 +2729,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ChangeSetId'] = request.change_set_id
+        query['IncludePermission'] = request.include_permission
+        query['RegionId'] = request.region_id
+        query['StackGroupName'] = request.stack_group_name
+        query['StackId'] = request.stack_id
+        query['TemplateId'] = request.template_id
+        query['TemplateStage'] = request.template_stage
+        query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTemplate',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetTemplateResponse(),
-            self.do_rpcrequest('GetTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_template_with_options_async(
@@ -1377,12 +2764,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ChangeSetId'] = request.change_set_id
+        query['IncludePermission'] = request.include_permission
+        query['RegionId'] = request.region_id
+        query['StackGroupName'] = request.stack_group_name
+        query['StackId'] = request.stack_id
+        query['TemplateId'] = request.template_id
+        query['TemplateStage'] = request.template_stage
+        query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTemplate',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetTemplateResponse(),
-            await self.do_rpcrequest_async('GetTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_template(
@@ -1405,12 +2813,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetTemplateEstimateCostResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['Parameters'] = request.parameters
+        query['RegionId'] = request.region_id
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTemplateEstimateCost',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetTemplateEstimateCostResponse(),
-            self.do_rpcrequest('GetTemplateEstimateCost', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_template_estimate_cost_with_options_async(
@@ -1419,12 +2847,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetTemplateEstimateCostResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['Parameters'] = request.parameters
+        query['RegionId'] = request.region_id
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTemplateEstimateCost',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetTemplateEstimateCostResponse(),
-            await self.do_rpcrequest_async('GetTemplateEstimateCost', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_template_estimate_cost(
@@ -1451,12 +2899,33 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.parameters_key_filter):
             request.parameters_key_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters_key_filter, 'ParametersKeyFilter', 'json')
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['Parameters'] = request.parameters
+        query['ParametersKeyFilter'] = request.parameters_key_filter_shrink
+        query['RegionId'] = request.region_id
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTemplateParameterConstraints',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetTemplateParameterConstraintsResponse(),
-            self.do_rpcrequest('GetTemplateParameterConstraints', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_template_parameter_constraints_with_options_async(
@@ -1469,12 +2938,33 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.parameters_key_filter):
             request.parameters_key_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters_key_filter, 'ParametersKeyFilter', 'json')
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['Parameters'] = request.parameters
+        query['ParametersKeyFilter'] = request.parameters_key_filter_shrink
+        query['RegionId'] = request.region_id
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTemplateParameterConstraints',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetTemplateParameterConstraintsResponse(),
-            await self.do_rpcrequest_async('GetTemplateParameterConstraints', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_template_parameter_constraints(
@@ -1491,18 +2981,113 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_template_parameter_constraints_with_options_async(request, runtime)
 
+    def get_template_scratch_with_options(
+        self,
+        request: ros20190910_models.GetTemplateScratchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.GetTemplateScratchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ShowDataOption'] = request.show_data_option
+        query['TemplateScratchId'] = request.template_scratch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTemplateScratch',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.GetTemplateScratchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_template_scratch_with_options_async(
+        self,
+        request: ros20190910_models.GetTemplateScratchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.GetTemplateScratchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ShowDataOption'] = request.show_data_option
+        query['TemplateScratchId'] = request.template_scratch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTemplateScratch',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.GetTemplateScratchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_template_scratch(
+        self,
+        request: ros20190910_models.GetTemplateScratchRequest,
+    ) -> ros20190910_models.GetTemplateScratchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_template_scratch_with_options(request, runtime)
+
+    async def get_template_scratch_async(
+        self,
+        request: ros20190910_models.GetTemplateScratchRequest,
+    ) -> ros20190910_models.GetTemplateScratchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_template_scratch_with_options_async(request, runtime)
+
     def get_template_summary_with_options(
         self,
         request: ros20190910_models.GetTemplateSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetTemplateSummaryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ChangeSetId'] = request.change_set_id
+        query['RegionId'] = request.region_id
+        query['StackGroupName'] = request.stack_group_name
+        query['StackId'] = request.stack_id
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTemplateSummary',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetTemplateSummaryResponse(),
-            self.do_rpcrequest('GetTemplateSummary', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_template_summary_with_options_async(
@@ -1511,12 +3096,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.GetTemplateSummaryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ChangeSetId'] = request.change_set_id
+        query['RegionId'] = request.region_id
+        query['StackGroupName'] = request.stack_group_name
+        query['StackId'] = request.stack_id
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetTemplateSummary',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.GetTemplateSummaryResponse(),
-            await self.do_rpcrequest_async('GetTemplateSummary', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_template_summary(
@@ -1539,12 +3145,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListChangeSetsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ChangeSetId'] = request.change_set_id
+        query['ChangeSetName'] = request.change_set_name
+        query['ExecutionStatus'] = request.execution_status
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListChangeSets',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListChangeSetsResponse(),
-            self.do_rpcrequest('ListChangeSets', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_change_sets_with_options_async(
@@ -1553,12 +3180,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListChangeSetsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ChangeSetId'] = request.change_set_id
+        query['ChangeSetName'] = request.change_set_name
+        query['ExecutionStatus'] = request.execution_status
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListChangeSets',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListChangeSetsResponse(),
-            await self.do_rpcrequest_async('ListChangeSets', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_change_sets(
@@ -1580,9 +3228,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListResourceTypesResponse:
         req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListResourceTypes',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             ros20190910_models.ListResourceTypesResponse(),
-            self.do_rpcrequest('ListResourceTypes', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_resource_types_with_options_async(
@@ -1590,9 +3249,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListResourceTypesResponse:
         req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListResourceTypes',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             ros20190910_models.ListResourceTypesResponse(),
-            await self.do_rpcrequest_async('ListResourceTypes', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_resource_types(self) -> ros20190910_models.ListResourceTypesResponse:
@@ -1609,12 +3279,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStackEventsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['LogicalResourceId'] = request.logical_resource_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
+        query['StackId'] = request.stack_id
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListStackEvents',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListStackEventsResponse(),
-            self.do_rpcrequest('ListStackEvents', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_stack_events_with_options_async(
@@ -1623,12 +3313,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStackEventsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['LogicalResourceId'] = request.logical_resource_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
+        query['StackId'] = request.stack_id
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListStackEvents',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListStackEventsResponse(),
-            await self.do_rpcrequest_async('ListStackEvents', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_stack_events(
@@ -1651,12 +3361,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStackGroupOperationResultsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OperationId'] = request.operation_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListStackGroupOperationResults',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListStackGroupOperationResultsResponse(),
-            self.do_rpcrequest('ListStackGroupOperationResults', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_stack_group_operation_results_with_options_async(
@@ -1665,12 +3392,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStackGroupOperationResultsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OperationId'] = request.operation_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListStackGroupOperationResults',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListStackGroupOperationResultsResponse(),
-            await self.do_rpcrequest_async('ListStackGroupOperationResults', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_stack_group_operation_results(
@@ -1693,12 +3437,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStackGroupOperationsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListStackGroupOperations',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListStackGroupOperationsResponse(),
-            self.do_rpcrequest('ListStackGroupOperations', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_stack_group_operations_with_options_async(
@@ -1707,12 +3468,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStackGroupOperationsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListStackGroupOperations',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListStackGroupOperationsResponse(),
-            await self.do_rpcrequest_async('ListStackGroupOperations', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_stack_group_operations(
@@ -1735,12 +3513,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStackGroupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListStackGroups',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListStackGroupsResponse(),
-            self.do_rpcrequest('ListStackGroups', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_stack_groups_with_options_async(
@@ -1749,12 +3545,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStackGroupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListStackGroups',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListStackGroupsResponse(),
-            await self.do_rpcrequest_async('ListStackGroups', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_stack_groups(
@@ -1777,12 +3591,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStackInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['StackGroupName'] = request.stack_group_name
+        query['StackInstanceAccountId'] = request.stack_instance_account_id
+        query['StackInstanceRegionId'] = request.stack_instance_region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListStackInstances',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListStackInstancesResponse(),
-            self.do_rpcrequest('ListStackInstances', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_stack_instances_with_options_async(
@@ -1791,12 +3624,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStackInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['StackGroupName'] = request.stack_group_name
+        query['StackInstanceAccountId'] = request.stack_instance_account_id
+        query['StackInstanceRegionId'] = request.stack_instance_region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListStackInstances',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListStackInstancesResponse(),
-            await self.do_rpcrequest_async('ListStackInstances', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_stack_instances(
@@ -1819,12 +3671,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStackOperationRisksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['OperationType'] = request.operation_type
+        query['RamRoleName'] = request.ram_role_name
+        query['RegionId'] = request.region_id
+        query['RetainAllResources'] = request.retain_all_resources
+        query['RetainResources'] = request.retain_resources
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListStackOperationRisks',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListStackOperationRisksResponse(),
-            self.do_rpcrequest('ListStackOperationRisks', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_stack_operation_risks_with_options_async(
@@ -1833,12 +3705,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStackOperationRisksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['OperationType'] = request.operation_type
+        query['RamRoleName'] = request.ram_role_name
+        query['RegionId'] = request.region_id
+        query['RetainAllResources'] = request.retain_all_resources
+        query['RetainResources'] = request.retain_resources
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListStackOperationRisks',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListStackOperationRisksResponse(),
-            await self.do_rpcrequest_async('ListStackOperationRisks', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_stack_operation_risks(
@@ -1861,12 +3753,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStackResourceDriftsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
+        query['ResourceDriftStatus'] = request.resource_drift_status
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListStackResourceDrifts',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListStackResourceDriftsResponse(),
-            self.do_rpcrequest('ListStackResourceDrifts', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_stack_resource_drifts_with_options_async(
@@ -1875,12 +3785,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStackResourceDriftsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
+        query['ResourceDriftStatus'] = request.resource_drift_status
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListStackResourceDrifts',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListStackResourceDriftsResponse(),
-            await self.do_rpcrequest_async('ListStackResourceDrifts', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_stack_resource_drifts(
@@ -1903,12 +3831,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStackResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListStackResources',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListStackResourcesResponse(),
-            self.do_rpcrequest('ListStackResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_stack_resources_with_options_async(
@@ -1917,12 +3860,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStackResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListStackResources',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListStackResourcesResponse(),
-            await self.do_rpcrequest_async('ListStackResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_stack_resources(
@@ -1945,12 +3903,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStacksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ParentStackId'] = request.parent_stack_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ShowNestedStack'] = request.show_nested_stack
+        query['StackId'] = request.stack_id
+        query['StackIds'] = request.stack_ids
+        query['StackName'] = request.stack_name
+        query['Status'] = request.status
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListStacks',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListStacksResponse(),
-            self.do_rpcrequest('ListStacks', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_stacks_with_options_async(
@@ -1959,12 +3941,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListStacksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ParentStackId'] = request.parent_stack_id
+        query['RegionId'] = request.region_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ShowNestedStack'] = request.show_nested_stack
+        query['StackId'] = request.stack_id
+        query['StackIds'] = request.stack_ids
+        query['StackName'] = request.stack_name
+        query['Status'] = request.status
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListStacks',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListStacksResponse(),
-            await self.do_rpcrequest_async('ListStacks', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_stacks(
@@ -1987,12 +3993,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListTagKeysResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTagKeys',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListTagKeysResponse(),
-            self.do_rpcrequest('ListTagKeys', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_tag_keys_with_options_async(
@@ -2001,12 +4023,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListTagKeysResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTagKeys',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListTagKeysResponse(),
-            await self.do_rpcrequest_async('ListTagKeys', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_keys(
@@ -2029,12 +4067,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListTagResourcesResponse(),
-            self.do_rpcrequest('ListTagResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_tag_resources_with_options_async(
@@ -2043,12 +4099,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListTagResourcesResponse(),
-            await self.do_rpcrequest_async('ListTagResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_resources(
@@ -2071,12 +4145,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListTagValuesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Key'] = request.key
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTagValues',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListTagValuesResponse(),
-            self.do_rpcrequest('ListTagValues', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_tag_values_with_options_async(
@@ -2085,12 +4176,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListTagValuesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Key'] = request.key
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTagValues',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListTagValuesResponse(),
-            await self.do_rpcrequest_async('ListTagValues', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_values(
@@ -2107,18 +4215,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_values_with_options_async(request, runtime)
 
+    def list_template_scratches_with_options(
+        self,
+        request: ros20190910_models.ListTemplateScratchesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.ListTemplateScratchesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['Status'] = request.status
+        query['TemplateScratchId'] = request.template_scratch_id
+        query['TemplateScratchType'] = request.template_scratch_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTemplateScratches',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.ListTemplateScratchesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_template_scratches_with_options_async(
+        self,
+        request: ros20190910_models.ListTemplateScratchesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.ListTemplateScratchesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['Status'] = request.status
+        query['TemplateScratchId'] = request.template_scratch_id
+        query['TemplateScratchType'] = request.template_scratch_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTemplateScratches',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.ListTemplateScratchesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_template_scratches(
+        self,
+        request: ros20190910_models.ListTemplateScratchesRequest,
+    ) -> ros20190910_models.ListTemplateScratchesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_template_scratches_with_options(request, runtime)
+
+    async def list_template_scratches_async(
+        self,
+        request: ros20190910_models.ListTemplateScratchesRequest,
+    ) -> ros20190910_models.ListTemplateScratchesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_template_scratches_with_options_async(request, runtime)
+
     def list_template_versions_with_options(
         self,
         request: ros20190910_models.ListTemplateVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListTemplateVersionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTemplateVersions',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListTemplateVersionsResponse(),
-            self.do_rpcrequest('ListTemplateVersions', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_template_versions_with_options_async(
@@ -2127,12 +4331,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListTemplateVersionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTemplateVersions',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListTemplateVersionsResponse(),
-            await self.do_rpcrequest_async('ListTemplateVersions', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_template_versions(
@@ -2155,12 +4375,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ShareType'] = request.share_type
+        query['Tag'] = request.tag
+        query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTemplates',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListTemplatesResponse(),
-            self.do_rpcrequest('ListTemplates', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_templates_with_options_async(
@@ -2169,12 +4408,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ShareType'] = request.share_type
+        query['Tag'] = request.tag
+        query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTemplates',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ListTemplatesResponse(),
-            await self.do_rpcrequest_async('ListTemplates', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_templates(
@@ -2197,12 +4455,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['NewResourceGroupId'] = request.new_resource_group_id
+        query['RegionId'] = request.region_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='MoveResourceGroup',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.MoveResourceGroupResponse(),
-            self.do_rpcrequest('MoveResourceGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def move_resource_group_with_options_async(
@@ -2211,12 +4486,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['NewResourceGroupId'] = request.new_resource_group_id
+        query['RegionId'] = request.region_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='MoveResourceGroup',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.MoveResourceGroupResponse(),
-            await self.do_rpcrequest_async('MoveResourceGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def move_resource_group(
@@ -2239,12 +4531,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.PreviewStackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DisableRollback'] = request.disable_rollback
+        query['Parallelism'] = request.parallelism
+        query['Parameters'] = request.parameters
+        query['RegionId'] = request.region_id
+        query['StackName'] = request.stack_name
+        query['StackPolicyBody'] = request.stack_policy_body
+        query['StackPolicyURL'] = request.stack_policy_url
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
+        query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='PreviewStack',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.PreviewStackResponse(),
-            self.do_rpcrequest('PreviewStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def preview_stack_with_options_async(
@@ -2253,12 +4571,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.PreviewStackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DisableRollback'] = request.disable_rollback
+        query['Parallelism'] = request.parallelism
+        query['Parameters'] = request.parameters
+        query['RegionId'] = request.region_id
+        query['StackName'] = request.stack_name
+        query['StackPolicyBody'] = request.stack_policy_body
+        query['StackPolicyURL'] = request.stack_policy_url
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
+        query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='PreviewStack',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.PreviewStackResponse(),
-            await self.do_rpcrequest_async('PreviewStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def preview_stack(
@@ -2281,12 +4625,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.SetDeletionProtectionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DeletionProtection'] = request.deletion_protection
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetDeletionProtection',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.SetDeletionProtectionResponse(),
-            self.do_rpcrequest('SetDeletionProtection', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_deletion_protection_with_options_async(
@@ -2295,12 +4655,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.SetDeletionProtectionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DeletionProtection'] = request.deletion_protection
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetDeletionProtection',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.SetDeletionProtectionResponse(),
-            await self.do_rpcrequest_async('SetDeletionProtection', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_deletion_protection(
@@ -2323,12 +4699,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.SetStackPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
+        query['StackPolicyBody'] = request.stack_policy_body
+        query['StackPolicyURL'] = request.stack_policy_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetStackPolicy',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.SetStackPolicyResponse(),
-            self.do_rpcrequest('SetStackPolicy', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_stack_policy_with_options_async(
@@ -2337,12 +4730,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.SetStackPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
+        query['StackPolicyBody'] = request.stack_policy_body
+        query['StackPolicyURL'] = request.stack_policy_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetStackPolicy',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.SetStackPolicyResponse(),
-            await self.do_rpcrequest_async('SetStackPolicy', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_stack_policy(
@@ -2365,12 +4775,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.SetTemplatePermissionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccountIds'] = request.account_ids
+        query['ShareOption'] = request.share_option
+        query['TemplateId'] = request.template_id
+        query['TemplateVersion'] = request.template_version
+        query['VersionOption'] = request.version_option
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetTemplatePermission',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.SetTemplatePermissionResponse(),
-            self.do_rpcrequest('SetTemplatePermission', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_template_permission_with_options_async(
@@ -2379,12 +4807,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.SetTemplatePermissionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccountIds'] = request.account_ids
+        query['ShareOption'] = request.share_option
+        query['TemplateId'] = request.template_id
+        query['TemplateVersion'] = request.template_version
+        query['VersionOption'] = request.version_option
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetTemplatePermission',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.SetTemplatePermissionResponse(),
-            await self.do_rpcrequest_async('SetTemplatePermission', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_template_permission(
@@ -2407,12 +4853,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.SignalResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['LogicalResourceId'] = request.logical_resource_id
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
+        query['Status'] = request.status
+        query['UniqueId'] = request.unique_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SignalResource',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.SignalResourceResponse(),
-            self.do_rpcrequest('SignalResource', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def signal_resource_with_options_async(
@@ -2421,12 +4886,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.SignalResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['LogicalResourceId'] = request.logical_resource_id
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
+        query['Status'] = request.status
+        query['UniqueId'] = request.unique_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SignalResource',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.SignalResourceResponse(),
-            await self.do_rpcrequest_async('SignalResource', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def signal_resource(
@@ -2449,12 +4933,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.StopStackGroupOperationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OperationId'] = request.operation_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopStackGroupOperation',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.StopStackGroupOperationResponse(),
-            self.do_rpcrequest('StopStackGroupOperation', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def stop_stack_group_operation_with_options_async(
@@ -2463,12 +4962,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.StopStackGroupOperationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OperationId'] = request.operation_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopStackGroupOperation',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.StopStackGroupOperationResponse(),
-            await self.do_rpcrequest_async('StopStackGroupOperation', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_stack_group_operation(
@@ -2491,12 +5005,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.TagResourcesResponse(),
-            self.do_rpcrequest('TagResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def tag_resources_with_options_async(
@@ -2505,12 +5036,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.TagResourcesResponse(),
-            await self.do_rpcrequest_async('TagResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def tag_resources(
@@ -2533,12 +5081,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['All'] = request.all
+        query['RegionId'] = request.region_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.UntagResourcesResponse(),
-            self.do_rpcrequest('UntagResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def untag_resources_with_options_async(
@@ -2547,12 +5113,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['All'] = request.all
+        query['RegionId'] = request.region_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.UntagResourcesResponse(),
-            await self.do_rpcrequest_async('UntagResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def untag_resources(
@@ -2575,12 +5159,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.UpdateStackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DisableRollback'] = request.disable_rollback
+        query['Parallelism'] = request.parallelism
+        query['Parameters'] = request.parameters
+        query['RamRoleName'] = request.ram_role_name
+        query['RegionId'] = request.region_id
+        query['ReplacementOption'] = request.replacement_option
+        query['StackId'] = request.stack_id
+        query['StackPolicyBody'] = request.stack_policy_body
+        query['StackPolicyDuringUpdateBody'] = request.stack_policy_during_update_body
+        query['StackPolicyDuringUpdateURL'] = request.stack_policy_during_update_url
+        query['StackPolicyURL'] = request.stack_policy_url
+        query['Tags'] = request.tags
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
+        query['TimeoutInMinutes'] = request.timeout_in_minutes
+        query['UsePreviousParameters'] = request.use_previous_parameters
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateStack',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.UpdateStackResponse(),
-            self.do_rpcrequest('UpdateStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_stack_with_options_async(
@@ -2589,12 +5205,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.UpdateStackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DisableRollback'] = request.disable_rollback
+        query['Parallelism'] = request.parallelism
+        query['Parameters'] = request.parameters
+        query['RamRoleName'] = request.ram_role_name
+        query['RegionId'] = request.region_id
+        query['ReplacementOption'] = request.replacement_option
+        query['StackId'] = request.stack_id
+        query['StackPolicyBody'] = request.stack_policy_body
+        query['StackPolicyDuringUpdateBody'] = request.stack_policy_during_update_body
+        query['StackPolicyDuringUpdateURL'] = request.stack_policy_during_update_url
+        query['StackPolicyURL'] = request.stack_policy_url
+        query['Tags'] = request.tags
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
+        query['TimeoutInMinutes'] = request.timeout_in_minutes
+        query['UsePreviousParameters'] = request.use_previous_parameters
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateStack',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.UpdateStackResponse(),
-            await self.do_rpcrequest_async('UpdateStack', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_stack(
@@ -2629,12 +5277,43 @@ class Client(OpenApiClient):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
+        query = {}
+        query['AccountIds'] = request.account_ids_shrink
+        query['AdministrationRoleName'] = request.administration_role_name
+        query['AutoDeployment'] = request.auto_deployment_shrink
+        query['ClientToken'] = request.client_token
+        query['DeploymentTargets'] = request.deployment_targets_shrink
+        query['Description'] = request.description
+        query['ExecutionRoleName'] = request.execution_role_name
+        query['OperationDescription'] = request.operation_description
+        query['OperationPreferences'] = request.operation_preferences_shrink
+        query['Parameters'] = request.parameters
+        query['PermissionModel'] = request.permission_model
+        query['RegionId'] = request.region_id
+        query['RegionIds'] = request.region_ids_shrink
+        query['StackGroupName'] = request.stack_group_name
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateStackGroup',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.UpdateStackGroupResponse(),
-            self.do_rpcrequest('UpdateStackGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_stack_group_with_options_async(
@@ -2655,12 +5334,43 @@ class Client(OpenApiClient):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
+        query = {}
+        query['AccountIds'] = request.account_ids_shrink
+        query['AdministrationRoleName'] = request.administration_role_name
+        query['AutoDeployment'] = request.auto_deployment_shrink
+        query['ClientToken'] = request.client_token
+        query['DeploymentTargets'] = request.deployment_targets_shrink
+        query['Description'] = request.description
+        query['ExecutionRoleName'] = request.execution_role_name
+        query['OperationDescription'] = request.operation_description
+        query['OperationPreferences'] = request.operation_preferences_shrink
+        query['Parameters'] = request.parameters
+        query['PermissionModel'] = request.permission_model
+        query['RegionId'] = request.region_id
+        query['RegionIds'] = request.region_ids_shrink
+        query['StackGroupName'] = request.stack_group_name
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateURL'] = request.template_url
+        query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateStackGroup',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.UpdateStackGroupResponse(),
-            await self.do_rpcrequest_async('UpdateStackGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_stack_group(
@@ -2693,12 +5403,35 @@ class Client(OpenApiClient):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
+        query = {}
+        query['AccountIds'] = request.account_ids_shrink
+        query['ClientToken'] = request.client_token
+        query['DeploymentTargets'] = request.deployment_targets_shrink
+        query['OperationDescription'] = request.operation_description
+        query['OperationPreferences'] = request.operation_preferences_shrink
+        query['ParameterOverrides'] = request.parameter_overrides
+        query['RegionId'] = request.region_id
+        query['RegionIds'] = request.region_ids_shrink
+        query['StackGroupName'] = request.stack_group_name
+        query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateStackInstances',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.UpdateStackInstancesResponse(),
-            self.do_rpcrequest('UpdateStackInstances', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_stack_instances_with_options_async(
@@ -2717,12 +5450,35 @@ class Client(OpenApiClient):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
+        query = {}
+        query['AccountIds'] = request.account_ids_shrink
+        query['ClientToken'] = request.client_token
+        query['DeploymentTargets'] = request.deployment_targets_shrink
+        query['OperationDescription'] = request.operation_description
+        query['OperationPreferences'] = request.operation_preferences_shrink
+        query['ParameterOverrides'] = request.parameter_overrides
+        query['RegionId'] = request.region_id
+        query['RegionIds'] = request.region_ids_shrink
+        query['StackGroupName'] = request.stack_group_name
+        query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateStackInstances',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.UpdateStackInstancesResponse(),
-            await self.do_rpcrequest_async('UpdateStackInstances', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_stack_instances(
@@ -2745,12 +5501,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.UpdateStackTemplateByResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LogicalResourceId'] = request.logical_resource_id
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
+        query['TemplateFormat'] = request.template_format
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateStackTemplateByResources',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.UpdateStackTemplateByResourcesResponse(),
-            self.do_rpcrequest('UpdateStackTemplateByResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_stack_template_by_resources_with_options_async(
@@ -2759,12 +5534,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.UpdateStackTemplateByResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LogicalResourceId'] = request.logical_resource_id
+        query['RegionId'] = request.region_id
+        query['StackId'] = request.stack_id
+        query['TemplateFormat'] = request.template_format
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateStackTemplateByResources',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.UpdateStackTemplateByResourcesResponse(),
-            await self.do_rpcrequest_async('UpdateStackTemplateByResources', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_stack_template_by_resources(
@@ -2787,12 +5581,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Description'] = request.description
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateName'] = request.template_name
+        query['TemplateURL'] = request.template_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateTemplate',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.UpdateTemplateResponse(),
-            self.do_rpcrequest('UpdateTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_template_with_options_async(
@@ -2801,12 +5613,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Description'] = request.description
+        query['TemplateBody'] = request.template_body
+        query['TemplateId'] = request.template_id
+        query['TemplateName'] = request.template_name
+        query['TemplateURL'] = request.template_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateTemplate',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.UpdateTemplateResponse(),
-            await self.do_rpcrequest_async('UpdateTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_template(
@@ -2823,18 +5653,144 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_template_with_options_async(request, runtime)
 
+    def update_template_scratch_with_options(
+        self,
+        tmp_req: ros20190910_models.UpdateTemplateScratchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.UpdateTemplateScratchResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ros20190910_models.UpdateTemplateScratchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.preference_parameters):
+            request.preference_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.preference_parameters, 'PreferenceParameters', 'json')
+        if not UtilClient.is_unset(tmp_req.source_resource_group):
+            request.source_resource_group_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.source_resource_group), 'SourceResourceGroup', 'json')
+        if not UtilClient.is_unset(tmp_req.source_resources):
+            request.source_resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_resources, 'SourceResources', 'json')
+        if not UtilClient.is_unset(tmp_req.source_tag):
+            request.source_tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.source_tag), 'SourceTag', 'json')
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['ExecutionMode'] = request.execution_mode
+        query['LogicalIdStrategy'] = request.logical_id_strategy
+        query['PreferenceParameters'] = request.preference_parameters_shrink
+        query['RegionId'] = request.region_id
+        query['SourceResourceGroup'] = request.source_resource_group_shrink
+        query['SourceResources'] = request.source_resources_shrink
+        query['SourceTag'] = request.source_tag_shrink
+        query['TemplateScratchId'] = request.template_scratch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateTemplateScratch',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.UpdateTemplateScratchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_template_scratch_with_options_async(
+        self,
+        tmp_req: ros20190910_models.UpdateTemplateScratchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.UpdateTemplateScratchResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ros20190910_models.UpdateTemplateScratchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.preference_parameters):
+            request.preference_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.preference_parameters, 'PreferenceParameters', 'json')
+        if not UtilClient.is_unset(tmp_req.source_resource_group):
+            request.source_resource_group_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.source_resource_group), 'SourceResourceGroup', 'json')
+        if not UtilClient.is_unset(tmp_req.source_resources):
+            request.source_resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_resources, 'SourceResources', 'json')
+        if not UtilClient.is_unset(tmp_req.source_tag):
+            request.source_tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.source_tag), 'SourceTag', 'json')
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['ExecutionMode'] = request.execution_mode
+        query['LogicalIdStrategy'] = request.logical_id_strategy
+        query['PreferenceParameters'] = request.preference_parameters_shrink
+        query['RegionId'] = request.region_id
+        query['SourceResourceGroup'] = request.source_resource_group_shrink
+        query['SourceResources'] = request.source_resources_shrink
+        query['SourceTag'] = request.source_tag_shrink
+        query['TemplateScratchId'] = request.template_scratch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateTemplateScratch',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.UpdateTemplateScratchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_template_scratch(
+        self,
+        request: ros20190910_models.UpdateTemplateScratchRequest,
+    ) -> ros20190910_models.UpdateTemplateScratchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_template_scratch_with_options(request, runtime)
+
+    async def update_template_scratch_async(
+        self,
+        request: ros20190910_models.UpdateTemplateScratchRequest,
+    ) -> ros20190910_models.UpdateTemplateScratchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_template_scratch_with_options_async(request, runtime)
+
     def validate_template_with_options(
         self,
         request: ros20190910_models.ValidateTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ValidateTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['RegionId'] = request.region_id
+        query['TemplateBody'] = request.template_body
+        query['TemplateURL'] = request.template_url
+        query['ValidationOption'] = request.validation_option
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ValidateTemplate',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ValidateTemplateResponse(),
-            self.do_rpcrequest('ValidateTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def validate_template_with_options_async(
@@ -2843,12 +5799,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ValidateTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['RegionId'] = request.region_id
+        query['TemplateBody'] = request.template_body
+        query['TemplateURL'] = request.template_url
+        query['ValidationOption'] = request.validation_option
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ValidateTemplate',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             ros20190910_models.ValidateTemplateResponse(),
-            await self.do_rpcrequest_async('ValidateTemplate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def validate_template(
