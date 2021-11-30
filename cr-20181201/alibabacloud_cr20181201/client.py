@@ -47,12 +47,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CancelArtifactBuildTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BuildTaskId'] = request.build_task_id
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CancelArtifactBuildTask',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CancelArtifactBuildTaskResponse(),
-            self.do_rpcrequest('CancelArtifactBuildTask', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def cancel_artifact_build_task_with_options_async(
@@ -61,12 +76,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CancelArtifactBuildTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BuildTaskId'] = request.build_task_id
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CancelArtifactBuildTask',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CancelArtifactBuildTaskResponse(),
-            await self.do_rpcrequest_async('CancelArtifactBuildTask', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def cancel_artifact_build_task(
@@ -89,12 +119,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CancelRepoBuildRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BuildRecordId'] = request.build_record_id
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CancelRepoBuildRecord',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CancelRepoBuildRecordResponse(),
-            self.do_rpcrequest('CancelRepoBuildRecord', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def cancel_repo_build_record_with_options_async(
@@ -103,12 +149,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CancelRepoBuildRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BuildRecordId'] = request.build_record_id
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CancelRepoBuildRecord',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CancelRepoBuildRecordResponse(),
-            await self.do_rpcrequest_async('CancelRepoBuildRecord', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def cancel_repo_build_record(
@@ -131,12 +193,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateBuildRecordByRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BuildRuleId'] = request.build_rule_id
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateBuildRecordByRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateBuildRecordByRuleResponse(),
-            self.do_rpcrequest('CreateBuildRecordByRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_build_record_by_rule_with_options_async(
@@ -145,12 +223,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateBuildRecordByRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BuildRuleId'] = request.build_rule_id
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateBuildRecordByRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateBuildRecordByRuleResponse(),
-            await self.do_rpcrequest_async('CreateBuildRecordByRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_build_record_by_rule(
@@ -167,18 +261,115 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_build_record_by_rule_with_options_async(request, runtime)
 
+    def create_chain_with_options(
+        self,
+        request: cr_20181201_models.CreateChainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CreateChainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ChainConfig'] = request.chain_config
+        query['Description'] = request.description
+        query['InstanceId'] = request.instance_id
+        query['Name'] = request.name
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateChain',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CreateChainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_chain_with_options_async(
+        self,
+        request: cr_20181201_models.CreateChainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CreateChainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ChainConfig'] = request.chain_config
+        query['Description'] = request.description
+        query['InstanceId'] = request.instance_id
+        query['Name'] = request.name
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateChain',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CreateChainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_chain(
+        self,
+        request: cr_20181201_models.CreateChainRequest,
+    ) -> cr_20181201_models.CreateChainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_chain_with_options(request, runtime)
+
+    async def create_chain_async(
+        self,
+        request: cr_20181201_models.CreateChainRequest,
+    ) -> cr_20181201_models.CreateChainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_chain_with_options_async(request, runtime)
+
     def create_chart_namespace_with_options(
         self,
         request: cr_20181201_models.CreateChartNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateChartNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AutoCreateRepo'] = request.auto_create_repo
+        query['DefaultRepoType'] = request.default_repo_type
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateChartNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateChartNamespaceResponse(),
-            self.do_rpcrequest('CreateChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_chart_namespace_with_options_async(
@@ -187,12 +378,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateChartNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AutoCreateRepo'] = request.auto_create_repo
+        query['DefaultRepoType'] = request.default_repo_type
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateChartNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateChartNamespaceResponse(),
-            await self.do_rpcrequest_async('CreateChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_chart_namespace(
@@ -215,12 +423,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateChartRepositoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        query['RepoType'] = request.repo_type
+        query['Summary'] = request.summary
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateChartRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateChartRepositoryResponse(),
-            self.do_rpcrequest('CreateChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_chart_repository_with_options_async(
@@ -229,12 +455,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateChartRepositoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        query['RepoType'] = request.repo_type
+        query['Summary'] = request.summary
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateChartRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateChartRepositoryResponse(),
-            await self.do_rpcrequest_async('CreateChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_chart_repository(
@@ -257,12 +501,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateInstanceEndpointAclPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Comment'] = request.comment
+        query['EndpointType'] = request.endpoint_type
+        query['Entry'] = request.entry
+        query['InstanceId'] = request.instance_id
+        query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateInstanceEndpointAclPolicy',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateInstanceEndpointAclPolicyResponse(),
-            self.do_rpcrequest('CreateInstanceEndpointAclPolicy', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_instance_endpoint_acl_policy_with_options_async(
@@ -271,12 +533,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateInstanceEndpointAclPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Comment'] = request.comment
+        query['EndpointType'] = request.endpoint_type
+        query['Entry'] = request.entry
+        query['InstanceId'] = request.instance_id
+        query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateInstanceEndpointAclPolicy',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateInstanceEndpointAclPolicyResponse(),
-            await self.do_rpcrequest_async('CreateInstanceEndpointAclPolicy', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_instance_endpoint_acl_policy(
@@ -299,12 +579,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateInstanceVpcEndpointLinkedVpcResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ModuleName'] = request.module_name
+        query['VpcId'] = request.vpc_id
+        query['VswitchId'] = request.vswitch_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateInstanceVpcEndpointLinkedVpc',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateInstanceVpcEndpointLinkedVpcResponse(),
-            self.do_rpcrequest('CreateInstanceVpcEndpointLinkedVpc', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_instance_vpc_endpoint_linked_vpc_with_options_async(
@@ -313,12 +610,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateInstanceVpcEndpointLinkedVpcResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ModuleName'] = request.module_name
+        query['VpcId'] = request.vpc_id
+        query['VswitchId'] = request.vswitch_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateInstanceVpcEndpointLinkedVpc',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateInstanceVpcEndpointLinkedVpcResponse(),
-            await self.do_rpcrequest_async('CreateInstanceVpcEndpointLinkedVpc', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_instance_vpc_endpoint_linked_vpc(
@@ -341,12 +655,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AutoCreateRepo'] = request.auto_create_repo
+        query['DefaultRepoType'] = request.default_repo_type
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateNamespaceResponse(),
-            self.do_rpcrequest('CreateNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_namespace_with_options_async(
@@ -355,12 +686,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AutoCreateRepo'] = request.auto_create_repo
+        query['DefaultRepoType'] = request.default_repo_type
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateNamespaceResponse(),
-            await self.do_rpcrequest_async('CreateNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_namespace(
@@ -383,12 +731,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateRepoBuildRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DockerfileLocation'] = request.dockerfile_location
+        query['DockerfileName'] = request.dockerfile_name
+        query['ImageTag'] = request.image_tag
+        query['InstanceId'] = request.instance_id
+        query['PushName'] = request.push_name
+        query['PushType'] = request.push_type
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRepoBuildRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateRepoBuildRuleResponse(),
-            self.do_rpcrequest('CreateRepoBuildRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_repo_build_rule_with_options_async(
@@ -397,12 +765,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateRepoBuildRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DockerfileLocation'] = request.dockerfile_location
+        query['DockerfileName'] = request.dockerfile_name
+        query['ImageTag'] = request.image_tag
+        query['InstanceId'] = request.instance_id
+        query['PushName'] = request.push_name
+        query['PushType'] = request.push_type
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRepoBuildRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateRepoBuildRuleResponse(),
-            await self.do_rpcrequest_async('CreateRepoBuildRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_repo_build_rule(
@@ -419,60 +807,39 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_repo_build_rule_with_options_async(request, runtime)
 
-    def create_repository_with_options(
-        self,
-        request: cr_20181201_models.CreateRepositoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cr_20181201_models.CreateRepositoryResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            cr_20181201_models.CreateRepositoryResponse(),
-            self.do_rpcrequest('CreateRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_repository_with_options_async(
-        self,
-        request: cr_20181201_models.CreateRepositoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cr_20181201_models.CreateRepositoryResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            cr_20181201_models.CreateRepositoryResponse(),
-            await self.do_rpcrequest_async('CreateRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_repository(
-        self,
-        request: cr_20181201_models.CreateRepositoryRequest,
-    ) -> cr_20181201_models.CreateRepositoryResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_repository_with_options(request, runtime)
-
-    async def create_repository_async(
-        self,
-        request: cr_20181201_models.CreateRepositoryRequest,
-    ) -> cr_20181201_models.CreateRepositoryResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_repository_with_options_async(request, runtime)
-
     def create_repo_source_code_repo_with_options(
         self,
         request: cr_20181201_models.CreateRepoSourceCodeRepoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateRepoSourceCodeRepoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AutoBuild'] = request.auto_build
+        query['CodeRepoName'] = request.code_repo_name
+        query['CodeRepoNamespaceName'] = request.code_repo_namespace_name
+        query['CodeRepoType'] = request.code_repo_type
+        query['DisableCacheBuild'] = request.disable_cache_build
+        query['InstanceId'] = request.instance_id
+        query['OverseaBuild'] = request.oversea_build
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRepoSourceCodeRepo',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateRepoSourceCodeRepoResponse(),
-            self.do_rpcrequest('CreateRepoSourceCodeRepo', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_repo_source_code_repo_with_options_async(
@@ -481,12 +848,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateRepoSourceCodeRepoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AutoBuild'] = request.auto_build
+        query['CodeRepoName'] = request.code_repo_name
+        query['CodeRepoNamespaceName'] = request.code_repo_namespace_name
+        query['CodeRepoType'] = request.code_repo_type
+        query['DisableCacheBuild'] = request.disable_cache_build
+        query['InstanceId'] = request.instance_id
+        query['OverseaBuild'] = request.oversea_build
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRepoSourceCodeRepo',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateRepoSourceCodeRepoResponse(),
-            await self.do_rpcrequest_async('CreateRepoSourceCodeRepo', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_repo_source_code_repo(
@@ -509,12 +897,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateRepoSyncRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
+        query['RepoName'] = request.repo_name
+        query['SyncRuleName'] = request.sync_rule_name
+        query['SyncScope'] = request.sync_scope
+        query['SyncTrigger'] = request.sync_trigger
+        query['TagFilter'] = request.tag_filter
+        query['TargetInstanceId'] = request.target_instance_id
+        query['TargetNamespaceName'] = request.target_namespace_name
+        query['TargetRegionId'] = request.target_region_id
+        query['TargetRepoName'] = request.target_repo_name
+        query['TargetUserId'] = request.target_user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRepoSyncRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateRepoSyncRuleResponse(),
-            self.do_rpcrequest('CreateRepoSyncRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_repo_sync_rule_with_options_async(
@@ -523,12 +936,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateRepoSyncRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
+        query['RepoName'] = request.repo_name
+        query['SyncRuleName'] = request.sync_rule_name
+        query['SyncScope'] = request.sync_scope
+        query['SyncTrigger'] = request.sync_trigger
+        query['TagFilter'] = request.tag_filter
+        query['TargetInstanceId'] = request.target_instance_id
+        query['TargetNamespaceName'] = request.target_namespace_name
+        query['TargetRegionId'] = request.target_region_id
+        query['TargetRepoName'] = request.target_repo_name
+        query['TargetUserId'] = request.target_user_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRepoSyncRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateRepoSyncRuleResponse(),
-            await self.do_rpcrequest_async('CreateRepoSyncRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_repo_sync_rule(
@@ -545,18 +983,123 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_repo_sync_rule_with_options_async(request, runtime)
 
+    def create_repo_sync_task_with_options(
+        self,
+        request: cr_20181201_models.CreateRepoSyncTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CreateRepoSyncTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['Override'] = request.override
+        query['RepoId'] = request.repo_id
+        query['Tag'] = request.tag
+        query['TargetInstanceId'] = request.target_instance_id
+        query['TargetNamespace'] = request.target_namespace
+        query['TargetRegionId'] = request.target_region_id
+        query['TargetRepoName'] = request.target_repo_name
+        query['TargetTag'] = request.target_tag
+        query['TargetUserId'] = request.target_user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRepoSyncTask',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepoSyncTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_repo_sync_task_with_options_async(
+        self,
+        request: cr_20181201_models.CreateRepoSyncTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CreateRepoSyncTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['Override'] = request.override
+        query['RepoId'] = request.repo_id
+        query['Tag'] = request.tag
+        query['TargetInstanceId'] = request.target_instance_id
+        query['TargetNamespace'] = request.target_namespace
+        query['TargetRegionId'] = request.target_region_id
+        query['TargetRepoName'] = request.target_repo_name
+        query['TargetTag'] = request.target_tag
+        query['TargetUserId'] = request.target_user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRepoSyncTask',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepoSyncTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_repo_sync_task(
+        self,
+        request: cr_20181201_models.CreateRepoSyncTaskRequest,
+    ) -> cr_20181201_models.CreateRepoSyncTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_repo_sync_task_with_options(request, runtime)
+
+    async def create_repo_sync_task_async(
+        self,
+        request: cr_20181201_models.CreateRepoSyncTaskRequest,
+    ) -> cr_20181201_models.CreateRepoSyncTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_repo_sync_task_with_options_async(request, runtime)
+
     def create_repo_sync_task_by_rule_with_options(
         self,
         request: cr_20181201_models.CreateRepoSyncTaskByRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateRepoSyncTaskByRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['SyncRuleId'] = request.sync_rule_id
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRepoSyncTaskByRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateRepoSyncTaskByRuleResponse(),
-            self.do_rpcrequest('CreateRepoSyncTaskByRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_repo_sync_task_by_rule_with_options_async(
@@ -565,12 +1108,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateRepoSyncTaskByRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['SyncRuleId'] = request.sync_rule_id
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRepoSyncTaskByRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateRepoSyncTaskByRuleResponse(),
-            await self.do_rpcrequest_async('CreateRepoSyncTaskByRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_repo_sync_task_by_rule(
@@ -593,12 +1153,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateRepoTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FromTag'] = request.from_tag
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
+        query['RepoName'] = request.repo_name
+        query['ToTag'] = request.to_tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRepoTag',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateRepoTagResponse(),
-            self.do_rpcrequest('CreateRepoTag', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_repo_tag_with_options_async(
@@ -607,12 +1185,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateRepoTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FromTag'] = request.from_tag
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
+        query['RepoName'] = request.repo_name
+        query['ToTag'] = request.to_tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRepoTag',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateRepoTagResponse(),
-            await self.do_rpcrequest_async('CreateRepoTag', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_repo_tag(
@@ -635,12 +1231,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateRepoTagScanTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Digest'] = request.digest
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['ScanService'] = request.scan_service
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRepoTagScanTask',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateRepoTagScanTaskResponse(),
-            self.do_rpcrequest('CreateRepoTagScanTask', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_repo_tag_scan_task_with_options_async(
@@ -649,12 +1263,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateRepoTagScanTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Digest'] = request.digest
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['ScanService'] = request.scan_service
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRepoTagScanTask',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateRepoTagScanTaskResponse(),
-            await self.do_rpcrequest_async('CreateRepoTagScanTask', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_repo_tag_scan_task(
@@ -677,12 +1309,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateRepoTriggerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['TriggerName'] = request.trigger_name
+        query['TriggerTag'] = request.trigger_tag
+        query['TriggerType'] = request.trigger_type
+        query['TriggerUrl'] = request.trigger_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRepoTrigger',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateRepoTriggerResponse(),
-            self.do_rpcrequest('CreateRepoTrigger', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_repo_trigger_with_options_async(
@@ -691,12 +1342,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateRepoTriggerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['TriggerName'] = request.trigger_name
+        query['TriggerTag'] = request.trigger_tag
+        query['TriggerType'] = request.trigger_type
+        query['TriggerUrl'] = request.trigger_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRepoTrigger',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.CreateRepoTriggerResponse(),
-            await self.do_rpcrequest_async('CreateRepoTrigger', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_repo_trigger(
@@ -713,18 +1383,187 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_repo_trigger_with_options_async(request, runtime)
 
+    def create_repository_with_options(
+        self,
+        request: cr_20181201_models.CreateRepositoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CreateRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['Detail'] = request.detail
+        query['InstanceId'] = request.instance_id
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        query['RepoType'] = request.repo_type
+        query['Summary'] = request.summary
+        query['TagImmutability'] = request.tag_immutability
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepositoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_repository_with_options_async(
+        self,
+        request: cr_20181201_models.CreateRepositoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.CreateRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['Detail'] = request.detail
+        query['InstanceId'] = request.instance_id
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        query['RepoType'] = request.repo_type
+        query['Summary'] = request.summary
+        query['TagImmutability'] = request.tag_immutability
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.CreateRepositoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_repository(
+        self,
+        request: cr_20181201_models.CreateRepositoryRequest,
+    ) -> cr_20181201_models.CreateRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_repository_with_options(request, runtime)
+
+    async def create_repository_async(
+        self,
+        request: cr_20181201_models.CreateRepositoryRequest,
+    ) -> cr_20181201_models.CreateRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_repository_with_options_async(request, runtime)
+
+    def delete_chain_with_options(
+        self,
+        request: cr_20181201_models.DeleteChainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.DeleteChainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ChainId'] = request.chain_id
+        query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteChain',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteChainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_chain_with_options_async(
+        self,
+        request: cr_20181201_models.DeleteChainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.DeleteChainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ChainId'] = request.chain_id
+        query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteChain',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteChainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_chain(
+        self,
+        request: cr_20181201_models.DeleteChainRequest,
+    ) -> cr_20181201_models.DeleteChainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_chain_with_options(request, runtime)
+
+    async def delete_chain_async(
+        self,
+        request: cr_20181201_models.DeleteChainRequest,
+    ) -> cr_20181201_models.DeleteChainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_chain_with_options_async(request, runtime)
+
     def delete_chart_namespace_with_options(
         self,
         request: cr_20181201_models.DeleteChartNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteChartNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteChartNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteChartNamespaceResponse(),
-            self.do_rpcrequest('DeleteChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_chart_namespace_with_options_async(
@@ -733,12 +1572,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteChartNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteChartNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteChartNamespaceResponse(),
-            await self.do_rpcrequest_async('DeleteChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_chart_namespace(
@@ -761,12 +1615,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteChartReleaseResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Chart'] = request.chart
+        query['InstanceId'] = request.instance_id
+        query['Release'] = request.release
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteChartRelease',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteChartReleaseResponse(),
-            self.do_rpcrequest('DeleteChartRelease', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_chart_release_with_options_async(
@@ -775,12 +1647,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteChartReleaseResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Chart'] = request.chart
+        query['InstanceId'] = request.instance_id
+        query['Release'] = request.release
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteChartRelease',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteChartReleaseResponse(),
-            await self.do_rpcrequest_async('DeleteChartRelease', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_chart_release(
@@ -803,12 +1693,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteChartRepositoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteChartRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteChartRepositoryResponse(),
-            self.do_rpcrequest('DeleteChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_chart_repository_with_options_async(
@@ -817,12 +1723,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteChartRepositoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteChartRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteChartRepositoryResponse(),
-            await self.do_rpcrequest_async('DeleteChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_chart_repository(
@@ -839,18 +1761,107 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_chart_repository_with_options_async(request, runtime)
 
+    def delete_event_center_rule_with_options(
+        self,
+        request: cr_20181201_models.DeleteEventCenterRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.DeleteEventCenterRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteEventCenterRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteEventCenterRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_event_center_rule_with_options_async(
+        self,
+        request: cr_20181201_models.DeleteEventCenterRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.DeleteEventCenterRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteEventCenterRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteEventCenterRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_event_center_rule(
+        self,
+        request: cr_20181201_models.DeleteEventCenterRuleRequest,
+    ) -> cr_20181201_models.DeleteEventCenterRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_event_center_rule_with_options(request, runtime)
+
+    async def delete_event_center_rule_async(
+        self,
+        request: cr_20181201_models.DeleteEventCenterRuleRequest,
+    ) -> cr_20181201_models.DeleteEventCenterRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_event_center_rule_with_options_async(request, runtime)
+
     def delete_instance_endpoint_acl_policy_with_options(
         self,
         request: cr_20181201_models.DeleteInstanceEndpointAclPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteInstanceEndpointAclPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndpointType'] = request.endpoint_type
+        query['Entry'] = request.entry
+        query['InstanceId'] = request.instance_id
+        query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstanceEndpointAclPolicy',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteInstanceEndpointAclPolicyResponse(),
-            self.do_rpcrequest('DeleteInstanceEndpointAclPolicy', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_instance_endpoint_acl_policy_with_options_async(
@@ -859,12 +1870,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteInstanceEndpointAclPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndpointType'] = request.endpoint_type
+        query['Entry'] = request.entry
+        query['InstanceId'] = request.instance_id
+        query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstanceEndpointAclPolicy',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteInstanceEndpointAclPolicyResponse(),
-            await self.do_rpcrequest_async('DeleteInstanceEndpointAclPolicy', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_instance_endpoint_acl_policy(
@@ -887,12 +1915,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteInstanceVpcEndpointLinkedVpcResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ModuleName'] = request.module_name
+        query['VpcId'] = request.vpc_id
+        query['VswitchId'] = request.vswitch_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstanceVpcEndpointLinkedVpc',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteInstanceVpcEndpointLinkedVpcResponse(),
-            self.do_rpcrequest('DeleteInstanceVpcEndpointLinkedVpc', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_instance_vpc_endpoint_linked_vpc_with_options_async(
@@ -901,12 +1946,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteInstanceVpcEndpointLinkedVpcResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ModuleName'] = request.module_name
+        query['VpcId'] = request.vpc_id
+        query['VswitchId'] = request.vswitch_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstanceVpcEndpointLinkedVpc',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteInstanceVpcEndpointLinkedVpcResponse(),
-            await self.do_rpcrequest_async('DeleteInstanceVpcEndpointLinkedVpc', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_instance_vpc_endpoint_linked_vpc(
@@ -929,12 +1991,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteNamespaceResponse(),
-            self.do_rpcrequest('DeleteNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_namespace_with_options_async(
@@ -943,12 +2020,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteNamespaceResponse(),
-            await self.do_rpcrequest_async('DeleteNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_namespace(
@@ -971,12 +2063,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteRepoBuildRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BuildRuleId'] = request.build_rule_id
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRepoBuildRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteRepoBuildRuleResponse(),
-            self.do_rpcrequest('DeleteRepoBuildRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_repo_build_rule_with_options_async(
@@ -985,12 +2093,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteRepoBuildRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BuildRuleId'] = request.build_rule_id
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRepoBuildRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteRepoBuildRuleResponse(),
-            await self.do_rpcrequest_async('DeleteRepoBuildRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_repo_build_rule(
@@ -1007,60 +2131,33 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_repo_build_rule_with_options_async(request, runtime)
 
-    def delete_repository_with_options(
-        self,
-        request: cr_20181201_models.DeleteRepositoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cr_20181201_models.DeleteRepositoryResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            cr_20181201_models.DeleteRepositoryResponse(),
-            self.do_rpcrequest('DeleteRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_repository_with_options_async(
-        self,
-        request: cr_20181201_models.DeleteRepositoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cr_20181201_models.DeleteRepositoryResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            cr_20181201_models.DeleteRepositoryResponse(),
-            await self.do_rpcrequest_async('DeleteRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_repository(
-        self,
-        request: cr_20181201_models.DeleteRepositoryRequest,
-    ) -> cr_20181201_models.DeleteRepositoryResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_repository_with_options(request, runtime)
-
-    async def delete_repository_async(
-        self,
-        request: cr_20181201_models.DeleteRepositoryRequest,
-    ) -> cr_20181201_models.DeleteRepositoryResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_repository_with_options_async(request, runtime)
-
     def delete_repo_sync_rule_with_options(
         self,
         request: cr_20181201_models.DeleteRepoSyncRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteRepoSyncRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['SyncRuleId'] = request.sync_rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRepoSyncRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteRepoSyncRuleResponse(),
-            self.do_rpcrequest('DeleteRepoSyncRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_repo_sync_rule_with_options_async(
@@ -1069,12 +2166,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteRepoSyncRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['SyncRuleId'] = request.sync_rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRepoSyncRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteRepoSyncRuleResponse(),
-            await self.do_rpcrequest_async('DeleteRepoSyncRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_repo_sync_rule(
@@ -1097,12 +2209,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteRepoTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRepoTag',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteRepoTagResponse(),
-            self.do_rpcrequest('DeleteRepoTag', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_repo_tag_with_options_async(
@@ -1111,12 +2239,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteRepoTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRepoTag',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteRepoTagResponse(),
-            await self.do_rpcrequest_async('DeleteRepoTag', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_repo_tag(
@@ -1139,12 +2283,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteRepoTriggerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['TriggerId'] = request.trigger_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRepoTrigger',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteRepoTriggerResponse(),
-            self.do_rpcrequest('DeleteRepoTrigger', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_repo_trigger_with_options_async(
@@ -1153,12 +2313,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.DeleteRepoTriggerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['TriggerId'] = request.trigger_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRepoTrigger',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.DeleteRepoTriggerResponse(),
-            await self.do_rpcrequest_async('DeleteRepoTrigger', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_repo_trigger(
@@ -1175,6 +2351,78 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_repo_trigger_with_options_async(request, runtime)
 
+    def delete_repository_with_options(
+        self,
+        request: cr_20181201_models.DeleteRepositoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.DeleteRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteRepositoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_repository_with_options_async(
+        self,
+        request: cr_20181201_models.DeleteRepositoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.DeleteRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.DeleteRepositoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_repository(
+        self,
+        request: cr_20181201_models.DeleteRepositoryRequest,
+    ) -> cr_20181201_models.DeleteRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_repository_with_options(request, runtime)
+
+    async def delete_repository_async(
+        self,
+        request: cr_20181201_models.DeleteRepositoryRequest,
+    ) -> cr_20181201_models.DeleteRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_repository_with_options_async(request, runtime)
+
     def get_artifact_build_task_with_options(
         self,
         request: cr_20181201_models.GetArtifactBuildTaskRequest,
@@ -1183,11 +2431,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetArtifactBuildTask',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetArtifactBuildTaskResponse(),
-            self.do_rpcrequest('GetArtifactBuildTask', '2018-12-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_artifact_build_task_with_options_async(
@@ -1198,11 +2457,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetArtifactBuildTask',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetArtifactBuildTaskResponse(),
-            await self.do_rpcrequest_async('GetArtifactBuildTask', '2018-12-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_artifact_build_task(
@@ -1225,12 +2495,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetAuthorizationTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAuthorizationToken',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetAuthorizationTokenResponse(),
-            self.do_rpcrequest('GetAuthorizationToken', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_authorization_token_with_options_async(
@@ -1239,12 +2523,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetAuthorizationTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAuthorizationToken',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetAuthorizationTokenResponse(),
-            await self.do_rpcrequest_async('GetAuthorizationToken', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_authorization_token(
@@ -1261,18 +2559,105 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_authorization_token_with_options_async(request, runtime)
 
+    def get_chain_with_options(
+        self,
+        request: cr_20181201_models.GetChainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.GetChainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ChainId'] = request.chain_id
+        query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetChain',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.GetChainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_chain_with_options_async(
+        self,
+        request: cr_20181201_models.GetChainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.GetChainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ChainId'] = request.chain_id
+        query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetChain',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.GetChainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_chain(
+        self,
+        request: cr_20181201_models.GetChainRequest,
+    ) -> cr_20181201_models.GetChainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_chain_with_options(request, runtime)
+
+    async def get_chain_async(
+        self,
+        request: cr_20181201_models.GetChainRequest,
+    ) -> cr_20181201_models.GetChainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_chain_with_options_async(request, runtime)
+
     def get_chart_namespace_with_options(
         self,
         request: cr_20181201_models.GetChartNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetChartNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetChartNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetChartNamespaceResponse(),
-            self.do_rpcrequest('GetChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_chart_namespace_with_options_async(
@@ -1281,12 +2666,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetChartNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetChartNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetChartNamespaceResponse(),
-            await self.do_rpcrequest_async('GetChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_chart_namespace(
@@ -1309,12 +2709,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetChartRepositoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetChartRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetChartRepositoryResponse(),
-            self.do_rpcrequest('GetChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_chart_repository_with_options_async(
@@ -1323,12 +2739,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetChartRepositoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetChartRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetChartRepositoryResponse(),
-            await self.do_rpcrequest_async('GetChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_chart_repository(
@@ -1351,12 +2783,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetInstance',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetInstanceResponse(),
-            self.do_rpcrequest('GetInstance', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_instance_with_options_async(
@@ -1365,12 +2811,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetInstance',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetInstanceResponse(),
-            await self.do_rpcrequest_async('GetInstance', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_instance(
@@ -1392,9 +2852,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetInstanceCountResponse:
         req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetInstanceCount',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cr_20181201_models.GetInstanceCountResponse(),
-            self.do_rpcrequest('GetInstanceCount', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_instance_count_with_options_async(
@@ -1402,9 +2873,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetInstanceCountResponse:
         req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetInstanceCount',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             cr_20181201_models.GetInstanceCountResponse(),
-            await self.do_rpcrequest_async('GetInstanceCount', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_instance_count(self) -> cr_20181201_models.GetInstanceCountResponse:
@@ -1421,12 +2903,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetInstanceEndpointResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndpointType'] = request.endpoint_type
+        query['InstanceId'] = request.instance_id
+        query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceEndpoint',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetInstanceEndpointResponse(),
-            self.do_rpcrequest('GetInstanceEndpoint', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_instance_endpoint_with_options_async(
@@ -1435,12 +2933,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetInstanceEndpointResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndpointType'] = request.endpoint_type
+        query['InstanceId'] = request.instance_id
+        query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceEndpoint',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetInstanceEndpointResponse(),
-            await self.do_rpcrequest_async('GetInstanceEndpoint', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_instance_endpoint(
@@ -1463,12 +2977,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetInstanceUsageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceUsage',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetInstanceUsageResponse(),
-            self.do_rpcrequest('GetInstanceUsage', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_instance_usage_with_options_async(
@@ -1477,12 +3005,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetInstanceUsageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceUsage',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetInstanceUsageResponse(),
-            await self.do_rpcrequest_async('GetInstanceUsage', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_instance_usage(
@@ -1505,12 +3047,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetInstanceVpcEndpointResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceVpcEndpoint',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetInstanceVpcEndpointResponse(),
-            self.do_rpcrequest('GetInstanceVpcEndpoint', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_instance_vpc_endpoint_with_options_async(
@@ -1519,12 +3076,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetInstanceVpcEndpointResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceVpcEndpoint',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetInstanceVpcEndpointResponse(),
-            await self.do_rpcrequest_async('GetInstanceVpcEndpoint', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_instance_vpc_endpoint(
@@ -1547,12 +3119,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['NamespaceId'] = request.namespace_id
+        query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetNamespaceResponse(),
-            self.do_rpcrequest('GetNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_namespace_with_options_async(
@@ -1561,12 +3149,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['NamespaceId'] = request.namespace_id
+        query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetNamespaceResponse(),
-            await self.do_rpcrequest_async('GetNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_namespace(
@@ -1589,12 +3193,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoBuildRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BuildRecordId'] = request.build_record_id
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRepoBuildRecord',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetRepoBuildRecordResponse(),
-            self.do_rpcrequest('GetRepoBuildRecord', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_repo_build_record_with_options_async(
@@ -1603,12 +3222,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoBuildRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BuildRecordId'] = request.build_record_id
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRepoBuildRecord',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetRepoBuildRecordResponse(),
-            await self.do_rpcrequest_async('GetRepoBuildRecord', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_repo_build_record(
@@ -1631,12 +3265,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoBuildRecordStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BuildRecordId'] = request.build_record_id
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRepoBuildRecordStatus',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetRepoBuildRecordStatusResponse(),
-            self.do_rpcrequest('GetRepoBuildRecordStatus', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_repo_build_record_status_with_options_async(
@@ -1645,12 +3295,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoBuildRecordStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BuildRecordId'] = request.build_record_id
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRepoBuildRecordStatus',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetRepoBuildRecordStatusResponse(),
-            await self.do_rpcrequest_async('GetRepoBuildRecordStatus', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_repo_build_record_status(
@@ -1667,60 +3333,33 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_repo_build_record_status_with_options_async(request, runtime)
 
-    def get_repository_with_options(
-        self,
-        request: cr_20181201_models.GetRepositoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cr_20181201_models.GetRepositoryResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            cr_20181201_models.GetRepositoryResponse(),
-            self.do_rpcrequest('GetRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_repository_with_options_async(
-        self,
-        request: cr_20181201_models.GetRepositoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cr_20181201_models.GetRepositoryResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            cr_20181201_models.GetRepositoryResponse(),
-            await self.do_rpcrequest_async('GetRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_repository(
-        self,
-        request: cr_20181201_models.GetRepositoryRequest,
-    ) -> cr_20181201_models.GetRepositoryResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_repository_with_options(request, runtime)
-
-    async def get_repository_async(
-        self,
-        request: cr_20181201_models.GetRepositoryRequest,
-    ) -> cr_20181201_models.GetRepositoryResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_repository_with_options_async(request, runtime)
-
     def get_repo_source_code_repo_with_options(
         self,
         request: cr_20181201_models.GetRepoSourceCodeRepoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoSourceCodeRepoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRepoSourceCodeRepo',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetRepoSourceCodeRepoResponse(),
-            self.do_rpcrequest('GetRepoSourceCodeRepo', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_repo_source_code_repo_with_options_async(
@@ -1729,12 +3368,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoSourceCodeRepoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRepoSourceCodeRepo',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetRepoSourceCodeRepoResponse(),
-            await self.do_rpcrequest_async('GetRepoSourceCodeRepo', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_repo_source_code_repo(
@@ -1757,12 +3411,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoSyncTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['SyncTaskId'] = request.sync_task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRepoSyncTask',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetRepoSyncTaskResponse(),
-            self.do_rpcrequest('GetRepoSyncTask', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_repo_sync_task_with_options_async(
@@ -1771,12 +3440,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoSyncTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['SyncTaskId'] = request.sync_task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRepoSyncTask',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetRepoSyncTaskResponse(),
-            await self.do_rpcrequest_async('GetRepoSyncTask', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_repo_sync_task(
@@ -1799,12 +3483,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoTagLayersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Digest'] = request.digest
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRepoTagLayers',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetRepoTagLayersResponse(),
-            self.do_rpcrequest('GetRepoTagLayers', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_repo_tag_layers_with_options_async(
@@ -1813,12 +3514,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoTagLayersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Digest'] = request.digest
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRepoTagLayers',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetRepoTagLayersResponse(),
-            await self.do_rpcrequest_async('GetRepoTagLayers', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_repo_tag_layers(
@@ -1841,12 +3559,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoTagManifestResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['SchemaVersion'] = request.schema_version
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRepoTagManifest',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetRepoTagManifestResponse(),
-            self.do_rpcrequest('GetRepoTagManifest', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_repo_tag_manifest_with_options_async(
@@ -1855,12 +3590,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoTagManifestResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['SchemaVersion'] = request.schema_version
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRepoTagManifest',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetRepoTagManifestResponse(),
-            await self.do_rpcrequest_async('GetRepoTagManifest', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_repo_tag_manifest(
@@ -1883,12 +3635,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoTagScanStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Digest'] = request.digest
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['ScanTaskId'] = request.scan_task_id
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRepoTagScanStatus',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetRepoTagScanStatusResponse(),
-            self.do_rpcrequest('GetRepoTagScanStatus', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_repo_tag_scan_status_with_options_async(
@@ -1897,12 +3667,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoTagScanStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Digest'] = request.digest
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['ScanTaskId'] = request.scan_task_id
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRepoTagScanStatus',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetRepoTagScanStatusResponse(),
-            await self.do_rpcrequest_async('GetRepoTagScanStatus', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_repo_tag_scan_status(
@@ -1925,12 +3713,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoTagScanSummaryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Digest'] = request.digest
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['ScanTaskId'] = request.scan_task_id
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRepoTagScanSummary',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetRepoTagScanSummaryResponse(),
-            self.do_rpcrequest('GetRepoTagScanSummary', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_repo_tag_scan_summary_with_options_async(
@@ -1939,12 +3745,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetRepoTagScanSummaryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Digest'] = request.digest
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['ScanTaskId'] = request.scan_task_id
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRepoTagScanSummary',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.GetRepoTagScanSummaryResponse(),
-            await self.do_rpcrequest_async('GetRepoTagScanSummary', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_repo_tag_scan_summary(
@@ -1961,6 +3785,82 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_repo_tag_scan_summary_with_options_async(request, runtime)
 
+    def get_repository_with_options(
+        self,
+        request: cr_20181201_models.GetRepositoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.GetRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepositoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_repository_with_options_async(
+        self,
+        request: cr_20181201_models.GetRepositoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.GetRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.GetRepositoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_repository(
+        self,
+        request: cr_20181201_models.GetRepositoryRequest,
+    ) -> cr_20181201_models.GetRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_repository_with_options(request, runtime)
+
+    async def get_repository_async(
+        self,
+        request: cr_20181201_models.GetRepositoryRequest,
+    ) -> cr_20181201_models.GetRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_repository_with_options_async(request, runtime)
+
     def list_artifact_build_task_log_with_options(
         self,
         request: cr_20181201_models.ListArtifactBuildTaskLogRequest,
@@ -1969,11 +3869,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListArtifactBuildTaskLog',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListArtifactBuildTaskLogResponse(),
-            self.do_rpcrequest('ListArtifactBuildTaskLog', '2018-12-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_artifact_build_task_log_with_options_async(
@@ -1984,11 +3895,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListArtifactBuildTaskLog',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListArtifactBuildTaskLogResponse(),
-            await self.do_rpcrequest_async('ListArtifactBuildTaskLog', '2018-12-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_artifact_build_task_log(
@@ -2005,18 +3927,192 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_artifact_build_task_log_with_options_async(request, runtime)
 
+    def list_chain_with_options(
+        self,
+        request: cr_20181201_models.ListChainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.ListChainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListChain',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.ListChainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_chain_with_options_async(
+        self,
+        request: cr_20181201_models.ListChainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.ListChainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListChain',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.ListChainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_chain(
+        self,
+        request: cr_20181201_models.ListChainRequest,
+    ) -> cr_20181201_models.ListChainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_chain_with_options(request, runtime)
+
+    async def list_chain_async(
+        self,
+        request: cr_20181201_models.ListChainRequest,
+    ) -> cr_20181201_models.ListChainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_chain_with_options_async(request, runtime)
+
+    def list_chain_instance_with_options(
+        self,
+        request: cr_20181201_models.ListChainInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.ListChainInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListChainInstance',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.ListChainInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_chain_instance_with_options_async(
+        self,
+        request: cr_20181201_models.ListChainInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.ListChainInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListChainInstance',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.ListChainInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_chain_instance(
+        self,
+        request: cr_20181201_models.ListChainInstanceRequest,
+    ) -> cr_20181201_models.ListChainInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_chain_instance_with_options(request, runtime)
+
+    async def list_chain_instance_async(
+        self,
+        request: cr_20181201_models.ListChainInstanceRequest,
+    ) -> cr_20181201_models.ListChainInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_chain_instance_with_options_async(request, runtime)
+
     def list_chart_namespace_with_options(
         self,
         request: cr_20181201_models.ListChartNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListChartNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
+        query['NamespaceStatus'] = request.namespace_status
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListChartNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListChartNamespaceResponse(),
-            self.do_rpcrequest('ListChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_chart_namespace_with_options_async(
@@ -2025,12 +4121,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListChartNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
+        query['NamespaceStatus'] = request.namespace_status
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListChartNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListChartNamespaceResponse(),
-            await self.do_rpcrequest_async('ListChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_chart_namespace(
@@ -2053,12 +4167,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListChartReleaseResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Chart'] = request.chart
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListChartRelease',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListChartReleaseResponse(),
-            self.do_rpcrequest('ListChartRelease', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_chart_release_with_options_async(
@@ -2067,12 +4200,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListChartReleaseResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Chart'] = request.chart
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListChartRelease',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListChartReleaseResponse(),
-            await self.do_rpcrequest_async('ListChartRelease', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_chart_release(
@@ -2095,12 +4247,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListChartRepositoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        query['RepoStatus'] = request.repo_status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListChartRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListChartRepositoryResponse(),
-            self.do_rpcrequest('ListChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_chart_repository_with_options_async(
@@ -2109,12 +4280,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListChartRepositoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        query['RepoStatus'] = request.repo_status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListChartRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListChartRepositoryResponse(),
-            await self.do_rpcrequest_async('ListChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_chart_repository(
@@ -2131,18 +4321,167 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_chart_repository_with_options_async(request, runtime)
 
+    def list_event_center_record_with_options(
+        self,
+        request: cr_20181201_models.ListEventCenterRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.ListEventCenterRecordResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEventCenterRecord',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.ListEventCenterRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_event_center_record_with_options_async(
+        self,
+        request: cr_20181201_models.ListEventCenterRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.ListEventCenterRecordResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEventCenterRecord',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.ListEventCenterRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_event_center_record(
+        self,
+        request: cr_20181201_models.ListEventCenterRecordRequest,
+    ) -> cr_20181201_models.ListEventCenterRecordResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_event_center_record_with_options(request, runtime)
+
+    async def list_event_center_record_async(
+        self,
+        request: cr_20181201_models.ListEventCenterRecordRequest,
+    ) -> cr_20181201_models.ListEventCenterRecordResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_event_center_record_with_options_async(request, runtime)
+
+    def list_event_center_rule_name_with_options(
+        self,
+        request: cr_20181201_models.ListEventCenterRuleNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.ListEventCenterRuleNameResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEventCenterRuleName',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.ListEventCenterRuleNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_event_center_rule_name_with_options_async(
+        self,
+        request: cr_20181201_models.ListEventCenterRuleNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.ListEventCenterRuleNameResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEventCenterRuleName',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.ListEventCenterRuleNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_event_center_rule_name(
+        self,
+        request: cr_20181201_models.ListEventCenterRuleNameRequest,
+    ) -> cr_20181201_models.ListEventCenterRuleNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_event_center_rule_name_with_options(request, runtime)
+
+    async def list_event_center_rule_name_async(
+        self,
+        request: cr_20181201_models.ListEventCenterRuleNameRequest,
+    ) -> cr_20181201_models.ListEventCenterRuleNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_event_center_rule_name_with_options_async(request, runtime)
+
     def list_instance_with_options(
         self,
         request: cr_20181201_models.ListInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceName'] = request.instance_name
+        query['InstanceStatus'] = request.instance_status
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListInstance',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListInstanceResponse(),
-            self.do_rpcrequest('ListInstance', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_instance_with_options_async(
@@ -2151,12 +4490,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceName'] = request.instance_name
+        query['InstanceStatus'] = request.instance_status
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListInstance',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListInstanceResponse(),
-            await self.do_rpcrequest_async('ListInstance', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_instance(
@@ -2179,12 +4535,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListInstanceEndpointResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceEndpoint',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListInstanceEndpointResponse(),
-            self.do_rpcrequest('ListInstanceEndpoint', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_instance_endpoint_with_options_async(
@@ -2193,12 +4564,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListInstanceEndpointResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceEndpoint',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListInstanceEndpointResponse(),
-            await self.do_rpcrequest_async('ListInstanceEndpoint', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_instance_endpoint(
@@ -2221,12 +4607,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListInstanceRegionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceRegion',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListInstanceRegionResponse(),
-            self.do_rpcrequest('ListInstanceRegion', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_instance_region_with_options_async(
@@ -2235,12 +4635,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListInstanceRegionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceRegion',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListInstanceRegionResponse(),
-            await self.do_rpcrequest_async('ListInstanceRegion', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_instance_region(
@@ -2263,12 +4677,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
+        query['NamespaceStatus'] = request.namespace_status
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListNamespaceResponse(),
-            self.do_rpcrequest('ListNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_namespace_with_options_async(
@@ -2277,12 +4709,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
+        query['NamespaceStatus'] = request.namespace_status
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListNamespaceResponse(),
-            await self.do_rpcrequest_async('ListNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_namespace(
@@ -2305,12 +4755,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListRepoBuildRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListRepoBuildRecord',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListRepoBuildRecordResponse(),
-            self.do_rpcrequest('ListRepoBuildRecord', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_repo_build_record_with_options_async(
@@ -2319,12 +4786,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListRepoBuildRecordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListRepoBuildRecord',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListRepoBuildRecordResponse(),
-            await self.do_rpcrequest_async('ListRepoBuildRecord', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_repo_build_record(
@@ -2347,12 +4831,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListRepoBuildRecordLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BuildRecordId'] = request.build_record_id
+        query['InstanceId'] = request.instance_id
+        query['Offset'] = request.offset
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListRepoBuildRecordLog',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListRepoBuildRecordLogResponse(),
-            self.do_rpcrequest('ListRepoBuildRecordLog', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_repo_build_record_log_with_options_async(
@@ -2361,12 +4862,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListRepoBuildRecordLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BuildRecordId'] = request.build_record_id
+        query['InstanceId'] = request.instance_id
+        query['Offset'] = request.offset
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListRepoBuildRecordLog',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListRepoBuildRecordLogResponse(),
-            await self.do_rpcrequest_async('ListRepoBuildRecordLog', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_repo_build_record_log(
@@ -2389,12 +4907,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListRepoBuildRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListRepoBuildRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListRepoBuildRuleResponse(),
-            self.do_rpcrequest('ListRepoBuildRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_repo_build_rule_with_options_async(
@@ -2403,12 +4938,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListRepoBuildRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListRepoBuildRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListRepoBuildRuleResponse(),
-            await self.do_rpcrequest_async('ListRepoBuildRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_repo_build_rule(
@@ -2425,60 +4977,38 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_repo_build_rule_with_options_async(request, runtime)
 
-    def list_repository_with_options(
-        self,
-        request: cr_20181201_models.ListRepositoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cr_20181201_models.ListRepositoryResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            cr_20181201_models.ListRepositoryResponse(),
-            self.do_rpcrequest('ListRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_repository_with_options_async(
-        self,
-        request: cr_20181201_models.ListRepositoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cr_20181201_models.ListRepositoryResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            cr_20181201_models.ListRepositoryResponse(),
-            await self.do_rpcrequest_async('ListRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_repository(
-        self,
-        request: cr_20181201_models.ListRepositoryRequest,
-    ) -> cr_20181201_models.ListRepositoryResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_repository_with_options(request, runtime)
-
-    async def list_repository_async(
-        self,
-        request: cr_20181201_models.ListRepositoryRequest,
-    ) -> cr_20181201_models.ListRepositoryResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_repository_with_options_async(request, runtime)
-
     def list_repo_sync_rule_with_options(
         self,
         request: cr_20181201_models.ListRepoSyncRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListRepoSyncRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoName'] = request.repo_name
+        query['TargetInstanceId'] = request.target_instance_id
+        query['TargetRegionId'] = request.target_region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListRepoSyncRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListRepoSyncRuleResponse(),
-            self.do_rpcrequest('ListRepoSyncRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_repo_sync_rule_with_options_async(
@@ -2487,12 +5017,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListRepoSyncRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoName'] = request.repo_name
+        query['TargetInstanceId'] = request.target_instance_id
+        query['TargetRegionId'] = request.target_region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListRepoSyncRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListRepoSyncRuleResponse(),
-            await self.do_rpcrequest_async('ListRepoSyncRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_repo_sync_rule(
@@ -2515,12 +5065,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListRepoSyncTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        query['SyncRecordId'] = request.sync_record_id
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListRepoSyncTask',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListRepoSyncTaskResponse(),
-            self.do_rpcrequest('ListRepoSyncTask', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_repo_sync_task_with_options_async(
@@ -2529,12 +5099,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListRepoSyncTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        query['SyncRecordId'] = request.sync_record_id
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListRepoSyncTask',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListRepoSyncTaskResponse(),
-            await self.do_rpcrequest_async('ListRepoSyncTask', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_repo_sync_task(
@@ -2557,12 +5147,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListRepoTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListRepoTag',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListRepoTagResponse(),
-            self.do_rpcrequest('ListRepoTag', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_repo_tag_with_options_async(
@@ -2571,12 +5178,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListRepoTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListRepoTag',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListRepoTagResponse(),
-            await self.do_rpcrequest_async('ListRepoTag', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_repo_tag(
@@ -2599,12 +5223,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListRepoTagScanResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Digest'] = request.digest
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoId'] = request.repo_id
+        query['ScanTaskId'] = request.scan_task_id
+        query['Severity'] = request.severity
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListRepoTagScanResult',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListRepoTagScanResultResponse(),
-            self.do_rpcrequest('ListRepoTagScanResult', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_repo_tag_scan_result_with_options_async(
@@ -2613,12 +5258,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListRepoTagScanResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Digest'] = request.digest
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoId'] = request.repo_id
+        query['ScanTaskId'] = request.scan_task_id
+        query['Severity'] = request.severity
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListRepoTagScanResult',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListRepoTagScanResultResponse(),
-            await self.do_rpcrequest_async('ListRepoTagScanResult', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_repo_tag_scan_result(
@@ -2641,12 +5307,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListRepoTriggerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListRepoTrigger',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListRepoTriggerResponse(),
-            self.do_rpcrequest('ListRepoTrigger', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_repo_trigger_with_options_async(
@@ -2655,12 +5336,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ListRepoTriggerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListRepoTrigger',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ListRepoTriggerResponse(),
-            await self.do_rpcrequest_async('ListRepoTrigger', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_repo_trigger(
@@ -2677,47 +5373,85 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_repo_trigger_with_options_async(request, runtime)
 
-    def list_repo_trigger_record_with_options(
+    def list_repository_with_options(
         self,
-        request: cr_20181201_models.ListRepoTriggerRecordRequest,
+        request: cr_20181201_models.ListRepositoryRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> cr_20181201_models.ListRepoTriggerRecordResponse:
+    ) -> cr_20181201_models.ListRepositoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        query['RepoStatus'] = request.repo_status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
+        params = open_api_models.Params(
+            action='ListRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
-            cr_20181201_models.ListRepoTriggerRecordResponse(),
-            self.do_rpcrequest('ListRepoTriggerRecord', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            cr_20181201_models.ListRepositoryResponse(),
+            self.call_api(params, req, runtime)
         )
 
-    async def list_repo_trigger_record_with_options_async(
+    async def list_repository_with_options_async(
         self,
-        request: cr_20181201_models.ListRepoTriggerRecordRequest,
+        request: cr_20181201_models.ListRepositoryRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> cr_20181201_models.ListRepoTriggerRecordResponse:
+    ) -> cr_20181201_models.ListRepositoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        query['RepoStatus'] = request.repo_status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
+        params = open_api_models.Params(
+            action='ListRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
-            cr_20181201_models.ListRepoTriggerRecordResponse(),
-            await self.do_rpcrequest_async('ListRepoTriggerRecord', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            cr_20181201_models.ListRepositoryResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    def list_repo_trigger_record(
+    def list_repository(
         self,
-        request: cr_20181201_models.ListRepoTriggerRecordRequest,
-    ) -> cr_20181201_models.ListRepoTriggerRecordResponse:
+        request: cr_20181201_models.ListRepositoryRequest,
+    ) -> cr_20181201_models.ListRepositoryResponse:
         runtime = util_models.RuntimeOptions()
-        return self.list_repo_trigger_record_with_options(request, runtime)
+        return self.list_repository_with_options(request, runtime)
 
-    async def list_repo_trigger_record_async(
+    async def list_repository_async(
         self,
-        request: cr_20181201_models.ListRepoTriggerRecordRequest,
-    ) -> cr_20181201_models.ListRepoTriggerRecordResponse:
+        request: cr_20181201_models.ListRepositoryRequest,
+    ) -> cr_20181201_models.ListRepositoryResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.list_repo_trigger_record_with_options_async(request, runtime)
+        return await self.list_repository_with_options_async(request, runtime)
 
     def reset_login_password_with_options(
         self,
@@ -2725,12 +5459,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ResetLoginPasswordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['Password'] = request.password
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ResetLoginPassword',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ResetLoginPasswordResponse(),
-            self.do_rpcrequest('ResetLoginPassword', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def reset_login_password_with_options_async(
@@ -2739,12 +5488,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.ResetLoginPasswordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['Password'] = request.password
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ResetLoginPassword',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.ResetLoginPasswordResponse(),
-            await self.do_rpcrequest_async('ResetLoginPassword', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def reset_login_password(
@@ -2761,18 +5525,113 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reset_login_password_with_options_async(request, runtime)
 
+    def update_chain_with_options(
+        self,
+        request: cr_20181201_models.UpdateChainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.UpdateChainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ChainConfig'] = request.chain_config
+        query['ChainId'] = request.chain_id
+        query['Description'] = request.description
+        query['InstanceId'] = request.instance_id
+        query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateChain',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateChainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_chain_with_options_async(
+        self,
+        request: cr_20181201_models.UpdateChainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.UpdateChainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ChainConfig'] = request.chain_config
+        query['ChainId'] = request.chain_id
+        query['Description'] = request.description
+        query['InstanceId'] = request.instance_id
+        query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateChain',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateChainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_chain(
+        self,
+        request: cr_20181201_models.UpdateChainRequest,
+    ) -> cr_20181201_models.UpdateChainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_chain_with_options(request, runtime)
+
+    async def update_chain_async(
+        self,
+        request: cr_20181201_models.UpdateChainRequest,
+    ) -> cr_20181201_models.UpdateChainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_chain_with_options_async(request, runtime)
+
     def update_chart_namespace_with_options(
         self,
         request: cr_20181201_models.UpdateChartNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.UpdateChartNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AutoCreateRepo'] = request.auto_create_repo
+        query['DefaultRepoType'] = request.default_repo_type
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateChartNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.UpdateChartNamespaceResponse(),
-            self.do_rpcrequest('UpdateChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_chart_namespace_with_options_async(
@@ -2781,12 +5640,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.UpdateChartNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AutoCreateRepo'] = request.auto_create_repo
+        query['DefaultRepoType'] = request.default_repo_type
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateChartNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.UpdateChartNamespaceResponse(),
-            await self.do_rpcrequest_async('UpdateChartNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_chart_namespace(
@@ -2809,12 +5685,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.UpdateChartRepositoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        query['RepoType'] = request.repo_type
+        query['Summary'] = request.summary
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateChartRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.UpdateChartRepositoryResponse(),
-            self.do_rpcrequest('UpdateChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_chart_repository_with_options_async(
@@ -2823,12 +5717,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.UpdateChartRepositoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoName'] = request.repo_name
+        query['RepoNamespaceName'] = request.repo_namespace_name
+        query['RepoType'] = request.repo_type
+        query['Summary'] = request.summary
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateChartRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.UpdateChartRepositoryResponse(),
-            await self.do_rpcrequest_async('UpdateChartRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_chart_repository(
@@ -2845,18 +5757,135 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_chart_repository_with_options_async(request, runtime)
 
+    def update_event_center_rule_with_options(
+        self,
+        tmp_req: cr_20181201_models.UpdateEventCenterRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.UpdateEventCenterRuleResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cr_20181201_models.UpdateEventCenterRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.namespaces):
+            request.namespaces_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.namespaces, 'Namespaces', 'json')
+        if not UtilClient.is_unset(tmp_req.repo_names):
+            request.repo_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.repo_names, 'RepoNames', 'json')
+        query = {}
+        query['EventChannel'] = request.event_channel
+        query['EventConfig'] = request.event_config
+        query['EventScope'] = request.event_scope
+        query['EventType'] = request.event_type
+        query['InstanceId'] = request.instance_id
+        query['Namespaces'] = request.namespaces_shrink
+        query['RepoNames'] = request.repo_names_shrink
+        query['RepoTagFilterPattern'] = request.repo_tag_filter_pattern
+        query['RuleId'] = request.rule_id
+        query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateEventCenterRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateEventCenterRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_event_center_rule_with_options_async(
+        self,
+        tmp_req: cr_20181201_models.UpdateEventCenterRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.UpdateEventCenterRuleResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cr_20181201_models.UpdateEventCenterRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.namespaces):
+            request.namespaces_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.namespaces, 'Namespaces', 'json')
+        if not UtilClient.is_unset(tmp_req.repo_names):
+            request.repo_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.repo_names, 'RepoNames', 'json')
+        query = {}
+        query['EventChannel'] = request.event_channel
+        query['EventConfig'] = request.event_config
+        query['EventScope'] = request.event_scope
+        query['EventType'] = request.event_type
+        query['InstanceId'] = request.instance_id
+        query['Namespaces'] = request.namespaces_shrink
+        query['RepoNames'] = request.repo_names_shrink
+        query['RepoTagFilterPattern'] = request.repo_tag_filter_pattern
+        query['RuleId'] = request.rule_id
+        query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateEventCenterRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateEventCenterRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_event_center_rule(
+        self,
+        request: cr_20181201_models.UpdateEventCenterRuleRequest,
+    ) -> cr_20181201_models.UpdateEventCenterRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_event_center_rule_with_options(request, runtime)
+
+    async def update_event_center_rule_async(
+        self,
+        request: cr_20181201_models.UpdateEventCenterRuleRequest,
+    ) -> cr_20181201_models.UpdateEventCenterRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_event_center_rule_with_options_async(request, runtime)
+
     def update_instance_endpoint_status_with_options(
         self,
         request: cr_20181201_models.UpdateInstanceEndpointStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.UpdateInstanceEndpointStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Enable'] = request.enable
+        query['EndpointType'] = request.endpoint_type
+        query['InstanceId'] = request.instance_id
+        query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstanceEndpointStatus',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.UpdateInstanceEndpointStatusResponse(),
-            self.do_rpcrequest('UpdateInstanceEndpointStatus', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_instance_endpoint_status_with_options_async(
@@ -2865,12 +5894,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.UpdateInstanceEndpointStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Enable'] = request.enable
+        query['EndpointType'] = request.endpoint_type
+        query['InstanceId'] = request.instance_id
+        query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstanceEndpointStatus',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.UpdateInstanceEndpointStatusResponse(),
-            await self.do_rpcrequest_async('UpdateInstanceEndpointStatus', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_instance_endpoint_status(
@@ -2893,12 +5939,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.UpdateNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AutoCreateRepo'] = request.auto_create_repo
+        query['DefaultRepoType'] = request.default_repo_type
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.UpdateNamespaceResponse(),
-            self.do_rpcrequest('UpdateNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_namespace_with_options_async(
@@ -2907,12 +5970,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.UpdateNamespaceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AutoCreateRepo'] = request.auto_create_repo
+        query['DefaultRepoType'] = request.default_repo_type
+        query['InstanceId'] = request.instance_id
+        query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateNamespace',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.UpdateNamespaceResponse(),
-            await self.do_rpcrequest_async('UpdateNamespace', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_namespace(
@@ -2935,12 +6015,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.UpdateRepoBuildRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BuildRuleId'] = request.build_rule_id
+        query['DockerfileLocation'] = request.dockerfile_location
+        query['DockerfileName'] = request.dockerfile_name
+        query['ImageTag'] = request.image_tag
+        query['InstanceId'] = request.instance_id
+        query['Platforms'] = request.platforms
+        query['PushName'] = request.push_name
+        query['PushType'] = request.push_type
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateRepoBuildRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.UpdateRepoBuildRuleResponse(),
-            self.do_rpcrequest('UpdateRepoBuildRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_repo_build_rule_with_options_async(
@@ -2949,12 +6051,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.UpdateRepoBuildRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BuildRuleId'] = request.build_rule_id
+        query['DockerfileLocation'] = request.dockerfile_location
+        query['DockerfileName'] = request.dockerfile_name
+        query['ImageTag'] = request.image_tag
+        query['InstanceId'] = request.instance_id
+        query['Platforms'] = request.platforms
+        query['PushName'] = request.push_name
+        query['PushType'] = request.push_type
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateRepoBuildRule',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.UpdateRepoBuildRuleResponse(),
-            await self.do_rpcrequest_async('UpdateRepoBuildRule', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_repo_build_rule(
@@ -2971,60 +6095,40 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_repo_build_rule_with_options_async(request, runtime)
 
-    def update_repository_with_options(
-        self,
-        request: cr_20181201_models.UpdateRepositoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cr_20181201_models.UpdateRepositoryResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            cr_20181201_models.UpdateRepositoryResponse(),
-            self.do_rpcrequest('UpdateRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def update_repository_with_options_async(
-        self,
-        request: cr_20181201_models.UpdateRepositoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cr_20181201_models.UpdateRepositoryResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            cr_20181201_models.UpdateRepositoryResponse(),
-            await self.do_rpcrequest_async('UpdateRepository', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def update_repository(
-        self,
-        request: cr_20181201_models.UpdateRepositoryRequest,
-    ) -> cr_20181201_models.UpdateRepositoryResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_repository_with_options(request, runtime)
-
-    async def update_repository_async(
-        self,
-        request: cr_20181201_models.UpdateRepositoryRequest,
-    ) -> cr_20181201_models.UpdateRepositoryResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_repository_with_options_async(request, runtime)
-
     def update_repo_source_code_repo_with_options(
         self,
         request: cr_20181201_models.UpdateRepoSourceCodeRepoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.UpdateRepoSourceCodeRepoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AutoBuild'] = request.auto_build
+        query['CodeRepoId'] = request.code_repo_id
+        query['CodeRepoName'] = request.code_repo_name
+        query['CodeRepoNamespaceName'] = request.code_repo_namespace_name
+        query['CodeRepoType'] = request.code_repo_type
+        query['DisableCacheBuild'] = request.disable_cache_build
+        query['InstanceId'] = request.instance_id
+        query['OverseaBuild'] = request.oversea_build
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateRepoSourceCodeRepo',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.UpdateRepoSourceCodeRepoResponse(),
-            self.do_rpcrequest('UpdateRepoSourceCodeRepo', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_repo_source_code_repo_with_options_async(
@@ -3033,12 +6137,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.UpdateRepoSourceCodeRepoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AutoBuild'] = request.auto_build
+        query['CodeRepoId'] = request.code_repo_id
+        query['CodeRepoName'] = request.code_repo_name
+        query['CodeRepoNamespaceName'] = request.code_repo_namespace_name
+        query['CodeRepoType'] = request.code_repo_type
+        query['DisableCacheBuild'] = request.disable_cache_build
+        query['InstanceId'] = request.instance_id
+        query['OverseaBuild'] = request.oversea_build
+        query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateRepoSourceCodeRepo',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.UpdateRepoSourceCodeRepoResponse(),
-            await self.do_rpcrequest_async('UpdateRepoSourceCodeRepo', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_repo_source_code_repo(
@@ -3061,12 +6187,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.UpdateRepoTriggerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['TriggerId'] = request.trigger_id
+        query['TriggerName'] = request.trigger_name
+        query['TriggerTag'] = request.trigger_tag
+        query['TriggerType'] = request.trigger_type
+        query['TriggerUrl'] = request.trigger_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateRepoTrigger',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.UpdateRepoTriggerResponse(),
-            self.do_rpcrequest('UpdateRepoTrigger', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_repo_trigger_with_options_async(
@@ -3075,12 +6221,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.UpdateRepoTriggerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['TriggerId'] = request.trigger_id
+        query['TriggerName'] = request.trigger_name
+        query['TriggerTag'] = request.trigger_tag
+        query['TriggerType'] = request.trigger_type
+        query['TriggerUrl'] = request.trigger_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateRepoTrigger',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             cr_20181201_models.UpdateRepoTriggerResponse(),
-            await self.do_rpcrequest_async('UpdateRepoTrigger', '2018-12-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_repo_trigger(
@@ -3096,3 +6262,83 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateRepoTriggerResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_repo_trigger_with_options_async(request, runtime)
+
+    def update_repository_with_options(
+        self,
+        request: cr_20181201_models.UpdateRepositoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.UpdateRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['Detail'] = request.detail
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['RepoType'] = request.repo_type
+        query['Summary'] = request.summary
+        query['TagImmutability'] = request.tag_immutability
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateRepositoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_repository_with_options_async(
+        self,
+        request: cr_20181201_models.UpdateRepositoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.UpdateRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['Detail'] = request.detail
+        query['InstanceId'] = request.instance_id
+        query['RepoId'] = request.repo_id
+        query['RepoType'] = request.repo_type
+        query['Summary'] = request.summary
+        query['TagImmutability'] = request.tag_immutability
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateRepository',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.UpdateRepositoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_repository(
+        self,
+        request: cr_20181201_models.UpdateRepositoryRequest,
+    ) -> cr_20181201_models.UpdateRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_repository_with_options(request, runtime)
+
+    async def update_repository_async(
+        self,
+        request: cr_20181201_models.UpdateRepositoryRequest,
+    ) -> cr_20181201_models.UpdateRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_repository_with_options_async(request, runtime)
