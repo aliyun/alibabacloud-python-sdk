@@ -7222,6 +7222,570 @@ class GetListenerAttributeResponse(TeaModel):
         return self
 
 
+class GetListenerHealthStatusRequest(TeaModel):
+    def __init__(
+        self,
+        include_rule: bool = None,
+        listener_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        # 是否包含转发规则健康检查结果
+        self.include_rule = include_rule
+        # 监听Id
+        self.listener_id = listener_id
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.include_rule is not None:
+            result['IncludeRule'] = self.include_rule
+        if self.listener_id is not None:
+            result['ListenerId'] = self.listener_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IncludeRule') is not None:
+            self.include_rule = m.get('IncludeRule')
+        if m.get('ListenerId') is not None:
+            self.listener_id = m.get('ListenerId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason(TeaModel):
+    def __init__(
+        self,
+        actual_response: str = None,
+        expected_response: str = None,
+        reason_code: str = None,
+    ):
+        # 后端实际的返回码信息
+        self.actual_response = actual_response
+        # 用户预期的后端返回码信息
+        self.expected_response = expected_response
+        # 失败reasonCode
+        self.reason_code = reason_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.actual_response is not None:
+            result['ActualResponse'] = self.actual_response
+        if self.expected_response is not None:
+            result['ExpectedResponse'] = self.expected_response
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActualResponse') is not None:
+            self.actual_response = m.get('ActualResponse')
+        if m.get('ExpectedResponse') is not None:
+            self.expected_response = m.get('ExpectedResponse')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        return self
+
+
+class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        reason: GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason = None,
+        server_id: str = None,
+        server_ip: str = None,
+        status: str = None,
+    ):
+        # 后端服务器端口
+        self.port = port
+        # status为非正常状态时的详细异常原因
+        self.reason = reason
+        # 后端服务器id
+        self.server_id = server_id
+        # 后端服务器Ip
+        self.server_ip = server_ip
+        # 健康检查状态
+        self.status = status
+
+    def validate(self):
+        if self.reason:
+            self.reason.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.reason is not None:
+            result['Reason'] = self.reason.to_map()
+        if self.server_id is not None:
+            result['ServerId'] = self.server_id
+        if self.server_ip is not None:
+            result['ServerIp'] = self.server_ip
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Reason') is not None:
+            temp_model = GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason()
+            self.reason = temp_model.from_map(m['Reason'])
+        if m.get('ServerId') is not None:
+            self.server_id = m.get('ServerId')
+        if m.get('ServerIp') is not None:
+            self.server_ip = m.get('ServerIp')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos(TeaModel):
+    def __init__(
+        self,
+        action_type: str = None,
+        health_check_enabled: str = None,
+        non_normal_servers: List[GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers] = None,
+        server_group_id: str = None,
+    ):
+        # 服务器组使用类型
+        self.action_type = action_type
+        # 健康检查开启/关闭
+        self.health_check_enabled = health_check_enabled
+        # 处于非正常状态的后端服务器
+        self.non_normal_servers = non_normal_servers
+        # 服务器组ID
+        self.server_group_id = server_group_id
+
+    def validate(self):
+        if self.non_normal_servers:
+            for k in self.non_normal_servers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_type is not None:
+            result['ActionType'] = self.action_type
+        if self.health_check_enabled is not None:
+            result['HealthCheckEnabled'] = self.health_check_enabled
+        result['NonNormalServers'] = []
+        if self.non_normal_servers is not None:
+            for k in self.non_normal_servers:
+                result['NonNormalServers'].append(k.to_map() if k else None)
+        if self.server_group_id is not None:
+            result['ServerGroupId'] = self.server_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionType') is not None:
+            self.action_type = m.get('ActionType')
+        if m.get('HealthCheckEnabled') is not None:
+            self.health_check_enabled = m.get('HealthCheckEnabled')
+        self.non_normal_servers = []
+        if m.get('NonNormalServers') is not None:
+            for k in m.get('NonNormalServers'):
+                temp_model = GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers()
+                self.non_normal_servers.append(temp_model.from_map(k))
+        if m.get('ServerGroupId') is not None:
+            self.server_group_id = m.get('ServerGroupId')
+        return self
+
+
+class GetListenerHealthStatusResponseBodyListenerHealthStatus(TeaModel):
+    def __init__(
+        self,
+        listener_id: str = None,
+        listener_port: int = None,
+        listener_protocol: str = None,
+        server_group_infos: List[GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos] = None,
+    ):
+        # 监听Id
+        self.listener_id = listener_id
+        # 监听的端口号
+        self.listener_port = listener_port
+        # 监听的协议
+        self.listener_protocol = listener_protocol
+        # 服务器组健康检查结果
+        self.server_group_infos = server_group_infos
+
+    def validate(self):
+        if self.server_group_infos:
+            for k in self.server_group_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.listener_id is not None:
+            result['ListenerId'] = self.listener_id
+        if self.listener_port is not None:
+            result['ListenerPort'] = self.listener_port
+        if self.listener_protocol is not None:
+            result['ListenerProtocol'] = self.listener_protocol
+        result['ServerGroupInfos'] = []
+        if self.server_group_infos is not None:
+            for k in self.server_group_infos:
+                result['ServerGroupInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ListenerId') is not None:
+            self.listener_id = m.get('ListenerId')
+        if m.get('ListenerPort') is not None:
+            self.listener_port = m.get('ListenerPort')
+        if m.get('ListenerProtocol') is not None:
+            self.listener_protocol = m.get('ListenerProtocol')
+        self.server_group_infos = []
+        if m.get('ServerGroupInfos') is not None:
+            for k in m.get('ServerGroupInfos'):
+                temp_model = GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos()
+                self.server_group_infos.append(temp_model.from_map(k))
+        return self
+
+
+class GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason(TeaModel):
+    def __init__(
+        self,
+        actual_response: str = None,
+        expected_response: str = None,
+        reason_code: str = None,
+    ):
+        # 后端实际的返回码信息
+        self.actual_response = actual_response
+        # 用户预期的后端返回码信息
+        self.expected_response = expected_response
+        # 失败reasonCode
+        self.reason_code = reason_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.actual_response is not None:
+            result['ActualResponse'] = self.actual_response
+        if self.expected_response is not None:
+            result['ExpectedResponse'] = self.expected_response
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActualResponse') is not None:
+            self.actual_response = m.get('ActualResponse')
+        if m.get('ExpectedResponse') is not None:
+            self.expected_response = m.get('ExpectedResponse')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        return self
+
+
+class GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        reason: GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason = None,
+        server_id: str = None,
+        server_ip: str = None,
+        status: str = None,
+    ):
+        # 后端服务器端口
+        self.port = port
+        # status为非正常状态时的详细异常原因
+        self.reason = reason
+        # 后端服务器Id
+        self.server_id = server_id
+        # 后端服务器ID
+        self.server_ip = server_ip
+        # 健康检查状态
+        self.status = status
+
+    def validate(self):
+        if self.reason:
+            self.reason.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.reason is not None:
+            result['Reason'] = self.reason.to_map()
+        if self.server_id is not None:
+            result['ServerId'] = self.server_id
+        if self.server_ip is not None:
+            result['ServerIp'] = self.server_ip
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Reason') is not None:
+            temp_model = GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason()
+            self.reason = temp_model.from_map(m['Reason'])
+        if m.get('ServerId') is not None:
+            self.server_id = m.get('ServerId')
+        if m.get('ServerIp') is not None:
+            self.server_ip = m.get('ServerIp')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos(TeaModel):
+    def __init__(
+        self,
+        action_type: str = None,
+        health_check_enabled: str = None,
+        non_normal_servers: List[GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers] = None,
+        server_group_id: str = None,
+    ):
+        # 服务器组使用类型
+        self.action_type = action_type
+        # 健康检查开启/关闭
+        self.health_check_enabled = health_check_enabled
+        # 处于非正常状态的后端服务器
+        self.non_normal_servers = non_normal_servers
+        # 服务器组ID
+        self.server_group_id = server_group_id
+
+    def validate(self):
+        if self.non_normal_servers:
+            for k in self.non_normal_servers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_type is not None:
+            result['ActionType'] = self.action_type
+        if self.health_check_enabled is not None:
+            result['HealthCheckEnabled'] = self.health_check_enabled
+        result['NonNormalServers'] = []
+        if self.non_normal_servers is not None:
+            for k in self.non_normal_servers:
+                result['NonNormalServers'].append(k.to_map() if k else None)
+        if self.server_group_id is not None:
+            result['ServerGroupId'] = self.server_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionType') is not None:
+            self.action_type = m.get('ActionType')
+        if m.get('HealthCheckEnabled') is not None:
+            self.health_check_enabled = m.get('HealthCheckEnabled')
+        self.non_normal_servers = []
+        if m.get('NonNormalServers') is not None:
+            for k in m.get('NonNormalServers'):
+                temp_model = GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers()
+                self.non_normal_servers.append(temp_model.from_map(k))
+        if m.get('ServerGroupId') is not None:
+            self.server_group_id = m.get('ServerGroupId')
+        return self
+
+
+class GetListenerHealthStatusResponseBodyRuleHealthStatus(TeaModel):
+    def __init__(
+        self,
+        rule_id: str = None,
+        server_group_infos: List[GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos] = None,
+    ):
+        # 转发规则ID
+        self.rule_id = rule_id
+        # 服务器组健康检查结果
+        self.server_group_infos = server_group_infos
+
+    def validate(self):
+        if self.server_group_infos:
+            for k in self.server_group_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        result['ServerGroupInfos'] = []
+        if self.server_group_infos is not None:
+            for k in self.server_group_infos:
+                result['ServerGroupInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        self.server_group_infos = []
+        if m.get('ServerGroupInfos') is not None:
+            for k in m.get('ServerGroupInfos'):
+                temp_model = GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos()
+                self.server_group_infos.append(temp_model.from_map(k))
+        return self
+
+
+class GetListenerHealthStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        listener_health_status: List[GetListenerHealthStatusResponseBodyListenerHealthStatus] = None,
+        next_token: str = None,
+        request_id: str = None,
+        rule_health_status: List[GetListenerHealthStatusResponseBodyRuleHealthStatus] = None,
+    ):
+        # 监听健康检查结果
+        self.listener_health_status = listener_health_status
+        # 下一页标识
+        self.next_token = next_token
+        # 请求Id
+        self.request_id = request_id
+        # 转发规则健康检查结果
+        self.rule_health_status = rule_health_status
+
+    def validate(self):
+        if self.listener_health_status:
+            for k in self.listener_health_status:
+                if k:
+                    k.validate()
+        if self.rule_health_status:
+            for k in self.rule_health_status:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ListenerHealthStatus'] = []
+        if self.listener_health_status is not None:
+            for k in self.listener_health_status:
+                result['ListenerHealthStatus'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['RuleHealthStatus'] = []
+        if self.rule_health_status is not None:
+            for k in self.rule_health_status:
+                result['RuleHealthStatus'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.listener_health_status = []
+        if m.get('ListenerHealthStatus') is not None:
+            for k in m.get('ListenerHealthStatus'):
+                temp_model = GetListenerHealthStatusResponseBodyListenerHealthStatus()
+                self.listener_health_status.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.rule_health_status = []
+        if m.get('RuleHealthStatus') is not None:
+            for k in m.get('RuleHealthStatus'):
+                temp_model = GetListenerHealthStatusResponseBodyRuleHealthStatus()
+                self.rule_health_status.append(temp_model.from_map(k))
+        return self
+
+
+class GetListenerHealthStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetListenerHealthStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetListenerHealthStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetLoadBalancerAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -7457,9 +8021,12 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaM
     def __init__(
         self,
         address: str = None,
+        ipv_6address: str = None,
     ):
         # IP地址
         self.address = address
+        # Ipv6地址
+        self.ipv_6address = ipv_6address
 
     def validate(self):
         pass
@@ -7472,12 +8039,16 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaM
         result = dict()
         if self.address is not None:
             result['Address'] = self.address
+        if self.ipv_6address is not None:
+            result['Ipv6Address'] = self.ipv_6address
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Address') is not None:
             self.address = m.get('Address')
+        if m.get('Ipv6Address') is not None:
+            self.ipv_6address = m.get('Ipv6Address')
         return self
 
 
@@ -7536,11 +8107,13 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         self,
         access_log_config: GetLoadBalancerAttributeResponseBodyAccessLogConfig = None,
         address_allocated_mode: str = None,
+        address_ip_version: str = None,
         address_type: str = None,
         bandwidth_package_id: str = None,
         create_time: str = None,
         dnsname: str = None,
         deletion_protection_config: GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig = None,
+        ipv_6address_type: str = None,
         load_balancer_billing_config: GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig = None,
         load_balancer_bussiness_status: str = None,
         load_balancer_edition: str = None,
@@ -7560,6 +8133,8 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         self.access_log_config = access_log_config
         # 地址分配方式
         self.address_allocated_mode = address_allocated_mode
+        # 协议版本
+        self.address_ip_version = address_ip_version
         # 地址类型
         self.address_type = address_type
         # 带宽包ID
@@ -7570,6 +8145,8 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         self.dnsname = dnsname
         # 负载均衡删除保护相关信息
         self.deletion_protection_config = deletion_protection_config
+        # IPV6地址类型
+        self.ipv_6address_type = ipv_6address_type
         # 计费相关属性
         self.load_balancer_billing_config = load_balancer_billing_config
         # 实例业务状态
@@ -7631,6 +8208,8 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             result['AccessLogConfig'] = self.access_log_config.to_map()
         if self.address_allocated_mode is not None:
             result['AddressAllocatedMode'] = self.address_allocated_mode
+        if self.address_ip_version is not None:
+            result['AddressIpVersion'] = self.address_ip_version
         if self.address_type is not None:
             result['AddressType'] = self.address_type
         if self.bandwidth_package_id is not None:
@@ -7641,6 +8220,8 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             result['DNSName'] = self.dnsname
         if self.deletion_protection_config is not None:
             result['DeletionProtectionConfig'] = self.deletion_protection_config.to_map()
+        if self.ipv_6address_type is not None:
+            result['Ipv6AddressType'] = self.ipv_6address_type
         if self.load_balancer_billing_config is not None:
             result['LoadBalancerBillingConfig'] = self.load_balancer_billing_config.to_map()
         if self.load_balancer_bussiness_status is not None:
@@ -7684,6 +8265,8 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             self.access_log_config = temp_model.from_map(m['AccessLogConfig'])
         if m.get('AddressAllocatedMode') is not None:
             self.address_allocated_mode = m.get('AddressAllocatedMode')
+        if m.get('AddressIpVersion') is not None:
+            self.address_ip_version = m.get('AddressIpVersion')
         if m.get('AddressType') is not None:
             self.address_type = m.get('AddressType')
         if m.get('BandwidthPackageId') is not None:
@@ -7695,6 +8278,8 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         if m.get('DeletionProtectionConfig') is not None:
             temp_model = GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig()
             self.deletion_protection_config = temp_model.from_map(m['DeletionProtectionConfig'])
+        if m.get('Ipv6AddressType') is not None:
+            self.ipv_6address_type = m.get('Ipv6AddressType')
         if m.get('LoadBalancerBillingConfig') is not None:
             temp_model = GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig()
             self.load_balancer_billing_config = temp_model.from_map(m['LoadBalancerBillingConfig'])
@@ -8229,6 +8814,7 @@ class ListAclsResponseBodyAcls(TeaModel):
         acl_name: str = None,
         acl_status: str = None,
         address_ipversion: str = None,
+        config_managed_enabled: bool = None,
         resource_group_id: str = None,
     ):
         # 访问控制策略id
@@ -8239,6 +8825,8 @@ class ListAclsResponseBodyAcls(TeaModel):
         self.acl_status = acl_status
         # IP版本
         self.address_ipversion = address_ipversion
+        # 配置管理
+        self.config_managed_enabled = config_managed_enabled
         # 资源组ID
         self.resource_group_id = resource_group_id
 
@@ -8259,6 +8847,8 @@ class ListAclsResponseBodyAcls(TeaModel):
             result['AclStatus'] = self.acl_status
         if self.address_ipversion is not None:
             result['AddressIPVersion'] = self.address_ipversion
+        if self.config_managed_enabled is not None:
+            result['ConfigManagedEnabled'] = self.config_managed_enabled
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         return result
@@ -8273,6 +8863,8 @@ class ListAclsResponseBodyAcls(TeaModel):
             self.acl_status = m.get('AclStatus')
         if m.get('AddressIPVersion') is not None:
             self.address_ipversion = m.get('AddressIPVersion')
+        if m.get('ConfigManagedEnabled') is not None:
+            self.config_managed_enabled = m.get('ConfigManagedEnabled')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         return self
@@ -10092,11 +10684,13 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         self,
         access_log_config: ListLoadBalancersResponseBodyLoadBalancersAccessLogConfig = None,
         address_allocated_mode: str = None,
+        address_ip_version: str = None,
         address_type: str = None,
         bandwidth_package_id: str = None,
         create_time: str = None,
         dnsname: str = None,
         deletion_protection_config: ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig = None,
+        ipv_6address_type: str = None,
         load_balancer_billing_config: ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig = None,
         load_balancer_bussiness_status: str = None,
         load_balancer_edition: str = None,
@@ -10113,6 +10707,8 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         self.access_log_config = access_log_config
         # 地址模式
         self.address_allocated_mode = address_allocated_mode
+        # 协议版本
+        self.address_ip_version = address_ip_version
         # 地址类型
         self.address_type = address_type
         # 带宽包ID
@@ -10123,6 +10719,8 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         self.dnsname = dnsname
         # 负载均衡删除保护相关信息
         self.deletion_protection_config = deletion_protection_config
+        # IPV6地址类型
+        self.ipv_6address_type = ipv_6address_type
         # 计费相关属性
         self.load_balancer_billing_config = load_balancer_billing_config
         # 实例业务状态
@@ -10174,6 +10772,8 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
             result['AccessLogConfig'] = self.access_log_config.to_map()
         if self.address_allocated_mode is not None:
             result['AddressAllocatedMode'] = self.address_allocated_mode
+        if self.address_ip_version is not None:
+            result['AddressIpVersion'] = self.address_ip_version
         if self.address_type is not None:
             result['AddressType'] = self.address_type
         if self.bandwidth_package_id is not None:
@@ -10184,6 +10784,8 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
             result['DNSName'] = self.dnsname
         if self.deletion_protection_config is not None:
             result['DeletionProtectionConfig'] = self.deletion_protection_config.to_map()
+        if self.ipv_6address_type is not None:
+            result['Ipv6AddressType'] = self.ipv_6address_type
         if self.load_balancer_billing_config is not None:
             result['LoadBalancerBillingConfig'] = self.load_balancer_billing_config.to_map()
         if self.load_balancer_bussiness_status is not None:
@@ -10219,6 +10821,8 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
             self.access_log_config = temp_model.from_map(m['AccessLogConfig'])
         if m.get('AddressAllocatedMode') is not None:
             self.address_allocated_mode = m.get('AddressAllocatedMode')
+        if m.get('AddressIpVersion') is not None:
+            self.address_ip_version = m.get('AddressIpVersion')
         if m.get('AddressType') is not None:
             self.address_type = m.get('AddressType')
         if m.get('BandwidthPackageId') is not None:
@@ -10230,6 +10834,8 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         if m.get('DeletionProtectionConfig') is not None:
             temp_model = ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig()
             self.deletion_protection_config = temp_model.from_map(m['DeletionProtectionConfig'])
+        if m.get('Ipv6AddressType') is not None:
+            self.ipv_6address_type = m.get('Ipv6AddressType')
         if m.get('LoadBalancerBillingConfig') is not None:
             temp_model = ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig()
             self.load_balancer_billing_config = temp_model.from_map(m['LoadBalancerBillingConfig'])
@@ -12300,7 +12906,9 @@ class ListServerGroupsResponseBodyServerGroupsTags(TeaModel):
 class ListServerGroupsResponseBodyServerGroups(TeaModel):
     def __init__(
         self,
+        config_managed_enabled: bool = None,
         health_check_config: ListServerGroupsResponseBodyServerGroupsHealthCheckConfig = None,
+        ipv_6enabled: bool = None,
         protocol: str = None,
         resource_group_id: str = None,
         scheduler: str = None,
@@ -12311,10 +12919,15 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         server_group_type: str = None,
         sticky_session_config: ListServerGroupsResponseBodyServerGroupsStickySessionConfig = None,
         tags: List[ListServerGroupsResponseBodyServerGroupsTags] = None,
+        upstream_keepalive_enabled: bool = None,
         vpc_id: str = None,
     ):
+        # 是否开启配置管理
+        self.config_managed_enabled = config_managed_enabled
         # 健康检查配置
         self.health_check_config = health_check_config
+        # 是否支持Ipv6
+        self.ipv_6enabled = ipv_6enabled
         # 服务器组协议
         self.protocol = protocol
         # 资源组id
@@ -12335,6 +12948,8 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         self.sticky_session_config = sticky_session_config
         # 标签列表
         self.tags = tags
+        # 是否开启后端长链接
+        self.upstream_keepalive_enabled = upstream_keepalive_enabled
         # 服务器组所在VpcId
         self.vpc_id = vpc_id
 
@@ -12354,8 +12969,12 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
             return _map
 
         result = dict()
+        if self.config_managed_enabled is not None:
+            result['ConfigManagedEnabled'] = self.config_managed_enabled
         if self.health_check_config is not None:
             result['HealthCheckConfig'] = self.health_check_config.to_map()
+        if self.ipv_6enabled is not None:
+            result['Ipv6Enabled'] = self.ipv_6enabled
         if self.protocol is not None:
             result['Protocol'] = self.protocol
         if self.resource_group_id is not None:
@@ -12378,15 +12997,21 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.upstream_keepalive_enabled is not None:
+            result['UpstreamKeepaliveEnabled'] = self.upstream_keepalive_enabled
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ConfigManagedEnabled') is not None:
+            self.config_managed_enabled = m.get('ConfigManagedEnabled')
         if m.get('HealthCheckConfig') is not None:
             temp_model = ListServerGroupsResponseBodyServerGroupsHealthCheckConfig()
             self.health_check_config = temp_model.from_map(m['HealthCheckConfig'])
+        if m.get('Ipv6Enabled') is not None:
+            self.ipv_6enabled = m.get('Ipv6Enabled')
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
         if m.get('ResourceGroupId') is not None:
@@ -12411,6 +13036,8 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
             for k in m.get('Tags'):
                 temp_model = ListServerGroupsResponseBodyServerGroupsTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('UpstreamKeepaliveEnabled') is not None:
+            self.upstream_keepalive_enabled = m.get('UpstreamKeepaliveEnabled')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self

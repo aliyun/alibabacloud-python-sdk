@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_alb20200616 import models as alb_20200616_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -46,12 +47,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AddEntriesToAclResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclEntries'] = request.acl_entries
+        query['AclId'] = request.acl_id
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddEntriesToAcl',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.AddEntriesToAclResponse(),
-            self.do_rpcrequest('AddEntriesToAcl', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_entries_to_acl_with_options_async(
@@ -60,12 +78,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AddEntriesToAclResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclEntries'] = request.acl_entries
+        query['AclId'] = request.acl_id
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddEntriesToAcl',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.AddEntriesToAclResponse(),
-            await self.do_rpcrequest_async('AddEntriesToAcl', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_entries_to_acl(
@@ -88,12 +123,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AddServersToServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ServerGroupId'] = request.server_group_id
+        query['Servers'] = request.servers
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddServersToServerGroup',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.AddServersToServerGroupResponse(),
-            self.do_rpcrequest('AddServersToServerGroup', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_servers_to_server_group_with_options_async(
@@ -102,12 +154,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AddServersToServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ServerGroupId'] = request.server_group_id
+        query['Servers'] = request.servers
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddServersToServerGroup',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.AddServersToServerGroupResponse(),
-            await self.do_rpcrequest_async('AddServersToServerGroup', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_servers_to_server_group(
@@ -130,12 +199,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ApplyHealthCheckTemplateToServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['HealthCheckTemplateId'] = request.health_check_template_id
+        query['ServerGroupId'] = request.server_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ApplyHealthCheckTemplateToServerGroup',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ApplyHealthCheckTemplateToServerGroupResponse(),
-            self.do_rpcrequest('ApplyHealthCheckTemplateToServerGroup', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def apply_health_check_template_to_server_group_with_options_async(
@@ -144,12 +230,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ApplyHealthCheckTemplateToServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['HealthCheckTemplateId'] = request.health_check_template_id
+        query['ServerGroupId'] = request.server_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ApplyHealthCheckTemplateToServerGroup',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ApplyHealthCheckTemplateToServerGroupResponse(),
-            await self.do_rpcrequest_async('ApplyHealthCheckTemplateToServerGroup', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def apply_health_check_template_to_server_group(
@@ -172,12 +275,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AssociateAclsWithListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclIds'] = request.acl_ids
+        query['AclType'] = request.acl_type
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AssociateAclsWithListener',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.AssociateAclsWithListenerResponse(),
-            self.do_rpcrequest('AssociateAclsWithListener', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def associate_acls_with_listener_with_options_async(
@@ -186,12 +307,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AssociateAclsWithListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclIds'] = request.acl_ids
+        query['AclType'] = request.acl_type
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AssociateAclsWithListener',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.AssociateAclsWithListenerResponse(),
-            await self.do_rpcrequest_async('AssociateAclsWithListener', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def associate_acls_with_listener(
@@ -214,12 +353,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AssociateAdditionalCertificatesWithListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Certificates'] = request.certificates
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AssociateAdditionalCertificatesWithListener',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.AssociateAdditionalCertificatesWithListenerResponse(),
-            self.do_rpcrequest('AssociateAdditionalCertificatesWithListener', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def associate_additional_certificates_with_listener_with_options_async(
@@ -228,12 +384,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AssociateAdditionalCertificatesWithListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Certificates'] = request.certificates
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AssociateAdditionalCertificatesWithListener',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.AssociateAdditionalCertificatesWithListenerResponse(),
-            await self.do_rpcrequest_async('AssociateAdditionalCertificatesWithListener', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def associate_additional_certificates_with_listener(
@@ -256,12 +429,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BandwidthPackageId'] = request.bandwidth_package_id
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerId'] = request.load_balancer_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AttachCommonBandwidthPackageToLoadBalancer',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerResponse(),
-            self.do_rpcrequest('AttachCommonBandwidthPackageToLoadBalancer', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def attach_common_bandwidth_package_to_load_balancer_with_options_async(
@@ -270,12 +461,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BandwidthPackageId'] = request.bandwidth_package_id
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerId'] = request.load_balancer_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AttachCommonBandwidthPackageToLoadBalancer',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerResponse(),
-            await self.do_rpcrequest_async('AttachCommonBandwidthPackageToLoadBalancer', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def attach_common_bandwidth_package_to_load_balancer(
@@ -298,12 +507,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateAclResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclName'] = request.acl_name
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateAcl',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.CreateAclResponse(),
-            self.do_rpcrequest('CreateAcl', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_acl_with_options_async(
@@ -312,12 +538,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateAclResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclName'] = request.acl_name
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateAcl',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.CreateAclResponse(),
-            await self.do_rpcrequest_async('CreateAcl', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_acl(
@@ -340,12 +583,39 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateHealthCheckTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['HealthCheckCodes'] = request.health_check_codes
+        query['HealthCheckConnectPort'] = request.health_check_connect_port
+        query['HealthCheckHost'] = request.health_check_host
+        query['HealthCheckHttpVersion'] = request.health_check_http_version
+        query['HealthCheckInterval'] = request.health_check_interval
+        query['HealthCheckMethod'] = request.health_check_method
+        query['HealthCheckPath'] = request.health_check_path
+        query['HealthCheckProtocol'] = request.health_check_protocol
+        query['HealthCheckTemplateName'] = request.health_check_template_name
+        query['HealthCheckTimeout'] = request.health_check_timeout
+        query['HealthyThreshold'] = request.healthy_threshold
+        query['UnhealthyThreshold'] = request.unhealthy_threshold
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateHealthCheckTemplate',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.CreateHealthCheckTemplateResponse(),
-            self.do_rpcrequest('CreateHealthCheckTemplate', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_health_check_template_with_options_async(
@@ -354,12 +624,39 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateHealthCheckTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['HealthCheckCodes'] = request.health_check_codes
+        query['HealthCheckConnectPort'] = request.health_check_connect_port
+        query['HealthCheckHost'] = request.health_check_host
+        query['HealthCheckHttpVersion'] = request.health_check_http_version
+        query['HealthCheckInterval'] = request.health_check_interval
+        query['HealthCheckMethod'] = request.health_check_method
+        query['HealthCheckPath'] = request.health_check_path
+        query['HealthCheckProtocol'] = request.health_check_protocol
+        query['HealthCheckTemplateName'] = request.health_check_template_name
+        query['HealthCheckTimeout'] = request.health_check_timeout
+        query['HealthyThreshold'] = request.healthy_threshold
+        query['UnhealthyThreshold'] = request.unhealthy_threshold
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateHealthCheckTemplate',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.CreateHealthCheckTemplateResponse(),
-            await self.do_rpcrequest_async('CreateHealthCheckTemplate', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_health_check_template(
@@ -382,12 +679,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CaCertificates'] = request.ca_certificates
+        query['CaEnabled'] = request.ca_enabled
+        query['Certificates'] = request.certificates
+        query['ClientToken'] = request.client_token
+        query['DefaultActions'] = request.default_actions
+        query['DryRun'] = request.dry_run
+        query['GzipEnabled'] = request.gzip_enabled
+        query['Http2Enabled'] = request.http_2enabled
+        query['IdleTimeout'] = request.idle_timeout
+        query['ListenerDescription'] = request.listener_description
+        query['ListenerPort'] = request.listener_port
+        query['ListenerProtocol'] = request.listener_protocol
+        query['LoadBalancerId'] = request.load_balancer_id
+        query['QuicConfig'] = request.quic_config
+        query['RequestTimeout'] = request.request_timeout
+        query['SecurityPolicyId'] = request.security_policy_id
+        query['XForwardedForConfig'] = request.xforwarded_for_config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateListener',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.CreateListenerResponse(),
-            self.do_rpcrequest('CreateListener', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_listener_with_options_async(
@@ -396,12 +723,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CaCertificates'] = request.ca_certificates
+        query['CaEnabled'] = request.ca_enabled
+        query['Certificates'] = request.certificates
+        query['ClientToken'] = request.client_token
+        query['DefaultActions'] = request.default_actions
+        query['DryRun'] = request.dry_run
+        query['GzipEnabled'] = request.gzip_enabled
+        query['Http2Enabled'] = request.http_2enabled
+        query['IdleTimeout'] = request.idle_timeout
+        query['ListenerDescription'] = request.listener_description
+        query['ListenerPort'] = request.listener_port
+        query['ListenerProtocol'] = request.listener_protocol
+        query['LoadBalancerId'] = request.load_balancer_id
+        query['QuicConfig'] = request.quic_config
+        query['RequestTimeout'] = request.request_timeout
+        query['SecurityPolicyId'] = request.security_policy_id
+        query['XForwardedForConfig'] = request.xforwarded_for_config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateListener',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.CreateListenerResponse(),
-            await self.do_rpcrequest_async('CreateListener', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_listener(
@@ -424,12 +781,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateLoadBalancerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AddressAllocatedMode'] = request.address_allocated_mode
+        query['AddressType'] = request.address_type
+        query['ClientToken'] = request.client_token
+        query['DeletionProtectionEnabled'] = request.deletion_protection_enabled
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerBillingConfig'] = request.load_balancer_billing_config
+        query['LoadBalancerEdition'] = request.load_balancer_edition
+        query['LoadBalancerName'] = request.load_balancer_name
+        query['ModificationProtectionConfig'] = request.modification_protection_config
+        query['ResourceGroupId'] = request.resource_group_id
+        query['VpcId'] = request.vpc_id
+        query['ZoneMappings'] = request.zone_mappings
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateLoadBalancer',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.CreateLoadBalancerResponse(),
-            self.do_rpcrequest('CreateLoadBalancer', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_load_balancer_with_options_async(
@@ -438,12 +820,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateLoadBalancerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AddressAllocatedMode'] = request.address_allocated_mode
+        query['AddressType'] = request.address_type
+        query['ClientToken'] = request.client_token
+        query['DeletionProtectionEnabled'] = request.deletion_protection_enabled
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerBillingConfig'] = request.load_balancer_billing_config
+        query['LoadBalancerEdition'] = request.load_balancer_edition
+        query['LoadBalancerName'] = request.load_balancer_name
+        query['ModificationProtectionConfig'] = request.modification_protection_config
+        query['ResourceGroupId'] = request.resource_group_id
+        query['VpcId'] = request.vpc_id
+        query['ZoneMappings'] = request.zone_mappings
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateLoadBalancer',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.CreateLoadBalancerResponse(),
-            await self.do_rpcrequest_async('CreateLoadBalancer', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_load_balancer(
@@ -466,12 +873,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
+        query['Priority'] = request.priority
+        query['RuleActions'] = request.rule_actions
+        query['RuleConditions'] = request.rule_conditions
+        query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRule',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.CreateRuleResponse(),
-            self.do_rpcrequest('CreateRule', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_rule_with_options_async(
@@ -480,12 +907,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
+        query['Priority'] = request.priority
+        query['RuleActions'] = request.rule_actions
+        query['RuleConditions'] = request.rule_conditions
+        query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRule',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.CreateRuleResponse(),
-            await self.do_rpcrequest_async('CreateRule', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_rule(
@@ -508,12 +955,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
+        query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRules',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.CreateRulesResponse(),
-            self.do_rpcrequest('CreateRules', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_rules_with_options_async(
@@ -522,12 +986,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
+        query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRules',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.CreateRulesResponse(),
-            await self.do_rpcrequest_async('CreateRules', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_rules(
@@ -550,12 +1031,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateSecurityPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Ciphers'] = request.ciphers
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ResourceGroupId'] = request.resource_group_id
+        query['SecurityPolicyName'] = request.security_policy_name
+        query['TLSVersions'] = request.tlsversions
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateSecurityPolicy',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.CreateSecurityPolicyResponse(),
-            self.do_rpcrequest('CreateSecurityPolicy', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_security_policy_with_options_async(
@@ -564,12 +1064,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateSecurityPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Ciphers'] = request.ciphers
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ResourceGroupId'] = request.resource_group_id
+        query['SecurityPolicyName'] = request.security_policy_name
+        query['TLSVersions'] = request.tlsversions
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateSecurityPolicy',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.CreateSecurityPolicyResponse(),
-            await self.do_rpcrequest_async('CreateSecurityPolicy', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_security_policy(
@@ -592,12 +1111,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['HealthCheckConfig'] = request.health_check_config
+        query['Protocol'] = request.protocol
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Scheduler'] = request.scheduler
+        query['ServerGroupName'] = request.server_group_name
+        query['ServerGroupType'] = request.server_group_type
+        query['StickySessionConfig'] = request.sticky_session_config
+        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateServerGroup',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.CreateServerGroupResponse(),
-            self.do_rpcrequest('CreateServerGroup', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_server_group_with_options_async(
@@ -606,12 +1148,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['HealthCheckConfig'] = request.health_check_config
+        query['Protocol'] = request.protocol
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Scheduler'] = request.scheduler
+        query['ServerGroupName'] = request.server_group_name
+        query['ServerGroupType'] = request.server_group_type
+        query['StickySessionConfig'] = request.sticky_session_config
+        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateServerGroup',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.CreateServerGroupResponse(),
-            await self.do_rpcrequest_async('CreateServerGroup', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_server_group(
@@ -634,12 +1199,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteAclResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclId'] = request.acl_id
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteAcl',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DeleteAclResponse(),
-            self.do_rpcrequest('DeleteAcl', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_acl_with_options_async(
@@ -648,12 +1229,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteAclResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclId'] = request.acl_id
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteAcl',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DeleteAclResponse(),
-            await self.do_rpcrequest_async('DeleteAcl', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_acl(
@@ -676,12 +1273,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteHealthCheckTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['HealthCheckTemplateIds'] = request.health_check_template_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteHealthCheckTemplates',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DeleteHealthCheckTemplatesResponse(),
-            self.do_rpcrequest('DeleteHealthCheckTemplates', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_health_check_templates_with_options_async(
@@ -690,12 +1303,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteHealthCheckTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['HealthCheckTemplateIds'] = request.health_check_template_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteHealthCheckTemplates',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DeleteHealthCheckTemplatesResponse(),
-            await self.do_rpcrequest_async('DeleteHealthCheckTemplates', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_health_check_templates(
@@ -718,12 +1347,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteListener',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DeleteListenerResponse(),
-            self.do_rpcrequest('DeleteListener', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_listener_with_options_async(
@@ -732,12 +1377,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteListener',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DeleteListenerResponse(),
-            await self.do_rpcrequest_async('DeleteListener', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_listener(
@@ -760,12 +1421,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteLoadBalancerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteLoadBalancer',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DeleteLoadBalancerResponse(),
-            self.do_rpcrequest('DeleteLoadBalancer', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_load_balancer_with_options_async(
@@ -774,12 +1451,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteLoadBalancerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteLoadBalancer',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DeleteLoadBalancerResponse(),
-            await self.do_rpcrequest_async('DeleteLoadBalancer', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_load_balancer(
@@ -802,12 +1495,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRule',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DeleteRuleResponse(),
-            self.do_rpcrequest('DeleteRule', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_rule_with_options_async(
@@ -816,12 +1525,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRule',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DeleteRuleResponse(),
-            await self.do_rpcrequest_async('DeleteRule', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_rule(
@@ -844,12 +1569,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['RuleIds'] = request.rule_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRules',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DeleteRulesResponse(),
-            self.do_rpcrequest('DeleteRules', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_rules_with_options_async(
@@ -858,12 +1599,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['RuleIds'] = request.rule_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteRules',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DeleteRulesResponse(),
-            await self.do_rpcrequest_async('DeleteRules', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_rules(
@@ -886,12 +1643,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteSecurityPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['SecurityPolicyId'] = request.security_policy_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteSecurityPolicy',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DeleteSecurityPolicyResponse(),
-            self.do_rpcrequest('DeleteSecurityPolicy', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_security_policy_with_options_async(
@@ -900,12 +1673,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteSecurityPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['SecurityPolicyId'] = request.security_policy_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteSecurityPolicy',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DeleteSecurityPolicyResponse(),
-            await self.do_rpcrequest_async('DeleteSecurityPolicy', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_security_policy(
@@ -928,12 +1717,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ServerGroupId'] = request.server_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteServerGroup',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DeleteServerGroupResponse(),
-            self.do_rpcrequest('DeleteServerGroup', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_server_group_with_options_async(
@@ -942,12 +1747,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ServerGroupId'] = request.server_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteServerGroup',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DeleteServerGroupResponse(),
-            await self.do_rpcrequest_async('DeleteServerGroup', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_server_group(
@@ -970,12 +1791,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AcceptLanguage'] = request.accept_language
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DescribeRegionsResponse(),
-            self.do_rpcrequest('DescribeRegions', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_regions_with_options_async(
@@ -984,12 +1819,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AcceptLanguage'] = request.accept_language
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DescribeRegionsResponse(),
-            await self.do_rpcrequest_async('DescribeRegions', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_regions(
@@ -1011,9 +1860,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DescribeZonesResponse:
         req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeZones',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             alb_20200616_models.DescribeZonesResponse(),
-            self.do_rpcrequest('DescribeZones', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_zones_with_options_async(
@@ -1021,9 +1881,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DescribeZonesResponse:
         req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeZones',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             alb_20200616_models.DescribeZonesResponse(),
-            await self.do_rpcrequest_async('DescribeZones', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_zones(self) -> alb_20200616_models.DescribeZonesResponse:
@@ -1040,12 +1911,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BandwidthPackageId'] = request.bandwidth_package_id
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerId'] = request.load_balancer_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DetachCommonBandwidthPackageFromLoadBalancer',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerResponse(),
-            self.do_rpcrequest('DetachCommonBandwidthPackageFromLoadBalancer', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def detach_common_bandwidth_package_from_load_balancer_with_options_async(
@@ -1054,12 +1943,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BandwidthPackageId'] = request.bandwidth_package_id
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerId'] = request.load_balancer_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DetachCommonBandwidthPackageFromLoadBalancer',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerResponse(),
-            await self.do_rpcrequest_async('DetachCommonBandwidthPackageFromLoadBalancer', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def detach_common_bandwidth_package_from_load_balancer(
@@ -1082,12 +1989,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DisableDeletionProtectionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DisableDeletionProtection',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DisableDeletionProtectionResponse(),
-            self.do_rpcrequest('DisableDeletionProtection', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def disable_deletion_protection_with_options_async(
@@ -1096,12 +2019,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DisableDeletionProtectionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DisableDeletionProtection',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DisableDeletionProtectionResponse(),
-            await self.do_rpcrequest_async('DisableDeletionProtection', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def disable_deletion_protection(
@@ -1124,12 +2063,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DisableLoadBalancerAccessLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DisableLoadBalancerAccessLog',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DisableLoadBalancerAccessLogResponse(),
-            self.do_rpcrequest('DisableLoadBalancerAccessLog', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def disable_load_balancer_access_log_with_options_async(
@@ -1138,12 +2093,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DisableLoadBalancerAccessLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DisableLoadBalancerAccessLog',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DisableLoadBalancerAccessLogResponse(),
-            await self.do_rpcrequest_async('DisableLoadBalancerAccessLog', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def disable_load_balancer_access_log(
@@ -1166,12 +2137,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DissociateAclsFromListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclIds'] = request.acl_ids
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DissociateAclsFromListener',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DissociateAclsFromListenerResponse(),
-            self.do_rpcrequest('DissociateAclsFromListener', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def dissociate_acls_from_listener_with_options_async(
@@ -1180,12 +2168,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DissociateAclsFromListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclIds'] = request.acl_ids
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DissociateAclsFromListener',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DissociateAclsFromListenerResponse(),
-            await self.do_rpcrequest_async('DissociateAclsFromListener', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def dissociate_acls_from_listener(
@@ -1208,12 +2213,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DissociateAdditionalCertificatesFromListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Certificates'] = request.certificates
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DissociateAdditionalCertificatesFromListener',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DissociateAdditionalCertificatesFromListenerResponse(),
-            self.do_rpcrequest('DissociateAdditionalCertificatesFromListener', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def dissociate_additional_certificates_from_listener_with_options_async(
@@ -1222,12 +2244,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DissociateAdditionalCertificatesFromListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Certificates'] = request.certificates
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DissociateAdditionalCertificatesFromListener',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.DissociateAdditionalCertificatesFromListenerResponse(),
-            await self.do_rpcrequest_async('DissociateAdditionalCertificatesFromListener', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def dissociate_additional_certificates_from_listener(
@@ -1250,12 +2289,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.EnableDeletionProtectionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='EnableDeletionProtection',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.EnableDeletionProtectionResponse(),
-            self.do_rpcrequest('EnableDeletionProtection', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def enable_deletion_protection_with_options_async(
@@ -1264,12 +2319,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.EnableDeletionProtectionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='EnableDeletionProtection',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.EnableDeletionProtectionResponse(),
-            await self.do_rpcrequest_async('EnableDeletionProtection', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def enable_deletion_protection(
@@ -1292,12 +2363,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.EnableLoadBalancerAccessLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerId'] = request.load_balancer_id
+        query['LogProject'] = request.log_project
+        query['LogStore'] = request.log_store
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='EnableLoadBalancerAccessLog',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.EnableLoadBalancerAccessLogResponse(),
-            self.do_rpcrequest('EnableLoadBalancerAccessLog', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def enable_load_balancer_access_log_with_options_async(
@@ -1306,12 +2395,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.EnableLoadBalancerAccessLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerId'] = request.load_balancer_id
+        query['LogProject'] = request.log_project
+        query['LogStore'] = request.log_store
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='EnableLoadBalancerAccessLog',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.EnableLoadBalancerAccessLogResponse(),
-            await self.do_rpcrequest_async('EnableLoadBalancerAccessLog', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def enable_load_balancer_access_log(
@@ -1334,12 +2441,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.GetHealthCheckTemplateAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['HealthCheckTemplateId'] = request.health_check_template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetHealthCheckTemplateAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.GetHealthCheckTemplateAttributeResponse(),
-            self.do_rpcrequest('GetHealthCheckTemplateAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_health_check_template_attribute_with_options_async(
@@ -1348,12 +2469,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.GetHealthCheckTemplateAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['HealthCheckTemplateId'] = request.health_check_template_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetHealthCheckTemplateAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.GetHealthCheckTemplateAttributeResponse(),
-            await self.do_rpcrequest_async('GetHealthCheckTemplateAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_health_check_template_attribute(
@@ -1376,12 +2511,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.GetListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetListenerAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.GetListenerAttributeResponse(),
-            self.do_rpcrequest('GetListenerAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_listener_attribute_with_options_async(
@@ -1390,12 +2539,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.GetListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetListenerAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.GetListenerAttributeResponse(),
-            await self.do_rpcrequest_async('GetListenerAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_listener_attribute(
@@ -1412,18 +2575,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_listener_attribute_with_options_async(request, runtime)
 
+    def get_listener_health_status_with_options(
+        self,
+        request: alb_20200616_models.GetListenerHealthStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.GetListenerHealthStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['IncludeRule'] = request.include_rule
+        query['ListenerId'] = request.listener_id
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetListenerHealthStatus',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.GetListenerHealthStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_listener_health_status_with_options_async(
+        self,
+        request: alb_20200616_models.GetListenerHealthStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.GetListenerHealthStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['IncludeRule'] = request.include_rule
+        query['ListenerId'] = request.listener_id
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetListenerHealthStatus',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.GetListenerHealthStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_listener_health_status(
+        self,
+        request: alb_20200616_models.GetListenerHealthStatusRequest,
+    ) -> alb_20200616_models.GetListenerHealthStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_listener_health_status_with_options(request, runtime)
+
+    async def get_listener_health_status_async(
+        self,
+        request: alb_20200616_models.GetListenerHealthStatusRequest,
+    ) -> alb_20200616_models.GetListenerHealthStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_listener_health_status_with_options_async(request, runtime)
+
     def get_load_balancer_attribute_with_options(
         self,
         request: alb_20200616_models.GetLoadBalancerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.GetLoadBalancerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetLoadBalancerAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.GetLoadBalancerAttributeResponse(),
-            self.do_rpcrequest('GetLoadBalancerAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_load_balancer_attribute_with_options_async(
@@ -1432,12 +2685,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.GetLoadBalancerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetLoadBalancerAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.GetLoadBalancerAttributeResponse(),
-            await self.do_rpcrequest_async('GetLoadBalancerAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_load_balancer_attribute(
@@ -1460,12 +2727,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListAclEntriesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclId'] = request.acl_id
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAclEntries',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListAclEntriesResponse(),
-            self.do_rpcrequest('ListAclEntries', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_acl_entries_with_options_async(
@@ -1474,12 +2757,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListAclEntriesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclId'] = request.acl_id
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAclEntries',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListAclEntriesResponse(),
-            await self.do_rpcrequest_async('ListAclEntries', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_acl_entries(
@@ -1502,12 +2801,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListAclRelationsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclIds'] = request.acl_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAclRelations',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListAclRelationsResponse(),
-            self.do_rpcrequest('ListAclRelations', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_acl_relations_with_options_async(
@@ -1516,12 +2829,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListAclRelationsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclIds'] = request.acl_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAclRelations',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListAclRelationsResponse(),
-            await self.do_rpcrequest_async('ListAclRelations', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_acl_relations(
@@ -1544,12 +2871,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListAclsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclIds'] = request.acl_ids
+        query['AclNames'] = request.acl_names
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAcls',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListAclsResponse(),
-            self.do_rpcrequest('ListAcls', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_acls_with_options_async(
@@ -1558,12 +2903,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListAclsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclIds'] = request.acl_ids
+        query['AclNames'] = request.acl_names
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAcls',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListAclsResponse(),
-            await self.do_rpcrequest_async('ListAcls', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_acls(
@@ -1586,12 +2949,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListAsynJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ApiName'] = request.api_name
+        query['BeginTime'] = request.begin_time
+        query['EndTime'] = request.end_time
+        query['JobIds'] = request.job_ids
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ResourceIds'] = request.resource_ids
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAsynJobs',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListAsynJobsResponse(),
-            self.do_rpcrequest('ListAsynJobs', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_asyn_jobs_with_options_async(
@@ -1600,12 +2984,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListAsynJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ApiName'] = request.api_name
+        query['BeginTime'] = request.begin_time
+        query['EndTime'] = request.end_time
+        query['JobIds'] = request.job_ids
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ResourceIds'] = request.resource_ids
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListAsynJobs',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListAsynJobsResponse(),
-            await self.do_rpcrequest_async('ListAsynJobs', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_asyn_jobs(
@@ -1628,12 +3033,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListHealthCheckTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['HealthCheckTemplateIds'] = request.health_check_template_ids
+        query['HealthCheckTemplateNames'] = request.health_check_template_names
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListHealthCheckTemplates',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListHealthCheckTemplatesResponse(),
-            self.do_rpcrequest('ListHealthCheckTemplates', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_health_check_templates_with_options_async(
@@ -1642,12 +3064,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListHealthCheckTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['HealthCheckTemplateIds'] = request.health_check_template_ids
+        query['HealthCheckTemplateNames'] = request.health_check_template_names
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListHealthCheckTemplates',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListHealthCheckTemplatesResponse(),
-            await self.do_rpcrequest_async('ListHealthCheckTemplates', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_health_check_templates(
@@ -1670,12 +3109,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListListenerCertificatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertificateType'] = request.certificate_type
+        query['ListenerId'] = request.listener_id
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListListenerCertificates',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListListenerCertificatesResponse(),
-            self.do_rpcrequest('ListListenerCertificates', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_listener_certificates_with_options_async(
@@ -1684,12 +3140,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListListenerCertificatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertificateType'] = request.certificate_type
+        query['ListenerId'] = request.listener_id
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListListenerCertificates',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListListenerCertificatesResponse(),
-            await self.do_rpcrequest_async('ListListenerCertificates', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_listener_certificates(
@@ -1712,12 +3185,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListListenersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ListenerIds'] = request.listener_ids
+        query['ListenerProtocol'] = request.listener_protocol
+        query['LoadBalancerIds'] = request.load_balancer_ids
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListListeners',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListListenersResponse(),
-            self.do_rpcrequest('ListListeners', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_listeners_with_options_async(
@@ -1726,12 +3217,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListListenersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ListenerIds'] = request.listener_ids
+        query['ListenerProtocol'] = request.listener_protocol
+        query['LoadBalancerIds'] = request.load_balancer_ids
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListListeners',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListListenersResponse(),
-            await self.do_rpcrequest_async('ListListeners', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_listeners(
@@ -1754,12 +3263,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListLoadBalancersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AddressType'] = request.address_type
+        query['LoadBalancerBussinessStatus'] = request.load_balancer_bussiness_status
+        query['LoadBalancerIds'] = request.load_balancer_ids
+        query['LoadBalancerNames'] = request.load_balancer_names
+        query['LoadBalancerStatus'] = request.load_balancer_status
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['PayType'] = request.pay_type
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Tag'] = request.tag
+        query['VpcIds'] = request.vpc_ids
+        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListLoadBalancers',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListLoadBalancersResponse(),
-            self.do_rpcrequest('ListLoadBalancers', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_load_balancers_with_options_async(
@@ -1768,12 +3302,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListLoadBalancersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AddressType'] = request.address_type
+        query['LoadBalancerBussinessStatus'] = request.load_balancer_bussiness_status
+        query['LoadBalancerIds'] = request.load_balancer_ids
+        query['LoadBalancerNames'] = request.load_balancer_names
+        query['LoadBalancerStatus'] = request.load_balancer_status
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['PayType'] = request.pay_type
+        query['ResourceGroupId'] = request.resource_group_id
+        query['Tag'] = request.tag
+        query['VpcIds'] = request.vpc_ids
+        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListLoadBalancers',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListLoadBalancersResponse(),
-            await self.do_rpcrequest_async('ListLoadBalancers', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_load_balancers(
@@ -1796,12 +3355,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ListenerIds'] = request.listener_ids
+        query['LoadBalancerIds'] = request.load_balancer_ids
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RuleIds'] = request.rule_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListRules',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListRulesResponse(),
-            self.do_rpcrequest('ListRules', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_rules_with_options_async(
@@ -1810,12 +3387,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ListenerIds'] = request.listener_ids
+        query['LoadBalancerIds'] = request.load_balancer_ids
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RuleIds'] = request.rule_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListRules',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListRulesResponse(),
-            await self.do_rpcrequest_async('ListRules', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_rules(
@@ -1838,12 +3433,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListSecurityPoliciesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ResourceGroupId'] = request.resource_group_id
+        query['SecurityPolicyIds'] = request.security_policy_ids
+        query['SecurityPolicyNames'] = request.security_policy_names
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListSecurityPolicies',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListSecurityPoliciesResponse(),
-            self.do_rpcrequest('ListSecurityPolicies', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_security_policies_with_options_async(
@@ -1852,12 +3465,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListSecurityPoliciesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ResourceGroupId'] = request.resource_group_id
+        query['SecurityPolicyIds'] = request.security_policy_ids
+        query['SecurityPolicyNames'] = request.security_policy_names
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListSecurityPolicies',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListSecurityPoliciesResponse(),
-            await self.do_rpcrequest_async('ListSecurityPolicies', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_security_policies(
@@ -1880,12 +3511,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListSecurityPolicyRelationsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SecurityPolicyIds'] = request.security_policy_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListSecurityPolicyRelations',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListSecurityPolicyRelationsResponse(),
-            self.do_rpcrequest('ListSecurityPolicyRelations', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_security_policy_relations_with_options_async(
@@ -1894,12 +3539,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListSecurityPolicyRelationsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['SecurityPolicyIds'] = request.security_policy_ids
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListSecurityPolicyRelations',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListSecurityPolicyRelationsResponse(),
-            await self.do_rpcrequest_async('ListSecurityPolicyRelations', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_security_policy_relations(
@@ -1922,12 +3581,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListServerGroupServersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ServerGroupId'] = request.server_group_id
+        query['ServerIds'] = request.server_ids
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListServerGroupServers',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListServerGroupServersResponse(),
-            self.do_rpcrequest('ListServerGroupServers', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_server_group_servers_with_options_async(
@@ -1936,12 +3613,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListServerGroupServersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ServerGroupId'] = request.server_group_id
+        query['ServerIds'] = request.server_ids
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListServerGroupServers',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListServerGroupServersResponse(),
-            await self.do_rpcrequest_async('ListServerGroupServers', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_server_group_servers(
@@ -1964,12 +3659,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListServerGroupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ServerGroupIds'] = request.server_group_ids
+        query['ServerGroupNames'] = request.server_group_names
+        query['Tag'] = request.tag
+        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListServerGroups',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListServerGroupsResponse(),
-            self.do_rpcrequest('ListServerGroups', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_server_groups_with_options_async(
@@ -1978,12 +3693,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListServerGroupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ServerGroupIds'] = request.server_group_ids
+        query['ServerGroupNames'] = request.server_group_names
+        query['Tag'] = request.tag
+        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListServerGroups',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListServerGroupsResponse(),
-            await self.do_rpcrequest_async('ListServerGroups', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_server_groups(
@@ -2005,9 +3740,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListSystemSecurityPoliciesResponse:
         req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListSystemSecurityPolicies',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             alb_20200616_models.ListSystemSecurityPoliciesResponse(),
-            self.do_rpcrequest('ListSystemSecurityPolicies', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_system_security_policies_with_options_async(
@@ -2015,9 +3761,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListSystemSecurityPoliciesResponse:
         req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListSystemSecurityPolicies',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             alb_20200616_models.ListSystemSecurityPoliciesResponse(),
-            await self.do_rpcrequest_async('ListSystemSecurityPolicies', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_system_security_policies(self) -> alb_20200616_models.ListSystemSecurityPoliciesResponse:
@@ -2034,12 +3791,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListTagKeysResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Category'] = request.category
+        query['Keyword'] = request.keyword
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTagKeys',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListTagKeysResponse(),
-            self.do_rpcrequest('ListTagKeys', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_tag_keys_with_options_async(
@@ -2048,12 +3823,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListTagKeysResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Category'] = request.category
+        query['Keyword'] = request.keyword
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTagKeys',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListTagKeysResponse(),
-            await self.do_rpcrequest_async('ListTagKeys', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_keys(
@@ -2076,12 +3869,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListTagResourcesResponse(),
-            self.do_rpcrequest('ListTagResources', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_tag_resources_with_options_async(
@@ -2090,12 +3901,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListTagResourcesResponse(),
-            await self.do_rpcrequest_async('ListTagResources', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_resources(
@@ -2118,12 +3947,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListTagValuesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTagValues',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListTagValuesResponse(),
-            self.do_rpcrequest('ListTagValues', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_tag_values_with_options_async(
@@ -2132,12 +3979,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListTagValuesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTagValues',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ListTagValuesResponse(),
-            await self.do_rpcrequest_async('ListTagValues', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_values(
@@ -2160,12 +4025,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['NewResourceGroupId'] = request.new_resource_group_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='MoveResourceGroup',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.MoveResourceGroupResponse(),
-            self.do_rpcrequest('MoveResourceGroup', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def move_resource_group_with_options_async(
@@ -2174,12 +4055,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['NewResourceGroupId'] = request.new_resource_group_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='MoveResourceGroup',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.MoveResourceGroupResponse(),
-            await self.do_rpcrequest_async('MoveResourceGroup', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def move_resource_group(
@@ -2202,12 +4099,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.RemoveEntriesFromAclResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclId'] = request.acl_id
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['Entries'] = request.entries
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RemoveEntriesFromAcl',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.RemoveEntriesFromAclResponse(),
-            self.do_rpcrequest('RemoveEntriesFromAcl', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_entries_from_acl_with_options_async(
@@ -2216,12 +4130,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.RemoveEntriesFromAclResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclId'] = request.acl_id
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['Entries'] = request.entries
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RemoveEntriesFromAcl',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.RemoveEntriesFromAclResponse(),
-            await self.do_rpcrequest_async('RemoveEntriesFromAcl', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_entries_from_acl(
@@ -2244,12 +4175,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.RemoveServersFromServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ServerGroupId'] = request.server_group_id
+        query['Servers'] = request.servers
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RemoveServersFromServerGroup',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.RemoveServersFromServerGroupResponse(),
-            self.do_rpcrequest('RemoveServersFromServerGroup', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_servers_from_server_group_with_options_async(
@@ -2258,12 +4206,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.RemoveServersFromServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ServerGroupId'] = request.server_group_id
+        query['Servers'] = request.servers
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RemoveServersFromServerGroup',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.RemoveServersFromServerGroupResponse(),
-            await self.do_rpcrequest_async('RemoveServersFromServerGroup', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_servers_from_server_group(
@@ -2286,12 +4251,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ReplaceServersInServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AddedServers'] = request.added_servers
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['RemovedServers'] = request.removed_servers
+        query['ServerGroupId'] = request.server_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ReplaceServersInServerGroup',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ReplaceServersInServerGroupResponse(),
-            self.do_rpcrequest('ReplaceServersInServerGroup', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def replace_servers_in_server_group_with_options_async(
@@ -2300,12 +4283,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ReplaceServersInServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AddedServers'] = request.added_servers
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['RemovedServers'] = request.removed_servers
+        query['ServerGroupId'] = request.server_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ReplaceServersInServerGroup',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.ReplaceServersInServerGroupResponse(),
-            await self.do_rpcrequest_async('ReplaceServersInServerGroup', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def replace_servers_in_server_group(
@@ -2328,12 +4329,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.StartListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StartListener',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.StartListenerResponse(),
-            self.do_rpcrequest('StartListener', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def start_listener_with_options_async(
@@ -2342,12 +4359,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.StartListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StartListener',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.StartListenerResponse(),
-            await self.do_rpcrequest_async('StartListener', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_listener(
@@ -2370,12 +4403,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.StopListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopListener',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.StopListenerResponse(),
-            self.do_rpcrequest('StopListener', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def stop_listener_with_options_async(
@@ -2384,12 +4433,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.StopListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopListener',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.StopListenerResponse(),
-            await self.do_rpcrequest_async('StopListener', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_listener(
@@ -2412,12 +4477,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.TagResourcesResponse(),
-            self.do_rpcrequest('TagResources', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def tag_resources_with_options_async(
@@ -2426,12 +4507,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.TagResourcesResponse(),
-            await self.do_rpcrequest_async('TagResources', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def tag_resources(
@@ -2454,12 +4551,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UnTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
+        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UnTagResources',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UnTagResourcesResponse(),
-            self.do_rpcrequest('UnTagResources', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def un_tag_resources_with_options_async(
@@ -2468,12 +4582,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UnTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        query['Tag'] = request.tag
+        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UnTagResources',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UnTagResourcesResponse(),
-            await self.do_rpcrequest_async('UnTagResources', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def un_tag_resources(
@@ -2496,12 +4627,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateAclAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclId'] = request.acl_id
+        query['AclName'] = request.acl_name
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateAclAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateAclAttributeResponse(),
-            self.do_rpcrequest('UpdateAclAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_acl_attribute_with_options_async(
@@ -2510,12 +4658,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateAclAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AclId'] = request.acl_id
+        query['AclName'] = request.acl_name
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateAclAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateAclAttributeResponse(),
-            await self.do_rpcrequest_async('UpdateAclAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_acl_attribute(
@@ -2538,12 +4703,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateHealthCheckTemplateAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['HealthCheckCodes'] = request.health_check_codes
+        query['HealthCheckConnectPort'] = request.health_check_connect_port
+        query['HealthCheckHost'] = request.health_check_host
+        query['HealthCheckHttpVersion'] = request.health_check_http_version
+        query['HealthCheckInterval'] = request.health_check_interval
+        query['HealthCheckMethod'] = request.health_check_method
+        query['HealthCheckPath'] = request.health_check_path
+        query['HealthCheckProtocol'] = request.health_check_protocol
+        query['HealthCheckTemplateId'] = request.health_check_template_id
+        query['HealthCheckTemplateName'] = request.health_check_template_name
+        query['HealthCheckTimeout'] = request.health_check_timeout
+        query['HealthyThreshold'] = request.healthy_threshold
+        query['UnhealthyThreshold'] = request.unhealthy_threshold
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateHealthCheckTemplateAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateHealthCheckTemplateAttributeResponse(),
-            self.do_rpcrequest('UpdateHealthCheckTemplateAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_health_check_template_attribute_with_options_async(
@@ -2552,12 +4745,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateHealthCheckTemplateAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['HealthCheckCodes'] = request.health_check_codes
+        query['HealthCheckConnectPort'] = request.health_check_connect_port
+        query['HealthCheckHost'] = request.health_check_host
+        query['HealthCheckHttpVersion'] = request.health_check_http_version
+        query['HealthCheckInterval'] = request.health_check_interval
+        query['HealthCheckMethod'] = request.health_check_method
+        query['HealthCheckPath'] = request.health_check_path
+        query['HealthCheckProtocol'] = request.health_check_protocol
+        query['HealthCheckTemplateId'] = request.health_check_template_id
+        query['HealthCheckTemplateName'] = request.health_check_template_name
+        query['HealthCheckTimeout'] = request.health_check_timeout
+        query['HealthyThreshold'] = request.healthy_threshold
+        query['UnhealthyThreshold'] = request.unhealthy_threshold
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateHealthCheckTemplateAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateHealthCheckTemplateAttributeResponse(),
-            await self.do_rpcrequest_async('UpdateHealthCheckTemplateAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_health_check_template_attribute(
@@ -2580,12 +4801,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CaCertificates'] = request.ca_certificates
+        query['CaEnabled'] = request.ca_enabled
+        query['Certificates'] = request.certificates
+        query['ClientToken'] = request.client_token
+        query['DefaultActions'] = request.default_actions
+        query['DryRun'] = request.dry_run
+        query['GzipEnabled'] = request.gzip_enabled
+        query['Http2Enabled'] = request.http_2enabled
+        query['IdleTimeout'] = request.idle_timeout
+        query['ListenerDescription'] = request.listener_description
+        query['ListenerId'] = request.listener_id
+        query['QuicConfig'] = request.quic_config
+        query['RequestTimeout'] = request.request_timeout
+        query['SecurityPolicyId'] = request.security_policy_id
+        query['XForwardedForConfig'] = request.xforwarded_for_config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateListenerAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateListenerAttributeResponse(),
-            self.do_rpcrequest('UpdateListenerAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_listener_attribute_with_options_async(
@@ -2594,12 +4843,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CaCertificates'] = request.ca_certificates
+        query['CaEnabled'] = request.ca_enabled
+        query['Certificates'] = request.certificates
+        query['ClientToken'] = request.client_token
+        query['DefaultActions'] = request.default_actions
+        query['DryRun'] = request.dry_run
+        query['GzipEnabled'] = request.gzip_enabled
+        query['Http2Enabled'] = request.http_2enabled
+        query['IdleTimeout'] = request.idle_timeout
+        query['ListenerDescription'] = request.listener_description
+        query['ListenerId'] = request.listener_id
+        query['QuicConfig'] = request.quic_config
+        query['RequestTimeout'] = request.request_timeout
+        query['SecurityPolicyId'] = request.security_policy_id
+        query['XForwardedForConfig'] = request.xforwarded_for_config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateListenerAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateListenerAttributeResponse(),
-            await self.do_rpcrequest_async('UpdateListenerAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_listener_attribute(
@@ -2622,12 +4899,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateListenerLogConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessLogRecordCustomizedHeadersEnabled'] = request.access_log_record_customized_headers_enabled
+        query['AccessLogTracingConfig'] = request.access_log_tracing_config
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateListenerLogConfig',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateListenerLogConfigResponse(),
-            self.do_rpcrequest('UpdateListenerLogConfig', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_listener_log_config_with_options_async(
@@ -2636,12 +4931,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateListenerLogConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessLogRecordCustomizedHeadersEnabled'] = request.access_log_record_customized_headers_enabled
+        query['AccessLogTracingConfig'] = request.access_log_tracing_config
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateListenerLogConfig',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateListenerLogConfigResponse(),
-            await self.do_rpcrequest_async('UpdateListenerLogConfig', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_listener_log_config(
@@ -2664,12 +4977,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateLoadBalancerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerId'] = request.load_balancer_id
+        query['LoadBalancerName'] = request.load_balancer_name
+        query['ModificationProtectionConfig'] = request.modification_protection_config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateLoadBalancerAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateLoadBalancerAttributeResponse(),
-            self.do_rpcrequest('UpdateLoadBalancerAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_load_balancer_attribute_with_options_async(
@@ -2678,12 +5009,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateLoadBalancerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerId'] = request.load_balancer_id
+        query['LoadBalancerName'] = request.load_balancer_name
+        query['ModificationProtectionConfig'] = request.modification_protection_config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateLoadBalancerAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateLoadBalancerAttributeResponse(),
-            await self.do_rpcrequest_async('UpdateLoadBalancerAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_load_balancer_attribute(
@@ -2706,12 +5055,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateLoadBalancerEditionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerEdition'] = request.load_balancer_edition
+        query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateLoadBalancerEdition',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateLoadBalancerEditionResponse(),
-            self.do_rpcrequest('UpdateLoadBalancerEdition', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_load_balancer_edition_with_options_async(
@@ -2720,12 +5086,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateLoadBalancerEditionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerEdition'] = request.load_balancer_edition
+        query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateLoadBalancerEdition',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateLoadBalancerEditionResponse(),
-            await self.do_rpcrequest_async('UpdateLoadBalancerEdition', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_load_balancer_edition(
@@ -2748,12 +5131,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateLoadBalancerZonesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerId'] = request.load_balancer_id
+        query['ZoneMappings'] = request.zone_mappings
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateLoadBalancerZones',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateLoadBalancerZonesResponse(),
-            self.do_rpcrequest('UpdateLoadBalancerZones', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_load_balancer_zones_with_options_async(
@@ -2762,12 +5162,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateLoadBalancerZonesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerId'] = request.load_balancer_id
+        query['ZoneMappings'] = request.zone_mappings
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateLoadBalancerZones',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateLoadBalancerZonesResponse(),
-            await self.do_rpcrequest_async('UpdateLoadBalancerZones', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_load_balancer_zones(
@@ -2790,12 +5207,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateRuleAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['Priority'] = request.priority
+        query['RuleActions'] = request.rule_actions
+        query['RuleConditions'] = request.rule_conditions
+        query['RuleId'] = request.rule_id
+        query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateRuleAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateRuleAttributeResponse(),
-            self.do_rpcrequest('UpdateRuleAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_rule_attribute_with_options_async(
@@ -2804,12 +5241,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateRuleAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['Priority'] = request.priority
+        query['RuleActions'] = request.rule_actions
+        query['RuleConditions'] = request.rule_conditions
+        query['RuleId'] = request.rule_id
+        query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateRuleAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateRuleAttributeResponse(),
-            await self.do_rpcrequest_async('UpdateRuleAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_rule_attribute(
@@ -2832,12 +5289,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateRulesAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateRulesAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateRulesAttributeResponse(),
-            self.do_rpcrequest('UpdateRulesAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_rules_attribute_with_options_async(
@@ -2846,12 +5319,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateRulesAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateRulesAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateRulesAttributeResponse(),
-            await self.do_rpcrequest_async('UpdateRulesAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_rules_attribute(
@@ -2874,12 +5363,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateSecurityPolicyAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Ciphers'] = request.ciphers
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['SecurityPolicyId'] = request.security_policy_id
+        query['SecurityPolicyName'] = request.security_policy_name
+        query['TLSVersions'] = request.tlsversions
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateSecurityPolicyAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateSecurityPolicyAttributeResponse(),
-            self.do_rpcrequest('UpdateSecurityPolicyAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_security_policy_attribute_with_options_async(
@@ -2888,12 +5396,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateSecurityPolicyAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Ciphers'] = request.ciphers
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['SecurityPolicyId'] = request.security_policy_id
+        query['SecurityPolicyName'] = request.security_policy_name
+        query['TLSVersions'] = request.tlsversions
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateSecurityPolicyAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateSecurityPolicyAttributeResponse(),
-            await self.do_rpcrequest_async('UpdateSecurityPolicyAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_security_policy_attribute(
@@ -2916,12 +5443,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateServerGroupAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['HealthCheckConfig'] = request.health_check_config
+        query['Scheduler'] = request.scheduler
+        query['ServerGroupId'] = request.server_group_id
+        query['ServerGroupName'] = request.server_group_name
+        query['StickySessionConfig'] = request.sticky_session_config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateServerGroupAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateServerGroupAttributeResponse(),
-            self.do_rpcrequest('UpdateServerGroupAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_server_group_attribute_with_options_async(
@@ -2930,12 +5477,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateServerGroupAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['HealthCheckConfig'] = request.health_check_config
+        query['Scheduler'] = request.scheduler
+        query['ServerGroupId'] = request.server_group_id
+        query['ServerGroupName'] = request.server_group_name
+        query['StickySessionConfig'] = request.sticky_session_config
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateServerGroupAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateServerGroupAttributeResponse(),
-            await self.do_rpcrequest_async('UpdateServerGroupAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_server_group_attribute(
@@ -2958,12 +5525,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateServerGroupServersAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ServerGroupId'] = request.server_group_id
+        query['Servers'] = request.servers
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateServerGroupServersAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateServerGroupServersAttributeResponse(),
-            self.do_rpcrequest('UpdateServerGroupServersAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_server_group_servers_attribute_with_options_async(
@@ -2972,12 +5556,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateServerGroupServersAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ServerGroupId'] = request.server_group_id
+        query['Servers'] = request.servers
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateServerGroupServersAttribute',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             alb_20200616_models.UpdateServerGroupServersAttributeResponse(),
-            await self.do_rpcrequest_async('UpdateServerGroupServersAttribute', '2020-06-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_server_group_servers_attribute(
