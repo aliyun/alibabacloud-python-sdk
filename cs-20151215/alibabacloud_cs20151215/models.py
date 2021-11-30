@@ -2871,6 +2871,60 @@ class CreateTriggerResponse(TeaModel):
         return self
 
 
+class DeleteAlertContactResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
+class DeleteAlertContactGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
 class DeleteClusterRequest(TeaModel):
     def __init__(
         self,
@@ -14547,6 +14601,33 @@ class ScaleOutClusterResponse(TeaModel):
         return self
 
 
+class StartAlertResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
 class StartWorkflowRequest(TeaModel):
     def __init__(
         self,
@@ -14766,6 +14847,33 @@ class StartWorkflowResponse(TeaModel):
         return self
 
 
+class StopAlertResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
 class TagResourcesRequest(TeaModel):
     def __init__(
         self,
@@ -14823,15 +14931,48 @@ class TagResourcesRequest(TeaModel):
         return self
 
 
+class TagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # 请求id。
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
 class TagResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        body: TagResourcesResponseBody = None,
     ):
         self.headers = headers
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -14841,12 +14982,17 @@ class TagResourcesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = TagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -14944,11 +15090,14 @@ class UnInstallClusterAddonsResponse(TeaModel):
 class UntagResourcesRequest(TeaModel):
     def __init__(
         self,
+        all: bool = None,
         region_id: str = None,
         resource_ids: List[str] = None,
         resource_type: str = None,
         tag_keys: List[str] = None,
     ):
+        # 是否删除全部自定义标签，仅当tag_keys为空时生效，取值：[true,false]。
+        self.all = all
         # 资源所属的地域ID
         self.region_id = region_id
         # 资源ID。数组长度取值范围为：1~50
@@ -14967,6 +15116,8 @@ class UntagResourcesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.all is not None:
+            result['all'] = self.all
         if self.region_id is not None:
             result['region_id'] = self.region_id
         if self.resource_ids is not None:
@@ -14979,6 +15130,8 @@ class UntagResourcesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('all') is not None:
+            self.all = m.get('all')
         if m.get('region_id') is not None:
             self.region_id = m.get('region_id')
         if m.get('resource_ids') is not None:
@@ -14990,7 +15143,72 @@ class UntagResourcesRequest(TeaModel):
         return self
 
 
+class UntagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # 请求id。
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
 class UntagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UntagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UntagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateContactGroupForAlertResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,

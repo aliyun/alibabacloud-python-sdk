@@ -1,3 +1,6 @@
+2021-11-30 Version: 3.0.3
+- Generated python 2015-12-15 for CS.
+
 2021-11-24 Version: 3.0.2
 - Update CreateCluster and ModifyCluster.
 
