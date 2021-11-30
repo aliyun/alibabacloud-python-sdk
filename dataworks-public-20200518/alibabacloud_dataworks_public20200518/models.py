@@ -2654,6 +2654,139 @@ class CreateDataSourceResponse(TeaModel):
         return self
 
 
+class CreateExportMigrationRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        export_mode: str = None,
+        export_object_status: str = None,
+        incremental_since: int = None,
+        name: str = None,
+        project_id: int = None,
+    ):
+        self.description = description
+        self.export_mode = export_mode
+        self.export_object_status = export_object_status
+        self.incremental_since = incremental_since
+        self.name = name
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.export_mode is not None:
+            result['ExportMode'] = self.export_mode
+        if self.export_object_status is not None:
+            result['ExportObjectStatus'] = self.export_object_status
+        if self.incremental_since is not None:
+            result['IncrementalSince'] = self.incremental_since
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ExportMode') is not None:
+            self.export_mode = m.get('ExportMode')
+        if m.get('ExportObjectStatus') is not None:
+            self.export_object_status = m.get('ExportObjectStatus')
+        if m.get('IncrementalSince') is not None:
+            self.incremental_since = m.get('IncrementalSince')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class CreateExportMigrationResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateExportMigrationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateExportMigrationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateExportMigrationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateFileRequest(TeaModel):
     def __init__(
         self,
@@ -12368,6 +12501,7 @@ class GetDagResponseBodyData(TeaModel):
         gmtdate: int = None,
         modify_time: int = None,
         name: str = None,
+        op_seq: int = None,
         project_id: int = None,
         start_time: int = None,
         status: str = None,
@@ -12381,6 +12515,7 @@ class GetDagResponseBodyData(TeaModel):
         self.gmtdate = gmtdate
         self.modify_time = modify_time
         self.name = name
+        self.op_seq = op_seq
         self.project_id = project_id
         self.start_time = start_time
         self.status = status
@@ -12411,6 +12546,8 @@ class GetDagResponseBodyData(TeaModel):
             result['ModifyTime'] = self.modify_time
         if self.name is not None:
             result['Name'] = self.name
+        if self.op_seq is not None:
+            result['OpSeq'] = self.op_seq
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.start_time is not None:
@@ -12439,6 +12576,8 @@ class GetDagResponseBodyData(TeaModel):
             self.modify_time = m.get('ModifyTime')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('OpSeq') is not None:
+            self.op_seq = m.get('OpSeq')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('StartTime') is not None:
@@ -17376,6 +17515,7 @@ class GetInstanceResponseBodyData(TeaModel):
         business_id: int = None,
         connection: str = None,
         create_time: int = None,
+        create_user: str = None,
         cyc_time: int = None,
         dag_id: int = None,
         dag_type: str = None,
@@ -17403,6 +17543,7 @@ class GetInstanceResponseBodyData(TeaModel):
         self.business_id = business_id
         self.connection = connection
         self.create_time = create_time
+        self.create_user = create_user
         self.cyc_time = cyc_time
         self.dag_id = dag_id
         self.dag_type = dag_type
@@ -17447,6 +17588,8 @@ class GetInstanceResponseBodyData(TeaModel):
             result['Connection'] = self.connection
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
         if self.cyc_time is not None:
             result['CycTime'] = self.cyc_time
         if self.dag_id is not None:
@@ -17503,6 +17646,8 @@ class GetInstanceResponseBodyData(TeaModel):
             self.connection = m.get('Connection')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
         if m.get('CycTime') is not None:
             self.cyc_time = m.get('CycTime')
         if m.get('DagId') is not None:
@@ -18499,12 +18644,16 @@ class GetInstanceStatusStatisticRequest(TeaModel):
     def __init__(
         self,
         biz_date: str = None,
+        dag_type: str = None,
         project_env: str = None,
         project_id: int = None,
+        scheduler_type: str = None,
     ):
         self.biz_date = biz_date
+        self.dag_type = dag_type
         self.project_env = project_env
         self.project_id = project_id
+        self.scheduler_type = scheduler_type
 
     def validate(self):
         pass
@@ -18517,20 +18666,28 @@ class GetInstanceStatusStatisticRequest(TeaModel):
         result = dict()
         if self.biz_date is not None:
             result['BizDate'] = self.biz_date
+        if self.dag_type is not None:
+            result['DagType'] = self.dag_type
         if self.project_env is not None:
             result['ProjectEnv'] = self.project_env
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.scheduler_type is not None:
+            result['SchedulerType'] = self.scheduler_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('BizDate') is not None:
             self.biz_date = m.get('BizDate')
+        if m.get('DagType') is not None:
+            self.dag_type = m.get('DagType')
         if m.get('ProjectEnv') is not None:
             self.project_env = m.get('ProjectEnv')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('SchedulerType') is not None:
+            self.scheduler_type = m.get('SchedulerType')
         return self
 
 
@@ -18716,6 +18873,7 @@ class GetManualDagInstancesResponseBodyInstances(TeaModel):
         begin_wait_time_time: int = None,
         biz_date: int = None,
         create_time: int = None,
+        create_user: str = None,
         cyc_time: int = None,
         dag_id: int = None,
         dag_type: str = None,
@@ -18733,6 +18891,7 @@ class GetManualDagInstancesResponseBodyInstances(TeaModel):
         self.begin_wait_time_time = begin_wait_time_time
         self.biz_date = biz_date
         self.create_time = create_time
+        self.create_user = create_user
         self.cyc_time = cyc_time
         self.dag_id = dag_id
         self.dag_type = dag_type
@@ -18764,6 +18923,8 @@ class GetManualDagInstancesResponseBodyInstances(TeaModel):
             result['BizDate'] = self.biz_date
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
         if self.cyc_time is not None:
             result['CycTime'] = self.cyc_time
         if self.dag_id is not None:
@@ -18800,6 +18961,8 @@ class GetManualDagInstancesResponseBodyInstances(TeaModel):
             self.biz_date = m.get('BizDate')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
         if m.get('CycTime') is not None:
             self.cyc_time = m.get('CycTime')
         if m.get('DagId') is not None:
@@ -22777,6 +22940,192 @@ class GetMigrationProcessResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetMigrationProcessResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMigrationSummaryRequest(TeaModel):
+    def __init__(
+        self,
+        migration_id: int = None,
+        project_id: int = None,
+    ):
+        self.migration_id = migration_id
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.migration_id is not None:
+            result['MigrationId'] = self.migration_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MigrationId') is not None:
+            self.migration_id = m.get('MigrationId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class GetMigrationSummaryResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_user: str = None,
+        download_url: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        migration_id: int = None,
+        name: str = None,
+        op_user: str = None,
+        project_id: int = None,
+        status: str = None,
+    ):
+        self.create_user = create_user
+        self.download_url = download_url
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.migration_id = migration_id
+        self.name = name
+        self.op_user = op_user
+        self.project_id = project_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.download_url is not None:
+            result['DownloadUrl'] = self.download_url
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.migration_id is not None:
+            result['MigrationId'] = self.migration_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.op_user is not None:
+            result['OpUser'] = self.op_user
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('DownloadUrl') is not None:
+            self.download_url = m.get('DownloadUrl')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('MigrationId') is not None:
+            self.migration_id = m.get('MigrationId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OpUser') is not None:
+            self.op_user = m.get('OpUser')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetMigrationSummaryResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetMigrationSummaryResponseBodyData = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetMigrationSummaryResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetMigrationSummaryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetMigrationSummaryResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetMigrationSummaryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -30285,6 +30634,269 @@ class ListDISyncTasksResponse(TeaModel):
         return self
 
 
+class ListDagsRequest(TeaModel):
+    def __init__(
+        self,
+        op_seq: int = None,
+        project_env: str = None,
+    ):
+        self.op_seq = op_seq
+        self.project_env = project_env
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op_seq is not None:
+            result['OpSeq'] = self.op_seq
+        if self.project_env is not None:
+            result['ProjectEnv'] = self.project_env
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpSeq') is not None:
+            self.op_seq = m.get('OpSeq')
+        if m.get('ProjectEnv') is not None:
+            self.project_env = m.get('ProjectEnv')
+        return self
+
+
+class ListDagsResponseBodyDataDags(TeaModel):
+    def __init__(
+        self,
+        bizdate: int = None,
+        create_time: int = None,
+        create_user: str = None,
+        dag_id: int = None,
+        finish_time: int = None,
+        gmtdate: int = None,
+        modify_time: int = None,
+        name: str = None,
+        op_seq: int = None,
+        project_id: int = None,
+        start_time: int = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.bizdate = bizdate
+        self.create_time = create_time
+        self.create_user = create_user
+        self.dag_id = dag_id
+        self.finish_time = finish_time
+        self.gmtdate = gmtdate
+        self.modify_time = modify_time
+        self.name = name
+        self.op_seq = op_seq
+        self.project_id = project_id
+        self.start_time = start_time
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bizdate is not None:
+            result['Bizdate'] = self.bizdate
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.dag_id is not None:
+            result['DagId'] = self.dag_id
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.gmtdate is not None:
+            result['Gmtdate'] = self.gmtdate
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.op_seq is not None:
+            result['OpSeq'] = self.op_seq
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bizdate') is not None:
+            self.bizdate = m.get('Bizdate')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('DagId') is not None:
+            self.dag_id = m.get('DagId')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('Gmtdate') is not None:
+            self.gmtdate = m.get('Gmtdate')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OpSeq') is not None:
+            self.op_seq = m.get('OpSeq')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListDagsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        dags: List[ListDagsResponseBodyDataDags] = None,
+    ):
+        self.dags = dags
+
+    def validate(self):
+        if self.dags:
+            for k in self.dags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Dags'] = []
+        if self.dags is not None:
+            for k in self.dags:
+                result['Dags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dags = []
+        if m.get('Dags') is not None:
+            for k in m.get('Dags'):
+                temp_model = ListDagsResponseBodyDataDags()
+                self.dags.append(temp_model.from_map(k))
+        return self
+
+
+class ListDagsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListDagsResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListDagsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListDagsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListDagsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListDagsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDataServiceApiAuthoritiesRequest(TeaModel):
     def __init__(
         self,
@@ -35804,6 +36416,7 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
         business_id: int = None,
         connection: str = None,
         create_time: int = None,
+        create_user: str = None,
         cyc_time: int = None,
         dag_id: int = None,
         dag_type: str = None,
@@ -35832,6 +36445,7 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
         self.business_id = business_id
         self.connection = connection
         self.create_time = create_time
+        self.create_user = create_user
         self.cyc_time = cyc_time
         self.dag_id = dag_id
         self.dag_type = dag_type
@@ -35877,6 +36491,8 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
             result['Connection'] = self.connection
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
         if self.cyc_time is not None:
             result['CycTime'] = self.cyc_time
         if self.dag_id is not None:
@@ -35935,6 +36551,8 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
             self.connection = m.get('Connection')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
         if m.get('CycTime') is not None:
             self.cyc_time = m.get('CycTime')
         if m.get('DagId') is not None:
@@ -36172,6 +36790,7 @@ class ListManualDagInstancesResponseBodyInstances(TeaModel):
         begin_wait_time_time: int = None,
         biz_date: int = None,
         create_time: int = None,
+        create_user: str = None,
         cyc_time: int = None,
         dag_id: int = None,
         dag_type: str = None,
@@ -36189,6 +36808,7 @@ class ListManualDagInstancesResponseBodyInstances(TeaModel):
         self.begin_wait_time_time = begin_wait_time_time
         self.biz_date = biz_date
         self.create_time = create_time
+        self.create_user = create_user
         self.cyc_time = cyc_time
         self.dag_id = dag_id
         self.dag_type = dag_type
@@ -36220,6 +36840,8 @@ class ListManualDagInstancesResponseBodyInstances(TeaModel):
             result['BizDate'] = self.biz_date
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
         if self.cyc_time is not None:
             result['CycTime'] = self.cyc_time
         if self.dag_id is not None:
@@ -36256,6 +36878,8 @@ class ListManualDagInstancesResponseBodyInstances(TeaModel):
             self.biz_date = m.get('BizDate')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
         if m.get('CycTime') is not None:
             self.cyc_time = m.get('CycTime')
         if m.get('DagId') is not None:

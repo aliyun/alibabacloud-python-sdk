@@ -1,3 +1,6 @@
+2021-11-30 Version: 4.3.0
+- Generated python 2020-05-18 for dataworks-public.
+
 2021-11-16 Version: 4.2.5
 - Generated python 2020-05-18 for dataworks-public.
 
