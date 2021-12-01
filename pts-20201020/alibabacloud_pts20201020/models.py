@@ -1626,7 +1626,7 @@ class GetOpenJMeterSceneResponseBodyScene(TeaModel):
         agent_count: int = None,
         base_info: GetOpenJMeterSceneResponseBodySceneBaseInfo = None,
         concurrency: int = None,
-        constant_throughput_timers: str = None,
+        constant_throughput_timer_type: str = None,
         dns_cache_config: GetOpenJMeterSceneResponseBodySceneDnsCacheConfig = None,
         duration: int = None,
         environment_id: str = None,
@@ -1638,7 +1638,7 @@ class GetOpenJMeterSceneResponseBodyScene(TeaModel):
         scene_name: str = None,
         security_group_id: str = None,
         steps: int = None,
-        sync_timers: str = None,
+        sync_timer_type: str = None,
         test_file: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -1650,7 +1650,7 @@ class GetOpenJMeterSceneResponseBodyScene(TeaModel):
         # 最大并发
         self.concurrency = concurrency
         # constantThroughputTimerType
-        self.constant_throughput_timers = constant_throughput_timers
+        self.constant_throughput_timer_type = constant_throughput_timer_type
         # DNS配置
         self.dns_cache_config = dns_cache_config
         # 压测持续时间，单位为s
@@ -1674,7 +1674,7 @@ class GetOpenJMeterSceneResponseBodyScene(TeaModel):
         # 递增阶梯数。预热时间和预热阶段数都不配置时 使用固定压力值 只配置预热时间，不配置阶段数时 使用均匀递增 预热时间和阶段数都配置时，并且steps<rampUp 使用阶梯递增 不能只配置steps，不配置rampUp 如果这样配置，默认使用固定压力值
         self.steps = steps
         # synchronizing timer 类型
-        self.sync_timers = sync_timers
+        self.sync_timer_type = sync_timer_type
         # 测试文件
         self.test_file = test_file
         # 交换机id，VPC压测时配置
@@ -1704,8 +1704,8 @@ class GetOpenJMeterSceneResponseBodyScene(TeaModel):
             result['BaseInfo'] = self.base_info.to_map()
         if self.concurrency is not None:
             result['Concurrency'] = self.concurrency
-        if self.constant_throughput_timers is not None:
-            result['ConstantThroughputTimers'] = self.constant_throughput_timers
+        if self.constant_throughput_timer_type is not None:
+            result['ConstantThroughputTimerType'] = self.constant_throughput_timer_type
         if self.dns_cache_config is not None:
             result['DnsCacheConfig'] = self.dns_cache_config.to_map()
         if self.duration is not None:
@@ -1730,8 +1730,8 @@ class GetOpenJMeterSceneResponseBodyScene(TeaModel):
             result['SecurityGroupId'] = self.security_group_id
         if self.steps is not None:
             result['Steps'] = self.steps
-        if self.sync_timers is not None:
-            result['SyncTimers'] = self.sync_timers
+        if self.sync_timer_type is not None:
+            result['SyncTimerType'] = self.sync_timer_type
         if self.test_file is not None:
             result['TestFile'] = self.test_file
         if self.v_switch_id is not None:
@@ -1749,8 +1749,8 @@ class GetOpenJMeterSceneResponseBodyScene(TeaModel):
             self.base_info = temp_model.from_map(m['BaseInfo'])
         if m.get('Concurrency') is not None:
             self.concurrency = m.get('Concurrency')
-        if m.get('ConstantThroughputTimers') is not None:
-            self.constant_throughput_timers = m.get('ConstantThroughputTimers')
+        if m.get('ConstantThroughputTimerType') is not None:
+            self.constant_throughput_timer_type = m.get('ConstantThroughputTimerType')
         if m.get('DnsCacheConfig') is not None:
             temp_model = GetOpenJMeterSceneResponseBodySceneDnsCacheConfig()
             self.dns_cache_config = temp_model.from_map(m['DnsCacheConfig'])
@@ -1777,8 +1777,8 @@ class GetOpenJMeterSceneResponseBodyScene(TeaModel):
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('Steps') is not None:
             self.steps = m.get('Steps')
-        if m.get('SyncTimers') is not None:
-            self.sync_timers = m.get('SyncTimers')
+        if m.get('SyncTimerType') is not None:
+            self.sync_timer_type = m.get('SyncTimerType')
         if m.get('TestFile') is not None:
             self.test_file = m.get('TestFile')
         if m.get('VSwitchId') is not None:
@@ -6983,7 +6983,7 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
         self,
         agent_count: int = None,
         concurrency: int = None,
-        constant_throughput_timers: str = None,
+        constant_throughput_timer_type: str = None,
         dns_cache_config: SaveOpenJMeterSceneRequestOpenJMeterSceneDnsCacheConfig = None,
         duration: int = None,
         enviroment_id: str = None,
@@ -6996,7 +6996,7 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
         scene_name: str = None,
         security_group_id: str = None,
         steps: int = None,
-        sync_timers: str = None,
+        sync_timer_type: str = None,
         test_file: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -7006,7 +7006,7 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
         # 最大并发
         self.concurrency = concurrency
         # constantThroughputTimerType
-        self.constant_throughput_timers = constant_throughput_timers
+        self.constant_throughput_timer_type = constant_throughput_timer_type
         # DNS配置
         self.dns_cache_config = dns_cache_config
         # 压测持续时间
@@ -7032,7 +7032,7 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
         # 预热阶段
         self.steps = steps
         # synchronizing timer 类型
-        self.sync_timers = sync_timers
+        self.sync_timer_type = sync_timer_type
         # 测试文件
         self.test_file = test_file
         # 交换机id，VPC压测时配置
@@ -7062,8 +7062,8 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
             result['AgentCount'] = self.agent_count
         if self.concurrency is not None:
             result['Concurrency'] = self.concurrency
-        if self.constant_throughput_timers is not None:
-            result['ConstantThroughputTimers'] = self.constant_throughput_timers
+        if self.constant_throughput_timer_type is not None:
+            result['ConstantThroughputTimerType'] = self.constant_throughput_timer_type
         if self.dns_cache_config is not None:
             result['DnsCacheConfig'] = self.dns_cache_config.to_map()
         if self.duration is not None:
@@ -7092,8 +7092,8 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
             result['SecurityGroupId'] = self.security_group_id
         if self.steps is not None:
             result['Steps'] = self.steps
-        if self.sync_timers is not None:
-            result['SyncTimers'] = self.sync_timers
+        if self.sync_timer_type is not None:
+            result['SyncTimerType'] = self.sync_timer_type
         if self.test_file is not None:
             result['TestFile'] = self.test_file
         if self.v_switch_id is not None:
@@ -7108,8 +7108,8 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
             self.agent_count = m.get('AgentCount')
         if m.get('Concurrency') is not None:
             self.concurrency = m.get('Concurrency')
-        if m.get('ConstantThroughputTimers') is not None:
-            self.constant_throughput_timers = m.get('ConstantThroughputTimers')
+        if m.get('ConstantThroughputTimerType') is not None:
+            self.constant_throughput_timer_type = m.get('ConstantThroughputTimerType')
         if m.get('DnsCacheConfig') is not None:
             temp_model = SaveOpenJMeterSceneRequestOpenJMeterSceneDnsCacheConfig()
             self.dns_cache_config = temp_model.from_map(m['DnsCacheConfig'])
@@ -7141,8 +7141,8 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('Steps') is not None:
             self.steps = m.get('Steps')
-        if m.get('SyncTimers') is not None:
-            self.sync_timers = m.get('SyncTimers')
+        if m.get('SyncTimerType') is not None:
+            self.sync_timer_type = m.get('SyncTimerType')
         if m.get('TestFile') is not None:
             self.test_file = m.get('TestFile')
         if m.get('VSwitchId') is not None:

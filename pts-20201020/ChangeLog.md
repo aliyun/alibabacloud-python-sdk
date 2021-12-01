@@ -1,3 +1,6 @@
+2021-12-01 Version: 1.8.3
+- Timers  to timerType.
+
 2021-11-26 Version: 1.8.2
 - PTS OpenAPI.
 
