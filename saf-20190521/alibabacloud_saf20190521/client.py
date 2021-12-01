@@ -125,8 +125,8 @@ class Client(OpenApiClient):
     ) -> saf_20190521_models.ExecuteRequestResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ServiceParameters'] = request.service_parameters
         query['Service'] = request.service
+        query['ServiceParameters'] = request.service_parameters
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -154,8 +154,8 @@ class Client(OpenApiClient):
     ) -> saf_20190521_models.ExecuteRequestResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ServiceParameters'] = request.service_parameters
         query['Service'] = request.service
+        query['ServiceParameters'] = request.service_parameters
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -197,8 +197,9 @@ class Client(OpenApiClient):
     ) -> saf_20190521_models.ExecuteRequestMLResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ServiceParameters'] = request.service_parameters
+        query['Lang'] = request.lang
         query['Service'] = request.service
+        query['ServiceParameters'] = request.service_parameters
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -226,8 +227,9 @@ class Client(OpenApiClient):
     ) -> saf_20190521_models.ExecuteRequestMLResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ServiceParameters'] = request.service_parameters
+        query['Lang'] = request.lang
         query['Service'] = request.service
+        query['ServiceParameters'] = request.service_parameters
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -269,8 +271,9 @@ class Client(OpenApiClient):
     ) -> saf_20190521_models.ExecuteRequestSGResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ServiceParameters'] = request.service_parameters
+        query['Lang'] = request.lang
         query['Service'] = request.service
+        query['ServiceParameters'] = request.service_parameters
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -298,8 +301,9 @@ class Client(OpenApiClient):
     ) -> saf_20190521_models.ExecuteRequestSGResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ServiceParameters'] = request.service_parameters
+        query['Lang'] = request.lang
         query['Service'] = request.service
+        query['ServiceParameters'] = request.service_parameters
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -333,3 +337,75 @@ class Client(OpenApiClient):
     ) -> saf_20190521_models.ExecuteRequestSGResponse:
         runtime = util_models.RuntimeOptions()
         return await self.execute_request_sgwith_options_async(request, runtime)
+
+    def request_decision_with_options(
+        self,
+        request: saf_20190521_models.RequestDecisionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> saf_20190521_models.RequestDecisionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['EventCode'] = request.event_code
+        query['ServiceParameters'] = request.service_parameters
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RequestDecision',
+            version='2019-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            saf_20190521_models.RequestDecisionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def request_decision_with_options_async(
+        self,
+        request: saf_20190521_models.RequestDecisionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> saf_20190521_models.RequestDecisionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['EventCode'] = request.event_code
+        query['ServiceParameters'] = request.service_parameters
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RequestDecision',
+            version='2019-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            saf_20190521_models.RequestDecisionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def request_decision(
+        self,
+        request: saf_20190521_models.RequestDecisionRequest,
+    ) -> saf_20190521_models.RequestDecisionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.request_decision_with_options(request, runtime)
+
+    async def request_decision_async(
+        self,
+        request: saf_20190521_models.RequestDecisionRequest,
+    ) -> saf_20190521_models.RequestDecisionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.request_decision_with_options_async(request, runtime)
