@@ -1,3 +1,6 @@
+2021-12-02 Version: 3.0.0
+- Update MergeImageFace QueryFaceImageTemplate AddFaceImageTemplate DeleteFaceImageTemplate.
+
 2021-10-21 Version: 2.0.18
 - Release AddQualityScore.
 
