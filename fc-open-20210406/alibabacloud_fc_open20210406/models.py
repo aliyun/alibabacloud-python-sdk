@@ -4313,11 +4313,8 @@ class GetLayerVersionByArnResponse(TeaModel):
 class GetProvisionConfigRequest(TeaModel):
     def __init__(
         self,
-        target: int = None,
         qualifier: str = None,
     ):
-        # 预留的目标资源个数
-        self.target = target
         # 别名名称
         self.qualifier = qualifier
 
@@ -4330,16 +4327,12 @@ class GetProvisionConfigRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.target is not None:
-            result['target'] = self.target
         if self.qualifier is not None:
             result['qualifier'] = self.qualifier
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('target') is not None:
-            self.target = m.get('target')
         if m.get('qualifier') is not None:
             self.qualifier = m.get('qualifier')
         return self
