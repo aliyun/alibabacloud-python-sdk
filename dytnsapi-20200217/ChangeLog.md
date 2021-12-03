@@ -1,3 +1,6 @@
+2021-12-03 Version: 1.0.5
+- Support Service of number analysis.
+
 2021-10-11 Version: 1.0.4
 - Fixed SDK update delay.
 
