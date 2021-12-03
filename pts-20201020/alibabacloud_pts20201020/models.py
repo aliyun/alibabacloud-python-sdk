@@ -6986,7 +6986,7 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
         constant_throughput_timer_type: str = None,
         dns_cache_config: SaveOpenJMeterSceneRequestOpenJMeterSceneDnsCacheConfig = None,
         duration: int = None,
-        enviroment_id: str = None,
+        environment_id: str = None,
         file_list: List[SaveOpenJMeterSceneRequestOpenJMeterSceneFileList] = None,
         is_vpc_test: bool = None,
         jmeter_properties: List[SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties] = None,
@@ -7012,7 +7012,7 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
         # 压测持续时间
         self.duration = duration
         # 关联的环境id
-        self.enviroment_id = enviroment_id
+        self.environment_id = environment_id
         # 文件列表
         self.file_list = file_list
         # 是否为VPC测试，默认为false表示公网测试，此值为true时VPC相关配置才生效
@@ -7068,8 +7068,8 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
             result['DnsCacheConfig'] = self.dns_cache_config.to_map()
         if self.duration is not None:
             result['Duration'] = self.duration
-        if self.enviroment_id is not None:
-            result['EnviromentId'] = self.enviroment_id
+        if self.environment_id is not None:
+            result['EnvironmentId'] = self.environment_id
         result['FileList'] = []
         if self.file_list is not None:
             for k in self.file_list:
@@ -7115,8 +7115,8 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
             self.dns_cache_config = temp_model.from_map(m['DnsCacheConfig'])
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
-        if m.get('EnviromentId') is not None:
-            self.enviroment_id = m.get('EnviromentId')
+        if m.get('EnvironmentId') is not None:
+            self.environment_id = m.get('EnvironmentId')
         self.file_list = []
         if m.get('FileList') is not None:
             for k in m.get('FileList'):
