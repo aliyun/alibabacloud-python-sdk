@@ -3,30 +3,23 @@
 from typing import Dict
 from Tea.core import TeaCore
 
-from alibabacloud_gateway_spi.client import Client as SPIClient
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_vpc20160428 import models as vpc_20160428_models
 from alibabacloud_tea_util import models as util_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
     """
     *\
     """
-    _client: SPIClient = None
-
     def __init__(
         self, 
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._client = GatewayClientClient()
-        self._spi = self._client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-qingdao': 'vpc.aliyuncs.com',
@@ -100,30 +93,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ActivateRouterInterfaceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterInterfaceId'] = request.router_interface_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ActivateRouterInterface',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ActivateRouterInterfaceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ActivateRouterInterface', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def activate_router_interface_with_options_async(
@@ -132,30 +107,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ActivateRouterInterfaceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterInterfaceId'] = request.router_interface_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ActivateRouterInterface',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ActivateRouterInterfaceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ActivateRouterInterface', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def activate_router_interface(
@@ -178,31 +135,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ActiveFlowLogResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['FlowLogId'] = request.flow_log_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ActiveFlowLog',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ActiveFlowLogResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ActiveFlowLog', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def active_flow_log_with_options_async(
@@ -211,31 +149,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ActiveFlowLogResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['FlowLogId'] = request.flow_log_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ActiveFlowLog',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ActiveFlowLogResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ActiveFlowLog', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def active_flow_log(
@@ -258,34 +177,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddBgpNetworkResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DstCidrBlock'] = request.dst_cidr_block
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterId'] = request.router_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AddBgpNetwork',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AddBgpNetworkResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AddBgpNetwork', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def add_bgp_network_with_options_async(
@@ -294,34 +191,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddBgpNetworkResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DstCidrBlock'] = request.dst_cidr_block
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterId'] = request.router_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AddBgpNetwork',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AddBgpNetworkResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AddBgpNetwork', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def add_bgp_network(
@@ -344,34 +219,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddCommonBandwidthPackageIpResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['ClientToken'] = request.client_token
-        query['IpInstanceId'] = request.ip_instance_id
-        query['IpType'] = request.ip_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AddCommonBandwidthPackageIp',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AddCommonBandwidthPackageIpResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AddCommonBandwidthPackageIp', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def add_common_bandwidth_package_ip_with_options_async(
@@ -380,34 +233,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddCommonBandwidthPackageIpResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['ClientToken'] = request.client_token
-        query['IpInstanceId'] = request.ip_instance_id
-        query['IpType'] = request.ip_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AddCommonBandwidthPackageIp',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AddCommonBandwidthPackageIpResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AddCommonBandwidthPackageIp', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def add_common_bandwidth_package_ip(
@@ -430,34 +261,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddCommonBandwidthPackageIpsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['ClientToken'] = request.client_token
-        query['IpInstanceIds'] = request.ip_instance_ids
-        query['IpType'] = request.ip_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AddCommonBandwidthPackageIps',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AddCommonBandwidthPackageIpsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AddCommonBandwidthPackageIps', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def add_common_bandwidth_package_ips_with_options_async(
@@ -466,34 +275,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddCommonBandwidthPackageIpsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['ClientToken'] = request.client_token
-        query['IpInstanceIds'] = request.ip_instance_ids
-        query['IpType'] = request.ip_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AddCommonBandwidthPackageIps',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AddCommonBandwidthPackageIpsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AddCommonBandwidthPackageIps', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def add_common_bandwidth_package_ips(
@@ -516,32 +303,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddGlobalAccelerationInstanceIpResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['GlobalAccelerationInstanceId'] = request.global_acceleration_instance_id
-        query['IpInstanceId'] = request.ip_instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AddGlobalAccelerationInstanceIp',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AddGlobalAccelerationInstanceIpResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AddGlobalAccelerationInstanceIp', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def add_global_acceleration_instance_ip_with_options_async(
@@ -550,32 +317,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddGlobalAccelerationInstanceIpResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['GlobalAccelerationInstanceId'] = request.global_acceleration_instance_id
-        query['IpInstanceId'] = request.ip_instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AddGlobalAccelerationInstanceIp',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AddGlobalAccelerationInstanceIpResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AddGlobalAccelerationInstanceIp', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def add_global_acceleration_instance_ip(
@@ -598,33 +345,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddIPv6TranslatorAclListEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclEntryComment'] = request.acl_entry_comment
-        query['AclEntryIp'] = request.acl_entry_ip
-        query['AclId'] = request.acl_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AddIPv6TranslatorAclListEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AddIPv6TranslatorAclListEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AddIPv6TranslatorAclListEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def add_ipv_6translator_acl_list_entry_with_options_async(
@@ -633,33 +359,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddIPv6TranslatorAclListEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclEntryComment'] = request.acl_entry_comment
-        query['AclEntryIp'] = request.acl_entry_ip
-        query['AclId'] = request.acl_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AddIPv6TranslatorAclListEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AddIPv6TranslatorAclListEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AddIPv6TranslatorAclListEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def add_ipv_6translator_acl_list_entry(
@@ -682,34 +387,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddSourcesToTrafficMirrorSessionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorSessionId'] = request.traffic_mirror_session_id
-        query['TrafficMirrorSourceIds'] = request.traffic_mirror_source_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AddSourcesToTrafficMirrorSession',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AddSourcesToTrafficMirrorSessionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AddSourcesToTrafficMirrorSession', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def add_sources_to_traffic_mirror_session_with_options_async(
@@ -718,34 +401,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddSourcesToTrafficMirrorSessionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorSessionId'] = request.traffic_mirror_session_id
-        query['TrafficMirrorSourceIds'] = request.traffic_mirror_source_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AddSourcesToTrafficMirrorSession',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AddSourcesToTrafficMirrorSessionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AddSourcesToTrafficMirrorSession', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def add_sources_to_traffic_mirror_session(
@@ -768,44 +429,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateEipAddressResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ActivityId'] = request.activity_id
-        query['AutoPay'] = request.auto_pay
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['ISP'] = request.isp
-        query['InstanceChargeType'] = request.instance_charge_type
-        query['InternetChargeType'] = request.internet_charge_type
-        query['Name'] = request.name
-        query['Netmode'] = request.netmode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Period'] = request.period
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityProtectionTypes'] = request.security_protection_types
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AllocateEipAddress',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AllocateEipAddressResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AllocateEipAddress', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def allocate_eip_address_with_options_async(
@@ -814,44 +443,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateEipAddressResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ActivityId'] = request.activity_id
-        query['AutoPay'] = request.auto_pay
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['ISP'] = request.isp
-        query['InstanceChargeType'] = request.instance_charge_type
-        query['InternetChargeType'] = request.internet_charge_type
-        query['Name'] = request.name
-        query['Netmode'] = request.netmode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Period'] = request.period
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityProtectionTypes'] = request.security_protection_types
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AllocateEipAddress',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AllocateEipAddressResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AllocateEipAddress', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def allocate_eip_address(
@@ -874,43 +471,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateEipAddressProResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPay'] = request.auto_pay
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['ISP'] = request.isp
-        query['InstanceChargeType'] = request.instance_charge_type
-        query['InstanceId'] = request.instance_id
-        query['InternetChargeType'] = request.internet_charge_type
-        query['IpAddress'] = request.ip_address
-        query['Netmode'] = request.netmode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Period'] = request.period
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityProtectionTypes'] = request.security_protection_types
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AllocateEipAddressPro',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AllocateEipAddressProResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AllocateEipAddressPro', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def allocate_eip_address_pro_with_options_async(
@@ -919,43 +485,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateEipAddressProResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPay'] = request.auto_pay
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['ISP'] = request.isp
-        query['InstanceChargeType'] = request.instance_charge_type
-        query['InstanceId'] = request.instance_id
-        query['InternetChargeType'] = request.internet_charge_type
-        query['IpAddress'] = request.ip_address
-        query['Netmode'] = request.netmode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Period'] = request.period
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityProtectionTypes'] = request.security_protection_types
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AllocateEipAddressPro',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AllocateEipAddressProResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AllocateEipAddressPro', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def allocate_eip_address_pro(
@@ -978,37 +513,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateEipSegmentAddressResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['EipMask'] = request.eip_mask
-        query['InternetChargeType'] = request.internet_charge_type
-        query['Isp'] = request.isp
-        query['Netmode'] = request.netmode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AllocateEipSegmentAddress',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AllocateEipSegmentAddressResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AllocateEipSegmentAddress', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def allocate_eip_segment_address_with_options_async(
@@ -1017,37 +527,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateEipSegmentAddressResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['EipMask'] = request.eip_mask
-        query['InternetChargeType'] = request.internet_charge_type
-        query['Isp'] = request.isp
-        query['Netmode'] = request.netmode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AllocateEipSegmentAddress',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AllocateEipSegmentAddressResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AllocateEipSegmentAddress', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def allocate_eip_segment_address(
@@ -1070,36 +555,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateIpv6InternetBandwidthResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['InternetChargeType'] = request.internet_charge_type
-        query['Ipv6AddressId'] = request.ipv_6address_id
-        query['Ipv6GatewayId'] = request.ipv_6gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AllocateIpv6InternetBandwidth',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AllocateIpv6InternetBandwidthResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AllocateIpv6InternetBandwidth', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def allocate_ipv_6internet_bandwidth_with_options_async(
@@ -1108,36 +569,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateIpv6InternetBandwidthResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['InternetChargeType'] = request.internet_charge_type
-        query['Ipv6AddressId'] = request.ipv_6address_id
-        query['Ipv6GatewayId'] = request.ipv_6gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AllocateIpv6InternetBandwidth',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AllocateIpv6InternetBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AllocateIpv6InternetBandwidth', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def allocate_ipv_6internet_bandwidth(
@@ -1160,40 +597,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ApplyPhysicalConnectionLOAResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['ClientToken'] = request.client_token
-        query['CompanyName'] = request.company_name
-        query['ConstructionTime'] = request.construction_time
-        query['InstanceId'] = request.instance_id
-        query['LineType'] = request.line_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PMInfo'] = request.pminfo
-        query['PeerLocation'] = request.peer_location
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Si'] = request.si
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ApplyPhysicalConnectionLOA',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ApplyPhysicalConnectionLOAResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ApplyPhysicalConnectionLOA', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def apply_physical_connection_loawith_options_async(
@@ -1202,40 +611,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ApplyPhysicalConnectionLOAResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['ClientToken'] = request.client_token
-        query['CompanyName'] = request.company_name
-        query['ConstructionTime'] = request.construction_time
-        query['InstanceId'] = request.instance_id
-        query['LineType'] = request.line_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PMInfo'] = request.pminfo
-        query['PeerLocation'] = request.peer_location
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Si'] = request.si
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ApplyPhysicalConnectionLOA',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ApplyPhysicalConnectionLOAResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ApplyPhysicalConnectionLOA', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def apply_physical_connection_loa(
@@ -1258,37 +639,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateEipAddressResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AllocationId'] = request.allocation_id
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['InstanceRegionId'] = request.instance_region_id
-        query['InstanceType'] = request.instance_type
-        query['Mode'] = request.mode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PrivateIpAddress'] = request.private_ip_address
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociateEipAddress',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociateEipAddressResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AssociateEipAddress', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def associate_eip_address_with_options_async(
@@ -1297,37 +653,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateEipAddressResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AllocationId'] = request.allocation_id
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['InstanceRegionId'] = request.instance_region_id
-        query['InstanceType'] = request.instance_type
-        query['Mode'] = request.mode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PrivateIpAddress'] = request.private_ip_address
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociateEipAddress',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociateEipAddressResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AssociateEipAddress', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def associate_eip_address(
@@ -1350,34 +681,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateGlobalAccelerationInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BackendServerId'] = request.backend_server_id
-        query['BackendServerRegionId'] = request.backend_server_region_id
-        query['BackendServerType'] = request.backend_server_type
-        query['GlobalAccelerationInstanceId'] = request.global_acceleration_instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociateGlobalAccelerationInstance',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociateGlobalAccelerationInstanceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AssociateGlobalAccelerationInstance', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def associate_global_acceleration_instance_with_options_async(
@@ -1386,34 +695,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateGlobalAccelerationInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BackendServerId'] = request.backend_server_id
-        query['BackendServerRegionId'] = request.backend_server_region_id
-        query['BackendServerType'] = request.backend_server_type
-        query['GlobalAccelerationInstanceId'] = request.global_acceleration_instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociateGlobalAccelerationInstance',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociateGlobalAccelerationInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AssociateGlobalAccelerationInstance', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def associate_global_acceleration_instance(
@@ -1436,34 +723,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateHaVipResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['HaVipId'] = request.ha_vip_id
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociateHaVip',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociateHaVipResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AssociateHaVip', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def associate_ha_vip_with_options_async(
@@ -1472,34 +737,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateHaVipResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['HaVipId'] = request.ha_vip_id
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociateHaVip',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociateHaVipResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AssociateHaVip', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def associate_ha_vip(
@@ -1522,33 +765,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateNetworkAclResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NetworkAclId'] = request.network_acl_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['Resource'] = request.resource
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociateNetworkAcl',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociateNetworkAclResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AssociateNetworkAcl', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def associate_network_acl_with_options_async(
@@ -1557,33 +779,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateNetworkAclResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NetworkAclId'] = request.network_acl_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['Resource'] = request.resource
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociateNetworkAcl',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociateNetworkAclResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AssociateNetworkAcl', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def associate_network_acl(
@@ -1606,42 +807,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociatePhysicalConnectionToVirtualBorderRouterResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CircuitCode'] = request.circuit_code
-        query['ClientToken'] = request.client_token
-        query['EnableIpv6'] = request.enable_ipv_6
-        query['LocalGatewayIp'] = request.local_gateway_ip
-        query['LocalIpv6GatewayIp'] = request.local_ipv_6gateway_ip
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerGatewayIp'] = request.peer_gateway_ip
-        query['PeerIpv6GatewayIp'] = request.peer_ipv_6gateway_ip
-        query['PeeringIpv6SubnetMask'] = request.peering_ipv_6subnet_mask
-        query['PeeringSubnetMask'] = request.peering_subnet_mask
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrId'] = request.vbr_id
-        query['VlanId'] = request.vlan_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociatePhysicalConnectionToVirtualBorderRouter',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociatePhysicalConnectionToVirtualBorderRouterResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AssociatePhysicalConnectionToVirtualBorderRouter', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def associate_physical_connection_to_virtual_border_router_with_options_async(
@@ -1650,42 +821,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociatePhysicalConnectionToVirtualBorderRouterResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CircuitCode'] = request.circuit_code
-        query['ClientToken'] = request.client_token
-        query['EnableIpv6'] = request.enable_ipv_6
-        query['LocalGatewayIp'] = request.local_gateway_ip
-        query['LocalIpv6GatewayIp'] = request.local_ipv_6gateway_ip
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerGatewayIp'] = request.peer_gateway_ip
-        query['PeerIpv6GatewayIp'] = request.peer_ipv_6gateway_ip
-        query['PeeringIpv6SubnetMask'] = request.peering_ipv_6subnet_mask
-        query['PeeringSubnetMask'] = request.peering_subnet_mask
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrId'] = request.vbr_id
-        query['VlanId'] = request.vlan_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociatePhysicalConnectionToVirtualBorderRouter',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociatePhysicalConnectionToVirtualBorderRouterResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AssociatePhysicalConnectionToVirtualBorderRouter', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def associate_physical_connection_to_virtual_border_router(
@@ -1708,34 +849,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateRouteTableResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
-        query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociateRouteTable',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociateRouteTableResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AssociateRouteTable', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def associate_route_table_with_options_async(
@@ -1744,34 +863,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateRouteTableResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
-        query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociateRouteTable',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociateRouteTableResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AssociateRouteTable', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def associate_route_table(
@@ -1794,35 +891,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateRouteTableWithGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['GatewayId'] = request.gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociateRouteTableWithGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociateRouteTableWithGatewayResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AssociateRouteTableWithGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def associate_route_table_with_gateway_with_options_async(
@@ -1831,35 +905,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateRouteTableWithGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['GatewayId'] = request.gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociateRouteTableWithGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociateRouteTableWithGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AssociateRouteTableWithGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def associate_route_table_with_gateway(
@@ -1882,34 +933,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateRouteTablesWithVpcGatewayEndpointResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableIds'] = request.route_table_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociateRouteTablesWithVpcGatewayEndpoint',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociateRouteTablesWithVpcGatewayEndpointResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AssociateRouteTablesWithVpcGatewayEndpoint', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def associate_route_tables_with_vpc_gateway_endpoint_with_options_async(
@@ -1918,34 +947,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateRouteTablesWithVpcGatewayEndpointResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableIds'] = request.route_table_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociateRouteTablesWithVpcGatewayEndpoint',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociateRouteTablesWithVpcGatewayEndpointResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AssociateRouteTablesWithVpcGatewayEndpoint', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def associate_route_tables_with_vpc_gateway_endpoint(
@@ -1968,35 +975,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateVpcCidrBlockResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['IpVersion'] = request.ip_version
-        query['Ipv6Isp'] = request.ipv_6isp
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecondaryCidrBlock'] = request.secondary_cidr_block
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociateVpcCidrBlock',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociateVpcCidrBlockResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AssociateVpcCidrBlock', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def associate_vpc_cidr_block_with_options_async(
@@ -2005,35 +989,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateVpcCidrBlockResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['IpVersion'] = request.ip_version
-        query['Ipv6Isp'] = request.ipv_6isp
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecondaryCidrBlock'] = request.secondary_cidr_block
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociateVpcCidrBlock',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociateVpcCidrBlockResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AssociateVpcCidrBlock', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def associate_vpc_cidr_block(
@@ -2056,31 +1017,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateVpnGatewayWithCertificateResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CertificateId'] = request.certificate_id
-        query['CertificateType'] = request.certificate_type
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RegionId'] = request.region_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociateVpnGatewayWithCertificate',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociateVpnGatewayWithCertificateResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AssociateVpnGatewayWithCertificate', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def associate_vpn_gateway_with_certificate_with_options_async(
@@ -2089,31 +1031,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateVpnGatewayWithCertificateResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CertificateId'] = request.certificate_id
-        query['CertificateType'] = request.certificate_type
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RegionId'] = request.region_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AssociateVpnGatewayWithCertificate',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AssociateVpnGatewayWithCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AssociateVpnGatewayWithCertificate', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def associate_vpn_gateway_with_certificate(
@@ -2136,34 +1059,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AttachDhcpOptionsSetToVpcResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DhcpOptionsSetId'] = request.dhcp_options_set_id
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AttachDhcpOptionsSetToVpc',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AttachDhcpOptionsSetToVpcResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AttachDhcpOptionsSetToVpc', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def attach_dhcp_options_set_to_vpc_with_options_async(
@@ -2172,34 +1073,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AttachDhcpOptionsSetToVpcResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DhcpOptionsSetId'] = request.dhcp_options_set_id
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AttachDhcpOptionsSetToVpc',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AttachDhcpOptionsSetToVpcResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AttachDhcpOptionsSetToVpc', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def attach_dhcp_options_set_to_vpc(
@@ -2222,30 +1101,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AttachVbrToVpconnResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['RegionId'] = request.region_id
-        query['Token'] = request.token
-        query['VbrId'] = request.vbr_id
-        query['VpconnId'] = request.vpconn_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AttachVbrToVpconn',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AttachVbrToVpconnResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('AttachVbrToVpconn', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def attach_vbr_to_vpconn_with_options_async(
@@ -2254,30 +1115,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AttachVbrToVpconnResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['RegionId'] = request.region_id
-        query['Token'] = request.token
-        query['VbrId'] = request.vbr_id
-        query['VpconnId'] = request.vpconn_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='AttachVbrToVpconn',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.AttachVbrToVpconnResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('AttachVbrToVpconn', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def attach_vbr_to_vpconn(
@@ -2300,32 +1143,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CancelCommonBandwidthPackageIpBandwidthResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['EipId'] = request.eip_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CancelCommonBandwidthPackageIpBandwidth',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CancelCommonBandwidthPackageIpBandwidthResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CancelCommonBandwidthPackageIpBandwidth', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def cancel_common_bandwidth_package_ip_bandwidth_with_options_async(
@@ -2334,32 +1157,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CancelCommonBandwidthPackageIpBandwidthResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['EipId'] = request.eip_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CancelCommonBandwidthPackageIpBandwidth',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CancelCommonBandwidthPackageIpBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CancelCommonBandwidthPackageIpBandwidth', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def cancel_common_bandwidth_package_ip_bandwidth(
@@ -2382,31 +1185,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CancelExpressCloudConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['EccId'] = request.ecc_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CancelExpressCloudConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CancelExpressCloudConnectionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CancelExpressCloudConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def cancel_express_cloud_connection_with_options_async(
@@ -2415,31 +1199,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CancelExpressCloudConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['EccId'] = request.ecc_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CancelExpressCloudConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CancelExpressCloudConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CancelExpressCloudConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def cancel_express_cloud_connection(
@@ -2462,32 +1227,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CancelPhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CancelPhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CancelPhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CancelPhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def cancel_physical_connection_with_options_async(
@@ -2496,32 +1241,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CancelPhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CancelPhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CancelPhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CancelPhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def cancel_physical_connection(
@@ -2544,35 +1269,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CompletePhysicalConnectionLOAResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['LineCode'] = request.line_code
-        query['LineLabel'] = request.line_label
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CompletePhysicalConnectionLOA',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CompletePhysicalConnectionLOAResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CompletePhysicalConnectionLOA', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def complete_physical_connection_loawith_options_async(
@@ -2581,35 +1283,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CompletePhysicalConnectionLOAResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['LineCode'] = request.line_code
-        query['LineLabel'] = request.line_label
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CompletePhysicalConnectionLOA',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CompletePhysicalConnectionLOAResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CompletePhysicalConnectionLOA', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def complete_physical_connection_loa(
@@ -2632,32 +1311,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ConfirmPhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ConfirmPhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ConfirmPhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ConfirmPhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def confirm_physical_connection_with_options_async(
@@ -2666,32 +1325,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ConfirmPhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ConfirmPhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ConfirmPhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ConfirmPhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def confirm_physical_connection(
@@ -2714,30 +1353,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ConnectRouterInterfaceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterInterfaceId'] = request.router_interface_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ConnectRouterInterface',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ConnectRouterInterfaceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ConnectRouterInterface', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def connect_router_interface_with_options_async(
@@ -2746,30 +1367,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ConnectRouterInterfaceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterInterfaceId'] = request.router_interface_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ConnectRouterInterface',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ConnectRouterInterfaceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ConnectRouterInterface', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def connect_router_interface(
@@ -2792,32 +1395,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ConvertBandwidthPackageResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['ClientToken'] = request.client_token
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ConvertBandwidthPackage',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ConvertBandwidthPackageResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ConvertBandwidthPackage', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def convert_bandwidth_package_with_options_async(
@@ -2826,32 +1409,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ConvertBandwidthPackageResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['ClientToken'] = request.client_token
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ConvertBandwidthPackage',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ConvertBandwidthPackageResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ConvertBandwidthPackage', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def convert_bandwidth_package(
@@ -2874,33 +1437,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CopyNetworkAclEntriesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NetworkAclId'] = request.network_acl_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SourceNetworkAclId'] = request.source_network_acl_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CopyNetworkAclEntries',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CopyNetworkAclEntriesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CopyNetworkAclEntries', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def copy_network_acl_entries_with_options_async(
@@ -2909,33 +1451,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CopyNetworkAclEntriesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NetworkAclId'] = request.network_acl_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SourceNetworkAclId'] = request.source_network_acl_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CopyNetworkAclEntries',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CopyNetworkAclEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CopyNetworkAclEntries', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def copy_network_acl_entries(
@@ -2958,39 +1479,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateBgpGroupResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AuthKey'] = request.auth_key
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['IpVersion'] = request.ip_version
-        query['IsFakeAsn'] = request.is_fake_asn
-        query['LocalAsn'] = request.local_asn
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerAsn'] = request.peer_asn
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterId'] = request.router_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateBgpGroup',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateBgpGroupResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateBgpGroup', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_bgp_group_with_options_async(
@@ -2999,39 +1493,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateBgpGroupResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AuthKey'] = request.auth_key
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['IpVersion'] = request.ip_version
-        query['IsFakeAsn'] = request.is_fake_asn
-        query['LocalAsn'] = request.local_asn
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerAsn'] = request.peer_asn
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterId'] = request.router_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateBgpGroup',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateBgpGroupResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateBgpGroup', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_bgp_group(
@@ -3054,36 +1521,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateBgpPeerResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BfdMultiHop'] = request.bfd_multi_hop
-        query['BgpGroupId'] = request.bgp_group_id
-        query['ClientToken'] = request.client_token
-        query['EnableBfd'] = request.enable_bfd
-        query['IpVersion'] = request.ip_version
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerIpAddress'] = request.peer_ip_address
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateBgpPeer',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateBgpPeerResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateBgpPeer', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_bgp_peer_with_options_async(
@@ -3092,36 +1535,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateBgpPeerResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BfdMultiHop'] = request.bfd_multi_hop
-        query['BgpGroupId'] = request.bgp_group_id
-        query['ClientToken'] = request.client_token
-        query['EnableBfd'] = request.enable_bfd
-        query['IpVersion'] = request.ip_version
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerIpAddress'] = request.peer_ip_address
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateBgpPeer',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateBgpPeerResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateBgpPeer', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_bgp_peer(
@@ -3144,40 +1563,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateCommonBandwidthPackageResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['ISP'] = request.isp
-        query['InternetChargeType'] = request.internet_charge_type
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Ratio'] = request.ratio
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityProtectionTypes'] = request.security_protection_types
-        query['Zone'] = request.zone
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateCommonBandwidthPackage',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateCommonBandwidthPackageResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateCommonBandwidthPackage', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_common_bandwidth_package_with_options_async(
@@ -3186,40 +1577,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateCommonBandwidthPackageResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['ISP'] = request.isp
-        query['InternetChargeType'] = request.internet_charge_type
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Ratio'] = request.ratio
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityProtectionTypes'] = request.security_protection_types
-        query['Zone'] = request.zone
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateCommonBandwidthPackage',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateCommonBandwidthPackageResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateCommonBandwidthPackage', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_common_bandwidth_package(
@@ -3242,36 +1605,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateCustomerGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Asn'] = request.asn
-        query['AuthKey'] = request.auth_key
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['IpAddress'] = request.ip_address
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateCustomerGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateCustomerGatewayResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateCustomerGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_customer_gateway_with_options_async(
@@ -3280,36 +1619,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateCustomerGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Asn'] = request.asn
-        query['AuthKey'] = request.auth_key
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['IpAddress'] = request.ip_address
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateCustomerGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateCustomerGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateCustomerGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_customer_gateway(
@@ -3332,38 +1647,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateDhcpOptionsSetResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BootFileName'] = request.boot_file_name
-        query['ClientToken'] = request.client_token
-        query['DhcpOptionsSetDescription'] = request.dhcp_options_set_description
-        query['DhcpOptionsSetName'] = request.dhcp_options_set_name
-        query['DomainName'] = request.domain_name
-        query['DomainNameServers'] = request.domain_name_servers
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TFTPServerName'] = request.tftpserver_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateDhcpOptionsSet',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateDhcpOptionsSetResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateDhcpOptionsSet', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_dhcp_options_set_with_options_async(
@@ -3372,38 +1661,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateDhcpOptionsSetResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BootFileName'] = request.boot_file_name
-        query['ClientToken'] = request.client_token
-        query['DhcpOptionsSetDescription'] = request.dhcp_options_set_description
-        query['DhcpOptionsSetName'] = request.dhcp_options_set_name
-        query['DomainName'] = request.domain_name
-        query['DomainNameServers'] = request.domain_name_servers
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TFTPServerName'] = request.tftpserver_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateDhcpOptionsSet',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateDhcpOptionsSetResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateDhcpOptionsSet', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_dhcp_options_set(
@@ -3426,41 +1689,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateExpressCloudConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['ContactMail'] = request.contact_mail
-        query['ContactTel'] = request.contact_tel
-        query['Description'] = request.description
-        query['IDCardNo'] = request.idcard_no
-        query['IdcSP'] = request.idc_sp
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerCity'] = request.peer_city
-        query['PeerLocation'] = request.peer_location
-        query['PortType'] = request.port_type
-        query['RedundantEccId'] = request.redundant_ecc_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateExpressCloudConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateExpressCloudConnectionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateExpressCloudConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_express_cloud_connection_with_options_async(
@@ -3469,41 +1703,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateExpressCloudConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['ContactMail'] = request.contact_mail
-        query['ContactTel'] = request.contact_tel
-        query['Description'] = request.description
-        query['IDCardNo'] = request.idcard_no
-        query['IdcSP'] = request.idc_sp
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerCity'] = request.peer_city
-        query['PeerLocation'] = request.peer_location
-        query['PortType'] = request.port_type
-        query['RedundantEccId'] = request.redundant_ecc_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateExpressCloudConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateExpressCloudConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateExpressCloudConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_express_cloud_connection(
@@ -3526,37 +1731,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateFlowLogResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['FlowLogName'] = request.flow_log_name
-        query['LogStoreName'] = request.log_store_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProjectName'] = request.project_name
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['TrafficType'] = request.traffic_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateFlowLog',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateFlowLogResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateFlowLog', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_flow_log_with_options_async(
@@ -3565,37 +1745,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateFlowLogResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['FlowLogName'] = request.flow_log_name
-        query['LogStoreName'] = request.log_store_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProjectName'] = request.project_name
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['TrafficType'] = request.traffic_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateFlowLog',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateFlowLogResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateFlowLog', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_flow_log(
@@ -3618,39 +1773,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateForwardEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['ExternalIp'] = request.external_ip
-        query['ExternalPort'] = request.external_port
-        query['ForwardEntryName'] = request.forward_entry_name
-        query['ForwardTableId'] = request.forward_table_id
-        query['InternalIp'] = request.internal_ip
-        query['InternalPort'] = request.internal_port
-        query['IpProtocol'] = request.ip_protocol
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PortBreak'] = request.port_break
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateForwardEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateForwardEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateForwardEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_forward_entry_with_options_async(
@@ -3659,39 +1787,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateForwardEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['ExternalIp'] = request.external_ip
-        query['ExternalPort'] = request.external_port
-        query['ForwardEntryName'] = request.forward_entry_name
-        query['ForwardTableId'] = request.forward_table_id
-        query['InternalIp'] = request.internal_ip
-        query['InternalPort'] = request.internal_port
-        query['IpProtocol'] = request.ip_protocol
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PortBreak'] = request.port_break
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateForwardEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateForwardEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateForwardEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_forward_entry(
@@ -3714,41 +1815,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateFullNatEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AccessIp'] = request.access_ip
-        query['AccessPort'] = request.access_port
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['FullNatEntryDescription'] = request.full_nat_entry_description
-        query['FullNatEntryName'] = request.full_nat_entry_name
-        query['FullNatTableId'] = request.full_nat_table_id
-        query['IpProtocol'] = request.ip_protocol
-        query['NatIp'] = request.nat_ip
-        query['NatIpPort'] = request.nat_ip_port
-        query['NetworkInterfaceId'] = request.network_interface_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateFullNatEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateFullNatEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateFullNatEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_full_nat_entry_with_options_async(
@@ -3757,41 +1829,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateFullNatEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AccessIp'] = request.access_ip
-        query['AccessPort'] = request.access_port
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['FullNatEntryDescription'] = request.full_nat_entry_description
-        query['FullNatEntryName'] = request.full_nat_entry_name
-        query['FullNatTableId'] = request.full_nat_table_id
-        query['IpProtocol'] = request.ip_protocol
-        query['NatIp'] = request.nat_ip
-        query['NatIpPort'] = request.nat_ip_port
-        query['NetworkInterfaceId'] = request.network_interface_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateFullNatEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateFullNatEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateFullNatEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_full_nat_entry(
@@ -3814,36 +1857,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateGlobalAccelerationInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['BandwidthType'] = request.bandwidth_type
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ServiceLocation'] = request.service_location
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateGlobalAccelerationInstance',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateGlobalAccelerationInstanceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateGlobalAccelerationInstance', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_global_acceleration_instance_with_options_async(
@@ -3852,36 +1871,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateGlobalAccelerationInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['BandwidthType'] = request.bandwidth_type
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ServiceLocation'] = request.service_location
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateGlobalAccelerationInstance',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateGlobalAccelerationInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateGlobalAccelerationInstance', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_global_acceleration_instance(
@@ -3904,35 +1899,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateHaVipResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['IpAddress'] = request.ip_address
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateHaVip',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateHaVipResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateHaVip', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_ha_vip_with_options_async(
@@ -3941,35 +1913,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateHaVipResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['IpAddress'] = request.ip_address
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateHaVip',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateHaVipResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateHaVip', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_ha_vip(
@@ -3992,38 +1941,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIPv6TranslatorResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPay'] = request.auto_pay
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['Duration'] = request.duration
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PayType'] = request.pay_type
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Spec'] = request.spec
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateIPv6Translator',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateIPv6TranslatorResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateIPv6Translator', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_ipv_6translator_with_options_async(
@@ -4032,38 +1955,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIPv6TranslatorResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPay'] = request.auto_pay
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['Duration'] = request.duration
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PayType'] = request.pay_type
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Spec'] = request.spec
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateIPv6Translator',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateIPv6TranslatorResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateIPv6Translator', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_ipv_6translator(
@@ -4086,32 +1983,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIPv6TranslatorAclListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclName'] = request.acl_name
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateIPv6TranslatorAclList',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateIPv6TranslatorAclListResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateIPv6TranslatorAclList', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_ipv_6translator_acl_list_with_options_async(
@@ -4120,32 +1997,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIPv6TranslatorAclListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclName'] = request.acl_name
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateIPv6TranslatorAclList',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateIPv6TranslatorAclListResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateIPv6TranslatorAclList', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_ipv_6translator_acl_list(
@@ -4168,41 +2025,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIPv6TranslatorEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclId'] = request.acl_id
-        query['AclStatus'] = request.acl_status
-        query['AclType'] = request.acl_type
-        query['AllocateIpv6Port'] = request.allocate_ipv_6port
-        query['BackendIpv4Addr'] = request.backend_ipv_4addr
-        query['BackendIpv4Port'] = request.backend_ipv_4port
-        query['EntryBandwidth'] = request.entry_bandwidth
-        query['EntryDescription'] = request.entry_description
-        query['EntryName'] = request.entry_name
-        query['Ipv6TranslatorId'] = request.ipv_6translator_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransProtocol'] = request.trans_protocol
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateIPv6TranslatorEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateIPv6TranslatorEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateIPv6TranslatorEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_ipv_6translator_entry_with_options_async(
@@ -4211,41 +2039,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIPv6TranslatorEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclId'] = request.acl_id
-        query['AclStatus'] = request.acl_status
-        query['AclType'] = request.acl_type
-        query['AllocateIpv6Port'] = request.allocate_ipv_6port
-        query['BackendIpv4Addr'] = request.backend_ipv_4addr
-        query['BackendIpv4Port'] = request.backend_ipv_4port
-        query['EntryBandwidth'] = request.entry_bandwidth
-        query['EntryDescription'] = request.entry_description
-        query['EntryName'] = request.entry_name
-        query['Ipv6TranslatorId'] = request.ipv_6translator_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransProtocol'] = request.trans_protocol
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateIPv6TranslatorEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateIPv6TranslatorEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateIPv6TranslatorEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_ipv_6translator_entry(
@@ -4268,37 +2067,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIpsecServerResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientIpPool'] = request.client_ip_pool
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EffectImmediately'] = request.effect_immediately
-        query['IkeConfig'] = request.ike_config
-        query['IpSecServerName'] = request.ip_sec_server_name
-        query['IpsecConfig'] = request.ipsec_config
-        query['LocalSubnet'] = request.local_subnet
-        query['Psk'] = request.psk
-        query['PskEnabled'] = request.psk_enabled
-        query['RegionId'] = request.region_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateIpsecServer',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateIpsecServerResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateIpsecServer', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_ipsec_server_with_options_async(
@@ -4307,37 +2081,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIpsecServerResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientIpPool'] = request.client_ip_pool
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EffectImmediately'] = request.effect_immediately
-        query['IkeConfig'] = request.ike_config
-        query['IpSecServerName'] = request.ip_sec_server_name
-        query['IpsecConfig'] = request.ipsec_config
-        query['LocalSubnet'] = request.local_subnet
-        query['Psk'] = request.psk
-        query['PskEnabled'] = request.psk_enabled
-        query['RegionId'] = request.region_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateIpsecServer',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateIpsecServerResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateIpsecServer', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_ipsec_server(
@@ -4360,36 +2109,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIpv4GatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Ipv4GatewayDescription'] = request.ipv_4gateway_description
-        query['Ipv4GatewayName'] = request.ipv_4gateway_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateIpv4Gateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateIpv4GatewayResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateIpv4Gateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_ipv_4gateway_with_options_async(
@@ -4398,36 +2123,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIpv4GatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Ipv4GatewayDescription'] = request.ipv_4gateway_description
-        query['Ipv4GatewayName'] = request.ipv_4gateway_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateIpv4Gateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateIpv4GatewayResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateIpv4Gateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_ipv_4gateway(
@@ -4450,37 +2151,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIpv6EgressOnlyRuleResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['Ipv6GatewayId'] = request.ipv_6gateway_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateIpv6EgressOnlyRule',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateIpv6EgressOnlyRuleResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateIpv6EgressOnlyRule', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_ipv_6egress_only_rule_with_options_async(
@@ -4489,37 +2165,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIpv6EgressOnlyRuleResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['Ipv6GatewayId'] = request.ipv_6gateway_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateIpv6EgressOnlyRule',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateIpv6EgressOnlyRuleResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateIpv6EgressOnlyRule', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_ipv_6egress_only_rule(
@@ -4542,36 +2193,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIpv6GatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Spec'] = request.spec
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateIpv6Gateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateIpv6GatewayResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateIpv6Gateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_ipv_6gateway_with_options_async(
@@ -4580,36 +2207,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIpv6GatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Spec'] = request.spec
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateIpv6Gateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateIpv6GatewayResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateIpv6Gateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_ipv_6gateway(
@@ -4632,45 +2235,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateNatGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPay'] = request.auto_pay
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Duration'] = request.duration
-        query['IcmpReplyEnabled'] = request.icmp_reply_enabled
-        query['InstanceChargeType'] = request.instance_charge_type
-        query['InternetChargeType'] = request.internet_charge_type
-        query['Name'] = request.name
-        query['NatType'] = request.nat_type
-        query['NetworkType'] = request.network_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityProtectionEnabled'] = request.security_protection_enabled
-        query['Spec'] = request.spec
-        query['VSwitchId'] = request.v_switch_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateNatGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateNatGatewayResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateNatGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_nat_gateway_with_options_async(
@@ -4679,45 +2249,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateNatGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPay'] = request.auto_pay
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Duration'] = request.duration
-        query['IcmpReplyEnabled'] = request.icmp_reply_enabled
-        query['InstanceChargeType'] = request.instance_charge_type
-        query['InternetChargeType'] = request.internet_charge_type
-        query['Name'] = request.name
-        query['NatType'] = request.nat_type
-        query['NetworkType'] = request.network_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityProtectionEnabled'] = request.security_protection_enabled
-        query['Spec'] = request.spec
-        query['VSwitchId'] = request.v_switch_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateNatGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateNatGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateNatGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_nat_gateway(
@@ -4740,39 +2277,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateNatIpResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['NatIp'] = request.nat_ip
-        query['NatIpCidr'] = request.nat_ip_cidr
-        query['NatIpCidrId'] = request.nat_ip_cidr_id
-        query['NatIpDescription'] = request.nat_ip_description
-        query['NatIpName'] = request.nat_ip_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateNatIp',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateNatIpResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateNatIp', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_nat_ip_with_options_async(
@@ -4781,39 +2291,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateNatIpResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['NatIp'] = request.nat_ip
-        query['NatIpCidr'] = request.nat_ip_cidr
-        query['NatIpCidrId'] = request.nat_ip_cidr_id
-        query['NatIpDescription'] = request.nat_ip_description
-        query['NatIpName'] = request.nat_ip_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateNatIp',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateNatIpResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateNatIp', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_nat_ip(
@@ -4836,37 +2319,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateNatIpCidrResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['NatIpCidr'] = request.nat_ip_cidr
-        query['NatIpCidrDescription'] = request.nat_ip_cidr_description
-        query['NatIpCidrName'] = request.nat_ip_cidr_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateNatIpCidr',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateNatIpCidrResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateNatIpCidr', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_nat_ip_cidr_with_options_async(
@@ -4875,37 +2333,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateNatIpCidrResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['NatIpCidr'] = request.nat_ip_cidr
-        query['NatIpCidrDescription'] = request.nat_ip_cidr_description
-        query['NatIpCidrName'] = request.nat_ip_cidr_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateNatIpCidr',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateNatIpCidrResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateNatIpCidr', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_nat_ip_cidr(
@@ -4928,34 +2361,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateNetworkAclResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['NetworkAclName'] = request.network_acl_name
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateNetworkAcl',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateNetworkAclResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateNetworkAcl', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_network_acl_with_options_async(
@@ -4964,34 +2375,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateNetworkAclResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['NetworkAclName'] = request.network_acl_name
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateNetworkAcl',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateNetworkAclResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateNetworkAcl', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_network_acl(
@@ -5014,42 +2403,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreatePhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AccessPointId'] = request.access_point_id
-        query['CircuitCode'] = request.circuit_code
-        query['ClientToken'] = request.client_token
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['LineOperator'] = request.line_operator
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerLocation'] = request.peer_location
-        query['PortType'] = request.port_type
-        query['RedundantPhysicalConnectionId'] = request.redundant_physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Type'] = request.type
-        query['bandwidth'] = request.bandwidth
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreatePhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreatePhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreatePhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_physical_connection_with_options_async(
@@ -5058,42 +2417,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreatePhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AccessPointId'] = request.access_point_id
-        query['CircuitCode'] = request.circuit_code
-        query['ClientToken'] = request.client_token
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['LineOperator'] = request.line_operator
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerLocation'] = request.peer_location
-        query['PortType'] = request.port_type
-        query['RedundantPhysicalConnectionId'] = request.redundant_physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Type'] = request.type
-        query['bandwidth'] = request.bandwidth
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreatePhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreatePhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreatePhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_physical_connection(
@@ -5116,36 +2445,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreatePhysicalConnectionOccupancyOrderResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPay'] = request.auto_pay
-        query['ClientToken'] = request.client_token
-        query['InstanceChargeType'] = request.instance_charge_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Period'] = request.period
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreatePhysicalConnectionOccupancyOrder',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreatePhysicalConnectionOccupancyOrderResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreatePhysicalConnectionOccupancyOrder', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_physical_connection_occupancy_order_with_options_async(
@@ -5154,36 +2459,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreatePhysicalConnectionOccupancyOrderResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPay'] = request.auto_pay
-        query['ClientToken'] = request.client_token
-        query['InstanceChargeType'] = request.instance_charge_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Period'] = request.period
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreatePhysicalConnectionOccupancyOrder',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreatePhysicalConnectionOccupancyOrderResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreatePhysicalConnectionOccupancyOrder', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_physical_connection_occupancy_order(
@@ -5206,37 +2487,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreatePhysicalConnectionSetupOrderResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AccessPointId'] = request.access_point_id
-        query['AutoPay'] = request.auto_pay
-        query['ClientToken'] = request.client_token
-        query['ClientToken'] = request.client_token
-        query['LineOperator'] = request.line_operator
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PortType'] = request.port_type
-        query['RedundantPhysicalConnectionId'] = request.redundant_physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreatePhysicalConnectionSetupOrder',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreatePhysicalConnectionSetupOrderResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreatePhysicalConnectionSetupOrder', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_physical_connection_setup_order_with_options_async(
@@ -5245,37 +2501,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreatePhysicalConnectionSetupOrderResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AccessPointId'] = request.access_point_id
-        query['AutoPay'] = request.auto_pay
-        query['ClientToken'] = request.client_token
-        query['ClientToken'] = request.client_token
-        query['LineOperator'] = request.line_operator
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PortType'] = request.port_type
-        query['RedundantPhysicalConnectionId'] = request.redundant_physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreatePhysicalConnectionSetupOrder',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreatePhysicalConnectionSetupOrderResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreatePhysicalConnectionSetupOrder', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_physical_connection_setup_order(
@@ -5298,38 +2529,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateRouteEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['NextHopId'] = request.next_hop_id
-        query['NextHopList'] = request.next_hop_list
-        query['NextHopType'] = request.next_hop_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteEntryName'] = request.route_entry_name
-        query['RouteTableId'] = request.route_table_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateRouteEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateRouteEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateRouteEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_route_entry_with_options_async(
@@ -5338,38 +2543,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateRouteEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['NextHopId'] = request.next_hop_id
-        query['NextHopList'] = request.next_hop_list
-        query['NextHopType'] = request.next_hop_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteEntryName'] = request.route_entry_name
-        query['RouteTableId'] = request.route_table_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateRouteEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateRouteEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_route_entry(
@@ -5392,36 +2571,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateRouteTableResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AssociateType'] = request.associate_type
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableName'] = request.route_table_name
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateRouteTable',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateRouteTableResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateRouteTable', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_route_table_with_options_async(
@@ -5430,36 +2585,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateRouteTableResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AssociateType'] = request.associate_type
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableName'] = request.route_table_name
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateRouteTable',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateRouteTableResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateRouteTable', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_route_table(
@@ -5482,51 +2613,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateRouterInterfaceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AccessPointId'] = request.access_point_id
-        query['AutoPay'] = request.auto_pay
-        query['ClientToken'] = request.client_token
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['HealthCheckSourceIp'] = request.health_check_source_ip
-        query['HealthCheckTargetIp'] = request.health_check_target_ip
-        query['InstanceChargeType'] = request.instance_charge_type
-        query['Name'] = request.name
-        query['OppositeAccessPointId'] = request.opposite_access_point_id
-        query['OppositeInterfaceId'] = request.opposite_interface_id
-        query['OppositeInterfaceOwnerId'] = request.opposite_interface_owner_id
-        query['OppositeRegionId'] = request.opposite_region_id
-        query['OppositeRouterId'] = request.opposite_router_id
-        query['OppositeRouterType'] = request.opposite_router_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Period'] = request.period
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Role'] = request.role
-        query['RouterId'] = request.router_id
-        query['RouterType'] = request.router_type
-        query['Spec'] = request.spec
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateRouterInterface',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateRouterInterfaceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateRouterInterface', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_router_interface_with_options_async(
@@ -5535,51 +2627,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateRouterInterfaceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AccessPointId'] = request.access_point_id
-        query['AutoPay'] = request.auto_pay
-        query['ClientToken'] = request.client_token
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['HealthCheckSourceIp'] = request.health_check_source_ip
-        query['HealthCheckTargetIp'] = request.health_check_target_ip
-        query['InstanceChargeType'] = request.instance_charge_type
-        query['Name'] = request.name
-        query['OppositeAccessPointId'] = request.opposite_access_point_id
-        query['OppositeInterfaceId'] = request.opposite_interface_id
-        query['OppositeInterfaceOwnerId'] = request.opposite_interface_owner_id
-        query['OppositeRegionId'] = request.opposite_region_id
-        query['OppositeRouterId'] = request.opposite_router_id
-        query['OppositeRouterType'] = request.opposite_router_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Period'] = request.period
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Role'] = request.role
-        query['RouterId'] = request.router_id
-        query['RouterType'] = request.router_type
-        query['Spec'] = request.spec
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateRouterInterface',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateRouterInterfaceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateRouterInterface', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_router_interface(
@@ -5602,36 +2655,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateSnatEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SnatEntryName'] = request.snat_entry_name
-        query['SnatIp'] = request.snat_ip
-        query['SnatTableId'] = request.snat_table_id
-        query['SourceCIDR'] = request.source_cidr
-        query['SourceVSwitchId'] = request.source_vswitch_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateSnatEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateSnatEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateSnatEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_snat_entry_with_options_async(
@@ -5640,36 +2669,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateSnatEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SnatEntryName'] = request.snat_entry_name
-        query['SnatIp'] = request.snat_ip
-        query['SnatTableId'] = request.snat_table_id
-        query['SourceCIDR'] = request.source_cidr
-        query['SourceVSwitchId'] = request.source_vswitch_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateSnatEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateSnatEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateSnatEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_snat_entry(
@@ -5692,33 +2697,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateSslVpnClientCertResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslVpnServerId'] = request.ssl_vpn_server_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateSslVpnClientCert',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateSslVpnClientCertResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateSslVpnClientCert', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_ssl_vpn_client_cert_with_options_async(
@@ -5727,33 +2711,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateSslVpnClientCertResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslVpnServerId'] = request.ssl_vpn_server_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateSslVpnClientCert',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateSslVpnClientCertResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateSslVpnClientCert', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_ssl_vpn_client_cert(
@@ -5776,42 +2739,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateSslVpnServerResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Cipher'] = request.cipher
-        query['ClientIpPool'] = request.client_ip_pool
-        query['ClientToken'] = request.client_token
-        query['Compress'] = request.compress
-        query['EnableMultiFactorAuth'] = request.enable_multi_factor_auth
-        query['IDaaSInstanceId'] = request.idaa_sinstance_id
-        query['IDaaSRegionId'] = request.idaa_sregion_id
-        query['LocalSubnet'] = request.local_subnet
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Port'] = request.port
-        query['Proto'] = request.proto
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateSslVpnServer',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateSslVpnServerResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateSslVpnServer', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_ssl_vpn_server_with_options_async(
@@ -5820,42 +2753,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateSslVpnServerResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Cipher'] = request.cipher
-        query['ClientIpPool'] = request.client_ip_pool
-        query['ClientToken'] = request.client_token
-        query['Compress'] = request.compress
-        query['EnableMultiFactorAuth'] = request.enable_multi_factor_auth
-        query['IDaaSInstanceId'] = request.idaa_sinstance_id
-        query['IDaaSRegionId'] = request.idaa_sregion_id
-        query['LocalSubnet'] = request.local_subnet
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Port'] = request.port
-        query['Proto'] = request.proto
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateSslVpnServer',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateSslVpnServerResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateSslVpnServer', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_ssl_vpn_server(
@@ -5878,36 +2781,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateTrafficMirrorFilterResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EgressRules'] = request.egress_rules
-        query['IngressRules'] = request.ingress_rules
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorFilterDescription'] = request.traffic_mirror_filter_description
-        query['TrafficMirrorFilterName'] = request.traffic_mirror_filter_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateTrafficMirrorFilter',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateTrafficMirrorFilterResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateTrafficMirrorFilter', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_traffic_mirror_filter_with_options_async(
@@ -5916,36 +2795,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateTrafficMirrorFilterResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EgressRules'] = request.egress_rules
-        query['IngressRules'] = request.ingress_rules
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorFilterDescription'] = request.traffic_mirror_filter_description
-        query['TrafficMirrorFilterName'] = request.traffic_mirror_filter_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateTrafficMirrorFilter',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateTrafficMirrorFilterResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateTrafficMirrorFilter', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_traffic_mirror_filter(
@@ -5968,35 +2823,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateTrafficMirrorFilterRulesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EgressRules'] = request.egress_rules
-        query['IngressRules'] = request.ingress_rules
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorFilterId'] = request.traffic_mirror_filter_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateTrafficMirrorFilterRules',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateTrafficMirrorFilterRulesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateTrafficMirrorFilterRules', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_traffic_mirror_filter_rules_with_options_async(
@@ -6005,35 +2837,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateTrafficMirrorFilterRulesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EgressRules'] = request.egress_rules
-        query['IngressRules'] = request.ingress_rules
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorFilterId'] = request.traffic_mirror_filter_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateTrafficMirrorFilterRules',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateTrafficMirrorFilterRulesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateTrafficMirrorFilterRules', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_traffic_mirror_filter_rules(
@@ -6056,42 +2865,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateTrafficMirrorSessionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Enabled'] = request.enabled
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PacketLength'] = request.packet_length
-        query['Priority'] = request.priority
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorFilterId'] = request.traffic_mirror_filter_id
-        query['TrafficMirrorSessionDescription'] = request.traffic_mirror_session_description
-        query['TrafficMirrorSessionName'] = request.traffic_mirror_session_name
-        query['TrafficMirrorSourceIds'] = request.traffic_mirror_source_ids
-        query['TrafficMirrorTargetId'] = request.traffic_mirror_target_id
-        query['TrafficMirrorTargetType'] = request.traffic_mirror_target_type
-        query['VirtualNetworkId'] = request.virtual_network_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateTrafficMirrorSession',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateTrafficMirrorSessionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateTrafficMirrorSession', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_traffic_mirror_session_with_options_async(
@@ -6100,42 +2879,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateTrafficMirrorSessionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Enabled'] = request.enabled
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PacketLength'] = request.packet_length
-        query['Priority'] = request.priority
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorFilterId'] = request.traffic_mirror_filter_id
-        query['TrafficMirrorSessionDescription'] = request.traffic_mirror_session_description
-        query['TrafficMirrorSessionName'] = request.traffic_mirror_session_name
-        query['TrafficMirrorSourceIds'] = request.traffic_mirror_source_ids
-        query['TrafficMirrorTargetId'] = request.traffic_mirror_target_id
-        query['TrafficMirrorTargetType'] = request.traffic_mirror_target_type
-        query['VirtualNetworkId'] = request.virtual_network_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateTrafficMirrorSession',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateTrafficMirrorSessionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateTrafficMirrorSession', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_traffic_mirror_session(
@@ -6158,38 +2907,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVSwitchResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CidrBlock'] = request.cidr_block
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Ipv6CidrBlock'] = request.ipv_6cidr_block
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VSwitchName'] = request.v_switch_name
-        query['VpcId'] = request.vpc_id
-        query['VpcIpv6CidrBlock'] = request.vpc_ipv_6cidr_block
-        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVSwitch',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVSwitchResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateVSwitch', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_vswitch_with_options_async(
@@ -6198,38 +2921,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVSwitchResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CidrBlock'] = request.cidr_block
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Ipv6CidrBlock'] = request.ipv_6cidr_block
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VSwitchName'] = request.v_switch_name
-        query['VpcId'] = request.vpc_id
-        query['VpcIpv6CidrBlock'] = request.vpc_ipv_6cidr_block
-        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVSwitch',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVSwitchResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateVSwitch', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_vswitch(
@@ -6252,36 +2949,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVbrHaResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['DryRun'] = request.dry_run
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerVbrId'] = request.peer_vbr_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrId'] = request.vbr_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVbrHa',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVbrHaResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateVbrHa', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_vbr_ha_with_options_async(
@@ -6290,36 +2963,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVbrHaResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['DryRun'] = request.dry_run
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerVbrId'] = request.peer_vbr_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrId'] = request.vbr_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVbrHa',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVbrHaResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateVbrHa', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_vbr_ha(
@@ -6342,46 +2991,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVirtualBorderRouterResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['CircuitCode'] = request.circuit_code
-        query['ClientToken'] = request.client_token
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['EnableIpv6'] = request.enable_ipv_6
-        query['LocalGatewayIp'] = request.local_gateway_ip
-        query['LocalIpv6GatewayIp'] = request.local_ipv_6gateway_ip
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerGatewayIp'] = request.peer_gateway_ip
-        query['PeerIpv6GatewayIp'] = request.peer_ipv_6gateway_ip
-        query['PeeringIpv6SubnetMask'] = request.peering_ipv_6subnet_mask
-        query['PeeringSubnetMask'] = request.peering_subnet_mask
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrOwnerId'] = request.vbr_owner_id
-        query['VlanId'] = request.vlan_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVirtualBorderRouter',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVirtualBorderRouterResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateVirtualBorderRouter', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_virtual_border_router_with_options_async(
@@ -6390,46 +3005,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVirtualBorderRouterResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['CircuitCode'] = request.circuit_code
-        query['ClientToken'] = request.client_token
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['EnableIpv6'] = request.enable_ipv_6
-        query['LocalGatewayIp'] = request.local_gateway_ip
-        query['LocalIpv6GatewayIp'] = request.local_ipv_6gateway_ip
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerGatewayIp'] = request.peer_gateway_ip
-        query['PeerIpv6GatewayIp'] = request.peer_ipv_6gateway_ip
-        query['PeeringIpv6SubnetMask'] = request.peering_ipv_6subnet_mask
-        query['PeeringSubnetMask'] = request.peering_subnet_mask
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrOwnerId'] = request.vbr_owner_id
-        query['VlanId'] = request.vlan_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVirtualBorderRouter',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVirtualBorderRouterResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateVirtualBorderRouter', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_virtual_border_router(
@@ -6452,35 +3033,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVirtualPhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['DryRun'] = request.dry_run
-        query['Name'] = request.name
-        query['OrderMode'] = request.order_mode
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['Spec'] = request.spec
-        query['Token'] = request.token
-        query['VlanId'] = request.vlan_id
-        query['VpconnAliUid'] = request.vpconn_ali_uid
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVirtualPhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVirtualPhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateVirtualPhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_virtual_physical_connection_with_options_async(
@@ -6489,35 +3047,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVirtualPhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['DryRun'] = request.dry_run
-        query['Name'] = request.name
-        query['OrderMode'] = request.order_mode
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['Spec'] = request.spec
-        query['Token'] = request.token
-        query['VlanId'] = request.vlan_id
-        query['VpconnAliUid'] = request.vpconn_ali_uid
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVirtualPhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVirtualPhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateVirtualPhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_virtual_physical_connection(
@@ -6540,40 +3075,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpcResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CidrBlock'] = request.cidr_block
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['DryRun'] = request.dry_run
-        query['EnableIpv6'] = request.enable_ipv_6
-        query['Ipv6CidrBlock'] = request.ipv_6cidr_block
-        query['Ipv6Isp'] = request.ipv_6isp
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserCidr'] = request.user_cidr
-        query['VpcName'] = request.vpc_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVpc',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVpcResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateVpc', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_vpc_with_options_async(
@@ -6582,40 +3089,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpcResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CidrBlock'] = request.cidr_block
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['DryRun'] = request.dry_run
-        query['EnableIpv6'] = request.enable_ipv_6
-        query['Ipv6CidrBlock'] = request.ipv_6cidr_block
-        query['Ipv6Isp'] = request.ipv_6isp
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserCidr'] = request.user_cidr
-        query['VpcName'] = request.vpc_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVpc',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVpcResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateVpc', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_vpc(
@@ -6638,37 +3117,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpcGatewayEndpointResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointDescription'] = request.endpoint_description
-        query['EndpointName'] = request.endpoint_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PolicyDocument'] = request.policy_document
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ServiceName'] = request.service_name
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVpcGatewayEndpoint',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVpcGatewayEndpointResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateVpcGatewayEndpoint', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_vpc_gateway_endpoint_with_options_async(
@@ -6677,37 +3131,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpcGatewayEndpointResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointDescription'] = request.endpoint_description
-        query['EndpointName'] = request.endpoint_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PolicyDocument'] = request.policy_document
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ServiceName'] = request.service_name
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVpcGatewayEndpoint',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVpcGatewayEndpointResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateVpcGatewayEndpoint', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_vpc_gateway_endpoint(
@@ -6730,30 +3159,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpconnFromVbrResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['OrderMode'] = request.order_mode
-        query['RegionId'] = request.region_id
-        query['Token'] = request.token
-        query['VbrId'] = request.vbr_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVpconnFromVbr',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVpconnFromVbrResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateVpconnFromVbr', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_vpconn_from_vbr_with_options_async(
@@ -6762,30 +3173,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpconnFromVbrResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['OrderMode'] = request.order_mode
-        query['RegionId'] = request.region_id
-        query['Token'] = request.token
-        query['VbrId'] = request.vbr_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVpconnFromVbr',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVpconnFromVbrResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateVpconnFromVbr', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_vpconn_from_vbr(
@@ -6808,45 +3201,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoConfigRoute'] = request.auto_config_route
-        query['BgpConfig'] = request.bgp_config
-        query['ClientToken'] = request.client_token
-        query['CustomerGatewayId'] = request.customer_gateway_id
-        query['EffectImmediately'] = request.effect_immediately
-        query['EnableDpd'] = request.enable_dpd
-        query['EnableNatTraversal'] = request.enable_nat_traversal
-        query['HealthCheckConfig'] = request.health_check_config
-        query['IkeConfig'] = request.ike_config
-        query['IpsecConfig'] = request.ipsec_config
-        query['LocalSubnet'] = request.local_subnet
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RemoteCaCertificate'] = request.remote_ca_certificate
-        query['RemoteSubnet'] = request.remote_subnet
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVpnConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVpnConnectionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateVpnConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_vpn_connection_with_options_async(
@@ -6855,45 +3215,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoConfigRoute'] = request.auto_config_route
-        query['BgpConfig'] = request.bgp_config
-        query['ClientToken'] = request.client_token
-        query['CustomerGatewayId'] = request.customer_gateway_id
-        query['EffectImmediately'] = request.effect_immediately
-        query['EnableDpd'] = request.enable_dpd
-        query['EnableNatTraversal'] = request.enable_nat_traversal
-        query['HealthCheckConfig'] = request.health_check_config
-        query['IkeConfig'] = request.ike_config
-        query['IpsecConfig'] = request.ipsec_config
-        query['LocalSubnet'] = request.local_subnet
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RemoteCaCertificate'] = request.remote_ca_certificate
-        query['RemoteSubnet'] = request.remote_subnet
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVpnConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVpnConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateVpnConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_vpn_connection(
@@ -6916,42 +3243,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPay'] = request.auto_pay
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['EnableIpsec'] = request.enable_ipsec
-        query['EnableSsl'] = request.enable_ssl
-        query['InstanceChargeType'] = request.instance_charge_type
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Period'] = request.period
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslConnections'] = request.ssl_connections
-        query['VSwitchId'] = request.v_switch_id
-        query['VpcId'] = request.vpc_id
-        query['VpnType'] = request.vpn_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVpnGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVpnGatewayResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateVpnGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_vpn_gateway_with_options_async(
@@ -6960,42 +3257,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPay'] = request.auto_pay
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['EnableIpsec'] = request.enable_ipsec
-        query['EnableSsl'] = request.enable_ssl
-        query['InstanceChargeType'] = request.instance_charge_type
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Period'] = request.period
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslConnections'] = request.ssl_connections
-        query['VSwitchId'] = request.v_switch_id
-        query['VpcId'] = request.vpc_id
-        query['VpnType'] = request.vpn_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVpnGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVpnGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateVpnGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_vpn_gateway(
@@ -7018,39 +3285,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnPbrRouteEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['NextHop'] = request.next_hop
-        query['OverlayMode'] = request.overlay_mode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PublishVpc'] = request.publish_vpc
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteDest'] = request.route_dest
-        query['RouteSource'] = request.route_source
-        query['VpnGatewayId'] = request.vpn_gateway_id
-        query['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVpnPbrRouteEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVpnPbrRouteEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateVpnPbrRouteEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_vpn_pbr_route_entry_with_options_async(
@@ -7059,39 +3299,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnPbrRouteEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['NextHop'] = request.next_hop
-        query['OverlayMode'] = request.overlay_mode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PublishVpc'] = request.publish_vpc
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteDest'] = request.route_dest
-        query['RouteSource'] = request.route_source
-        query['VpnGatewayId'] = request.vpn_gateway_id
-        query['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVpnPbrRouteEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVpnPbrRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateVpnPbrRouteEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_vpn_pbr_route_entry(
@@ -7114,38 +3327,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnRouteEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['NextHop'] = request.next_hop
-        query['OverlayMode'] = request.overlay_mode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PublishVpc'] = request.publish_vpc
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteDest'] = request.route_dest
-        query['VpnGatewayId'] = request.vpn_gateway_id
-        query['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVpnRouteEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVpnRouteEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CreateVpnRouteEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def create_vpn_route_entry_with_options_async(
@@ -7154,38 +3341,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnRouteEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['NextHop'] = request.next_hop
-        query['OverlayMode'] = request.overlay_mode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PublishVpc'] = request.publish_vpc
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteDest'] = request.route_dest
-        query['VpnGatewayId'] = request.vpn_gateway_id
-        query['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateVpnRouteEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.CreateVpnRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CreateVpnRouteEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def create_vpn_route_entry(
@@ -7208,30 +3369,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeactivateRouterInterfaceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterInterfaceId'] = request.router_interface_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeactivateRouterInterface',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeactivateRouterInterfaceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeactivateRouterInterface', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def deactivate_router_interface_with_options_async(
@@ -7240,30 +3383,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeactivateRouterInterfaceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterInterfaceId'] = request.router_interface_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeactivateRouterInterface',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeactivateRouterInterfaceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeactivateRouterInterface', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def deactivate_router_interface(
@@ -7286,31 +3411,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeactiveFlowLogResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['FlowLogId'] = request.flow_log_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeactiveFlowLog',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeactiveFlowLogResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeactiveFlowLog', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def deactive_flow_log_with_options_async(
@@ -7319,31 +3425,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeactiveFlowLogResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['FlowLogId'] = request.flow_log_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeactiveFlowLog',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeactiveFlowLogResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeactiveFlowLog', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def deactive_flow_log(
@@ -7366,32 +3453,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteBgpGroupResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BgpGroupId'] = request.bgp_group_id
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteBgpGroup',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteBgpGroupResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteBgpGroup', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_bgp_group_with_options_async(
@@ -7400,32 +3467,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteBgpGroupResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BgpGroupId'] = request.bgp_group_id
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteBgpGroup',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteBgpGroupResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteBgpGroup', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_bgp_group(
@@ -7448,33 +3495,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteBgpNetworkResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DstCidrBlock'] = request.dst_cidr_block
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterId'] = request.router_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteBgpNetwork',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteBgpNetworkResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteBgpNetwork', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_bgp_network_with_options_async(
@@ -7483,33 +3509,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteBgpNetworkResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DstCidrBlock'] = request.dst_cidr_block
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterId'] = request.router_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteBgpNetwork',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteBgpNetworkResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteBgpNetwork', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_bgp_network(
@@ -7532,32 +3537,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteBgpPeerResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BgpPeerId'] = request.bgp_peer_id
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteBgpPeer',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteBgpPeerResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteBgpPeer', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_bgp_peer_with_options_async(
@@ -7566,32 +3551,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteBgpPeerResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BgpPeerId'] = request.bgp_peer_id
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteBgpPeer',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteBgpPeerResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteBgpPeer', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_bgp_peer(
@@ -7614,32 +3579,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteCommonBandwidthPackageResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['Force'] = request.force
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteCommonBandwidthPackage',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteCommonBandwidthPackageResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteCommonBandwidthPackage', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_common_bandwidth_package_with_options_async(
@@ -7648,32 +3593,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteCommonBandwidthPackageResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['Force'] = request.force
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteCommonBandwidthPackage',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteCommonBandwidthPackageResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteCommonBandwidthPackage', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_common_bandwidth_package(
@@ -7696,32 +3621,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteCustomerGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['CustomerGatewayId'] = request.customer_gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteCustomerGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteCustomerGatewayResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteCustomerGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_customer_gateway_with_options_async(
@@ -7730,32 +3635,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteCustomerGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['CustomerGatewayId'] = request.customer_gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteCustomerGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteCustomerGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteCustomerGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_customer_gateway(
@@ -7778,33 +3663,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteDhcpOptionsSetResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DhcpOptionsSetId'] = request.dhcp_options_set_id
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteDhcpOptionsSet',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteDhcpOptionsSetResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteDhcpOptionsSet', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_dhcp_options_set_with_options_async(
@@ -7813,33 +3677,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteDhcpOptionsSetResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DhcpOptionsSetId'] = request.dhcp_options_set_id
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteDhcpOptionsSet',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteDhcpOptionsSetResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteDhcpOptionsSet', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_dhcp_options_set(
@@ -7862,31 +3705,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteExpressCloudConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['EccId'] = request.ecc_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteExpressCloudConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteExpressCloudConnectionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteExpressCloudConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_express_cloud_connection_with_options_async(
@@ -7895,31 +3719,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteExpressCloudConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['EccId'] = request.ecc_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteExpressCloudConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteExpressCloudConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteExpressCloudConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_express_cloud_connection(
@@ -7942,33 +3747,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteExpressConnectResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Force'] = request.force
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterInterfaceId'] = request.router_interface_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteExpressConnect',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteExpressConnectResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteExpressConnect', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_express_connect_with_options_async(
@@ -7977,33 +3761,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteExpressConnectResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Force'] = request.force
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterInterfaceId'] = request.router_interface_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteExpressConnect',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteExpressConnectResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteExpressConnect', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_express_connect(
@@ -8026,31 +3789,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteFlowLogResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['FlowLogId'] = request.flow_log_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteFlowLog',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteFlowLogResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteFlowLog', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_flow_log_with_options_async(
@@ -8059,31 +3803,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteFlowLogResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['FlowLogId'] = request.flow_log_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteFlowLog',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteFlowLogResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteFlowLog', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_flow_log(
@@ -8106,33 +3831,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteForwardEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['ForwardEntryId'] = request.forward_entry_id
-        query['ForwardTableId'] = request.forward_table_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteForwardEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteForwardEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteForwardEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_forward_entry_with_options_async(
@@ -8141,33 +3845,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteForwardEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['ForwardEntryId'] = request.forward_entry_id
-        query['ForwardTableId'] = request.forward_table_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteForwardEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteForwardEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteForwardEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_forward_entry(
@@ -8190,34 +3873,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteFullNatEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['FullNatEntryId'] = request.full_nat_entry_id
-        query['FullNatTableId'] = request.full_nat_table_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteFullNatEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteFullNatEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteFullNatEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_full_nat_entry_with_options_async(
@@ -8226,34 +3887,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteFullNatEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['FullNatEntryId'] = request.full_nat_entry_id
-        query['FullNatTableId'] = request.full_nat_table_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteFullNatEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteFullNatEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteFullNatEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_full_nat_entry(
@@ -8276,31 +3915,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteGlobalAccelerationInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['GlobalAccelerationInstanceId'] = request.global_acceleration_instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteGlobalAccelerationInstance',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteGlobalAccelerationInstanceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteGlobalAccelerationInstance', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_global_acceleration_instance_with_options_async(
@@ -8309,31 +3929,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteGlobalAccelerationInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['GlobalAccelerationInstanceId'] = request.global_acceleration_instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteGlobalAccelerationInstance',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteGlobalAccelerationInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteGlobalAccelerationInstance', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_global_acceleration_instance(
@@ -8356,32 +3957,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteHaVipResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['HaVipId'] = request.ha_vip_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteHaVip',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteHaVipResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteHaVip', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_ha_vip_with_options_async(
@@ -8390,32 +3971,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteHaVipResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['HaVipId'] = request.ha_vip_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteHaVip',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteHaVipResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteHaVip', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_ha_vip(
@@ -8438,32 +3999,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIPv6TranslatorResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Ipv6TranslatorId'] = request.ipv_6translator_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteIPv6Translator',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteIPv6TranslatorResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteIPv6Translator', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_ipv_6translator_with_options_async(
@@ -8472,32 +4013,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIPv6TranslatorResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Ipv6TranslatorId'] = request.ipv_6translator_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteIPv6Translator',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteIPv6TranslatorResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteIPv6Translator', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_ipv_6translator(
@@ -8520,32 +4041,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIPv6TranslatorAclListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclId'] = request.acl_id
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteIPv6TranslatorAclList',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteIPv6TranslatorAclListResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteIPv6TranslatorAclList', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_ipv_6translator_acl_list_with_options_async(
@@ -8554,32 +4055,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIPv6TranslatorAclListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclId'] = request.acl_id
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteIPv6TranslatorAclList',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteIPv6TranslatorAclListResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteIPv6TranslatorAclList', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_ipv_6translator_acl_list(
@@ -8602,33 +4083,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIPv6TranslatorEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Ipv6TranslatorEntryId'] = request.ipv_6translator_entry_id
-        query['Ipv6TranslatorId'] = request.ipv_6translator_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteIPv6TranslatorEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteIPv6TranslatorEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteIPv6TranslatorEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_ipv_6translator_entry_with_options_async(
@@ -8637,33 +4097,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIPv6TranslatorEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Ipv6TranslatorEntryId'] = request.ipv_6translator_entry_id
-        query['Ipv6TranslatorId'] = request.ipv_6translator_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteIPv6TranslatorEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteIPv6TranslatorEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteIPv6TranslatorEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_ipv_6translator_entry(
@@ -8686,29 +4125,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIpsecServerResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IpsecServerId'] = request.ipsec_server_id
-        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteIpsecServer',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteIpsecServerResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteIpsecServer', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_ipsec_server_with_options_async(
@@ -8717,29 +4139,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIpsecServerResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IpsecServerId'] = request.ipsec_server_id
-        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteIpsecServer',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteIpsecServerResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteIpsecServer', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_ipsec_server(
@@ -8762,34 +4167,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIpv4GatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Ipv4GatewayId'] = request.ipv_4gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteIpv4Gateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteIpv4GatewayResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteIpv4Gateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_ipv_4gateway_with_options_async(
@@ -8798,34 +4181,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIpv4GatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Ipv4GatewayId'] = request.ipv_4gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteIpv4Gateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteIpv4GatewayResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteIpv4Gateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_ipv_4gateway(
@@ -8848,33 +4209,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIpv6EgressOnlyRuleResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Ipv6EgressOnlyRuleId'] = request.ipv_6egress_only_rule_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteIpv6EgressOnlyRule',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteIpv6EgressOnlyRuleResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteIpv6EgressOnlyRule', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_ipv_6egress_only_rule_with_options_async(
@@ -8883,33 +4223,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIpv6EgressOnlyRuleResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Ipv6EgressOnlyRuleId'] = request.ipv_6egress_only_rule_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteIpv6EgressOnlyRule',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteIpv6EgressOnlyRuleResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteIpv6EgressOnlyRule', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_ipv_6egress_only_rule(
@@ -8932,32 +4251,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIpv6GatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Ipv6GatewayId'] = request.ipv_6gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteIpv6Gateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteIpv6GatewayResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteIpv6Gateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_ipv_6gateway_with_options_async(
@@ -8966,32 +4265,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIpv6GatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Ipv6GatewayId'] = request.ipv_6gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteIpv6Gateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteIpv6GatewayResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteIpv6Gateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_ipv_6gateway(
@@ -9014,33 +4293,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIpv6InternetBandwidthResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Ipv6AddressId'] = request.ipv_6address_id
-        query['Ipv6InternetBandwidthId'] = request.ipv_6internet_bandwidth_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteIpv6InternetBandwidth',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteIpv6InternetBandwidthResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteIpv6InternetBandwidth', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_ipv_6internet_bandwidth_with_options_async(
@@ -9049,33 +4307,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIpv6InternetBandwidthResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Ipv6AddressId'] = request.ipv_6address_id
-        query['Ipv6InternetBandwidthId'] = request.ipv_6internet_bandwidth_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteIpv6InternetBandwidth',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteIpv6InternetBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteIpv6InternetBandwidth', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_ipv_6internet_bandwidth(
@@ -9098,32 +4335,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteNatGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Force'] = request.force
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteNatGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteNatGatewayResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteNatGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_nat_gateway_with_options_async(
@@ -9132,32 +4349,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteNatGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Force'] = request.force
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteNatGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteNatGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteNatGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_nat_gateway(
@@ -9180,34 +4377,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteNatIpResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['NatIpId'] = request.nat_ip_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteNatIp',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteNatIpResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteNatIp', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_nat_ip_with_options_async(
@@ -9216,34 +4391,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteNatIpResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['NatIpId'] = request.nat_ip_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteNatIp',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteNatIpResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteNatIp', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_nat_ip(
@@ -9266,35 +4419,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteNatIpCidrResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['NatIpCidr'] = request.nat_ip_cidr
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteNatIpCidr',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteNatIpCidrResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteNatIpCidr', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_nat_ip_cidr_with_options_async(
@@ -9303,35 +4433,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteNatIpCidrResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['NatIpCidr'] = request.nat_ip_cidr
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteNatIpCidr',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteNatIpCidrResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteNatIpCidr', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_nat_ip_cidr(
@@ -9354,32 +4461,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteNetworkAclResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NetworkAclId'] = request.network_acl_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteNetworkAcl',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteNetworkAclResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteNetworkAcl', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_network_acl_with_options_async(
@@ -9388,32 +4475,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteNetworkAclResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NetworkAclId'] = request.network_acl_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteNetworkAcl',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteNetworkAclResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteNetworkAcl', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_network_acl(
@@ -9436,32 +4503,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeletePhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeletePhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeletePhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeletePhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_physical_connection_with_options_async(
@@ -9470,32 +4517,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeletePhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeletePhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeletePhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeletePhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_physical_connection(
@@ -9518,35 +4545,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteRouteEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['NextHopId'] = request.next_hop_id
-        query['NextHopList'] = request.next_hop_list
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteEntryId'] = request.route_entry_id
-        query['RouteTableId'] = request.route_table_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteRouteEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteRouteEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteRouteEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_route_entry_with_options_async(
@@ -9555,35 +4559,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteRouteEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['NextHopId'] = request.next_hop_id
-        query['NextHopList'] = request.next_hop_list
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteEntryId'] = request.route_entry_id
-        query['RouteTableId'] = request.route_table_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteRouteEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteRouteEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_route_entry(
@@ -9606,32 +4587,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteRouteTableResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteRouteTable',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteRouteTableResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteRouteTable', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_route_table_with_options_async(
@@ -9640,32 +4601,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteRouteTableResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteRouteTable',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteRouteTableResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteRouteTable', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_route_table(
@@ -9688,32 +4629,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteRouterInterfaceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterInterfaceId'] = request.router_interface_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteRouterInterface',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteRouterInterfaceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteRouterInterface', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_router_interface_with_options_async(
@@ -9722,32 +4643,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteRouterInterfaceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterInterfaceId'] = request.router_interface_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteRouterInterface',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteRouterInterfaceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteRouterInterface', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_router_interface(
@@ -9770,33 +4671,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteSnatEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SnatEntryId'] = request.snat_entry_id
-        query['SnatTableId'] = request.snat_table_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteSnatEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteSnatEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteSnatEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_snat_entry_with_options_async(
@@ -9805,33 +4685,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteSnatEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SnatEntryId'] = request.snat_entry_id
-        query['SnatTableId'] = request.snat_table_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteSnatEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteSnatEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteSnatEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_snat_entry(
@@ -9854,32 +4713,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteSslVpnClientCertResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslVpnClientCertId'] = request.ssl_vpn_client_cert_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteSslVpnClientCert',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteSslVpnClientCertResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteSslVpnClientCert', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_ssl_vpn_client_cert_with_options_async(
@@ -9888,32 +4727,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteSslVpnClientCertResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslVpnClientCertId'] = request.ssl_vpn_client_cert_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteSslVpnClientCert',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteSslVpnClientCertResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteSslVpnClientCert', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_ssl_vpn_client_cert(
@@ -9936,32 +4755,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteSslVpnServerResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslVpnServerId'] = request.ssl_vpn_server_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteSslVpnServer',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteSslVpnServerResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteSslVpnServer', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_ssl_vpn_server_with_options_async(
@@ -9970,32 +4769,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteSslVpnServerResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslVpnServerId'] = request.ssl_vpn_server_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteSslVpnServer',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteSslVpnServerResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteSslVpnServer', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_ssl_vpn_server(
@@ -10018,33 +4797,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorFilterId'] = request.traffic_mirror_filter_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteTrafficMirrorFilter',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteTrafficMirrorFilterResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteTrafficMirrorFilter', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_traffic_mirror_filter_with_options_async(
@@ -10053,33 +4811,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorFilterId'] = request.traffic_mirror_filter_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteTrafficMirrorFilter',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteTrafficMirrorFilterResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteTrafficMirrorFilter', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_traffic_mirror_filter(
@@ -10102,34 +4839,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterRulesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorFilterId'] = request.traffic_mirror_filter_id
-        query['TrafficMirrorFilterRuleIds'] = request.traffic_mirror_filter_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteTrafficMirrorFilterRules',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteTrafficMirrorFilterRulesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteTrafficMirrorFilterRules', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_traffic_mirror_filter_rules_with_options_async(
@@ -10138,34 +4853,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteTrafficMirrorFilterRulesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorFilterId'] = request.traffic_mirror_filter_id
-        query['TrafficMirrorFilterRuleIds'] = request.traffic_mirror_filter_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteTrafficMirrorFilterRules',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteTrafficMirrorFilterRulesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteTrafficMirrorFilterRules', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_traffic_mirror_filter_rules(
@@ -10188,33 +4881,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteTrafficMirrorSessionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorSessionId'] = request.traffic_mirror_session_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteTrafficMirrorSession',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteTrafficMirrorSessionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteTrafficMirrorSession', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_traffic_mirror_session_with_options_async(
@@ -10223,33 +4895,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteTrafficMirrorSessionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorSessionId'] = request.traffic_mirror_session_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteTrafficMirrorSession',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteTrafficMirrorSessionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteTrafficMirrorSession', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_traffic_mirror_session(
@@ -10272,31 +4923,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVSwitchResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteVSwitch',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteVSwitchResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteVSwitch', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_vswitch_with_options_async(
@@ -10305,31 +4937,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVSwitchResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteVSwitch',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteVSwitchResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteVSwitch', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_vswitch(
@@ -10352,32 +4965,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVbrHaResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteVbrHa',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteVbrHaResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteVbrHa', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_vbr_ha_with_options_async(
@@ -10386,32 +4979,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVbrHaResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteVbrHa',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteVbrHaResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteVbrHa', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_vbr_ha(
@@ -10434,32 +5007,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVirtualBorderRouterResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrId'] = request.vbr_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteVirtualBorderRouter',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteVirtualBorderRouterResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteVirtualBorderRouter', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_virtual_border_router_with_options_async(
@@ -10468,32 +5021,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVirtualBorderRouterResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrId'] = request.vbr_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteVirtualBorderRouter',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteVirtualBorderRouterResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteVirtualBorderRouter', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_virtual_border_router(
@@ -10516,31 +5049,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpcResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteVpc',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteVpcResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteVpc', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_vpc_with_options_async(
@@ -10549,31 +5063,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpcResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteVpc',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteVpcResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteVpc', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_vpc(
@@ -10596,33 +5091,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpcGatewayEndpointResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteVpcGatewayEndpoint',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteVpcGatewayEndpointResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteVpcGatewayEndpoint', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_vpc_gateway_endpoint_with_options_async(
@@ -10631,33 +5105,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpcGatewayEndpointResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteVpcGatewayEndpoint',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteVpcGatewayEndpointResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteVpcGatewayEndpoint', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_vpc_gateway_endpoint(
@@ -10680,32 +5133,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpnConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnConnectionId'] = request.vpn_connection_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteVpnConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteVpnConnectionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteVpnConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_vpn_connection_with_options_async(
@@ -10714,32 +5147,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpnConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnConnectionId'] = request.vpn_connection_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteVpnConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteVpnConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteVpnConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_vpn_connection(
@@ -10762,32 +5175,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpnGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteVpnGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteVpnGatewayResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteVpnGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_vpn_gateway_with_options_async(
@@ -10796,32 +5189,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpnGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteVpnGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteVpnGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteVpnGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_vpn_gateway(
@@ -10844,37 +5217,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpnPbrRouteEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NextHop'] = request.next_hop
-        query['OverlayMode'] = request.overlay_mode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteDest'] = request.route_dest
-        query['RouteSource'] = request.route_source
-        query['VpnGatewayId'] = request.vpn_gateway_id
-        query['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteVpnPbrRouteEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteVpnPbrRouteEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteVpnPbrRouteEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_vpn_pbr_route_entry_with_options_async(
@@ -10883,37 +5231,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpnPbrRouteEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NextHop'] = request.next_hop
-        query['OverlayMode'] = request.overlay_mode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteDest'] = request.route_dest
-        query['RouteSource'] = request.route_source
-        query['VpnGatewayId'] = request.vpn_gateway_id
-        query['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteVpnPbrRouteEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteVpnPbrRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteVpnPbrRouteEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_vpn_pbr_route_entry(
@@ -10936,36 +5259,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpnRouteEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NextHop'] = request.next_hop
-        query['OverlayMode'] = request.overlay_mode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteDest'] = request.route_dest
-        query['VpnGatewayId'] = request.vpn_gateway_id
-        query['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteVpnRouteEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteVpnRouteEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeleteVpnRouteEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def delete_vpn_route_entry_with_options_async(
@@ -10974,36 +5273,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpnRouteEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NextHop'] = request.next_hop
-        query['OverlayMode'] = request.overlay_mode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteDest'] = request.route_dest
-        query['VpnGatewayId'] = request.vpn_gateway_id
-        query['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeleteVpnRouteEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeleteVpnRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeleteVpnRouteEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def delete_vpn_route_entry(
@@ -11026,34 +5301,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeletionProtectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['OwnerId'] = request.owner_id
-        query['ProtectionEnable'] = request.protection_enable
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeletionProtection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeletionProtectionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DeletionProtection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def deletion_protection_with_options_async(
@@ -11062,34 +5315,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeletionProtectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['OwnerId'] = request.owner_id
-        query['ProtectionEnable'] = request.protection_enable
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DeletionProtection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DeletionProtectionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DeletionProtection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def deletion_protection(
@@ -11112,31 +5343,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeAccessPointsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeAccessPoints',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeAccessPointsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeAccessPoints', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_access_points_with_options_async(
@@ -11145,31 +5357,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeAccessPointsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeAccessPoints',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeAccessPointsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeAccessPoints', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_access_points(
@@ -11192,35 +5385,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeBgpGroupsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BgpGroupId'] = request.bgp_group_id
-        query['IsDefault'] = request.is_default
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterId'] = request.router_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeBgpGroups',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeBgpGroupsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeBgpGroups', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_bgp_groups_with_options_async(
@@ -11229,35 +5399,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeBgpGroupsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BgpGroupId'] = request.bgp_group_id
-        query['IsDefault'] = request.is_default
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterId'] = request.router_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeBgpGroups',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeBgpGroupsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeBgpGroups', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_bgp_groups(
@@ -11280,33 +5427,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeBgpNetworksResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterId'] = request.router_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeBgpNetworks',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeBgpNetworksResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeBgpNetworks', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_bgp_networks_with_options_async(
@@ -11315,33 +5441,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeBgpNetworksResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterId'] = request.router_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeBgpNetworks',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeBgpNetworksResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeBgpNetworks', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_bgp_networks(
@@ -11364,36 +5469,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeBgpPeersResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BgpGroupId'] = request.bgp_group_id
-        query['BgpPeerId'] = request.bgp_peer_id
-        query['IsDefault'] = request.is_default
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterId'] = request.router_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeBgpPeers',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeBgpPeersResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeBgpPeers', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_bgp_peers_with_options_async(
@@ -11402,36 +5483,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeBgpPeersResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BgpGroupId'] = request.bgp_group_id
-        query['BgpPeerId'] = request.bgp_peer_id
-        query['IsDefault'] = request.is_default
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterId'] = request.router_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeBgpPeers',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeBgpPeersResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeBgpPeers', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_bgp_peers(
@@ -11454,38 +5511,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeCommonBandwidthPackagesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['DryRun'] = request.dry_run
-        query['IncludeReservationData'] = request.include_reservation_data
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityProtectionEnabled'] = request.security_protection_enabled
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeCommonBandwidthPackages',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeCommonBandwidthPackagesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeCommonBandwidthPackages', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_common_bandwidth_packages_with_options_async(
@@ -11494,38 +5525,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeCommonBandwidthPackagesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['DryRun'] = request.dry_run
-        query['IncludeReservationData'] = request.include_reservation_data
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityProtectionEnabled'] = request.security_protection_enabled
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeCommonBandwidthPackages',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeCommonBandwidthPackagesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeCommonBandwidthPackages', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_common_bandwidth_packages(
@@ -11548,31 +5553,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeCustomerGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CustomerGatewayId'] = request.customer_gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeCustomerGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeCustomerGatewayResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeCustomerGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_customer_gateway_with_options_async(
@@ -11581,31 +5567,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeCustomerGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CustomerGatewayId'] = request.customer_gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeCustomerGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeCustomerGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeCustomerGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_customer_gateway(
@@ -11628,33 +5595,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeCustomerGatewaysResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CustomerGatewayId'] = request.customer_gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeCustomerGateways',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeCustomerGatewaysResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeCustomerGateways', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_customer_gateways_with_options_async(
@@ -11663,33 +5609,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeCustomerGatewaysResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CustomerGatewayId'] = request.customer_gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeCustomerGateways',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeCustomerGatewaysResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeCustomerGateways', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_customer_gateways(
@@ -11712,46 +5637,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeEipAddressesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AllocationId'] = request.allocation_id
-        query['AssociatedInstanceId'] = request.associated_instance_id
-        query['AssociatedInstanceType'] = request.associated_instance_type
-        query['ChargeType'] = request.charge_type
-        query['DryRun'] = request.dry_run
-        query['EipAddress'] = request.eip_address
-        query['EipName'] = request.eip_name
-        query['ISP'] = request.isp
-        query['IncludeReservationData'] = request.include_reservation_data
-        query['LockReason'] = request.lock_reason
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityProtectionEnabled'] = request.security_protection_enabled
-        query['SegmentInstanceId'] = request.segment_instance_id
-        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeEipAddresses',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeEipAddressesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeEipAddresses', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_eip_addresses_with_options_async(
@@ -11760,46 +5651,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeEipAddressesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AllocationId'] = request.allocation_id
-        query['AssociatedInstanceId'] = request.associated_instance_id
-        query['AssociatedInstanceType'] = request.associated_instance_type
-        query['ChargeType'] = request.charge_type
-        query['DryRun'] = request.dry_run
-        query['EipAddress'] = request.eip_address
-        query['EipName'] = request.eip_name
-        query['ISP'] = request.isp
-        query['IncludeReservationData'] = request.include_reservation_data
-        query['LockReason'] = request.lock_reason
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecurityProtectionEnabled'] = request.security_protection_enabled
-        query['SegmentInstanceId'] = request.segment_instance_id
-        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeEipAddresses',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeEipAddressesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeEipAddresses', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_eip_addresses(
@@ -11822,32 +5679,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeEipGatewayInfoResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['InstanceId'] = request.instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeEipGatewayInfo',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeEipGatewayInfoResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeEipGatewayInfo', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_eip_gateway_info_with_options_async(
@@ -11856,32 +5693,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeEipGatewayInfoResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['InstanceId'] = request.instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeEipGatewayInfo',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeEipGatewayInfoResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeEipGatewayInfo', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_eip_gateway_info(
@@ -11904,34 +5721,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeEipMonitorDataResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AllocationId'] = request.allocation_id
-        query['EndTime'] = request.end_time
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Period'] = request.period
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeEipMonitorData',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeEipMonitorDataResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeEipMonitorData', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_eip_monitor_data_with_options_async(
@@ -11940,34 +5735,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeEipMonitorDataResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AllocationId'] = request.allocation_id
-        query['EndTime'] = request.end_time
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Period'] = request.period
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeEipMonitorData',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeEipMonitorDataResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeEipMonitorData', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_eip_monitor_data(
@@ -11990,34 +5763,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeEipSegmentResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SegmentInstanceId'] = request.segment_instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeEipSegment',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeEipSegmentResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeEipSegment', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_eip_segment_with_options_async(
@@ -12026,34 +5777,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeEipSegmentResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SegmentInstanceId'] = request.segment_instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeEipSegment',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeEipSegmentResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeEipSegment', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_eip_segment(
@@ -12076,33 +5805,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeExpressCloudConnectionsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Filter'] = request.filter
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeExpressCloudConnections',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeExpressCloudConnectionsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeExpressCloudConnections', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_express_cloud_connections_with_options_async(
@@ -12111,33 +5819,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeExpressCloudConnectionsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Filter'] = request.filter
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeExpressCloudConnections',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeExpressCloudConnectionsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeExpressCloudConnections', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_express_cloud_connections(
@@ -12160,42 +5847,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeFlowLogsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['FlowLogId'] = request.flow_log_id
-        query['FlowLogName'] = request.flow_log_name
-        query['LogStoreName'] = request.log_store_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ProjectName'] = request.project_name
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['Status'] = request.status
-        query['TrafficType'] = request.traffic_type
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeFlowLogs',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeFlowLogsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeFlowLogs', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_flow_logs_with_options_async(
@@ -12204,42 +5861,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeFlowLogsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['FlowLogId'] = request.flow_log_id
-        query['FlowLogName'] = request.flow_log_name
-        query['LogStoreName'] = request.log_store_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ProjectName'] = request.project_name
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['Status'] = request.status
-        query['TrafficType'] = request.traffic_type
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeFlowLogs',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeFlowLogsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeFlowLogs', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_flow_logs(
@@ -12262,40 +5889,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeForwardTableEntriesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ExternalIp'] = request.external_ip
-        query['ExternalPort'] = request.external_port
-        query['ForwardEntryId'] = request.forward_entry_id
-        query['ForwardEntryName'] = request.forward_entry_name
-        query['ForwardTableId'] = request.forward_table_id
-        query['InternalIp'] = request.internal_ip
-        query['InternalPort'] = request.internal_port
-        query['IpProtocol'] = request.ip_protocol
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeForwardTableEntries',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeForwardTableEntriesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeForwardTableEntries', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_forward_table_entries_with_options_async(
@@ -12304,40 +5903,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeForwardTableEntriesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ExternalIp'] = request.external_ip
-        query['ExternalPort'] = request.external_port
-        query['ForwardEntryId'] = request.forward_entry_id
-        query['ForwardEntryName'] = request.forward_entry_name
-        query['ForwardTableId'] = request.forward_table_id
-        query['InternalIp'] = request.internal_ip
-        query['InternalPort'] = request.internal_port
-        query['IpProtocol'] = request.ip_protocol
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeForwardTableEntries',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeForwardTableEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeForwardTableEntries', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_forward_table_entries(
@@ -12360,40 +5931,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeGlobalAccelerationInstancesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BandwidthType'] = request.bandwidth_type
-        query['GlobalAccelerationInstanceId'] = request.global_acceleration_instance_id
-        query['IncludeReservationData'] = request.include_reservation_data
-        query['IpAddress'] = request.ip_address
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ServerId'] = request.server_id
-        query['ServiceLocation'] = request.service_location
-        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeGlobalAccelerationInstances',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeGlobalAccelerationInstancesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeGlobalAccelerationInstances', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_global_acceleration_instances_with_options_async(
@@ -12402,40 +5945,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeGlobalAccelerationInstancesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BandwidthType'] = request.bandwidth_type
-        query['GlobalAccelerationInstanceId'] = request.global_acceleration_instance_id
-        query['IncludeReservationData'] = request.include_reservation_data
-        query['IpAddress'] = request.ip_address
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ServerId'] = request.server_id
-        query['ServiceLocation'] = request.service_location
-        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeGlobalAccelerationInstances',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeGlobalAccelerationInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeGlobalAccelerationInstances', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_global_acceleration_instances(
@@ -12458,34 +5973,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeGrantRulesToCenResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeGrantRulesToCen',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeGrantRulesToCenResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeGrantRulesToCen', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_grant_rules_to_cen_with_options_async(
@@ -12494,34 +5987,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeGrantRulesToCenResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeGrantRulesToCen',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeGrantRulesToCenResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeGrantRulesToCen', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_grant_rules_to_cen(
@@ -12544,33 +6015,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeHaVipsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Filter'] = request.filter
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeHaVips',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeHaVipsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeHaVips', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_ha_vips_with_options_async(
@@ -12579,33 +6029,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeHaVipsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Filter'] = request.filter
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeHaVips',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeHaVipsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeHaVips', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_ha_vips(
@@ -12628,32 +6057,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeHighDefinitionMonitorLogAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeHighDefinitionMonitorLogAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeHighDefinitionMonitorLogAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeHighDefinitionMonitorLogAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_high_definition_monitor_log_attribute_with_options_async(
@@ -12662,32 +6071,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeHighDefinitionMonitorLogAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeHighDefinitionMonitorLogAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeHighDefinitionMonitorLogAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeHighDefinitionMonitorLogAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_high_definition_monitor_log_attribute(
@@ -12710,33 +6099,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorAclListAttributesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclId'] = request.acl_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeIPv6TranslatorAclListAttributes',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeIPv6TranslatorAclListAttributesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeIPv6TranslatorAclListAttributes', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_ipv_6translator_acl_list_attributes_with_options_async(
@@ -12745,33 +6113,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorAclListAttributesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclId'] = request.acl_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeIPv6TranslatorAclListAttributes',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeIPv6TranslatorAclListAttributesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeIPv6TranslatorAclListAttributes', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_ipv_6translator_acl_list_attributes(
@@ -12794,34 +6141,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorAclListsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclId'] = request.acl_id
-        query['AclName'] = request.acl_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeIPv6TranslatorAclLists',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeIPv6TranslatorAclListsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeIPv6TranslatorAclLists', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_ipv_6translator_acl_lists_with_options_async(
@@ -12830,34 +6155,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorAclListsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclId'] = request.acl_id
-        query['AclName'] = request.acl_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeIPv6TranslatorAclLists',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeIPv6TranslatorAclListsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeIPv6TranslatorAclLists', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_ipv_6translator_acl_lists(
@@ -12880,44 +6183,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorEntriesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclId'] = request.acl_id
-        query['AclStatus'] = request.acl_status
-        query['AclType'] = request.acl_type
-        query['AllocateIpv6Addr'] = request.allocate_ipv_6addr
-        query['AllocateIpv6Port'] = request.allocate_ipv_6port
-        query['BackendIpv4Addr'] = request.backend_ipv_4addr
-        query['BackendIpv4Port'] = request.backend_ipv_4port
-        query['ClientToken'] = request.client_token
-        query['EntryName'] = request.entry_name
-        query['Ipv6TranslatorEntryId'] = request.ipv_6translator_entry_id
-        query['Ipv6TranslatorId'] = request.ipv_6translator_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransProtocol'] = request.trans_protocol
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeIPv6TranslatorEntries',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeIPv6TranslatorEntriesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeIPv6TranslatorEntries', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_ipv_6translator_entries_with_options_async(
@@ -12926,44 +6197,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorEntriesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclId'] = request.acl_id
-        query['AclStatus'] = request.acl_status
-        query['AclType'] = request.acl_type
-        query['AllocateIpv6Addr'] = request.allocate_ipv_6addr
-        query['AllocateIpv6Port'] = request.allocate_ipv_6port
-        query['BackendIpv4Addr'] = request.backend_ipv_4addr
-        query['BackendIpv4Port'] = request.backend_ipv_4port
-        query['ClientToken'] = request.client_token
-        query['EntryName'] = request.entry_name
-        query['Ipv6TranslatorEntryId'] = request.ipv_6translator_entry_id
-        query['Ipv6TranslatorId'] = request.ipv_6translator_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransProtocol'] = request.trans_protocol
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeIPv6TranslatorEntries',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeIPv6TranslatorEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeIPv6TranslatorEntries', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_ipv_6translator_entries(
@@ -12986,40 +6225,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AllocateIpv4Addr'] = request.allocate_ipv_4addr
-        query['AllocateIpv6Addr'] = request.allocate_ipv_6addr
-        query['BusinessStatus'] = request.business_status
-        query['Ipv6TranslatorId'] = request.ipv_6translator_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['PayType'] = request.pay_type
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Spec'] = request.spec
-        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeIPv6Translators',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeIPv6TranslatorsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeIPv6Translators', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_ipv_6translators_with_options_async(
@@ -13028,40 +6239,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIPv6TranslatorsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AllocateIpv4Addr'] = request.allocate_ipv_4addr
-        query['AllocateIpv6Addr'] = request.allocate_ipv_6addr
-        query['BusinessStatus'] = request.business_status
-        query['Ipv6TranslatorId'] = request.ipv_6translator_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['PayType'] = request.pay_type
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Spec'] = request.spec
-        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeIPv6Translators',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeIPv6TranslatorsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeIPv6Translators', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_ipv_6translators(
@@ -13084,34 +6267,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeInstanceAutoRenewAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['RenewalStatus'] = request.renewal_status
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeInstanceAutoRenewAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeInstanceAutoRenewAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeInstanceAutoRenewAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_instance_auto_renew_attribute_with_options_async(
@@ -13120,34 +6281,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeInstanceAutoRenewAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['RenewalStatus'] = request.renewal_status
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeInstanceAutoRenewAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeInstanceAutoRenewAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeInstanceAutoRenewAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_instance_auto_renew_attribute(
@@ -13170,42 +6309,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIpv6AddressesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AssociatedInstanceId'] = request.associated_instance_id
-        query['AssociatedInstanceType'] = request.associated_instance_type
-        query['Ipv6Address'] = request.ipv_6address
-        query['Ipv6AddressId'] = request.ipv_6address_id
-        query['Ipv6InternetBandwidthId'] = request.ipv_6internet_bandwidth_id
-        query['Name'] = request.name
-        query['NetworkType'] = request.network_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VSwitchId'] = request.v_switch_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeIpv6Addresses',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeIpv6AddressesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeIpv6Addresses', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_ipv_6addresses_with_options_async(
@@ -13214,42 +6323,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIpv6AddressesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AssociatedInstanceId'] = request.associated_instance_id
-        query['AssociatedInstanceType'] = request.associated_instance_type
-        query['Ipv6Address'] = request.ipv_6address
-        query['Ipv6AddressId'] = request.ipv_6address_id
-        query['Ipv6InternetBandwidthId'] = request.ipv_6internet_bandwidth_id
-        query['Name'] = request.name
-        query['NetworkType'] = request.network_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VSwitchId'] = request.v_switch_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeIpv6Addresses',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeIpv6AddressesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeIpv6Addresses', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_ipv_6addresses(
@@ -13272,38 +6351,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIpv6EgressOnlyRulesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['Ipv6EgressOnlyRuleId'] = request.ipv_6egress_only_rule_id
-        query['Ipv6GatewayId'] = request.ipv_6gateway_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeIpv6EgressOnlyRules',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeIpv6EgressOnlyRulesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeIpv6EgressOnlyRules', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_ipv_6egress_only_rules_with_options_async(
@@ -13312,38 +6365,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIpv6EgressOnlyRulesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['Ipv6EgressOnlyRuleId'] = request.ipv_6egress_only_rule_id
-        query['Ipv6GatewayId'] = request.ipv_6gateway_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeIpv6EgressOnlyRules',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeIpv6EgressOnlyRulesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeIpv6EgressOnlyRules', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_ipv_6egress_only_rules(
@@ -13366,32 +6393,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIpv6GatewayAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Ipv6GatewayId'] = request.ipv_6gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeIpv6GatewayAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeIpv6GatewayAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeIpv6GatewayAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_ipv_6gateway_attribute_with_options_async(
@@ -13400,32 +6407,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIpv6GatewayAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Ipv6GatewayId'] = request.ipv_6gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeIpv6GatewayAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeIpv6GatewayAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeIpv6GatewayAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_ipv_6gateway_attribute(
@@ -13448,36 +6435,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIpv6GatewaysResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Ipv6GatewayId'] = request.ipv_6gateway_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeIpv6Gateways',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeIpv6GatewaysResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeIpv6Gateways', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_ipv_6gateways_with_options_async(
@@ -13486,36 +6449,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIpv6GatewaysResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Ipv6GatewayId'] = request.ipv_6gateway_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeIpv6Gateways',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeIpv6GatewaysResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeIpv6Gateways', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_ipv_6gateways(
@@ -13538,43 +6477,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeNatGatewaysResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['InstanceChargeType'] = request.instance_charge_type
-        query['Name'] = request.name
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['NatType'] = request.nat_type
-        query['NetworkType'] = request.network_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Spec'] = request.spec
-        query['Status'] = request.status
-        query['VpcId'] = request.vpc_id
-        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeNatGateways',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeNatGatewaysResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeNatGateways', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_nat_gateways_with_options_async(
@@ -13583,43 +6491,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeNatGatewaysResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['InstanceChargeType'] = request.instance_charge_type
-        query['Name'] = request.name
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['NatType'] = request.nat_type
-        query['NetworkType'] = request.network_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Spec'] = request.spec
-        query['Status'] = request.status
-        query['VpcId'] = request.vpc_id
-        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeNatGateways',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeNatGatewaysResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeNatGateways', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_nat_gateways(
@@ -13642,32 +6519,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeNetworkAclAttributesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NetworkAclId'] = request.network_acl_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeNetworkAclAttributes',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeNetworkAclAttributesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeNetworkAclAttributes', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_network_acl_attributes_with_options_async(
@@ -13676,32 +6533,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeNetworkAclAttributesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NetworkAclId'] = request.network_acl_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeNetworkAclAttributes',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeNetworkAclAttributesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeNetworkAclAttributes', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_network_acl_attributes(
@@ -13724,38 +6561,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeNetworkAclsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NetworkAclId'] = request.network_acl_id
-        query['NetworkAclName'] = request.network_acl_name
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeNetworkAcls',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeNetworkAclsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeNetworkAcls', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_network_acls_with_options_async(
@@ -13764,38 +6575,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeNetworkAclsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NetworkAclId'] = request.network_acl_id
-        query['NetworkAclName'] = request.network_acl_name
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeNetworkAcls',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeNetworkAclsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeNetworkAcls', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_network_acls(
@@ -13818,34 +6603,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeNewProjectEipMonitorDataResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AllocationId'] = request.allocation_id
-        query['EndTime'] = request.end_time
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Period'] = request.period
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeNewProjectEipMonitorData',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeNewProjectEipMonitorDataResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeNewProjectEipMonitorData', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_new_project_eip_monitor_data_with_options_async(
@@ -13854,34 +6617,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeNewProjectEipMonitorDataResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AllocationId'] = request.allocation_id
-        query['EndTime'] = request.end_time
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Period'] = request.period
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeNewProjectEipMonitorData',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeNewProjectEipMonitorDataResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeNewProjectEipMonitorData', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_new_project_eip_monitor_data(
@@ -13904,32 +6645,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribePhysicalConnectionLOAResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribePhysicalConnectionLOA',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribePhysicalConnectionLOAResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribePhysicalConnectionLOA', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_physical_connection_loawith_options_async(
@@ -13938,32 +6659,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribePhysicalConnectionLOAResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribePhysicalConnectionLOA',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribePhysicalConnectionLOAResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribePhysicalConnectionLOA', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_physical_connection_loa(
@@ -13986,35 +6687,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribePhysicalConnectionsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Filter'] = request.filter
-        query['IncludeReservationData'] = request.include_reservation_data
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribePhysicalConnections',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribePhysicalConnectionsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribePhysicalConnections', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_physical_connections_with_options_async(
@@ -14023,35 +6701,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribePhysicalConnectionsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Filter'] = request.filter
-        query['IncludeReservationData'] = request.include_reservation_data
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribePhysicalConnections',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribePhysicalConnectionsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribePhysicalConnections', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_physical_connections(
@@ -14074,30 +6729,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AcceptLanguage'] = request.accept_language
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeRegions',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeRegionsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeRegions', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_regions_with_options_async(
@@ -14106,30 +6743,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AcceptLanguage'] = request.accept_language
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeRegions',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeRegionsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeRegions', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_regions(
@@ -14152,41 +6771,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeRouteEntryListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['IpVersion'] = request.ip_version
-        query['MaxResult'] = request.max_result
-        query['NextHopId'] = request.next_hop_id
-        query['NextHopType'] = request.next_hop_type
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteEntryId'] = request.route_entry_id
-        query['RouteEntryName'] = request.route_entry_name
-        query['RouteEntryType'] = request.route_entry_type
-        query['RouteTableId'] = request.route_table_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeRouteEntryList',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeRouteEntryListResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeRouteEntryList', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_route_entry_list_with_options_async(
@@ -14195,41 +6785,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeRouteEntryListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['IpVersion'] = request.ip_version
-        query['MaxResult'] = request.max_result
-        query['NextHopId'] = request.next_hop_id
-        query['NextHopType'] = request.next_hop_type
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteEntryId'] = request.route_entry_id
-        query['RouteEntryName'] = request.route_entry_name
-        query['RouteEntryType'] = request.route_entry_type
-        query['RouteTableId'] = request.route_table_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeRouteEntryList',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeRouteEntryListResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeRouteEntryList', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_route_entry_list(
@@ -14252,38 +6813,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeRouteTableListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
-        query['RouteTableName'] = request.route_table_name
-        query['RouterId'] = request.router_id
-        query['RouterType'] = request.router_type
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeRouteTableList',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeRouteTableListResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeRouteTableList', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_route_table_list_with_options_async(
@@ -14292,38 +6827,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeRouteTableListResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
-        query['RouteTableName'] = request.route_table_name
-        query['RouterId'] = request.router_id
-        query['RouterType'] = request.router_type
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeRouteTableList',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeRouteTableListResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeRouteTableList', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_route_table_list(
@@ -14346,39 +6855,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeRouteTablesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
-        query['RouteTableName'] = request.route_table_name
-        query['RouterId'] = request.router_id
-        query['RouterType'] = request.router_type
-        query['Type'] = request.type
-        query['VRouterId'] = request.vrouter_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeRouteTables',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeRouteTablesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeRouteTables', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_route_tables_with_options_async(
@@ -14387,39 +6869,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeRouteTablesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
-        query['RouteTableName'] = request.route_table_name
-        query['RouterId'] = request.router_id
-        query['RouterType'] = request.router_type
-        query['Type'] = request.type
-        query['VRouterId'] = request.vrouter_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeRouteTables',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeRouteTablesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeRouteTables', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_route_tables(
@@ -14442,30 +6897,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeRouterInterfaceAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['InstanceId'] = request.instance_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeRouterInterfaceAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeRouterInterfaceAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeRouterInterfaceAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_router_interface_attribute_with_options_async(
@@ -14474,30 +6911,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeRouterInterfaceAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['InstanceId'] = request.instance_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeRouterInterfaceAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeRouterInterfaceAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeRouterInterfaceAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_router_interface_attribute(
@@ -14520,33 +6939,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeRouterInterfacesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Filter'] = request.filter
-        query['IncludeReservationData'] = request.include_reservation_data
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeRouterInterfaces',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeRouterInterfacesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeRouterInterfaces', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_router_interfaces_with_options_async(
@@ -14555,33 +6953,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeRouterInterfacesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Filter'] = request.filter
-        query['IncludeReservationData'] = request.include_reservation_data
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeRouterInterfaces',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeRouterInterfacesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeRouterInterfaces', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_router_interfaces(
@@ -14604,32 +6981,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeServerRelatedGlobalAccelerationInstancesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ServerId'] = request.server_id
-        query['ServerType'] = request.server_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeServerRelatedGlobalAccelerationInstances',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeServerRelatedGlobalAccelerationInstancesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeServerRelatedGlobalAccelerationInstances', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_server_related_global_acceleration_instances_with_options_async(
@@ -14638,32 +6995,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeServerRelatedGlobalAccelerationInstancesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ServerId'] = request.server_id
-        query['ServerType'] = request.server_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeServerRelatedGlobalAccelerationInstances',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeServerRelatedGlobalAccelerationInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeServerRelatedGlobalAccelerationInstances', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_server_related_global_acceleration_instances(
@@ -14686,38 +7023,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeSnatTableEntriesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SnatEntryId'] = request.snat_entry_id
-        query['SnatEntryName'] = request.snat_entry_name
-        query['SnatIp'] = request.snat_ip
-        query['SnatTableId'] = request.snat_table_id
-        query['SourceCIDR'] = request.source_cidr
-        query['SourceVSwitchId'] = request.source_vswitch_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeSnatTableEntries',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeSnatTableEntriesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeSnatTableEntries', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_snat_table_entries_with_options_async(
@@ -14726,38 +7037,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeSnatTableEntriesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SnatEntryId'] = request.snat_entry_id
-        query['SnatEntryName'] = request.snat_entry_name
-        query['SnatIp'] = request.snat_ip
-        query['SnatTableId'] = request.snat_table_id
-        query['SourceCIDR'] = request.source_cidr
-        query['SourceVSwitchId'] = request.source_vswitch_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeSnatTableEntries',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeSnatTableEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeSnatTableEntries', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_snat_table_entries(
@@ -14780,31 +7065,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeSslVpnClientCertResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslVpnClientCertId'] = request.ssl_vpn_client_cert_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeSslVpnClientCert',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeSslVpnClientCertResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeSslVpnClientCert', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_ssl_vpn_client_cert_with_options_async(
@@ -14813,31 +7079,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeSslVpnClientCertResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslVpnClientCertId'] = request.ssl_vpn_client_cert_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeSslVpnClientCert',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeSslVpnClientCertResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeSslVpnClientCert', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_ssl_vpn_client_cert(
@@ -14860,35 +7107,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeSslVpnClientCertsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslVpnClientCertId'] = request.ssl_vpn_client_cert_id
-        query['SslVpnServerId'] = request.ssl_vpn_server_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeSslVpnClientCerts',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeSslVpnClientCertsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeSslVpnClientCerts', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_ssl_vpn_client_certs_with_options_async(
@@ -14897,35 +7121,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeSslVpnClientCertsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslVpnClientCertId'] = request.ssl_vpn_client_cert_id
-        query['SslVpnServerId'] = request.ssl_vpn_server_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeSslVpnClientCerts',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeSslVpnClientCertsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeSslVpnClientCerts', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_ssl_vpn_client_certs(
@@ -14948,35 +7149,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeSslVpnServersResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslVpnServerId'] = request.ssl_vpn_server_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeSslVpnServers',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeSslVpnServersResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeSslVpnServers', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_ssl_vpn_servers_with_options_async(
@@ -14985,35 +7163,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeSslVpnServersResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslVpnServerId'] = request.ssl_vpn_server_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeSslVpnServers',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeSslVpnServersResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeSslVpnServers', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_ssl_vpn_servers(
@@ -15036,33 +7191,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVRoutersResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VRouterId'] = request.vrouter_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVRouters',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVRoutersResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeVRouters', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_vrouters_with_options_async(
@@ -15071,33 +7205,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVRoutersResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VRouterId'] = request.vrouter_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVRouters',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVRoutersResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeVRouters', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_vrouters(
@@ -15120,32 +7233,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVSwitchAttributesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVSwitchAttributes',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVSwitchAttributesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeVSwitchAttributes', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_vswitch_attributes_with_options_async(
@@ -15154,32 +7247,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVSwitchAttributesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVSwitchAttributes',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVSwitchAttributesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeVSwitchAttributes', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_vswitch_attributes(
@@ -15202,41 +7275,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVSwitchesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['IsDefault'] = request.is_default
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
-        query['VSwitchId'] = request.v_switch_id
-        query['VSwitchName'] = request.v_switch_name
-        query['VSwitchOwnerId'] = request.v_switch_owner_id
-        query['VpcId'] = request.vpc_id
-        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVSwitches',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVSwitchesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeVSwitches', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_vswitches_with_options_async(
@@ -15245,41 +7289,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVSwitchesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['IsDefault'] = request.is_default
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
-        query['VSwitchId'] = request.v_switch_id
-        query['VSwitchName'] = request.v_switch_name
-        query['VSwitchOwnerId'] = request.v_switch_owner_id
-        query['VpcId'] = request.vpc_id
-        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVSwitches',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVSwitchesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeVSwitches', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_vswitches(
@@ -15302,34 +7317,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVbrHaResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrHaId'] = request.vbr_ha_id
-        query['VbrId'] = request.vbr_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVbrHa',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVbrHaResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeVbrHa', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_vbr_ha_with_options_async(
@@ -15338,34 +7331,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVbrHaResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrHaId'] = request.vbr_ha_id
-        query['VbrId'] = request.vbr_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVbrHa',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVbrHaResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeVbrHa', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_vbr_ha(
@@ -15388,32 +7359,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVirtualBorderRoutersResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Filter'] = request.filter
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVirtualBorderRouters',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVirtualBorderRoutersResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeVirtualBorderRouters', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_virtual_border_routers_with_options_async(
@@ -15422,32 +7373,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVirtualBorderRoutersResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Filter'] = request.filter
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVirtualBorderRouters',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVirtualBorderRoutersResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeVirtualBorderRouters', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_virtual_border_routers(
@@ -15470,33 +7401,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Filter'] = request.filter
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVirtualBorderRoutersForPhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeVirtualBorderRoutersForPhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_virtual_border_routers_for_physical_connection_with_options_async(
@@ -15505,33 +7415,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Filter'] = request.filter
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVirtualBorderRoutersForPhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeVirtualBorderRoutersForPhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_virtual_border_routers_for_physical_connection(
@@ -15554,33 +7443,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpcAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['IsDefault'] = request.is_default
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVpcAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVpcAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeVpcAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_vpc_attribute_with_options_async(
@@ -15589,33 +7457,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpcAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['IsDefault'] = request.is_default
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVpcAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVpcAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeVpcAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_vpc_attribute(
@@ -15638,39 +7485,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpcsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DhcpOptionsSetId'] = request.dhcp_options_set_id
-        query['DryRun'] = request.dry_run
-        query['IsDefault'] = request.is_default
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
-        query['VpcName'] = request.vpc_name
-        query['VpcOwnerId'] = request.vpc_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVpcs',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVpcsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeVpcs', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_vpcs_with_options_async(
@@ -15679,39 +7499,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpcsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DhcpOptionsSetId'] = request.dhcp_options_set_id
-        query['DryRun'] = request.dry_run
-        query['IsDefault'] = request.is_default
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
-        query['VpcName'] = request.vpc_name
-        query['VpcOwnerId'] = request.vpc_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVpcs',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVpcsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeVpcs', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_vpcs(
@@ -15734,31 +7527,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpnConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnConnectionId'] = request.vpn_connection_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVpnConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVpnConnectionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeVpnConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_vpn_connection_with_options_async(
@@ -15767,31 +7541,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpnConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnConnectionId'] = request.vpn_connection_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVpnConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVpnConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeVpnConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_vpn_connection(
@@ -15814,35 +7569,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpnConnectionsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CustomerGatewayId'] = request.customer_gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnConnectionId'] = request.vpn_connection_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVpnConnections',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVpnConnectionsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeVpnConnections', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_vpn_connections_with_options_async(
@@ -15851,35 +7583,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpnConnectionsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CustomerGatewayId'] = request.customer_gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnConnectionId'] = request.vpn_connection_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVpnConnections',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVpnConnectionsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeVpnConnections', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_vpn_connections(
@@ -15902,32 +7611,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpnGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['IncludeReservationData'] = request.include_reservation_data
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVpnGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVpnGatewayResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeVpnGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_vpn_gateway_with_options_async(
@@ -15936,32 +7625,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpnGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['IncludeReservationData'] = request.include_reservation_data
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVpnGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVpnGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeVpnGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_vpn_gateway(
@@ -15984,38 +7653,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpnGatewaysResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BusinessStatus'] = request.business_status
-        query['IncludeReservationData'] = request.include_reservation_data
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Status'] = request.status
-        query['Tag'] = request.tag
-        query['VpcId'] = request.vpc_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVpnGateways',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVpnGatewaysResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeVpnGateways', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_vpn_gateways_with_options_async(
@@ -16024,38 +7667,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpnGatewaysResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BusinessStatus'] = request.business_status
-        query['IncludeReservationData'] = request.include_reservation_data
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Status'] = request.status
-        query['Tag'] = request.tag
-        query['VpcId'] = request.vpc_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVpnGateways',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVpnGatewaysResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeVpnGateways', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_vpn_gateways(
@@ -16078,33 +7695,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpnPbrRouteEntriesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVpnPbrRouteEntries',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVpnPbrRouteEntriesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeVpnPbrRouteEntries', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_vpn_pbr_route_entries_with_options_async(
@@ -16113,33 +7709,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpnPbrRouteEntriesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVpnPbrRouteEntries',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVpnPbrRouteEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeVpnPbrRouteEntries', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_vpn_pbr_route_entries(
@@ -16162,34 +7737,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpnRouteEntriesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteEntryType'] = request.route_entry_type
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVpnRouteEntries',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVpnRouteEntriesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeVpnRouteEntries', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_vpn_route_entries_with_options_async(
@@ -16198,34 +7751,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpnRouteEntriesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteEntryType'] = request.route_entry_type
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVpnRouteEntries',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVpnRouteEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeVpnRouteEntries', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_vpn_route_entries(
@@ -16248,37 +7779,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpnSslServerLogsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['From'] = request.from_
-        query['MinutePeriod'] = request.minute_period
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslVpnClientCertId'] = request.ssl_vpn_client_cert_id
-        query['To'] = request.to
-        query['VpnSslServerId'] = request.vpn_ssl_server_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVpnSslServerLogs',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVpnSslServerLogsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeVpnSslServerLogs', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_vpn_ssl_server_logs_with_options_async(
@@ -16287,37 +7793,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpnSslServerLogsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['From'] = request.from_
-        query['MinutePeriod'] = request.minute_period
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslVpnClientCertId'] = request.ssl_vpn_client_cert_id
-        query['To'] = request.to
-        query['VpnSslServerId'] = request.vpn_ssl_server_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeVpnSslServerLogs',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeVpnSslServerLogsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeVpnSslServerLogs', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_vpn_ssl_server_logs(
@@ -16340,32 +7821,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeZonesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AcceptLanguage'] = request.accept_language
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ZoneType'] = request.zone_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeZones',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeZonesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DescribeZones', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def describe_zones_with_options_async(
@@ -16374,32 +7835,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeZonesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AcceptLanguage'] = request.accept_language
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ZoneType'] = request.zone_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribeZones',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DescribeZonesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DescribeZones', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def describe_zones(
@@ -16422,34 +7863,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DetachDhcpOptionsSetFromVpcResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DhcpOptionsSetId'] = request.dhcp_options_set_id
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DetachDhcpOptionsSetFromVpc',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DetachDhcpOptionsSetFromVpcResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DetachDhcpOptionsSetFromVpc', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def detach_dhcp_options_set_from_vpc_with_options_async(
@@ -16458,34 +7877,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DetachDhcpOptionsSetFromVpcResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DhcpOptionsSetId'] = request.dhcp_options_set_id
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DetachDhcpOptionsSetFromVpc',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DetachDhcpOptionsSetFromVpcResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DetachDhcpOptionsSetFromVpc', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def detach_dhcp_options_set_from_vpc(
@@ -16508,29 +7905,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DisableNatGatewayEcsMetricResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DisableNatGatewayEcsMetric',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DisableNatGatewayEcsMetricResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DisableNatGatewayEcsMetric', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def disable_nat_gateway_ecs_metric_with_options_async(
@@ -16539,29 +7919,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DisableNatGatewayEcsMetricResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DisableNatGatewayEcsMetric',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DisableNatGatewayEcsMetricResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DisableNatGatewayEcsMetric', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def disable_nat_gateway_ecs_metric(
@@ -16584,32 +7947,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DisableVpcClassicLinkResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DisableVpcClassicLink',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DisableVpcClassicLinkResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DisableVpcClassicLink', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def disable_vpc_classic_link_with_options_async(
@@ -16618,32 +7961,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DisableVpcClassicLinkResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DisableVpcClassicLink',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DisableVpcClassicLinkResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DisableVpcClassicLink', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def disable_vpc_classic_link(
@@ -16666,35 +7989,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DissociateRouteTableFromGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['GatewayId'] = request.gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DissociateRouteTableFromGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DissociateRouteTableFromGatewayResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DissociateRouteTableFromGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def dissociate_route_table_from_gateway_with_options_async(
@@ -16703,35 +8003,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DissociateRouteTableFromGatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['GatewayId'] = request.gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DissociateRouteTableFromGateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DissociateRouteTableFromGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DissociateRouteTableFromGateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def dissociate_route_table_from_gateway(
@@ -16754,34 +8031,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DissociateRouteTablesFromVpcGatewayEndpointResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableIds'] = request.route_table_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DissociateRouteTablesFromVpcGatewayEndpoint',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DissociateRouteTablesFromVpcGatewayEndpointResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DissociateRouteTablesFromVpcGatewayEndpoint', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def dissociate_route_tables_from_vpc_gateway_endpoint_with_options_async(
@@ -16790,34 +8045,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DissociateRouteTablesFromVpcGatewayEndpointResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableIds'] = request.route_table_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DissociateRouteTablesFromVpcGatewayEndpoint',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DissociateRouteTablesFromVpcGatewayEndpointResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DissociateRouteTablesFromVpcGatewayEndpoint', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def dissociate_route_tables_from_vpc_gateway_endpoint(
@@ -16840,31 +8073,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DissociateVpnGatewayWithCertificateResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CertificateId'] = request.certificate_id
-        query['CertificateType'] = request.certificate_type
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RegionId'] = request.region_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DissociateVpnGatewayWithCertificate',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DissociateVpnGatewayWithCertificateResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DissociateVpnGatewayWithCertificate', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def dissociate_vpn_gateway_with_certificate_with_options_async(
@@ -16873,31 +8087,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DissociateVpnGatewayWithCertificateResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CertificateId'] = request.certificate_id
-        query['CertificateType'] = request.certificate_type
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RegionId'] = request.region_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DissociateVpnGatewayWithCertificate',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DissociateVpnGatewayWithCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DissociateVpnGatewayWithCertificate', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def dissociate_vpn_gateway_with_certificate(
@@ -16920,31 +8115,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DownloadVpnConnectionConfigResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnConnectionId'] = request.vpn_connection_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DownloadVpnConnectionConfig',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DownloadVpnConnectionConfigResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('DownloadVpnConnectionConfig', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def download_vpn_connection_config_with_options_async(
@@ -16953,31 +8129,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DownloadVpnConnectionConfigResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnConnectionId'] = request.vpn_connection_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DownloadVpnConnectionConfig',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.DownloadVpnConnectionConfigResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('DownloadVpnConnectionConfig', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def download_vpn_connection_config(
@@ -17000,29 +8157,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.EnableNatGatewayEcsMetricResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='EnableNatGatewayEcsMetric',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.EnableNatGatewayEcsMetricResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('EnableNatGatewayEcsMetric', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def enable_nat_gateway_ecs_metric_with_options_async(
@@ -17031,29 +8171,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.EnableNatGatewayEcsMetricResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='EnableNatGatewayEcsMetric',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.EnableNatGatewayEcsMetricResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('EnableNatGatewayEcsMetric', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def enable_nat_gateway_ecs_metric(
@@ -17076,32 +8199,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.EnablePhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='EnablePhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.EnablePhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('EnablePhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def enable_physical_connection_with_options_async(
@@ -17110,32 +8213,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.EnablePhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='EnablePhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.EnablePhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('EnablePhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def enable_physical_connection(
@@ -17158,32 +8241,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.EnableVpcClassicLinkResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='EnableVpcClassicLink',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.EnableVpcClassicLinkResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('EnableVpcClassicLink', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def enable_vpc_classic_link_with_options_async(
@@ -17192,32 +8255,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.EnableVpcClassicLinkResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='EnableVpcClassicLink',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.EnableVpcClassicLinkResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('EnableVpcClassicLink', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def enable_vpc_classic_link(
@@ -17240,35 +8283,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.EnableVpcIpv4GatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Ipv4GatewayId'] = request.ipv_4gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableList'] = request.route_table_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='EnableVpcIpv4Gateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.EnableVpcIpv4GatewayResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('EnableVpcIpv4Gateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def enable_vpc_ipv_4gateway_with_options_async(
@@ -17277,35 +8297,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.EnableVpcIpv4GatewayResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Ipv4GatewayId'] = request.ipv_4gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableList'] = request.route_table_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='EnableVpcIpv4Gateway',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.EnableVpcIpv4GatewayResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('EnableVpcIpv4Gateway', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def enable_vpc_ipv_4gateway(
@@ -17328,31 +8325,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetDhcpOptionsSetResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DhcpOptionsSetId'] = request.dhcp_options_set_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetDhcpOptionsSet',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.GetDhcpOptionsSetResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GetDhcpOptionsSet', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def get_dhcp_options_set_with_options_async(
@@ -17361,31 +8339,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetDhcpOptionsSetResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DhcpOptionsSetId'] = request.dhcp_options_set_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetDhcpOptionsSet',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.GetDhcpOptionsSetResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GetDhcpOptionsSet', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def get_dhcp_options_set(
@@ -17408,32 +8367,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetIpv4GatewayAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Ipv4GatewayId'] = request.ipv_4gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetIpv4GatewayAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.GetIpv4GatewayAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GetIpv4GatewayAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def get_ipv_4gateway_attribute_with_options_async(
@@ -17442,32 +8381,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetIpv4GatewayAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Ipv4GatewayId'] = request.ipv_4gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetIpv4GatewayAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.GetIpv4GatewayAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GetIpv4GatewayAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def get_ipv_4gateway_attribute(
@@ -17490,32 +8409,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetNatGatewayAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetNatGatewayAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.GetNatGatewayAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GetNatGatewayAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def get_nat_gateway_attribute_with_options_async(
@@ -17524,32 +8423,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetNatGatewayAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetNatGatewayAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.GetNatGatewayAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GetNatGatewayAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def get_nat_gateway_attribute(
@@ -17572,32 +8451,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetNatGatewayConvertStatusResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetNatGatewayConvertStatus',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.GetNatGatewayConvertStatusResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GetNatGatewayConvertStatus', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def get_nat_gateway_convert_status_with_options_async(
@@ -17606,32 +8465,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetNatGatewayConvertStatusResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetNatGatewayConvertStatus',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.GetNatGatewayConvertStatusResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GetNatGatewayConvertStatus', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def get_nat_gateway_convert_status(
@@ -17654,30 +8493,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetPhysicalConnectionServiceStatusResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetPhysicalConnectionServiceStatus',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.GetPhysicalConnectionServiceStatusResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GetPhysicalConnectionServiceStatus', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def get_physical_connection_service_status_with_options_async(
@@ -17686,30 +8507,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetPhysicalConnectionServiceStatusResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetPhysicalConnectionServiceStatus',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.GetPhysicalConnectionServiceStatusResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GetPhysicalConnectionServiceStatus', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def get_physical_connection_service_status(
@@ -17732,26 +8535,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetTrafficMirrorServiceStatusResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetTrafficMirrorServiceStatus',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.GetTrafficMirrorServiceStatusResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GetTrafficMirrorServiceStatus', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def get_traffic_mirror_service_status_with_options_async(
@@ -17760,26 +8549,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetTrafficMirrorServiceStatusResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetTrafficMirrorServiceStatus',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.GetTrafficMirrorServiceStatusResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GetTrafficMirrorServiceStatus', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def get_traffic_mirror_service_status(
@@ -17802,31 +8577,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetVpcGatewayEndpointAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['EndpointId'] = request.endpoint_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetVpcGatewayEndpointAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.GetVpcGatewayEndpointAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GetVpcGatewayEndpointAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def get_vpc_gateway_endpoint_attribute_with_options_async(
@@ -17835,31 +8591,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetVpcGatewayEndpointAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['EndpointId'] = request.endpoint_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetVpcGatewayEndpointAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.GetVpcGatewayEndpointAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GetVpcGatewayEndpointAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def get_vpc_gateway_endpoint_attribute(
@@ -17882,35 +8619,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GrantInstanceToCenResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CenId'] = request.cen_id
-        query['CenOwnerId'] = request.cen_owner_id
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GrantInstanceToCen',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.GrantInstanceToCenResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GrantInstanceToCen', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def grant_instance_to_cen_with_options_async(
@@ -17919,35 +8633,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GrantInstanceToCenResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CenId'] = request.cen_id
-        query['CenOwnerId'] = request.cen_owner_id
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GrantInstanceToCen',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.GrantInstanceToCenResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GrantInstanceToCen', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def grant_instance_to_cen(
@@ -17970,35 +8661,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListDhcpOptionsSetsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DhcpOptionsSetId'] = request.dhcp_options_set_id
-        query['DhcpOptionsSetName'] = request.dhcp_options_set_name
-        query['DomainName'] = request.domain_name
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListDhcpOptionsSets',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListDhcpOptionsSetsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListDhcpOptionsSets', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_dhcp_options_sets_with_options_async(
@@ -18007,35 +8675,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListDhcpOptionsSetsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DhcpOptionsSetId'] = request.dhcp_options_set_id
-        query['DhcpOptionsSetName'] = request.dhcp_options_set_name
-        query['DomainName'] = request.domain_name
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListDhcpOptionsSets',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListDhcpOptionsSetsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListDhcpOptionsSets', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def list_dhcp_options_sets(
@@ -18058,31 +8703,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListEnhanhcedNatGatewayAvailableZones',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListEnhanhcedNatGatewayAvailableZones', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_enhanhced_nat_gateway_available_zones_with_options_async(
@@ -18091,31 +8717,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListEnhanhcedNatGatewayAvailableZones',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListEnhanhcedNatGatewayAvailableZones', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def list_enhanhced_nat_gateway_available_zones(
@@ -18138,38 +8745,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListFullNatEntriesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['FullNatEntryId'] = request.full_nat_entry_id
-        query['FullNatEntryNames'] = request.full_nat_entry_names
-        query['FullNatTableId'] = request.full_nat_table_id
-        query['IpProtocol'] = request.ip_protocol
-        query['MaxResults'] = request.max_results
-        query['NetworkInterfaceIds'] = request.network_interface_ids
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListFullNatEntries',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListFullNatEntriesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListFullNatEntries', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_full_nat_entries_with_options_async(
@@ -18178,38 +8759,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListFullNatEntriesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['FullNatEntryId'] = request.full_nat_entry_id
-        query['FullNatEntryNames'] = request.full_nat_entry_names
-        query['FullNatTableId'] = request.full_nat_table_id
-        query['IpProtocol'] = request.ip_protocol
-        query['MaxResults'] = request.max_results
-        query['NetworkInterfaceIds'] = request.network_interface_ids
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListFullNatEntries',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListFullNatEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListFullNatEntries', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def list_full_nat_entries(
@@ -18232,35 +8787,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListGatewayRouteTableEntriesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['GatewayRouteTableId'] = request.gateway_route_table_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListGatewayRouteTableEntries',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListGatewayRouteTableEntriesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListGatewayRouteTableEntries', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_gateway_route_table_entries_with_options_async(
@@ -18269,35 +8801,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListGatewayRouteTableEntriesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['GatewayRouteTableId'] = request.gateway_route_table_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListGatewayRouteTableEntries',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListGatewayRouteTableEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListGatewayRouteTableEntries', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def list_gateway_route_table_entries(
@@ -18320,31 +8829,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListIpsecServersResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['IpsecServerId'] = request.ipsec_server_id
-        query['IpsecServerName'] = request.ipsec_server_name
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListIpsecServers',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListIpsecServersResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListIpsecServers', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_ipsec_servers_with_options_async(
@@ -18353,31 +8843,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListIpsecServersResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['IpsecServerId'] = request.ipsec_server_id
-        query['IpsecServerName'] = request.ipsec_server_name
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListIpsecServers',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListIpsecServersResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListIpsecServers', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def list_ipsec_servers(
@@ -18400,36 +8871,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListIpv4GatewaysResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Ipv4GatewayId'] = request.ipv_4gateway_id
-        query['Ipv4GatewayName'] = request.ipv_4gateway_name
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListIpv4Gateways',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListIpv4GatewaysResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListIpv4Gateways', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_ipv_4gateways_with_options_async(
@@ -18438,36 +8885,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListIpv4GatewaysResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Ipv4GatewayId'] = request.ipv_4gateway_id
-        query['Ipv4GatewayName'] = request.ipv_4gateway_name
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListIpv4Gateways',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListIpv4GatewaysResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListIpv4Gateways', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def list_ipv_4gateways(
@@ -18490,35 +8913,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListNatGatewayEcsMetricResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['MaxResults'] = request.max_results
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['NextToken'] = request.next_token
-        query['OrderKey'] = request.order_key
-        query['OrderType'] = request.order_type
-        query['PrivateIpAddress'] = request.private_ip_address
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['TimePoint'] = request.time_point
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListNatGatewayEcsMetric',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListNatGatewayEcsMetricResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListNatGatewayEcsMetric', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_nat_gateway_ecs_metric_with_options_async(
@@ -18527,35 +8927,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListNatGatewayEcsMetricResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['MaxResults'] = request.max_results
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['NextToken'] = request.next_token
-        query['OrderKey'] = request.order_key
-        query['OrderType'] = request.order_type
-        query['PrivateIpAddress'] = request.private_ip_address
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['TimePoint'] = request.time_point
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListNatGatewayEcsMetric',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListNatGatewayEcsMetricResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListNatGatewayEcsMetric', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def list_nat_gateway_ecs_metric(
@@ -18578,40 +8955,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListNatIpCidrsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['MaxResults'] = request.max_results
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['NatIpCidr'] = request.nat_ip_cidr
-        query['NatIpCidrName'] = request.nat_ip_cidr_name
-        query['NatIpCidrStatus'] = request.nat_ip_cidr_status
-        query['NatIpCidrs'] = request.nat_ip_cidrs
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListNatIpCidrs',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListNatIpCidrsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListNatIpCidrs', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_nat_ip_cidrs_with_options_async(
@@ -18620,40 +8969,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListNatIpCidrsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['MaxResults'] = request.max_results
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['NatIpCidr'] = request.nat_ip_cidr
-        query['NatIpCidrName'] = request.nat_ip_cidr_name
-        query['NatIpCidrStatus'] = request.nat_ip_cidr_status
-        query['NatIpCidrs'] = request.nat_ip_cidrs
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListNatIpCidrs',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListNatIpCidrsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListNatIpCidrs', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def list_nat_ip_cidrs(
@@ -18676,40 +8997,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListNatIpsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['MaxResults'] = request.max_results
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['NatIpCidr'] = request.nat_ip_cidr
-        query['NatIpIds'] = request.nat_ip_ids
-        query['NatIpName'] = request.nat_ip_name
-        query['NatIpStatus'] = request.nat_ip_status
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListNatIps',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListNatIpsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListNatIps', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_nat_ips_with_options_async(
@@ -18718,40 +9011,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListNatIpsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['MaxResults'] = request.max_results
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['NatIpCidr'] = request.nat_ip_cidr
-        query['NatIpIds'] = request.nat_ip_ids
-        query['NatIpName'] = request.nat_ip_name
-        query['NatIpStatus'] = request.nat_ip_status
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListNatIps',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListNatIpsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListNatIps', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def list_nat_ips(
@@ -18774,32 +9039,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListPhysicalConnectionFeaturesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListPhysicalConnectionFeatures',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListPhysicalConnectionFeaturesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListPhysicalConnectionFeatures', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_physical_connection_features_with_options_async(
@@ -18808,32 +9053,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListPhysicalConnectionFeaturesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListPhysicalConnectionFeatures',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListPhysicalConnectionFeaturesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListPhysicalConnectionFeatures', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def list_physical_connection_features(
@@ -18856,33 +9081,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListPrefixListsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PrefixListIds'] = request.prefix_list_ids
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListPrefixLists',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListPrefixListsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListPrefixLists', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_prefix_lists_with_options_async(
@@ -18891,33 +9095,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListPrefixListsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PrefixListIds'] = request.prefix_list_ids
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListPrefixLists',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListPrefixListsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListPrefixLists', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def list_prefix_lists(
@@ -18940,35 +9123,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListTagResources',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListTagResourcesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListTagResources', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_tag_resources_with_options_async(
@@ -18977,35 +9137,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListTagResources',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListTagResources', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def list_tag_resources(
@@ -19028,34 +9165,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListTrafficMirrorFiltersResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorFilterIds'] = request.traffic_mirror_filter_ids
-        query['TrafficMirrorFilterName'] = request.traffic_mirror_filter_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListTrafficMirrorFilters',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListTrafficMirrorFiltersResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListTrafficMirrorFilters', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_traffic_mirror_filters_with_options_async(
@@ -19064,34 +9179,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListTrafficMirrorFiltersResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorFilterIds'] = request.traffic_mirror_filter_ids
-        query['TrafficMirrorFilterName'] = request.traffic_mirror_filter_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListTrafficMirrorFilters',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListTrafficMirrorFiltersResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListTrafficMirrorFilters', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def list_traffic_mirror_filters(
@@ -19114,40 +9207,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListTrafficMirrorSessionsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Enabled'] = request.enabled
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Priority'] = request.priority
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorFilterId'] = request.traffic_mirror_filter_id
-        query['TrafficMirrorSessionIds'] = request.traffic_mirror_session_ids
-        query['TrafficMirrorSessionName'] = request.traffic_mirror_session_name
-        query['TrafficMirrorSourceId'] = request.traffic_mirror_source_id
-        query['TrafficMirrorTargetId'] = request.traffic_mirror_target_id
-        query['VirtualNetworkId'] = request.virtual_network_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListTrafficMirrorSessions',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListTrafficMirrorSessionsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListTrafficMirrorSessions', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_traffic_mirror_sessions_with_options_async(
@@ -19156,40 +9221,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListTrafficMirrorSessionsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Enabled'] = request.enabled
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Priority'] = request.priority
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorFilterId'] = request.traffic_mirror_filter_id
-        query['TrafficMirrorSessionIds'] = request.traffic_mirror_session_ids
-        query['TrafficMirrorSessionName'] = request.traffic_mirror_session_name
-        query['TrafficMirrorSourceId'] = request.traffic_mirror_source_id
-        query['TrafficMirrorTargetId'] = request.traffic_mirror_target_id
-        query['VirtualNetworkId'] = request.virtual_network_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListTrafficMirrorSessions',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListTrafficMirrorSessionsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListTrafficMirrorSessions', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def list_traffic_mirror_sessions(
@@ -19212,35 +9249,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListVirtualPhysicalConnectionsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['IsConfirmed'] = request.is_confirmed
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['VirtualPhysicalConnectionAliUids'] = request.virtual_physical_connection_ali_uids
-        query['VirtualPhysicalConnectionBusinessStatus'] = request.virtual_physical_connection_business_status
-        query['VirtualPhysicalConnectionIds'] = request.virtual_physical_connection_ids
-        query['VirtualPhysicalConnectionStatuses'] = request.virtual_physical_connection_statuses
-        query['VlanIds'] = request.vlan_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListVirtualPhysicalConnections',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListVirtualPhysicalConnectionsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListVirtualPhysicalConnections', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_virtual_physical_connections_with_options_async(
@@ -19249,35 +9263,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListVirtualPhysicalConnectionsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['IsConfirmed'] = request.is_confirmed
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['VirtualPhysicalConnectionAliUids'] = request.virtual_physical_connection_ali_uids
-        query['VirtualPhysicalConnectionBusinessStatus'] = request.virtual_physical_connection_business_status
-        query['VirtualPhysicalConnectionIds'] = request.virtual_physical_connection_ids
-        query['VirtualPhysicalConnectionStatuses'] = request.virtual_physical_connection_statuses
-        query['VlanIds'] = request.vlan_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListVirtualPhysicalConnections',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListVirtualPhysicalConnectionsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListVirtualPhysicalConnections', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def list_virtual_physical_connections(
@@ -19300,33 +9291,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListVpcEndpointServicesByEndUserResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListVpcEndpointServicesByEndUser',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListVpcEndpointServicesByEndUserResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListVpcEndpointServicesByEndUser', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_vpc_endpoint_services_by_end_user_with_options_async(
@@ -19335,33 +9305,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListVpcEndpointServicesByEndUserResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListVpcEndpointServicesByEndUser',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListVpcEndpointServicesByEndUserResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListVpcEndpointServicesByEndUser', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def list_vpc_endpoint_services_by_end_user(
@@ -19384,35 +9333,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListVpcGatewayEndpointsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['EndpointId'] = request.endpoint_id
-        query['EndpointName'] = request.endpoint_name
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListVpcGatewayEndpoints',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListVpcGatewayEndpointsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListVpcGatewayEndpoints', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_vpc_gateway_endpoints_with_options_async(
@@ -19421,35 +9347,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListVpcGatewayEndpointsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['EndpointId'] = request.endpoint_id
-        query['EndpointName'] = request.endpoint_name
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListVpcGatewayEndpoints',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListVpcGatewayEndpointsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListVpcGatewayEndpoints', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def list_vpc_gateway_endpoints(
@@ -19472,31 +9375,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListVpnCertificateAssociationsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CertificateId'] = request.certificate_id
-        query['CertificateType'] = request.certificate_type
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListVpnCertificateAssociations',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListVpnCertificateAssociationsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ListVpnCertificateAssociations', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def list_vpn_certificate_associations_with_options_async(
@@ -19505,31 +9389,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListVpnCertificateAssociationsResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CertificateId'] = request.certificate_id
-        query['CertificateType'] = request.certificate_type
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListVpnCertificateAssociations',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ListVpnCertificateAssociationsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ListVpnCertificateAssociations', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def list_vpn_certificate_associations(
@@ -19552,38 +9417,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyBgpGroupAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AuthKey'] = request.auth_key
-        query['BgpGroupId'] = request.bgp_group_id
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['IsFakeAsn'] = request.is_fake_asn
-        query['LocalAsn'] = request.local_asn
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerAsn'] = request.peer_asn
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyBgpGroupAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyBgpGroupAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyBgpGroupAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_bgp_group_attribute_with_options_async(
@@ -19592,38 +9431,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyBgpGroupAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AuthKey'] = request.auth_key
-        query['BgpGroupId'] = request.bgp_group_id
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['IsFakeAsn'] = request.is_fake_asn
-        query['LocalAsn'] = request.local_asn
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerAsn'] = request.peer_asn
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyBgpGroupAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyBgpGroupAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyBgpGroupAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_bgp_group_attribute(
@@ -19646,36 +9459,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyBgpPeerAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BfdMultiHop'] = request.bfd_multi_hop
-        query['BgpGroupId'] = request.bgp_group_id
-        query['BgpPeerId'] = request.bgp_peer_id
-        query['ClientToken'] = request.client_token
-        query['EnableBfd'] = request.enable_bfd
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerIpAddress'] = request.peer_ip_address
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyBgpPeerAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyBgpPeerAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyBgpPeerAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_bgp_peer_attribute_with_options_async(
@@ -19684,36 +9473,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyBgpPeerAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BfdMultiHop'] = request.bfd_multi_hop
-        query['BgpGroupId'] = request.bgp_group_id
-        query['BgpPeerId'] = request.bgp_peer_id
-        query['ClientToken'] = request.client_token
-        query['EnableBfd'] = request.enable_bfd
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerIpAddress'] = request.peer_ip_address
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyBgpPeerAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyBgpPeerAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyBgpPeerAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_bgp_peer_attribute(
@@ -19736,33 +9501,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['Description'] = request.description
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyCommonBandwidthPackageAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyCommonBandwidthPackageAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyCommonBandwidthPackageAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_common_bandwidth_package_attribute_with_options_async(
@@ -19771,33 +9515,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['Description'] = request.description
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyCommonBandwidthPackageAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyCommonBandwidthPackageAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyCommonBandwidthPackageAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_common_bandwidth_package_attribute(
@@ -19820,36 +9543,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageInternetChargeTypeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPay'] = request.auto_pay
-        query['Bandwidth'] = request.bandwidth
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['InstanceChargeType'] = request.instance_charge_type
-        query['InternetChargeType'] = request.internet_charge_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Ratio'] = request.ratio
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyCommonBandwidthPackageInternetChargeType',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyCommonBandwidthPackageInternetChargeTypeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyCommonBandwidthPackageInternetChargeType', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_common_bandwidth_package_internet_charge_type_with_options_async(
@@ -19858,36 +9557,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageInternetChargeTypeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPay'] = request.auto_pay
-        query['Bandwidth'] = request.bandwidth
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['InstanceChargeType'] = request.instance_charge_type
-        query['InternetChargeType'] = request.internet_charge_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Ratio'] = request.ratio
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyCommonBandwidthPackageInternetChargeType',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyCommonBandwidthPackageInternetChargeTypeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyCommonBandwidthPackageInternetChargeType', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_common_bandwidth_package_internet_charge_type(
@@ -19910,33 +9585,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageIpBandwidthResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['EipId'] = request.eip_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyCommonBandwidthPackageIpBandwidth',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyCommonBandwidthPackageIpBandwidthResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyCommonBandwidthPackageIpBandwidth', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_common_bandwidth_package_ip_bandwidth_with_options_async(
@@ -19945,33 +9599,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageIpBandwidthResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['EipId'] = request.eip_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyCommonBandwidthPackageIpBandwidth',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyCommonBandwidthPackageIpBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyCommonBandwidthPackageIpBandwidth', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_common_bandwidth_package_ip_bandwidth(
@@ -19994,39 +9627,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackagePayTypeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPay'] = request.auto_pay
-        query['Bandwidth'] = request.bandwidth
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['Duration'] = request.duration
-        query['KbpsBandwidth'] = request.kbps_bandwidth
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PayType'] = request.pay_type
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['ResourceBid'] = request.resource_bid
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceUid'] = request.resource_uid
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyCommonBandwidthPackagePayType',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyCommonBandwidthPackagePayTypeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyCommonBandwidthPackagePayType', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_common_bandwidth_package_pay_type_with_options_async(
@@ -20035,39 +9641,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackagePayTypeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPay'] = request.auto_pay
-        query['Bandwidth'] = request.bandwidth
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['Duration'] = request.duration
-        query['KbpsBandwidth'] = request.kbps_bandwidth
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PayType'] = request.pay_type
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['ResourceBid'] = request.resource_bid
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceUid'] = request.resource_uid
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyCommonBandwidthPackagePayType',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyCommonBandwidthPackagePayTypeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyCommonBandwidthPackagePayType', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_common_bandwidth_package_pay_type(
@@ -20090,32 +9669,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageSpecResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyCommonBandwidthPackageSpec',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyCommonBandwidthPackageSpecResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyCommonBandwidthPackageSpec', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_common_bandwidth_package_spec_with_options_async(
@@ -20124,32 +9683,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageSpecResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyCommonBandwidthPackageSpec',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyCommonBandwidthPackageSpecResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyCommonBandwidthPackageSpec', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_common_bandwidth_package_spec(
@@ -20172,35 +9711,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCustomerGatewayAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AuthKey'] = request.auth_key
-        query['ClientToken'] = request.client_token
-        query['CustomerGatewayId'] = request.customer_gateway_id
-        query['Description'] = request.description
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyCustomerGatewayAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyCustomerGatewayAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyCustomerGatewayAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_customer_gateway_attribute_with_options_async(
@@ -20209,35 +9725,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCustomerGatewayAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AuthKey'] = request.auth_key
-        query['ClientToken'] = request.client_token
-        query['CustomerGatewayId'] = request.customer_gateway_id
-        query['Description'] = request.description
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyCustomerGatewayAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyCustomerGatewayAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyCustomerGatewayAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_customer_gateway_attribute(
@@ -20260,34 +9753,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyEipAddressAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AllocationId'] = request.allocation_id
-        query['Bandwidth'] = request.bandwidth
-        query['Description'] = request.description
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyEipAddressAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyEipAddressAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyEipAddressAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_eip_address_attribute_with_options_async(
@@ -20296,34 +9767,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyEipAddressAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AllocationId'] = request.allocation_id
-        query['Bandwidth'] = request.bandwidth
-        query['Description'] = request.description
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyEipAddressAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyEipAddressAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyEipAddressAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_eip_address_attribute(
@@ -20346,36 +9795,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyExpressCloudConnectionAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BgpAs'] = request.bgp_as
-        query['CeIp'] = request.ce_ip
-        query['Description'] = request.description
-        query['EccId'] = request.ecc_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeIp'] = request.pe_ip
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyExpressCloudConnectionAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyExpressCloudConnectionAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyExpressCloudConnectionAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_express_cloud_connection_attribute_with_options_async(
@@ -20384,36 +9809,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyExpressCloudConnectionAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BgpAs'] = request.bgp_as
-        query['CeIp'] = request.ce_ip
-        query['Description'] = request.description
-        query['EccId'] = request.ecc_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeIp'] = request.pe_ip
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyExpressCloudConnectionAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyExpressCloudConnectionAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyExpressCloudConnectionAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_express_cloud_connection_attribute(
@@ -20436,32 +9837,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyExpressCloudConnectionBandwidthResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['EccId'] = request.ecc_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyExpressCloudConnectionBandwidth',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyExpressCloudConnectionBandwidthResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyExpressCloudConnectionBandwidth', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_express_cloud_connection_bandwidth_with_options_async(
@@ -20470,32 +9851,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyExpressCloudConnectionBandwidthResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['EccId'] = request.ecc_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyExpressCloudConnectionBandwidth',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyExpressCloudConnectionBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyExpressCloudConnectionBandwidth', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_express_cloud_connection_bandwidth(
@@ -20518,33 +9879,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyFlowLogAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['FlowLogId'] = request.flow_log_id
-        query['FlowLogName'] = request.flow_log_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyFlowLogAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyFlowLogAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyFlowLogAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_flow_log_attribute_with_options_async(
@@ -20553,33 +9893,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyFlowLogAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['FlowLogId'] = request.flow_log_id
-        query['FlowLogName'] = request.flow_log_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyFlowLogAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyFlowLogAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyFlowLogAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_flow_log_attribute(
@@ -20602,40 +9921,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyForwardEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['ExternalIp'] = request.external_ip
-        query['ExternalPort'] = request.external_port
-        query['ForwardEntryId'] = request.forward_entry_id
-        query['ForwardEntryName'] = request.forward_entry_name
-        query['ForwardTableId'] = request.forward_table_id
-        query['InternalIp'] = request.internal_ip
-        query['InternalPort'] = request.internal_port
-        query['IpProtocol'] = request.ip_protocol
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PortBreak'] = request.port_break
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyForwardEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyForwardEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyForwardEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_forward_entry_with_options_async(
@@ -20644,40 +9935,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyForwardEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['ExternalIp'] = request.external_ip
-        query['ExternalPort'] = request.external_port
-        query['ForwardEntryId'] = request.forward_entry_id
-        query['ForwardEntryName'] = request.forward_entry_name
-        query['ForwardTableId'] = request.forward_table_id
-        query['InternalIp'] = request.internal_ip
-        query['InternalPort'] = request.internal_port
-        query['IpProtocol'] = request.ip_protocol
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PortBreak'] = request.port_break
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyForwardEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyForwardEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyForwardEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_forward_entry(
@@ -20700,42 +9963,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyFullNatEntryAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AccessIp'] = request.access_ip
-        query['AccessPort'] = request.access_port
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['FullNatEntryDescription'] = request.full_nat_entry_description
-        query['FullNatEntryId'] = request.full_nat_entry_id
-        query['FullNatEntryName'] = request.full_nat_entry_name
-        query['FullNatTableId'] = request.full_nat_table_id
-        query['IpProtocol'] = request.ip_protocol
-        query['NatIp'] = request.nat_ip
-        query['NatIpPort'] = request.nat_ip_port
-        query['NetworkInterfaceId'] = request.network_interface_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyFullNatEntryAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyFullNatEntryAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyFullNatEntryAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_full_nat_entry_attribute_with_options_async(
@@ -20744,42 +9977,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyFullNatEntryAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AccessIp'] = request.access_ip
-        query['AccessPort'] = request.access_port
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['FullNatEntryDescription'] = request.full_nat_entry_description
-        query['FullNatEntryId'] = request.full_nat_entry_id
-        query['FullNatEntryName'] = request.full_nat_entry_name
-        query['FullNatTableId'] = request.full_nat_table_id
-        query['IpProtocol'] = request.ip_protocol
-        query['NatIp'] = request.nat_ip
-        query['NatIpPort'] = request.nat_ip_port
-        query['NetworkInterfaceId'] = request.network_interface_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyFullNatEntryAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyFullNatEntryAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyFullNatEntryAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_full_nat_entry_attribute(
@@ -20802,33 +10005,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyGlobalAccelerationInstanceAttributesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['GlobalAccelerationInstanceId'] = request.global_acceleration_instance_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyGlobalAccelerationInstanceAttributes',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyGlobalAccelerationInstanceAttributesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyGlobalAccelerationInstanceAttributes', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_global_acceleration_instance_attributes_with_options_async(
@@ -20837,33 +10019,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyGlobalAccelerationInstanceAttributesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['GlobalAccelerationInstanceId'] = request.global_acceleration_instance_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyGlobalAccelerationInstanceAttributes',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyGlobalAccelerationInstanceAttributesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyGlobalAccelerationInstanceAttributes', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_global_acceleration_instance_attributes(
@@ -20886,32 +10047,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyGlobalAccelerationInstanceSpecResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['GlobalAccelerationInstanceId'] = request.global_acceleration_instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyGlobalAccelerationInstanceSpec',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyGlobalAccelerationInstanceSpecResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyGlobalAccelerationInstanceSpec', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_global_acceleration_instance_spec_with_options_async(
@@ -20920,32 +10061,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyGlobalAccelerationInstanceSpecResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['GlobalAccelerationInstanceId'] = request.global_acceleration_instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyGlobalAccelerationInstanceSpec',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyGlobalAccelerationInstanceSpecResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyGlobalAccelerationInstanceSpec', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_global_acceleration_instance_spec(
@@ -20968,34 +10089,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyHaVipAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['HaVipId'] = request.ha_vip_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyHaVipAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyHaVipAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyHaVipAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_ha_vip_attribute_with_options_async(
@@ -21004,34 +10103,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyHaVipAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['HaVipId'] = request.ha_vip_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyHaVipAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyHaVipAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyHaVipAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_ha_vip_attribute(
@@ -21054,33 +10131,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIPv6TranslatorAclAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclId'] = request.acl_id
-        query['AclName'] = request.acl_name
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyIPv6TranslatorAclAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyIPv6TranslatorAclAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyIPv6TranslatorAclAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_ipv_6translator_acl_attribute_with_options_async(
@@ -21089,33 +10145,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIPv6TranslatorAclAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclId'] = request.acl_id
-        query['AclName'] = request.acl_name
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyIPv6TranslatorAclAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyIPv6TranslatorAclAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyIPv6TranslatorAclAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_ipv_6translator_acl_attribute(
@@ -21138,33 +10173,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIPv6TranslatorAclListEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclEntryComment'] = request.acl_entry_comment
-        query['AclEntryId'] = request.acl_entry_id
-        query['AclId'] = request.acl_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyIPv6TranslatorAclListEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyIPv6TranslatorAclListEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyIPv6TranslatorAclListEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_ipv_6translator_acl_list_entry_with_options_async(
@@ -21173,33 +10187,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIPv6TranslatorAclListEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclEntryComment'] = request.acl_entry_comment
-        query['AclEntryId'] = request.acl_entry_id
-        query['AclId'] = request.acl_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyIPv6TranslatorAclListEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyIPv6TranslatorAclListEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyIPv6TranslatorAclListEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_ipv_6translator_acl_list_entry(
@@ -21222,34 +10215,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIPv6TranslatorAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Ipv6TranslatorId'] = request.ipv_6translator_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyIPv6TranslatorAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyIPv6TranslatorAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyIPv6TranslatorAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_ipv_6translator_attribute_with_options_async(
@@ -21258,34 +10229,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIPv6TranslatorAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Ipv6TranslatorId'] = request.ipv_6translator_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyIPv6TranslatorAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyIPv6TranslatorAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyIPv6TranslatorAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_ipv_6translator_attribute(
@@ -21308,34 +10257,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIPv6TranslatorBandwidthResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPay'] = request.auto_pay
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['Ipv6TranslatorId'] = request.ipv_6translator_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyIPv6TranslatorBandwidth',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyIPv6TranslatorBandwidthResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyIPv6TranslatorBandwidth', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_ipv_6translator_bandwidth_with_options_async(
@@ -21344,34 +10271,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIPv6TranslatorBandwidthResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPay'] = request.auto_pay
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['Ipv6TranslatorId'] = request.ipv_6translator_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyIPv6TranslatorBandwidth',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyIPv6TranslatorBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyIPv6TranslatorBandwidth', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_ipv_6translator_bandwidth(
@@ -21394,41 +10299,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIPv6TranslatorEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclId'] = request.acl_id
-        query['AclStatus'] = request.acl_status
-        query['AclType'] = request.acl_type
-        query['AllocateIpv6Port'] = request.allocate_ipv_6port
-        query['BackendIpv4Addr'] = request.backend_ipv_4addr
-        query['BackendIpv4Port'] = request.backend_ipv_4port
-        query['EntryBandwidth'] = request.entry_bandwidth
-        query['EntryDescription'] = request.entry_description
-        query['EntryName'] = request.entry_name
-        query['Ipv6TranslatorEntryId'] = request.ipv_6translator_entry_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransProtocol'] = request.trans_protocol
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyIPv6TranslatorEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyIPv6TranslatorEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyIPv6TranslatorEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_ipv_6translator_entry_with_options_async(
@@ -21437,41 +10313,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIPv6TranslatorEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclId'] = request.acl_id
-        query['AclStatus'] = request.acl_status
-        query['AclType'] = request.acl_type
-        query['AllocateIpv6Port'] = request.allocate_ipv_6port
-        query['BackendIpv4Addr'] = request.backend_ipv_4addr
-        query['BackendIpv4Port'] = request.backend_ipv_4port
-        query['EntryBandwidth'] = request.entry_bandwidth
-        query['EntryDescription'] = request.entry_description
-        query['EntryName'] = request.entry_name
-        query['Ipv6TranslatorEntryId'] = request.ipv_6translator_entry_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransProtocol'] = request.trans_protocol
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyIPv6TranslatorEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyIPv6TranslatorEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyIPv6TranslatorEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_ipv_6translator_entry(
@@ -21494,35 +10341,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyInstanceAutoRenewalAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Duration'] = request.duration
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerId'] = request.owner_id
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['RenewalStatus'] = request.renewal_status
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyInstanceAutoRenewalAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyInstanceAutoRenewalAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyInstanceAutoRenewalAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_instance_auto_renewal_attribute_with_options_async(
@@ -21531,35 +10355,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyInstanceAutoRenewalAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Duration'] = request.duration
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerId'] = request.owner_id
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['RenewalStatus'] = request.renewal_status
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyInstanceAutoRenewalAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyInstanceAutoRenewalAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyInstanceAutoRenewalAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_instance_auto_renewal_attribute(
@@ -21582,34 +10383,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIpv6AddressAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['Ipv6AddressId'] = request.ipv_6address_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyIpv6AddressAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyIpv6AddressAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyIpv6AddressAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_ipv_6address_attribute_with_options_async(
@@ -21618,34 +10397,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIpv6AddressAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['Ipv6AddressId'] = request.ipv_6address_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyIpv6AddressAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyIpv6AddressAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyIpv6AddressAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_ipv_6address_attribute(
@@ -21668,34 +10425,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIpv6GatewayAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['Ipv6GatewayId'] = request.ipv_6gateway_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyIpv6GatewayAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyIpv6GatewayAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyIpv6GatewayAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_ipv_6gateway_attribute_with_options_async(
@@ -21704,34 +10439,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIpv6GatewayAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['Ipv6GatewayId'] = request.ipv_6gateway_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyIpv6GatewayAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyIpv6GatewayAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyIpv6GatewayAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_ipv_6gateway_attribute(
@@ -21754,34 +10467,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIpv6GatewaySpecResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Ipv6GatewayId'] = request.ipv_6gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Spec'] = request.spec
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyIpv6GatewaySpec',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyIpv6GatewaySpecResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyIpv6GatewaySpec', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_ipv_6gateway_spec_with_options_async(
@@ -21790,34 +10481,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIpv6GatewaySpecResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Ipv6GatewayId'] = request.ipv_6gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Spec'] = request.spec
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyIpv6GatewaySpec',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyIpv6GatewaySpecResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyIpv6GatewaySpec', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_ipv_6gateway_spec(
@@ -21840,35 +10509,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIpv6InternetBandwidthResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['Ipv6AddressId'] = request.ipv_6address_id
-        query['Ipv6InternetBandwidthId'] = request.ipv_6internet_bandwidth_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyIpv6InternetBandwidth',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyIpv6InternetBandwidthResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyIpv6InternetBandwidth', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_ipv_6internet_bandwidth_with_options_async(
@@ -21877,35 +10523,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIpv6InternetBandwidthResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['Ipv6AddressId'] = request.ipv_6address_id
-        query['Ipv6InternetBandwidthId'] = request.ipv_6internet_bandwidth_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyIpv6InternetBandwidth',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyIpv6InternetBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyIpv6InternetBandwidth', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_ipv_6internet_bandwidth(
@@ -21928,34 +10551,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyNatGatewayAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['IcmpReplyEnabled'] = request.icmp_reply_enabled
-        query['Name'] = request.name
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyNatGatewayAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyNatGatewayAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyNatGatewayAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_nat_gateway_attribute_with_options_async(
@@ -21964,34 +10565,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyNatGatewayAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['IcmpReplyEnabled'] = request.icmp_reply_enabled
-        query['Name'] = request.name
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyNatGatewayAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyNatGatewayAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyNatGatewayAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_nat_gateway_attribute(
@@ -22014,34 +10593,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyNatGatewaySpecResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPay'] = request.auto_pay
-        query['ClientToken'] = request.client_token
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Spec'] = request.spec
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyNatGatewaySpec',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyNatGatewaySpecResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyNatGatewaySpec', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_nat_gateway_spec_with_options_async(
@@ -22050,34 +10607,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyNatGatewaySpecResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPay'] = request.auto_pay
-        query['ClientToken'] = request.client_token
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Spec'] = request.spec
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyNatGatewaySpec',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyNatGatewaySpecResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyNatGatewaySpec', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_nat_gateway_spec(
@@ -22100,36 +10635,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyNatIpAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['NatIpDescription'] = request.nat_ip_description
-        query['NatIpId'] = request.nat_ip_id
-        query['NatIpName'] = request.nat_ip_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyNatIpAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyNatIpAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyNatIpAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_nat_ip_attribute_with_options_async(
@@ -22138,36 +10649,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyNatIpAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['NatIpDescription'] = request.nat_ip_description
-        query['NatIpId'] = request.nat_ip_id
-        query['NatIpName'] = request.nat_ip_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyNatIpAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyNatIpAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyNatIpAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_nat_ip_attribute(
@@ -22190,37 +10677,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyNatIpCidrAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['NatIpCidr'] = request.nat_ip_cidr
-        query['NatIpCidrDescription'] = request.nat_ip_cidr_description
-        query['NatIpCidrName'] = request.nat_ip_cidr_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyNatIpCidrAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyNatIpCidrAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyNatIpCidrAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_nat_ip_cidr_attribute_with_options_async(
@@ -22229,37 +10691,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyNatIpCidrAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['NatIpCidr'] = request.nat_ip_cidr
-        query['NatIpCidrDescription'] = request.nat_ip_cidr_description
-        query['NatIpCidrName'] = request.nat_ip_cidr_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyNatIpCidrAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyNatIpCidrAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyNatIpCidrAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_nat_ip_cidr_attribute(
@@ -22282,34 +10719,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyNetworkAclAttributesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['NetworkAclId'] = request.network_acl_id
-        query['NetworkAclName'] = request.network_acl_name
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyNetworkAclAttributes',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyNetworkAclAttributesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyNetworkAclAttributes', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_network_acl_attributes_with_options_async(
@@ -22318,34 +10733,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyNetworkAclAttributesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['NetworkAclId'] = request.network_acl_id
-        query['NetworkAclName'] = request.network_acl_name
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyNetworkAclAttributes',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyNetworkAclAttributesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyNetworkAclAttributes', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_network_acl_attributes(
@@ -22368,41 +10761,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyPhysicalConnectionAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CircuitCode'] = request.circuit_code
-        query['ClientToken'] = request.client_token
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['LineOperator'] = request.line_operator
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerLocation'] = request.peer_location
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['PortType'] = request.port_type
-        query['RedundantPhysicalConnectionId'] = request.redundant_physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['bandwidth'] = request.bandwidth
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyPhysicalConnectionAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyPhysicalConnectionAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyPhysicalConnectionAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_physical_connection_attribute_with_options_async(
@@ -22411,41 +10775,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyPhysicalConnectionAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CircuitCode'] = request.circuit_code
-        query['ClientToken'] = request.client_token
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['LineOperator'] = request.line_operator
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerLocation'] = request.peer_location
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['PortType'] = request.port_type
-        query['RedundantPhysicalConnectionId'] = request.redundant_physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['bandwidth'] = request.bandwidth
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyPhysicalConnectionAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyPhysicalConnectionAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyPhysicalConnectionAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_physical_connection_attribute(
@@ -22468,33 +10803,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyRouteEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteEntryId'] = request.route_entry_id
-        query['RouteEntryName'] = request.route_entry_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyRouteEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyRouteEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyRouteEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_route_entry_with_options_async(
@@ -22503,33 +10817,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyRouteEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteEntryId'] = request.route_entry_id
-        query['RouteEntryName'] = request.route_entry_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyRouteEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyRouteEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_route_entry(
@@ -22552,33 +10845,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyRouteTableAttributesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
-        query['RouteTableName'] = request.route_table_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyRouteTableAttributes',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyRouteTableAttributesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyRouteTableAttributes', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_route_table_attributes_with_options_async(
@@ -22587,33 +10859,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyRouteTableAttributesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
-        query['RouteTableName'] = request.route_table_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyRouteTableAttributes',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyRouteTableAttributesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyRouteTableAttributes', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_route_table_attributes(
@@ -22636,41 +10887,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyRouterInterfaceAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DeleteHealthCheckIp'] = request.delete_health_check_ip
-        query['Description'] = request.description
-        query['HcRate'] = request.hc_rate
-        query['HcThreshold'] = request.hc_threshold
-        query['HealthCheckSourceIp'] = request.health_check_source_ip
-        query['HealthCheckTargetIp'] = request.health_check_target_ip
-        query['Name'] = request.name
-        query['OppositeInterfaceId'] = request.opposite_interface_id
-        query['OppositeInterfaceOwnerId'] = request.opposite_interface_owner_id
-        query['OppositeRouterId'] = request.opposite_router_id
-        query['OppositeRouterType'] = request.opposite_router_type
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterInterfaceId'] = request.router_interface_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyRouterInterfaceAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyRouterInterfaceAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyRouterInterfaceAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_router_interface_attribute_with_options_async(
@@ -22679,41 +10901,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyRouterInterfaceAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DeleteHealthCheckIp'] = request.delete_health_check_ip
-        query['Description'] = request.description
-        query['HcRate'] = request.hc_rate
-        query['HcThreshold'] = request.hc_threshold
-        query['HealthCheckSourceIp'] = request.health_check_source_ip
-        query['HealthCheckTargetIp'] = request.health_check_target_ip
-        query['Name'] = request.name
-        query['OppositeInterfaceId'] = request.opposite_interface_id
-        query['OppositeInterfaceOwnerId'] = request.opposite_interface_owner_id
-        query['OppositeRouterId'] = request.opposite_router_id
-        query['OppositeRouterType'] = request.opposite_router_type
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterInterfaceId'] = request.router_interface_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyRouterInterfaceAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyRouterInterfaceAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyRouterInterfaceAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_router_interface_attribute(
@@ -22736,33 +10929,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyRouterInterfaceSpecResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterInterfaceId'] = request.router_interface_id
-        query['Spec'] = request.spec
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyRouterInterfaceSpec',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyRouterInterfaceSpecResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyRouterInterfaceSpec', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_router_interface_spec_with_options_async(
@@ -22771,33 +10943,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyRouterInterfaceSpecResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouterInterfaceId'] = request.router_interface_id
-        query['Spec'] = request.spec
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyRouterInterfaceSpec',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyRouterInterfaceSpecResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyRouterInterfaceSpec', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_router_interface_spec(
@@ -22820,35 +10971,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifySnatEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SnatEntryId'] = request.snat_entry_id
-        query['SnatEntryName'] = request.snat_entry_name
-        query['SnatIp'] = request.snat_ip
-        query['SnatTableId'] = request.snat_table_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifySnatEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifySnatEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifySnatEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_snat_entry_with_options_async(
@@ -22857,35 +10985,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifySnatEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SnatEntryId'] = request.snat_entry_id
-        query['SnatEntryName'] = request.snat_entry_name
-        query['SnatIp'] = request.snat_ip
-        query['SnatTableId'] = request.snat_table_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifySnatEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifySnatEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifySnatEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_snat_entry(
@@ -22908,33 +11013,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifySslVpnClientCertResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslVpnClientCertId'] = request.ssl_vpn_client_cert_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifySslVpnClientCert',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifySslVpnClientCertResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifySslVpnClientCert', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_ssl_vpn_client_cert_with_options_async(
@@ -22943,33 +11027,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifySslVpnClientCertResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslVpnClientCertId'] = request.ssl_vpn_client_cert_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifySslVpnClientCert',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifySslVpnClientCertResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifySslVpnClientCert', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_ssl_vpn_client_cert(
@@ -22992,42 +11055,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifySslVpnServerResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Cipher'] = request.cipher
-        query['ClientIpPool'] = request.client_ip_pool
-        query['ClientToken'] = request.client_token
-        query['Compress'] = request.compress
-        query['EnableMultiFactorAuth'] = request.enable_multi_factor_auth
-        query['IDaaSInstanceId'] = request.idaa_sinstance_id
-        query['IDaaSRegionId'] = request.idaa_sregion_id
-        query['LocalSubnet'] = request.local_subnet
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Port'] = request.port
-        query['Proto'] = request.proto
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslVpnServerId'] = request.ssl_vpn_server_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifySslVpnServer',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifySslVpnServerResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifySslVpnServer', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_ssl_vpn_server_with_options_async(
@@ -23036,42 +11069,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifySslVpnServerResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Cipher'] = request.cipher
-        query['ClientIpPool'] = request.client_ip_pool
-        query['ClientToken'] = request.client_token
-        query['Compress'] = request.compress
-        query['EnableMultiFactorAuth'] = request.enable_multi_factor_auth
-        query['IDaaSInstanceId'] = request.idaa_sinstance_id
-        query['IDaaSRegionId'] = request.idaa_sregion_id
-        query['LocalSubnet'] = request.local_subnet
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Port'] = request.port
-        query['Proto'] = request.proto
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SslVpnServerId'] = request.ssl_vpn_server_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifySslVpnServer',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifySslVpnServerResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifySslVpnServer', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_ssl_vpn_server(
@@ -23094,33 +11097,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVRouterAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VRouterId'] = request.vrouter_id
-        query['VRouterName'] = request.vrouter_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyVRouterAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyVRouterAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyVRouterAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_vrouter_attribute_with_options_async(
@@ -23129,33 +11111,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVRouterAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VRouterId'] = request.vrouter_id
-        query['VRouterName'] = request.vrouter_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyVRouterAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyVRouterAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyVRouterAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_vrouter_attribute(
@@ -23178,36 +11139,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVSwitchAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['EnableIPv6'] = request.enable_ipv_6
-        query['Ipv6CidrBlock'] = request.ipv_6cidr_block
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VSwitchId'] = request.v_switch_id
-        query['VSwitchName'] = request.v_switch_name
-        query['VpcIpv6CidrBlock'] = request.vpc_ipv_6cidr_block
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyVSwitchAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyVSwitchAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyVSwitchAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_vswitch_attribute_with_options_async(
@@ -23216,36 +11153,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVSwitchAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Description'] = request.description
-        query['EnableIPv6'] = request.enable_ipv_6
-        query['Ipv6CidrBlock'] = request.ipv_6cidr_block
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VSwitchId'] = request.v_switch_id
-        query['VSwitchName'] = request.v_switch_name
-        query['VpcIpv6CidrBlock'] = request.vpc_ipv_6cidr_block
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyVSwitchAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyVSwitchAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyVSwitchAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_vswitch_attribute(
@@ -23268,48 +11181,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVirtualBorderRouterAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AssociatedPhysicalConnections'] = request.associated_physical_connections
-        query['Bandwidth'] = request.bandwidth
-        query['CircuitCode'] = request.circuit_code
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['DetectMultiplier'] = request.detect_multiplier
-        query['EnableIpv6'] = request.enable_ipv_6
-        query['LocalGatewayIp'] = request.local_gateway_ip
-        query['LocalIpv6GatewayIp'] = request.local_ipv_6gateway_ip
-        query['MinRxInterval'] = request.min_rx_interval
-        query['MinTxInterval'] = request.min_tx_interval
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerGatewayIp'] = request.peer_gateway_ip
-        query['PeerIpv6GatewayIp'] = request.peer_ipv_6gateway_ip
-        query['PeeringIpv6SubnetMask'] = request.peering_ipv_6subnet_mask
-        query['PeeringSubnetMask'] = request.peering_subnet_mask
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrId'] = request.vbr_id
-        query['VlanId'] = request.vlan_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyVirtualBorderRouterAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyVirtualBorderRouterAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyVirtualBorderRouterAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_virtual_border_router_attribute_with_options_async(
@@ -23318,48 +11195,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVirtualBorderRouterAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AssociatedPhysicalConnections'] = request.associated_physical_connections
-        query['Bandwidth'] = request.bandwidth
-        query['CircuitCode'] = request.circuit_code
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['DetectMultiplier'] = request.detect_multiplier
-        query['EnableIpv6'] = request.enable_ipv_6
-        query['LocalGatewayIp'] = request.local_gateway_ip
-        query['LocalIpv6GatewayIp'] = request.local_ipv_6gateway_ip
-        query['MinRxInterval'] = request.min_rx_interval
-        query['MinTxInterval'] = request.min_tx_interval
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerGatewayIp'] = request.peer_gateway_ip
-        query['PeerIpv6GatewayIp'] = request.peer_ipv_6gateway_ip
-        query['PeeringIpv6SubnetMask'] = request.peering_ipv_6subnet_mask
-        query['PeeringSubnetMask'] = request.peering_subnet_mask
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrId'] = request.vbr_id
-        query['VlanId'] = request.vlan_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyVirtualBorderRouterAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyVirtualBorderRouterAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyVirtualBorderRouterAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_virtual_border_router_attribute(
@@ -23382,37 +11223,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpcAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CidrBlock'] = request.cidr_block
-        query['Description'] = request.description
-        query['EnableIPv6'] = request.enable_ipv_6
-        query['Ipv6CidrBlock'] = request.ipv_6cidr_block
-        query['Ipv6Isp'] = request.ipv_6isp
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
-        query['VpcName'] = request.vpc_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyVpcAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyVpcAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyVpcAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_vpc_attribute_with_options_async(
@@ -23421,37 +11237,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpcAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CidrBlock'] = request.cidr_block
-        query['Description'] = request.description
-        query['EnableIPv6'] = request.enable_ipv_6
-        query['Ipv6CidrBlock'] = request.ipv_6cidr_block
-        query['Ipv6Isp'] = request.ipv_6isp
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
-        query['VpcName'] = request.vpc_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyVpcAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyVpcAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyVpcAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_vpc_attribute(
@@ -23474,44 +11265,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnConnectionAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoConfigRoute'] = request.auto_config_route
-        query['BgpConfig'] = request.bgp_config
-        query['ClientToken'] = request.client_token
-        query['EffectImmediately'] = request.effect_immediately
-        query['EnableDpd'] = request.enable_dpd
-        query['EnableNatTraversal'] = request.enable_nat_traversal
-        query['HealthCheckConfig'] = request.health_check_config
-        query['IkeConfig'] = request.ike_config
-        query['IpsecConfig'] = request.ipsec_config
-        query['LocalSubnet'] = request.local_subnet
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RemoteCaCertificate'] = request.remote_ca_certificate
-        query['RemoteSubnet'] = request.remote_subnet
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnConnectionId'] = request.vpn_connection_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyVpnConnectionAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyVpnConnectionAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyVpnConnectionAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_vpn_connection_attribute_with_options_async(
@@ -23520,44 +11279,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnConnectionAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoConfigRoute'] = request.auto_config_route
-        query['BgpConfig'] = request.bgp_config
-        query['ClientToken'] = request.client_token
-        query['EffectImmediately'] = request.effect_immediately
-        query['EnableDpd'] = request.enable_dpd
-        query['EnableNatTraversal'] = request.enable_nat_traversal
-        query['HealthCheckConfig'] = request.health_check_config
-        query['IkeConfig'] = request.ike_config
-        query['IpsecConfig'] = request.ipsec_config
-        query['LocalSubnet'] = request.local_subnet
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RemoteCaCertificate'] = request.remote_ca_certificate
-        query['RemoteSubnet'] = request.remote_subnet
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnConnectionId'] = request.vpn_connection_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyVpnConnectionAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyVpnConnectionAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyVpnConnectionAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_vpn_connection_attribute(
@@ -23580,35 +11307,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnGatewayAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPropagate'] = request.auto_propagate
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyVpnGatewayAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyVpnGatewayAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyVpnGatewayAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_vpn_gateway_attribute_with_options_async(
@@ -23617,35 +11321,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnGatewayAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AutoPropagate'] = request.auto_propagate
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyVpnGatewayAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyVpnGatewayAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyVpnGatewayAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_vpn_gateway_attribute(
@@ -23668,38 +11349,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnPbrRouteEntryWeightResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NewWeight'] = request.new_weight
-        query['NextHop'] = request.next_hop
-        query['OverlayMode'] = request.overlay_mode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteDest'] = request.route_dest
-        query['RouteSource'] = request.route_source
-        query['VpnGatewayId'] = request.vpn_gateway_id
-        query['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyVpnPbrRouteEntryWeight',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyVpnPbrRouteEntryWeightResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyVpnPbrRouteEntryWeight', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_vpn_pbr_route_entry_weight_with_options_async(
@@ -23708,38 +11363,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnPbrRouteEntryWeightResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NewWeight'] = request.new_weight
-        query['NextHop'] = request.next_hop
-        query['OverlayMode'] = request.overlay_mode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteDest'] = request.route_dest
-        query['RouteSource'] = request.route_source
-        query['VpnGatewayId'] = request.vpn_gateway_id
-        query['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyVpnPbrRouteEntryWeight',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyVpnPbrRouteEntryWeightResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyVpnPbrRouteEntryWeight', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_vpn_pbr_route_entry_weight(
@@ -23762,37 +11391,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnRouteEntryWeightResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NewWeight'] = request.new_weight
-        query['NextHop'] = request.next_hop
-        query['OverlayMode'] = request.overlay_mode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteDest'] = request.route_dest
-        query['VpnGatewayId'] = request.vpn_gateway_id
-        query['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyVpnRouteEntryWeight',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyVpnRouteEntryWeightResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ModifyVpnRouteEntryWeight', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def modify_vpn_route_entry_weight_with_options_async(
@@ -23801,37 +11405,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnRouteEntryWeightResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NewWeight'] = request.new_weight
-        query['NextHop'] = request.next_hop
-        query['OverlayMode'] = request.overlay_mode
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteDest'] = request.route_dest
-        query['VpnGatewayId'] = request.vpn_gateway_id
-        query['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ModifyVpnRouteEntryWeight',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ModifyVpnRouteEntryWeightResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ModifyVpnRouteEntryWeight', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def modify_vpn_route_entry_weight(
@@ -23854,33 +11433,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['NewResourceGroupId'] = request.new_resource_group_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='MoveResourceGroup',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.MoveResourceGroupResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('MoveResourceGroup', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def move_resource_group_with_options_async(
@@ -23889,33 +11447,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['NewResourceGroupId'] = request.new_resource_group_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='MoveResourceGroup',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.MoveResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('MoveResourceGroup', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def move_resource_group(
@@ -23938,30 +11475,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.OpenPhysicalConnectionServiceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='OpenPhysicalConnectionService',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.OpenPhysicalConnectionServiceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('OpenPhysicalConnectionService', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def open_physical_connection_service_with_options_async(
@@ -23970,30 +11489,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.OpenPhysicalConnectionServiceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='OpenPhysicalConnectionService',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.OpenPhysicalConnectionServiceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('OpenPhysicalConnectionService', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def open_physical_connection_service(
@@ -24016,26 +11517,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.OpenTrafficMirrorServiceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='OpenTrafficMirrorService',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.OpenTrafficMirrorServiceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('OpenTrafficMirrorService', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def open_traffic_mirror_service_with_options_async(
@@ -24044,26 +11531,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.OpenTrafficMirrorServiceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='OpenTrafficMirrorService',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.OpenTrafficMirrorServiceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('OpenTrafficMirrorService', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def open_traffic_mirror_service(
@@ -24086,36 +11559,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.PublishVpnRouteEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NextHop'] = request.next_hop
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PublishVpc'] = request.publish_vpc
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteDest'] = request.route_dest
-        query['RouteType'] = request.route_type
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='PublishVpnRouteEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.PublishVpnRouteEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('PublishVpnRouteEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def publish_vpn_route_entry_with_options_async(
@@ -24124,36 +11573,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.PublishVpnRouteEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NextHop'] = request.next_hop
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PublishVpc'] = request.publish_vpc
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteDest'] = request.route_dest
-        query['RouteType'] = request.route_type
-        query['VpnGatewayId'] = request.vpn_gateway_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='PublishVpnRouteEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.PublishVpnRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('PublishVpnRouteEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def publish_vpn_route_entry(
@@ -24176,29 +11601,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RecoverPhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['InstanceId'] = request.instance_id
-        query['RegionId'] = request.region_id
-        query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RecoverPhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.RecoverPhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('RecoverPhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def recover_physical_connection_with_options_async(
@@ -24207,29 +11615,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RecoverPhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['InstanceId'] = request.instance_id
-        query['RegionId'] = request.region_id
-        query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RecoverPhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.RecoverPhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('RecoverPhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def recover_physical_connection(
@@ -24252,32 +11643,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RecoverVirtualBorderRouterResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrId'] = request.vbr_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RecoverVirtualBorderRouter',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.RecoverVirtualBorderRouterResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('RecoverVirtualBorderRouter', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def recover_virtual_border_router_with_options_async(
@@ -24286,32 +11657,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RecoverVirtualBorderRouterResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrId'] = request.vbr_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RecoverVirtualBorderRouter',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.RecoverVirtualBorderRouterResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('RecoverVirtualBorderRouter', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def recover_virtual_border_router(
@@ -24334,31 +11685,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ReleaseEipAddressResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AllocationId'] = request.allocation_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ReleaseEipAddress',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ReleaseEipAddressResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ReleaseEipAddress', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def release_eip_address_with_options_async(
@@ -24367,31 +11699,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ReleaseEipAddressResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AllocationId'] = request.allocation_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ReleaseEipAddress',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ReleaseEipAddressResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ReleaseEipAddress', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def release_eip_address(
@@ -24414,32 +11727,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ReleaseEipSegmentAddressResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SegmentInstanceId'] = request.segment_instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ReleaseEipSegmentAddress',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ReleaseEipSegmentAddressResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ReleaseEipSegmentAddress', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def release_eip_segment_address_with_options_async(
@@ -24448,32 +11741,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ReleaseEipSegmentAddressResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SegmentInstanceId'] = request.segment_instance_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ReleaseEipSegmentAddress',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ReleaseEipSegmentAddressResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ReleaseEipSegmentAddress', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def release_eip_segment_address(
@@ -24496,33 +11769,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RemoveCommonBandwidthPackageIpResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['ClientToken'] = request.client_token
-        query['IpInstanceId'] = request.ip_instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RemoveCommonBandwidthPackageIp',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.RemoveCommonBandwidthPackageIpResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('RemoveCommonBandwidthPackageIp', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def remove_common_bandwidth_package_ip_with_options_async(
@@ -24531,33 +11783,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RemoveCommonBandwidthPackageIpResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['ClientToken'] = request.client_token
-        query['IpInstanceId'] = request.ip_instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RemoveCommonBandwidthPackageIp',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.RemoveCommonBandwidthPackageIpResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('RemoveCommonBandwidthPackageIp', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def remove_common_bandwidth_package_ip(
@@ -24580,32 +11811,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RemoveGlobalAccelerationInstanceIpResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['GlobalAccelerationInstanceId'] = request.global_acceleration_instance_id
-        query['IpInstanceId'] = request.ip_instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RemoveGlobalAccelerationInstanceIp',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.RemoveGlobalAccelerationInstanceIpResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('RemoveGlobalAccelerationInstanceIp', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def remove_global_acceleration_instance_ip_with_options_async(
@@ -24614,32 +11825,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RemoveGlobalAccelerationInstanceIpResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['GlobalAccelerationInstanceId'] = request.global_acceleration_instance_id
-        query['IpInstanceId'] = request.ip_instance_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RemoveGlobalAccelerationInstanceIp',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.RemoveGlobalAccelerationInstanceIpResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('RemoveGlobalAccelerationInstanceIp', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def remove_global_acceleration_instance_ip(
@@ -24662,33 +11853,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RemoveIPv6TranslatorAclListEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclEntryId'] = request.acl_entry_id
-        query['AclId'] = request.acl_id
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RemoveIPv6TranslatorAclListEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.RemoveIPv6TranslatorAclListEntryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('RemoveIPv6TranslatorAclListEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def remove_ipv_6translator_acl_list_entry_with_options_async(
@@ -24697,33 +11867,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RemoveIPv6TranslatorAclListEntryResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AclEntryId'] = request.acl_entry_id
-        query['AclId'] = request.acl_id
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RemoveIPv6TranslatorAclListEntry',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.RemoveIPv6TranslatorAclListEntryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('RemoveIPv6TranslatorAclListEntry', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def remove_ipv_6translator_acl_list_entry(
@@ -24746,34 +11895,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RemoveSourcesFromTrafficMirrorSessionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorSessionId'] = request.traffic_mirror_session_id
-        query['TrafficMirrorSourceIds'] = request.traffic_mirror_source_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RemoveSourcesFromTrafficMirrorSession',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.RemoveSourcesFromTrafficMirrorSessionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('RemoveSourcesFromTrafficMirrorSession', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def remove_sources_from_traffic_mirror_session_with_options_async(
@@ -24782,34 +11909,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RemoveSourcesFromTrafficMirrorSessionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorSessionId'] = request.traffic_mirror_session_id
-        query['TrafficMirrorSourceIds'] = request.traffic_mirror_source_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RemoveSourcesFromTrafficMirrorSession',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.RemoveSourcesFromTrafficMirrorSessionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('RemoveSourcesFromTrafficMirrorSession', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def remove_sources_from_traffic_mirror_session(
@@ -24832,33 +11937,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RenewInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Duration'] = request.duration
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerId'] = request.owner_id
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RenewInstance',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.RenewInstanceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('RenewInstance', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def renew_instance_with_options_async(
@@ -24867,33 +11951,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RenewInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Duration'] = request.duration
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerId'] = request.owner_id
-        query['PricingCycle'] = request.pricing_cycle
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RenewInstance',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.RenewInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('RenewInstance', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def renew_instance(
@@ -24916,34 +11979,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ReplaceVpcDhcpOptionsSetResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DhcpOptionsSetId'] = request.dhcp_options_set_id
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ReplaceVpcDhcpOptionsSet',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ReplaceVpcDhcpOptionsSetResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ReplaceVpcDhcpOptionsSet', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def replace_vpc_dhcp_options_set_with_options_async(
@@ -24952,34 +11993,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ReplaceVpcDhcpOptionsSetResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DhcpOptionsSetId'] = request.dhcp_options_set_id
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ReplaceVpcDhcpOptionsSet',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.ReplaceVpcDhcpOptionsSetResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ReplaceVpcDhcpOptionsSet', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def replace_vpc_dhcp_options_set(
@@ -25002,35 +12021,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RevokeInstanceFromCenResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CenId'] = request.cen_id
-        query['CenOwnerId'] = request.cen_owner_id
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RevokeInstanceFromCen',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.RevokeInstanceFromCenResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('RevokeInstanceFromCen', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def revoke_instance_from_cen_with_options_async(
@@ -25039,35 +12035,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.RevokeInstanceFromCenResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['CenId'] = request.cen_id
-        query['CenOwnerId'] = request.cen_owner_id
-        query['ClientToken'] = request.client_token
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='RevokeInstanceFromCen',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.RevokeInstanceFromCenResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('RevokeInstanceFromCen', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def revoke_instance_from_cen(
@@ -25090,33 +12063,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.TagResourcesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='TagResources',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.TagResourcesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('TagResources', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def tag_resources_with_options_async(
@@ -25125,33 +12077,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.TagResourcesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='TagResources',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.TagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('TagResources', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def tag_resources(
@@ -25174,32 +12105,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.TerminatePhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='TerminatePhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.TerminatePhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('TerminatePhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def terminate_physical_connection_with_options_async(
@@ -25208,32 +12119,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.TerminatePhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='TerminatePhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.TerminatePhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('TerminatePhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def terminate_physical_connection(
@@ -25256,32 +12147,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.TerminateVirtualBorderRouterResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrId'] = request.vbr_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='TerminateVirtualBorderRouter',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.TerminateVirtualBorderRouterResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('TerminateVirtualBorderRouter', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def terminate_virtual_border_router_with_options_async(
@@ -25290,32 +12161,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.TerminateVirtualBorderRouterResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrId'] = request.vbr_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='TerminateVirtualBorderRouter',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.TerminateVirtualBorderRouterResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('TerminateVirtualBorderRouter', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def terminate_virtual_border_router(
@@ -25338,34 +12189,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnTagResourcesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['All'] = request.all
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UnTagResources',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UnTagResourcesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UnTagResources', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def un_tag_resources_with_options_async(
@@ -25374,34 +12203,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnTagResourcesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['All'] = request.all
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UnTagResources',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UnTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UnTagResources', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def un_tag_resources(
@@ -25424,36 +12231,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateEipAddressResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AllocationId'] = request.allocation_id
-        query['ClientToken'] = request.client_token
-        query['Force'] = request.force
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PrivateIpAddress'] = request.private_ip_address
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UnassociateEipAddress',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UnassociateEipAddressResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UnassociateEipAddress', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def unassociate_eip_address_with_options_async(
@@ -25462,36 +12245,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateEipAddressResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['AllocationId'] = request.allocation_id
-        query['ClientToken'] = request.client_token
-        query['Force'] = request.force
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PrivateIpAddress'] = request.private_ip_address
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UnassociateEipAddress',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UnassociateEipAddressResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UnassociateEipAddress', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def unassociate_eip_address(
@@ -25514,32 +12273,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateGlobalAccelerationInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['GlobalAccelerationInstanceId'] = request.global_acceleration_instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UnassociateGlobalAccelerationInstance',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UnassociateGlobalAccelerationInstanceResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UnassociateGlobalAccelerationInstance', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def unassociate_global_acceleration_instance_with_options_async(
@@ -25548,32 +12287,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateGlobalAccelerationInstanceResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['GlobalAccelerationInstanceId'] = request.global_acceleration_instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UnassociateGlobalAccelerationInstance',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UnassociateGlobalAccelerationInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UnassociateGlobalAccelerationInstance', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def unassociate_global_acceleration_instance(
@@ -25596,35 +12315,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateHaVipResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Force'] = request.force
-        query['HaVipId'] = request.ha_vip_id
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UnassociateHaVip',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UnassociateHaVipResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UnassociateHaVip', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def unassociate_ha_vip_with_options_async(
@@ -25633,35 +12329,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateHaVipResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Force'] = request.force
-        query['HaVipId'] = request.ha_vip_id
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UnassociateHaVip',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UnassociateHaVipResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UnassociateHaVip', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def unassociate_ha_vip(
@@ -25684,33 +12357,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateNetworkAclResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NetworkAclId'] = request.network_acl_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['Resource'] = request.resource
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UnassociateNetworkAcl',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UnassociateNetworkAclResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UnassociateNetworkAcl', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def unassociate_network_acl_with_options_async(
@@ -25719,33 +12371,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateNetworkAclResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['NetworkAclId'] = request.network_acl_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['Resource'] = request.resource
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UnassociateNetworkAcl',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UnassociateNetworkAclResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UnassociateNetworkAcl', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def unassociate_network_acl(
@@ -25768,33 +12399,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociatePhysicalConnectionFromVirtualBorderRouterResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrId'] = request.vbr_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UnassociatePhysicalConnectionFromVirtualBorderRouter',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UnassociatePhysicalConnectionFromVirtualBorderRouterResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UnassociatePhysicalConnectionFromVirtualBorderRouter', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def unassociate_physical_connection_from_virtual_border_router_with_options_async(
@@ -25803,33 +12413,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociatePhysicalConnectionFromVirtualBorderRouterResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PhysicalConnectionId'] = request.physical_connection_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrId'] = request.vbr_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UnassociatePhysicalConnectionFromVirtualBorderRouter',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UnassociatePhysicalConnectionFromVirtualBorderRouterResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UnassociatePhysicalConnectionFromVirtualBorderRouter', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def unassociate_physical_connection_from_virtual_border_router(
@@ -25852,34 +12441,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateRouteTableResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
-        query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UnassociateRouteTable',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UnassociateRouteTableResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UnassociateRouteTable', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def unassociate_route_table_with_options_async(
@@ -25888,34 +12455,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateRouteTableResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
-        query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UnassociateRouteTable',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UnassociateRouteTableResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UnassociateRouteTable', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def unassociate_route_table(
@@ -25938,33 +12483,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateVpcCidrBlockResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecondaryCidrBlock'] = request.secondary_cidr_block
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UnassociateVpcCidrBlock',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UnassociateVpcCidrBlockResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UnassociateVpcCidrBlock', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def unassociate_vpc_cidr_block_with_options_async(
@@ -25973,33 +12497,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UnassociateVpcCidrBlockResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecondaryCidrBlock'] = request.secondary_cidr_block
-        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UnassociateVpcCidrBlock',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UnassociateVpcCidrBlockResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UnassociateVpcCidrBlock', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def unassociate_vpc_cidr_block(
@@ -26022,32 +12525,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateCrossBoarderStatusResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Enable'] = request.enable
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceUid'] = request.resource_uid
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateCrossBoarderStatus',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateCrossBoarderStatusResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UpdateCrossBoarderStatus', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def update_cross_boarder_status_with_options_async(
@@ -26056,32 +12539,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateCrossBoarderStatusResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Enable'] = request.enable
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceUid'] = request.resource_uid
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateCrossBoarderStatus',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateCrossBoarderStatusResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UpdateCrossBoarderStatus', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def update_cross_boarder_status(
@@ -26104,39 +12567,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateDhcpOptionsSetAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BootFileName'] = request.boot_file_name
-        query['ClientToken'] = request.client_token
-        query['DhcpOptionsSetDescription'] = request.dhcp_options_set_description
-        query['DhcpOptionsSetId'] = request.dhcp_options_set_id
-        query['DhcpOptionsSetName'] = request.dhcp_options_set_name
-        query['DomainName'] = request.domain_name
-        query['DomainNameServers'] = request.domain_name_servers
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TFTPServerName'] = request.tftpserver_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateDhcpOptionsSetAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateDhcpOptionsSetAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UpdateDhcpOptionsSetAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def update_dhcp_options_set_attribute_with_options_async(
@@ -26145,39 +12581,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateDhcpOptionsSetAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['BootFileName'] = request.boot_file_name
-        query['ClientToken'] = request.client_token
-        query['DhcpOptionsSetDescription'] = request.dhcp_options_set_description
-        query['DhcpOptionsSetId'] = request.dhcp_options_set_id
-        query['DhcpOptionsSetName'] = request.dhcp_options_set_name
-        query['DomainName'] = request.domain_name
-        query['DomainNameServers'] = request.domain_name_servers
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TFTPServerName'] = request.tftpserver_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateDhcpOptionsSetAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateDhcpOptionsSetAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UpdateDhcpOptionsSetAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def update_dhcp_options_set_attribute(
@@ -26200,39 +12609,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateGatewayRouteTableEntryAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['DryRun'] = request.dry_run
-        query['IPv4GatewayRouteTableId'] = request.ipv_4gateway_route_table_id
-        query['Name'] = request.name
-        query['NextHopId'] = request.next_hop_id
-        query['NextHopType'] = request.next_hop_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateGatewayRouteTableEntryAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateGatewayRouteTableEntryAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UpdateGatewayRouteTableEntryAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def update_gateway_route_table_entry_attribute_with_options_async(
@@ -26241,39 +12623,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateGatewayRouteTableEntryAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['DryRun'] = request.dry_run
-        query['IPv4GatewayRouteTableId'] = request.ipv_4gateway_route_table_id
-        query['Name'] = request.name
-        query['NextHopId'] = request.next_hop_id
-        query['NextHopType'] = request.next_hop_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateGatewayRouteTableEntryAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateGatewayRouteTableEntryAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UpdateGatewayRouteTableEntryAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def update_gateway_route_table_entry_attribute(
@@ -26296,37 +12651,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateIpsecServerResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientIpPool'] = request.client_ip_pool
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EffectImmediately'] = request.effect_immediately
-        query['IkeConfig'] = request.ike_config
-        query['IpsecConfig'] = request.ipsec_config
-        query['IpsecServerId'] = request.ipsec_server_id
-        query['IpsecServerName'] = request.ipsec_server_name
-        query['LocalSubnet'] = request.local_subnet
-        query['Psk'] = request.psk
-        query['PskEnabled'] = request.psk_enabled
-        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateIpsecServer',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateIpsecServerResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UpdateIpsecServer', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def update_ipsec_server_with_options_async(
@@ -26335,37 +12665,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateIpsecServerResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientIpPool'] = request.client_ip_pool
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EffectImmediately'] = request.effect_immediately
-        query['IkeConfig'] = request.ike_config
-        query['IpsecConfig'] = request.ipsec_config
-        query['IpsecServerId'] = request.ipsec_server_id
-        query['IpsecServerName'] = request.ipsec_server_name
-        query['LocalSubnet'] = request.local_subnet
-        query['Psk'] = request.psk
-        query['PskEnabled'] = request.psk_enabled
-        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateIpsecServer',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateIpsecServerResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UpdateIpsecServer', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def update_ipsec_server(
@@ -26388,36 +12693,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateIpv4GatewayAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Ipv4GatewayDescription'] = request.ipv_4gateway_description
-        query['Ipv4GatewayId'] = request.ipv_4gateway_id
-        query['Ipv4GatewayName'] = request.ipv_4gateway_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateIpv4GatewayAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateIpv4GatewayAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UpdateIpv4GatewayAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def update_ipv_4gateway_attribute_with_options_async(
@@ -26426,36 +12707,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateIpv4GatewayAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Ipv4GatewayDescription'] = request.ipv_4gateway_description
-        query['Ipv4GatewayId'] = request.ipv_4gateway_id
-        query['Ipv4GatewayName'] = request.ipv_4gateway_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateIpv4GatewayAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateIpv4GatewayAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UpdateIpv4GatewayAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def update_ipv_4gateway_attribute(
@@ -26478,36 +12735,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateNatGatewayNatTypeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['NatType'] = request.nat_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateNatGatewayNatType',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateNatGatewayNatTypeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UpdateNatGatewayNatType', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def update_nat_gateway_nat_type_with_options_async(
@@ -26516,36 +12749,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateNatGatewayNatTypeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['NatGatewayId'] = request.nat_gateway_id
-        query['NatType'] = request.nat_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateNatGatewayNatType',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateNatGatewayNatTypeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UpdateNatGatewayNatType', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def update_nat_gateway_nat_type(
@@ -26568,36 +12777,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateNetworkAclEntriesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['EgressAclEntries'] = request.egress_acl_entries
-        query['IngressAclEntries'] = request.ingress_acl_entries
-        query['NetworkAclId'] = request.network_acl_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UpdateEgressAclEntries'] = request.update_egress_acl_entries
-        query['UpdateIngressAclEntries'] = request.update_ingress_acl_entries
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateNetworkAclEntries',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateNetworkAclEntriesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UpdateNetworkAclEntries', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def update_network_acl_entries_with_options_async(
@@ -26606,36 +12791,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateNetworkAclEntriesResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['EgressAclEntries'] = request.egress_acl_entries
-        query['IngressAclEntries'] = request.ingress_acl_entries
-        query['NetworkAclId'] = request.network_acl_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UpdateEgressAclEntries'] = request.update_egress_acl_entries
-        query['UpdateIngressAclEntries'] = request.update_ingress_acl_entries
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateNetworkAclEntries',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateNetworkAclEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UpdateNetworkAclEntries', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def update_network_acl_entries(
@@ -26658,35 +12819,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateTrafficMirrorFilterAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorFilterDescription'] = request.traffic_mirror_filter_description
-        query['TrafficMirrorFilterId'] = request.traffic_mirror_filter_id
-        query['TrafficMirrorFilterName'] = request.traffic_mirror_filter_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateTrafficMirrorFilterAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateTrafficMirrorFilterAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UpdateTrafficMirrorFilterAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def update_traffic_mirror_filter_attribute_with_options_async(
@@ -26695,35 +12833,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateTrafficMirrorFilterAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorFilterDescription'] = request.traffic_mirror_filter_description
-        query['TrafficMirrorFilterId'] = request.traffic_mirror_filter_id
-        query['TrafficMirrorFilterName'] = request.traffic_mirror_filter_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateTrafficMirrorFilterAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateTrafficMirrorFilterAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UpdateTrafficMirrorFilterAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def update_traffic_mirror_filter_attribute(
@@ -26746,40 +12861,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateTrafficMirrorFilterRuleAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['DestinationPortRange'] = request.destination_port_range
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Priority'] = request.priority
-        query['Protocol'] = request.protocol
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RuleAction'] = request.rule_action
-        query['SourceCidrBlock'] = request.source_cidr_block
-        query['SourcePortRange'] = request.source_port_range
-        query['TrafficMirrorFilterRuleId'] = request.traffic_mirror_filter_rule_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateTrafficMirrorFilterRuleAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateTrafficMirrorFilterRuleAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UpdateTrafficMirrorFilterRuleAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def update_traffic_mirror_filter_rule_attribute_with_options_async(
@@ -26788,40 +12875,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateTrafficMirrorFilterRuleAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['DestinationPortRange'] = request.destination_port_range
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Priority'] = request.priority
-        query['Protocol'] = request.protocol
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RuleAction'] = request.rule_action
-        query['SourceCidrBlock'] = request.source_cidr_block
-        query['SourcePortRange'] = request.source_port_range
-        query['TrafficMirrorFilterRuleId'] = request.traffic_mirror_filter_rule_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateTrafficMirrorFilterRuleAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateTrafficMirrorFilterRuleAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UpdateTrafficMirrorFilterRuleAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def update_traffic_mirror_filter_rule_attribute(
@@ -26844,41 +12903,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateTrafficMirrorSessionAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Enabled'] = request.enabled
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Priority'] = request.priority
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorFilterId'] = request.traffic_mirror_filter_id
-        query['TrafficMirrorSessionDescription'] = request.traffic_mirror_session_description
-        query['TrafficMirrorSessionId'] = request.traffic_mirror_session_id
-        query['TrafficMirrorSessionName'] = request.traffic_mirror_session_name
-        query['TrafficMirrorTargetId'] = request.traffic_mirror_target_id
-        query['TrafficMirrorTargetType'] = request.traffic_mirror_target_type
-        query['VirtualNetworkId'] = request.virtual_network_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateTrafficMirrorSessionAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateTrafficMirrorSessionAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UpdateTrafficMirrorSessionAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def update_traffic_mirror_session_attribute_with_options_async(
@@ -26887,41 +12917,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateTrafficMirrorSessionAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Enabled'] = request.enabled
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Priority'] = request.priority
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMirrorFilterId'] = request.traffic_mirror_filter_id
-        query['TrafficMirrorSessionDescription'] = request.traffic_mirror_session_description
-        query['TrafficMirrorSessionId'] = request.traffic_mirror_session_id
-        query['TrafficMirrorSessionName'] = request.traffic_mirror_session_name
-        query['TrafficMirrorTargetId'] = request.traffic_mirror_target_id
-        query['TrafficMirrorTargetType'] = request.traffic_mirror_target_type
-        query['VirtualNetworkId'] = request.virtual_network_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateTrafficMirrorSessionAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateTrafficMirrorSessionAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UpdateTrafficMirrorSessionAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def update_traffic_mirror_session_attribute(
@@ -26944,33 +12945,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateVirtualBorderBandwidthResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VirtualBorderRouterId'] = request.virtual_border_router_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateVirtualBorderBandwidth',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateVirtualBorderBandwidthResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UpdateVirtualBorderBandwidth', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def update_virtual_border_bandwidth_with_options_async(
@@ -26979,33 +12959,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateVirtualBorderBandwidthResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VirtualBorderRouterId'] = request.virtual_border_router_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateVirtualBorderBandwidth',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateVirtualBorderBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UpdateVirtualBorderBandwidth', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def update_virtual_border_bandwidth(
@@ -27028,30 +12987,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateVirtualPhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['InstanceId'] = request.instance_id
-        query['RegionId'] = request.region_id
-        query['Token'] = request.token
-        query['VlanId'] = request.vlan_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateVirtualPhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateVirtualPhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UpdateVirtualPhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def update_virtual_physical_connection_with_options_async(
@@ -27060,30 +13001,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateVirtualPhysicalConnectionResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['DryRun'] = request.dry_run
-        query['InstanceId'] = request.instance_id
-        query['RegionId'] = request.region_id
-        query['Token'] = request.token
-        query['VlanId'] = request.vlan_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateVirtualPhysicalConnection',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateVirtualPhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UpdateVirtualPhysicalConnection', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def update_virtual_physical_connection(
@@ -27106,36 +13029,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateVpcGatewayEndpointAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointDescription'] = request.endpoint_description
-        query['EndpointId'] = request.endpoint_id
-        query['EndpointName'] = request.endpoint_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PolicyDocument'] = request.policy_document
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateVpcGatewayEndpointAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateVpcGatewayEndpointAttributeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('UpdateVpcGatewayEndpointAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def update_vpc_gateway_endpoint_attribute_with_options_async(
@@ -27144,36 +13043,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateVpcGatewayEndpointAttributeResponse:
         UtilClient.validate_model(request)
-        query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointDescription'] = request.endpoint_description
-        query['EndpointId'] = request.endpoint_id
-        query['EndpointName'] = request.endpoint_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PolicyDocument'] = request.policy_document
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateVpcGatewayEndpointAttribute',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
         )
         return TeaCore.from_map(
             vpc_20160428_models.UpdateVpcGatewayEndpointAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('UpdateVpcGatewayEndpointAttribute', '2016-04-28', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def update_vpc_gateway_endpoint_attribute(
