@@ -20733,6 +20733,7 @@ class GetMetaTableColumnResponseBodyDataColumnList(TeaModel):
         is_partition_column: bool = None,
         is_primary_key: bool = None,
         position: int = None,
+        relation_count: int = None,
     ):
         self.caption = caption
         self.column_guid = column_guid
@@ -20743,6 +20744,7 @@ class GetMetaTableColumnResponseBodyDataColumnList(TeaModel):
         self.is_partition_column = is_partition_column
         self.is_primary_key = is_primary_key
         self.position = position
+        self.relation_count = relation_count
 
     def validate(self):
         pass
@@ -20771,6 +20773,8 @@ class GetMetaTableColumnResponseBodyDataColumnList(TeaModel):
             result['IsPrimaryKey'] = self.is_primary_key
         if self.position is not None:
             result['Position'] = self.position
+        if self.relation_count is not None:
+            result['RelationCount'] = self.relation_count
         return result
 
     def from_map(self, m: dict = None):
@@ -20793,6 +20797,8 @@ class GetMetaTableColumnResponseBodyDataColumnList(TeaModel):
             self.is_primary_key = m.get('IsPrimaryKey')
         if m.get('Position') is not None:
             self.position = m.get('Position')
+        if m.get('RelationCount') is not None:
+            self.relation_count = m.get('RelationCount')
         return self
 
 
@@ -21592,9 +21598,11 @@ class GetMetaTableLineageRequest(TeaModel):
 class GetMetaTableLineageResponseBodyDataDataEntityList(TeaModel):
     def __init__(
         self,
+        create_timestamp: int = None,
         table_guid: str = None,
         table_name: str = None,
     ):
+        self.create_timestamp = create_timestamp
         self.table_guid = table_guid
         self.table_name = table_name
 
@@ -21607,6 +21615,8 @@ class GetMetaTableLineageResponseBodyDataDataEntityList(TeaModel):
             return _map
 
         result = dict()
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
         if self.table_guid is not None:
             result['TableGuid'] = self.table_guid
         if self.table_name is not None:
@@ -21615,6 +21625,8 @@ class GetMetaTableLineageResponseBodyDataDataEntityList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
         if m.get('TableGuid') is not None:
             self.table_guid = m.get('TableGuid')
         if m.get('TableName') is not None:
