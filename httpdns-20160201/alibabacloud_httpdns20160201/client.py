@@ -390,8 +390,8 @@ class Client(OpenApiClient):
         query = {}
         query['DomainName'] = request.domain_name
         query['Granularity'] = request.granularity
-        query['TimeSpan'] = request.time_span
         query['ProtocolName'] = request.protocol_name
+        query['TimeSpan'] = request.time_span
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -421,8 +421,8 @@ class Client(OpenApiClient):
         query = {}
         query['DomainName'] = request.domain_name
         query['Granularity'] = request.granularity
-        query['TimeSpan'] = request.time_span
         query['ProtocolName'] = request.protocol_name
+        query['TimeSpan'] = request.time_span
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)

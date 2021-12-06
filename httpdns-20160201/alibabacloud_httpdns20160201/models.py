@@ -40,11 +40,11 @@ class AddDomainRequest(TeaModel):
 class AddDomainResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         domain_name: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.domain_name = domain_name
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -55,18 +55,18 @@ class AddDomainResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -143,11 +143,11 @@ class DeleteDomainRequest(TeaModel):
 class DeleteDomainResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         domain_name: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.domain_name = domain_name
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -158,18 +158,18 @@ class DeleteDomainResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -315,16 +315,16 @@ class DescribeDomainsResponseBody(TeaModel):
     def __init__(
         self,
         domains: DescribeDomainsResponseBodyDomains = None,
-        total_count: int = None,
+        page_number: int = None,
         page_size: int = None,
         request_id: str = None,
-        page_number: int = None,
+        total_count: int = None,
     ):
         self.domains = domains
-        self.total_count = total_count
+        self.page_number = page_number
         self.page_size = page_size
         self.request_id = request_id
-        self.page_number = page_number
+        self.total_count = total_count
 
     def validate(self):
         if self.domains:
@@ -338,14 +338,14 @@ class DescribeDomainsResponseBody(TeaModel):
         result = dict()
         if self.domains is not None:
             result['Domains'] = self.domains.to_map()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -353,14 +353,14 @@ class DescribeDomainsResponseBody(TeaModel):
         if m.get('Domains') is not None:
             temp_model = DescribeDomainsResponseBodyDomains()
             self.domains = temp_model.from_map(m['Domains'])
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -404,23 +404,23 @@ class DescribeDomainsResponse(TeaModel):
 class GetAccountInfoResponseBodyAccountInfo(TeaModel):
     def __init__(
         self,
+        account_id: str = None,
+        month_free_count: int = None,
+        month_https_resolve_count: int = None,
+        month_resolve_count: int = None,
         sign_secret: str = None,
         signed_count: int = None,
-        month_resolve_count: int = None,
-        account_id: str = None,
-        unsigned_enabled: bool = None,
         unsigned_count: int = None,
-        month_https_resolve_count: int = None,
-        month_free_count: int = None,
+        unsigned_enabled: bool = None,
     ):
+        self.account_id = account_id
+        self.month_free_count = month_free_count
+        self.month_https_resolve_count = month_https_resolve_count
+        self.month_resolve_count = month_resolve_count
         self.sign_secret = sign_secret
         self.signed_count = signed_count
-        self.month_resolve_count = month_resolve_count
-        self.account_id = account_id
-        self.unsigned_enabled = unsigned_enabled
         self.unsigned_count = unsigned_count
-        self.month_https_resolve_count = month_https_resolve_count
-        self.month_free_count = month_free_count
+        self.unsigned_enabled = unsigned_enabled
 
     def validate(self):
         pass
@@ -431,53 +431,53 @@ class GetAccountInfoResponseBodyAccountInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.month_free_count is not None:
+            result['MonthFreeCount'] = self.month_free_count
+        if self.month_https_resolve_count is not None:
+            result['MonthHttpsResolveCount'] = self.month_https_resolve_count
+        if self.month_resolve_count is not None:
+            result['MonthResolveCount'] = self.month_resolve_count
         if self.sign_secret is not None:
             result['SignSecret'] = self.sign_secret
         if self.signed_count is not None:
             result['SignedCount'] = self.signed_count
-        if self.month_resolve_count is not None:
-            result['MonthResolveCount'] = self.month_resolve_count
-        if self.account_id is not None:
-            result['AccountId'] = self.account_id
-        if self.unsigned_enabled is not None:
-            result['UnsignedEnabled'] = self.unsigned_enabled
         if self.unsigned_count is not None:
             result['UnsignedCount'] = self.unsigned_count
-        if self.month_https_resolve_count is not None:
-            result['MonthHttpsResolveCount'] = self.month_https_resolve_count
-        if self.month_free_count is not None:
-            result['MonthFreeCount'] = self.month_free_count
+        if self.unsigned_enabled is not None:
+            result['UnsignedEnabled'] = self.unsigned_enabled
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('MonthFreeCount') is not None:
+            self.month_free_count = m.get('MonthFreeCount')
+        if m.get('MonthHttpsResolveCount') is not None:
+            self.month_https_resolve_count = m.get('MonthHttpsResolveCount')
+        if m.get('MonthResolveCount') is not None:
+            self.month_resolve_count = m.get('MonthResolveCount')
         if m.get('SignSecret') is not None:
             self.sign_secret = m.get('SignSecret')
         if m.get('SignedCount') is not None:
             self.signed_count = m.get('SignedCount')
-        if m.get('MonthResolveCount') is not None:
-            self.month_resolve_count = m.get('MonthResolveCount')
-        if m.get('AccountId') is not None:
-            self.account_id = m.get('AccountId')
-        if m.get('UnsignedEnabled') is not None:
-            self.unsigned_enabled = m.get('UnsignedEnabled')
         if m.get('UnsignedCount') is not None:
             self.unsigned_count = m.get('UnsignedCount')
-        if m.get('MonthHttpsResolveCount') is not None:
-            self.month_https_resolve_count = m.get('MonthHttpsResolveCount')
-        if m.get('MonthFreeCount') is not None:
-            self.month_free_count = m.get('MonthFreeCount')
+        if m.get('UnsignedEnabled') is not None:
+            self.unsigned_enabled = m.get('UnsignedEnabled')
         return self
 
 
 class GetAccountInfoResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         account_info: GetAccountInfoResponseBodyAccountInfo = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.account_info = account_info
+        self.request_id = request_id
 
     def validate(self):
         if self.account_info:
@@ -489,19 +489,19 @@ class GetAccountInfoResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.account_info is not None:
             result['AccountInfo'] = self.account_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('AccountInfo') is not None:
             temp_model = GetAccountInfoResponseBodyAccountInfo()
             self.account_info = temp_model.from_map(m['AccountInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -578,15 +578,15 @@ class GetResolveCountSummaryRequest(TeaModel):
 class GetResolveCountSummaryResponseBodyResolveSummary(TeaModel):
     def __init__(
         self,
+        http: int = None,
+        http_6: int = None,
         https: int = None,
         https_6: int = None,
-        http_6: int = None,
-        http: int = None,
     ):
+        self.http = http
+        self.http_6 = http_6
         self.https = https
         self.https_6 = https_6
-        self.http_6 = http_6
-        self.http = http
 
     def validate(self):
         pass
@@ -597,26 +597,26 @@ class GetResolveCountSummaryResponseBodyResolveSummary(TeaModel):
             return _map
 
         result = dict()
+        if self.http is not None:
+            result['Http'] = self.http
+        if self.http_6 is not None:
+            result['Http6'] = self.http_6
         if self.https is not None:
             result['Https'] = self.https
         if self.https_6 is not None:
             result['Https6'] = self.https_6
-        if self.http_6 is not None:
-            result['Http6'] = self.http_6
-        if self.http is not None:
-            result['Http'] = self.http
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Http') is not None:
+            self.http = m.get('Http')
+        if m.get('Http6') is not None:
+            self.http_6 = m.get('Http6')
         if m.get('Https') is not None:
             self.https = m.get('Https')
         if m.get('Https6') is not None:
             self.https_6 = m.get('Https6')
-        if m.get('Http6') is not None:
-            self.http_6 = m.get('Http6')
-        if m.get('Http') is not None:
-            self.http = m.get('Http')
         return self
 
 
@@ -697,13 +697,13 @@ class GetResolveStatisticsRequest(TeaModel):
         self,
         domain_name: str = None,
         granularity: str = None,
-        time_span: int = None,
         protocol_name: str = None,
+        time_span: int = None,
     ):
         self.domain_name = domain_name
         self.granularity = granularity
-        self.time_span = time_span
         self.protocol_name = protocol_name
+        self.time_span = time_span
 
     def validate(self):
         pass
@@ -718,10 +718,10 @@ class GetResolveStatisticsRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.granularity is not None:
             result['Granularity'] = self.granularity
-        if self.time_span is not None:
-            result['TimeSpan'] = self.time_span
         if self.protocol_name is not None:
             result['ProtocolName'] = self.protocol_name
+        if self.time_span is not None:
+            result['TimeSpan'] = self.time_span
         return result
 
     def from_map(self, m: dict = None):
@@ -730,21 +730,21 @@ class GetResolveStatisticsRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('Granularity') is not None:
             self.granularity = m.get('Granularity')
-        if m.get('TimeSpan') is not None:
-            self.time_span = m.get('TimeSpan')
         if m.get('ProtocolName') is not None:
             self.protocol_name = m.get('ProtocolName')
+        if m.get('TimeSpan') is not None:
+            self.time_span = m.get('TimeSpan')
         return self
 
 
 class GetResolveStatisticsResponseBodyDataPointsDataPoint(TeaModel):
     def __init__(
         self,
-        time: int = None,
         count: int = None,
+        time: int = None,
     ):
-        self.time = time
         self.count = count
+        self.time = time
 
     def validate(self):
         pass
@@ -755,18 +755,18 @@ class GetResolveStatisticsResponseBodyDataPointsDataPoint(TeaModel):
             return _map
 
         result = dict()
-        if self.time is not None:
-            result['Time'] = self.time
         if self.count is not None:
             result['Count'] = self.count
+        if self.time is not None:
+            result['Time'] = self.time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Time') is not None:
-            self.time = m.get('Time')
         if m.get('Count') is not None:
             self.count = m.get('Count')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
         return self
 
 
@@ -808,11 +808,11 @@ class GetResolveStatisticsResponseBodyDataPoints(TeaModel):
 class GetResolveStatisticsResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data_points: GetResolveStatisticsResponseBodyDataPoints = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data_points = data_points
+        self.request_id = request_id
 
     def validate(self):
         if self.data_points:
@@ -824,19 +824,19 @@ class GetResolveStatisticsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data_points is not None:
             result['DataPoints'] = self.data_points.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('DataPoints') is not None:
             temp_model = GetResolveStatisticsResponseBodyDataPoints()
             self.data_points = temp_model.from_map(m['DataPoints'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -913,17 +913,17 @@ class ListDomainsRequest(TeaModel):
 class ListDomainsResponseBodyDomainInfosDomainInfo(TeaModel):
     def __init__(
         self,
-        resolved_https_6: int = None,
+        domain_name: str = None,
         resolved: int = None,
         resolved_6: int = None,
-        domain_name: str = None,
         resolved_https: int = None,
+        resolved_https_6: int = None,
     ):
-        self.resolved_https_6 = resolved_https_6
+        self.domain_name = domain_name
         self.resolved = resolved
         self.resolved_6 = resolved_6
-        self.domain_name = domain_name
         self.resolved_https = resolved_https
+        self.resolved_https_6 = resolved_https_6
 
     def validate(self):
         pass
@@ -934,30 +934,30 @@ class ListDomainsResponseBodyDomainInfosDomainInfo(TeaModel):
             return _map
 
         result = dict()
-        if self.resolved_https_6 is not None:
-            result['ResolvedHttps6'] = self.resolved_https_6
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
         if self.resolved is not None:
             result['Resolved'] = self.resolved
         if self.resolved_6 is not None:
             result['Resolved6'] = self.resolved_6
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
         if self.resolved_https is not None:
             result['ResolvedHttps'] = self.resolved_https
+        if self.resolved_https_6 is not None:
+            result['ResolvedHttps6'] = self.resolved_https_6
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ResolvedHttps6') is not None:
-            self.resolved_https_6 = m.get('ResolvedHttps6')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
         if m.get('Resolved') is not None:
             self.resolved = m.get('Resolved')
         if m.get('Resolved6') is not None:
             self.resolved_6 = m.get('Resolved6')
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
         if m.get('ResolvedHttps') is not None:
             self.resolved_https = m.get('ResolvedHttps')
+        if m.get('ResolvedHttps6') is not None:
+            self.resolved_https_6 = m.get('ResolvedHttps6')
         return self
 
 
@@ -999,17 +999,17 @@ class ListDomainsResponseBodyDomainInfos(TeaModel):
 class ListDomainsResponseBody(TeaModel):
     def __init__(
         self,
-        total_count: int = None,
+        domain_infos: ListDomainsResponseBodyDomainInfos = None,
+        page_number: int = None,
         page_size: int = None,
         request_id: str = None,
-        page_number: int = None,
-        domain_infos: ListDomainsResponseBodyDomainInfos = None,
+        total_count: int = None,
     ):
-        self.total_count = total_count
+        self.domain_infos = domain_infos
+        self.page_number = page_number
         self.page_size = page_size
         self.request_id = request_id
-        self.page_number = page_number
-        self.domain_infos = domain_infos
+        self.total_count = total_count
 
     def validate(self):
         if self.domain_infos:
@@ -1021,31 +1021,31 @@ class ListDomainsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
+        if self.domain_infos is not None:
+            result['DomainInfos'] = self.domain_infos.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.domain_infos is not None:
-            result['DomainInfos'] = self.domain_infos.to_map()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
+        if m.get('DomainInfos') is not None:
+            temp_model = ListDomainsResponseBodyDomainInfos()
+            self.domain_infos = temp_model.from_map(m['DomainInfos'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('DomainInfos') is not None:
-            temp_model = ListDomainsResponseBodyDomainInfos()
-            self.domain_infos = temp_model.from_map(m['DomainInfos'])
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
