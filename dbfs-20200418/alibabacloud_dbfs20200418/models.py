@@ -2668,6 +2668,300 @@ class ListDbfsResponse(TeaModel):
         return self
 
 
+class ListDbfsAttachableEcsInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo(TeaModel):
+    def __init__(
+        self,
+        label: str = None,
+        value: str = None,
+    ):
+        self.label = label
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.label is not None:
+            result['label'] = self.label
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('label') is not None:
+            self.label = m.get('label')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ListDbfsAttachableEcsInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        ecs_label_info: List[ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo] = None,
+        request_id: str = None,
+    ):
+        self.ecs_label_info = ecs_label_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.ecs_label_info:
+            for k in self.ecs_label_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['EcsLabelInfo'] = []
+        if self.ecs_label_info is not None:
+            for k in self.ecs_label_info:
+                result['EcsLabelInfo'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ecs_label_info = []
+        if m.get('EcsLabelInfo') is not None:
+            for k in m.get('EcsLabelInfo'):
+                temp_model = ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo()
+                self.ecs_label_info.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDbfsAttachableEcsInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListDbfsAttachableEcsInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListDbfsAttachableEcsInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDbfsAttachedEcsInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        fs_id: str = None,
+        region_id: str = None,
+    ):
+        self.fs_id = fs_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fs_id is not None:
+            result['FsId'] = self.fs_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FsId') is not None:
+            self.fs_id = m.get('FsId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo(TeaModel):
+    def __init__(
+        self,
+        mount_point: str = None,
+        mounted_time: str = None,
+        label: str = None,
+        value: str = None,
+    ):
+        self.mount_point = mount_point
+        self.mounted_time = mounted_time
+        self.label = label
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mount_point is not None:
+            result['MountPoint'] = self.mount_point
+        if self.mounted_time is not None:
+            result['MountedTime'] = self.mounted_time
+        if self.label is not None:
+            result['label'] = self.label
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MountPoint') is not None:
+            self.mount_point = m.get('MountPoint')
+        if m.get('MountedTime') is not None:
+            self.mounted_time = m.get('MountedTime')
+        if m.get('label') is not None:
+            self.label = m.get('label')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ListDbfsAttachedEcsInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        ecs_label_info: List[ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo] = None,
+        request_id: str = None,
+    ):
+        self.ecs_label_info = ecs_label_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.ecs_label_info:
+            for k in self.ecs_label_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['EcsLabelInfo'] = []
+        if self.ecs_label_info is not None:
+            for k in self.ecs_label_info:
+                result['EcsLabelInfo'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ecs_label_info = []
+        if m.get('EcsLabelInfo') is not None:
+            for k in m.get('EcsLabelInfo'):
+                temp_model = ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo()
+                self.ecs_label_info.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDbfsAttachedEcsInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListDbfsAttachedEcsInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListDbfsAttachedEcsInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListSnapshotRequest(TeaModel):
     def __init__(
         self,

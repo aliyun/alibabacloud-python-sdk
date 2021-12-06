@@ -793,6 +793,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_dbfs_with_options_async(request, runtime)
 
+    def list_dbfs_attachable_ecs_instances_with_options(
+        self,
+        request: dbfs20200418_models.ListDbfsAttachableEcsInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dbfs20200418_models.ListDbfsAttachableEcsInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dbfs20200418_models.ListDbfsAttachableEcsInstancesResponse(),
+            self.do_rpcrequest('ListDbfsAttachableEcsInstances', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_dbfs_attachable_ecs_instances_with_options_async(
+        self,
+        request: dbfs20200418_models.ListDbfsAttachableEcsInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dbfs20200418_models.ListDbfsAttachableEcsInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dbfs20200418_models.ListDbfsAttachableEcsInstancesResponse(),
+            await self.do_rpcrequest_async('ListDbfsAttachableEcsInstances', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_dbfs_attachable_ecs_instances(
+        self,
+        request: dbfs20200418_models.ListDbfsAttachableEcsInstancesRequest,
+    ) -> dbfs20200418_models.ListDbfsAttachableEcsInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_dbfs_attachable_ecs_instances_with_options(request, runtime)
+
+    async def list_dbfs_attachable_ecs_instances_async(
+        self,
+        request: dbfs20200418_models.ListDbfsAttachableEcsInstancesRequest,
+    ) -> dbfs20200418_models.ListDbfsAttachableEcsInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_dbfs_attachable_ecs_instances_with_options_async(request, runtime)
+
+    def list_dbfs_attached_ecs_instances_with_options(
+        self,
+        request: dbfs20200418_models.ListDbfsAttachedEcsInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dbfs20200418_models.ListDbfsAttachedEcsInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dbfs20200418_models.ListDbfsAttachedEcsInstancesResponse(),
+            self.do_rpcrequest('ListDbfsAttachedEcsInstances', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    async def list_dbfs_attached_ecs_instances_with_options_async(
+        self,
+        request: dbfs20200418_models.ListDbfsAttachedEcsInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dbfs20200418_models.ListDbfsAttachedEcsInstancesResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=UtilClient.to_map(request)
+        )
+        return TeaCore.from_map(
+            dbfs20200418_models.ListDbfsAttachedEcsInstancesResponse(),
+            await self.do_rpcrequest_async('ListDbfsAttachedEcsInstances', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        )
+
+    def list_dbfs_attached_ecs_instances(
+        self,
+        request: dbfs20200418_models.ListDbfsAttachedEcsInstancesRequest,
+    ) -> dbfs20200418_models.ListDbfsAttachedEcsInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_dbfs_attached_ecs_instances_with_options(request, runtime)
+
+    async def list_dbfs_attached_ecs_instances_async(
+        self,
+        request: dbfs20200418_models.ListDbfsAttachedEcsInstancesRequest,
+    ) -> dbfs20200418_models.ListDbfsAttachedEcsInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_dbfs_attached_ecs_instances_with_options_async(request, runtime)
+
     def list_snapshot_with_options(
         self,
         request: dbfs20200418_models.ListSnapshotRequest,
