@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_das20200116 import models as das20200116_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -49,12 +50,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.AddHDMInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Engine'] = request.engine
+        query['FlushAccount'] = request.flush_account
+        query['InstanceAlias'] = request.instance_alias
+        query['InstanceArea'] = request.instance_area
+        query['InstanceId'] = request.instance_id
+        query['Ip'] = request.ip
+        query['NetworkType'] = request.network_type
+        query['Password'] = request.password
+        query['Port'] = request.port
+        query['Region'] = request.region
+        query['Username'] = request.username
+        query['VpcId'] = request.vpc_id
+        query['__context'] = request.context
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddHDMInstance',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.AddHDMInstanceResponse(),
-            self.do_rpcrequest('AddHDMInstance', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_hdminstance_with_options_async(
@@ -63,12 +90,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.AddHDMInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Engine'] = request.engine
+        query['FlushAccount'] = request.flush_account
+        query['InstanceAlias'] = request.instance_alias
+        query['InstanceArea'] = request.instance_area
+        query['InstanceId'] = request.instance_id
+        query['Ip'] = request.ip
+        query['NetworkType'] = request.network_type
+        query['Password'] = request.password
+        query['Port'] = request.port
+        query['Region'] = request.region
+        query['Username'] = request.username
+        query['VpcId'] = request.vpc_id
+        query['__context'] = request.context
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddHDMInstance',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.AddHDMInstanceResponse(),
-            await self.do_rpcrequest_async('AddHDMInstance', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_hdminstance(
@@ -91,12 +144,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.CreateAdamBenchTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Description'] = request.description
+        query['DstInstanceId'] = request.dst_instance_id
+        query['DstSuperAccount'] = request.dst_super_account
+        query['DstSuperPassword'] = request.dst_super_password
+        query['Rate'] = request.rate
+        query['RequestDuration'] = request.request_duration
+        query['RequestStartTime'] = request.request_start_time
+        query['SrcEngine'] = request.src_engine
+        query['SrcEngineVersion'] = request.src_engine_version
+        query['SrcMaxQps'] = request.src_max_qps
+        query['SrcMeanQps'] = request.src_mean_qps
+        query['SrcSqlOssAddr'] = request.src_sql_oss_addr
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateAdamBenchTask',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.CreateAdamBenchTaskResponse(),
-            self.do_rpcrequest('CreateAdamBenchTask', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_adam_bench_task_with_options_async(
@@ -105,12 +183,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.CreateAdamBenchTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Description'] = request.description
+        query['DstInstanceId'] = request.dst_instance_id
+        query['DstSuperAccount'] = request.dst_super_account
+        query['DstSuperPassword'] = request.dst_super_password
+        query['Rate'] = request.rate
+        query['RequestDuration'] = request.request_duration
+        query['RequestStartTime'] = request.request_start_time
+        query['SrcEngine'] = request.src_engine
+        query['SrcEngineVersion'] = request.src_engine_version
+        query['SrcMaxQps'] = request.src_max_qps
+        query['SrcMeanQps'] = request.src_mean_qps
+        query['SrcSqlOssAddr'] = request.src_sql_oss_addr
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateAdamBenchTask',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.CreateAdamBenchTaskResponse(),
-            await self.do_rpcrequest_async('CreateAdamBenchTask', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_adam_bench_task(
@@ -133,12 +236,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.CreateCacheAnalysisJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BackupSetId'] = request.backup_set_id
+        query['InstanceId'] = request.instance_id
+        query['NodeId'] = request.node_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCacheAnalysisJob',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.CreateCacheAnalysisJobResponse(),
-            self.do_rpcrequest('CreateCacheAnalysisJob', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_cache_analysis_job_with_options_async(
@@ -147,12 +266,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.CreateCacheAnalysisJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BackupSetId'] = request.backup_set_id
+        query['InstanceId'] = request.instance_id
+        query['NodeId'] = request.node_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCacheAnalysisJob',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.CreateCacheAnalysisJobResponse(),
-            await self.do_rpcrequest_async('CreateCacheAnalysisJob', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_cache_analysis_job(
@@ -175,12 +310,52 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.CreateCloudBenchTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Amount'] = request.amount
+        query['BackupId'] = request.backup_id
+        query['BackupTime'] = request.backup_time
+        query['ClientType'] = request.client_type
+        query['Description'] = request.description
+        query['DstConnectionString'] = request.dst_connection_string
+        query['DstInstanceId'] = request.dst_instance_id
+        query['DstPort'] = request.dst_port
+        query['DstSuperAccount'] = request.dst_super_account
+        query['DstSuperPassword'] = request.dst_super_password
+        query['DstType'] = request.dst_type
+        query['DtsJobClass'] = request.dts_job_class
+        query['DtsJobId'] = request.dts_job_id
+        query['EndState'] = request.end_state
+        query['GatewayVpcId'] = request.gateway_vpc_id
+        query['GatewayVpcIp'] = request.gateway_vpc_ip
+        query['Rate'] = request.rate
+        query['RequestDuration'] = request.request_duration
+        query['RequestEndTime'] = request.request_end_time
+        query['RequestStartTime'] = request.request_start_time
+        query['SmartPressureTime'] = request.smart_pressure_time
+        query['SrcInstanceId'] = request.src_instance_id
+        query['SrcPublicIp'] = request.src_public_ip
+        query['SrcSuperAccount'] = request.src_super_account
+        query['SrcSuperPassword'] = request.src_super_password
+        query['TaskType'] = request.task_type
+        query['WorkDir'] = request.work_dir
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCloudBenchTasks',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.CreateCloudBenchTasksResponse(),
-            self.do_rpcrequest('CreateCloudBenchTasks', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_cloud_bench_tasks_with_options_async(
@@ -189,12 +364,52 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.CreateCloudBenchTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Amount'] = request.amount
+        query['BackupId'] = request.backup_id
+        query['BackupTime'] = request.backup_time
+        query['ClientType'] = request.client_type
+        query['Description'] = request.description
+        query['DstConnectionString'] = request.dst_connection_string
+        query['DstInstanceId'] = request.dst_instance_id
+        query['DstPort'] = request.dst_port
+        query['DstSuperAccount'] = request.dst_super_account
+        query['DstSuperPassword'] = request.dst_super_password
+        query['DstType'] = request.dst_type
+        query['DtsJobClass'] = request.dts_job_class
+        query['DtsJobId'] = request.dts_job_id
+        query['EndState'] = request.end_state
+        query['GatewayVpcId'] = request.gateway_vpc_id
+        query['GatewayVpcIp'] = request.gateway_vpc_ip
+        query['Rate'] = request.rate
+        query['RequestDuration'] = request.request_duration
+        query['RequestEndTime'] = request.request_end_time
+        query['RequestStartTime'] = request.request_start_time
+        query['SmartPressureTime'] = request.smart_pressure_time
+        query['SrcInstanceId'] = request.src_instance_id
+        query['SrcPublicIp'] = request.src_public_ip
+        query['SrcSuperAccount'] = request.src_super_account
+        query['SrcSuperPassword'] = request.src_super_password
+        query['TaskType'] = request.task_type
+        query['WorkDir'] = request.work_dir
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCloudBenchTasks',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.CreateCloudBenchTasksResponse(),
-            await self.do_rpcrequest_async('CreateCloudBenchTasks', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_cloud_bench_tasks(
@@ -217,12 +432,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.CreateDiagnosticReportResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DBInstanceId'] = request.dbinstance_id
+        query['EndTime'] = request.end_time
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateDiagnosticReport',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.CreateDiagnosticReportResponse(),
-            self.do_rpcrequest('CreateDiagnosticReport', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_diagnostic_report_with_options_async(
@@ -231,12 +462,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.CreateDiagnosticReportResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DBInstanceId'] = request.dbinstance_id
+        query['EndTime'] = request.end_time
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateDiagnosticReport',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.CreateDiagnosticReportResponse(),
-            await self.do_rpcrequest_async('CreateDiagnosticReport', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_diagnostic_report(
@@ -259,12 +506,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.CreateRequestDiagnosisResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Database'] = request.database
+        query['InstanceId'] = request.instance_id
+        query['NodeId'] = request.node_id
+        query['Sql'] = request.sql
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRequestDiagnosis',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.CreateRequestDiagnosisResponse(),
-            self.do_rpcrequest('CreateRequestDiagnosis', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_request_diagnosis_with_options_async(
@@ -273,12 +537,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.CreateRequestDiagnosisResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Database'] = request.database
+        query['InstanceId'] = request.instance_id
+        query['NodeId'] = request.node_id
+        query['Sql'] = request.sql
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateRequestDiagnosis',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.CreateRequestDiagnosisResponse(),
-            await self.do_rpcrequest_async('CreateRequestDiagnosis', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_request_diagnosis(
@@ -301,12 +582,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeCacheAnalysisJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCacheAnalysisJob',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeCacheAnalysisJobResponse(),
-            self.do_rpcrequest('DescribeCacheAnalysisJob', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cache_analysis_job_with_options_async(
@@ -315,12 +611,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeCacheAnalysisJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCacheAnalysisJob',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeCacheAnalysisJobResponse(),
-            await self.do_rpcrequest_async('DescribeCacheAnalysisJob', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cache_analysis_job(
@@ -343,12 +654,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeCacheAnalysisJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCacheAnalysisJobs',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeCacheAnalysisJobsResponse(),
-            self.do_rpcrequest('DescribeCacheAnalysisJobs', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cache_analysis_jobs_with_options_async(
@@ -357,12 +686,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeCacheAnalysisJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCacheAnalysisJobs',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeCacheAnalysisJobsResponse(),
-            await self.do_rpcrequest_async('DescribeCacheAnalysisJobs', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cache_analysis_jobs(
@@ -385,12 +732,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeCloudBenchTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
+        query['Status'] = request.status
+        query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudBenchTasks',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeCloudBenchTasksResponse(),
-            self.do_rpcrequest('DescribeCloudBenchTasks', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cloud_bench_tasks_with_options_async(
@@ -399,12 +765,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeCloudBenchTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
+        query['Status'] = request.status
+        query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudBenchTasks',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeCloudBenchTasksResponse(),
-            await self.do_rpcrequest_async('DescribeCloudBenchTasks', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cloud_bench_tasks(
@@ -427,12 +812,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeCloudbenchTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudbenchTask',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeCloudbenchTaskResponse(),
-            self.do_rpcrequest('DescribeCloudbenchTask', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cloudbench_task_with_options_async(
@@ -441,12 +840,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeCloudbenchTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudbenchTask',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeCloudbenchTaskResponse(),
-            await self.do_rpcrequest_async('DescribeCloudbenchTask', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cloudbench_task(
@@ -469,12 +882,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeCloudbenchTaskConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudbenchTaskConfig',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeCloudbenchTaskConfigResponse(),
-            self.do_rpcrequest('DescribeCloudbenchTaskConfig', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cloudbench_task_config_with_options_async(
@@ -483,12 +910,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeCloudbenchTaskConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudbenchTaskConfig',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeCloudbenchTaskConfigResponse(),
-            await self.do_rpcrequest_async('DescribeCloudbenchTaskConfig', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cloudbench_task_config(
@@ -511,12 +952,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeDiagnosticReportListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DBInstanceId'] = request.dbinstance_id
+        query['EndTime'] = request.end_time
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnosticReportList',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeDiagnosticReportListResponse(),
-            self.do_rpcrequest('DescribeDiagnosticReportList', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_diagnostic_report_list_with_options_async(
@@ -525,12 +984,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeDiagnosticReportListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DBInstanceId'] = request.dbinstance_id
+        query['EndTime'] = request.end_time
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnosticReportList',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeDiagnosticReportListResponse(),
-            await self.do_rpcrequest_async('DescribeDiagnosticReportList', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_diagnostic_report_list(
@@ -553,12 +1030,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeHotBigKeysResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConsoleContext'] = request.console_context
+        query['InstanceId'] = request.instance_id
+        query['NodeId'] = request.node_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeHotBigKeys',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeHotBigKeysResponse(),
-            self.do_rpcrequest('DescribeHotBigKeys', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_hot_big_keys_with_options_async(
@@ -567,12 +1060,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeHotBigKeysResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConsoleContext'] = request.console_context
+        query['InstanceId'] = request.instance_id
+        query['NodeId'] = request.node_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeHotBigKeys',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeHotBigKeysResponse(),
-            await self.do_rpcrequest_async('DescribeHotBigKeys', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_hot_big_keys(
@@ -595,12 +1104,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeHotKeysResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['NodeId'] = request.node_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeHotKeys',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeHotKeysResponse(),
-            self.do_rpcrequest('DescribeHotKeys', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_hot_keys_with_options_async(
@@ -609,12 +1133,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeHotKeysResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['NodeId'] = request.node_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeHotKeys',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeHotKeysResponse(),
-            await self.do_rpcrequest_async('DescribeHotKeys', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_hot_keys(
@@ -637,12 +1176,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeTopBigKeysResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConsoleContext'] = request.console_context
+        query['EndTime'] = request.end_time
+        query['InstanceId'] = request.instance_id
+        query['NodeId'] = request.node_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeTopBigKeys',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeTopBigKeysResponse(),
-            self.do_rpcrequest('DescribeTopBigKeys', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_top_big_keys_with_options_async(
@@ -651,12 +1208,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeTopBigKeysResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConsoleContext'] = request.console_context
+        query['EndTime'] = request.end_time
+        query['InstanceId'] = request.instance_id
+        query['NodeId'] = request.node_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeTopBigKeys',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeTopBigKeysResponse(),
-            await self.do_rpcrequest_async('DescribeTopBigKeys', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_top_big_keys(
@@ -679,12 +1254,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeTopHotKeysResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConsoleContext'] = request.console_context
+        query['EndTime'] = request.end_time
+        query['InstanceId'] = request.instance_id
+        query['NodeId'] = request.node_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeTopHotKeys',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeTopHotKeysResponse(),
-            self.do_rpcrequest('DescribeTopHotKeys', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_top_hot_keys_with_options_async(
@@ -693,12 +1286,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeTopHotKeysResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConsoleContext'] = request.console_context
+        query['EndTime'] = request.end_time
+        query['InstanceId'] = request.instance_id
+        query['NodeId'] = request.node_id
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeTopHotKeys',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DescribeTopHotKeysResponse(),
-            await self.do_rpcrequest_async('DescribeTopHotKeys', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_top_hot_keys(
@@ -721,12 +1332,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DisableAllSqlConcurrencyControlRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConsoleContext'] = request.console_context
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DisableAllSqlConcurrencyControlRules',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DisableAllSqlConcurrencyControlRulesResponse(),
-            self.do_rpcrequest('DisableAllSqlConcurrencyControlRules', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def disable_all_sql_concurrency_control_rules_with_options_async(
@@ -735,12 +1361,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DisableAllSqlConcurrencyControlRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConsoleContext'] = request.console_context
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DisableAllSqlConcurrencyControlRules',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DisableAllSqlConcurrencyControlRulesResponse(),
-            await self.do_rpcrequest_async('DisableAllSqlConcurrencyControlRules', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def disable_all_sql_concurrency_control_rules(
@@ -763,12 +1404,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DisableSqlConcurrencyControlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConsoleContext'] = request.console_context
+        query['InstanceId'] = request.instance_id
+        query['ItemId'] = request.item_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DisableSqlConcurrencyControl',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DisableSqlConcurrencyControlResponse(),
-            self.do_rpcrequest('DisableSqlConcurrencyControl', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def disable_sql_concurrency_control_with_options_async(
@@ -777,12 +1434,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DisableSqlConcurrencyControlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConsoleContext'] = request.console_context
+        query['InstanceId'] = request.instance_id
+        query['ItemId'] = request.item_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DisableSqlConcurrencyControl',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.DisableSqlConcurrencyControlResponse(),
-            await self.do_rpcrequest_async('DisableSqlConcurrencyControl', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def disable_sql_concurrency_control(
@@ -805,12 +1478,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.EnableSqlConcurrencyControlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConcurrencyControlTime'] = request.concurrency_control_time
+        query['ConsoleContext'] = request.console_context
+        query['InstanceId'] = request.instance_id
+        query['MaxConcurrency'] = request.max_concurrency
+        query['SqlKeywords'] = request.sql_keywords
+        query['SqlType'] = request.sql_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='EnableSqlConcurrencyControl',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.EnableSqlConcurrencyControlResponse(),
-            self.do_rpcrequest('EnableSqlConcurrencyControl', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def enable_sql_concurrency_control_with_options_async(
@@ -819,12 +1511,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.EnableSqlConcurrencyControlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConcurrencyControlTime'] = request.concurrency_control_time
+        query['ConsoleContext'] = request.console_context
+        query['InstanceId'] = request.instance_id
+        query['MaxConcurrency'] = request.max_concurrency
+        query['SqlKeywords'] = request.sql_keywords
+        query['SqlType'] = request.sql_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='EnableSqlConcurrencyControl',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.EnableSqlConcurrencyControlResponse(),
-            await self.do_rpcrequest_async('EnableSqlConcurrencyControl', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def enable_sql_concurrency_control(
@@ -847,12 +1558,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetAutoResourceOptimizeConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessKey'] = request.access_key
+        query['InstanceId'] = request.instance_id
+        query['Signature'] = request.signature
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
+        query['__context'] = request.context
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAutoResourceOptimizeConfig',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetAutoResourceOptimizeConfigResponse(),
-            self.do_rpcrequest('GetAutoResourceOptimizeConfig', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_auto_resource_optimize_config_with_options_async(
@@ -861,12 +1591,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetAutoResourceOptimizeConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessKey'] = request.access_key
+        query['InstanceId'] = request.instance_id
+        query['Signature'] = request.signature
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
+        query['__context'] = request.context
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAutoResourceOptimizeConfig',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetAutoResourceOptimizeConfigResponse(),
-            await self.do_rpcrequest_async('GetAutoResourceOptimizeConfig', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_auto_resource_optimize_config(
@@ -889,12 +1638,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetAutonomousNotifyEventContentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['SpanId'] = request.span_id
+        query['__context'] = request.context
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAutonomousNotifyEventContent',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetAutonomousNotifyEventContentResponse(),
-            self.do_rpcrequest('GetAutonomousNotifyEventContent', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_autonomous_notify_event_content_with_options_async(
@@ -903,12 +1668,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetAutonomousNotifyEventContentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['SpanId'] = request.span_id
+        query['__context'] = request.context
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAutonomousNotifyEventContent',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetAutonomousNotifyEventContentResponse(),
-            await self.do_rpcrequest_async('GetAutonomousNotifyEventContent', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_autonomous_notify_event_content(
@@ -925,102 +1706,41 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_autonomous_notify_event_content_with_options_async(request, runtime)
 
-    def get_autonomous_notify_event_detail_with_options(
-        self,
-        request: das20200116_models.GetAutonomousNotifyEventDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.GetAutonomousNotifyEventDetailResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            das20200116_models.GetAutonomousNotifyEventDetailResponse(),
-            self.do_rpcrequest('GetAutonomousNotifyEventDetail', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_autonomous_notify_event_detail_with_options_async(
-        self,
-        request: das20200116_models.GetAutonomousNotifyEventDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.GetAutonomousNotifyEventDetailResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            das20200116_models.GetAutonomousNotifyEventDetailResponse(),
-            await self.do_rpcrequest_async('GetAutonomousNotifyEventDetail', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_autonomous_notify_event_detail(
-        self,
-        request: das20200116_models.GetAutonomousNotifyEventDetailRequest,
-    ) -> das20200116_models.GetAutonomousNotifyEventDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_autonomous_notify_event_detail_with_options(request, runtime)
-
-    async def get_autonomous_notify_event_detail_async(
-        self,
-        request: das20200116_models.GetAutonomousNotifyEventDetailRequest,
-    ) -> das20200116_models.GetAutonomousNotifyEventDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_autonomous_notify_event_detail_with_options_async(request, runtime)
-
-    def get_autonomous_notify_events_with_options(
-        self,
-        request: das20200116_models.GetAutonomousNotifyEventsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.GetAutonomousNotifyEventsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            das20200116_models.GetAutonomousNotifyEventsResponse(),
-            self.do_rpcrequest('GetAutonomousNotifyEvents', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_autonomous_notify_events_with_options_async(
-        self,
-        request: das20200116_models.GetAutonomousNotifyEventsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.GetAutonomousNotifyEventsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            das20200116_models.GetAutonomousNotifyEventsResponse(),
-            await self.do_rpcrequest_async('GetAutonomousNotifyEvents', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_autonomous_notify_events(
-        self,
-        request: das20200116_models.GetAutonomousNotifyEventsRequest,
-    ) -> das20200116_models.GetAutonomousNotifyEventsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_autonomous_notify_events_with_options(request, runtime)
-
-    async def get_autonomous_notify_events_async(
-        self,
-        request: das20200116_models.GetAutonomousNotifyEventsRequest,
-    ) -> das20200116_models.GetAutonomousNotifyEventsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_autonomous_notify_events_with_options_async(request, runtime)
-
     def get_autonomous_notify_events_in_range_with_options(
         self,
         request: das20200116_models.GetAutonomousNotifyEventsInRangeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetAutonomousNotifyEventsInRangeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['EventContext'] = request.event_context
+        query['InstanceId'] = request.instance_id
+        query['Level'] = request.level
+        query['MinLevel'] = request.min_level
+        query['NodeId'] = request.node_id
+        query['PageOffset'] = request.page_offset
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
+        query['__context'] = request.context
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAutonomousNotifyEventsInRange',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetAutonomousNotifyEventsInRangeResponse(),
-            self.do_rpcrequest('GetAutonomousNotifyEventsInRange', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_autonomous_notify_events_in_range_with_options_async(
@@ -1029,12 +1749,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetAutonomousNotifyEventsInRangeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['EventContext'] = request.event_context
+        query['InstanceId'] = request.instance_id
+        query['Level'] = request.level
+        query['MinLevel'] = request.min_level
+        query['NodeId'] = request.node_id
+        query['PageOffset'] = request.page_offset
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
+        query['__context'] = request.context
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetAutonomousNotifyEventsInRange',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetAutonomousNotifyEventsInRangeResponse(),
-            await self.do_rpcrequest_async('GetAutonomousNotifyEventsInRange', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_autonomous_notify_events_in_range(
@@ -1057,12 +1800,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetEndpointSwitchTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
+        query['__context'] = request.context
+        query['accessKey'] = request.access_key
+        query['signature'] = request.signature
+        query['skipAuth'] = request.skip_auth
+        query['timestamp'] = request.timestamp
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetEndpointSwitchTask',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetEndpointSwitchTaskResponse(),
-            self.do_rpcrequest('GetEndpointSwitchTask', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_endpoint_switch_task_with_options_async(
@@ -1071,12 +1835,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetEndpointSwitchTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
+        query['__context'] = request.context
+        query['accessKey'] = request.access_key
+        query['signature'] = request.signature
+        query['skipAuth'] = request.skip_auth
+        query['timestamp'] = request.timestamp
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetEndpointSwitchTask',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetEndpointSwitchTaskResponse(),
-            await self.do_rpcrequest_async('GetEndpointSwitchTask', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_endpoint_switch_task(
@@ -1093,60 +1878,39 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_endpoint_switch_task_with_options_async(request, runtime)
 
-    def get_event_overview_with_options(
-        self,
-        request: das20200116_models.GetEventOverviewRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.GetEventOverviewResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            das20200116_models.GetEventOverviewResponse(),
-            self.do_rpcrequest('GetEventOverview', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_event_overview_with_options_async(
-        self,
-        request: das20200116_models.GetEventOverviewRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> das20200116_models.GetEventOverviewResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            das20200116_models.GetEventOverviewResponse(),
-            await self.do_rpcrequest_async('GetEventOverview', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_event_overview(
-        self,
-        request: das20200116_models.GetEventOverviewRequest,
-    ) -> das20200116_models.GetEventOverviewResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_event_overview_with_options(request, runtime)
-
-    async def get_event_overview_async(
-        self,
-        request: das20200116_models.GetEventOverviewRequest,
-    ) -> das20200116_models.GetEventOverviewResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_event_overview_with_options_async(request, runtime)
-
     def get_hdmaliyun_resource_sync_result_with_options(
         self,
         request: das20200116_models.GetHDMAliyunResourceSyncResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetHDMAliyunResourceSyncResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
+        query['__context'] = request.context
+        query['accessKey'] = request.access_key
+        query['signature'] = request.signature
+        query['skipAuth'] = request.skip_auth
+        query['timestamp'] = request.timestamp
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetHDMAliyunResourceSyncResult',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetHDMAliyunResourceSyncResultResponse(),
-            self.do_rpcrequest('GetHDMAliyunResourceSyncResult', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_hdmaliyun_resource_sync_result_with_options_async(
@@ -1155,12 +1919,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetHDMAliyunResourceSyncResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
+        query['__context'] = request.context
+        query['accessKey'] = request.access_key
+        query['signature'] = request.signature
+        query['skipAuth'] = request.skip_auth
+        query['timestamp'] = request.timestamp
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetHDMAliyunResourceSyncResult',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetHDMAliyunResourceSyncResultResponse(),
-            await self.do_rpcrequest_async('GetHDMAliyunResourceSyncResult', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_hdmaliyun_resource_sync_result(
@@ -1183,12 +1968,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetHDMLastAliyunResourceSyncResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
+        query['__context'] = request.context
+        query['accessKey'] = request.access_key
+        query['signature'] = request.signature
+        query['skipAuth'] = request.skip_auth
+        query['timestamp'] = request.timestamp
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetHDMLastAliyunResourceSyncResult',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetHDMLastAliyunResourceSyncResultResponse(),
-            self.do_rpcrequest('GetHDMLastAliyunResourceSyncResult', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_hdmlast_aliyun_resource_sync_result_with_options_async(
@@ -1197,12 +2002,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetHDMLastAliyunResourceSyncResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
+        query['__context'] = request.context
+        query['accessKey'] = request.access_key
+        query['signature'] = request.signature
+        query['skipAuth'] = request.skip_auth
+        query['timestamp'] = request.timestamp
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetHDMLastAliyunResourceSyncResult',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetHDMLastAliyunResourceSyncResultResponse(),
-            await self.do_rpcrequest_async('GetHDMLastAliyunResourceSyncResult', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_hdmlast_aliyun_resource_sync_result(
@@ -1225,12 +2050,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetInstanceInspectionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['Engine'] = request.engine
+        query['InstanceArea'] = request.instance_area
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['SearchMap'] = request.search_map
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceInspections',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetInstanceInspectionsResponse(),
-            self.do_rpcrequest('GetInstanceInspections', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_instance_inspections_with_options_async(
@@ -1239,12 +2084,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetInstanceInspectionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['Engine'] = request.engine
+        query['InstanceArea'] = request.instance_area
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['SearchMap'] = request.search_map
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceInspections',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetInstanceInspectionsResponse(),
-            await self.do_rpcrequest_async('GetInstanceInspections', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_instance_inspections(
@@ -1267,12 +2132,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetRequestDiagnosisPageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['InstanceId'] = request.instance_id
+        query['NodeId'] = request.node_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRequestDiagnosisPage',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetRequestDiagnosisPageResponse(),
-            self.do_rpcrequest('GetRequestDiagnosisPage', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_request_diagnosis_page_with_options_async(
@@ -1281,12 +2165,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetRequestDiagnosisPageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['EndTime'] = request.end_time
+        query['InstanceId'] = request.instance_id
+        query['NodeId'] = request.node_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
+        query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRequestDiagnosisPage',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetRequestDiagnosisPageResponse(),
-            await self.do_rpcrequest_async('GetRequestDiagnosisPage', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_request_diagnosis_page(
@@ -1309,12 +2212,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetRequestDiagnosisResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['MessageId'] = request.message_id
+        query['NodeId'] = request.node_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRequestDiagnosisResult',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetRequestDiagnosisResultResponse(),
-            self.do_rpcrequest('GetRequestDiagnosisResult', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_request_diagnosis_result_with_options_async(
@@ -1323,12 +2242,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetRequestDiagnosisResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['MessageId'] = request.message_id
+        query['NodeId'] = request.node_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRequestDiagnosisResult',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetRequestDiagnosisResultResponse(),
-            await self.do_rpcrequest_async('GetRequestDiagnosisResult', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_request_diagnosis_result(
@@ -1351,12 +2286,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetResourceOptimizeHistoryListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessKey'] = request.access_key
+        query['EndTime'] = request.end_time
+        query['InstanceId'] = request.instance_id
+        query['Page'] = request.page
+        query['PageSize'] = request.page_size
+        query['Signature'] = request.signature
+        query['StartTime'] = request.start_time
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
+        query['__context'] = request.context
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetResourceOptimizeHistoryList',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetResourceOptimizeHistoryListResponse(),
-            self.do_rpcrequest('GetResourceOptimizeHistoryList', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_resource_optimize_history_list_with_options_async(
@@ -1365,12 +2323,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetResourceOptimizeHistoryListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessKey'] = request.access_key
+        query['EndTime'] = request.end_time
+        query['InstanceId'] = request.instance_id
+        query['Page'] = request.page
+        query['PageSize'] = request.page_size
+        query['Signature'] = request.signature
+        query['StartTime'] = request.start_time
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
+        query['__context'] = request.context
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetResourceOptimizeHistoryList',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetResourceOptimizeHistoryListResponse(),
-            await self.do_rpcrequest_async('GetResourceOptimizeHistoryList', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_resource_optimize_history_list(
@@ -1393,12 +2374,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetRunningSqlConcurrencyControlRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConsoleContext'] = request.console_context
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRunningSqlConcurrencyControlRules',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetRunningSqlConcurrencyControlRulesResponse(),
-            self.do_rpcrequest('GetRunningSqlConcurrencyControlRules', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_running_sql_concurrency_control_rules_with_options_async(
@@ -1407,12 +2405,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetRunningSqlConcurrencyControlRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConsoleContext'] = request.console_context
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetRunningSqlConcurrencyControlRules',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetRunningSqlConcurrencyControlRulesResponse(),
-            await self.do_rpcrequest_async('GetRunningSqlConcurrencyControlRules', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_running_sql_concurrency_control_rules(
@@ -1435,12 +2450,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetSqlConcurrencyControlKeywordsFromSqlTextResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConsoleContext'] = request.console_context
+        query['InstanceId'] = request.instance_id
+        query['SqlText'] = request.sql_text
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetSqlConcurrencyControlKeywordsFromSqlText',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetSqlConcurrencyControlKeywordsFromSqlTextResponse(),
-            self.do_rpcrequest('GetSqlConcurrencyControlKeywordsFromSqlText', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_sql_concurrency_control_keywords_from_sql_text_with_options_async(
@@ -1449,12 +2480,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetSqlConcurrencyControlKeywordsFromSqlTextResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConsoleContext'] = request.console_context
+        query['InstanceId'] = request.instance_id
+        query['SqlText'] = request.sql_text
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetSqlConcurrencyControlKeywordsFromSqlText',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetSqlConcurrencyControlKeywordsFromSqlTextResponse(),
-            await self.do_rpcrequest_async('GetSqlConcurrencyControlKeywordsFromSqlText', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_sql_concurrency_control_keywords_from_sql_text(
@@ -1477,12 +2524,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetSqlConcurrencyControlRulesHistoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConsoleContext'] = request.console_context
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetSqlConcurrencyControlRulesHistory',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetSqlConcurrencyControlRulesHistoryResponse(),
-            self.do_rpcrequest('GetSqlConcurrencyControlRulesHistory', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_sql_concurrency_control_rules_history_with_options_async(
@@ -1491,12 +2555,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetSqlConcurrencyControlRulesHistoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConsoleContext'] = request.console_context
+        query['InstanceId'] = request.instance_id
+        query['PageNo'] = request.page_no
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetSqlConcurrencyControlRulesHistory',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetSqlConcurrencyControlRulesHistoryResponse(),
-            await self.do_rpcrequest_async('GetSqlConcurrencyControlRulesHistory', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_sql_concurrency_control_rules_history(
@@ -1519,12 +2600,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetSqlOptimizeAdviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConsoleContext'] = request.console_context
+        query['EndDt'] = request.end_dt
+        query['Engine'] = request.engine
+        query['InstanceIds'] = request.instance_ids
+        query['StartDt'] = request.start_dt
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetSqlOptimizeAdvice',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetSqlOptimizeAdviceResponse(),
-            self.do_rpcrequest('GetSqlOptimizeAdvice', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_sql_optimize_advice_with_options_async(
@@ -1533,12 +2632,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetSqlOptimizeAdviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConsoleContext'] = request.console_context
+        query['EndDt'] = request.end_dt
+        query['Engine'] = request.engine
+        query['InstanceIds'] = request.instance_ids
+        query['StartDt'] = request.start_dt
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetSqlOptimizeAdvice',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.GetSqlOptimizeAdviceResponse(),
-            await self.do_rpcrequest_async('GetSqlOptimizeAdvice', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_sql_optimize_advice(
@@ -1561,12 +2678,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.RunCloudBenchTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RunCloudBenchTask',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.RunCloudBenchTaskResponse(),
-            self.do_rpcrequest('RunCloudBenchTask', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def run_cloud_bench_task_with_options_async(
@@ -1575,12 +2706,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.RunCloudBenchTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RunCloudBenchTask',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.RunCloudBenchTaskResponse(),
-            await self.do_rpcrequest_async('RunCloudBenchTask', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def run_cloud_bench_task(
@@ -1603,12 +2748,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.StopCloudBenchTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopCloudBenchTask',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.StopCloudBenchTaskResponse(),
-            self.do_rpcrequest('StopCloudBenchTask', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def stop_cloud_bench_task_with_options_async(
@@ -1617,12 +2776,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.StopCloudBenchTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopCloudBenchTask',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.StopCloudBenchTaskResponse(),
-            await self.do_rpcrequest_async('StopCloudBenchTask', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_cloud_bench_task(
@@ -1645,12 +2818,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.StopOrRollbackOptimizeTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessKey'] = request.access_key
+        query['InstanceId'] = request.instance_id
+        query['Signature'] = request.signature
+        query['StopOrRollback'] = request.stop_or_rollback
+        query['TaskType'] = request.task_type
+        query['TaskUuid'] = request.task_uuid
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
+        query['__context'] = request.context
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopOrRollbackOptimizeTask',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.StopOrRollbackOptimizeTaskResponse(),
-            self.do_rpcrequest('StopOrRollbackOptimizeTask', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def stop_or_rollback_optimize_task_with_options_async(
@@ -1659,12 +2854,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.StopOrRollbackOptimizeTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessKey'] = request.access_key
+        query['InstanceId'] = request.instance_id
+        query['Signature'] = request.signature
+        query['StopOrRollback'] = request.stop_or_rollback
+        query['TaskType'] = request.task_type
+        query['TaskUuid'] = request.task_uuid
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
+        query['__context'] = request.context
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopOrRollbackOptimizeTask',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.StopOrRollbackOptimizeTaskResponse(),
-            await self.do_rpcrequest_async('StopOrRollbackOptimizeTask', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_or_rollback_optimize_task(
@@ -1687,12 +2904,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.SyncHDMAliyunResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Async'] = request.async_
+        query['ResourceTypes'] = request.resource_types
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
+        query['WaitForModifySecurityIps'] = request.wait_for_modify_security_ips
+        query['__context'] = request.context
+        query['accessKey'] = request.access_key
+        query['signature'] = request.signature
+        query['skipAuth'] = request.skip_auth
+        query['timestamp'] = request.timestamp
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SyncHDMAliyunResource',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.SyncHDMAliyunResourceResponse(),
-            self.do_rpcrequest('SyncHDMAliyunResource', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def sync_hdmaliyun_resource_with_options_async(
@@ -1701,12 +2941,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.SyncHDMAliyunResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Async'] = request.async_
+        query['ResourceTypes'] = request.resource_types
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
+        query['WaitForModifySecurityIps'] = request.wait_for_modify_security_ips
+        query['__context'] = request.context
+        query['accessKey'] = request.access_key
+        query['signature'] = request.signature
+        query['skipAuth'] = request.skip_auth
+        query['timestamp'] = request.timestamp
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SyncHDMAliyunResource',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.SyncHDMAliyunResourceResponse(),
-            await self.do_rpcrequest_async('SyncHDMAliyunResource', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def sync_hdmaliyun_resource(
@@ -1729,12 +2992,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.TurnOffAutoResourceOptimizeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessKey'] = request.access_key
+        query['InstanceId'] = request.instance_id
+        query['Signature'] = request.signature
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
+        query['__context'] = request.context
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TurnOffAutoResourceOptimize',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.TurnOffAutoResourceOptimizeResponse(),
-            self.do_rpcrequest('TurnOffAutoResourceOptimize', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def turn_off_auto_resource_optimize_with_options_async(
@@ -1743,12 +3025,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.TurnOffAutoResourceOptimizeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessKey'] = request.access_key
+        query['InstanceId'] = request.instance_id
+        query['Signature'] = request.signature
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
+        query['__context'] = request.context
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TurnOffAutoResourceOptimize',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.TurnOffAutoResourceOptimizeResponse(),
-            await self.do_rpcrequest_async('TurnOffAutoResourceOptimize', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def turn_off_auto_resource_optimize(
@@ -1771,12 +3072,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.UpdateAutoResourceOptimizeConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessKey'] = request.access_key
+        query['AutoDefragment'] = request.auto_defragment
+        query['AutoDuplicateIndexDelete'] = request.auto_duplicate_index_delete
+        query['InstanceId'] = request.instance_id
+        query['Signature'] = request.signature
+        query['TableFragmentationRatio'] = request.table_fragmentation_ratio
+        query['TableSpaceSize'] = request.table_space_size
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
+        query['__context'] = request.context
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateAutoResourceOptimizeConfig',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.UpdateAutoResourceOptimizeConfigResponse(),
-            self.do_rpcrequest('UpdateAutoResourceOptimizeConfig', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_auto_resource_optimize_config_with_options_async(
@@ -1785,12 +3109,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.UpdateAutoResourceOptimizeConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessKey'] = request.access_key
+        query['AutoDefragment'] = request.auto_defragment
+        query['AutoDuplicateIndexDelete'] = request.auto_duplicate_index_delete
+        query['InstanceId'] = request.instance_id
+        query['Signature'] = request.signature
+        query['TableFragmentationRatio'] = request.table_fragmentation_ratio
+        query['TableSpaceSize'] = request.table_space_size
+        query['Uid'] = request.uid
+        query['UserId'] = request.user_id
+        query['__context'] = request.context
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateAutoResourceOptimizeConfig',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             das20200116_models.UpdateAutoResourceOptimizeConfigResponse(),
-            await self.do_rpcrequest_async('UpdateAutoResourceOptimizeConfig', '2020-01-16', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_auto_resource_optimize_config(
