@@ -1,3 +1,8 @@
+2021-12-07 Version: 3.0.2
+- API GetStack supports Log for Terraform Stack.
+- API GetChangeSet supports Log for Terraform Stack.
+- API PreviewStack supports Log for Terraform Stack.
+
 2021-11-30 Version: 3.0.1
 - API GetStack supports Log for Terraform Stack.
 - API GetChangeSet supports Log for Terraform Stack.

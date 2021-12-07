@@ -4085,6 +4085,80 @@ class GetChangeSetRequest(TeaModel):
         return self
 
 
+class GetChangeSetResponseBodyLogTerraformLogs(TeaModel):
+    def __init__(
+        self,
+        command: str = None,
+        content: str = None,
+        stream: str = None,
+    ):
+        self.command = command
+        self.content = content
+        self.stream = stream
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.stream is not None:
+            result['Stream'] = self.stream
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Stream') is not None:
+            self.stream = m.get('Stream')
+        return self
+
+
+class GetChangeSetResponseBodyLog(TeaModel):
+    def __init__(
+        self,
+        terraform_logs: List[GetChangeSetResponseBodyLogTerraformLogs] = None,
+    ):
+        self.terraform_logs = terraform_logs
+
+    def validate(self):
+        if self.terraform_logs:
+            for k in self.terraform_logs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TerraformLogs'] = []
+        if self.terraform_logs is not None:
+            for k in self.terraform_logs:
+                result['TerraformLogs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.terraform_logs = []
+        if m.get('TerraformLogs') is not None:
+            for k in m.get('TerraformLogs'):
+                temp_model = GetChangeSetResponseBodyLogTerraformLogs()
+                self.terraform_logs.append(temp_model.from_map(k))
+        return self
+
+
 class GetChangeSetResponseBodyParameters(TeaModel):
     def __init__(
         self,
@@ -4129,6 +4203,7 @@ class GetChangeSetResponseBody(TeaModel):
         description: str = None,
         disable_rollback: bool = None,
         execution_status: str = None,
+        log: GetChangeSetResponseBodyLog = None,
         parameters: List[GetChangeSetResponseBodyParameters] = None,
         region_id: str = None,
         request_id: str = None,
@@ -4147,6 +4222,7 @@ class GetChangeSetResponseBody(TeaModel):
         self.description = description
         self.disable_rollback = disable_rollback
         self.execution_status = execution_status
+        self.log = log
         self.parameters = parameters
         self.region_id = region_id
         self.request_id = request_id
@@ -4158,6 +4234,8 @@ class GetChangeSetResponseBody(TeaModel):
         self.timeout_in_minutes = timeout_in_minutes
 
     def validate(self):
+        if self.log:
+            self.log.validate()
         if self.parameters:
             for k in self.parameters:
                 if k:
@@ -4185,6 +4263,8 @@ class GetChangeSetResponseBody(TeaModel):
             result['DisableRollback'] = self.disable_rollback
         if self.execution_status is not None:
             result['ExecutionStatus'] = self.execution_status
+        if self.log is not None:
+            result['Log'] = self.log.to_map()
         result['Parameters'] = []
         if self.parameters is not None:
             for k in self.parameters:
@@ -4225,6 +4305,9 @@ class GetChangeSetResponseBody(TeaModel):
             self.disable_rollback = m.get('DisableRollback')
         if m.get('ExecutionStatus') is not None:
             self.execution_status = m.get('ExecutionStatus')
+        if m.get('Log') is not None:
+            temp_model = GetChangeSetResponseBodyLog()
+            self.log = temp_model.from_map(m['Log'])
         self.parameters = []
         if m.get('Parameters') is not None:
             for k in m.get('Parameters'):
@@ -5174,6 +5257,80 @@ class GetStackRequest(TeaModel):
         return self
 
 
+class GetStackResponseBodyLogTerraformLogs(TeaModel):
+    def __init__(
+        self,
+        command: str = None,
+        content: str = None,
+        stream: str = None,
+    ):
+        self.command = command
+        self.content = content
+        self.stream = stream
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.stream is not None:
+            result['Stream'] = self.stream
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Stream') is not None:
+            self.stream = m.get('Stream')
+        return self
+
+
+class GetStackResponseBodyLog(TeaModel):
+    def __init__(
+        self,
+        terraform_logs: List[GetStackResponseBodyLogTerraformLogs] = None,
+    ):
+        self.terraform_logs = terraform_logs
+
+    def validate(self):
+        if self.terraform_logs:
+            for k in self.terraform_logs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TerraformLogs'] = []
+        if self.terraform_logs is not None:
+            for k in self.terraform_logs:
+                result['TerraformLogs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.terraform_logs = []
+        if m.get('TerraformLogs') is not None:
+            for k in m.get('TerraformLogs'):
+                temp_model = GetStackResponseBodyLogTerraformLogs()
+                self.terraform_logs.append(temp_model.from_map(k))
+        return self
+
+
 class GetStackResponseBodyParameters(TeaModel):
     def __init__(
         self,
@@ -5358,6 +5515,7 @@ class GetStackResponseBody(TeaModel):
         description: str = None,
         disable_rollback: bool = None,
         drift_detection_time: str = None,
+        log: GetStackResponseBodyLog = None,
         notification_urls: List[str] = None,
         outputs: List[Dict[str, Any]] = None,
         parameters: List[GetStackResponseBodyParameters] = None,
@@ -5384,6 +5542,7 @@ class GetStackResponseBody(TeaModel):
         self.description = description
         self.disable_rollback = disable_rollback
         self.drift_detection_time = drift_detection_time
+        self.log = log
         self.notification_urls = notification_urls
         self.outputs = outputs
         self.parameters = parameters
@@ -5406,6 +5565,8 @@ class GetStackResponseBody(TeaModel):
         self.update_time = update_time
 
     def validate(self):
+        if self.log:
+            self.log.validate()
         if self.parameters:
             for k in self.parameters:
                 if k:
@@ -5433,6 +5594,8 @@ class GetStackResponseBody(TeaModel):
             result['DisableRollback'] = self.disable_rollback
         if self.drift_detection_time is not None:
             result['DriftDetectionTime'] = self.drift_detection_time
+        if self.log is not None:
+            result['Log'] = self.log.to_map()
         if self.notification_urls is not None:
             result['NotificationURLs'] = self.notification_urls
         if self.outputs is not None:
@@ -5491,6 +5654,9 @@ class GetStackResponseBody(TeaModel):
             self.disable_rollback = m.get('DisableRollback')
         if m.get('DriftDetectionTime') is not None:
             self.drift_detection_time = m.get('DriftDetectionTime')
+        if m.get('Log') is not None:
+            temp_model = GetStackResponseBodyLog()
+            self.log = temp_model.from_map(m['Log'])
         if m.get('NotificationURLs') is not None:
             self.notification_urls = m.get('NotificationURLs')
         if m.get('Outputs') is not None:
@@ -12517,6 +12683,80 @@ class PreviewStackRequest(TeaModel):
         return self
 
 
+class PreviewStackResponseBodyStackLogTerraformLogs(TeaModel):
+    def __init__(
+        self,
+        command: str = None,
+        content: str = None,
+        stream: str = None,
+    ):
+        self.command = command
+        self.content = content
+        self.stream = stream
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.stream is not None:
+            result['Stream'] = self.stream
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Stream') is not None:
+            self.stream = m.get('Stream')
+        return self
+
+
+class PreviewStackResponseBodyStackLog(TeaModel):
+    def __init__(
+        self,
+        terraform_logs: List[PreviewStackResponseBodyStackLogTerraformLogs] = None,
+    ):
+        self.terraform_logs = terraform_logs
+
+    def validate(self):
+        if self.terraform_logs:
+            for k in self.terraform_logs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TerraformLogs'] = []
+        if self.terraform_logs is not None:
+            for k in self.terraform_logs:
+                result['TerraformLogs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.terraform_logs = []
+        if m.get('TerraformLogs') is not None:
+            for k in m.get('TerraformLogs'):
+                temp_model = PreviewStackResponseBodyStackLogTerraformLogs()
+                self.terraform_logs.append(temp_model.from_map(k))
+        return self
+
+
 class PreviewStackResponseBodyStackParameters(TeaModel):
     def __init__(
         self,
@@ -12612,6 +12852,7 @@ class PreviewStackResponseBodyStack(TeaModel):
         self,
         description: str = None,
         disable_rollback: bool = None,
+        log: PreviewStackResponseBodyStackLog = None,
         parameters: List[PreviewStackResponseBodyStackParameters] = None,
         region_id: str = None,
         resources: List[PreviewStackResponseBodyStackResources] = None,
@@ -12622,6 +12863,7 @@ class PreviewStackResponseBodyStack(TeaModel):
     ):
         self.description = description
         self.disable_rollback = disable_rollback
+        self.log = log
         self.parameters = parameters
         self.region_id = region_id
         self.resources = resources
@@ -12631,6 +12873,8 @@ class PreviewStackResponseBodyStack(TeaModel):
         self.timeout_in_minutes = timeout_in_minutes
 
     def validate(self):
+        if self.log:
+            self.log.validate()
         if self.parameters:
             for k in self.parameters:
                 if k:
@@ -12650,6 +12894,8 @@ class PreviewStackResponseBodyStack(TeaModel):
             result['Description'] = self.description
         if self.disable_rollback is not None:
             result['DisableRollback'] = self.disable_rollback
+        if self.log is not None:
+            result['Log'] = self.log.to_map()
         result['Parameters'] = []
         if self.parameters is not None:
             for k in self.parameters:
@@ -12676,6 +12922,9 @@ class PreviewStackResponseBodyStack(TeaModel):
             self.description = m.get('Description')
         if m.get('DisableRollback') is not None:
             self.disable_rollback = m.get('DisableRollback')
+        if m.get('Log') is not None:
+            temp_model = PreviewStackResponseBodyStackLog()
+            self.log = temp_model.from_map(m['Log'])
         self.parameters = []
         if m.get('Parameters') is not None:
             for k in m.get('Parameters'):
