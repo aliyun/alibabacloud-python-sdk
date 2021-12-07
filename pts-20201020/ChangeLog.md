@@ -1,3 +1,6 @@
+2021-12-07 Version: 1.8.6
+- Add jmeter_plugin_label field.
+
 2021-12-03 Version: 1.8.5
 - Modify EnviromentId to EnvironmentId.
 

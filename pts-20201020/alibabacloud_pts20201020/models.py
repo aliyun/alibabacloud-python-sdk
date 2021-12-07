@@ -6623,6 +6623,7 @@ class SaveEnvRequestEnv(TeaModel):
         env_id: str = None,
         env_name: str = None,
         files: List[SaveEnvRequestEnvFiles] = None,
+        jmeter_plugin_label: str = None,
         properties: List[SaveEnvRequestEnvProperties] = None,
     ):
         # 环境id，不填表示新建环境，填了表示修改该环境
@@ -6631,6 +6632,8 @@ class SaveEnvRequestEnv(TeaModel):
         self.env_name = env_name
         # 环境依赖的文件
         self.files = files
+        # jmeter插件的环境标签
+        self.jmeter_plugin_label = jmeter_plugin_label
         # jmeter属性
         self.properties = properties
 
@@ -6658,6 +6661,8 @@ class SaveEnvRequestEnv(TeaModel):
         if self.files is not None:
             for k in self.files:
                 result['Files'].append(k.to_map() if k else None)
+        if self.jmeter_plugin_label is not None:
+            result['JmeterPluginLabel'] = self.jmeter_plugin_label
         result['Properties'] = []
         if self.properties is not None:
             for k in self.properties:
@@ -6675,6 +6680,8 @@ class SaveEnvRequestEnv(TeaModel):
             for k in m.get('Files'):
                 temp_model = SaveEnvRequestEnvFiles()
                 self.files.append(temp_model.from_map(k))
+        if m.get('JmeterPluginLabel') is not None:
+            self.jmeter_plugin_label = m.get('JmeterPluginLabel')
         self.properties = []
         if m.get('Properties') is not None:
             for k in m.get('Properties'):
@@ -6990,6 +6997,7 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
         file_list: List[SaveOpenJMeterSceneRequestOpenJMeterSceneFileList] = None,
         is_vpc_test: bool = None,
         jmeter_properties: List[SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties] = None,
+        jmeter_plugin_label: str = None,
         ramp_up: int = None,
         region_id: str = None,
         scene_id: str = None,
@@ -7019,6 +7027,8 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
         self.is_vpc_test = is_vpc_test
         # Jmeter属性
         self.jmeter_properties = jmeter_properties
+        # jmeter插件的环境标签
+        self.jmeter_plugin_label = jmeter_plugin_label
         # 预热时间
         self.ramp_up = ramp_up
         # region的id，VPC压测时配置
@@ -7080,6 +7090,8 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
         if self.jmeter_properties is not None:
             for k in self.jmeter_properties:
                 result['JMeterProperties'].append(k.to_map() if k else None)
+        if self.jmeter_plugin_label is not None:
+            result['JmeterPluginLabel'] = self.jmeter_plugin_label
         if self.ramp_up is not None:
             result['RampUp'] = self.ramp_up
         if self.region_id is not None:
@@ -7129,6 +7141,8 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
             for k in m.get('JMeterProperties'):
                 temp_model = SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties()
                 self.jmeter_properties.append(temp_model.from_map(k))
+        if m.get('JmeterPluginLabel') is not None:
+            self.jmeter_plugin_label = m.get('JmeterPluginLabel')
         if m.get('RampUp') is not None:
             self.ramp_up = m.get('RampUp')
         if m.get('RegionId') is not None:
