@@ -121,6 +121,218 @@ class GatewayOption(TeaModel):
         return self
 
 
+class TrafficPolicyLoadBalancerSettingsConsistentHashLBConfigHttpCookie(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        path: str = None,
+        ttl: str = None,
+    ):
+        # cookie名
+        self.name = name
+        # cookie path
+        self.path = path
+        # cookie生命周期
+        self.ttl = ttl
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.ttl is not None:
+            result['TTL'] = self.ttl
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('TTL') is not None:
+            self.ttl = m.get('TTL')
+        return self
+
+
+class TrafficPolicyLoadBalancerSettingsConsistentHashLBConfig(TeaModel):
+    def __init__(
+        self,
+        consistent_hash_lbtype: str = None,
+        http_cookie: TrafficPolicyLoadBalancerSettingsConsistentHashLBConfigHttpCookie = None,
+        parameter_name: str = None,
+    ):
+        # HEADER, COOKIE, SOURCE_IP, QUERY_PARAMETER
+        self.consistent_hash_lbtype = consistent_hash_lbtype
+        # 使用cookie时配置
+        self.http_cookie = http_cookie
+        # 使用根据header和参数路由时生效
+        self.parameter_name = parameter_name
+
+    def validate(self):
+        if self.http_cookie:
+            self.http_cookie.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consistent_hash_lbtype is not None:
+            result['ConsistentHashLBType'] = self.consistent_hash_lbtype
+        if self.http_cookie is not None:
+            result['HttpCookie'] = self.http_cookie.to_map()
+        if self.parameter_name is not None:
+            result['ParameterName'] = self.parameter_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConsistentHashLBType') is not None:
+            self.consistent_hash_lbtype = m.get('ConsistentHashLBType')
+        if m.get('HttpCookie') is not None:
+            temp_model = TrafficPolicyLoadBalancerSettingsConsistentHashLBConfigHttpCookie()
+            self.http_cookie = temp_model.from_map(m['HttpCookie'])
+        if m.get('ParameterName') is not None:
+            self.parameter_name = m.get('ParameterName')
+        return self
+
+
+class TrafficPolicyLoadBalancerSettings(TeaModel):
+    def __init__(
+        self,
+        consistent_hash_lbconfig: TrafficPolicyLoadBalancerSettingsConsistentHashLBConfig = None,
+        loadbalancer_type: str = None,
+    ):
+        # 一致性hash相关配置
+        self.consistent_hash_lbconfig = consistent_hash_lbconfig
+        # 负载均衡类型，枚举类可为ROUND_ROBIN, LEAST_CONN,RANDOM, CONSISTENT_HASH
+        self.loadbalancer_type = loadbalancer_type
+
+    def validate(self):
+        if self.consistent_hash_lbconfig:
+            self.consistent_hash_lbconfig.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consistent_hash_lbconfig is not None:
+            result['ConsistentHashLBConfig'] = self.consistent_hash_lbconfig.to_map()
+        if self.loadbalancer_type is not None:
+            result['LoadbalancerType'] = self.loadbalancer_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConsistentHashLBConfig') is not None:
+            temp_model = TrafficPolicyLoadBalancerSettingsConsistentHashLBConfig()
+            self.consistent_hash_lbconfig = temp_model.from_map(m['ConsistentHashLBConfig'])
+        if m.get('LoadbalancerType') is not None:
+            self.loadbalancer_type = m.get('LoadbalancerType')
+        return self
+
+
+class TrafficPolicyTlsSetting(TeaModel):
+    def __init__(
+        self,
+        ca_cert_content: str = None,
+        cert_id: str = None,
+        sni: str = None,
+        tls_mode: str = None,
+    ):
+        # ca证书内容
+        self.ca_cert_content = ca_cert_content
+        # 使用的证书id，仅当为mutual时需要填写
+        self.cert_id = cert_id
+        # 到后端服务些带
+        self.sni = sni
+        # tls模式。为枚举类，可为NONE, SIMPLE, MUITUAL
+        self.tls_mode = tls_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ca_cert_content is not None:
+            result['CaCertContent'] = self.ca_cert_content
+        if self.cert_id is not None:
+            result['CertId'] = self.cert_id
+        if self.sni is not None:
+            result['Sni'] = self.sni
+        if self.tls_mode is not None:
+            result['TlsMode'] = self.tls_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CaCertContent') is not None:
+            self.ca_cert_content = m.get('CaCertContent')
+        if m.get('CertId') is not None:
+            self.cert_id = m.get('CertId')
+        if m.get('Sni') is not None:
+            self.sni = m.get('Sni')
+        if m.get('TlsMode') is not None:
+            self.tls_mode = m.get('TlsMode')
+        return self
+
+
+class TrafficPolicy(TeaModel):
+    def __init__(
+        self,
+        load_balancer_settings: TrafficPolicyLoadBalancerSettings = None,
+        tls_setting: TrafficPolicyTlsSetting = None,
+    ):
+        # 负载均衡相关配置
+        self.load_balancer_settings = load_balancer_settings
+        # tls相关配置
+        self.tls_setting = tls_setting
+
+    def validate(self):
+        if self.load_balancer_settings:
+            self.load_balancer_settings.validate()
+        if self.tls_setting:
+            self.tls_setting.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.load_balancer_settings is not None:
+            result['LoadBalancerSettings'] = self.load_balancer_settings.to_map()
+        if self.tls_setting is not None:
+            result['TlsSetting'] = self.tls_setting.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LoadBalancerSettings') is not None:
+            temp_model = TrafficPolicyLoadBalancerSettings()
+            self.load_balancer_settings = temp_model.from_map(m['LoadBalancerSettings'])
+        if m.get('TlsSetting') is not None:
+            temp_model = TrafficPolicyTlsSetting()
+            self.tls_setting = temp_model.from_map(m['TlsSetting'])
+        return self
+
+
 class AddMockRuleRequest(TeaModel):
     def __init__(
         self,
@@ -1336,6 +1548,7 @@ class CreateClusterRequest(TeaModel):
         disk_capacity: int = None,
         disk_type: str = None,
         instance_count: int = None,
+        mse_version: str = None,
         net_type: str = None,
         private_slb_specification: str = None,
         pub_network_flow: str = None,
@@ -1352,6 +1565,8 @@ class CreateClusterRequest(TeaModel):
         self.disk_capacity = disk_capacity
         self.disk_type = disk_type
         self.instance_count = instance_count
+        # 用于区分基础/专业版本
+        self.mse_version = mse_version
         self.net_type = net_type
         self.private_slb_specification = private_slb_specification
         self.pub_network_flow = pub_network_flow
@@ -1384,6 +1599,8 @@ class CreateClusterRequest(TeaModel):
             result['DiskType'] = self.disk_type
         if self.instance_count is not None:
             result['InstanceCount'] = self.instance_count
+        if self.mse_version is not None:
+            result['MseVersion'] = self.mse_version
         if self.net_type is not None:
             result['NetType'] = self.net_type
         if self.private_slb_specification is not None:
@@ -1418,6 +1635,8 @@ class CreateClusterRequest(TeaModel):
             self.disk_type = m.get('DiskType')
         if m.get('InstanceCount') is not None:
             self.instance_count = m.get('InstanceCount')
+        if m.get('MseVersion') is not None:
+            self.mse_version = m.get('MseVersion')
         if m.get('NetType') is not None:
             self.net_type = m.get('NetType')
         if m.get('PrivateSlbSpecification') is not None:
