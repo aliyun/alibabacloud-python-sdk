@@ -892,3 +892,30 @@ class DescribePhoneNumberStatusResponse(TeaModel):
         return self
 
 
+class PvrCallbackFCUResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+

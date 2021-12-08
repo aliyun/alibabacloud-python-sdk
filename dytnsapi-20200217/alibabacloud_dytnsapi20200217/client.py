@@ -432,3 +432,53 @@ class Client(OpenApiClient):
     ) -> dytnsapi_20200217_models.DescribePhoneNumberStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_phone_number_status_with_options_async(request, runtime)
+
+    def pvr_callback_fcuwith_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.PvrCallbackFCUResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='PvrCallbackFCU',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.PvrCallbackFCUResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pvr_callback_fcuwith_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.PvrCallbackFCUResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='PvrCallbackFCU',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.PvrCallbackFCUResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pvr_callback_fcu(self) -> dytnsapi_20200217_models.PvrCallbackFCUResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pvr_callback_fcuwith_options(runtime)
+
+    async def pvr_callback_fcu_async(self) -> dytnsapi_20200217_models.PvrCallbackFCUResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pvr_callback_fcuwith_options_async(runtime)
