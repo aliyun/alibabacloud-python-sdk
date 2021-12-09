@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -8,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_antiddos_public20170518 import models as antiddos_public_20170518_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -45,11 +47,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeBgpPackByIpResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DdosRegionId'] = request.ddos_region_id
+        query['Ip'] = request.ip
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return antiddos_public_20170518_models.DescribeBgpPackByIpResponse().from_map(
-            self.do_rpcrequest('DescribeBgpPackByIp', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBgpPackByIp',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeBgpPackByIpResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_bgp_pack_by_ip_with_options_async(
@@ -58,11 +76,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeBgpPackByIpResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DdosRegionId'] = request.ddos_region_id
+        query['Ip'] = request.ip
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return antiddos_public_20170518_models.DescribeBgpPackByIpResponse().from_map(
-            await self.do_rpcrequest_async('DescribeBgpPackByIp', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBgpPackByIp',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeBgpPackByIpResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_bgp_pack_by_ip(
@@ -79,57 +113,35 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_bgp_pack_by_ip_with_options_async(request, runtime)
 
-    def describe_bgp_pack_elastic_threshold_with_options(
-        self,
-        request: antiddos_public_20170518_models.DescribeBgpPackElasticThresholdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> antiddos_public_20170518_models.DescribeBgpPackElasticThresholdResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return antiddos_public_20170518_models.DescribeBgpPackElasticThresholdResponse().from_map(
-            self.do_rpcrequest('DescribeBgpPackElasticThreshold', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_bgp_pack_elastic_threshold_with_options_async(
-        self,
-        request: antiddos_public_20170518_models.DescribeBgpPackElasticThresholdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> antiddos_public_20170518_models.DescribeBgpPackElasticThresholdResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return antiddos_public_20170518_models.DescribeBgpPackElasticThresholdResponse().from_map(
-            await self.do_rpcrequest_async('DescribeBgpPackElasticThreshold', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_bgp_pack_elastic_threshold(
-        self,
-        request: antiddos_public_20170518_models.DescribeBgpPackElasticThresholdRequest,
-    ) -> antiddos_public_20170518_models.DescribeBgpPackElasticThresholdResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_bgp_pack_elastic_threshold_with_options(request, runtime)
-
-    async def describe_bgp_pack_elastic_threshold_async(
-        self,
-        request: antiddos_public_20170518_models.DescribeBgpPackElasticThresholdRequest,
-    ) -> antiddos_public_20170518_models.DescribeBgpPackElasticThresholdResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_bgp_pack_elastic_threshold_with_options_async(request, runtime)
-
     def describe_cap_with_options(
         self,
         request: antiddos_public_20170518_models.DescribeCapRequest,
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeCapResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BegTime'] = request.beg_time
+        query['DdosRegionId'] = request.ddos_region_id
+        query['InstanceId'] = request.instance_id
+        query['InstanceType'] = request.instance_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return antiddos_public_20170518_models.DescribeCapResponse().from_map(
-            self.do_rpcrequest('DescribeCap', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeCap',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeCapResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cap_with_options_async(
@@ -138,11 +150,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeCapResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['BegTime'] = request.beg_time
+        query['DdosRegionId'] = request.ddos_region_id
+        query['InstanceId'] = request.instance_id
+        query['InstanceType'] = request.instance_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return antiddos_public_20170518_models.DescribeCapResponse().from_map(
-            await self.do_rpcrequest_async('DescribeCap', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeCap',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeCapResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cap(
@@ -159,57 +189,33 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cap_with_options_async(request, runtime)
 
-    def describe_credit_info_with_options(
-        self,
-        request: antiddos_public_20170518_models.DescribeCreditInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> antiddos_public_20170518_models.DescribeCreditInfoResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return antiddos_public_20170518_models.DescribeCreditInfoResponse().from_map(
-            self.do_rpcrequest('DescribeCreditInfo', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_credit_info_with_options_async(
-        self,
-        request: antiddos_public_20170518_models.DescribeCreditInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> antiddos_public_20170518_models.DescribeCreditInfoResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return antiddos_public_20170518_models.DescribeCreditInfoResponse().from_map(
-            await self.do_rpcrequest_async('DescribeCreditInfo', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_credit_info(
-        self,
-        request: antiddos_public_20170518_models.DescribeCreditInfoRequest,
-    ) -> antiddos_public_20170518_models.DescribeCreditInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_credit_info_with_options(request, runtime)
-
-    async def describe_credit_info_async(
-        self,
-        request: antiddos_public_20170518_models.DescribeCreditInfoRequest,
-    ) -> antiddos_public_20170518_models.DescribeCreditInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_credit_info_with_options_async(request, runtime)
-
     def describe_ddos_count_with_options(
         self,
         request: antiddos_public_20170518_models.DescribeDdosCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeDdosCountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DdosRegionId'] = request.ddos_region_id
+        query['InstanceType'] = request.instance_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return antiddos_public_20170518_models.DescribeDdosCountResponse().from_map(
-            self.do_rpcrequest('DescribeDdosCount', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDdosCount',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeDdosCountResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ddos_count_with_options_async(
@@ -218,11 +224,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeDdosCountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DdosRegionId'] = request.ddos_region_id
+        query['InstanceType'] = request.instance_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return antiddos_public_20170518_models.DescribeDdosCountResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDdosCount', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDdosCount',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeDdosCountResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ddos_count(
@@ -245,11 +267,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeDdosCreditResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DdosRegionId'] = request.ddos_region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return antiddos_public_20170518_models.DescribeDdosCreditResponse().from_map(
-            self.do_rpcrequest('DescribeDdosCredit', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDdosCredit',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeDdosCreditResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ddos_credit_with_options_async(
@@ -258,11 +295,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeDdosCreditResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DdosRegionId'] = request.ddos_region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return antiddos_public_20170518_models.DescribeDdosCreditResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDdosCredit', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDdosCredit',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeDdosCreditResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ddos_credit(
@@ -285,11 +337,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeDdosEventListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CurrentPage'] = request.current_page
+        query['DdosRegionId'] = request.ddos_region_id
+        query['InstanceId'] = request.instance_id
+        query['InstanceType'] = request.instance_type
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return antiddos_public_20170518_models.DescribeDdosEventListResponse().from_map(
-            self.do_rpcrequest('DescribeDdosEventList', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDdosEventList',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeDdosEventListResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ddos_event_list_with_options_async(
@@ -298,11 +369,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeDdosEventListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CurrentPage'] = request.current_page
+        query['DdosRegionId'] = request.ddos_region_id
+        query['InstanceId'] = request.instance_id
+        query['InstanceType'] = request.instance_type
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return antiddos_public_20170518_models.DescribeDdosEventListResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDdosEventList', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDdosEventList',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeDdosEventListResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ddos_event_list(
@@ -325,11 +415,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeDdosThresholdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DdosRegionId'] = request.ddos_region_id
+        query['DdosType'] = request.ddos_type
+        query['InstanceIds'] = request.instance_ids
+        query['InstanceType'] = request.instance_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return antiddos_public_20170518_models.DescribeDdosThresholdResponse().from_map(
-            self.do_rpcrequest('DescribeDdosThreshold', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDdosThreshold',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeDdosThresholdResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ddos_threshold_with_options_async(
@@ -338,11 +446,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeDdosThresholdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DdosRegionId'] = request.ddos_region_id
+        query['DdosType'] = request.ddos_type
+        query['InstanceIds'] = request.instance_ids
+        query['InstanceType'] = request.instance_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return antiddos_public_20170518_models.DescribeDdosThresholdResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDdosThreshold', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDdosThreshold',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeDdosThresholdResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ddos_threshold(
@@ -359,205 +485,139 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ddos_threshold_with_options_async(request, runtime)
 
-    def describe_flexible_protection_flow_with_options(
+    def describe_instance_with_options(
         self,
-        request: antiddos_public_20170518_models.DescribeFlexibleProtectionFlowRequest,
+        request: antiddos_public_20170518_models.DescribeInstanceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> antiddos_public_20170518_models.DescribeFlexibleProtectionFlowResponse:
+    ) -> antiddos_public_20170518_models.DescribeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CurrentPage'] = request.current_page
+        query['DdosRegionId'] = request.ddos_region_id
+        query['DdosStatus'] = request.ddos_status
+        query['InstanceId'] = request.instance_id
+        query['InstanceIp'] = request.instance_ip
+        query['InstanceName'] = request.instance_name
+        query['InstanceType'] = request.instance_type
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return antiddos_public_20170518_models.DescribeFlexibleProtectionFlowResponse().from_map(
-            self.do_rpcrequest('DescribeFlexibleProtectionFlow', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstance',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
-    async def describe_flexible_protection_flow_with_options_async(
+    async def describe_instance_with_options_async(
         self,
-        request: antiddos_public_20170518_models.DescribeFlexibleProtectionFlowRequest,
+        request: antiddos_public_20170518_models.DescribeInstanceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> antiddos_public_20170518_models.DescribeFlexibleProtectionFlowResponse:
+    ) -> antiddos_public_20170518_models.DescribeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CurrentPage'] = request.current_page
+        query['DdosRegionId'] = request.ddos_region_id
+        query['DdosStatus'] = request.ddos_status
+        query['InstanceId'] = request.instance_id
+        query['InstanceIp'] = request.instance_ip
+        query['InstanceName'] = request.instance_name
+        query['InstanceType'] = request.instance_type
+        query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return antiddos_public_20170518_models.DescribeFlexibleProtectionFlowResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFlexibleProtectionFlow', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstance',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    def describe_flexible_protection_flow(
+    def describe_instance(
         self,
-        request: antiddos_public_20170518_models.DescribeFlexibleProtectionFlowRequest,
-    ) -> antiddos_public_20170518_models.DescribeFlexibleProtectionFlowResponse:
+        request: antiddos_public_20170518_models.DescribeInstanceRequest,
+    ) -> antiddos_public_20170518_models.DescribeInstanceResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_flexible_protection_flow_with_options(request, runtime)
+        return self.describe_instance_with_options(request, runtime)
 
-    async def describe_flexible_protection_flow_async(
+    async def describe_instance_async(
         self,
-        request: antiddos_public_20170518_models.DescribeFlexibleProtectionFlowRequest,
-    ) -> antiddos_public_20170518_models.DescribeFlexibleProtectionFlowResponse:
+        request: antiddos_public_20170518_models.DescribeInstanceRequest,
+    ) -> antiddos_public_20170518_models.DescribeInstanceResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_flexible_protection_flow_with_options_async(request, runtime)
-
-    def describe_flowgraph_with_options(
-        self,
-        request: antiddos_public_20170518_models.DescribeFlowgraphRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> antiddos_public_20170518_models.DescribeFlowgraphResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return antiddos_public_20170518_models.DescribeFlowgraphResponse().from_map(
-            self.do_rpcrequest('DescribeFlowgraph', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_flowgraph_with_options_async(
-        self,
-        request: antiddos_public_20170518_models.DescribeFlowgraphRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> antiddos_public_20170518_models.DescribeFlowgraphResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return antiddos_public_20170518_models.DescribeFlowgraphResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFlowgraph', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_flowgraph(
-        self,
-        request: antiddos_public_20170518_models.DescribeFlowgraphRequest,
-    ) -> antiddos_public_20170518_models.DescribeFlowgraphResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_flowgraph_with_options(request, runtime)
-
-    async def describe_flowgraph_async(
-        self,
-        request: antiddos_public_20170518_models.DescribeFlowgraphRequest,
-    ) -> antiddos_public_20170518_models.DescribeFlowgraphResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_flowgraph_with_options_async(request, runtime)
-
-    def describe_region_ddos_threshold_with_options(
-        self,
-        request: antiddos_public_20170518_models.DescribeRegionDdosThresholdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> antiddos_public_20170518_models.DescribeRegionDdosThresholdResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return antiddos_public_20170518_models.DescribeRegionDdosThresholdResponse().from_map(
-            self.do_rpcrequest('DescribeRegionDdosThreshold', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_region_ddos_threshold_with_options_async(
-        self,
-        request: antiddos_public_20170518_models.DescribeRegionDdosThresholdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> antiddos_public_20170518_models.DescribeRegionDdosThresholdResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return antiddos_public_20170518_models.DescribeRegionDdosThresholdResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRegionDdosThreshold', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_region_ddos_threshold(
-        self,
-        request: antiddos_public_20170518_models.DescribeRegionDdosThresholdRequest,
-    ) -> antiddos_public_20170518_models.DescribeRegionDdosThresholdResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_region_ddos_threshold_with_options(request, runtime)
-
-    async def describe_region_ddos_threshold_async(
-        self,
-        request: antiddos_public_20170518_models.DescribeRegionDdosThresholdRequest,
-    ) -> antiddos_public_20170518_models.DescribeRegionDdosThresholdResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_region_ddos_threshold_with_options_async(request, runtime)
+        return await self.describe_instance_with_options_async(request, runtime)
 
     def describe_regions_with_options(
         self,
-        request: antiddos_public_20170518_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeRegionsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
-        return antiddos_public_20170518_models.DescribeRegionsResponse().from_map(
-            self.do_rpcrequest('DescribeRegions', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_regions_with_options_async(
         self,
-        request: antiddos_public_20170518_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.DescribeRegionsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
-        return antiddos_public_20170518_models.DescribeRegionsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRegions', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    def describe_regions(
-        self,
-        request: antiddos_public_20170518_models.DescribeRegionsRequest,
-    ) -> antiddos_public_20170518_models.DescribeRegionsResponse:
+    def describe_regions(self) -> antiddos_public_20170518_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_regions_with_options(request, runtime)
+        return self.describe_regions_with_options(runtime)
 
-    async def describe_regions_async(
-        self,
-        request: antiddos_public_20170518_models.DescribeRegionsRequest,
-    ) -> antiddos_public_20170518_models.DescribeRegionsResponse:
+    async def describe_regions_async(self) -> antiddos_public_20170518_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_regions_with_options_async(request, runtime)
-
-    def describe_traffic_info_with_options(
-        self,
-        request: antiddos_public_20170518_models.DescribeTrafficInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> antiddos_public_20170518_models.DescribeTrafficInfoResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return antiddos_public_20170518_models.DescribeTrafficInfoResponse().from_map(
-            self.do_rpcrequest('DescribeTrafficInfo', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_traffic_info_with_options_async(
-        self,
-        request: antiddos_public_20170518_models.DescribeTrafficInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> antiddos_public_20170518_models.DescribeTrafficInfoResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return antiddos_public_20170518_models.DescribeTrafficInfoResponse().from_map(
-            await self.do_rpcrequest_async('DescribeTrafficInfo', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_traffic_info(
-        self,
-        request: antiddos_public_20170518_models.DescribeTrafficInfoRequest,
-    ) -> antiddos_public_20170518_models.DescribeTrafficInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_traffic_info_with_options(request, runtime)
-
-    async def describe_traffic_info_async(
-        self,
-        request: antiddos_public_20170518_models.DescribeTrafficInfoRequest,
-    ) -> antiddos_public_20170518_models.DescribeTrafficInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_traffic_info_with_options_async(request, runtime)
+        return await self.describe_regions_with_options_async(runtime)
 
     def modify_ddos_status_with_options(
         self,
@@ -565,11 +625,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.ModifyDdosStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DdosRegionId'] = request.ddos_region_id
+        query['InstanceId'] = request.instance_id
+        query['InstanceType'] = request.instance_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return antiddos_public_20170518_models.ModifyDdosStatusResponse().from_map(
-            self.do_rpcrequest('ModifyDdosStatus', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyDdosStatus',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.ModifyDdosStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_ddos_status_with_options_async(
@@ -578,11 +655,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.ModifyDdosStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DdosRegionId'] = request.ddos_region_id
+        query['InstanceId'] = request.instance_id
+        query['InstanceType'] = request.instance_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return antiddos_public_20170518_models.ModifyDdosStatusResponse().from_map(
-            await self.do_rpcrequest_async('ModifyDdosStatus', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyDdosStatus',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.ModifyDdosStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_ddos_status(
@@ -605,11 +699,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.ModifyDefenseThresholdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Bps'] = request.bps
+        query['DdosRegionId'] = request.ddos_region_id
+        query['InstanceId'] = request.instance_id
+        query['InstanceType'] = request.instance_type
+        query['IsAuto'] = request.is_auto
+        query['Pps'] = request.pps
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return antiddos_public_20170518_models.ModifyDefenseThresholdResponse().from_map(
-            self.do_rpcrequest('ModifyDefenseThreshold', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyDefenseThreshold',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.ModifyDefenseThresholdResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_defense_threshold_with_options_async(
@@ -618,11 +732,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> antiddos_public_20170518_models.ModifyDefenseThresholdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Bps'] = request.bps
+        query['DdosRegionId'] = request.ddos_region_id
+        query['InstanceId'] = request.instance_id
+        query['InstanceType'] = request.instance_type
+        query['IsAuto'] = request.is_auto
+        query['Pps'] = request.pps
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
         )
-        return antiddos_public_20170518_models.ModifyDefenseThresholdResponse().from_map(
-            await self.do_rpcrequest_async('ModifyDefenseThreshold', '2017-05-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyDefenseThreshold',
+            version='2017-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.ModifyDefenseThresholdResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_defense_threshold(
