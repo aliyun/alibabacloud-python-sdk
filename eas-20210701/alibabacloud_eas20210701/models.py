@@ -2143,6 +2143,7 @@ class DescribeResourceDLinkResponseBody(TeaModel):
         aux_vswitch_list: List[str] = None,
         destination_cidrs: str = None,
         request_id: str = None,
+        security_group_id: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
@@ -2152,6 +2153,8 @@ class DescribeResourceDLinkResponseBody(TeaModel):
         self.destination_cidrs = destination_cidrs
         # Id of the request
         self.request_id = request_id
+        # 已打通直连的安全组
+        self.security_group_id = security_group_id
         # 已打通直连的主VSwitch ID
         self.v_switch_id = v_switch_id
         # 已打通直接的Vpc ID
@@ -2172,6 +2175,8 @@ class DescribeResourceDLinkResponseBody(TeaModel):
             result['DestinationCIDRs'] = self.destination_cidrs
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -2186,6 +2191,8 @@ class DescribeResourceDLinkResponseBody(TeaModel):
             self.destination_cidrs = m.get('DestinationCIDRs')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:

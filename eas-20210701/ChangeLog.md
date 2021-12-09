@@ -1,3 +1,6 @@
+2021-12-09 Version: 1.0.2
+- Add accesstoken to describe service api.
+
 2021-12-08 Version: 1.0.1
 - Add accesstoken to describe service api.
 
