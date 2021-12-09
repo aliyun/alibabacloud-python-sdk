@@ -1,3 +1,9 @@
+2021-12-09 Version: 1.0.5
+- Add General Recognition Function.
+- Add Commodity Title Function.
+- Add Image Segmentation Function.
+- Add Image Dumplication Function.
+
 2021-10-29 Version: 1.0.4
 - Add General Recognition Function.
 - Add Commodity Title Function.

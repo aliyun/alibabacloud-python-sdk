@@ -57,20 +57,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='CommodityTitle',
-            version='2021-01-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             image_search_20210120_models.CommodityTitleResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('CommodityTitle', '2021-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def commodity_title_with_options_async(
@@ -82,20 +71,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='CommodityTitle',
-            version='2021-01-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             image_search_20210120_models.CommodityTitleResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('CommodityTitle', '2021-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def commodity_title(
@@ -263,20 +241,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='GeneralRecognition',
-            version='2021-01-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             image_search_20210120_models.GeneralRecognitionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('GeneralRecognition', '2021-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def general_recognition_with_options_async(
@@ -288,20 +255,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='GeneralRecognition',
-            version='2021-01-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             image_search_20210120_models.GeneralRecognitionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('GeneralRecognition', '2021-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def general_recognition(
@@ -469,20 +425,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='ImageAmazon',
-            version='2021-01-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             image_search_20210120_models.ImageAmazonResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ImageAmazon', '2021-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def image_amazon_with_options_async(
@@ -494,20 +439,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='ImageAmazon',
-            version='2021-01-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             image_search_20210120_models.ImageAmazonResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ImageAmazon', '2021-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def image_amazon(
@@ -533,20 +467,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='ImageCategory',
-            version='2021-01-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             image_search_20210120_models.ImageCategoryResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ImageCategory', '2021-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def image_category_with_options_async(
@@ -558,20 +481,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='ImageCategory',
-            version='2021-01-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             image_search_20210120_models.ImageCategoryResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ImageCategory', '2021-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def image_category(
@@ -597,20 +509,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='ImageDuplication',
-            version='2021-01-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             image_search_20210120_models.ImageDuplicationResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ImageDuplication', '2021-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def image_duplication_with_options_async(
@@ -622,20 +523,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='ImageDuplication',
-            version='2021-01-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             image_search_20210120_models.ImageDuplicationResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ImageDuplication', '2021-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def image_duplication(
@@ -661,20 +551,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='ImageProperty',
-            version='2021-01-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             image_search_20210120_models.ImagePropertyResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ImageProperty', '2021-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def image_property_with_options_async(
@@ -686,20 +565,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='ImageProperty',
-            version='2021-01-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             image_search_20210120_models.ImagePropertyResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ImageProperty', '2021-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def image_property(
@@ -725,20 +593,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='ImageSegmentation',
-            version='2021-01-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             image_search_20210120_models.ImageSegmentationResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest('ImageSegmentation', '2021-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     async def image_segmentation_with_options_async(
@@ -750,20 +607,9 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             body=UtilClient.to_map(request)
         )
-        params = open_api_models.Params(
-            action='ImageSegmentation',
-            version='2021-01-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
         return TeaCore.from_map(
             image_search_20210120_models.ImageSegmentationResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async('ImageSegmentation', '2021-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
         )
 
     def image_segmentation(
