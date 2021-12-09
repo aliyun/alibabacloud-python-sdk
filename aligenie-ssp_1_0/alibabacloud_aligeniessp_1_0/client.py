@@ -343,6 +343,104 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def get_device_tag(
+        self,
+        request: ali_geniessp__1__0_models.GetDeviceTagRequest,
+    ) -> ali_geniessp__1__0_models.GetDeviceTagResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.GetDeviceTagHeaders()
+        return self.get_device_tag_with_options(request, headers, runtime)
+
+    async def get_device_tag_async(
+        self,
+        request: ali_geniessp__1__0_models.GetDeviceTagRequest,
+    ) -> ali_geniessp__1__0_models.GetDeviceTagResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.GetDeviceTagHeaders()
+        return await self.get_device_tag_with_options_async(request, headers, runtime)
+
+    def get_device_tag_with_options(
+        self,
+        tmp_req: ali_geniessp__1__0_models.GetDeviceTagRequest,
+        headers: ali_geniessp__1__0_models.GetDeviceTagHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.GetDeviceTagResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_geniessp__1__0_models.GetDeviceTagShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.device_info):
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.device_info_shrink):
+            query['DeviceInfo'] = request.device_info_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDeviceTag',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/getDeviceTag',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.GetDeviceTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_device_tag_with_options_async(
+        self,
+        tmp_req: ali_geniessp__1__0_models.GetDeviceTagRequest,
+        headers: ali_geniessp__1__0_models.GetDeviceTagHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.GetDeviceTagResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_geniessp__1__0_models.GetDeviceTagShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.device_info):
+            request.device_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.device_info), 'DeviceInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.device_info_shrink):
+            query['DeviceInfo'] = request.device_info_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDeviceTag',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/getDeviceTag',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.GetDeviceTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def get_user_by_device_id(
         self,
         request: ali_geniessp__1__0_models.GetUserByDeviceIdRequest,

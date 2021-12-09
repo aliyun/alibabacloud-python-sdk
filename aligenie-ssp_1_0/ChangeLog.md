@@ -1,3 +1,6 @@
+2021-12-09 Version: 1.0.6
+- Init for new api.
+
 2021-11-26 Version: 1.0.5
 - Init for new api.
 
