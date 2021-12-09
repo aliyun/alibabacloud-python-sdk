@@ -239,10 +239,13 @@ class ResourceInstance(TeaModel):
         instance_gpu_count: int = None,
         instance_id: str = None,
         instance_ip: str = None,
-        instance_memory: int = None,
+        instance_memory: str = None,
         instance_name: str = None,
         instance_status: str = None,
         instance_type: str = None,
+        instance_used_cpu: float = None,
+        instance_used_gpu: int = None,
+        instance_used_memory: str = None,
     ):
         # 实例是否自动续费
         self.auto_renewal = auto_renewal
@@ -268,6 +271,12 @@ class ResourceInstance(TeaModel):
         self.instance_status = instance_status
         # 实例的机型
         self.instance_type = instance_type
+        # 实例被使用的CPU数量
+        self.instance_used_cpu = instance_used_cpu
+        # 实例被使用的GPU数量
+        self.instance_used_gpu = instance_used_gpu
+        # 实例被使用的内存大小
+        self.instance_used_memory = instance_used_memory
 
     def validate(self):
         pass
@@ -302,6 +311,12 @@ class ResourceInstance(TeaModel):
             result['InstanceStatus'] = self.instance_status
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.instance_used_cpu is not None:
+            result['InstanceUsedCpu'] = self.instance_used_cpu
+        if self.instance_used_gpu is not None:
+            result['InstanceUsedGpu'] = self.instance_used_gpu
+        if self.instance_used_memory is not None:
+            result['InstanceUsedMemory'] = self.instance_used_memory
         return result
 
     def from_map(self, m: dict = None):
@@ -330,6 +345,12 @@ class ResourceInstance(TeaModel):
             self.instance_status = m.get('InstanceStatus')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('InstanceUsedCpu') is not None:
+            self.instance_used_cpu = m.get('InstanceUsedCpu')
+        if m.get('InstanceUsedGpu') is not None:
+            self.instance_used_gpu = m.get('InstanceUsedGpu')
+        if m.get('InstanceUsedMemory') is not None:
+            self.instance_used_memory = m.get('InstanceUsedMemory')
         return self
 
 
@@ -441,6 +462,7 @@ class ResourceInstanceWorker(TeaModel):
 class Service(TeaModel):
     def __init__(
         self,
+        access_token: str = None,
         caller_uid: str = None,
         cpu: int = None,
         create_time: str = None,
@@ -461,13 +483,15 @@ class Service(TeaModel):
         resource: str = None,
         running_instance: int = None,
         service_config: str = None,
+        service_id: str = None,
         service_name: str = None,
-        service_uid: str = None,
         status: str = None,
         total_instance: int = None,
         updatetime: str = None,
         weight: int = None,
     ):
+        # 服务的请求Token
+        self.access_token = access_token
         # 服务创建账号的UID
         self.caller_uid = caller_uid
         # 每个实例申请的cpu
@@ -508,10 +532,10 @@ class Service(TeaModel):
         self.running_instance = running_instance
         # 服务的配置信息
         self.service_config = service_config
+        # 服务ID
+        self.service_id = service_id
         # 服务的名字
         self.service_name = service_name
-        # 服务ID
-        self.service_uid = service_uid
         # 服务的状态
         self.status = status
         # 服务的所有实例总个数
@@ -530,6 +554,8 @@ class Service(TeaModel):
             return _map
 
         result = dict()
+        if self.access_token is not None:
+            result['AccessToken'] = self.access_token
         if self.caller_uid is not None:
             result['CallerUid'] = self.caller_uid
         if self.cpu is not None:
@@ -570,10 +596,10 @@ class Service(TeaModel):
             result['RunningInstance'] = self.running_instance
         if self.service_config is not None:
             result['ServiceConfig'] = self.service_config
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
-        if self.service_uid is not None:
-            result['ServiceUid'] = self.service_uid
         if self.status is not None:
             result['Status'] = self.status
         if self.total_instance is not None:
@@ -586,6 +612,8 @@ class Service(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessToken') is not None:
+            self.access_token = m.get('AccessToken')
         if m.get('CallerUid') is not None:
             self.caller_uid = m.get('CallerUid')
         if m.get('Cpu') is not None:
@@ -626,10 +654,10 @@ class Service(TeaModel):
             self.running_instance = m.get('RunningInstance')
         if m.get('ServiceConfig') is not None:
             self.service_config = m.get('ServiceConfig')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
-        if m.get('ServiceUid') is not None:
-            self.service_uid = m.get('ServiceUid')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TotalInstance') is not None:
