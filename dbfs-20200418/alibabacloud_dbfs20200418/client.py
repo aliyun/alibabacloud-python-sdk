@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_dbfs20200418 import models as dbfs20200418_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -85,12 +86,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.AddTagsBatchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DbfsList'] = request.dbfs_list
+        query['RegionId'] = request.region_id
+        query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddTagsBatch',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.AddTagsBatchResponse(),
-            self.do_rpcrequest('AddTagsBatch', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_tags_batch_with_options_async(
@@ -99,12 +117,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.AddTagsBatchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DbfsList'] = request.dbfs_list
+        query['RegionId'] = request.region_id
+        query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AddTagsBatch',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.AddTagsBatchResponse(),
-            await self.do_rpcrequest_async('AddTagsBatch', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_tags_batch(
@@ -127,12 +162,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.AttachDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AttachMode'] = request.attach_mode
+        query['AttachPoint'] = request.attach_point
+        query['ECSInstanceId'] = request.ecsinstance_id
+        query['FsId'] = request.fs_id
+        query['RegionId'] = request.region_id
+        query['ServerUrl'] = request.server_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AttachDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.AttachDbfsResponse(),
-            self.do_rpcrequest('AttachDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def attach_dbfs_with_options_async(
@@ -141,12 +195,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.AttachDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AttachMode'] = request.attach_mode
+        query['AttachPoint'] = request.attach_point
+        query['ECSInstanceId'] = request.ecsinstance_id
+        query['FsId'] = request.fs_id
+        query['RegionId'] = request.region_id
+        query['ServerUrl'] = request.server_url
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='AttachDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.AttachDbfsResponse(),
-            await self.do_rpcrequest_async('AttachDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def attach_dbfs(
@@ -163,60 +236,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.attach_dbfs_with_options_async(request, runtime)
 
-    def create_constants_with_options(
-        self,
-        request: dbfs20200418_models.CreateConstantsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dbfs20200418_models.CreateConstantsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dbfs20200418_models.CreateConstantsResponse(),
-            self.do_rpcrequest('CreateConstants', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_constants_with_options_async(
-        self,
-        request: dbfs20200418_models.CreateConstantsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dbfs20200418_models.CreateConstantsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dbfs20200418_models.CreateConstantsResponse(),
-            await self.do_rpcrequest_async('CreateConstants', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_constants(
-        self,
-        request: dbfs20200418_models.CreateConstantsRequest,
-    ) -> dbfs20200418_models.CreateConstantsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_constants_with_options(request, runtime)
-
-    async def create_constants_async(
-        self,
-        request: dbfs20200418_models.CreateConstantsRequest,
-    ) -> dbfs20200418_models.CreateConstantsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_constants_with_options_async(request, runtime)
-
     def create_dbfs_with_options(
         self,
         request: dbfs20200418_models.CreateDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.CreateDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Category'] = request.category
+        query['ClientToken'] = request.client_token
+        query['DeleteSnapshot'] = request.delete_snapshot
+        query['EnableRaid'] = request.enable_raid
+        query['Encryption'] = request.encryption
+        query['FsName'] = request.fs_name
+        query['InstanceType'] = request.instance_type
+        query['KMSKeyId'] = request.kmskey_id
+        query['PerformanceLevel'] = request.performance_level
+        query['RaidStripeUnitNumber'] = request.raid_stripe_unit_number
+        query['RegionId'] = request.region_id
+        query['SizeG'] = request.size_g
+        query['SnapshotId'] = request.snapshot_id
+        query['UsedScene'] = request.used_scene
+        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.CreateDbfsResponse(),
-            self.do_rpcrequest('CreateDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_dbfs_with_options_async(
@@ -225,12 +284,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.CreateDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Category'] = request.category
+        query['ClientToken'] = request.client_token
+        query['DeleteSnapshot'] = request.delete_snapshot
+        query['EnableRaid'] = request.enable_raid
+        query['Encryption'] = request.encryption
+        query['FsName'] = request.fs_name
+        query['InstanceType'] = request.instance_type
+        query['KMSKeyId'] = request.kmskey_id
+        query['PerformanceLevel'] = request.performance_level
+        query['RaidStripeUnitNumber'] = request.raid_stripe_unit_number
+        query['RegionId'] = request.region_id
+        query['SizeG'] = request.size_g
+        query['SnapshotId'] = request.snapshot_id
+        query['UsedScene'] = request.used_scene
+        query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.CreateDbfsResponse(),
-            await self.do_rpcrequest_async('CreateDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_dbfs(
@@ -253,12 +340,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.CreateServiceLinkedRoleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceLinkedRole',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.CreateServiceLinkedRoleResponse(),
-            self.do_rpcrequest('CreateServiceLinkedRole', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_service_linked_role_with_options_async(
@@ -267,12 +369,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.CreateServiceLinkedRoleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceLinkedRole',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.CreateServiceLinkedRoleResponse(),
-            await self.do_rpcrequest_async('CreateServiceLinkedRole', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_service_linked_role(
@@ -295,12 +412,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.CreateSnapshotResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['FsId'] = request.fs_id
+        query['RegionId'] = request.region_id
+        query['RetentionDays'] = request.retention_days
+        query['SnapshotName'] = request.snapshot_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateSnapshot',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.CreateSnapshotResponse(),
-            self.do_rpcrequest('CreateSnapshot', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_snapshot_with_options_async(
@@ -309,12 +445,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.CreateSnapshotResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['FsId'] = request.fs_id
+        query['RegionId'] = request.region_id
+        query['RetentionDays'] = request.retention_days
+        query['SnapshotName'] = request.snapshot_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateSnapshot',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.CreateSnapshotResponse(),
-            await self.do_rpcrequest_async('CreateSnapshot', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_snapshot(
@@ -331,60 +486,33 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_snapshot_with_options_async(request, runtime)
 
-    def delete_constants_with_options(
-        self,
-        request: dbfs20200418_models.DeleteConstantsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dbfs20200418_models.DeleteConstantsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dbfs20200418_models.DeleteConstantsResponse(),
-            self.do_rpcrequest('DeleteConstants', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_constants_with_options_async(
-        self,
-        request: dbfs20200418_models.DeleteConstantsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dbfs20200418_models.DeleteConstantsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dbfs20200418_models.DeleteConstantsResponse(),
-            await self.do_rpcrequest_async('DeleteConstants', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_constants(
-        self,
-        request: dbfs20200418_models.DeleteConstantsRequest,
-    ) -> dbfs20200418_models.DeleteConstantsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_constants_with_options(request, runtime)
-
-    async def delete_constants_async(
-        self,
-        request: dbfs20200418_models.DeleteConstantsRequest,
-    ) -> dbfs20200418_models.DeleteConstantsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_constants_with_options_async(request, runtime)
-
     def delete_dbfs_with_options(
         self,
         request: dbfs20200418_models.DeleteDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DeleteDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FsId'] = request.fs_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.DeleteDbfsResponse(),
-            self.do_rpcrequest('DeleteDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_dbfs_with_options_async(
@@ -393,12 +521,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DeleteDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FsId'] = request.fs_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.DeleteDbfsResponse(),
-            await self.do_rpcrequest_async('DeleteDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_dbfs(
@@ -421,12 +564,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DeleteSnapshotResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Force'] = request.force
+        query['RegionId'] = request.region_id
+        query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteSnapshot',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.DeleteSnapshotResponse(),
-            self.do_rpcrequest('DeleteSnapshot', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_snapshot_with_options_async(
@@ -435,12 +594,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DeleteSnapshotResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Force'] = request.force
+        query['RegionId'] = request.region_id
+        query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteSnapshot',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.DeleteSnapshotResponse(),
-            await self.do_rpcrequest_async('DeleteSnapshot', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_snapshot(
@@ -463,12 +638,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DeleteTagsBatchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbfsList'] = request.dbfs_list
+        query['RegionId'] = request.region_id
+        query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteTagsBatch',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.DeleteTagsBatchResponse(),
-            self.do_rpcrequest('DeleteTagsBatch', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_tags_batch_with_options_async(
@@ -477,12 +668,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DeleteTagsBatchResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbfsList'] = request.dbfs_list
+        query['RegionId'] = request.region_id
+        query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteTagsBatch',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.DeleteTagsBatchResponse(),
-            await self.do_rpcrequest_async('DeleteTagsBatch', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_tags_batch(
@@ -505,12 +712,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DescribeDbfsSpecificationsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Category'] = request.category
+        query['EcsInstanceType'] = request.ecs_instance_type
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDbfsSpecifications',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.DescribeDbfsSpecificationsResponse(),
-            self.do_rpcrequest('DescribeDbfsSpecifications', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbfs_specifications_with_options_async(
@@ -519,12 +742,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DescribeDbfsSpecificationsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Category'] = request.category
+        query['EcsInstanceType'] = request.ecs_instance_type
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDbfsSpecifications',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.DescribeDbfsSpecificationsResponse(),
-            await self.do_rpcrequest_async('DescribeDbfsSpecifications', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbfs_specifications(
@@ -547,12 +786,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DescribeInstanceTypesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceTypes',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.DescribeInstanceTypesResponse(),
-            self.do_rpcrequest('DescribeInstanceTypes', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_instance_types_with_options_async(
@@ -561,12 +814,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DescribeInstanceTypesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceTypes',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.DescribeInstanceTypesResponse(),
-            await self.do_rpcrequest_async('DescribeInstanceTypes', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_instance_types(
@@ -589,12 +856,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DetachDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ECSInstanceId'] = request.ecsinstance_id
+        query['FsId'] = request.fs_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DetachDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.DetachDbfsResponse(),
-            self.do_rpcrequest('DetachDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def detach_dbfs_with_options_async(
@@ -603,12 +886,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.DetachDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ECSInstanceId'] = request.ecsinstance_id
+        query['FsId'] = request.fs_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DetachDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.DetachDbfsResponse(),
-            await self.do_rpcrequest_async('DetachDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def detach_dbfs(
@@ -631,12 +930,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.GetDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FsId'] = request.fs_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.GetDbfsResponse(),
-            self.do_rpcrequest('GetDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_dbfs_with_options_async(
@@ -645,12 +959,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.GetDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FsId'] = request.fs_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.GetDbfsResponse(),
-            await self.do_rpcrequest_async('GetDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_dbfs(
@@ -673,12 +1002,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.GetServiceLinkedRoleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetServiceLinkedRole',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.GetServiceLinkedRoleResponse(),
-            self.do_rpcrequest('GetServiceLinkedRole', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_service_linked_role_with_options_async(
@@ -687,12 +1030,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.GetServiceLinkedRoleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetServiceLinkedRole',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.GetServiceLinkedRoleResponse(),
-            await self.do_rpcrequest_async('GetServiceLinkedRole', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_service_linked_role(
@@ -709,60 +1066,39 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_service_linked_role_with_options_async(request, runtime)
 
-    def list_constants_with_options(
-        self,
-        request: dbfs20200418_models.ListConstantsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dbfs20200418_models.ListConstantsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dbfs20200418_models.ListConstantsResponse(),
-            self.do_rpcrequest('ListConstants', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_constants_with_options_async(
-        self,
-        request: dbfs20200418_models.ListConstantsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dbfs20200418_models.ListConstantsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dbfs20200418_models.ListConstantsResponse(),
-            await self.do_rpcrequest_async('ListConstants', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_constants(
-        self,
-        request: dbfs20200418_models.ListConstantsRequest,
-    ) -> dbfs20200418_models.ListConstantsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_constants_with_options(request, runtime)
-
-    async def list_constants_async(
-        self,
-        request: dbfs20200418_models.ListConstantsRequest,
-    ) -> dbfs20200418_models.ListConstantsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_constants_with_options_async(request, runtime)
-
     def list_dbfs_with_options(
         self,
         request: dbfs20200418_models.ListDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FilterKey'] = request.filter_key
+        query['FilterValue'] = request.filter_value
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['SortKey'] = request.sort_key
+        query['SortType'] = request.sort_type
+        query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.ListDbfsResponse(),
-            self.do_rpcrequest('ListDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_dbfs_with_options_async(
@@ -771,12 +1107,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FilterKey'] = request.filter_key
+        query['FilterValue'] = request.filter_value
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['SortKey'] = request.sort_key
+        query['SortType'] = request.sort_type
+        query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.ListDbfsResponse(),
-            await self.do_rpcrequest_async('ListDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_dbfs(
@@ -799,12 +1156,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListDbfsAttachableEcsInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDbfsAttachableEcsInstances',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.ListDbfsAttachableEcsInstancesResponse(),
-            self.do_rpcrequest('ListDbfsAttachableEcsInstances', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_dbfs_attachable_ecs_instances_with_options_async(
@@ -813,12 +1184,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListDbfsAttachableEcsInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDbfsAttachableEcsInstances',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.ListDbfsAttachableEcsInstancesResponse(),
-            await self.do_rpcrequest_async('ListDbfsAttachableEcsInstances', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_dbfs_attachable_ecs_instances(
@@ -841,12 +1226,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListDbfsAttachedEcsInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FsId'] = request.fs_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDbfsAttachedEcsInstances',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.ListDbfsAttachedEcsInstancesResponse(),
-            self.do_rpcrequest('ListDbfsAttachedEcsInstances', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_dbfs_attached_ecs_instances_with_options_async(
@@ -855,12 +1255,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListDbfsAttachedEcsInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FsId'] = request.fs_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListDbfsAttachedEcsInstances',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.ListDbfsAttachedEcsInstancesResponse(),
-            await self.do_rpcrequest_async('ListDbfsAttachedEcsInstances', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_dbfs_attached_ecs_instances(
@@ -883,12 +1298,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListSnapshotResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FilterKey'] = request.filter_key
+        query['FilterValue'] = request.filter_value
+        query['FsId'] = request.fs_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['SnapshotIds'] = request.snapshot_ids
+        query['SnapshotName'] = request.snapshot_name
+        query['SnapshotType'] = request.snapshot_type
+        query['SortKey'] = request.sort_key
+        query['SortType'] = request.sort_type
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListSnapshot',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.ListSnapshotResponse(),
-            self.do_rpcrequest('ListSnapshot', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_snapshot_with_options_async(
@@ -897,12 +1337,37 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListSnapshotResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FilterKey'] = request.filter_key
+        query['FilterValue'] = request.filter_value
+        query['FsId'] = request.fs_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['SnapshotIds'] = request.snapshot_ids
+        query['SnapshotName'] = request.snapshot_name
+        query['SnapshotType'] = request.snapshot_type
+        query['SortKey'] = request.sort_key
+        query['SortType'] = request.sort_type
+        query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListSnapshot',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.ListSnapshotResponse(),
-            await self.do_rpcrequest_async('ListSnapshot', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_snapshot(
@@ -925,12 +1390,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListTagKeysResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTagKeys',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.ListTagKeysResponse(),
-            self.do_rpcrequest('ListTagKeys', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_tag_keys_with_options_async(
@@ -939,12 +1418,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListTagKeysResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTagKeys',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.ListTagKeysResponse(),
-            await self.do_rpcrequest_async('ListTagKeys', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_keys(
@@ -967,12 +1460,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListTagValuesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTagValues',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.ListTagValuesResponse(),
-            self.do_rpcrequest('ListTagValues', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_tag_values_with_options_async(
@@ -981,12 +1489,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListTagValuesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTagValues',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.ListTagValuesResponse(),
-            await self.do_rpcrequest_async('ListTagValues', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_values(
@@ -1009,12 +1532,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FilterKey'] = request.filter_key
+        query['FilterValue'] = request.filter_value
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['SortKey'] = request.sort_key
+        query['SortType'] = request.sort_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTask',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.ListTaskResponse(),
-            self.do_rpcrequest('ListTask', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_task_with_options_async(
@@ -1023,12 +1566,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ListTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FilterKey'] = request.filter_key
+        query['FilterValue'] = request.filter_value
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['RegionId'] = request.region_id
+        query['SortKey'] = request.sort_key
+        query['SortType'] = request.sort_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ListTask',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.ListTaskResponse(),
-            await self.do_rpcrequest_async('ListTask', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_task(
@@ -1045,60 +1608,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_task_with_options_async(request, runtime)
 
-    def opreate_constants_with_options(
-        self,
-        request: dbfs20200418_models.OpreateConstantsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dbfs20200418_models.OpreateConstantsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dbfs20200418_models.OpreateConstantsResponse(),
-            self.do_rpcrequest('OpreateConstants', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def opreate_constants_with_options_async(
-        self,
-        request: dbfs20200418_models.OpreateConstantsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dbfs20200418_models.OpreateConstantsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dbfs20200418_models.OpreateConstantsResponse(),
-            await self.do_rpcrequest_async('OpreateConstants', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def opreate_constants(
-        self,
-        request: dbfs20200418_models.OpreateConstantsRequest,
-    ) -> dbfs20200418_models.OpreateConstantsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.opreate_constants_with_options(request, runtime)
-
-    async def opreate_constants_async(
-        self,
-        request: dbfs20200418_models.OpreateConstantsRequest,
-    ) -> dbfs20200418_models.OpreateConstantsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.opreate_constants_with_options_async(request, runtime)
-
     def rename_dbfs_with_options(
         self,
         request: dbfs20200418_models.RenameDbfsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.RenameDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FsId'] = request.fs_id
+        query['FsName'] = request.fs_name
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RenameDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.RenameDbfsResponse(),
-            self.do_rpcrequest('RenameDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def rename_dbfs_with_options_async(
@@ -1107,12 +1644,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.RenameDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FsId'] = request.fs_id
+        query['FsName'] = request.fs_name
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='RenameDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.RenameDbfsResponse(),
-            await self.do_rpcrequest_async('RenameDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def rename_dbfs(
@@ -1135,12 +1688,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ResetDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FsId'] = request.fs_id
+        query['RegionId'] = request.region_id
+        query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ResetDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.ResetDbfsResponse(),
-            self.do_rpcrequest('ResetDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def reset_dbfs_with_options_async(
@@ -1149,12 +1718,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ResetDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FsId'] = request.fs_id
+        query['RegionId'] = request.region_id
+        query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ResetDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.ResetDbfsResponse(),
-            await self.do_rpcrequest_async('ResetDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def reset_dbfs(
@@ -1177,12 +1762,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ResizeDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FsId'] = request.fs_id
+        query['NewSizeG'] = request.new_size_g
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ResizeDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.ResizeDbfsResponse(),
-            self.do_rpcrequest('ResizeDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def resize_dbfs_with_options_async(
@@ -1191,12 +1792,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.ResizeDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['FsId'] = request.fs_id
+        query['NewSizeG'] = request.new_size_g
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ResizeDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.ResizeDbfsResponse(),
-            await self.do_rpcrequest_async('ResizeDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def resize_dbfs(
@@ -1219,12 +1836,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.TagDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbfsId'] = request.dbfs_id
+        query['RegionId'] = request.region_id
+        query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TagDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.TagDbfsResponse(),
-            self.do_rpcrequest('TagDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def tag_dbfs_with_options_async(
@@ -1233,12 +1866,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.TagDbfsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DbfsId'] = request.dbfs_id
+        query['RegionId'] = request.region_id
+        query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TagDbfs',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.TagDbfsResponse(),
-            await self.do_rpcrequest_async('TagDbfs', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def tag_dbfs(
@@ -1255,60 +1904,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.tag_dbfs_with_options_async(request, runtime)
 
-    def update_constants_with_options(
-        self,
-        request: dbfs20200418_models.UpdateConstantsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dbfs20200418_models.UpdateConstantsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dbfs20200418_models.UpdateConstantsResponse(),
-            self.do_rpcrequest('UpdateConstants', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def update_constants_with_options_async(
-        self,
-        request: dbfs20200418_models.UpdateConstantsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dbfs20200418_models.UpdateConstantsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dbfs20200418_models.UpdateConstantsResponse(),
-            await self.do_rpcrequest_async('UpdateConstants', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def update_constants(
-        self,
-        request: dbfs20200418_models.UpdateConstantsRequest,
-    ) -> dbfs20200418_models.UpdateConstantsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_constants_with_options(request, runtime)
-
-    async def update_constants_async(
-        self,
-        request: dbfs20200418_models.UpdateConstantsRequest,
-    ) -> dbfs20200418_models.UpdateConstantsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_constants_with_options_async(request, runtime)
-
     def update_task_with_options(
         self,
         request: dbfs20200418_models.UpdateTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.UpdateTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['TaskIds'] = request.task_ids
+        query['TaskProgress'] = request.task_progress
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateTask',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.UpdateTaskResponse(),
-            self.do_rpcrequest('UpdateTask', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_task_with_options_async(
@@ -1317,12 +1940,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbfs20200418_models.UpdateTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['TaskIds'] = request.task_ids
+        query['TaskProgress'] = request.task_progress
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateTask',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             dbfs20200418_models.UpdateTaskResponse(),
-            await self.do_rpcrequest_async('UpdateTask', '2020-04-18', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_task(

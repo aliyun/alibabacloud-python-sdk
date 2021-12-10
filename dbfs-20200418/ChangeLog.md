@@ -1,3 +1,6 @@
+2021-12-10 Version: 3.0.4
+- DBFS OpenAPI.
+
 2021-12-06 Version: 3.0.3
 - DBFS OpenAPI.
 
