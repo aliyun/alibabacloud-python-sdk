@@ -15,6 +15,10 @@ class CancelRepoBuildResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -38,6 +42,10 @@ class CreateNamespaceResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -61,6 +69,10 @@ class CreateRepoResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -84,6 +96,10 @@ class CreateRepoBuildRuleResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -107,6 +123,10 @@ class CreateRepoWebhookResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -130,6 +150,10 @@ class CreateUserInfoResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -153,6 +177,10 @@ class DeleteImageResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -176,6 +204,10 @@ class DeleteNamespaceResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -199,6 +231,10 @@ class DeleteRepoResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -222,6 +258,10 @@ class DeleteRepoBuildRuleResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -245,6 +285,10 @@ class DeleteRepoWebhookResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -268,6 +312,10 @@ class GetAuthorizationTokenResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -291,6 +339,10 @@ class GetImageLayerResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -314,6 +366,10 @@ class GetImageManifestRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.schema_version is not None:
             result['SchemaVersion'] = self.schema_version
@@ -337,6 +393,10 @@ class GetImageManifestResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -360,6 +420,10 @@ class GetNamespaceResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -375,29 +439,33 @@ class GetNamespaceResponse(TeaModel):
 class GetNamespaceListRequest(TeaModel):
     def __init__(
         self,
-        status: str = None,
         authorize: str = None,
+        status: str = None,
     ):
-        self.status = status
         self.authorize = authorize
+        self.status = status
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
         if self.authorize is not None:
             result['Authorize'] = self.authorize
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
         if m.get('Authorize') is not None:
             self.authorize = m.get('Authorize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -412,6 +480,10 @@ class GetNamespaceListResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -435,6 +507,10 @@ class GetRegionRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.domain is not None:
             result['Domain'] = self.domain
@@ -458,6 +534,10 @@ class GetRegionResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -481,6 +561,10 @@ class GetRegionListResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -504,6 +588,10 @@ class GetRepoResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -529,6 +617,10 @@ class GetRepoBuildListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page is not None:
             result['Page'] = self.page
@@ -556,6 +648,10 @@ class GetRepoBuildListResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -579,6 +675,10 @@ class GetRepoBuildRuleListResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -602,6 +702,10 @@ class GetRepoBuildStatusResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -617,35 +721,39 @@ class GetRepoBuildStatusResponse(TeaModel):
 class GetRepoListRequest(TeaModel):
     def __init__(
         self,
-        status: str = None,
         page: int = None,
         page_size: int = None,
+        status: str = None,
     ):
-        self.status = status
         self.page = page
         self.page_size = page_size
+        self.status = status
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
         if self.page is not None:
             result['Page'] = self.page
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
         if m.get('Page') is not None:
             self.page = m.get('Page')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -660,6 +768,10 @@ class GetRepoListResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -675,35 +787,39 @@ class GetRepoListResponse(TeaModel):
 class GetRepoListByNamespaceRequest(TeaModel):
     def __init__(
         self,
-        status: str = None,
         page: int = None,
         page_size: int = None,
+        status: str = None,
     ):
-        self.status = status
         self.page = page
         self.page_size = page_size
+        self.status = status
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
         if self.page is not None:
             result['Page'] = self.page
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
         if m.get('Page') is not None:
             self.page = m.get('Page')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -718,6 +834,10 @@ class GetRepoListByNamespaceResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -733,65 +853,69 @@ class GetRepoListByNamespaceResponse(TeaModel):
 class GetRepoTagResponseBody(TeaModel):
     def __init__(
         self,
-        image_update: int = None,
-        image_id: str = None,
-        request_id: str = None,
         digest: str = None,
-        image_size: int = None,
-        tag: str = None,
         image_create: int = None,
+        image_id: str = None,
+        image_size: int = None,
+        image_update: int = None,
+        request_id: str = None,
         status: str = None,
+        tag: str = None,
     ):
-        self.image_update = image_update
-        self.image_id = image_id
-        self.request_id = request_id
         self.digest = digest
-        self.image_size = image_size
-        self.tag = tag
         self.image_create = image_create
+        self.image_id = image_id
+        self.image_size = image_size
+        self.image_update = image_update
+        self.request_id = request_id
         self.status = status
+        self.tag = tag
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.image_update is not None:
-            result['imageUpdate'] = self.image_update
-        if self.image_id is not None:
-            result['imageId'] = self.image_id
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
         if self.digest is not None:
             result['digest'] = self.digest
-        if self.image_size is not None:
-            result['imageSize'] = self.image_size
-        if self.tag is not None:
-            result['tag'] = self.tag
         if self.image_create is not None:
             result['imageCreate'] = self.image_create
+        if self.image_id is not None:
+            result['imageId'] = self.image_id
+        if self.image_size is not None:
+            result['imageSize'] = self.image_size
+        if self.image_update is not None:
+            result['imageUpdate'] = self.image_update
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         if self.status is not None:
             result['status'] = self.status
+        if self.tag is not None:
+            result['tag'] = self.tag
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('imageUpdate') is not None:
-            self.image_update = m.get('imageUpdate')
-        if m.get('imageId') is not None:
-            self.image_id = m.get('imageId')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
         if m.get('digest') is not None:
             self.digest = m.get('digest')
-        if m.get('imageSize') is not None:
-            self.image_size = m.get('imageSize')
-        if m.get('tag') is not None:
-            self.tag = m.get('tag')
         if m.get('imageCreate') is not None:
             self.image_create = m.get('imageCreate')
+        if m.get('imageId') is not None:
+            self.image_id = m.get('imageId')
+        if m.get('imageSize') is not None:
+            self.image_size = m.get('imageSize')
+        if m.get('imageUpdate') is not None:
+            self.image_update = m.get('imageUpdate')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         if m.get('status') is not None:
             self.status = m.get('status')
+        if m.get('tag') is not None:
+            self.tag = m.get('tag')
         return self
 
 
@@ -811,6 +935,10 @@ class GetRepoTagResponse(TeaModel):
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -825,58 +953,6 @@ class GetRepoTagResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = GetRepoTagResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetRepoTagsRequest(TeaModel):
-    def __init__(
-        self,
-        page: int = None,
-        page_size: int = None,
-    ):
-        self.page = page
-        self.page_size = page_size
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.page is not None:
-            result['Page'] = self.page
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Page') is not None:
-            self.page = m.get('Page')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        return self
-
-
-class GetRepoTagsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-    ):
-        self.headers = headers
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-
-    def to_map(self):
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
         return self
 
 
@@ -895,6 +971,10 @@ class GetRepoTagScanListRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.page is not None:
             result['Page'] = self.page
@@ -926,6 +1006,10 @@ class GetRepoTagScanListResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -949,6 +1033,10 @@ class GetRepoTagScanStatusResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -972,6 +1060,70 @@ class GetRepoTagScanSummaryResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
+class GetRepoTagsRequest(TeaModel):
+    def __init__(
+        self,
+        page: int = None,
+        page_size: int = None,
+    ):
+        self.page = page
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class GetRepoTagsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -995,6 +1147,37 @@ class GetRepoWebhookResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
+class GetResourceQuotaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1018,6 +1201,10 @@ class StartImageScanResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1041,6 +1228,10 @@ class StartRepoBuildByRuleResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1064,6 +1255,10 @@ class UpdateNamespaceResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1087,6 +1282,10 @@ class UpdateRepoResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1110,6 +1309,10 @@ class UpdateRepoBuildRuleResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1133,6 +1336,10 @@ class UpdateRepoWebhookResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
@@ -1156,6 +1363,10 @@ class UpdateUserInfoResponse(TeaModel):
         self.validate_required(self.headers, 'headers')
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers

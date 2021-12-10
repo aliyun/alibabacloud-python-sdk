@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -68,11 +69,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.CancelRepoBuildResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        build_id = OpenApiUtilClient.get_encode_param(build_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.CancelRepoBuildResponse().from_map(
-            self.do_roarequest('CancelRepoBuild', '2016-06-07', 'HTTPS', 'POST', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/build/{{BuildId}}/cancel', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='CancelRepoBuild',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/build/{build_id}/cancel',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.CancelRepoBuildResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def cancel_repo_build_with_options_async(
@@ -83,11 +99,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.CancelRepoBuildResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        build_id = OpenApiUtilClient.get_encode_param(build_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.CancelRepoBuildResponse().from_map(
-            await self.do_roarequest_async('CancelRepoBuild', '2016-06-07', 'HTTPS', 'POST', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/build/{{BuildId}}/cancel', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='CancelRepoBuild',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/build/{build_id}/cancel',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.CancelRepoBuildResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_namespace(self) -> cr_20160607_models.CreateNamespaceResponse:
@@ -108,8 +139,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.CreateNamespaceResponse().from_map(
-            self.do_roarequest('CreateNamespace', '2016-06-07', 'HTTPS', 'PUT', 'AK', f'/namespace', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='CreateNamespace',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/namespace',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.CreateNamespaceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_namespace_with_options_async(
@@ -120,8 +163,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.CreateNamespaceResponse().from_map(
-            await self.do_roarequest_async('CreateNamespace', '2016-06-07', 'HTTPS', 'PUT', 'AK', f'/namespace', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='CreateNamespace',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/namespace',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.CreateNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_repo(self) -> cr_20160607_models.CreateRepoResponse:
@@ -142,8 +197,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.CreateRepoResponse().from_map(
-            self.do_roarequest('CreateRepo', '2016-06-07', 'HTTPS', 'PUT', 'AK', f'/repos', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='CreateRepo',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.CreateRepoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_repo_with_options_async(
@@ -154,8 +221,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.CreateRepoResponse().from_map(
-            await self.do_roarequest_async('CreateRepo', '2016-06-07', 'HTTPS', 'PUT', 'AK', f'/repos', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='CreateRepo',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.CreateRepoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_repo_build_rule(
@@ -183,11 +262,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.CreateRepoBuildRuleResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.CreateRepoBuildRuleResponse().from_map(
-            self.do_roarequest('CreateRepoBuildRule', '2016-06-07', 'HTTPS', 'PUT', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/rules', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='CreateRepoBuildRule',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/rules',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.CreateRepoBuildRuleResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_repo_build_rule_with_options_async(
@@ -197,11 +290,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.CreateRepoBuildRuleResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.CreateRepoBuildRuleResponse().from_map(
-            await self.do_roarequest_async('CreateRepoBuildRule', '2016-06-07', 'HTTPS', 'PUT', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/rules', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='CreateRepoBuildRule',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/rules',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.CreateRepoBuildRuleResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_repo_webhook(
@@ -229,11 +336,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.CreateRepoWebhookResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.CreateRepoWebhookResponse().from_map(
-            self.do_roarequest('CreateRepoWebhook', '2016-06-07', 'HTTPS', 'PUT', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/webhooks', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='CreateRepoWebhook',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/webhooks',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.CreateRepoWebhookResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_repo_webhook_with_options_async(
@@ -243,11 +364,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.CreateRepoWebhookResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.CreateRepoWebhookResponse().from_map(
-            await self.do_roarequest_async('CreateRepoWebhook', '2016-06-07', 'HTTPS', 'PUT', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/webhooks', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='CreateRepoWebhook',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/webhooks',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.CreateRepoWebhookResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_user_info(self) -> cr_20160607_models.CreateUserInfoResponse:
@@ -268,8 +403,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.CreateUserInfoResponse().from_map(
-            self.do_roarequest('CreateUserInfo', '2016-06-07', 'HTTPS', 'PUT', 'AK', f'/users', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='CreateUserInfo',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/users',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.CreateUserInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_user_info_with_options_async(
@@ -280,8 +427,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.CreateUserInfoResponse().from_map(
-            await self.do_roarequest_async('CreateUserInfo', '2016-06-07', 'HTTPS', 'PUT', 'AK', f'/users', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='CreateUserInfo',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/users',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.CreateUserInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_image(
@@ -312,11 +471,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.DeleteImageResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        tag = OpenApiUtilClient.get_encode_param(tag)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.DeleteImageResponse().from_map(
-            self.do_roarequest('DeleteImage', '2016-06-07', 'HTTPS', 'DELETE', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/tags/{{Tag}}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteImage',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/tags/{tag}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.DeleteImageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_image_with_options_async(
@@ -327,11 +501,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.DeleteImageResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        tag = OpenApiUtilClient.get_encode_param(tag)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.DeleteImageResponse().from_map(
-            await self.do_roarequest_async('DeleteImage', '2016-06-07', 'HTTPS', 'DELETE', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/tags/{{Tag}}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteImage',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/tags/{tag}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.DeleteImageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_namespace(
@@ -356,11 +545,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.DeleteNamespaceResponse:
+        namespace = OpenApiUtilClient.get_encode_param(namespace)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.DeleteNamespaceResponse().from_map(
-            self.do_roarequest('DeleteNamespace', '2016-06-07', 'HTTPS', 'DELETE', 'AK', f'/namespace/{namespace}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteNamespace',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/namespace/{namespace}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.DeleteNamespaceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_namespace_with_options_async(
@@ -369,11 +571,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.DeleteNamespaceResponse:
+        namespace = OpenApiUtilClient.get_encode_param(namespace)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.DeleteNamespaceResponse().from_map(
-            await self.do_roarequest_async('DeleteNamespace', '2016-06-07', 'HTTPS', 'DELETE', 'AK', f'/namespace/{namespace}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteNamespace',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/namespace/{namespace}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.DeleteNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_repo(
@@ -401,11 +616,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.DeleteRepoResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.DeleteRepoResponse().from_map(
-            self.do_roarequest('DeleteRepo', '2016-06-07', 'HTTPS', 'DELETE', 'AK', f'/repos/{repo_namespace}/{{RepoName}}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteRepo',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.DeleteRepoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_repo_with_options_async(
@@ -415,11 +644,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.DeleteRepoResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.DeleteRepoResponse().from_map(
-            await self.do_roarequest_async('DeleteRepo', '2016-06-07', 'HTTPS', 'DELETE', 'AK', f'/repos/{repo_namespace}/{{RepoName}}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteRepo',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.DeleteRepoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_repo_build_rule(
@@ -450,11 +693,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.DeleteRepoBuildRuleResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        build_rule_id = OpenApiUtilClient.get_encode_param(build_rule_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.DeleteRepoBuildRuleResponse().from_map(
-            self.do_roarequest('DeleteRepoBuildRule', '2016-06-07', 'HTTPS', 'DELETE', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/rules/{{BuildRuleId}}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteRepoBuildRule',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/rules/{build_rule_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.DeleteRepoBuildRuleResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_repo_build_rule_with_options_async(
@@ -465,11 +723,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.DeleteRepoBuildRuleResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        build_rule_id = OpenApiUtilClient.get_encode_param(build_rule_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.DeleteRepoBuildRuleResponse().from_map(
-            await self.do_roarequest_async('DeleteRepoBuildRule', '2016-06-07', 'HTTPS', 'DELETE', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/rules/{{BuildRuleId}}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteRepoBuildRule',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/rules/{build_rule_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.DeleteRepoBuildRuleResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_repo_webhook(
@@ -500,11 +773,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.DeleteRepoWebhookResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        webhook_id = OpenApiUtilClient.get_encode_param(webhook_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.DeleteRepoWebhookResponse().from_map(
-            self.do_roarequest('DeleteRepoWebhook', '2016-06-07', 'HTTPS', 'DELETE', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/webhooks/{{WebhookId}}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteRepoWebhook',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/webhooks/{webhook_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.DeleteRepoWebhookResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_repo_webhook_with_options_async(
@@ -515,11 +803,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.DeleteRepoWebhookResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        webhook_id = OpenApiUtilClient.get_encode_param(webhook_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.DeleteRepoWebhookResponse().from_map(
-            await self.do_roarequest_async('DeleteRepoWebhook', '2016-06-07', 'HTTPS', 'DELETE', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/webhooks/{{WebhookId}}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteRepoWebhook',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/webhooks/{webhook_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.DeleteRepoWebhookResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_authorization_token(self) -> cr_20160607_models.GetAuthorizationTokenResponse:
@@ -540,8 +843,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetAuthorizationTokenResponse().from_map(
-            self.do_roarequest('GetAuthorizationToken', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/tokens', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetAuthorizationToken',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/tokens',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetAuthorizationTokenResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_authorization_token_with_options_async(
@@ -552,8 +867,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetAuthorizationTokenResponse().from_map(
-            await self.do_roarequest_async('GetAuthorizationToken', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/tokens', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetAuthorizationToken',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/tokens',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetAuthorizationTokenResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_image_layer(
@@ -584,11 +911,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetImageLayerResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        tag = OpenApiUtilClient.get_encode_param(tag)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetImageLayerResponse().from_map(
-            self.do_roarequest('GetImageLayer', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/tags/{{Tag}}/layers', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetImageLayer',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/tags/{tag}/layers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetImageLayerResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_image_layer_with_options_async(
@@ -599,11 +941,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetImageLayerResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        tag = OpenApiUtilClient.get_encode_param(tag)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetImageLayerResponse().from_map(
-            await self.do_roarequest_async('GetImageLayer', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/tags/{{Tag}}/layers', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetImageLayer',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/tags/{tag}/layers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetImageLayerResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_image_manifest(
@@ -638,6 +995,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetImageManifestResponse:
         UtilClient.validate_model(request)
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        tag = OpenApiUtilClient.get_encode_param(tag)
         query = {}
         if not UtilClient.is_unset(request.schema_version):
             query['SchemaVersion'] = request.schema_version
@@ -645,8 +1005,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return cr_20160607_models.GetImageManifestResponse().from_map(
-            self.do_roarequest('GetImageManifest', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/tags/{{Tag}}/manifest', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetImageManifest',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/tags/{tag}/manifest',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetImageManifestResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_image_manifest_with_options_async(
@@ -659,6 +1031,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetImageManifestResponse:
         UtilClient.validate_model(request)
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        tag = OpenApiUtilClient.get_encode_param(tag)
         query = {}
         if not UtilClient.is_unset(request.schema_version):
             query['SchemaVersion'] = request.schema_version
@@ -666,8 +1041,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return cr_20160607_models.GetImageManifestResponse().from_map(
-            await self.do_roarequest_async('GetImageManifest', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/tags/{{Tag}}/manifest', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetImageManifest',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/tags/{tag}/manifest',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetImageManifestResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_namespace(
@@ -692,11 +1079,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetNamespaceResponse:
+        namespace = OpenApiUtilClient.get_encode_param(namespace)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetNamespaceResponse().from_map(
-            self.do_roarequest('GetNamespace', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/namespace/{namespace}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetNamespace',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/namespace/{namespace}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetNamespaceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_namespace_with_options_async(
@@ -705,11 +1105,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetNamespaceResponse:
+        namespace = OpenApiUtilClient.get_encode_param(namespace)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetNamespaceResponse().from_map(
-            await self.do_roarequest_async('GetNamespace', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/namespace/{namespace}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetNamespace',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/namespace/{namespace}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_namespace_list(
@@ -736,16 +1149,28 @@ class Client(OpenApiClient):
     ) -> cr_20160607_models.GetNamespaceListResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
         if not UtilClient.is_unset(request.authorize):
             query['Authorize'] = request.authorize
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return cr_20160607_models.GetNamespaceListResponse().from_map(
-            self.do_roarequest('GetNamespaceList', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/namespace', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetNamespaceList',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/namespace',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetNamespaceListResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_namespace_list_with_options_async(
@@ -756,16 +1181,28 @@ class Client(OpenApiClient):
     ) -> cr_20160607_models.GetNamespaceListResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
         if not UtilClient.is_unset(request.authorize):
             query['Authorize'] = request.authorize
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return cr_20160607_models.GetNamespaceListResponse().from_map(
-            await self.do_roarequest_async('GetNamespaceList', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/namespace', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetNamespaceList',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/namespace',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetNamespaceListResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_region(
@@ -798,8 +1235,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return cr_20160607_models.GetRegionResponse().from_map(
-            self.do_roarequest('GetRegion', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/regions', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRegion',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRegionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_region_with_options_async(
@@ -816,8 +1265,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return cr_20160607_models.GetRegionResponse().from_map(
-            await self.do_roarequest_async('GetRegion', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/regions', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRegion',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRegionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_region_list(self) -> cr_20160607_models.GetRegionListResponse:
@@ -838,8 +1299,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetRegionListResponse().from_map(
-            self.do_roarequest('GetRegionList', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/regions', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRegionList',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRegionListResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_region_list_with_options_async(
@@ -850,8 +1323,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetRegionListResponse().from_map(
-            await self.do_roarequest_async('GetRegionList', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/regions', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRegionList',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRegionListResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_repo(
@@ -879,11 +1364,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetRepoResponse().from_map(
-            self.do_roarequest('GetRepo', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepo',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_repo_with_options_async(
@@ -893,11 +1392,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetRepoResponse().from_map(
-            await self.do_roarequest_async('GetRepo', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepo',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_repo_build_list(
@@ -929,6 +1442,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoBuildListResponse:
         UtilClient.validate_model(request)
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
         query = {}
         if not UtilClient.is_unset(request.page):
             query['Page'] = request.page
@@ -938,8 +1453,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return cr_20160607_models.GetRepoBuildListResponse().from_map(
-            self.do_roarequest('GetRepoBuildList', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/build', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoBuildList',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/build',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoBuildListResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_repo_build_list_with_options_async(
@@ -951,6 +1478,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoBuildListResponse:
         UtilClient.validate_model(request)
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
         query = {}
         if not UtilClient.is_unset(request.page):
             query['Page'] = request.page
@@ -960,8 +1489,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return cr_20160607_models.GetRepoBuildListResponse().from_map(
-            await self.do_roarequest_async('GetRepoBuildList', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/build', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoBuildList',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/build',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoBuildListResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_repo_build_rule_list(
@@ -989,11 +1530,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoBuildRuleListResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetRepoBuildRuleListResponse().from_map(
-            self.do_roarequest('GetRepoBuildRuleList', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/rules', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoBuildRuleList',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/rules',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoBuildRuleListResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_repo_build_rule_list_with_options_async(
@@ -1003,11 +1558,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoBuildRuleListResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetRepoBuildRuleListResponse().from_map(
-            await self.do_roarequest_async('GetRepoBuildRuleList', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/rules', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoBuildRuleList',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/rules',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoBuildRuleListResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_repo_build_status(
@@ -1038,11 +1607,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoBuildStatusResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        build_id = OpenApiUtilClient.get_encode_param(build_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetRepoBuildStatusResponse().from_map(
-            self.do_roarequest('GetRepoBuildStatus', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/build/{{BuildId}}/status', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoBuildStatus',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/build/{build_id}/status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoBuildStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_repo_build_status_with_options_async(
@@ -1053,11 +1637,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoBuildStatusResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        build_id = OpenApiUtilClient.get_encode_param(build_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetRepoBuildStatusResponse().from_map(
-            await self.do_roarequest_async('GetRepoBuildStatus', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/build/{{BuildId}}/status', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoBuildStatus',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/build/{build_id}/status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoBuildStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_repo_list(
@@ -1084,18 +1683,30 @@ class Client(OpenApiClient):
     ) -> cr_20160607_models.GetRepoListResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
         if not UtilClient.is_unset(request.page):
             query['Page'] = request.page
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return cr_20160607_models.GetRepoListResponse().from_map(
-            self.do_roarequest('GetRepoList', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoList',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoListResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_repo_list_with_options_async(
@@ -1106,18 +1717,30 @@ class Client(OpenApiClient):
     ) -> cr_20160607_models.GetRepoListResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
         if not UtilClient.is_unset(request.page):
             query['Page'] = request.page
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return cr_20160607_models.GetRepoListResponse().from_map(
-            await self.do_roarequest_async('GetRepoList', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoList',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoListResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_repo_list_by_namespace(
@@ -1146,19 +1769,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoListByNamespaceResponse:
         UtilClient.validate_model(request)
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
         query = {}
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
         if not UtilClient.is_unset(request.page):
             query['Page'] = request.page
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return cr_20160607_models.GetRepoListByNamespaceResponse().from_map(
-            self.do_roarequest('GetRepoListByNamespace', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoListByNamespace',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoListByNamespaceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_repo_list_by_namespace_with_options_async(
@@ -1169,19 +1805,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoListByNamespaceResponse:
         UtilClient.validate_model(request)
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
         query = {}
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
         if not UtilClient.is_unset(request.page):
             query['Page'] = request.page
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return cr_20160607_models.GetRepoListByNamespaceResponse().from_map(
-            await self.do_roarequest_async('GetRepoListByNamespace', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoListByNamespace',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoListByNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_repo_tag(
@@ -1212,11 +1861,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoTagResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        tag = OpenApiUtilClient.get_encode_param(tag)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetRepoTagResponse().from_map(
-            self.do_roarequest('GetRepoTag', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/tags/{{Tag}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoTag',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/tags/{tag}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoTagResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_repo_tag_with_options_async(
@@ -1227,75 +1891,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoTagResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        tag = OpenApiUtilClient.get_encode_param(tag)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetRepoTagResponse().from_map(
-            await self.do_roarequest_async('GetRepoTag', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/tags/{{Tag}}', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoTag',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/tags/{tag}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
         )
-
-    def get_repo_tags(
-        self,
-        repo_namespace: str,
-        repo_name: str,
-        request: cr_20160607_models.GetRepoTagsRequest,
-    ) -> cr_20160607_models.GetRepoTagsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_repo_tags_with_options(repo_namespace, repo_name, request, headers, runtime)
-
-    async def get_repo_tags_async(
-        self,
-        repo_namespace: str,
-        repo_name: str,
-        request: cr_20160607_models.GetRepoTagsRequest,
-    ) -> cr_20160607_models.GetRepoTagsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_repo_tags_with_options_async(repo_namespace, repo_name, request, headers, runtime)
-
-    def get_repo_tags_with_options(
-        self,
-        repo_namespace: str,
-        repo_name: str,
-        request: cr_20160607_models.GetRepoTagsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cr_20160607_models.GetRepoTagsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.page):
-            query['Page'] = request.page
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return cr_20160607_models.GetRepoTagsResponse().from_map(
-            self.do_roarequest('GetRepoTags', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/tags', 'none', req, runtime)
-        )
-
-    async def get_repo_tags_with_options_async(
-        self,
-        repo_namespace: str,
-        repo_name: str,
-        request: cr_20160607_models.GetRepoTagsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cr_20160607_models.GetRepoTagsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.page):
-            query['Page'] = request.page
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return cr_20160607_models.GetRepoTagsResponse().from_map(
-            await self.do_roarequest_async('GetRepoTags', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/tags', 'none', req, runtime)
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoTagResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_repo_tag_scan_list(
@@ -1330,6 +1945,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoTagScanListResponse:
         UtilClient.validate_model(request)
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        tag = OpenApiUtilClient.get_encode_param(tag)
         query = {}
         if not UtilClient.is_unset(request.page):
             query['Page'] = request.page
@@ -1341,8 +1959,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return cr_20160607_models.GetRepoTagScanListResponse().from_map(
-            self.do_roarequest('GetRepoTagScanList', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/tags/{{Tag}}/scanResult', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoTagScanList',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/tags/{tag}/scanResult',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoTagScanListResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_repo_tag_scan_list_with_options_async(
@@ -1355,6 +1985,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoTagScanListResponse:
         UtilClient.validate_model(request)
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        tag = OpenApiUtilClient.get_encode_param(tag)
         query = {}
         if not UtilClient.is_unset(request.page):
             query['Page'] = request.page
@@ -1366,8 +1999,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
-        return cr_20160607_models.GetRepoTagScanListResponse().from_map(
-            await self.do_roarequest_async('GetRepoTagScanList', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/tags/{{Tag}}/scanResult', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoTagScanList',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/tags/{tag}/scanResult',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoTagScanListResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_repo_tag_scan_status(
@@ -1398,11 +2043,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoTagScanStatusResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        tag = OpenApiUtilClient.get_encode_param(tag)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetRepoTagScanStatusResponse().from_map(
-            self.do_roarequest('GetRepoTagScanStatus', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/tags/{{Tag}}/scanStatus', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoTagScanStatus',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/tags/{tag}/scanStatus',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoTagScanStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_repo_tag_scan_status_with_options_async(
@@ -1413,11 +2073,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoTagScanStatusResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        tag = OpenApiUtilClient.get_encode_param(tag)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetRepoTagScanStatusResponse().from_map(
-            await self.do_roarequest_async('GetRepoTagScanStatus', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/tags/{{Tag}}/scanStatus', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoTagScanStatus',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/tags/{tag}/scanStatus',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoTagScanStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_repo_tag_scan_summary(
@@ -1448,11 +2123,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoTagScanSummaryResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        tag = OpenApiUtilClient.get_encode_param(tag)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetRepoTagScanSummaryResponse().from_map(
-            self.do_roarequest('GetRepoTagScanSummary', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/tags/{{Tag}}/scanCount', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoTagScanSummary',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/tags/{tag}/scanCount',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoTagScanSummaryResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_repo_tag_scan_summary_with_options_async(
@@ -1463,11 +2153,118 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoTagScanSummaryResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        tag = OpenApiUtilClient.get_encode_param(tag)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetRepoTagScanSummaryResponse().from_map(
-            await self.do_roarequest_async('GetRepoTagScanSummary', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/tags/{{Tag}}/scanCount', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoTagScanSummary',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/tags/{tag}/scanCount',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoTagScanSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_repo_tags(
+        self,
+        repo_namespace: str,
+        repo_name: str,
+        request: cr_20160607_models.GetRepoTagsRequest,
+    ) -> cr_20160607_models.GetRepoTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_repo_tags_with_options(repo_namespace, repo_name, request, headers, runtime)
+
+    async def get_repo_tags_async(
+        self,
+        repo_namespace: str,
+        repo_name: str,
+        request: cr_20160607_models.GetRepoTagsRequest,
+    ) -> cr_20160607_models.GetRepoTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_repo_tags_with_options_async(repo_namespace, repo_name, request, headers, runtime)
+
+    def get_repo_tags_with_options(
+        self,
+        repo_namespace: str,
+        repo_name: str,
+        request: cr_20160607_models.GetRepoTagsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20160607_models.GetRepoTagsResponse:
+        UtilClient.validate_model(request)
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        query = {}
+        if not UtilClient.is_unset(request.page):
+            query['Page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRepoTags',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/tags',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_repo_tags_with_options_async(
+        self,
+        repo_namespace: str,
+        repo_name: str,
+        request: cr_20160607_models.GetRepoTagsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20160607_models.GetRepoTagsResponse:
+        UtilClient.validate_model(request)
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        query = {}
+        if not UtilClient.is_unset(request.page):
+            query['Page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRepoTags',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/tags',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoTagsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_repo_webhook(
@@ -1495,11 +2292,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoWebhookResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetRepoWebhookResponse().from_map(
-            self.do_roarequest('GetRepoWebhook', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/webhooks', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoWebhook',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/webhooks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoWebhookResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_repo_webhook_with_options_async(
@@ -1509,11 +2320,93 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.GetRepoWebhookResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.GetRepoWebhookResponse().from_map(
-            await self.do_roarequest_async('GetRepoWebhook', '2016-06-07', 'HTTPS', 'GET', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/webhooks', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='GetRepoWebhook',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/webhooks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetRepoWebhookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_resource_quota(
+        self,
+        resource_name: str,
+    ) -> cr_20160607_models.GetResourceQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_resource_quota_with_options(resource_name, headers, runtime)
+
+    async def get_resource_quota_async(
+        self,
+        resource_name: str,
+    ) -> cr_20160607_models.GetResourceQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_resource_quota_with_options_async(resource_name, headers, runtime)
+
+    def get_resource_quota_with_options(
+        self,
+        resource_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20160607_models.GetResourceQuotaResponse:
+        resource_name = OpenApiUtilClient.get_encode_param(resource_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetResourceQuota',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/resource/{resource_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetResourceQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_resource_quota_with_options_async(
+        self,
+        resource_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20160607_models.GetResourceQuotaResponse:
+        resource_name = OpenApiUtilClient.get_encode_param(resource_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetResourceQuota',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/resource/{resource_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.GetResourceQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_image_scan(
@@ -1544,11 +2437,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.StartImageScanResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        tag = OpenApiUtilClient.get_encode_param(tag)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.StartImageScanResponse().from_map(
-            self.do_roarequest('StartImageScan', '2016-06-07', 'HTTPS', 'PUT', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/tags/{{Tag}}/scan', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='StartImageScan',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/tags/{tag}/scan',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.StartImageScanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def start_image_scan_with_options_async(
@@ -1559,11 +2467,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.StartImageScanResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        tag = OpenApiUtilClient.get_encode_param(tag)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.StartImageScanResponse().from_map(
-            await self.do_roarequest_async('StartImageScan', '2016-06-07', 'HTTPS', 'PUT', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/tags/{{Tag}}/scan', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='StartImageScan',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/tags/{tag}/scan',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.StartImageScanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_repo_build_by_rule(
@@ -1594,11 +2517,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.StartRepoBuildByRuleResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        build_rule_id = OpenApiUtilClient.get_encode_param(build_rule_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.StartRepoBuildByRuleResponse().from_map(
-            self.do_roarequest('StartRepoBuildByRule', '2016-06-07', 'HTTPS', 'PUT', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/rules/{{BuildRuleId}}/build', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='StartRepoBuildByRule',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/rules/{build_rule_id}/build',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.StartRepoBuildByRuleResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def start_repo_build_by_rule_with_options_async(
@@ -1609,11 +2547,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.StartRepoBuildByRuleResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        build_rule_id = OpenApiUtilClient.get_encode_param(build_rule_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.StartRepoBuildByRuleResponse().from_map(
-            await self.do_roarequest_async('StartRepoBuildByRule', '2016-06-07', 'HTTPS', 'PUT', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/rules/{{BuildRuleId}}/build', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='StartRepoBuildByRule',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/rules/{build_rule_id}/build',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.StartRepoBuildByRuleResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_namespace(
@@ -1638,11 +2591,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.UpdateNamespaceResponse:
+        namespace = OpenApiUtilClient.get_encode_param(namespace)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.UpdateNamespaceResponse().from_map(
-            self.do_roarequest('UpdateNamespace', '2016-06-07', 'HTTPS', 'POST', 'AK', f'/namespace/{namespace}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateNamespace',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/namespace/{namespace}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.UpdateNamespaceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_namespace_with_options_async(
@@ -1651,11 +2617,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.UpdateNamespaceResponse:
+        namespace = OpenApiUtilClient.get_encode_param(namespace)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.UpdateNamespaceResponse().from_map(
-            await self.do_roarequest_async('UpdateNamespace', '2016-06-07', 'HTTPS', 'POST', 'AK', f'/namespace/{namespace}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateNamespace',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/namespace/{namespace}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.UpdateNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_repo(
@@ -1683,11 +2662,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.UpdateRepoResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.UpdateRepoResponse().from_map(
-            self.do_roarequest('UpdateRepo', '2016-06-07', 'HTTPS', 'POST', 'AK', f'/repos/{repo_namespace}/{{RepoName}}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateRepo',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.UpdateRepoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_repo_with_options_async(
@@ -1697,11 +2690,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.UpdateRepoResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.UpdateRepoResponse().from_map(
-            await self.do_roarequest_async('UpdateRepo', '2016-06-07', 'HTTPS', 'POST', 'AK', f'/repos/{repo_namespace}/{{RepoName}}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateRepo',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.UpdateRepoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_repo_build_rule(
@@ -1732,11 +2739,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.UpdateRepoBuildRuleResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        build_rule_id = OpenApiUtilClient.get_encode_param(build_rule_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.UpdateRepoBuildRuleResponse().from_map(
-            self.do_roarequest('UpdateRepoBuildRule', '2016-06-07', 'HTTPS', 'POST', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/rules/{{BuildRuleId}}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateRepoBuildRule',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/rules/{build_rule_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.UpdateRepoBuildRuleResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_repo_build_rule_with_options_async(
@@ -1747,11 +2769,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.UpdateRepoBuildRuleResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        build_rule_id = OpenApiUtilClient.get_encode_param(build_rule_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.UpdateRepoBuildRuleResponse().from_map(
-            await self.do_roarequest_async('UpdateRepoBuildRule', '2016-06-07', 'HTTPS', 'POST', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/rules/{{BuildRuleId}}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateRepoBuildRule',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/rules/{build_rule_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.UpdateRepoBuildRuleResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_repo_webhook(
@@ -1782,11 +2819,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.UpdateRepoWebhookResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        webhook_id = OpenApiUtilClient.get_encode_param(webhook_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.UpdateRepoWebhookResponse().from_map(
-            self.do_roarequest('UpdateRepoWebhook', '2016-06-07', 'HTTPS', 'POST', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/webhooks/{{WebhookId}}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateRepoWebhook',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/webhooks/{webhook_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.UpdateRepoWebhookResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_repo_webhook_with_options_async(
@@ -1797,11 +2849,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cr_20160607_models.UpdateRepoWebhookResponse:
+        repo_namespace = OpenApiUtilClient.get_encode_param(repo_namespace)
+        repo_name = OpenApiUtilClient.get_encode_param(repo_name)
+        webhook_id = OpenApiUtilClient.get_encode_param(webhook_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.UpdateRepoWebhookResponse().from_map(
-            await self.do_roarequest_async('UpdateRepoWebhook', '2016-06-07', 'HTTPS', 'POST', 'AK', f'/repos/{repo_namespace}/{{RepoName}}/webhooks/{{WebhookId}}', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateRepoWebhook',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/repos/{repo_namespace}/{repo_name}/webhooks/{webhook_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.UpdateRepoWebhookResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_user_info(self) -> cr_20160607_models.UpdateUserInfoResponse:
@@ -1822,8 +2889,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.UpdateUserInfoResponse().from_map(
-            self.do_roarequest('UpdateUserInfo', '2016-06-07', 'HTTPS', 'POST', 'AK', f'/users', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateUserInfo',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/users',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.UpdateUserInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_user_info_with_options_async(
@@ -1834,6 +2913,18 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
-        return cr_20160607_models.UpdateUserInfoResponse().from_map(
-            await self.do_roarequest_async('UpdateUserInfo', '2016-06-07', 'HTTPS', 'POST', 'AK', f'/users', 'none', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateUserInfo',
+            version='2016-06-07',
+            protocol='HTTPS',
+            pathname=f'/users',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cr_20160607_models.UpdateUserInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
