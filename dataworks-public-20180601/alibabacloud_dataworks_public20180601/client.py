@@ -84,7 +84,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -109,7 +109,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -138,11 +138,11 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.CreateManualDagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectName'] = request.project_name
-        query['FlowName'] = request.flow_name
-        query['DagPara'] = request.dag_para
-        query['NodePara'] = request.node_para
         query['Bizdate'] = request.bizdate
+        query['DagPara'] = request.dag_para
+        query['FlowName'] = request.flow_name
+        query['NodePara'] = request.node_para
+        query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -170,11 +170,11 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.CreateManualDagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectName'] = request.project_name
-        query['FlowName'] = request.flow_name
-        query['DagPara'] = request.dag_para
-        query['NodePara'] = request.node_para
         query['Bizdate'] = request.bizdate
+        query['DagPara'] = request.dag_para
+        query['FlowName'] = request.flow_name
+        query['NodePara'] = request.node_para
+        query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -216,13 +216,16 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.CreateRealTimeProcessResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DataworksVersion'] = request.dataworks_version
+        query['ActionType'] = request.action_type
         query['CreateResGroup'] = request.create_res_group
-        query['ResourceSpec'] = request.resource_spec
         query['DataSource'] = request.data_source
-        query['Tables'] = request.tables
-        query['TableRule'] = request.table_rule
+        query['DataworksVersion'] = request.dataworks_version
+        query['FileId'] = request.file_id
         query['JobConfig'] = request.job_config
+        query['ProjectId'] = request.project_id
+        query['ResourceSpec'] = request.resource_spec
+        query['TableRule'] = request.table_rule
+        query['Tables'] = request.tables
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -250,13 +253,16 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.CreateRealTimeProcessResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DataworksVersion'] = request.dataworks_version
+        query['ActionType'] = request.action_type
         query['CreateResGroup'] = request.create_res_group
-        query['ResourceSpec'] = request.resource_spec
         query['DataSource'] = request.data_source
-        query['Tables'] = request.tables
-        query['TableRule'] = request.table_rule
+        query['DataworksVersion'] = request.dataworks_version
+        query['FileId'] = request.file_id
         query['JobConfig'] = request.job_config
+        query['ProjectId'] = request.project_id
+        query['ResourceSpec'] = request.resource_spec
+        query['TableRule'] = request.table_rule
+        query['Tables'] = request.tables
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -290,6 +296,80 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.CreateRealTimeProcessResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_real_time_process_with_options_async(request, runtime)
+
+    def delete_disync_task_with_options(
+        self,
+        request: dataworks_public_20180601_models.DeleteDISyncTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.DeleteDISyncTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['FileId'] = request.file_id
+        query['ProjectId'] = request.project_id
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteDISyncTask',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.DeleteDISyncTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_disync_task_with_options_async(
+        self,
+        request: dataworks_public_20180601_models.DeleteDISyncTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.DeleteDISyncTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['FileId'] = request.file_id
+        query['ProjectId'] = request.project_id
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteDISyncTask',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.DeleteDISyncTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_disync_task(
+        self,
+        request: dataworks_public_20180601_models.DeleteDISyncTaskRequest,
+    ) -> dataworks_public_20180601_models.DeleteDISyncTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_disync_task_with_options(request, runtime)
+
+    async def delete_disync_task_async(
+        self,
+        request: dataworks_public_20180601_models.DeleteDISyncTaskRequest,
+    ) -> dataworks_public_20180601_models.DeleteDISyncTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_disync_task_with_options_async(request, runtime)
 
     def delete_file_with_options(
         self,
@@ -354,6 +434,80 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.DeleteFileResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_file_with_options_async(request, runtime)
+
+    def deploy_disync_task_with_options(
+        self,
+        request: dataworks_public_20180601_models.DeployDISyncTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.DeployDISyncTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['FileId'] = request.file_id
+        query['ProjectId'] = request.project_id
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeployDISyncTask',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.DeployDISyncTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def deploy_disync_task_with_options_async(
+        self,
+        request: dataworks_public_20180601_models.DeployDISyncTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.DeployDISyncTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['FileId'] = request.file_id
+        query['ProjectId'] = request.project_id
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeployDISyncTask',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.DeployDISyncTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def deploy_disync_task(
+        self,
+        request: dataworks_public_20180601_models.DeployDISyncTaskRequest,
+    ) -> dataworks_public_20180601_models.DeployDISyncTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.deploy_disync_task_with_options(request, runtime)
+
+    async def deploy_disync_task_async(
+        self,
+        request: dataworks_public_20180601_models.DeployDISyncTaskRequest,
+    ) -> dataworks_public_20180601_models.DeployDISyncTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.deploy_disync_task_with_options_async(request, runtime)
 
     def describe_emr_hive_table_with_options(
         self,
@@ -429,6 +583,224 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_emr_hive_table_with_options_async(request, runtime)
 
+    def get_disync_instance_info_with_options(
+        self,
+        request: dataworks_public_20180601_models.GetDISyncInstanceInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.GetDISyncInstanceInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['FileId'] = request.file_id
+        query['ProjectId'] = request.project_id
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDISyncInstanceInfo',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.GetDISyncInstanceInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_disync_instance_info_with_options_async(
+        self,
+        request: dataworks_public_20180601_models.GetDISyncInstanceInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.GetDISyncInstanceInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['FileId'] = request.file_id
+        query['ProjectId'] = request.project_id
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDISyncInstanceInfo',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.GetDISyncInstanceInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_disync_instance_info(
+        self,
+        request: dataworks_public_20180601_models.GetDISyncInstanceInfoRequest,
+    ) -> dataworks_public_20180601_models.GetDISyncInstanceInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_disync_instance_info_with_options(request, runtime)
+
+    async def get_disync_instance_info_async(
+        self,
+        request: dataworks_public_20180601_models.GetDISyncInstanceInfoRequest,
+    ) -> dataworks_public_20180601_models.GetDISyncInstanceInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_disync_instance_info_with_options_async(request, runtime)
+
+    def get_disync_task_with_options(
+        self,
+        request: dataworks_public_20180601_models.GetDISyncTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.GetDISyncTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['FileId'] = request.file_id
+        query['ProjectId'] = request.project_id
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDISyncTask',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.GetDISyncTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_disync_task_with_options_async(
+        self,
+        request: dataworks_public_20180601_models.GetDISyncTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.GetDISyncTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['FileId'] = request.file_id
+        query['ProjectId'] = request.project_id
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetDISyncTask',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.GetDISyncTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_disync_task(
+        self,
+        request: dataworks_public_20180601_models.GetDISyncTaskRequest,
+    ) -> dataworks_public_20180601_models.GetDISyncTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_disync_task_with_options(request, runtime)
+
+    async def get_disync_task_async(
+        self,
+        request: dataworks_public_20180601_models.GetDISyncTaskRequest,
+    ) -> dataworks_public_20180601_models.GetDISyncTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_disync_task_with_options_async(request, runtime)
+
+    def get_switch_value_with_options(
+        self,
+        request: dataworks_public_20180601_models.GetSwitchValueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.GetSwitchValueResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['SwitchName'] = request.switch_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetSwitchValue',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.GetSwitchValueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_switch_value_with_options_async(
+        self,
+        request: dataworks_public_20180601_models.GetSwitchValueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.GetSwitchValueResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['SwitchName'] = request.switch_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='GetSwitchValue',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.GetSwitchValueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_switch_value(
+        self,
+        request: dataworks_public_20180601_models.GetSwitchValueRequest,
+    ) -> dataworks_public_20180601_models.GetSwitchValueResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_switch_value_with_options(request, runtime)
+
+    async def get_switch_value_async(
+        self,
+        request: dataworks_public_20180601_models.GetSwitchValueRequest,
+    ) -> dataworks_public_20180601_models.GetSwitchValueResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_switch_value_with_options_async(request, runtime)
+
     def list_emr_hive_audit_logs_with_options(
         self,
         request: dataworks_public_20180601_models.ListEmrHiveAuditLogsRequest,
@@ -438,11 +810,11 @@ class Client(OpenApiClient):
         query = {}
         query['ClusterId'] = request.cluster_id
         query['DatabaseName'] = request.database_name
+        query['EndTime'] = request.end_time
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
-        query['TableName'] = request.table_name
         query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -472,11 +844,11 @@ class Client(OpenApiClient):
         query = {}
         query['ClusterId'] = request.cluster_id
         query['DatabaseName'] = request.database_name
+        query['EndTime'] = request.end_time
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
-        query['TableName'] = request.table_name
         query['StartTime'] = request.start_time
-        query['EndTime'] = request.end_time
+        query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -665,9 +1037,9 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = {}
         query['ClusterId'] = request.cluster_id
+        query['ColumnName'] = request.column_name
         query['DatabaseName'] = request.database_name
         query['TableName'] = request.table_name
-        query['ColumnName'] = request.column_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -696,9 +1068,9 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = {}
         query['ClusterId'] = request.cluster_id
+        query['ColumnName'] = request.column_name
         query['DatabaseName'] = request.database_name
         query['TableName'] = request.table_name
-        query['ColumnName'] = request.column_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -816,10 +1188,10 @@ class Client(OpenApiClient):
         query = {}
         query['ClusterId'] = request.cluster_id
         query['DatabaseName'] = request.database_name
+        query['Order'] = request.order
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
         query['TableName'] = request.table_name
-        query['Order'] = request.order
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -849,10 +1221,10 @@ class Client(OpenApiClient):
         query = {}
         query['ClusterId'] = request.cluster_id
         query['DatabaseName'] = request.database_name
+        query['Order'] = request.order
         query['PageNumber'] = request.page_number
         query['PageSize'] = request.page_size
         query['TableName'] = request.table_name
-        query['Order'] = request.order
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -957,6 +1329,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.open_data_works_standard_service_with_options_async(request, runtime)
 
+    def query_data_import_process_with_options(
+        self,
+        request: dataworks_public_20180601_models.QueryDataImportProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.QueryDataImportProcessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['SubUid'] = request.sub_uid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryDataImportProcess',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.QueryDataImportProcessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_data_import_process_with_options_async(
+        self,
+        request: dataworks_public_20180601_models.QueryDataImportProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.QueryDataImportProcessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['SubUid'] = request.sub_uid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryDataImportProcess',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.QueryDataImportProcessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_data_import_process(
+        self,
+        request: dataworks_public_20180601_models.QueryDataImportProcessRequest,
+    ) -> dataworks_public_20180601_models.QueryDataImportProcessResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_data_import_process_with_options(request, runtime)
+
+    async def query_data_import_process_async(
+        self,
+        request: dataworks_public_20180601_models.QueryDataImportProcessRequest,
+    ) -> dataworks_public_20180601_models.QueryDataImportProcessResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_data_import_process_with_options_async(request, runtime)
+
+    def query_data_import_process_status_with_options(
+        self,
+        request: dataworks_public_20180601_models.QueryDataImportProcessStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.QueryDataImportProcessStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryDataImportProcessStatus',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.QueryDataImportProcessStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_data_import_process_status_with_options_async(
+        self,
+        request: dataworks_public_20180601_models.QueryDataImportProcessStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.QueryDataImportProcessStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='QueryDataImportProcessStatus',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.QueryDataImportProcessStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_data_import_process_status(
+        self,
+        request: dataworks_public_20180601_models.QueryDataImportProcessStatusRequest,
+    ) -> dataworks_public_20180601_models.QueryDataImportProcessStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_data_import_process_status_with_options(request, runtime)
+
+    async def query_data_import_process_status_async(
+        self,
+        request: dataworks_public_20180601_models.QueryDataImportProcessStatusRequest,
+    ) -> dataworks_public_20180601_models.QueryDataImportProcessStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_data_import_process_status_with_options_async(request, runtime)
+
     def query_real_time_process_status_with_options(
         self,
         request: dataworks_public_20180601_models.QueryRealTimeProcessStatusRequest,
@@ -1034,8 +1546,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.SearchManualDagNodeInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectName'] = request.project_name
         query['DagId'] = request.dag_id
+        query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -1063,8 +1575,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.SearchManualDagNodeInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectName'] = request.project_name
         query['DagId'] = request.dag_id
+        query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
@@ -1162,3 +1674,355 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.SendTaskMetaCallbackResponse:
         runtime = util_models.RuntimeOptions()
         return await self.send_task_meta_callback_with_options_async(request, runtime)
+
+    def start_disync_instance_with_options(
+        self,
+        request: dataworks_public_20180601_models.StartDISyncInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.StartDISyncInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['FileId'] = request.file_id
+        query['ProjectId'] = request.project_id
+        query['StartParam'] = request.start_param
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StartDISyncInstance',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.StartDISyncInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_disync_instance_with_options_async(
+        self,
+        request: dataworks_public_20180601_models.StartDISyncInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.StartDISyncInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['FileId'] = request.file_id
+        query['ProjectId'] = request.project_id
+        query['StartParam'] = request.start_param
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StartDISyncInstance',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.StartDISyncInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_disync_instance(
+        self,
+        request: dataworks_public_20180601_models.StartDISyncInstanceRequest,
+    ) -> dataworks_public_20180601_models.StartDISyncInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_disync_instance_with_options(request, runtime)
+
+    async def start_disync_instance_async(
+        self,
+        request: dataworks_public_20180601_models.StartDISyncInstanceRequest,
+    ) -> dataworks_public_20180601_models.StartDISyncInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_disync_instance_with_options_async(request, runtime)
+
+    def stop_disync_instance_with_options(
+        self,
+        request: dataworks_public_20180601_models.StopDISyncInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.StopDISyncInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['FileId'] = request.file_id
+        query['ProjectId'] = request.project_id
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopDISyncInstance',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.StopDISyncInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_disync_instance_with_options_async(
+        self,
+        request: dataworks_public_20180601_models.StopDISyncInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.StopDISyncInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['FileId'] = request.file_id
+        query['ProjectId'] = request.project_id
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='StopDISyncInstance',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.StopDISyncInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_disync_instance(
+        self,
+        request: dataworks_public_20180601_models.StopDISyncInstanceRequest,
+    ) -> dataworks_public_20180601_models.StopDISyncInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_disync_instance_with_options(request, runtime)
+
+    async def stop_disync_instance_async(
+        self,
+        request: dataworks_public_20180601_models.StopDISyncInstanceRequest,
+    ) -> dataworks_public_20180601_models.StopDISyncInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_disync_instance_with_options_async(request, runtime)
+
+    def terminate_disync_instance_with_options(
+        self,
+        request: dataworks_public_20180601_models.TerminateDISyncInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.TerminateDISyncInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['FileId'] = request.file_id
+        query['ProjectId'] = request.project_id
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TerminateDISyncInstance',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.TerminateDISyncInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def terminate_disync_instance_with_options_async(
+        self,
+        request: dataworks_public_20180601_models.TerminateDISyncInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.TerminateDISyncInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['FileId'] = request.file_id
+        query['ProjectId'] = request.project_id
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='TerminateDISyncInstance',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.TerminateDISyncInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def terminate_disync_instance(
+        self,
+        request: dataworks_public_20180601_models.TerminateDISyncInstanceRequest,
+    ) -> dataworks_public_20180601_models.TerminateDISyncInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.terminate_disync_instance_with_options(request, runtime)
+
+    async def terminate_disync_instance_async(
+        self,
+        request: dataworks_public_20180601_models.TerminateDISyncInstanceRequest,
+    ) -> dataworks_public_20180601_models.TerminateDISyncInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.terminate_disync_instance_with_options_async(request, runtime)
+
+    def trigger_data_loader_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.TriggerDataLoaderResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='TriggerDataLoader',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.TriggerDataLoaderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def trigger_data_loader_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.TriggerDataLoaderResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='TriggerDataLoader',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.TriggerDataLoaderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def trigger_data_loader(self) -> dataworks_public_20180601_models.TriggerDataLoaderResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.trigger_data_loader_with_options(runtime)
+
+    async def trigger_data_loader_async(self) -> dataworks_public_20180601_models.TriggerDataLoaderResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.trigger_data_loader_with_options_async(runtime)
+
+    def update_disync_task_with_options(
+        self,
+        request: dataworks_public_20180601_models.UpdateDISyncTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.UpdateDISyncTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['FileId'] = request.file_id
+        query['ProjectId'] = request.project_id
+        query['TaskContent'] = request.task_content
+        query['TaskParam'] = request.task_param
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateDISyncTask',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.UpdateDISyncTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_disync_task_with_options_async(
+        self,
+        request: dataworks_public_20180601_models.UpdateDISyncTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.UpdateDISyncTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['FileId'] = request.file_id
+        query['ProjectId'] = request.project_id
+        query['TaskContent'] = request.task_content
+        query['TaskParam'] = request.task_param
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='UpdateDISyncTask',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.UpdateDISyncTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_disync_task(
+        self,
+        request: dataworks_public_20180601_models.UpdateDISyncTaskRequest,
+    ) -> dataworks_public_20180601_models.UpdateDISyncTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_disync_task_with_options(request, runtime)
+
+    async def update_disync_task_async(
+        self,
+        request: dataworks_public_20180601_models.UpdateDISyncTaskRequest,
+    ) -> dataworks_public_20180601_models.UpdateDISyncTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_disync_task_with_options_async(request, runtime)
