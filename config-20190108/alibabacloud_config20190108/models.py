@@ -1376,10 +1376,14 @@ class DescribeConfigurationRecorderResponseBodyConfigurationRecorder(TeaModel):
         self,
         account_id: int = None,
         configuration_recorder_status: str = None,
+        organization_enable_status: str = None,
+        organization_master_id: int = None,
         resource_types: List[str] = None,
     ):
         self.account_id = account_id
         self.configuration_recorder_status = configuration_recorder_status
+        self.organization_enable_status = organization_enable_status
+        self.organization_master_id = organization_master_id
         self.resource_types = resource_types
 
     def validate(self):
@@ -1395,6 +1399,10 @@ class DescribeConfigurationRecorderResponseBodyConfigurationRecorder(TeaModel):
             result['AccountId'] = self.account_id
         if self.configuration_recorder_status is not None:
             result['ConfigurationRecorderStatus'] = self.configuration_recorder_status
+        if self.organization_enable_status is not None:
+            result['OrganizationEnableStatus'] = self.organization_enable_status
+        if self.organization_master_id is not None:
+            result['OrganizationMasterId'] = self.organization_master_id
         if self.resource_types is not None:
             result['ResourceTypes'] = self.resource_types
         return result
@@ -1405,6 +1413,10 @@ class DescribeConfigurationRecorderResponseBodyConfigurationRecorder(TeaModel):
             self.account_id = m.get('AccountId')
         if m.get('ConfigurationRecorderStatus') is not None:
             self.configuration_recorder_status = m.get('ConfigurationRecorderStatus')
+        if m.get('OrganizationEnableStatus') is not None:
+            self.organization_enable_status = m.get('OrganizationEnableStatus')
+        if m.get('OrganizationMasterId') is not None:
+            self.organization_master_id = m.get('OrganizationMasterId')
         if m.get('ResourceTypes') is not None:
             self.resource_types = m.get('ResourceTypes')
         return self
