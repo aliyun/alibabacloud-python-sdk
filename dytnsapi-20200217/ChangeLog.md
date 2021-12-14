@@ -1,3 +1,6 @@
+2021-12-14 Version: 1.0.7
+- Fixed bugs for PhoneNumberAnalysis API.
+
 2021-12-08 Version: 1.0.6
 - Fixed bugs for UnbindSubscription API.
 
