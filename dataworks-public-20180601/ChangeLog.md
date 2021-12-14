@@ -1,3 +1,6 @@
+2021-12-14 Version: 1.0.2
+- Relase meta loader trigger api with region parameter.
+
 2021-12-13 Version: 1.0.1
 - Relase meta loader trigger api.
 
