@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_hitsdb20200615 import models as hitsdb_20200615_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -89,18 +90,152 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def create_lindorm_instance_with_options(
+        self,
+        request: hitsdb_20200615_models.CreateLindormInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.CreateLindormInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ColdStorage'] = request.cold_storage
+        query['CoreSpec'] = request.core_spec
+        query['DiskCategory'] = request.disk_category
+        query['Duration'] = request.duration
+        query['FilestoreNum'] = request.filestore_num
+        query['FilestoreSpec'] = request.filestore_spec
+        query['InstanceAlias'] = request.instance_alias
+        query['InstanceStorage'] = request.instance_storage
+        query['LindormNum'] = request.lindorm_num
+        query['LindormSpec'] = request.lindorm_spec
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['PayType'] = request.pay_type
+        query['PricingCycle'] = request.pricing_cycle
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityToken'] = request.security_token
+        query['SolrNum'] = request.solr_num
+        query['SolrSpec'] = request.solr_spec
+        query['TsdbNum'] = request.tsdb_num
+        query['TsdbSpec'] = request.tsdb_spec
+        query['VPCId'] = request.vpcid
+        query['VSwitchId'] = request.v_switch_id
+        query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLindormInstance',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateLindormInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_lindorm_instance_with_options_async(
+        self,
+        request: hitsdb_20200615_models.CreateLindormInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.CreateLindormInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ColdStorage'] = request.cold_storage
+        query['CoreSpec'] = request.core_spec
+        query['DiskCategory'] = request.disk_category
+        query['Duration'] = request.duration
+        query['FilestoreNum'] = request.filestore_num
+        query['FilestoreSpec'] = request.filestore_spec
+        query['InstanceAlias'] = request.instance_alias
+        query['InstanceStorage'] = request.instance_storage
+        query['LindormNum'] = request.lindorm_num
+        query['LindormSpec'] = request.lindorm_spec
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['PayType'] = request.pay_type
+        query['PricingCycle'] = request.pricing_cycle
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityToken'] = request.security_token
+        query['SolrNum'] = request.solr_num
+        query['SolrSpec'] = request.solr_spec
+        query['TsdbNum'] = request.tsdb_num
+        query['TsdbSpec'] = request.tsdb_spec
+        query['VPCId'] = request.vpcid
+        query['VSwitchId'] = request.v_switch_id
+        query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLindormInstance',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateLindormInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_lindorm_instance(
+        self,
+        request: hitsdb_20200615_models.CreateLindormInstanceRequest,
+    ) -> hitsdb_20200615_models.CreateLindormInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_lindorm_instance_with_options(request, runtime)
+
+    async def create_lindorm_instance_async(
+        self,
+        request: hitsdb_20200615_models.CreateLindormInstanceRequest,
+    ) -> hitsdb_20200615_models.CreateLindormInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_lindorm_instance_with_options_async(request, runtime)
+
     def describe_regions_with_options(
         self,
         request: hitsdb_20200615_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AcceptLanguage'] = request.accept_language
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             hitsdb_20200615_models.DescribeRegionsResponse(),
-            self.do_rpcrequest('DescribeRegions', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_regions_with_options_async(
@@ -109,12 +244,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AcceptLanguage'] = request.accept_language
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             hitsdb_20200615_models.DescribeRegionsResponse(),
-            await self.do_rpcrequest_async('DescribeRegions', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_regions(
@@ -137,12 +290,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetInstanceIpWhiteListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['GroupName'] = request.group_name
+        query['InstanceId'] = request.instance_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceIpWhiteList',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             hitsdb_20200615_models.GetInstanceIpWhiteListResponse(),
-            self.do_rpcrequest('GetInstanceIpWhiteList', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_instance_ip_white_list_with_options_async(
@@ -151,12 +323,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetInstanceIpWhiteListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['GroupName'] = request.group_name
+        query['InstanceId'] = request.instance_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceIpWhiteList',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             hitsdb_20200615_models.GetInstanceIpWhiteListResponse(),
-            await self.do_rpcrequest_async('GetInstanceIpWhiteList', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_instance_ip_white_list(
@@ -179,12 +370,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLindormInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLindormInstance',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             hitsdb_20200615_models.GetLindormInstanceResponse(),
-            self.do_rpcrequest('GetLindormInstance', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_lindorm_instance_with_options_async(
@@ -193,12 +403,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLindormInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLindormInstance',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             hitsdb_20200615_models.GetLindormInstanceResponse(),
-            await self.do_rpcrequest_async('GetLindormInstance', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_lindorm_instance(
@@ -221,12 +450,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLindormInstanceEngineListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLindormInstanceEngineList',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             hitsdb_20200615_models.GetLindormInstanceEngineListResponse(),
-            self.do_rpcrequest('GetLindormInstanceEngineList', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_lindorm_instance_engine_list_with_options_async(
@@ -235,12 +483,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLindormInstanceEngineListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLindormInstanceEngineList',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             hitsdb_20200615_models.GetLindormInstanceEngineListResponse(),
-            await self.do_rpcrequest_async('GetLindormInstanceEngineList', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_lindorm_instance_engine_list(
@@ -263,12 +530,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLindormInstanceListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['QueryStr'] = request.query_str
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityToken'] = request.security_token
+        query['ServiceType'] = request.service_type
+        query['SupportEngine'] = request.support_engine
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLindormInstanceList',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             hitsdb_20200615_models.GetLindormInstanceListResponse(),
-            self.do_rpcrequest('GetLindormInstanceList', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_lindorm_instance_list_with_options_async(
@@ -277,12 +567,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLindormInstanceListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['QueryStr'] = request.query_str
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityToken'] = request.security_token
+        query['ServiceType'] = request.service_type
+        query['SupportEngine'] = request.support_engine
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLindormInstanceList',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             hitsdb_20200615_models.GetLindormInstanceListResponse(),
-            await self.do_rpcrequest_async('GetLindormInstanceList', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_lindorm_instance_list(
@@ -299,18 +612,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_lindorm_instance_list_with_options_async(request, runtime)
 
+    def release_lindorm_instance_with_options(
+        self,
+        request: hitsdb_20200615_models.ReleaseLindormInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.ReleaseLindormInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseLindormInstance',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ReleaseLindormInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def release_lindorm_instance_with_options_async(
+        self,
+        request: hitsdb_20200615_models.ReleaseLindormInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.ReleaseLindormInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseLindormInstance',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ReleaseLindormInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def release_lindorm_instance(
+        self,
+        request: hitsdb_20200615_models.ReleaseLindormInstanceRequest,
+    ) -> hitsdb_20200615_models.ReleaseLindormInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.release_lindorm_instance_with_options(request, runtime)
+
+    async def release_lindorm_instance_async(
+        self,
+        request: hitsdb_20200615_models.ReleaseLindormInstanceRequest,
+    ) -> hitsdb_20200615_models.ReleaseLindormInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.release_lindorm_instance_with_options_async(request, runtime)
+
     def update_instance_ip_white_list_with_options(
         self,
         request: hitsdb_20200615_models.UpdateInstanceIpWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['GroupName'] = request.group_name
+        query['InstanceId'] = request.instance_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityIpList'] = request.security_ip_list
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstanceIpWhiteList',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse(),
-            self.do_rpcrequest('UpdateInstanceIpWhiteList', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_instance_ip_white_list_with_options_async(
@@ -319,12 +730,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['GroupName'] = request.group_name
+        query['InstanceId'] = request.instance_id
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityIpList'] = request.security_ip_list
+        query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstanceIpWhiteList',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse(),
-            await self.do_rpcrequest_async('UpdateInstanceIpWhiteList', '2020-06-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_instance_ip_white_list(
@@ -340,3 +771,119 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_instance_ip_white_list_with_options_async(request, runtime)
+
+    def upgrade_lindorm_instance_with_options(
+        self,
+        request: hitsdb_20200615_models.UpgradeLindormInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.UpgradeLindormInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClusterStorage'] = request.cluster_storage
+        query['ColdStorage'] = request.cold_storage
+        query['CoreNum'] = request.core_num
+        query['CoreSpec'] = request.core_spec
+        query['FilestoreNum'] = request.filestore_num
+        query['FilestoreSpec'] = request.filestore_spec
+        query['InstanceId'] = request.instance_id
+        query['LindormNum'] = request.lindorm_num
+        query['LindormSpec'] = request.lindorm_spec
+        query['LtsCoreNum'] = request.lts_core_num
+        query['LtsCoreSpec'] = request.lts_core_spec
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['PhoenixCoreNum'] = request.phoenix_core_num
+        query['PhoenixCoreSpec'] = request.phoenix_core_spec
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityToken'] = request.security_token
+        query['SolrNum'] = request.solr_num
+        query['SolrSpec'] = request.solr_spec
+        query['TsdbNum'] = request.tsdb_num
+        query['TsdbSpec'] = request.tsdb_spec
+        query['UpgradeType'] = request.upgrade_type
+        query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeLindormInstance',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpgradeLindormInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upgrade_lindorm_instance_with_options_async(
+        self,
+        request: hitsdb_20200615_models.UpgradeLindormInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.UpgradeLindormInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClusterStorage'] = request.cluster_storage
+        query['ColdStorage'] = request.cold_storage
+        query['CoreNum'] = request.core_num
+        query['CoreSpec'] = request.core_spec
+        query['FilestoreNum'] = request.filestore_num
+        query['FilestoreSpec'] = request.filestore_spec
+        query['InstanceId'] = request.instance_id
+        query['LindormNum'] = request.lindorm_num
+        query['LindormSpec'] = request.lindorm_spec
+        query['LtsCoreNum'] = request.lts_core_num
+        query['LtsCoreSpec'] = request.lts_core_spec
+        query['OwnerAccount'] = request.owner_account
+        query['OwnerId'] = request.owner_id
+        query['PhoenixCoreNum'] = request.phoenix_core_num
+        query['PhoenixCoreSpec'] = request.phoenix_core_spec
+        query['RegionId'] = request.region_id
+        query['ResourceOwnerAccount'] = request.resource_owner_account
+        query['ResourceOwnerId'] = request.resource_owner_id
+        query['SecurityToken'] = request.security_token
+        query['SolrNum'] = request.solr_num
+        query['SolrSpec'] = request.solr_spec
+        query['TsdbNum'] = request.tsdb_num
+        query['TsdbSpec'] = request.tsdb_spec
+        query['UpgradeType'] = request.upgrade_type
+        query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeLindormInstance',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpgradeLindormInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upgrade_lindorm_instance(
+        self,
+        request: hitsdb_20200615_models.UpgradeLindormInstanceRequest,
+    ) -> hitsdb_20200615_models.UpgradeLindormInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.upgrade_lindorm_instance_with_options(request, runtime)
+
+    async def upgrade_lindorm_instance_async(
+        self,
+        request: hitsdb_20200615_models.UpgradeLindormInstanceRequest,
+    ) -> hitsdb_20200615_models.UpgradeLindormInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.upgrade_lindorm_instance_with_options_async(request, runtime)
