@@ -1,3 +1,6 @@
+2021-12-14 Version: 2.8.7
+- Add ListRoomUsers API.
+
 2021-11-24 Version: 2.8.6
 - Add ListClasses API.
 

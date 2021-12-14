@@ -9,12 +9,15 @@ class AddMemberRequest(TeaModel):
         self,
         conference_id: str = None,
         from_user_id: str = None,
+        region_id: str = None,
         to_user_id: str = None,
     ):
         # 会议唯一标识
         self.conference_id = conference_id
         # 邀请者用户ID
         self.from_user_id = from_user_id
+        # 地域
+        self.region_id = region_id
         # 被邀请用户ID
         self.to_user_id = to_user_id
 
@@ -31,6 +34,8 @@ class AddMemberRequest(TeaModel):
             result['ConferenceId'] = self.conference_id
         if self.from_user_id is not None:
             result['FromUserId'] = self.from_user_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.to_user_id is not None:
             result['ToUserId'] = self.to_user_id
         return result
@@ -41,6 +46,8 @@ class AddMemberRequest(TeaModel):
             self.conference_id = m.get('ConferenceId')
         if m.get('FromUserId') is not None:
             self.from_user_id = m.get('FromUserId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ToUserId') is not None:
             self.to_user_id = m.get('ToUserId')
         return self
@@ -116,12 +123,15 @@ class AgreeLinkMicRequest(TeaModel):
         self,
         conference_id: str = None,
         from_user_id: str = None,
+        region_id: str = None,
         to_user_id: str = None,
     ):
         # 会议唯一标识
         self.conference_id = conference_id
         # 同意者用户ID
         self.from_user_id = from_user_id
+        # 地域
+        self.region_id = region_id
         # 被同意用户ID
         self.to_user_id = to_user_id
 
@@ -138,6 +148,8 @@ class AgreeLinkMicRequest(TeaModel):
             result['ConferenceId'] = self.conference_id
         if self.from_user_id is not None:
             result['FromUserId'] = self.from_user_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.to_user_id is not None:
             result['ToUserId'] = self.to_user_id
         return result
@@ -148,6 +160,8 @@ class AgreeLinkMicRequest(TeaModel):
             self.conference_id = m.get('ConferenceId')
         if m.get('FromUserId') is not None:
             self.from_user_id = m.get('FromUserId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ToUserId') is not None:
             self.to_user_id = m.get('ToUserId')
         return self
@@ -222,10 +236,13 @@ class ApplyLinkMicRequest(TeaModel):
     def __init__(
         self,
         conference_id: str = None,
+        region_id: str = None,
         user_id: str = None,
     ):
         # 会议唯一标识
         self.conference_id = conference_id
+        # 地域
+        self.region_id = region_id
         # 申请连麦用户
         self.user_id = user_id
 
@@ -240,6 +257,8 @@ class ApplyLinkMicRequest(TeaModel):
         result = dict()
         if self.conference_id is not None:
             result['ConferenceId'] = self.conference_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.user_id is not None:
             result['UserId'] = self.user_id
         return result
@@ -248,6 +267,8 @@ class ApplyLinkMicRequest(TeaModel):
         m = m or dict()
         if m.get('ConferenceId') is not None:
             self.conference_id = m.get('ConferenceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         return self
@@ -325,6 +346,7 @@ class AttachStandardRoomHttpsCertificateRequest(TeaModel):
         certificate_private_key: str = None,
         certificate_public_key: str = None,
         domain_name: str = None,
+        region_id: str = None,
     ):
         # 应用唯一标识
         self.app_id = app_id
@@ -334,6 +356,8 @@ class AttachStandardRoomHttpsCertificateRequest(TeaModel):
         self.certificate_public_key = certificate_public_key
         # 使用证书的确切域名
         self.domain_name = domain_name
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -352,6 +376,8 @@ class AttachStandardRoomHttpsCertificateRequest(TeaModel):
             result['CertificatePublicKey'] = self.certificate_public_key
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -364,6 +390,8 @@ class AttachStandardRoomHttpsCertificateRequest(TeaModel):
             self.certificate_public_key = m.get('CertificatePublicKey')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -473,11 +501,13 @@ class BanAllCommentRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        region_id: str = None,
         room_id: str = None,
         user_id: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
+        self.region_id = region_id
         # 房间唯一标识，由调用CreateRoom返回。
         self.room_id = room_id
         # 用户在房间内的唯一标识
@@ -494,6 +524,8 @@ class BanAllCommentRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         if self.user_id is not None:
@@ -504,6 +536,8 @@ class BanAllCommentRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         if m.get('UserId') is not None:
@@ -589,6 +623,7 @@ class BanCommentRequest(TeaModel):
         app_id: str = None,
         ban_comment_time: int = None,
         ban_comment_user: str = None,
+        region_id: str = None,
         room_id: str = None,
         user_id: str = None,
     ):
@@ -598,6 +633,7 @@ class BanCommentRequest(TeaModel):
         self.ban_comment_time = ban_comment_time
         # 被禁言的用户在房间内的唯一标识
         self.ban_comment_user = ban_comment_user
+        self.region_id = region_id
         # 房间唯一标识，由调用CreateRoom返回。
         self.room_id = room_id
         # 用户在房间内的唯一标识
@@ -618,6 +654,8 @@ class BanCommentRequest(TeaModel):
             result['BanCommentTime'] = self.ban_comment_time
         if self.ban_comment_user is not None:
             result['BanCommentUser'] = self.ban_comment_user
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         if self.user_id is not None:
@@ -632,6 +670,8 @@ class BanCommentRequest(TeaModel):
             self.ban_comment_time = m.get('BanCommentTime')
         if m.get('BanCommentUser') is not None:
             self.ban_comment_user = m.get('BanCommentUser')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         if m.get('UserId') is not None:
@@ -715,10 +755,13 @@ class CancelApplyLinkMicRequest(TeaModel):
     def __init__(
         self,
         conference_id: str = None,
+        region_id: str = None,
         user_id: str = None,
     ):
         # 会议唯一标识
         self.conference_id = conference_id
+        # 地域
+        self.region_id = region_id
         # 申请连麦用户
         self.user_id = user_id
 
@@ -733,6 +776,8 @@ class CancelApplyLinkMicRequest(TeaModel):
         result = dict()
         if self.conference_id is not None:
             result['ConferenceId'] = self.conference_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.user_id is not None:
             result['UserId'] = self.user_id
         return result
@@ -741,6 +786,8 @@ class CancelApplyLinkMicRequest(TeaModel):
         m = m or dict()
         if m.get('ConferenceId') is not None:
             self.conference_id = m.get('ConferenceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         return self
@@ -815,11 +862,13 @@ class CancelBanAllCommentRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        region_id: str = None,
         room_id: str = None,
         user_id: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
+        self.region_id = region_id
         # 房间唯一标识，由调用CreateRoom返回。
         self.room_id = room_id
         # 用户在房间内的唯一标识
@@ -836,6 +885,8 @@ class CancelBanAllCommentRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         if self.user_id is not None:
@@ -846,6 +897,8 @@ class CancelBanAllCommentRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         if m.get('UserId') is not None:
@@ -930,6 +983,7 @@ class CancelBanCommentRequest(TeaModel):
         self,
         app_id: str = None,
         ban_comment_user: str = None,
+        region_id: str = None,
         room_id: str = None,
         user_id: str = None,
     ):
@@ -937,6 +991,7 @@ class CancelBanCommentRequest(TeaModel):
         self.app_id = app_id
         # 取消禁言的用户唯一标识
         self.ban_comment_user = ban_comment_user
+        self.region_id = region_id
         # 房间唯一标识，由调用CreateRoom返回。
         self.room_id = room_id
         # 用户在房间内的唯一标识
@@ -955,6 +1010,8 @@ class CancelBanCommentRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.ban_comment_user is not None:
             result['BanCommentUser'] = self.ban_comment_user
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         if self.user_id is not None:
@@ -967,6 +1024,8 @@ class CancelBanCommentRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('BanCommentUser') is not None:
             self.ban_comment_user = m.get('BanCommentUser')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         if m.get('UserId') is not None:
@@ -1051,11 +1110,14 @@ class CreateAppRequest(TeaModel):
         self,
         app_name: str = None,
         app_template_id: str = None,
+        region_id: str = None,
     ):
         # 应用名称
         self.app_name = app_name
         # 模板ID
         self.app_template_id = app_template_id
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1070,6 +1132,8 @@ class CreateAppRequest(TeaModel):
             result['AppName'] = self.app_name
         if self.app_template_id is not None:
             result['AppTemplateId'] = self.app_template_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1078,6 +1142,8 @@ class CreateAppRequest(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('AppTemplateId') is not None:
             self.app_template_id = m.get('AppTemplateId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1189,6 +1255,7 @@ class CreateAppTemplateRequest(TeaModel):
         app_template_name: str = None,
         component_list: List[str] = None,
         integration_mode: str = None,
+        region_id: str = None,
         scene: str = None,
     ):
         # 应用模板名称
@@ -1197,6 +1264,8 @@ class CreateAppTemplateRequest(TeaModel):
         self.component_list = component_list
         # 集成方式（一体化SDK：paasSDK，样板间：standardRoom）
         self.integration_mode = integration_mode
+        # 地域
+        self.region_id = region_id
         # 应用模板场景，电商business，课堂classroom
         self.scene = scene
 
@@ -1215,6 +1284,8 @@ class CreateAppTemplateRequest(TeaModel):
             result['ComponentList'] = self.component_list
         if self.integration_mode is not None:
             result['IntegrationMode'] = self.integration_mode
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.scene is not None:
             result['Scene'] = self.scene
         return result
@@ -1227,6 +1298,8 @@ class CreateAppTemplateRequest(TeaModel):
             self.component_list = m.get('ComponentList')
         if m.get('IntegrationMode') is not None:
             self.integration_mode = m.get('IntegrationMode')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Scene') is not None:
             self.scene = m.get('Scene')
         return self
@@ -1238,6 +1311,7 @@ class CreateAppTemplateShrinkRequest(TeaModel):
         app_template_name: str = None,
         component_list_shrink: str = None,
         integration_mode: str = None,
+        region_id: str = None,
         scene: str = None,
     ):
         # 应用模板名称
@@ -1246,6 +1320,8 @@ class CreateAppTemplateShrinkRequest(TeaModel):
         self.component_list_shrink = component_list_shrink
         # 集成方式（一体化SDK：paasSDK，样板间：standardRoom）
         self.integration_mode = integration_mode
+        # 地域
+        self.region_id = region_id
         # 应用模板场景，电商business，课堂classroom
         self.scene = scene
 
@@ -1264,6 +1340,8 @@ class CreateAppTemplateShrinkRequest(TeaModel):
             result['ComponentList'] = self.component_list_shrink
         if self.integration_mode is not None:
             result['IntegrationMode'] = self.integration_mode
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.scene is not None:
             result['Scene'] = self.scene
         return result
@@ -1276,6 +1354,8 @@ class CreateAppTemplateShrinkRequest(TeaModel):
             self.component_list_shrink = m.get('ComponentList')
         if m.get('IntegrationMode') is not None:
             self.integration_mode = m.get('IntegrationMode')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Scene') is not None:
             self.scene = m.get('Scene')
         return self
@@ -1389,6 +1469,7 @@ class CreateClassRequest(TeaModel):
         app_id: str = None,
         create_nickname: str = None,
         create_user_id: str = None,
+        region_id: str = None,
         title: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
@@ -1397,6 +1478,7 @@ class CreateClassRequest(TeaModel):
         self.create_nickname = create_nickname
         # 创建人用户ID。
         self.create_user_id = create_user_id
+        self.region_id = region_id
         # 课堂标题
         self.title = title
 
@@ -1415,6 +1497,8 @@ class CreateClassRequest(TeaModel):
             result['CreateNickname'] = self.create_nickname
         if self.create_user_id is not None:
             result['CreateUserId'] = self.create_user_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.title is not None:
             result['Title'] = self.title
         return result
@@ -1427,6 +1511,8 @@ class CreateClassRequest(TeaModel):
             self.create_nickname = m.get('CreateNickname')
         if m.get('CreateUserId') is not None:
             self.create_user_id = m.get('CreateUserId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         return self
@@ -1601,12 +1687,14 @@ class CreateConferenceRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        region_id: str = None,
         room_id: str = None,
         title: str = None,
         user_id: str = None,
     ):
         # 应用唯一标识，可以包含小写字母、数字，长度为6个字符。
         self.app_id = app_id
+        self.region_id = region_id
         # 房间ID，最大长度36个字符，传空值，则随机生成一个房间ID。
         self.room_id = room_id
         # 会议标题，支持中英文，最大长度256位。
@@ -1625,6 +1713,8 @@ class CreateConferenceRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         if self.title is not None:
@@ -1637,6 +1727,8 @@ class CreateConferenceRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         if m.get('Title') is not None:
@@ -1755,6 +1847,7 @@ class CreateLiveRequest(TeaModel):
         code_level: int = None,
         introduction: str = None,
         live_id: str = None,
+        region_id: str = None,
         room_id: str = None,
         title: str = None,
         user_id: str = None,
@@ -1769,6 +1862,7 @@ class CreateLiveRequest(TeaModel):
         self.introduction = introduction
         # 直播资源的唯一标识ID，缺省时系统自动生成36位随机uuid字符串。
         self.live_id = live_id
+        self.region_id = region_id
         # 房间ID，最大长度36个字符，传空值，则随机生成一个房间ID。
         self.room_id = room_id
         # 直播标题，支持中英文，最大长度256位。
@@ -1795,6 +1889,8 @@ class CreateLiveRequest(TeaModel):
             result['Introduction'] = self.introduction
         if self.live_id is not None:
             result['LiveId'] = self.live_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         if self.title is not None:
@@ -1815,6 +1911,8 @@ class CreateLiveRequest(TeaModel):
             self.introduction = m.get('Introduction')
         if m.get('LiveId') is not None:
             self.live_id = m.get('LiveId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         if m.get('Title') is not None:
@@ -1934,6 +2032,7 @@ class CreateLiveRoomRequest(TeaModel):
         cover_url: str = None,
         extension: Dict[str, str] = None,
         notice: str = None,
+        region_id: str = None,
         title: str = None,
         user_id: str = None,
     ):
@@ -1949,6 +2048,7 @@ class CreateLiveRoomRequest(TeaModel):
         self.extension = extension
         # 公告，支持中英文，最大长度256位。
         self.notice = notice
+        self.region_id = region_id
         # 标题，支持中英文，最大长度32位。
         self.title = title
         # 操作人ID。
@@ -1975,6 +2075,8 @@ class CreateLiveRoomRequest(TeaModel):
             result['Extension'] = self.extension
         if self.notice is not None:
             result['Notice'] = self.notice
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.title is not None:
             result['Title'] = self.title
         if self.user_id is not None:
@@ -1995,6 +2097,8 @@ class CreateLiveRoomRequest(TeaModel):
             self.extension = m.get('Extension')
         if m.get('Notice') is not None:
             self.notice = m.get('Notice')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         if m.get('UserId') is not None:
@@ -2011,6 +2115,7 @@ class CreateLiveRoomShrinkRequest(TeaModel):
         cover_url: str = None,
         extension_shrink: str = None,
         notice: str = None,
+        region_id: str = None,
         title: str = None,
         user_id: str = None,
     ):
@@ -2026,6 +2131,7 @@ class CreateLiveRoomShrinkRequest(TeaModel):
         self.extension_shrink = extension_shrink
         # 公告，支持中英文，最大长度256位。
         self.notice = notice
+        self.region_id = region_id
         # 标题，支持中英文，最大长度32位。
         self.title = title
         # 操作人ID。
@@ -2052,6 +2158,8 @@ class CreateLiveRoomShrinkRequest(TeaModel):
             result['Extension'] = self.extension_shrink
         if self.notice is not None:
             result['Notice'] = self.notice
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.title is not None:
             result['Title'] = self.title
         if self.user_id is not None:
@@ -2072,6 +2180,8 @@ class CreateLiveRoomShrinkRequest(TeaModel):
             self.extension_shrink = m.get('Extension')
         if m.get('Notice') is not None:
             self.notice = m.get('Notice')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         if m.get('UserId') is not None:
@@ -2387,6 +2497,7 @@ class CreateRoomRequest(TeaModel):
         app_id: str = None,
         extension: Dict[str, str] = None,
         notice: str = None,
+        region_id: str = None,
         room_id: str = None,
         room_owner_id: str = None,
         template_id: str = None,
@@ -2398,6 +2509,7 @@ class CreateRoomRequest(TeaModel):
         self.extension = extension
         # 房间公告，支持中英文，最大长度256位。
         self.notice = notice
+        self.region_id = region_id
         # 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位，传空则随机生成一个房间id。
         self.room_id = room_id
         # 房主用户id，仅支持英文和数字，最大长度36位。
@@ -2422,6 +2534,8 @@ class CreateRoomRequest(TeaModel):
             result['Extension'] = self.extension
         if self.notice is not None:
             result['Notice'] = self.notice
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         if self.room_owner_id is not None:
@@ -2440,6 +2554,8 @@ class CreateRoomRequest(TeaModel):
             self.extension = m.get('Extension')
         if m.get('Notice') is not None:
             self.notice = m.get('Notice')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         if m.get('RoomOwnerId') is not None:
@@ -2457,6 +2573,7 @@ class CreateRoomShrinkRequest(TeaModel):
         app_id: str = None,
         extension_shrink: str = None,
         notice: str = None,
+        region_id: str = None,
         room_id: str = None,
         room_owner_id: str = None,
         template_id: str = None,
@@ -2468,6 +2585,7 @@ class CreateRoomShrinkRequest(TeaModel):
         self.extension_shrink = extension_shrink
         # 房间公告，支持中英文，最大长度256位。
         self.notice = notice
+        self.region_id = region_id
         # 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位，传空则随机生成一个房间id。
         self.room_id = room_id
         # 房主用户id，仅支持英文和数字，最大长度36位。
@@ -2492,6 +2610,8 @@ class CreateRoomShrinkRequest(TeaModel):
             result['Extension'] = self.extension_shrink
         if self.notice is not None:
             result['Notice'] = self.notice
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         if self.room_owner_id is not None:
@@ -2510,6 +2630,8 @@ class CreateRoomShrinkRequest(TeaModel):
             self.extension_shrink = m.get('Extension')
         if m.get('Notice') is not None:
             self.notice = m.get('Notice')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         if m.get('RoomOwnerId') is not None:
@@ -2627,9 +2749,12 @@ class DeleteAppRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        region_id: str = None,
     ):
         # 应用唯一标识
         self.app_id = app_id
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -2642,12 +2767,16 @@ class DeleteAppRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -2720,9 +2849,12 @@ class DeleteAppTemplateRequest(TeaModel):
     def __init__(
         self,
         app_template_id: str = None,
+        region_id: str = None,
     ):
         # 模板唯一标识
         self.app_template_id = app_template_id
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -2735,12 +2867,16 @@ class DeleteAppTemplateRequest(TeaModel):
         result = dict()
         if self.app_template_id is not None:
             result['AppTemplateId'] = self.app_template_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AppTemplateId') is not None:
             self.app_template_id = m.get('AppTemplateId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -2814,12 +2950,14 @@ class DeleteClassRequest(TeaModel):
         self,
         app_id: str = None,
         class_id: str = None,
+        region_id: str = None,
         user_id: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
         # 课堂唯一标识。
         self.class_id = class_id
+        self.region_id = region_id
         # 操作人用户ID，仅支持中英文数字，下划线，中划线，1~36个字符。
         self.user_id = user_id
 
@@ -2836,6 +2974,8 @@ class DeleteClassRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.class_id is not None:
             result['ClassId'] = self.class_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.user_id is not None:
             result['UserId'] = self.user_id
         return result
@@ -2846,6 +2986,8 @@ class DeleteClassRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('ClassId') is not None:
             self.class_id = m.get('ClassId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         return self
@@ -2921,6 +3063,7 @@ class DeleteCommentRequest(TeaModel):
         self,
         app_id: str = None,
         comment_id_list: List[str] = None,
+        region_id: str = None,
         room_id: str = None,
         user_id: str = None,
     ):
@@ -2928,6 +3071,7 @@ class DeleteCommentRequest(TeaModel):
         self.app_id = app_id
         # 需要删除的弹幕id列表
         self.comment_id_list = comment_id_list
+        self.region_id = region_id
         # 直播间唯一标识，在调用CreateRoom返回。
         self.room_id = room_id
         # 删除的操作人ID。
@@ -2946,6 +3090,8 @@ class DeleteCommentRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.comment_id_list is not None:
             result['CommentIdList'] = self.comment_id_list
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         if self.user_id is not None:
@@ -2958,6 +3104,8 @@ class DeleteCommentRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('CommentIdList') is not None:
             self.comment_id_list = m.get('CommentIdList')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         if m.get('UserId') is not None:
@@ -3072,6 +3220,7 @@ class DeleteConferenceRequest(TeaModel):
         self,
         app_id: str = None,
         conference_id: str = None,
+        region_id: str = None,
         room_id: str = None,
         user_id: str = None,
     ):
@@ -3079,6 +3228,7 @@ class DeleteConferenceRequest(TeaModel):
         self.app_id = app_id
         # 会议资源的唯一标识ID
         self.conference_id = conference_id
+        self.region_id = region_id
         # 房间ID，最大长度36位
         self.room_id = room_id
         # 创建会议用户ID
@@ -3097,6 +3247,8 @@ class DeleteConferenceRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.conference_id is not None:
             result['ConferenceId'] = self.conference_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         if self.user_id is not None:
@@ -3109,6 +3261,8 @@ class DeleteConferenceRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('ConferenceId') is not None:
             self.conference_id = m.get('ConferenceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         if m.get('UserId') is not None:
@@ -3185,9 +3339,11 @@ class DeleteLiveRequest(TeaModel):
     def __init__(
         self,
         live_id: str = None,
+        region_id: str = None,
     ):
         # 直播资源的唯一标识ID
         self.live_id = live_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -3200,12 +3356,16 @@ class DeleteLiveRequest(TeaModel):
         result = dict()
         if self.live_id is not None:
             result['LiveId'] = self.live_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('LiveId') is not None:
             self.live_id = m.get('LiveId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -3279,12 +3439,14 @@ class DeleteLiveRoomRequest(TeaModel):
         self,
         app_id: str = None,
         live_id: str = None,
+        region_id: str = None,
         user_id: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
         # 直播ID。
         self.live_id = live_id
+        self.region_id = region_id
         # 操作人ID。
         self.user_id = user_id
 
@@ -3301,6 +3463,8 @@ class DeleteLiveRoomRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.live_id is not None:
             result['LiveId'] = self.live_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.user_id is not None:
             result['UserId'] = self.user_id
         return result
@@ -3311,6 +3475,8 @@ class DeleteLiveRoomRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('LiveId') is not None:
             self.live_id = m.get('LiveId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         return self
@@ -3385,10 +3551,12 @@ class DeleteRoomRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        region_id: str = None,
         room_id: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
+        self.region_id = region_id
         # 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位。
         self.room_id = room_id
 
@@ -3403,6 +3571,8 @@ class DeleteRoomRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         return result
@@ -3411,6 +3581,8 @@ class DeleteRoomRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         return self
@@ -3485,9 +3657,12 @@ class GetAppRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        region_id: str = None,
     ):
         # 应用唯一标识
         self.app_id = app_id
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -3500,12 +3675,16 @@ class GetAppRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -3678,9 +3857,12 @@ class GetAppTemplateRequest(TeaModel):
     def __init__(
         self,
         app_template_id: str = None,
+        region_id: str = None,
     ):
         # 应用模板唯一标识
         self.app_template_id = app_template_id
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -3693,12 +3875,16 @@ class GetAppTemplateRequest(TeaModel):
         result = dict()
         if self.app_template_id is not None:
             result['AppTemplateId'] = self.app_template_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AppTemplateId') is not None:
             self.app_template_id = m.get('AppTemplateId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -3915,6 +4101,7 @@ class GetAuthTokenRequest(TeaModel):
         app_id: str = None,
         app_key: str = None,
         device_id: str = None,
+        region_id: str = None,
         user_id: str = None,
     ):
         # 用户的应用ID，在控制台创建应用时生成
@@ -3923,6 +4110,8 @@ class GetAuthTokenRequest(TeaModel):
         self.app_key = app_key
         # 终端设备ID
         self.device_id = device_id
+        # cn-shanghai
+        self.region_id = region_id
         # 用户UserId,在AppId下单独唯一
         self.user_id = user_id
 
@@ -3941,6 +4130,8 @@ class GetAuthTokenRequest(TeaModel):
             result['AppKey'] = self.app_key
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.user_id is not None:
             result['UserId'] = self.user_id
         return result
@@ -3953,6 +4144,8 @@ class GetAuthTokenRequest(TeaModel):
             self.app_key = m.get('AppKey')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         return self
@@ -4078,12 +4271,14 @@ class GetClassDetailRequest(TeaModel):
         self,
         app_id: str = None,
         class_id: str = None,
+        region_id: str = None,
         user_id: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
         # 课堂唯一标识，由调用CreateClass返回。
         self.class_id = class_id
+        self.region_id = region_id
         # 操作人用户ID。
         self.user_id = user_id
 
@@ -4100,6 +4295,8 @@ class GetClassDetailRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.class_id is not None:
             result['ClassId'] = self.class_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.user_id is not None:
             result['UserId'] = self.user_id
         return result
@@ -4110,6 +4307,8 @@ class GetClassDetailRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('ClassId') is not None:
             self.class_id = m.get('ClassId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         return self
@@ -4298,9 +4497,12 @@ class GetConferenceRequest(TeaModel):
     def __init__(
         self,
         conference_id: str = None,
+        region_id: str = None,
     ):
         # 会议资源唯一标识。
         self.conference_id = conference_id
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -4313,12 +4515,16 @@ class GetConferenceRequest(TeaModel):
         result = dict()
         if self.conference_id is not None:
             result['ConferenceId'] = self.conference_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ConferenceId') is not None:
             self.conference_id = m.get('ConferenceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -4477,9 +4683,12 @@ class GetDomainOwnerVerifyContentRequest(TeaModel):
     def __init__(
         self,
         live_domain_name: str = None,
+        region_id: str = None,
     ):
         # 直播域名
         self.live_domain_name = live_domain_name
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -4492,12 +4701,16 @@ class GetDomainOwnerVerifyContentRequest(TeaModel):
         result = dict()
         if self.live_domain_name is not None:
             result['LiveDomainName'] = self.live_domain_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('LiveDomainName') is not None:
             self.live_domain_name = m.get('LiveDomainName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -4603,6 +4816,34 @@ class GetDomainOwnerVerifyContentResponse(TeaModel):
         return self
 
 
+class GetImpProductStatusRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        # 地域
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
 class GetImpProductStatusResponseBody(TeaModel):
     def __init__(
         self,
@@ -4679,9 +4920,11 @@ class GetLiveRequest(TeaModel):
     def __init__(
         self,
         live_id: str = None,
+        region_id: str = None,
     ):
         # 直播资源的唯一标识ID
         self.live_id = live_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -4694,12 +4937,16 @@ class GetLiveRequest(TeaModel):
         result = dict()
         if self.live_id is not None:
             result['LiveId'] = self.live_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('LiveId') is not None:
             self.live_id = m.get('LiveId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -5038,6 +5285,7 @@ class GetLiveDomainStatusRequest(TeaModel):
         app_id: str = None,
         live_domain_list: List[str] = None,
         live_domain_type: str = None,
+        region_id: str = None,
     ):
         # 应用唯一标识
         self.app_id = app_id
@@ -5045,6 +5293,8 @@ class GetLiveDomainStatusRequest(TeaModel):
         self.live_domain_list = live_domain_list
         # 直播域名类型，推流域名: push, 拉流域名: pull, 回放域名: palyback
         self.live_domain_type = live_domain_type
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -5061,6 +5311,8 @@ class GetLiveDomainStatusRequest(TeaModel):
             result['LiveDomainList'] = self.live_domain_list
         if self.live_domain_type is not None:
             result['LiveDomainType'] = self.live_domain_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5071,6 +5323,8 @@ class GetLiveDomainStatusRequest(TeaModel):
             self.live_domain_list = m.get('LiveDomainList')
         if m.get('LiveDomainType') is not None:
             self.live_domain_type = m.get('LiveDomainType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -5080,6 +5334,7 @@ class GetLiveDomainStatusShrinkRequest(TeaModel):
         app_id: str = None,
         live_domain_list_shrink: str = None,
         live_domain_type: str = None,
+        region_id: str = None,
     ):
         # 应用唯一标识
         self.app_id = app_id
@@ -5087,6 +5342,8 @@ class GetLiveDomainStatusShrinkRequest(TeaModel):
         self.live_domain_list_shrink = live_domain_list_shrink
         # 直播域名类型，推流域名: push, 拉流域名: pull, 回放域名: palyback
         self.live_domain_type = live_domain_type
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -5103,6 +5360,8 @@ class GetLiveDomainStatusShrinkRequest(TeaModel):
             result['LiveDomainList'] = self.live_domain_list_shrink
         if self.live_domain_type is not None:
             result['LiveDomainType'] = self.live_domain_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5113,6 +5372,8 @@ class GetLiveDomainStatusShrinkRequest(TeaModel):
             self.live_domain_list_shrink = m.get('LiveDomainList')
         if m.get('LiveDomainType') is not None:
             self.live_domain_type = m.get('LiveDomainType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -5273,11 +5534,13 @@ class GetLiveRoomRequest(TeaModel):
         self,
         app_id: str = None,
         live_id: str = None,
+        region_id: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
         # 直播ID。
         self.live_id = live_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -5292,6 +5555,8 @@ class GetLiveRoomRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.live_id is not None:
             result['LiveId'] = self.live_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5300,6 +5565,8 @@ class GetLiveRoomRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('LiveId') is not None:
             self.live_id = m.get('LiveId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -5659,11 +5926,13 @@ class GetLiveRoomStatisticsRequest(TeaModel):
         self,
         app_id: str = None,
         live_id: str = None,
+        region_id: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
         # 直播ID。
         self.live_id = live_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -5678,6 +5947,8 @@ class GetLiveRoomStatisticsRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.live_id is not None:
             result['LiveId'] = self.live_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5686,6 +5957,8 @@ class GetLiveRoomStatisticsRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('LiveId') is not None:
             self.live_id = m.get('LiveId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -5861,6 +6134,7 @@ class GetLiveRoomUserStatisticsRequest(TeaModel):
         live_id: str = None,
         page_number: str = None,
         page_size: str = None,
+        region_id: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
@@ -5870,6 +6144,7 @@ class GetLiveRoomUserStatisticsRequest(TeaModel):
         self.page_number = page_number
         # 每页显示个数，最大支持50，参数为空默认显示个数为10。
         self.page_size = page_size
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -5888,6 +6163,8 @@ class GetLiveRoomUserStatisticsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5900,6 +6177,8 @@ class GetLiveRoomUserStatisticsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -6080,10 +6359,12 @@ class GetRoomRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        region_id: str = None,
         room_id: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
+        self.region_id = region_id
         # 房间唯一标识，由字母、数字、符号.和-组成，最大长度36位。
         self.room_id = room_id
 
@@ -6098,6 +6379,8 @@ class GetRoomRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         return result
@@ -6106,6 +6389,8 @@ class GetRoomRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         return self
@@ -6381,9 +6666,12 @@ class GetStandardRoomHttpsCertificateRequest(TeaModel):
     def __init__(
         self,
         certificate_id: str = None,
+        region_id: str = None,
     ):
         # 证书ID
         self.certificate_id = certificate_id
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -6396,12 +6684,16 @@ class GetStandardRoomHttpsCertificateRequest(TeaModel):
         result = dict()
         if self.certificate_id is not None:
             result['CertificateId'] = self.certificate_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CertificateId') is not None:
             self.certificate_id = m.get('CertificateId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -6536,6 +6828,7 @@ class GetStandardRoomJumpUrlRequest(TeaModel):
         biz_id: str = None,
         biz_type: str = None,
         platform: str = None,
+        region_id: str = None,
         user_id: str = None,
         user_nick: str = None,
     ):
@@ -6549,6 +6842,8 @@ class GetStandardRoomJumpUrlRequest(TeaModel):
         self.biz_type = biz_type
         # 平台：win, mac, android, ios, web
         self.platform = platform
+        # cn-shanghai
+        self.region_id = region_id
         # 用户UserId,在AppId下单独唯一
         self.user_id = user_id
         # 用户昵称
@@ -6573,6 +6868,8 @@ class GetStandardRoomJumpUrlRequest(TeaModel):
             result['BizType'] = self.biz_type
         if self.platform is not None:
             result['Platform'] = self.platform
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.user_id is not None:
             result['UserId'] = self.user_id
         if self.user_nick is not None:
@@ -6591,6 +6888,8 @@ class GetStandardRoomJumpUrlRequest(TeaModel):
             self.biz_type = m.get('BizType')
         if m.get('Platform') is not None:
             self.platform = m.get('Platform')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         if m.get('UserNick') is not None:
@@ -6704,11 +7003,14 @@ class ListAppTemplatesRequest(TeaModel):
         self,
         page_number: str = None,
         page_size: str = None,
+        region_id: str = None,
     ):
         # 查询页码，参数为空默认查询第1页。
         self.page_number = page_number
         # 每页显示个数，参数为空默认显示个数为10。
         self.page_size = page_size
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -6723,6 +7025,8 @@ class ListAppTemplatesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6731,6 +7035,8 @@ class ListAppTemplatesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -7005,6 +7311,7 @@ class ListApplyLinkMicUsersRequest(TeaModel):
         conference_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
     ):
         # 会议唯一标识符
         self.conference_id = conference_id
@@ -7012,6 +7319,8 @@ class ListApplyLinkMicUsersRequest(TeaModel):
         self.page_number = page_number
         # 每页显示个数，最大显示个数为100。
         self.page_size = page_size
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -7028,6 +7337,8 @@ class ListApplyLinkMicUsersRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7038,6 +7349,8 @@ class ListApplyLinkMicUsersRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -7170,6 +7483,7 @@ class ListAppsRequest(TeaModel):
         integration_mode: str = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         status: str = None,
     ):
         # 集成方式：- 一体化SDK：paasSDK - 样板间：standardRoom
@@ -7178,6 +7492,8 @@ class ListAppsRequest(TeaModel):
         self.page_number = page_number
         # 每页显示个数，参数为空默认显示个数为10。
         self.page_size = page_size
+        # 地域
+        self.region_id = region_id
         # 应用状态
         self.status = status
 
@@ -7196,6 +7512,8 @@ class ListAppsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -7208,6 +7526,8 @@ class ListAppsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -7441,6 +7761,7 @@ class ListClassesRequest(TeaModel):
         app_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         status: int = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
@@ -7449,6 +7770,7 @@ class ListClassesRequest(TeaModel):
         self.page_number = page_number
         # 每页显示个数，最大支持50，参数为空默认显示个数为10。
         self.page_size = page_size
+        self.region_id = region_id
         # 课程状态，0-未开课 1-上课中 2-已下课，不传则返回所有课程。
         self.status = status
 
@@ -7467,6 +7789,8 @@ class ListClassesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -7479,6 +7803,8 @@ class ListClassesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -7726,6 +8052,7 @@ class ListCommentsRequest(TeaModel):
         app_id: str = None,
         page_num: int = None,
         page_size: int = None,
+        region_id: str = None,
         room_id: str = None,
         sort_type: int = None,
         user_id: str = None,
@@ -7736,6 +8063,7 @@ class ListCommentsRequest(TeaModel):
         self.page_num = page_num
         # 查询弹幕消息列表的分页大小。最小不得小于1，最大不得超过100。如果超过100，会被截断为前100条。
         self.page_size = page_size
+        self.region_id = region_id
         # 房间的唯一标识，在调用CreateRoom时返回。
         self.room_id = room_id
         # 查询弹幕消息列表的排序方式。取值仅限0和1，其中0表示按照弹幕消息创建时间递增的顺序拉取，1表示按照弹幕消息创建时间递减的时间拉取。
@@ -7758,6 +8086,8 @@ class ListCommentsRequest(TeaModel):
             result['PageNum'] = self.page_num
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         if self.sort_type is not None:
@@ -7774,6 +8104,8 @@ class ListCommentsRequest(TeaModel):
             self.page_num = m.get('PageNum')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         if m.get('SortType') is not None:
@@ -7996,11 +8328,14 @@ class ListComponentsRequest(TeaModel):
         self,
         app_id: str = None,
         app_template_id: str = None,
+        region_id: str = None,
     ):
         # 应用唯一标识
         self.app_id = app_id
         # 应用模板唯一标识
         self.app_template_id = app_template_id
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -8015,6 +8350,8 @@ class ListComponentsRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.app_template_id is not None:
             result['AppTemplateId'] = self.app_template_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8023,6 +8360,8 @@ class ListComponentsRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('AppTemplateId') is not None:
             self.app_template_id = m.get('AppTemplateId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -8426,6 +8765,7 @@ class ListConferenceUsersRequest(TeaModel):
         conference_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
     ):
         # 会议唯一标识符
         self.conference_id = conference_id
@@ -8433,6 +8773,8 @@ class ListConferenceUsersRequest(TeaModel):
         self.page_number = page_number
         # 每页显示个数，最大显示个数为100。
         self.page_size = page_size
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -8449,6 +8791,8 @@ class ListConferenceUsersRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8459,6 +8803,8 @@ class ListConferenceUsersRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -8634,6 +8980,7 @@ class ListLiveRoomsRequest(TeaModel):
         app_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         status: int = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
@@ -8642,6 +8989,7 @@ class ListLiveRoomsRequest(TeaModel):
         self.page_number = page_number
         # 每页显示个数，最大支持50，参数为空默认显示个数为10。
         self.page_size = page_size
+        self.region_id = region_id
         # 直播状态，0-在播 1-下播，不传则返回所有直播。
         self.status = status
 
@@ -8660,6 +9008,8 @@ class ListLiveRoomsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -8672,6 +9022,8 @@ class ListLiveRoomsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -8932,11 +9284,13 @@ class ListLiveRoomsByIdRequest(TeaModel):
         self,
         app_id: str = None,
         live_id_list: List[str] = None,
+        region_id: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
         # 直播ID列表。
         self.live_id_list = live_id_list
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -8951,6 +9305,8 @@ class ListLiveRoomsByIdRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.live_id_list is not None:
             result['LiveIdList'] = self.live_id_list
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8959,6 +9315,8 @@ class ListLiveRoomsByIdRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('LiveIdList') is not None:
             self.live_id_list = m.get('LiveIdList')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -8967,11 +9325,13 @@ class ListLiveRoomsByIdShrinkRequest(TeaModel):
         self,
         app_id: str = None,
         live_id_list_shrink: str = None,
+        region_id: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
         # 直播ID列表。
         self.live_id_list_shrink = live_id_list_shrink
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -8986,6 +9346,8 @@ class ListLiveRoomsByIdShrinkRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.live_id_list_shrink is not None:
             result['LiveIdList'] = self.live_id_list_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8994,6 +9356,8 @@ class ListLiveRoomsByIdShrinkRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('LiveIdList') is not None:
             self.live_id_list_shrink = m.get('LiveIdList')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -9231,6 +9595,7 @@ class ListRoomLivesRequest(TeaModel):
         self,
         app_id: str = None,
         query_timestamp: int = None,
+        region_id: str = None,
         room_id: str = None,
         room_id_list: List[str] = None,
         size: int = None,
@@ -9240,6 +9605,7 @@ class ListRoomLivesRequest(TeaModel):
         self.app_id = app_id
         # 拉取在这个时间戳之前创建的直播，单位毫秒，不传则默认拉取最新创建的。
         self.query_timestamp = query_timestamp
+        self.region_id = region_id
         # 房间ID，最大长度36个字符。
         self.room_id = room_id
         # 房间ID列表，可指定多个房间id，过滤优先级高于RoomId。
@@ -9262,6 +9628,8 @@ class ListRoomLivesRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.query_timestamp is not None:
             result['QueryTimestamp'] = self.query_timestamp
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         if self.room_id_list is not None:
@@ -9278,6 +9646,8 @@ class ListRoomLivesRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('QueryTimestamp') is not None:
             self.query_timestamp = m.get('QueryTimestamp')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         if m.get('RoomIdList') is not None:
@@ -9294,6 +9664,7 @@ class ListRoomLivesShrinkRequest(TeaModel):
         self,
         app_id: str = None,
         query_timestamp: int = None,
+        region_id: str = None,
         room_id: str = None,
         room_id_list_shrink: str = None,
         size: int = None,
@@ -9303,6 +9674,7 @@ class ListRoomLivesShrinkRequest(TeaModel):
         self.app_id = app_id
         # 拉取在这个时间戳之前创建的直播，单位毫秒，不传则默认拉取最新创建的。
         self.query_timestamp = query_timestamp
+        self.region_id = region_id
         # 房间ID，最大长度36个字符。
         self.room_id = room_id
         # 房间ID列表，可指定多个房间id，过滤优先级高于RoomId。
@@ -9325,6 +9697,8 @@ class ListRoomLivesShrinkRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.query_timestamp is not None:
             result['QueryTimestamp'] = self.query_timestamp
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         if self.room_id_list_shrink is not None:
@@ -9341,6 +9715,8 @@ class ListRoomLivesShrinkRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('QueryTimestamp') is not None:
             self.query_timestamp = m.get('QueryTimestamp')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         if m.get('RoomIdList') is not None:
@@ -9574,12 +9950,14 @@ class ListRoomLivesResponse(TeaModel):
         return self
 
 
-class ListRoomsRequest(TeaModel):
+class ListRoomUsersRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
+        room_id: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
@@ -9587,6 +9965,9 @@ class ListRoomsRequest(TeaModel):
         self.page_number = page_number
         # 每页显示个数，最大支持50，参数为空默认显示个数为10。
         self.page_size = page_size
+        self.region_id = region_id
+        # 房间ID，最大长度36个字符。
+        self.room_id = room_id
 
     def validate(self):
         pass
@@ -9603,6 +9984,10 @@ class ListRoomsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.room_id is not None:
+            result['RoomId'] = self.room_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9613,6 +9998,231 @@ class ListRoomsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RoomId') is not None:
+            self.room_id = m.get('RoomId')
+        return self
+
+
+class ListRoomUsersResponseBodyResultRoomUserList(TeaModel):
+    def __init__(
+        self,
+        extension: Dict[str, str] = None,
+        nick: str = None,
+        user_id: str = None,
+    ):
+        # 用户拓展字段。
+        self.extension = extension
+        # 用户昵称。
+        self.nick = nick
+        # 用户唯一标识。
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extension is not None:
+            result['Extension'] = self.extension
+        if self.nick is not None:
+            result['Nick'] = self.nick
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        if m.get('Nick') is not None:
+            self.nick = m.get('Nick')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ListRoomUsersResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        has_more: bool = None,
+        page_total: int = None,
+        room_user_list: List[ListRoomUsersResponseBodyResultRoomUserList] = None,
+        total_count: int = None,
+    ):
+        # 是否还有下一页用户列表。
+        self.has_more = has_more
+        # 该房间的用户总页数。
+        self.page_total = page_total
+        # 房间用户列表信息。
+        self.room_user_list = room_user_list
+        # 该房间的用户总数。
+        self.total_count = total_count
+
+    def validate(self):
+        if self.room_user_list:
+            for k in self.room_user_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.has_more is not None:
+            result['HasMore'] = self.has_more
+        if self.page_total is not None:
+            result['PageTotal'] = self.page_total
+        result['RoomUserList'] = []
+        if self.room_user_list is not None:
+            for k in self.room_user_list:
+                result['RoomUserList'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HasMore') is not None:
+            self.has_more = m.get('HasMore')
+        if m.get('PageTotal') is not None:
+            self.page_total = m.get('PageTotal')
+        self.room_user_list = []
+        if m.get('RoomUserList') is not None:
+            for k in m.get('RoomUserList'):
+                temp_model = ListRoomUsersResponseBodyResultRoomUserList()
+                self.room_user_list.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListRoomUsersResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: ListRoomUsersResponseBodyResult = None,
+    ):
+        # 请求ID。
+        self.request_id = request_id
+        # API请求的返回结果结构体。
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = ListRoomUsersResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class ListRoomUsersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListRoomUsersResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListRoomUsersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListRoomsRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+    ):
+        # 应用唯一标识，由6位小写字母、数字组成。
+        self.app_id = app_id
+        # 查询页码，从1开始，传空默认查询第1页。
+        self.page_number = page_number
+        # 每页显示个数，最大支持50，参数为空默认显示个数为10。
+        self.page_size = page_size
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -9906,10 +10516,12 @@ class PublishLiveRequest(TeaModel):
     def __init__(
         self,
         live_id: str = None,
+        region_id: str = None,
         user_id: str = None,
     ):
         # 直播资源的唯一标识ID
         self.live_id = live_id
+        self.region_id = region_id
         # 当前用户Id
         self.user_id = user_id
 
@@ -9924,6 +10536,8 @@ class PublishLiveRequest(TeaModel):
         result = dict()
         if self.live_id is not None:
             result['LiveId'] = self.live_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.user_id is not None:
             result['UserId'] = self.user_id
         return result
@@ -9932,6 +10546,8 @@ class PublishLiveRequest(TeaModel):
         m = m or dict()
         if m.get('LiveId') is not None:
             self.live_id = m.get('LiveId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         return self
@@ -10071,12 +10687,14 @@ class PublishLiveRoomRequest(TeaModel):
         self,
         app_id: str = None,
         live_id: str = None,
+        region_id: str = None,
         user_id: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
         # 直播ID。
         self.live_id = live_id
+        self.region_id = region_id
         # 操作人ID。
         self.user_id = user_id
 
@@ -10093,6 +10711,8 @@ class PublishLiveRoomRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.live_id is not None:
             result['LiveId'] = self.live_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.user_id is not None:
             result['UserId'] = self.user_id
         return result
@@ -10103,6 +10723,8 @@ class PublishLiveRoomRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('LiveId') is not None:
             self.live_id = m.get('LiveId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         return self
@@ -10229,12 +10851,15 @@ class RejectLinkMicRequest(TeaModel):
         self,
         conference_id: str = None,
         from_user_id: str = None,
+        region_id: str = None,
         to_user_id: str = None,
     ):
         # 会议唯一标识
         self.conference_id = conference_id
         # 同意者用户ID
         self.from_user_id = from_user_id
+        # 地域
+        self.region_id = region_id
         # 被同意用户ID
         self.to_user_id = to_user_id
 
@@ -10251,6 +10876,8 @@ class RejectLinkMicRequest(TeaModel):
             result['ConferenceId'] = self.conference_id
         if self.from_user_id is not None:
             result['FromUserId'] = self.from_user_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.to_user_id is not None:
             result['ToUserId'] = self.to_user_id
         return result
@@ -10261,6 +10888,8 @@ class RejectLinkMicRequest(TeaModel):
             self.conference_id = m.get('ConferenceId')
         if m.get('FromUserId') is not None:
             self.from_user_id = m.get('FromUserId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ToUserId') is not None:
             self.to_user_id = m.get('ToUserId')
         return self
@@ -10336,12 +10965,15 @@ class RemoveMemberRequest(TeaModel):
         self,
         conference_id: str = None,
         from_user_id: str = None,
+        region_id: str = None,
         to_user_id: str = None,
     ):
         # 会议唯一标识
         self.conference_id = conference_id
         # 邀请者用户ID
         self.from_user_id = from_user_id
+        # 地域
+        self.region_id = region_id
         # 被邀请用户ID
         self.to_user_id = to_user_id
 
@@ -10358,6 +10990,8 @@ class RemoveMemberRequest(TeaModel):
             result['ConferenceId'] = self.conference_id
         if self.from_user_id is not None:
             result['FromUserId'] = self.from_user_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.to_user_id is not None:
             result['ToUserId'] = self.to_user_id
         return result
@@ -10368,6 +11002,8 @@ class RemoveMemberRequest(TeaModel):
             self.conference_id = m.get('ConferenceId')
         if m.get('FromUserId') is not None:
             self.from_user_id = m.get('FromUserId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ToUserId') is not None:
             self.to_user_id = m.get('ToUserId')
         return self
@@ -10444,6 +11080,7 @@ class SendCommentRequest(TeaModel):
         app_id: str = None,
         content: str = None,
         extension: Dict[str, str] = None,
+        region_id: str = None,
         room_id: str = None,
         sender_id: str = None,
         sender_nick: str = None,
@@ -10454,6 +11091,7 @@ class SendCommentRequest(TeaModel):
         self.content = content
         # 扩展字段，服务端仅做透传。
         self.extension = extension
+        self.region_id = region_id
         # 直播间唯一标识，在调用CreateRoom返回。
         self.room_id = room_id
         # 弹幕发送者的用户ID，最大长度不超过32个字节。
@@ -10476,6 +11114,8 @@ class SendCommentRequest(TeaModel):
             result['Content'] = self.content
         if self.extension is not None:
             result['Extension'] = self.extension
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         if self.sender_id is not None:
@@ -10492,6 +11132,8 @@ class SendCommentRequest(TeaModel):
             self.content = m.get('Content')
         if m.get('Extension') is not None:
             self.extension = m.get('Extension')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         if m.get('SenderId') is not None:
@@ -10507,6 +11149,7 @@ class SendCommentShrinkRequest(TeaModel):
         app_id: str = None,
         content: str = None,
         extension_shrink: str = None,
+        region_id: str = None,
         room_id: str = None,
         sender_id: str = None,
         sender_nick: str = None,
@@ -10517,6 +11160,7 @@ class SendCommentShrinkRequest(TeaModel):
         self.content = content
         # 扩展字段，服务端仅做透传。
         self.extension_shrink = extension_shrink
+        self.region_id = region_id
         # 直播间唯一标识，在调用CreateRoom返回。
         self.room_id = room_id
         # 弹幕发送者的用户ID，最大长度不超过32个字节。
@@ -10539,6 +11183,8 @@ class SendCommentShrinkRequest(TeaModel):
             result['Content'] = self.content
         if self.extension_shrink is not None:
             result['Extension'] = self.extension_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         if self.sender_id is not None:
@@ -10555,6 +11201,8 @@ class SendCommentShrinkRequest(TeaModel):
             self.content = m.get('Content')
         if m.get('Extension') is not None:
             self.extension_shrink = m.get('Extension')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         if m.get('SenderId') is not None:
@@ -10736,12 +11384,14 @@ class SendCustomMessageToAllRequest(TeaModel):
         self,
         app_id: str = None,
         body: str = None,
+        region_id: str = None,
         room_id: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
         # 消息体内容。
         self.body = body
+        self.region_id = region_id
         # 房间唯一标识，由调用CreateRoom返回。
         self.room_id = room_id
 
@@ -10758,6 +11408,8 @@ class SendCustomMessageToAllRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.body is not None:
             result['Body'] = self.body
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         return result
@@ -10768,6 +11420,8 @@ class SendCustomMessageToAllRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('Body') is not None:
             self.body = m.get('Body')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         return self
@@ -10881,6 +11535,7 @@ class SendCustomMessageToUsersRequest(TeaModel):
         app_id: str = None,
         body: str = None,
         receiver_list: List[str] = None,
+        region_id: str = None,
         room_id: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
@@ -10889,6 +11544,7 @@ class SendCustomMessageToUsersRequest(TeaModel):
         self.body = body
         # 消息指定的接收人ID列表。
         self.receiver_list = receiver_list
+        self.region_id = region_id
         # 房间唯一标识，由调用CreateRoom返回。
         self.room_id = room_id
 
@@ -10907,6 +11563,8 @@ class SendCustomMessageToUsersRequest(TeaModel):
             result['Body'] = self.body
         if self.receiver_list is not None:
             result['ReceiverList'] = self.receiver_list
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         return result
@@ -10919,6 +11577,8 @@ class SendCustomMessageToUsersRequest(TeaModel):
             self.body = m.get('Body')
         if m.get('ReceiverList') is not None:
             self.receiver_list = m.get('ReceiverList')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         return self
@@ -11031,12 +11691,14 @@ class StopClassRequest(TeaModel):
         self,
         app_id: str = None,
         class_id: str = None,
+        region_id: str = None,
         user_id: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
         # 课堂唯一标识。
         self.class_id = class_id
+        self.region_id = region_id
         # 操作者用户ID。
         self.user_id = user_id
 
@@ -11053,6 +11715,8 @@ class StopClassRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.class_id is not None:
             result['ClassId'] = self.class_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.user_id is not None:
             result['UserId'] = self.user_id
         return result
@@ -11063,6 +11727,8 @@ class StopClassRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('ClassId') is not None:
             self.class_id = m.get('ClassId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         return self
@@ -11138,6 +11804,7 @@ class StopLiveRequest(TeaModel):
         self,
         app_id: str = None,
         live_id: str = None,
+        region_id: str = None,
         room_id: str = None,
         user_id: str = None,
     ):
@@ -11145,6 +11812,7 @@ class StopLiveRequest(TeaModel):
         self.app_id = app_id
         # 直播资源的唯一标识ID
         self.live_id = live_id
+        self.region_id = region_id
         # 房间ID，最大长度36位
         self.room_id = room_id
         # 创建直播用户ID
@@ -11163,6 +11831,8 @@ class StopLiveRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.live_id is not None:
             result['LiveId'] = self.live_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         if self.user_id is not None:
@@ -11175,6 +11845,8 @@ class StopLiveRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('LiveId') is not None:
             self.live_id = m.get('LiveId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         if m.get('UserId') is not None:
@@ -11252,12 +11924,14 @@ class StopLiveRoomRequest(TeaModel):
         self,
         app_id: str = None,
         live_id: str = None,
+        region_id: str = None,
         user_id: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
         self.app_id = app_id
         # 直播ID。
         self.live_id = live_id
+        self.region_id = region_id
         # 操作人ID。
         self.user_id = user_id
 
@@ -11274,6 +11948,8 @@ class StopLiveRoomRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.live_id is not None:
             result['LiveId'] = self.live_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.user_id is not None:
             result['UserId'] = self.user_id
         return result
@@ -11284,6 +11960,8 @@ class StopLiveRoomRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('LiveId') is not None:
             self.live_id = m.get('LiveId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         return self
@@ -11360,6 +12038,7 @@ class UpdateAppRequest(TeaModel):
         app_id: str = None,
         app_name: str = None,
         app_status: str = None,
+        region_id: str = None,
     ):
         # 应用唯一标识
         self.app_id = app_id
@@ -11367,6 +12046,8 @@ class UpdateAppRequest(TeaModel):
         self.app_name = app_name
         # 应用状态
         self.app_status = app_status
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -11383,6 +12064,8 @@ class UpdateAppRequest(TeaModel):
             result['AppName'] = self.app_name
         if self.app_status is not None:
             result['AppStatus'] = self.app_status
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -11393,6 +12076,8 @@ class UpdateAppRequest(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('AppStatus') is not None:
             self.app_status = m.get('AppStatus')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -11467,6 +12152,7 @@ class UpdateAppTemplateRequest(TeaModel):
         app_template_id: str = None,
         app_template_name: str = None,
         component_list: List[str] = None,
+        region_id: str = None,
     ):
         # 应用模板唯一标识
         self.app_template_id = app_template_id
@@ -11474,6 +12160,8 @@ class UpdateAppTemplateRequest(TeaModel):
         self.app_template_name = app_template_name
         # 组件列表
         self.component_list = component_list
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -11490,6 +12178,8 @@ class UpdateAppTemplateRequest(TeaModel):
             result['AppTemplateName'] = self.app_template_name
         if self.component_list is not None:
             result['ComponentList'] = self.component_list
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -11500,6 +12190,8 @@ class UpdateAppTemplateRequest(TeaModel):
             self.app_template_name = m.get('AppTemplateName')
         if m.get('ComponentList') is not None:
             self.component_list = m.get('ComponentList')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -11509,6 +12201,7 @@ class UpdateAppTemplateShrinkRequest(TeaModel):
         app_template_id: str = None,
         app_template_name: str = None,
         component_list_shrink: str = None,
+        region_id: str = None,
     ):
         # 应用模板唯一标识
         self.app_template_id = app_template_id
@@ -11516,6 +12209,8 @@ class UpdateAppTemplateShrinkRequest(TeaModel):
         self.app_template_name = app_template_name
         # 组件列表
         self.component_list_shrink = component_list_shrink
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -11532,6 +12227,8 @@ class UpdateAppTemplateShrinkRequest(TeaModel):
             result['AppTemplateName'] = self.app_template_name
         if self.component_list_shrink is not None:
             result['ComponentList'] = self.component_list_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -11542,6 +12239,8 @@ class UpdateAppTemplateShrinkRequest(TeaModel):
             self.app_template_name = m.get('AppTemplateName')
         if m.get('ComponentList') is not None:
             self.component_list_shrink = m.get('ComponentList')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -11648,11 +12347,14 @@ class UpdateAppTemplateConfigRequest(TeaModel):
         self,
         app_template_id: str = None,
         config_list: List[UpdateAppTemplateConfigRequestConfigList] = None,
+        region_id: str = None,
     ):
         # 应用模板唯一标识
         self.app_template_id = app_template_id
         # 更新配置
         self.config_list = config_list
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         if self.config_list:
@@ -11672,6 +12374,8 @@ class UpdateAppTemplateConfigRequest(TeaModel):
         if self.config_list is not None:
             for k in self.config_list:
                 result['ConfigList'].append(k.to_map() if k else None)
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -11683,6 +12387,8 @@ class UpdateAppTemplateConfigRequest(TeaModel):
             for k in m.get('ConfigList'):
                 temp_model = UpdateAppTemplateConfigRequestConfigList()
                 self.config_list.append(temp_model.from_map(k))
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -11691,11 +12397,14 @@ class UpdateAppTemplateConfigShrinkRequest(TeaModel):
         self,
         app_template_id: str = None,
         config_list_shrink: str = None,
+        region_id: str = None,
     ):
         # 应用模板唯一标识
         self.app_template_id = app_template_id
         # 更新配置
         self.config_list_shrink = config_list_shrink
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -11710,6 +12419,8 @@ class UpdateAppTemplateConfigShrinkRequest(TeaModel):
             result['AppTemplateId'] = self.app_template_id
         if self.config_list_shrink is not None:
             result['ConfigList'] = self.config_list_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -11718,6 +12429,8 @@ class UpdateAppTemplateConfigShrinkRequest(TeaModel):
             self.app_template_id = m.get('AppTemplateId')
         if m.get('ConfigList') is not None:
             self.config_list_shrink = m.get('ConfigList')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -11873,6 +12586,7 @@ class UpdateClassRequest(TeaModel):
         class_id: str = None,
         create_nickname: str = None,
         create_user_id: str = None,
+        region_id: str = None,
         title: str = None,
     ):
         # 应用唯一标识，由6位小写字母、数字组成。
@@ -11883,6 +12597,7 @@ class UpdateClassRequest(TeaModel):
         self.create_nickname = create_nickname
         # 创建人用户ID，仅支持中英文数字，下划线，中划线，1~36个字符。
         self.create_user_id = create_user_id
+        self.region_id = region_id
         # 课堂标题，1~32个字符。
         self.title = title
 
@@ -11903,6 +12618,8 @@ class UpdateClassRequest(TeaModel):
             result['CreateNickname'] = self.create_nickname
         if self.create_user_id is not None:
             result['CreateUserId'] = self.create_user_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.title is not None:
             result['Title'] = self.title
         return result
@@ -11917,6 +12634,8 @@ class UpdateClassRequest(TeaModel):
             self.create_nickname = m.get('CreateNickname')
         if m.get('CreateUserId') is not None:
             self.create_user_id = m.get('CreateUserId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         return self
@@ -11991,10 +12710,13 @@ class UpdateConferenceRequest(TeaModel):
     def __init__(
         self,
         conference_id: str = None,
+        region_id: str = None,
         title: str = None,
     ):
         # 会议唯一标识
         self.conference_id = conference_id
+        # 地域
+        self.region_id = region_id
         # 会议标题
         self.title = title
 
@@ -12009,6 +12731,8 @@ class UpdateConferenceRequest(TeaModel):
         result = dict()
         if self.conference_id is not None:
             result['ConferenceId'] = self.conference_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.title is not None:
             result['Title'] = self.title
         return result
@@ -12017,6 +12741,8 @@ class UpdateConferenceRequest(TeaModel):
         m = m or dict()
         if m.get('ConferenceId') is not None:
             self.conference_id = m.get('ConferenceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         return self
@@ -12092,12 +12818,14 @@ class UpdateLiveRequest(TeaModel):
         self,
         introduction: str = None,
         live_id: str = None,
+        region_id: str = None,
         title: str = None,
     ):
         # 直播简介，支持中英文，最大长度2048位
         self.introduction = introduction
         # 直播资源的唯一标识ID
         self.live_id = live_id
+        self.region_id = region_id
         # 直播标题，支持中英文，最大长度256位
         self.title = title
 
@@ -12114,6 +12842,8 @@ class UpdateLiveRequest(TeaModel):
             result['Introduction'] = self.introduction
         if self.live_id is not None:
             result['LiveId'] = self.live_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.title is not None:
             result['Title'] = self.title
         return result
@@ -12124,6 +12854,8 @@ class UpdateLiveRequest(TeaModel):
             self.introduction = m.get('Introduction')
         if m.get('LiveId') is not None:
             self.live_id = m.get('LiveId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         return self
@@ -12204,6 +12936,7 @@ class UpdateLiveRoomRequest(TeaModel):
         extension: Dict[str, str] = None,
         live_id: str = None,
         notice: str = None,
+        region_id: str = None,
         title: str = None,
         user_id: str = None,
     ):
@@ -12221,6 +12954,7 @@ class UpdateLiveRoomRequest(TeaModel):
         self.live_id = live_id
         # 公告，支持中英文，最大长度256位。
         self.notice = notice
+        self.region_id = region_id
         # 标题，支持中英文，最大长度32位。
         self.title = title
         # 操作人ID。
@@ -12249,6 +12983,8 @@ class UpdateLiveRoomRequest(TeaModel):
             result['LiveId'] = self.live_id
         if self.notice is not None:
             result['Notice'] = self.notice
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.title is not None:
             result['Title'] = self.title
         if self.user_id is not None:
@@ -12271,6 +13007,8 @@ class UpdateLiveRoomRequest(TeaModel):
             self.live_id = m.get('LiveId')
         if m.get('Notice') is not None:
             self.notice = m.get('Notice')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         if m.get('UserId') is not None:
@@ -12288,6 +13026,7 @@ class UpdateLiveRoomShrinkRequest(TeaModel):
         extension_shrink: str = None,
         live_id: str = None,
         notice: str = None,
+        region_id: str = None,
         title: str = None,
         user_id: str = None,
     ):
@@ -12305,6 +13044,7 @@ class UpdateLiveRoomShrinkRequest(TeaModel):
         self.live_id = live_id
         # 公告，支持中英文，最大长度256位。
         self.notice = notice
+        self.region_id = region_id
         # 标题，支持中英文，最大长度32位。
         self.title = title
         # 操作人ID。
@@ -12333,6 +13073,8 @@ class UpdateLiveRoomShrinkRequest(TeaModel):
             result['LiveId'] = self.live_id
         if self.notice is not None:
             result['Notice'] = self.notice
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.title is not None:
             result['Title'] = self.title
         if self.user_id is not None:
@@ -12355,6 +13097,8 @@ class UpdateLiveRoomShrinkRequest(TeaModel):
             self.live_id = m.get('LiveId')
         if m.get('Notice') is not None:
             self.notice = m.get('Notice')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         if m.get('UserId') is not None:
@@ -12433,6 +13177,7 @@ class UpdateRoomRequest(TeaModel):
         app_id: str = None,
         extension: Dict[str, str] = None,
         notice: str = None,
+        region_id: str = None,
         room_id: str = None,
         room_owner_id: str = None,
         title: str = None,
@@ -12443,6 +13188,7 @@ class UpdateRoomRequest(TeaModel):
         self.extension = extension
         # 房间公告，支持中英文，最大长度256位。
         self.notice = notice
+        self.region_id = region_id
         # 房间唯一标识。
         self.room_id = room_id
         # 房主用户id，仅支持英文和数字，最大长度36位。
@@ -12465,6 +13211,8 @@ class UpdateRoomRequest(TeaModel):
             result['Extension'] = self.extension
         if self.notice is not None:
             result['Notice'] = self.notice
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         if self.room_owner_id is not None:
@@ -12481,6 +13229,8 @@ class UpdateRoomRequest(TeaModel):
             self.extension = m.get('Extension')
         if m.get('Notice') is not None:
             self.notice = m.get('Notice')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         if m.get('RoomOwnerId') is not None:
@@ -12496,6 +13246,7 @@ class UpdateRoomShrinkRequest(TeaModel):
         app_id: str = None,
         extension_shrink: str = None,
         notice: str = None,
+        region_id: str = None,
         room_id: str = None,
         room_owner_id: str = None,
         title: str = None,
@@ -12506,6 +13257,7 @@ class UpdateRoomShrinkRequest(TeaModel):
         self.extension_shrink = extension_shrink
         # 房间公告，支持中英文，最大长度256位。
         self.notice = notice
+        self.region_id = region_id
         # 房间唯一标识。
         self.room_id = room_id
         # 房主用户id，仅支持英文和数字，最大长度36位。
@@ -12528,6 +13280,8 @@ class UpdateRoomShrinkRequest(TeaModel):
             result['Extension'] = self.extension_shrink
         if self.notice is not None:
             result['Notice'] = self.notice
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.room_id is not None:
             result['RoomId'] = self.room_id
         if self.room_owner_id is not None:
@@ -12544,6 +13298,8 @@ class UpdateRoomShrinkRequest(TeaModel):
             self.extension_shrink = m.get('Extension')
         if m.get('Notice') is not None:
             self.notice = m.get('Notice')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoomId') is not None:
             self.room_id = m.get('RoomId')
         if m.get('RoomOwnerId') is not None:
@@ -12622,9 +13378,12 @@ class VerifyDomainOwnerRequest(TeaModel):
     def __init__(
         self,
         live_domain_name: str = None,
+        region_id: str = None,
     ):
         # 直播域名
         self.live_domain_name = live_domain_name
+        # 地域
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -12637,12 +13396,16 @@ class VerifyDomainOwnerRequest(TeaModel):
         result = dict()
         if self.live_domain_name is not None:
             result['LiveDomainName'] = self.live_domain_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('LiveDomainName') is not None:
             self.live_domain_name = m.get('LiveDomainName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
