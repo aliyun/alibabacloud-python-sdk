@@ -1593,8 +1593,10 @@ class GetDISyncTaskResponse(TeaModel):
 class GetSwitchValueRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         switch_name: str = None,
     ):
+        self.region_id = region_id
         self.switch_name = switch_name
 
     def validate(self):
@@ -1606,12 +1608,16 @@ class GetSwitchValueRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.switch_name is not None:
             result['SwitchName'] = self.switch_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SwitchName') is not None:
             self.switch_name = m.get('SwitchName')
         return self
