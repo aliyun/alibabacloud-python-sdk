@@ -1,3 +1,6 @@
+2021-12-14 Version: 1.0.82
+- For Aliyunape20210922.
+
 2021-11-16 Version: 1.0.81
 - For Aliyunape20210922.
 
