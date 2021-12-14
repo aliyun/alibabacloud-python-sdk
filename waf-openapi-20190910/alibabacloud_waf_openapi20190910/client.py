@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_waf_openapi20190910 import models as waf_openapi_20190910_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -72,12 +73,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.CreateCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Certificate'] = request.certificate
+        query['CertificateName'] = request.certificate_name
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['PrivateKey'] = request.private_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCertificate',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.CreateCertificateResponse(),
-            self.do_rpcrequest('CreateCertificate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_certificate_with_options_async(
@@ -86,12 +105,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.CreateCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Certificate'] = request.certificate
+        query['CertificateName'] = request.certificate_name
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['PrivateKey'] = request.private_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCertificate',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.CreateCertificateResponse(),
-            await self.do_rpcrequest_async('CreateCertificate', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_certificate(
@@ -114,12 +151,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.CreateCertificateByCertificateIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertificateId'] = request.certificate_id
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCertificateByCertificateId',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.CreateCertificateByCertificateIdResponse(),
-            self.do_rpcrequest('CreateCertificateByCertificateId', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_certificate_by_certificate_id_with_options_async(
@@ -128,12 +181,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.CreateCertificateByCertificateIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CertificateId'] = request.certificate_id
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateCertificateByCertificateId',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.CreateCertificateByCertificateIdResponse(),
-            await self.do_rpcrequest_async('CreateCertificateByCertificateId', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_certificate_by_certificate_id(
@@ -156,12 +225,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.CreateDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessHeaderMode'] = request.access_header_mode
+        query['AccessHeaders'] = request.access_headers
+        query['AccessType'] = request.access_type
+        query['CloudNativeInstances'] = request.cloud_native_instances
+        query['ClusterType'] = request.cluster_type
+        query['ConnectionTime'] = request.connection_time
+        query['Domain'] = request.domain
+        query['Http2Port'] = request.http_2port
+        query['HttpPort'] = request.http_port
+        query['HttpToUserIp'] = request.http_to_user_ip
+        query['HttpsPort'] = request.https_port
+        query['HttpsRedirect'] = request.https_redirect
+        query['InstanceId'] = request.instance_id
+        query['IpFollowStatus'] = request.ip_follow_status
+        query['IsAccessProduct'] = request.is_access_product
+        query['LoadBalancing'] = request.load_balancing
+        query['LogHeaders'] = request.log_headers
+        query['ReadTime'] = request.read_time
+        query['ResourceGroupId'] = request.resource_group_id
+        query['SniHost'] = request.sni_host
+        query['SniStatus'] = request.sni_status
+        query['SourceIps'] = request.source_ips
+        query['WriteTime'] = request.write_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateDomain',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.CreateDomainResponse(),
-            self.do_rpcrequest('CreateDomain', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_domain_with_options_async(
@@ -170,12 +275,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.CreateDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessHeaderMode'] = request.access_header_mode
+        query['AccessHeaders'] = request.access_headers
+        query['AccessType'] = request.access_type
+        query['CloudNativeInstances'] = request.cloud_native_instances
+        query['ClusterType'] = request.cluster_type
+        query['ConnectionTime'] = request.connection_time
+        query['Domain'] = request.domain
+        query['Http2Port'] = request.http_2port
+        query['HttpPort'] = request.http_port
+        query['HttpToUserIp'] = request.http_to_user_ip
+        query['HttpsPort'] = request.https_port
+        query['HttpsRedirect'] = request.https_redirect
+        query['InstanceId'] = request.instance_id
+        query['IpFollowStatus'] = request.ip_follow_status
+        query['IsAccessProduct'] = request.is_access_product
+        query['LoadBalancing'] = request.load_balancing
+        query['LogHeaders'] = request.log_headers
+        query['ReadTime'] = request.read_time
+        query['ResourceGroupId'] = request.resource_group_id
+        query['SniHost'] = request.sni_host
+        query['SniStatus'] = request.sni_status
+        query['SourceIps'] = request.source_ips
+        query['WriteTime'] = request.write_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateDomain',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.CreateDomainResponse(),
-            await self.do_rpcrequest_async('CreateDomain', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_domain(
@@ -198,12 +339,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.CreateProtectionModuleRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DefenseType'] = request.defense_type
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['Rule'] = request.rule
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateProtectionModuleRule',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.CreateProtectionModuleRuleResponse(),
-            self.do_rpcrequest('CreateProtectionModuleRule', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_protection_module_rule_with_options_async(
@@ -212,12 +370,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.CreateProtectionModuleRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DefenseType'] = request.defense_type
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['Rule'] = request.rule
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='CreateProtectionModuleRule',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.CreateProtectionModuleRuleResponse(),
-            await self.do_rpcrequest_async('CreateProtectionModuleRule', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_protection_module_rule(
@@ -240,12 +415,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DeleteDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteDomain',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DeleteDomainResponse(),
-            self.do_rpcrequest('DeleteDomain', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_domain_with_options_async(
@@ -254,12 +444,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DeleteDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteDomain',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DeleteDomainResponse(),
-            await self.do_rpcrequest_async('DeleteDomain', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_domain(
@@ -282,12 +487,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DeleteInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstance',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DeleteInstanceResponse(),
-            self.do_rpcrequest('DeleteInstance', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_instance_with_options_async(
@@ -296,12 +516,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DeleteInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstance',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DeleteInstanceResponse(),
-            await self.do_rpcrequest_async('DeleteInstance', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_instance(
@@ -324,12 +559,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DeleteProtectionModuleRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DefenseType'] = request.defense_type
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteProtectionModuleRule',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DeleteProtectionModuleRuleResponse(),
-            self.do_rpcrequest('DeleteProtectionModuleRule', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_protection_module_rule_with_options_async(
@@ -338,12 +590,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DeleteProtectionModuleRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DefenseType'] = request.defense_type
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DeleteProtectionModuleRule',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DeleteProtectionModuleRuleResponse(),
-            await self.do_rpcrequest_async('DeleteProtectionModuleRule', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_protection_module_rule(
@@ -360,60 +629,35 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_protection_module_rule_with_options_async(request, runtime)
 
-    def describe_certificates_with_options(
-        self,
-        request: waf_openapi_20190910_models.DescribeCertificatesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> waf_openapi_20190910_models.DescribeCertificatesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            waf_openapi_20190910_models.DescribeCertificatesResponse(),
-            self.do_rpcrequest('DescribeCertificates', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_certificates_with_options_async(
-        self,
-        request: waf_openapi_20190910_models.DescribeCertificatesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> waf_openapi_20190910_models.DescribeCertificatesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            waf_openapi_20190910_models.DescribeCertificatesResponse(),
-            await self.do_rpcrequest_async('DescribeCertificates', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_certificates(
-        self,
-        request: waf_openapi_20190910_models.DescribeCertificatesRequest,
-    ) -> waf_openapi_20190910_models.DescribeCertificatesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_certificates_with_options(request, runtime)
-
-    async def describe_certificates_async(
-        self,
-        request: waf_openapi_20190910_models.DescribeCertificatesRequest,
-    ) -> waf_openapi_20190910_models.DescribeCertificatesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_certificates_with_options_async(request, runtime)
-
     def describe_cert_match_status_with_options(
         self,
         request: waf_openapi_20190910_models.DescribeCertMatchStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeCertMatchStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Certificate'] = request.certificate
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['PrivateKey'] = request.private_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCertMatchStatus',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeCertMatchStatusResponse(),
-            self.do_rpcrequest('DescribeCertMatchStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cert_match_status_with_options_async(
@@ -422,12 +666,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeCertMatchStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Certificate'] = request.certificate
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['PrivateKey'] = request.private_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCertMatchStatus',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeCertMatchStatusResponse(),
-            await self.do_rpcrequest_async('DescribeCertMatchStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cert_match_status(
@@ -444,18 +705,105 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cert_match_status_with_options_async(request, runtime)
 
+    def describe_certificates_with_options(
+        self,
+        request: waf_openapi_20190910_models.DescribeCertificatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20190910_models.DescribeCertificatesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCertificates',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20190910_models.DescribeCertificatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_certificates_with_options_async(
+        self,
+        request: waf_openapi_20190910_models.DescribeCertificatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20190910_models.DescribeCertificatesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeCertificates',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20190910_models.DescribeCertificatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_certificates(
+        self,
+        request: waf_openapi_20190910_models.DescribeCertificatesRequest,
+    ) -> waf_openapi_20190910_models.DescribeCertificatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_certificates_with_options(request, runtime)
+
+    async def describe_certificates_async(
+        self,
+        request: waf_openapi_20190910_models.DescribeCertificatesRequest,
+    ) -> waf_openapi_20190910_models.DescribeCertificatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_certificates_with_options_async(request, runtime)
+
     def describe_domain_with_options(
         self,
         request: waf_openapi_20190910_models.DescribeDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomain',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeDomainResponse(),
-            self.do_rpcrequest('DescribeDomain', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_with_options_async(
@@ -464,12 +812,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomain',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeDomainResponse(),
-            await self.do_rpcrequest_async('DescribeDomain', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain(
@@ -492,12 +855,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeDomainAdvanceConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainList'] = request.domain_list
+        query['InstanceId'] = request.instance_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainAdvanceConfigs',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeDomainAdvanceConfigsResponse(),
-            self.do_rpcrequest('DescribeDomainAdvanceConfigs', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_advance_configs_with_options_async(
@@ -506,12 +885,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeDomainAdvanceConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainList'] = request.domain_list
+        query['InstanceId'] = request.instance_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainAdvanceConfigs',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeDomainAdvanceConfigsResponse(),
-            await self.do_rpcrequest_async('DescribeDomainAdvanceConfigs', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_advance_configs(
@@ -534,12 +929,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeDomainBasicConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessType'] = request.access_type
+        query['CloudNativeProductId'] = request.cloud_native_product_id
+        query['DomainKey'] = request.domain_key
+        query['InstanceId'] = request.instance_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainBasicConfigs',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeDomainBasicConfigsResponse(),
-            self.do_rpcrequest('DescribeDomainBasicConfigs', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_basic_configs_with_options_async(
@@ -548,12 +963,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeDomainBasicConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessType'] = request.access_type
+        query['CloudNativeProductId'] = request.cloud_native_product_id
+        query['DomainKey'] = request.domain_key
+        query['InstanceId'] = request.instance_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainBasicConfigs',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeDomainBasicConfigsResponse(),
-            await self.do_rpcrequest_async('DescribeDomainBasicConfigs', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_basic_configs(
@@ -576,12 +1011,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeDomainListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['DomainNames'] = request.domain_names
+        query['InstanceId'] = request.instance_id
+        query['IsSub'] = request.is_sub
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainList',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeDomainListResponse(),
-            self.do_rpcrequest('DescribeDomainList', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_list_with_options_async(
@@ -590,12 +1045,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeDomainListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['DomainNames'] = request.domain_names
+        query['InstanceId'] = request.instance_id
+        query['IsSub'] = request.is_sub
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainList',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeDomainListResponse(),
-            await self.do_rpcrequest_async('DescribeDomainList', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_list(
@@ -618,12 +1093,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeDomainNamesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainNames',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeDomainNamesResponse(),
-            self.do_rpcrequest('DescribeDomainNames', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_names_with_options_async(
@@ -632,12 +1122,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeDomainNamesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainNames',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeDomainNamesResponse(),
-            await self.do_rpcrequest_async('DescribeDomainNames', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_names(
@@ -660,12 +1165,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeDomainRuleGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRuleGroup',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeDomainRuleGroupResponse(),
-            self.do_rpcrequest('DescribeDomainRuleGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_rule_group_with_options_async(
@@ -674,12 +1194,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeDomainRuleGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainRuleGroup',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeDomainRuleGroupResponse(),
-            await self.do_rpcrequest_async('DescribeDomainRuleGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_rule_group(
@@ -702,12 +1237,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeInstanceInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceInfo',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeInstanceInfoResponse(),
-            self.do_rpcrequest('DescribeInstanceInfo', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_instance_info_with_options_async(
@@ -716,12 +1266,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeInstanceInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceInfo',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeInstanceInfoResponse(),
-            await self.do_rpcrequest_async('DescribeInstanceInfo', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_instance_info(
@@ -738,60 +1303,33 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_info_with_options_async(request, runtime)
 
-    def describe_instance_infos_with_options(
-        self,
-        request: waf_openapi_20190910_models.DescribeInstanceInfosRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> waf_openapi_20190910_models.DescribeInstanceInfosResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            waf_openapi_20190910_models.DescribeInstanceInfosResponse(),
-            self.do_rpcrequest('DescribeInstanceInfos', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_instance_infos_with_options_async(
-        self,
-        request: waf_openapi_20190910_models.DescribeInstanceInfosRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> waf_openapi_20190910_models.DescribeInstanceInfosResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            waf_openapi_20190910_models.DescribeInstanceInfosResponse(),
-            await self.do_rpcrequest_async('DescribeInstanceInfos', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_instance_infos(
-        self,
-        request: waf_openapi_20190910_models.DescribeInstanceInfosRequest,
-    ) -> waf_openapi_20190910_models.DescribeInstanceInfosResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_instance_infos_with_options(request, runtime)
-
-    async def describe_instance_infos_async(
-        self,
-        request: waf_openapi_20190910_models.DescribeInstanceInfosRequest,
-    ) -> waf_openapi_20190910_models.DescribeInstanceInfosResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_instance_infos_with_options_async(request, runtime)
-
     def describe_instance_spec_info_with_options(
         self,
         request: waf_openapi_20190910_models.DescribeInstanceSpecInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeInstanceSpecInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceSpecInfo',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeInstanceSpecInfoResponse(),
-            self.do_rpcrequest('DescribeInstanceSpecInfo', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_instance_spec_info_with_options_async(
@@ -800,12 +1338,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeInstanceSpecInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceSpecInfo',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeInstanceSpecInfoResponse(),
-            await self.do_rpcrequest_async('DescribeInstanceSpecInfo', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_instance_spec_info(
@@ -828,12 +1381,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeLogServiceStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['InstanceId'] = request.instance_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Region'] = request.region
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeLogServiceStatus',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeLogServiceStatusResponse(),
-            self.do_rpcrequest('DescribeLogServiceStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_log_service_status_with_options_async(
@@ -842,12 +1414,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeLogServiceStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DomainNames'] = request.domain_names
+        query['InstanceId'] = request.instance_id
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Region'] = request.region
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeLogServiceStatus',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeLogServiceStatusResponse(),
-            await self.do_rpcrequest_async('DescribeLogServiceStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_log_service_status(
@@ -870,12 +1461,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeProtectionModuleCodeConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CodeType'] = request.code_type
+        query['CodeValue'] = request.code_value
+        query['InstanceId'] = request.instance_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeProtectionModuleCodeConfig',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeProtectionModuleCodeConfigResponse(),
-            self.do_rpcrequest('DescribeProtectionModuleCodeConfig', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_protection_module_code_config_with_options_async(
@@ -884,12 +1492,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeProtectionModuleCodeConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['CodeType'] = request.code_type
+        query['CodeValue'] = request.code_value
+        query['InstanceId'] = request.instance_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeProtectionModuleCodeConfig',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeProtectionModuleCodeConfigResponse(),
-            await self.do_rpcrequest_async('DescribeProtectionModuleCodeConfig', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_protection_module_code_config(
@@ -906,60 +1531,39 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_protection_module_code_config_with_options_async(request, runtime)
 
-    def describe_protection_module_mode_with_options(
-        self,
-        request: waf_openapi_20190910_models.DescribeProtectionModuleModeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> waf_openapi_20190910_models.DescribeProtectionModuleModeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            waf_openapi_20190910_models.DescribeProtectionModuleModeResponse(),
-            self.do_rpcrequest('DescribeProtectionModuleMode', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_protection_module_mode_with_options_async(
-        self,
-        request: waf_openapi_20190910_models.DescribeProtectionModuleModeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> waf_openapi_20190910_models.DescribeProtectionModuleModeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            waf_openapi_20190910_models.DescribeProtectionModuleModeResponse(),
-            await self.do_rpcrequest_async('DescribeProtectionModuleMode', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_protection_module_mode(
-        self,
-        request: waf_openapi_20190910_models.DescribeProtectionModuleModeRequest,
-    ) -> waf_openapi_20190910_models.DescribeProtectionModuleModeResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_protection_module_mode_with_options(request, runtime)
-
-    async def describe_protection_module_mode_async(
-        self,
-        request: waf_openapi_20190910_models.DescribeProtectionModuleModeRequest,
-    ) -> waf_openapi_20190910_models.DescribeProtectionModuleModeResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_protection_module_mode_with_options_async(request, runtime)
-
     def describe_protection_module_rules_with_options(
         self,
         request: waf_openapi_20190910_models.DescribeProtectionModuleRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeProtectionModuleRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DefenseType'] = request.defense_type
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['Lang'] = request.lang
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Query'] = request.query
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeProtectionModuleRules',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeProtectionModuleRulesResponse(),
-            self.do_rpcrequest('DescribeProtectionModuleRules', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_protection_module_rules_with_options_async(
@@ -968,12 +1572,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeProtectionModuleRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DefenseType'] = request.defense_type
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['Lang'] = request.lang
+        query['PageNumber'] = request.page_number
+        query['PageSize'] = request.page_size
+        query['Query'] = request.query
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeProtectionModuleRules',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeProtectionModuleRulesResponse(),
-            await self.do_rpcrequest_async('DescribeProtectionModuleRules', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_protection_module_rules(
@@ -996,12 +1621,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeProtectionModuleStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DefenseType'] = request.defense_type
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeProtectionModuleStatus',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeProtectionModuleStatusResponse(),
-            self.do_rpcrequest('DescribeProtectionModuleStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_protection_module_status_with_options_async(
@@ -1010,12 +1651,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeProtectionModuleStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DefenseType'] = request.defense_type
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeProtectionModuleStatus',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeProtectionModuleStatusResponse(),
-            await self.do_rpcrequest_async('DescribeProtectionModuleStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_protection_module_status(
@@ -1038,12 +1695,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeWafSourceIpSegmentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeWafSourceIpSegment',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeWafSourceIpSegmentResponse(),
-            self.do_rpcrequest('DescribeWafSourceIpSegment', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_waf_source_ip_segment_with_options_async(
@@ -1052,12 +1724,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.DescribeWafSourceIpSegmentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['InstanceId'] = request.instance_id
+        query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='DescribeWafSourceIpSegment',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.DescribeWafSourceIpSegmentResponse(),
-            await self.do_rpcrequest_async('DescribeWafSourceIpSegment', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_waf_source_ip_segment(
@@ -1080,12 +1767,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.ModifyDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessHeaderMode'] = request.access_header_mode
+        query['AccessHeaders'] = request.access_headers
+        query['AccessType'] = request.access_type
+        query['CloudNativeInstances'] = request.cloud_native_instances
+        query['ClusterType'] = request.cluster_type
+        query['ConnectionTime'] = request.connection_time
+        query['Domain'] = request.domain
+        query['Http2Port'] = request.http_2port
+        query['HttpPort'] = request.http_port
+        query['HttpToUserIp'] = request.http_to_user_ip
+        query['HttpsPort'] = request.https_port
+        query['HttpsRedirect'] = request.https_redirect
+        query['InstanceId'] = request.instance_id
+        query['InstanceId'] = request.instance_id
+        query['IpFollowStatus'] = request.ip_follow_status
+        query['IsAccessProduct'] = request.is_access_product
+        query['LoadBalancing'] = request.load_balancing
+        query['LogHeaders'] = request.log_headers
+        query['ReadTime'] = request.read_time
+        query['SniHost'] = request.sni_host
+        query['SniStatus'] = request.sni_status
+        query['SourceIps'] = request.source_ips
+        query['WriteTime'] = request.write_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyDomain',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.ModifyDomainResponse(),
-            self.do_rpcrequest('ModifyDomain', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_domain_with_options_async(
@@ -1094,12 +1817,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.ModifyDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessHeaderMode'] = request.access_header_mode
+        query['AccessHeaders'] = request.access_headers
+        query['AccessType'] = request.access_type
+        query['CloudNativeInstances'] = request.cloud_native_instances
+        query['ClusterType'] = request.cluster_type
+        query['ConnectionTime'] = request.connection_time
+        query['Domain'] = request.domain
+        query['Http2Port'] = request.http_2port
+        query['HttpPort'] = request.http_port
+        query['HttpToUserIp'] = request.http_to_user_ip
+        query['HttpsPort'] = request.https_port
+        query['HttpsRedirect'] = request.https_redirect
+        query['InstanceId'] = request.instance_id
+        query['InstanceId'] = request.instance_id
+        query['IpFollowStatus'] = request.ip_follow_status
+        query['IsAccessProduct'] = request.is_access_product
+        query['LoadBalancing'] = request.load_balancing
+        query['LogHeaders'] = request.log_headers
+        query['ReadTime'] = request.read_time
+        query['SniHost'] = request.sni_host
+        query['SniStatus'] = request.sni_status
+        query['SourceIps'] = request.source_ips
+        query['WriteTime'] = request.write_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyDomain',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.ModifyDomainResponse(),
-            await self.do_rpcrequest_async('ModifyDomain', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_domain(
@@ -1122,12 +1881,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.ModifyDomainIpv6StatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['Enabled'] = request.enabled
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyDomainIpv6Status',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.ModifyDomainIpv6StatusResponse(),
-            self.do_rpcrequest('ModifyDomainIpv6Status', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_domain_ipv_6status_with_options_async(
@@ -1136,12 +1911,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.ModifyDomainIpv6StatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['Enabled'] = request.enabled
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyDomainIpv6Status',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.ModifyDomainIpv6StatusResponse(),
-            await self.do_rpcrequest_async('ModifyDomainIpv6Status', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_domain_ipv_6status(
@@ -1164,12 +1955,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.ModifyLogRetrievalStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['Enabled'] = request.enabled
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyLogRetrievalStatus',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.ModifyLogRetrievalStatusResponse(),
-            self.do_rpcrequest('ModifyLogRetrievalStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_log_retrieval_status_with_options_async(
@@ -1178,12 +1985,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.ModifyLogRetrievalStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['Enabled'] = request.enabled
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyLogRetrievalStatus',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.ModifyLogRetrievalStatusResponse(),
-            await self.do_rpcrequest_async('ModifyLogRetrievalStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_log_retrieval_status(
@@ -1206,12 +2029,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.ModifyLogServiceStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['Enabled'] = request.enabled
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyLogServiceStatus',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.ModifyLogServiceStatusResponse(),
-            self.do_rpcrequest('ModifyLogServiceStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_log_service_status_with_options_async(
@@ -1220,12 +2059,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.ModifyLogServiceStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domain'] = request.domain
+        query['Enabled'] = request.enabled
+        query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyLogServiceStatus',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.ModifyLogServiceStatusResponse(),
-            await self.do_rpcrequest_async('ModifyLogServiceStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_log_service_status(
@@ -1248,12 +2103,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.ModifyProtectionModuleModeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DefenseType'] = request.defense_type
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['Mode'] = request.mode
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyProtectionModuleMode',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.ModifyProtectionModuleModeResponse(),
-            self.do_rpcrequest('ModifyProtectionModuleMode', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_protection_module_mode_with_options_async(
@@ -1262,12 +2134,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.ModifyProtectionModuleModeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DefenseType'] = request.defense_type
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['Mode'] = request.mode
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyProtectionModuleMode',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.ModifyProtectionModuleModeResponse(),
-            await self.do_rpcrequest_async('ModifyProtectionModuleMode', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_protection_module_mode(
@@ -1290,12 +2179,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.ModifyProtectionModuleRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DefenseType'] = request.defense_type
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['LockVersion'] = request.lock_version
+        query['Rule'] = request.rule
+        query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyProtectionModuleRule',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.ModifyProtectionModuleRuleResponse(),
-            self.do_rpcrequest('ModifyProtectionModuleRule', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_protection_module_rule_with_options_async(
@@ -1304,12 +2212,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.ModifyProtectionModuleRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DefenseType'] = request.defense_type
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['LockVersion'] = request.lock_version
+        query['Rule'] = request.rule
+        query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyProtectionModuleRule',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.ModifyProtectionModuleRuleResponse(),
-            await self.do_rpcrequest_async('ModifyProtectionModuleRule', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_protection_module_rule(
@@ -1332,12 +2259,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.ModifyProtectionModuleStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DefenseType'] = request.defense_type
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['ModuleStatus'] = request.module_status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyProtectionModuleStatus',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.ModifyProtectionModuleStatusResponse(),
-            self.do_rpcrequest('ModifyProtectionModuleStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_protection_module_status_with_options_async(
@@ -1346,12 +2290,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.ModifyProtectionModuleStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DefenseType'] = request.defense_type
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['ModuleStatus'] = request.module_status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyProtectionModuleStatus',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.ModifyProtectionModuleStatusResponse(),
-            await self.do_rpcrequest_async('ModifyProtectionModuleStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_protection_module_status(
@@ -1374,12 +2335,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.ModifyProtectionRuleCacheStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DefenseType'] = request.defense_type
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyProtectionRuleCacheStatus',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.ModifyProtectionRuleCacheStatusResponse(),
-            self.do_rpcrequest('ModifyProtectionRuleCacheStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_protection_rule_cache_status_with_options_async(
@@ -1388,12 +2366,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.ModifyProtectionRuleCacheStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DefenseType'] = request.defense_type
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyProtectionRuleCacheStatus',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.ModifyProtectionRuleCacheStatusResponse(),
-            await self.do_rpcrequest_async('ModifyProtectionRuleCacheStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_protection_rule_cache_status(
@@ -1416,12 +2411,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.ModifyProtectionRuleStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DefenseType'] = request.defense_type
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['LockVersion'] = request.lock_version
+        query['RuleId'] = request.rule_id
+        query['RuleStatus'] = request.rule_status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyProtectionRuleStatus',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.ModifyProtectionRuleStatusResponse(),
-            self.do_rpcrequest('ModifyProtectionRuleStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_protection_rule_status_with_options_async(
@@ -1430,12 +2444,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.ModifyProtectionRuleStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['DefenseType'] = request.defense_type
+        query['Domain'] = request.domain
+        query['InstanceId'] = request.instance_id
+        query['LockVersion'] = request.lock_version
+        query['RuleId'] = request.rule_id
+        query['RuleStatus'] = request.rule_status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='ModifyProtectionRuleStatus',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.ModifyProtectionRuleStatusResponse(),
-            await self.do_rpcrequest_async('ModifyProtectionRuleStatus', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_protection_rule_status(
@@ -1452,18 +2485,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_protection_rule_status_with_options_async(request, runtime)
 
+    def move_resource_group_with_options(
+        self,
+        request: waf_openapi_20190910_models.MoveResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20190910_models.MoveResourceGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='MoveResourceGroup',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20190910_models.MoveResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def move_resource_group_with_options_async(
+        self,
+        request: waf_openapi_20190910_models.MoveResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20190910_models.MoveResourceGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ResourceGroupId'] = request.resource_group_id
+        query['ResourceId'] = request.resource_id
+        query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='MoveResourceGroup',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20190910_models.MoveResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def move_resource_group(
+        self,
+        request: waf_openapi_20190910_models.MoveResourceGroupRequest,
+    ) -> waf_openapi_20190910_models.MoveResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.move_resource_group_with_options(request, runtime)
+
+    async def move_resource_group_async(
+        self,
+        request: waf_openapi_20190910_models.MoveResourceGroupRequest,
+    ) -> waf_openapi_20190910_models.MoveResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.move_resource_group_with_options_async(request, runtime)
+
     def set_domain_rule_group_with_options(
         self,
         request: waf_openapi_20190910_models.SetDomainRuleGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.SetDomainRuleGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domains'] = request.domains
+        query['InstanceId'] = request.instance_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['RuleGroupId'] = request.rule_group_id
+        query['WafVersion'] = request.waf_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetDomainRuleGroup',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.SetDomainRuleGroupResponse(),
-            self.do_rpcrequest('SetDomainRuleGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_domain_rule_group_with_options_async(
@@ -1472,12 +2597,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20190910_models.SetDomainRuleGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Domains'] = request.domains
+        query['InstanceId'] = request.instance_id
+        query['ResourceGroupId'] = request.resource_group_id
+        query['RuleGroupId'] = request.rule_group_id
+        query['WafVersion'] = request.waf_version
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=UtilClient.to_map(request)
+        )
+        params = open_api_models.Params(
+            action='SetDomainRuleGroup',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             waf_openapi_20190910_models.SetDomainRuleGroupResponse(),
-            await self.do_rpcrequest_async('SetDomainRuleGroup', '2019-09-10', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_domain_rule_group(

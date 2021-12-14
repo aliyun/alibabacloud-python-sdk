@@ -1,3 +1,6 @@
+2021-12-14 Version: 0.0.1
+- Generated python 2019-09-10 for waf-openapi.
+
 2021-04-25 Version: 1.1.1
 - Generated python 2019-09-10 for waf-openapi.
 
