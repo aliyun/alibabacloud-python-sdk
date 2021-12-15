@@ -9,13 +9,13 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_ocr20191230 import models as ocr_20191230_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_tea_rpc import models as rpc_models
 from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
 from alibabacloud_openplatform20191219 import models as open_platform_models
 from alibabacloud_oss_sdk import models as oss_models
 from alibabacloud_tea_fileform import models as file_form_models
 from alibabacloud_oss_util import models as ossutil_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_oss_sdk.client import Client as OSSClient
 
 
@@ -54,12 +54,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.DetectCardScreenshotResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectCardScreenshot',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.DetectCardScreenshotResponse(),
-            self.do_rpcrequest('DetectCardScreenshot', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def detect_card_screenshot_with_options_async(
@@ -68,12 +82,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.DetectCardScreenshotResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectCardScreenshot',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.DetectCardScreenshotResponse(),
-            await self.do_rpcrequest_async('DetectCardScreenshot', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def detect_card_screenshot(
@@ -238,12 +266,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.GetAsyncJobResultResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAsyncJobResult',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.GetAsyncJobResultResponse(),
-            self.do_rpcrequest('GetAsyncJobResult', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_async_job_result_with_options_async(
@@ -252,12 +294,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.GetAsyncJobResultResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAsyncJobResult',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.GetAsyncJobResultResponse(),
-            await self.do_rpcrequest_async('GetAsyncJobResult', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_async_job_result(
@@ -280,12 +336,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeAccountPageResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeAccountPage',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeAccountPageResponse(),
-            self.do_rpcrequest('RecognizeAccountPage', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_account_page_with_options_async(
@@ -294,12 +364,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeAccountPageResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeAccountPage',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeAccountPageResponse(),
-            await self.do_rpcrequest_async('RecognizeAccountPage', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_account_page(
@@ -464,12 +548,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeBankCardResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeBankCard',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeBankCardResponse(),
-            self.do_rpcrequest('RecognizeBankCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_bank_card_with_options_async(
@@ -478,12 +576,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeBankCardResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeBankCard',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeBankCardResponse(),
-            await self.do_rpcrequest_async('RecognizeBankCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_bank_card(
@@ -648,12 +760,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeBusinessCardResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeBusinessCard',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeBusinessCardResponse(),
-            self.do_rpcrequest('RecognizeBusinessCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_business_card_with_options_async(
@@ -662,12 +788,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeBusinessCardResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeBusinessCard',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeBusinessCardResponse(),
-            await self.do_rpcrequest_async('RecognizeBusinessCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_business_card(
@@ -832,12 +972,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeBusinessLicenseResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeBusinessLicense',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeBusinessLicenseResponse(),
-            self.do_rpcrequest('RecognizeBusinessLicense', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_business_license_with_options_async(
@@ -846,12 +1000,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeBusinessLicenseResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeBusinessLicense',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeBusinessLicenseResponse(),
-            await self.do_rpcrequest_async('RecognizeBusinessLicense', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_business_license(
@@ -1016,12 +1184,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeCharacterResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.min_height):
+            body['MinHeight'] = request.min_height
+        if not UtilClient.is_unset(request.output_probability):
+            body['OutputProbability'] = request.output_probability
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeCharacter',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeCharacterResponse(),
-            self.do_rpcrequest('RecognizeCharacter', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_character_with_options_async(
@@ -1030,12 +1216,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeCharacterResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.min_height):
+            body['MinHeight'] = request.min_height
+        if not UtilClient.is_unset(request.output_probability):
+            body['OutputProbability'] = request.output_probability
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeCharacter',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeCharacterResponse(),
-            await self.do_rpcrequest_async('RecognizeCharacter', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_character(
@@ -1200,12 +1404,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeChinapassportResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeChinapassport',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeChinapassportResponse(),
-            self.do_rpcrequest('RecognizeChinapassport', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_chinapassport_with_options_async(
@@ -1214,12 +1432,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeChinapassportResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeChinapassport',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeChinapassportResponse(),
-            await self.do_rpcrequest_async('RecognizeChinapassport', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_chinapassport(
@@ -1384,12 +1616,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeDriverLicenseResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.side):
+            body['Side'] = request.side
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeDriverLicense',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeDriverLicenseResponse(),
-            self.do_rpcrequest('RecognizeDriverLicense', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_driver_license_with_options_async(
@@ -1398,12 +1646,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeDriverLicenseResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.side):
+            body['Side'] = request.side
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeDriverLicense',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeDriverLicenseResponse(),
-            await self.do_rpcrequest_async('RecognizeDriverLicense', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_driver_license(
@@ -1568,12 +1832,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeDrivingLicenseResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.side):
+            body['Side'] = request.side
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeDrivingLicense',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeDrivingLicenseResponse(),
-            self.do_rpcrequest('RecognizeDrivingLicense', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_driving_license_with_options_async(
@@ -1582,12 +1862,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeDrivingLicenseResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.side):
+            body['Side'] = request.side
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeDrivingLicense',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeDrivingLicenseResponse(),
-            await self.do_rpcrequest_async('RecognizeDrivingLicense', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_driving_license(
@@ -1752,12 +2048,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeIdentityCardResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.side):
+            body['Side'] = request.side
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeIdentityCard',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeIdentityCardResponse(),
-            self.do_rpcrequest('RecognizeIdentityCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_identity_card_with_options_async(
@@ -1766,12 +2078,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeIdentityCardResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.side):
+            body['Side'] = request.side
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeIdentityCard',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeIdentityCardResponse(),
-            await self.do_rpcrequest_async('RecognizeIdentityCard', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_identity_card(
@@ -1936,12 +2264,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeLicensePlateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeLicensePlate',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeLicensePlateResponse(),
-            self.do_rpcrequest('RecognizeLicensePlate', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_license_plate_with_options_async(
@@ -1950,12 +2292,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeLicensePlateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeLicensePlate',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeLicensePlateResponse(),
-            await self.do_rpcrequest_async('RecognizeLicensePlate', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_license_plate(
@@ -2120,12 +2476,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizePassportMRZResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizePassportMRZ',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizePassportMRZResponse(),
-            self.do_rpcrequest('RecognizePassportMRZ', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_passport_mrzwith_options_async(
@@ -2134,12 +2504,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizePassportMRZResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizePassportMRZ',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizePassportMRZResponse(),
-            await self.do_rpcrequest_async('RecognizePassportMRZ', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_passport_mrz(
@@ -2304,12 +2688,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizePdfResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_url):
+            body['FileURL'] = request.file_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizePdf',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizePdfResponse(),
-            self.do_rpcrequest('RecognizePdf', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_pdf_with_options_async(
@@ -2318,12 +2716,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizePdfResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_url):
+            body['FileURL'] = request.file_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizePdf',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizePdfResponse(),
-            await self.do_rpcrequest_async('RecognizePdf', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_pdf(
@@ -2488,12 +2900,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizePoiNameResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizePoiName',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizePoiNameResponse(),
-            self.do_rpcrequest('RecognizePoiName', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_poi_name_with_options_async(
@@ -2502,12 +2928,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizePoiNameResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizePoiName',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizePoiNameResponse(),
-            await self.do_rpcrequest_async('RecognizePoiName', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_poi_name(
@@ -2672,12 +3112,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeQrCodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.tasks):
+            body['Tasks'] = request.tasks
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeQrCode',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeQrCodeResponse(),
-            self.do_rpcrequest('RecognizeQrCode', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_qr_code_with_options_async(
@@ -2686,12 +3140,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeQrCodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.tasks):
+            body['Tasks'] = request.tasks
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeQrCode',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeQrCodeResponse(),
-            await self.do_rpcrequest_async('RecognizeQrCode', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_qr_code(
@@ -2714,12 +3182,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeQuotaInvoiceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeQuotaInvoice',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeQuotaInvoiceResponse(),
-            self.do_rpcrequest('RecognizeQuotaInvoice', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_quota_invoice_with_options_async(
@@ -2728,12 +3210,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeQuotaInvoiceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeQuotaInvoice',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeQuotaInvoiceResponse(),
-            await self.do_rpcrequest_async('RecognizeQuotaInvoice', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_quota_invoice(
@@ -2898,12 +3394,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeStampResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeStamp',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeStampResponse(),
-            self.do_rpcrequest('RecognizeStamp', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_stamp_with_options_async(
@@ -2912,12 +3422,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeStampResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeStamp',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeStampResponse(),
-            await self.do_rpcrequest_async('RecognizeStamp', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_stamp(
@@ -3082,12 +3606,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeTableResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assure_direction):
+            body['AssureDirection'] = request.assure_direction
+        if not UtilClient.is_unset(request.has_line):
+            body['HasLine'] = request.has_line
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.output_format):
+            body['OutputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.skip_detection):
+            body['SkipDetection'] = request.skip_detection
+        if not UtilClient.is_unset(request.use_finance_model):
+            body['UseFinanceModel'] = request.use_finance_model
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeTable',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeTableResponse(),
-            self.do_rpcrequest('RecognizeTable', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_table_with_options_async(
@@ -3096,12 +3644,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeTableResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assure_direction):
+            body['AssureDirection'] = request.assure_direction
+        if not UtilClient.is_unset(request.has_line):
+            body['HasLine'] = request.has_line
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.output_format):
+            body['OutputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.skip_detection):
+            body['SkipDetection'] = request.skip_detection
+        if not UtilClient.is_unset(request.use_finance_model):
+            body['UseFinanceModel'] = request.use_finance_model
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeTable',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeTableResponse(),
-            await self.do_rpcrequest_async('RecognizeTable', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_table(
@@ -3266,12 +3838,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeTakeoutOrderResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeTakeoutOrder',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeTakeoutOrderResponse(),
-            self.do_rpcrequest('RecognizeTakeoutOrder', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_takeout_order_with_options_async(
@@ -3280,12 +3866,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeTakeoutOrderResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeTakeoutOrder',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeTakeoutOrderResponse(),
-            await self.do_rpcrequest_async('RecognizeTakeoutOrder', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_takeout_order(
@@ -3450,12 +4050,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeTaxiInvoiceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeTaxiInvoice',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeTaxiInvoiceResponse(),
-            self.do_rpcrequest('RecognizeTaxiInvoice', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_taxi_invoice_with_options_async(
@@ -3464,12 +4078,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeTaxiInvoiceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeTaxiInvoice',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeTaxiInvoiceResponse(),
-            await self.do_rpcrequest_async('RecognizeTaxiInvoice', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_taxi_invoice(
@@ -3634,12 +4262,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeTicketInvoiceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeTicketInvoice',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeTicketInvoiceResponse(),
-            self.do_rpcrequest('RecognizeTicketInvoice', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_ticket_invoice_with_options_async(
@@ -3648,12 +4290,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeTicketInvoiceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeTicketInvoice',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeTicketInvoiceResponse(),
-            await self.do_rpcrequest_async('RecognizeTicketInvoice', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_ticket_invoice(
@@ -3818,12 +4474,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeTrainTicketResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeTrainTicket',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeTrainTicketResponse(),
-            self.do_rpcrequest('RecognizeTrainTicket', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_train_ticket_with_options_async(
@@ -3832,12 +4502,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeTrainTicketResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeTrainTicket',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeTrainTicketResponse(),
-            await self.do_rpcrequest_async('RecognizeTrainTicket', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_train_ticket(
@@ -4002,12 +4686,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeVATInvoiceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.file_url):
+            body['FileURL'] = request.file_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeVATInvoice',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeVATInvoiceResponse(),
-            self.do_rpcrequest('RecognizeVATInvoice', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_vatinvoice_with_options_async(
@@ -4016,12 +4716,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeVATInvoiceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.file_url):
+            body['FileURL'] = request.file_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeVATInvoice',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeVATInvoiceResponse(),
-            await self.do_rpcrequest_async('RecognizeVATInvoice', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_vatinvoice(
@@ -4186,12 +4902,25 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeVINCodeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecognizeVINCode',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeVINCodeResponse(),
-            self.do_rpcrequest('RecognizeVINCode', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_vincode_with_options_async(
@@ -4200,12 +4929,25 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeVINCodeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecognizeVINCode',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeVINCodeResponse(),
-            await self.do_rpcrequest_async('RecognizeVINCode', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_vincode(
@@ -4370,12 +5112,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeVerificationcodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeVerificationcode',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeVerificationcodeResponse(),
-            self.do_rpcrequest('RecognizeVerificationcode', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_verificationcode_with_options_async(
@@ -4384,12 +5140,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeVerificationcodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeVerificationcode',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeVerificationcodeResponse(),
-            await self.do_rpcrequest_async('RecognizeVerificationcode', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_verificationcode(
@@ -4554,12 +5324,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeVideoCharacterResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.video_url):
+            body['VideoURL'] = request.video_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeVideoCharacter',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeVideoCharacterResponse(),
-            self.do_rpcrequest('RecognizeVideoCharacter', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def recognize_video_character_with_options_async(
@@ -4568,12 +5352,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.RecognizeVideoCharacterResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.video_url):
+            body['VideoURL'] = request.video_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeVideoCharacter',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.RecognizeVideoCharacterResponse(),
-            await self.do_rpcrequest_async('RecognizeVideoCharacter', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def recognize_video_character(
@@ -4596,12 +5394,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.TrimDocumentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.file_url):
+            body['FileURL'] = request.file_url
+        if not UtilClient.is_unset(request.output_type):
+            body['OutputType'] = request.output_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrimDocument',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.TrimDocumentResponse(),
-            self.do_rpcrequest('TrimDocument', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def trim_document_with_options_async(
@@ -4610,12 +5426,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocr_20191230_models.TrimDocumentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.file_url):
+            body['FileURL'] = request.file_url
+        if not UtilClient.is_unset(request.output_type):
+            body['OutputType'] = request.output_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrimDocument',
+            version='2019-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             ocr_20191230_models.TrimDocumentResponse(),
-            await self.do_rpcrequest_async('TrimDocument', '2019-12-30', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def trim_document(

@@ -7940,11 +7940,14 @@ class RecognizeVideoCharacterResponseBodyData(TeaModel):
         self,
         frames: List[RecognizeVideoCharacterResponseBodyDataFrames] = None,
         height: int = None,
+        input_file: str = None,
         width: int = None,
     ):
         # 视频帧的集合，空信息的帧不列出。
         self.frames = frames
         self.height = height
+        # 对应的输入OSS文件 (格式oss://{bucketName}/{object})
+        self.input_file = input_file
         self.width = width
 
     def validate(self):
@@ -7965,6 +7968,8 @@ class RecognizeVideoCharacterResponseBodyData(TeaModel):
                 result['Frames'].append(k.to_map() if k else None)
         if self.height is not None:
             result['Height'] = self.height
+        if self.input_file is not None:
+            result['InputFile'] = self.input_file
         if self.width is not None:
             result['Width'] = self.width
         return result
@@ -7978,6 +7983,8 @@ class RecognizeVideoCharacterResponseBodyData(TeaModel):
                 self.frames.append(temp_model.from_map(k))
         if m.get('Height') is not None:
             self.height = m.get('Height')
+        if m.get('InputFile') is not None:
+            self.input_file = m.get('InputFile')
         if m.get('Width') is not None:
             self.width = m.get('Width')
         return self
