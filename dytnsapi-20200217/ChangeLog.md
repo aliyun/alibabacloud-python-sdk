@@ -1,3 +1,6 @@
+2021-12-15 Version: 1.0.8
+- Fixed bugs for PhoneNumberAnalysis API.
+
 2021-12-14 Version: 1.0.7
 - Fixed bugs for PhoneNumberAnalysis API.
 
