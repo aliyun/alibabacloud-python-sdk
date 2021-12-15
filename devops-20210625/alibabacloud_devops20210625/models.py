@@ -4,6 +4,257 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
+class CreateFlowTagRequest(TeaModel):
+    def __init__(
+        self,
+        color: str = None,
+        flow_tag_group_id: int = None,
+        name: str = None,
+    ):
+        self.color = color
+        self.flow_tag_group_id = flow_tag_group_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.color is not None:
+            result['color'] = self.color
+        if self.flow_tag_group_id is not None:
+            result['flowTagGroupId'] = self.flow_tag_group_id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('color') is not None:
+            self.color = m.get('color')
+        if m.get('flowTagGroupId') is not None:
+            self.flow_tag_group_id = m.get('flowTagGroupId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class CreateFlowTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        id: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        self.id = id
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.id is not None:
+            result['id'] = self.id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateFlowTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateFlowTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateFlowTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateFlowTagGroupRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class CreateFlowTagGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        id: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        # 标签分类
+        self.id = id
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.id is not None:
+            result['id'] = self.id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateFlowTagGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateFlowTagGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateFlowTagGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateHostGroupRequest(TeaModel):
     def __init__(
         self,
@@ -795,6 +1046,178 @@ class CreateWorkspaceResponse(TeaModel):
         return self
 
 
+class DeleteFlowTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class DeleteFlowTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteFlowTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteFlowTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteFlowTagGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class DeleteFlowTagGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteFlowTagGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteFlowTagGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteHostGroupResponseBody(TeaModel):
     def __init__(
         self,
@@ -1221,6 +1644,210 @@ class FrozenWorkspaceResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = FrozenWorkspaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetFlowTagGroupResponseBodyFlowTagGroupFlowTagList(TeaModel):
+    def __init__(
+        self,
+        color: str = None,
+        creator_account_id: str = None,
+        id: int = None,
+        modifer_account_id: str = None,
+        name: str = None,
+    ):
+        self.color = color
+        self.creator_account_id = creator_account_id
+        self.id = id
+        self.modifer_account_id = modifer_account_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.color is not None:
+            result['color'] = self.color
+        if self.creator_account_id is not None:
+            result['creatorAccountId'] = self.creator_account_id
+        if self.id is not None:
+            result['id'] = self.id
+        if self.modifer_account_id is not None:
+            result['modiferAccountId'] = self.modifer_account_id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('color') is not None:
+            self.color = m.get('color')
+        if m.get('creatorAccountId') is not None:
+            self.creator_account_id = m.get('creatorAccountId')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('modiferAccountId') is not None:
+            self.modifer_account_id = m.get('modiferAccountId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class GetFlowTagGroupResponseBodyFlowTagGroup(TeaModel):
+    def __init__(
+        self,
+        creator_account_id: str = None,
+        flow_tag_list: List[GetFlowTagGroupResponseBodyFlowTagGroupFlowTagList] = None,
+        id: int = None,
+        modifer_account_id: str = None,
+        name: str = None,
+    ):
+        self.creator_account_id = creator_account_id
+        self.flow_tag_list = flow_tag_list
+        self.id = id
+        self.modifer_account_id = modifer_account_id
+        self.name = name
+
+    def validate(self):
+        if self.flow_tag_list:
+            for k in self.flow_tag_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator_account_id is not None:
+            result['creatorAccountId'] = self.creator_account_id
+        result['flowTagList'] = []
+        if self.flow_tag_list is not None:
+            for k in self.flow_tag_list:
+                result['flowTagList'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['id'] = self.id
+        if self.modifer_account_id is not None:
+            result['modiferAccountId'] = self.modifer_account_id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('creatorAccountId') is not None:
+            self.creator_account_id = m.get('creatorAccountId')
+        self.flow_tag_list = []
+        if m.get('flowTagList') is not None:
+            for k in m.get('flowTagList'):
+                temp_model = GetFlowTagGroupResponseBodyFlowTagGroupFlowTagList()
+                self.flow_tag_list.append(temp_model.from_map(k))
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('modiferAccountId') is not None:
+            self.modifer_account_id = m.get('modiferAccountId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class GetFlowTagGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        flow_tag_group: GetFlowTagGroupResponseBodyFlowTagGroup = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        self.flow_tag_group = flow_tag_group
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        if self.flow_tag_group:
+            self.flow_tag_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.flow_tag_group is not None:
+            result['flowTagGroup'] = self.flow_tag_group.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('flowTagGroup') is not None:
+            temp_model = GetFlowTagGroupResponseBodyFlowTagGroup()
+            self.flow_tag_group = temp_model.from_map(m['flowTagGroup'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetFlowTagGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetFlowTagGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetFlowTagGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2733,6 +3360,262 @@ class GetPipelineRunResponse(TeaModel):
         return self
 
 
+class GetProjectInfoResponseBodyProject(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        category_identifier: str = None,
+        creator: str = None,
+        custom_code: str = None,
+        description: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        icon: str = None,
+        icon_big: str = None,
+        icon_group: str = None,
+        icon_small: str = None,
+        id: str = None,
+        identifier: str = None,
+        identifier_path: str = None,
+        logical_status: str = None,
+        modifier: str = None,
+        name: str = None,
+        organization_identifier: str = None,
+        parent_identifier: str = None,
+        scope: str = None,
+        status_identifier: str = None,
+        status_stage_identifier: str = None,
+        sub_type: str = None,
+        type_identifier: str = None,
+    ):
+        self.category = category
+        self.category_identifier = category_identifier
+        self.creator = creator
+        self.custom_code = custom_code
+        self.description = description
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.icon = icon
+        self.icon_big = icon_big
+        self.icon_group = icon_group
+        self.icon_small = icon_small
+        self.id = id
+        self.identifier = identifier
+        self.identifier_path = identifier_path
+        self.logical_status = logical_status
+        self.modifier = modifier
+        self.name = name
+        self.organization_identifier = organization_identifier
+        self.parent_identifier = parent_identifier
+        self.scope = scope
+        self.status_identifier = status_identifier
+        self.status_stage_identifier = status_stage_identifier
+        self.sub_type = sub_type
+        self.type_identifier = type_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['category'] = self.category
+        if self.category_identifier is not None:
+            result['categoryIdentifier'] = self.category_identifier
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.custom_code is not None:
+            result['customCode'] = self.custom_code
+        if self.description is not None:
+            result['description'] = self.description
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.icon is not None:
+            result['icon'] = self.icon
+        if self.icon_big is not None:
+            result['iconBig'] = self.icon_big
+        if self.icon_group is not None:
+            result['iconGroup'] = self.icon_group
+        if self.icon_small is not None:
+            result['iconSmall'] = self.icon_small
+        if self.id is not None:
+            result['id'] = self.id
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.identifier_path is not None:
+            result['identifierPath'] = self.identifier_path
+        if self.logical_status is not None:
+            result['logicalStatus'] = self.logical_status
+        if self.modifier is not None:
+            result['modifier'] = self.modifier
+        if self.name is not None:
+            result['name'] = self.name
+        if self.organization_identifier is not None:
+            result['organizationIdentifier'] = self.organization_identifier
+        if self.parent_identifier is not None:
+            result['parentIdentifier'] = self.parent_identifier
+        if self.scope is not None:
+            result['scope'] = self.scope
+        if self.status_identifier is not None:
+            result['statusIdentifier'] = self.status_identifier
+        if self.status_stage_identifier is not None:
+            result['statusStageIdentifier'] = self.status_stage_identifier
+        if self.sub_type is not None:
+            result['subType'] = self.sub_type
+        if self.type_identifier is not None:
+            result['typeIdentifier'] = self.type_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('categoryIdentifier') is not None:
+            self.category_identifier = m.get('categoryIdentifier')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('customCode') is not None:
+            self.custom_code = m.get('customCode')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('icon') is not None:
+            self.icon = m.get('icon')
+        if m.get('iconBig') is not None:
+            self.icon_big = m.get('iconBig')
+        if m.get('iconGroup') is not None:
+            self.icon_group = m.get('iconGroup')
+        if m.get('iconSmall') is not None:
+            self.icon_small = m.get('iconSmall')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('identifierPath') is not None:
+            self.identifier_path = m.get('identifierPath')
+        if m.get('logicalStatus') is not None:
+            self.logical_status = m.get('logicalStatus')
+        if m.get('modifier') is not None:
+            self.modifier = m.get('modifier')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('organizationIdentifier') is not None:
+            self.organization_identifier = m.get('organizationIdentifier')
+        if m.get('parentIdentifier') is not None:
+            self.parent_identifier = m.get('parentIdentifier')
+        if m.get('scope') is not None:
+            self.scope = m.get('scope')
+        if m.get('statusIdentifier') is not None:
+            self.status_identifier = m.get('statusIdentifier')
+        if m.get('statusStageIdentifier') is not None:
+            self.status_stage_identifier = m.get('statusStageIdentifier')
+        if m.get('subType') is not None:
+            self.sub_type = m.get('subType')
+        if m.get('typeIdentifier') is not None:
+            self.type_identifier = m.get('typeIdentifier')
+        return self
+
+
+class GetProjectInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        project: GetProjectInfoResponseBodyProject = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        # 项目信息
+        self.project = project
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.project:
+            self.project.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.project is not None:
+            result['project'] = self.project.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('project') is not None:
+            temp_model = GetProjectInfoResponseBodyProject()
+            self.project = temp_model.from_map(m['project'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetProjectInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetProjectInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetProjectInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetVMDeployOrderResponseBodyDeployOrderActions(TeaModel):
     def __init__(
         self,
@@ -3597,6 +4480,156 @@ class GetWorkspaceResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetWorkspaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListFlowTagGroupsResponseBodyFlowTagGroups(TeaModel):
+    def __init__(
+        self,
+        creator_account_id: str = None,
+        id: int = None,
+        modifer_account_id: str = None,
+        name: str = None,
+    ):
+        # 创建人
+        self.creator_account_id = creator_account_id
+        # 标签分类id
+        self.id = id
+        # 修改人
+        self.modifer_account_id = modifer_account_id
+        # 标签分类名称
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator_account_id is not None:
+            result['creatorAccountId'] = self.creator_account_id
+        if self.id is not None:
+            result['id'] = self.id
+        if self.modifer_account_id is not None:
+            result['modiferAccountId'] = self.modifer_account_id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('creatorAccountId') is not None:
+            self.creator_account_id = m.get('creatorAccountId')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('modiferAccountId') is not None:
+            self.modifer_account_id = m.get('modiferAccountId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class ListFlowTagGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        flow_tag_groups: List[ListFlowTagGroupsResponseBodyFlowTagGroups] = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        # 标签分类
+        self.flow_tag_groups = flow_tag_groups
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        if self.flow_tag_groups:
+            for k in self.flow_tag_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        result['flowTagGroups'] = []
+        if self.flow_tag_groups is not None:
+            for k in self.flow_tag_groups:
+                result['flowTagGroups'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        self.flow_tag_groups = []
+        if m.get('flowTagGroups') is not None:
+            for k in m.get('flowTagGroups'):
+                temp_model = ListFlowTagGroupsResponseBodyFlowTagGroups()
+                self.flow_tag_groups.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListFlowTagGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListFlowTagGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListFlowTagGroupsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4751,6 +5784,349 @@ class ListPipelinesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListPipelinesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListProjectMembersRequest(TeaModel):
+    def __init__(
+        self,
+        target_type: str = None,
+    ):
+        self.target_type = target_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.target_type is not None:
+            result['targetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('targetType') is not None:
+            self.target_type = m.get('targetType')
+        return self
+
+
+class ListProjectMembersResponseBodyMembersDivision(TeaModel):
+    def __init__(
+        self,
+        identifier: str = None,
+    ):
+        # 部门唯一标识
+        self.identifier = identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        return self
+
+
+class ListProjectMembersResponseBodyMembersOrganizationUserInfo(TeaModel):
+    def __init__(
+        self,
+        organization_identifier: str = None,
+    ):
+        # 企业唯一标识符
+        self.organization_identifier = organization_identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.organization_identifier is not None:
+            result['organizationIdentifier'] = self.organization_identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('organizationIdentifier') is not None:
+            self.organization_identifier = m.get('organizationIdentifier')
+        return self
+
+
+class ListProjectMembersResponseBodyMembers(TeaModel):
+    def __init__(
+        self,
+        account: str = None,
+        avatar: str = None,
+        ding_talk_id: str = None,
+        display_name: str = None,
+        display_nick_name: str = None,
+        display_real_name: str = None,
+        division: ListProjectMembersResponseBodyMembersDivision = None,
+        email: str = None,
+        gender: str = None,
+        identifier: str = None,
+        mobile: str = None,
+        name_en: str = None,
+        nick_name: str = None,
+        nick_name_pinyin: str = None,
+        organization_user_info: ListProjectMembersResponseBodyMembersOrganizationUserInfo = None,
+        real_name: str = None,
+        real_name_pinyin: str = None,
+        stamp: str = None,
+        tb_role_id: str = None,
+    ):
+        # 登陆账号
+        self.account = account
+        # 用户头像
+        self.avatar = avatar
+        # 钉钉id
+        self.ding_talk_id = ding_talk_id
+        # 展示名
+        self.display_name = display_name
+        # 展示昵称
+        self.display_nick_name = display_nick_name
+        # 展示真名
+        self.display_real_name = display_real_name
+        # 部门信息
+        self.division = division
+        # 邮箱
+        self.email = email
+        # 性别
+        self.gender = gender
+        # 用户唯一 标识符
+        self.identifier = identifier
+        # 手机号
+        self.mobile = mobile
+        # 英文名
+        self.name_en = name_en
+        # 昵称
+        self.nick_name = nick_name
+        # 昵称拼音
+        self.nick_name_pinyin = nick_name_pinyin
+        # 企业信息
+        self.organization_user_info = organization_user_info
+        # 真名
+        self.real_name = real_name
+        # 真名拼音
+        self.real_name_pinyin = real_name_pinyin
+        # 用户类型
+        self.stamp = stamp
+        # 角色id
+        self.tb_role_id = tb_role_id
+
+    def validate(self):
+        if self.division:
+            self.division.validate()
+        if self.organization_user_info:
+            self.organization_user_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account is not None:
+            result['account'] = self.account
+        if self.avatar is not None:
+            result['avatar'] = self.avatar
+        if self.ding_talk_id is not None:
+            result['dingTalkId'] = self.ding_talk_id
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.display_nick_name is not None:
+            result['displayNickName'] = self.display_nick_name
+        if self.display_real_name is not None:
+            result['displayRealName'] = self.display_real_name
+        if self.division is not None:
+            result['division'] = self.division.to_map()
+        if self.email is not None:
+            result['email'] = self.email
+        if self.gender is not None:
+            result['gender'] = self.gender
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.mobile is not None:
+            result['mobile'] = self.mobile
+        if self.name_en is not None:
+            result['nameEn'] = self.name_en
+        if self.nick_name is not None:
+            result['nickName'] = self.nick_name
+        if self.nick_name_pinyin is not None:
+            result['nickNamePinyin'] = self.nick_name_pinyin
+        if self.organization_user_info is not None:
+            result['organizationUserInfo'] = self.organization_user_info.to_map()
+        if self.real_name is not None:
+            result['realName'] = self.real_name
+        if self.real_name_pinyin is not None:
+            result['realNamePinyin'] = self.real_name_pinyin
+        if self.stamp is not None:
+            result['stamp'] = self.stamp
+        if self.tb_role_id is not None:
+            result['tbRoleId'] = self.tb_role_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('account') is not None:
+            self.account = m.get('account')
+        if m.get('avatar') is not None:
+            self.avatar = m.get('avatar')
+        if m.get('dingTalkId') is not None:
+            self.ding_talk_id = m.get('dingTalkId')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('displayNickName') is not None:
+            self.display_nick_name = m.get('displayNickName')
+        if m.get('displayRealName') is not None:
+            self.display_real_name = m.get('displayRealName')
+        if m.get('division') is not None:
+            temp_model = ListProjectMembersResponseBodyMembersDivision()
+            self.division = temp_model.from_map(m['division'])
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('gender') is not None:
+            self.gender = m.get('gender')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('mobile') is not None:
+            self.mobile = m.get('mobile')
+        if m.get('nameEn') is not None:
+            self.name_en = m.get('nameEn')
+        if m.get('nickName') is not None:
+            self.nick_name = m.get('nickName')
+        if m.get('nickNamePinyin') is not None:
+            self.nick_name_pinyin = m.get('nickNamePinyin')
+        if m.get('organizationUserInfo') is not None:
+            temp_model = ListProjectMembersResponseBodyMembersOrganizationUserInfo()
+            self.organization_user_info = temp_model.from_map(m['organizationUserInfo'])
+        if m.get('realName') is not None:
+            self.real_name = m.get('realName')
+        if m.get('realNamePinyin') is not None:
+            self.real_name_pinyin = m.get('realNamePinyin')
+        if m.get('stamp') is not None:
+            self.stamp = m.get('stamp')
+        if m.get('tbRoleId') is not None:
+            self.tb_role_id = m.get('tbRoleId')
+        return self
+
+
+class ListProjectMembersResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_msg: str = None,
+        members: List[ListProjectMembersResponseBodyMembers] = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_msg = error_msg
+        # member信息
+        self.members = members
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true或者false
+        self.success = success
+
+    def validate(self):
+        if self.members:
+            for k in self.members:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        result['members'] = []
+        if self.members is not None:
+            for k in self.members:
+                result['members'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        self.members = []
+        if m.get('members') is not None:
+            for k in m.get('members'):
+                temp_model = ListProjectMembersResponseBodyMembers()
+                self.members.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListProjectMembersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListProjectMembersResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListProjectMembersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7192,6 +8568,244 @@ class StopVMDeployOrderResponse(TeaModel):
         return self
 
 
+class UpdateFlowTagRequest(TeaModel):
+    def __init__(
+        self,
+        color: str = None,
+        flow_tag_group_id: int = None,
+        name: str = None,
+    ):
+        self.color = color
+        self.flow_tag_group_id = flow_tag_group_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.color is not None:
+            result['color'] = self.color
+        if self.flow_tag_group_id is not None:
+            result['flowTagGroupId'] = self.flow_tag_group_id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('color') is not None:
+            self.color = m.get('color')
+        if m.get('flowTagGroupId') is not None:
+            self.flow_tag_group_id = m.get('flowTagGroupId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class UpdateFlowTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdateFlowTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateFlowTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateFlowTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateFlowTagGroupRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class UpdateFlowTagGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdateFlowTagGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateFlowTagGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateFlowTagGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateHostGroupRequest(TeaModel):
     def __init__(
         self,
@@ -7352,6 +8966,131 @@ class UpdateHostGroupResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = UpdateHostGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdatePipelineBaseInfoRequest(TeaModel):
+    def __init__(
+        self,
+        env_id: int = None,
+        pipeline_name: str = None,
+        tag_list: str = None,
+    ):
+        self.env_id = env_id
+        self.pipeline_name = pipeline_name
+        self.tag_list = tag_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env_id is not None:
+            result['envId'] = self.env_id
+        if self.pipeline_name is not None:
+            result['pipelineName'] = self.pipeline_name
+        if self.tag_list is not None:
+            result['tagList'] = self.tag_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('envId') is not None:
+            self.env_id = m.get('envId')
+        if m.get('pipelineName') is not None:
+            self.pipeline_name = m.get('pipelineName')
+        if m.get('tagList') is not None:
+            self.tag_list = m.get('tagList')
+        return self
+
+
+class UpdatePipelineBaseInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdatePipelineBaseInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdatePipelineBaseInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdatePipelineBaseInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

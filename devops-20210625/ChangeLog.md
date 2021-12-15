@@ -1,3 +1,6 @@
+2021-12-15 Version: 1.1.6
+- Add Tag Api.
+
 2021-11-26 Version: 1.1.5
 - Add Deploy Api.
 
