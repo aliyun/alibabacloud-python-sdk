@@ -1,3 +1,6 @@
+2021-12-16 Version: 1.0.5
+- Release some feature APIs.
+
 2021-11-30 Version: 1.0.3
 - Release some feature APIs.
 
