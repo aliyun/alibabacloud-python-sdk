@@ -326,9 +326,11 @@ class DescribeAnycastEipAddressRequest(TeaModel):
         self,
         anycast_id: str = None,
         bind_instance_id: str = None,
+        ip: str = None,
     ):
         self.anycast_id = anycast_id
         self.bind_instance_id = bind_instance_id
+        self.ip = ip
 
     def validate(self):
         pass
@@ -343,6 +345,8 @@ class DescribeAnycastEipAddressRequest(TeaModel):
             result['AnycastId'] = self.anycast_id
         if self.bind_instance_id is not None:
             result['BindInstanceId'] = self.bind_instance_id
+        if self.ip is not None:
+            result['Ip'] = self.ip
         return result
 
     def from_map(self, m: dict = None):
@@ -351,6 +355,8 @@ class DescribeAnycastEipAddressRequest(TeaModel):
             self.anycast_id = m.get('AnycastId')
         if m.get('BindInstanceId') is not None:
             self.bind_instance_id = m.get('BindInstanceId')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
         return self
 
 
