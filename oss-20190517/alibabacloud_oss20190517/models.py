@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict, Any, BinaryIO
+from typing import List, Dict, BinaryIO
 
 
 class ApplyServerSideEncryptionByDefault(TeaModel):
@@ -391,41 +391,6 @@ class CompleteMultipartUpload(TeaModel):
         return self
 
 
-class CopyPartResult(TeaModel):
-    def __init__(
-        self,
-        etag: str = None,
-        last_modified: str = None,
-    ):
-        # A short description of ETag
-        self.etag = etag
-        # A short description of LastModified
-        self.last_modified = last_modified
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.etag is not None:
-            result['ETag'] = self.etag
-        if self.last_modified is not None:
-            result['LastModified'] = self.last_modified
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ETag') is not None:
-            self.etag = m.get('ETag')
-        if m.get('LastModified') is not None:
-            self.last_modified = m.get('LastModified')
-        return self
-
-
 class CreateBucketConfiguration(TeaModel):
     def __init__(
         self,
@@ -790,11 +755,31 @@ class SSEKMS(TeaModel):
         return self
 
 
+class SSEOSS(TeaModel):
+    def __init__(self):
+        pass
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        return self
+
+
 class InventoryEncryption(TeaModel):
     def __init__(
         self,
         ssekms: SSEKMS = None,
-        sseoss: Dict[str, Any] = None,
+        sseoss: SSEOSS = None,
     ):
         # The container that stores the CMK used in the SSE-KMS encryption method
         self.ssekms = ssekms
@@ -804,6 +789,8 @@ class InventoryEncryption(TeaModel):
     def validate(self):
         if self.ssekms:
             self.ssekms.validate()
+        if self.sseoss:
+            self.sseoss.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -814,7 +801,7 @@ class InventoryEncryption(TeaModel):
         if self.ssekms is not None:
             result['SSE-KMS'] = self.ssekms.to_map()
         if self.sseoss is not None:
-            result['SSE-OSS'] = self.sseoss
+            result['SSE-OSS'] = self.sseoss.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -823,7 +810,8 @@ class InventoryEncryption(TeaModel):
             temp_model = SSEKMS()
             self.ssekms = temp_model.from_map(m['SSE-KMS'])
         if m.get('SSE-OSS') is not None:
-            self.sseoss = m.get('SSE-OSS')
+            temp_model = SSEOSS()
+            self.sseoss = temp_model.from_map(m['SSE-OSS'])
         return self
 
 
@@ -3420,11 +3408,25 @@ class AppendObjectHeaders(TeaModel):
     def __init__(
         self,
         common_headers: Dict[str, str] = None,
+        cache_control: str = None,
+        content_disposition: str = None,
+        content_encoding: str = None,
+        content_md5: str = None,
+        expires: str = None,
+        meta_data: Dict[str, str] = None,
         acl: str = None,
+        server_side_encryption: str = None,
         storage_class: str = None,
     ):
         self.common_headers = common_headers
+        self.cache_control = cache_control
+        self.content_disposition = content_disposition
+        self.content_encoding = content_encoding
+        self.content_md5 = content_md5
+        self.expires = expires
+        self.meta_data = meta_data
         self.acl = acl
+        self.server_side_encryption = server_side_encryption
         self.storage_class = storage_class
 
     def validate(self):
@@ -3438,8 +3440,22 @@ class AppendObjectHeaders(TeaModel):
         result = dict()
         if self.common_headers is not None:
             result['commonHeaders'] = self.common_headers
+        if self.cache_control is not None:
+            result['Cache-Control'] = self.cache_control
+        if self.content_disposition is not None:
+            result['Content-Disposition'] = self.content_disposition
+        if self.content_encoding is not None:
+            result['Content-Encoding'] = self.content_encoding
+        if self.content_md5 is not None:
+            result['Content-MD5'] = self.content_md5
+        if self.expires is not None:
+            result['Expires'] = self.expires
+        if self.meta_data is not None:
+            result['x-oss-meta-*'] = self.meta_data
         if self.acl is not None:
             result['x-oss-object-acl'] = self.acl
+        if self.server_side_encryption is not None:
+            result['x-oss-server-side-encryption'] = self.server_side_encryption
         if self.storage_class is not None:
             result['x-oss-storage-class'] = self.storage_class
         return result
@@ -3448,8 +3464,22 @@ class AppendObjectHeaders(TeaModel):
         m = m or dict()
         if m.get('commonHeaders') is not None:
             self.common_headers = m.get('commonHeaders')
+        if m.get('Cache-Control') is not None:
+            self.cache_control = m.get('Cache-Control')
+        if m.get('Content-Disposition') is not None:
+            self.content_disposition = m.get('Content-Disposition')
+        if m.get('Content-Encoding') is not None:
+            self.content_encoding = m.get('Content-Encoding')
+        if m.get('Content-MD5') is not None:
+            self.content_md5 = m.get('Content-MD5')
+        if m.get('Expires') is not None:
+            self.expires = m.get('Expires')
+        if m.get('x-oss-meta-*') is not None:
+            self.meta_data = m.get('x-oss-meta-*')
         if m.get('x-oss-object-acl') is not None:
             self.acl = m.get('x-oss-object-acl')
+        if m.get('x-oss-server-side-encryption') is not None:
+            self.server_side_encryption = m.get('x-oss-server-side-encryption')
         if m.get('x-oss-storage-class') is not None:
             self.storage_class = m.get('x-oss-storage-class')
         return self
@@ -3574,12 +3604,12 @@ class CompleteMultipartUploadHeaders(TeaModel):
     def __init__(
         self,
         common_headers: Dict[str, str] = None,
-        x_oss_complete_all: str = None,
-        x_oss_forbid_overwrite: str = None,
+        complete_all: str = None,
+        forbid_overwrite: str = None,
     ):
         self.common_headers = common_headers
-        self.x_oss_complete_all = x_oss_complete_all
-        self.x_oss_forbid_overwrite = x_oss_forbid_overwrite
+        self.complete_all = complete_all
+        self.forbid_overwrite = forbid_overwrite
 
     def validate(self):
         pass
@@ -3592,10 +3622,10 @@ class CompleteMultipartUploadHeaders(TeaModel):
         result = dict()
         if self.common_headers is not None:
             result['commonHeaders'] = self.common_headers
-        if self.x_oss_complete_all is not None:
-            result['x-oss-complete-all'] = self.x_oss_complete_all
-        if self.x_oss_forbid_overwrite is not None:
-            result['x-oss-forbid-overwrite'] = self.x_oss_forbid_overwrite
+        if self.complete_all is not None:
+            result['x-oss-complete-all'] = self.complete_all
+        if self.forbid_overwrite is not None:
+            result['x-oss-forbid-overwrite'] = self.forbid_overwrite
         return result
 
     def from_map(self, m: dict = None):
@@ -3603,9 +3633,9 @@ class CompleteMultipartUploadHeaders(TeaModel):
         if m.get('commonHeaders') is not None:
             self.common_headers = m.get('commonHeaders')
         if m.get('x-oss-complete-all') is not None:
-            self.x_oss_complete_all = m.get('x-oss-complete-all')
+            self.complete_all = m.get('x-oss-complete-all')
         if m.get('x-oss-forbid-overwrite') is not None:
-            self.x_oss_forbid_overwrite = m.get('x-oss-forbid-overwrite')
+            self.forbid_overwrite = m.get('x-oss-forbid-overwrite')
         return self
 
 
@@ -3742,34 +3772,36 @@ class CopyObjectHeaders(TeaModel):
     def __init__(
         self,
         common_headers: Dict[str, str] = None,
-        source_bucket: str = None,
-        source_key: str = None,
+        copy_source: str = None,
         copy_source_if_match: str = None,
         copy_source_if_modified_since: str = None,
         copy_source_if_none_match: str = None,
         copy_source_if_unmodified_since: str = None,
         forbid_overwrite: str = None,
+        meta_data: Dict[str, str] = None,
         metadata_directive: str = None,
         acl: str = None,
         sse: str = None,
         sse_key_id: str = None,
         storage_class: str = None,
         tagging: str = None,
+        x_oss_tagging_directive: str = None,
     ):
         self.common_headers = common_headers
-        self.source_bucket = source_bucket
-        self.source_key = source_key
+        self.copy_source = copy_source
         self.copy_source_if_match = copy_source_if_match
         self.copy_source_if_modified_since = copy_source_if_modified_since
         self.copy_source_if_none_match = copy_source_if_none_match
         self.copy_source_if_unmodified_since = copy_source_if_unmodified_since
         self.forbid_overwrite = forbid_overwrite
+        self.meta_data = meta_data
         self.metadata_directive = metadata_directive
         self.acl = acl
         self.sse = sse
         self.sse_key_id = sse_key_id
         self.storage_class = storage_class
         self.tagging = tagging
+        self.x_oss_tagging_directive = x_oss_tagging_directive
 
     def validate(self):
         pass
@@ -3782,10 +3814,8 @@ class CopyObjectHeaders(TeaModel):
         result = dict()
         if self.common_headers is not None:
             result['commonHeaders'] = self.common_headers
-        if self.source_bucket is not None:
-            result['source-bucket'] = self.source_bucket
-        if self.source_key is not None:
-            result['source-key'] = self.source_key
+        if self.copy_source is not None:
+            result['x-oss-copy-source'] = self.copy_source
         if self.copy_source_if_match is not None:
             result['x-oss-copy-source-if-match'] = self.copy_source_if_match
         if self.copy_source_if_modified_since is not None:
@@ -3796,6 +3826,8 @@ class CopyObjectHeaders(TeaModel):
             result['x-oss-copy-source-if-unmodified-since'] = self.copy_source_if_unmodified_since
         if self.forbid_overwrite is not None:
             result['x-oss-forbid-overwrite'] = self.forbid_overwrite
+        if self.meta_data is not None:
+            result['x-oss-meta-*'] = self.meta_data
         if self.metadata_directive is not None:
             result['x-oss-metadata-directive'] = self.metadata_directive
         if self.acl is not None:
@@ -3808,16 +3840,16 @@ class CopyObjectHeaders(TeaModel):
             result['x-oss-storage-class'] = self.storage_class
         if self.tagging is not None:
             result['x-oss-tagging'] = self.tagging
+        if self.x_oss_tagging_directive is not None:
+            result['x-oss-tagging-directive'] = self.x_oss_tagging_directive
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('commonHeaders') is not None:
             self.common_headers = m.get('commonHeaders')
-        if m.get('source-bucket') is not None:
-            self.source_bucket = m.get('source-bucket')
-        if m.get('source-key') is not None:
-            self.source_key = m.get('source-key')
+        if m.get('x-oss-copy-source') is not None:
+            self.copy_source = m.get('x-oss-copy-source')
         if m.get('x-oss-copy-source-if-match') is not None:
             self.copy_source_if_match = m.get('x-oss-copy-source-if-match')
         if m.get('x-oss-copy-source-if-modified-since') is not None:
@@ -3828,6 +3860,8 @@ class CopyObjectHeaders(TeaModel):
             self.copy_source_if_unmodified_since = m.get('x-oss-copy-source-if-unmodified-since')
         if m.get('x-oss-forbid-overwrite') is not None:
             self.forbid_overwrite = m.get('x-oss-forbid-overwrite')
+        if m.get('x-oss-meta-*') is not None:
+            self.meta_data = m.get('x-oss-meta-*')
         if m.get('x-oss-metadata-directive') is not None:
             self.metadata_directive = m.get('x-oss-metadata-directive')
         if m.get('x-oss-object-acl') is not None:
@@ -3840,6 +3874,8 @@ class CopyObjectHeaders(TeaModel):
             self.storage_class = m.get('x-oss-storage-class')
         if m.get('x-oss-tagging') is not None:
             self.tagging = m.get('x-oss-tagging')
+        if m.get('x-oss-tagging-directive') is not None:
+            self.x_oss_tagging_directive = m.get('x-oss-tagging-directive')
         return self
 
 
@@ -4270,13 +4306,17 @@ class DeleteLiveChannelResponse(TeaModel):
 class DeleteMultipleObjectsRequest(TeaModel):
     def __init__(
         self,
+        body: Delete = None,
         delete: Delete = None,
         encoding_type: str = None,
     ):
+        self.body = body
         self.delete = delete
         self.encoding_type = encoding_type
 
     def validate(self):
+        if self.body:
+            self.body.validate()
         if self.delete:
             self.delete.validate()
 
@@ -4286,6 +4326,8 @@ class DeleteMultipleObjectsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         if self.delete is not None:
             result['delete'] = self.delete.to_map()
         if self.encoding_type is not None:
@@ -4294,6 +4336,9 @@ class DeleteMultipleObjectsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('body') is not None:
+            temp_model = Delete()
+            self.body = temp_model.from_map(m['body'])
         if m.get('delete') is not None:
             temp_model = Delete()
             self.delete = temp_model.from_map(m['delete'])
@@ -4425,6 +4470,33 @@ class DeleteObjectResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        return self
+
+
+class DeleteObjectTaggingRequest(TeaModel):
+    def __init__(
+        self,
+        version_id: str = None,
+    ):
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.version_id is not None:
+            result['versionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('versionId') is not None:
+            self.version_id = m.get('versionId')
         return self
 
 
@@ -6945,6 +7017,33 @@ class GetObjectAclResponse(TeaModel):
         return self
 
 
+class GetObjectMetaRequest(TeaModel):
+    def __init__(
+        self,
+        version_id: str = None,
+    ):
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.version_id is not None:
+            result['versionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('versionId') is not None:
+            self.version_id = m.get('versionId')
+        return self
+
+
 class GetObjectMetaResponse(TeaModel):
     def __init__(
         self,
@@ -6969,6 +7068,33 @@ class GetObjectMetaResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        return self
+
+
+class GetObjectTaggingRequest(TeaModel):
+    def __init__(
+        self,
+        version_id: str = None,
+    ):
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.version_id is not None:
+            result['versionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('versionId') is not None:
+            self.version_id = m.get('versionId')
         return self
 
 
@@ -7187,6 +7313,33 @@ class GetServiceResponse(TeaModel):
         return self
 
 
+class GetSymlinkRequest(TeaModel):
+    def __init__(
+        self,
+        version_id: str = None,
+    ):
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.version_id is not None:
+            result['versionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('versionId') is not None:
+            self.version_id = m.get('versionId')
+        return self
+
+
 class GetSymlinkResponse(TeaModel):
     def __init__(
         self,
@@ -7332,6 +7485,33 @@ class HeadObjectHeaders(TeaModel):
         return self
 
 
+class HeadObjectRequest(TeaModel):
+    def __init__(
+        self,
+        version_id: str = None,
+    ):
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.version_id is not None:
+            result['versionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('versionId') is not None:
+            self.version_id = m.get('versionId')
+        return self
+
+
 class HeadObjectResponse(TeaModel):
     def __init__(
         self,
@@ -7419,20 +7599,28 @@ class InitiateMultipartUploadHeaders(TeaModel):
     def __init__(
         self,
         common_headers: Dict[str, str] = None,
-        x_oss_forbid_overwrite: str = None,
-        x_oss_server_side_data_encryption: str = None,
-        x_oss_server_side_encryption: str = None,
-        x_oss_server_side_encryption_key_id: str = None,
-        x_oss_storage_class: str = None,
-        x_oss_tagging: str = None,
+        cache_control: str = None,
+        content_disposition: str = None,
+        content_encoding: str = None,
+        expires: str = None,
+        forbid_overwrite: str = None,
+        sse_data_encryption: str = None,
+        server_side_encryption: str = None,
+        sse_key_id: str = None,
+        storage_class: str = None,
+        tagging: str = None,
     ):
         self.common_headers = common_headers
-        self.x_oss_forbid_overwrite = x_oss_forbid_overwrite
-        self.x_oss_server_side_data_encryption = x_oss_server_side_data_encryption
-        self.x_oss_server_side_encryption = x_oss_server_side_encryption
-        self.x_oss_server_side_encryption_key_id = x_oss_server_side_encryption_key_id
-        self.x_oss_storage_class = x_oss_storage_class
-        self.x_oss_tagging = x_oss_tagging
+        self.cache_control = cache_control
+        self.content_disposition = content_disposition
+        self.content_encoding = content_encoding
+        self.expires = expires
+        self.forbid_overwrite = forbid_overwrite
+        self.sse_data_encryption = sse_data_encryption
+        self.server_side_encryption = server_side_encryption
+        self.sse_key_id = sse_key_id
+        self.storage_class = storage_class
+        self.tagging = tagging
 
     def validate(self):
         pass
@@ -7445,36 +7633,52 @@ class InitiateMultipartUploadHeaders(TeaModel):
         result = dict()
         if self.common_headers is not None:
             result['commonHeaders'] = self.common_headers
-        if self.x_oss_forbid_overwrite is not None:
-            result['x-oss-forbid-overwrite'] = self.x_oss_forbid_overwrite
-        if self.x_oss_server_side_data_encryption is not None:
-            result['x-oss-server-side-data-encryption'] = self.x_oss_server_side_data_encryption
-        if self.x_oss_server_side_encryption is not None:
-            result['x-oss-server-side-encryption'] = self.x_oss_server_side_encryption
-        if self.x_oss_server_side_encryption_key_id is not None:
-            result['x-oss-server-side-encryption-key-id'] = self.x_oss_server_side_encryption_key_id
-        if self.x_oss_storage_class is not None:
-            result['x-oss-storage-class'] = self.x_oss_storage_class
-        if self.x_oss_tagging is not None:
-            result['x-oss-tagging'] = self.x_oss_tagging
+        if self.cache_control is not None:
+            result['Cache-Control'] = self.cache_control
+        if self.content_disposition is not None:
+            result['Content-Disposition'] = self.content_disposition
+        if self.content_encoding is not None:
+            result['Content-Encoding'] = self.content_encoding
+        if self.expires is not None:
+            result['Expires'] = self.expires
+        if self.forbid_overwrite is not None:
+            result['x-oss-forbid-overwrite'] = self.forbid_overwrite
+        if self.sse_data_encryption is not None:
+            result['x-oss-server-side-data-encryption'] = self.sse_data_encryption
+        if self.server_side_encryption is not None:
+            result['x-oss-server-side-encryption'] = self.server_side_encryption
+        if self.sse_key_id is not None:
+            result['x-oss-server-side-encryption-key-id'] = self.sse_key_id
+        if self.storage_class is not None:
+            result['x-oss-storage-class'] = self.storage_class
+        if self.tagging is not None:
+            result['x-oss-tagging'] = self.tagging
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('commonHeaders') is not None:
             self.common_headers = m.get('commonHeaders')
+        if m.get('Cache-Control') is not None:
+            self.cache_control = m.get('Cache-Control')
+        if m.get('Content-Disposition') is not None:
+            self.content_disposition = m.get('Content-Disposition')
+        if m.get('Content-Encoding') is not None:
+            self.content_encoding = m.get('Content-Encoding')
+        if m.get('Expires') is not None:
+            self.expires = m.get('Expires')
         if m.get('x-oss-forbid-overwrite') is not None:
-            self.x_oss_forbid_overwrite = m.get('x-oss-forbid-overwrite')
+            self.forbid_overwrite = m.get('x-oss-forbid-overwrite')
         if m.get('x-oss-server-side-data-encryption') is not None:
-            self.x_oss_server_side_data_encryption = m.get('x-oss-server-side-data-encryption')
+            self.sse_data_encryption = m.get('x-oss-server-side-data-encryption')
         if m.get('x-oss-server-side-encryption') is not None:
-            self.x_oss_server_side_encryption = m.get('x-oss-server-side-encryption')
+            self.server_side_encryption = m.get('x-oss-server-side-encryption')
         if m.get('x-oss-server-side-encryption-key-id') is not None:
-            self.x_oss_server_side_encryption_key_id = m.get('x-oss-server-side-encryption-key-id')
+            self.sse_key_id = m.get('x-oss-server-side-encryption-key-id')
         if m.get('x-oss-storage-class') is not None:
-            self.x_oss_storage_class = m.get('x-oss-storage-class')
+            self.storage_class = m.get('x-oss-storage-class')
         if m.get('x-oss-tagging') is not None:
-            self.x_oss_tagging = m.get('x-oss-tagging')
+            self.tagging = m.get('x-oss-tagging')
         return self
 
 
@@ -8055,7 +8259,7 @@ class ListMultipartUploadsResponseBody(TeaModel):
         max_uploads: int = None,
         next_key_marker: str = None,
         next_upload_marker: str = None,
-        upload: List[Upload] = None,
+        uploads: List[Upload] = None,
         upload_id_marker: str = None,
     ):
         self.bucket = bucket
@@ -8065,12 +8269,12 @@ class ListMultipartUploadsResponseBody(TeaModel):
         self.max_uploads = max_uploads
         self.next_key_marker = next_key_marker
         self.next_upload_marker = next_upload_marker
-        self.upload = upload
+        self.uploads = uploads
         self.upload_id_marker = upload_id_marker
 
     def validate(self):
-        if self.upload:
-            for k in self.upload:
+        if self.uploads:
+            for k in self.uploads:
                 if k:
                     k.validate()
 
@@ -8095,8 +8299,8 @@ class ListMultipartUploadsResponseBody(TeaModel):
         if self.next_upload_marker is not None:
             result['NextUploadMarker'] = self.next_upload_marker
         result['Upload'] = []
-        if self.upload is not None:
-            for k in self.upload:
+        if self.uploads is not None:
+            for k in self.uploads:
                 result['Upload'].append(k.to_map() if k else None)
         if self.upload_id_marker is not None:
             result['UploadIdMarker'] = self.upload_id_marker
@@ -8118,11 +8322,11 @@ class ListMultipartUploadsResponseBody(TeaModel):
             self.next_key_marker = m.get('NextKeyMarker')
         if m.get('NextUploadMarker') is not None:
             self.next_upload_marker = m.get('NextUploadMarker')
-        self.upload = []
+        self.uploads = []
         if m.get('Upload') is not None:
             for k in m.get('Upload'):
                 temp_model = Upload()
-                self.upload.append(temp_model.from_map(k))
+                self.uploads.append(temp_model.from_map(k))
         if m.get('UploadIdMarker') is not None:
             self.upload_id_marker = m.get('UploadIdMarker')
         return self
@@ -8858,6 +9062,51 @@ class ListPartsRequest(TeaModel):
         return self
 
 
+class ListPartsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        encoding_type_shrink: str = None,
+        max_parts: int = None,
+        part_number_marker: int = None,
+        upload_id: str = None,
+    ):
+        self.encoding_type_shrink = encoding_type_shrink
+        self.max_parts = max_parts
+        self.part_number_marker = part_number_marker
+        self.upload_id = upload_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encoding_type_shrink is not None:
+            result['encoding-type'] = self.encoding_type_shrink
+        if self.max_parts is not None:
+            result['max-parts'] = self.max_parts
+        if self.part_number_marker is not None:
+            result['part-number-marker'] = self.part_number_marker
+        if self.upload_id is not None:
+            result['uploadId'] = self.upload_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('encoding-type') is not None:
+            self.encoding_type_shrink = m.get('encoding-type')
+        if m.get('max-parts') is not None:
+            self.max_parts = m.get('max-parts')
+        if m.get('part-number-marker') is not None:
+            self.part_number_marker = m.get('part-number-marker')
+        if m.get('uploadId') is not None:
+            self.upload_id = m.get('uploadId')
+        return self
+
+
 class ListPartsResponseBody(TeaModel):
     def __init__(
         self,
@@ -8867,6 +9116,7 @@ class ListPartsResponseBody(TeaModel):
         max_parts: int = None,
         next_part_number_marker: int = None,
         part: List[Part] = None,
+        part_number_marker: int = None,
         upload_id: str = None,
     ):
         self.bucket = bucket
@@ -8875,6 +9125,7 @@ class ListPartsResponseBody(TeaModel):
         self.max_parts = max_parts
         self.next_part_number_marker = next_part_number_marker
         self.part = part
+        self.part_number_marker = part_number_marker
         self.upload_id = upload_id
 
     def validate(self):
@@ -8903,6 +9154,8 @@ class ListPartsResponseBody(TeaModel):
         if self.part is not None:
             for k in self.part:
                 result['Part'].append(k.to_map() if k else None)
+        if self.part_number_marker is not None:
+            result['PartNumberMarker'] = self.part_number_marker
         if self.upload_id is not None:
             result['UploadId'] = self.upload_id
         return result
@@ -8924,6 +9177,8 @@ class ListPartsResponseBody(TeaModel):
             for k in m.get('Part'):
                 temp_model = Part()
                 self.part.append(temp_model.from_map(k))
+        if m.get('PartNumberMarker') is not None:
+            self.part_number_marker = m.get('PartNumberMarker')
         if m.get('UploadId') is not None:
             self.upload_id = m.get('UploadId')
         return self
@@ -10169,20 +10424,20 @@ class PutObjectHeaders(TeaModel):
         self,
         common_headers: Dict[str, str] = None,
         forbid_overwrite: bool = None,
-        user_metadata: Dict[str, str] = None,
+        meta_data: Dict[str, str] = None,
         acl: str = None,
         sse_data_encryption: str = None,
-        sse: str = None,
+        server_side_encryption: str = None,
         sse_key_id: str = None,
         storage_class: str = None,
         tagging: str = None,
     ):
         self.common_headers = common_headers
         self.forbid_overwrite = forbid_overwrite
-        self.user_metadata = user_metadata
+        self.meta_data = meta_data
         self.acl = acl
         self.sse_data_encryption = sse_data_encryption
-        self.sse = sse
+        self.server_side_encryption = server_side_encryption
         self.sse_key_id = sse_key_id
         self.storage_class = storage_class
         self.tagging = tagging
@@ -10200,14 +10455,14 @@ class PutObjectHeaders(TeaModel):
             result['commonHeaders'] = self.common_headers
         if self.forbid_overwrite is not None:
             result['x-oss-forbid-overwrite'] = self.forbid_overwrite
-        if self.user_metadata is not None:
-            result['x-oss-meta-*'] = self.user_metadata
+        if self.meta_data is not None:
+            result['x-oss-meta-*'] = self.meta_data
         if self.acl is not None:
             result['x-oss-object-acl'] = self.acl
         if self.sse_data_encryption is not None:
             result['x-oss-server-side-data-encryption'] = self.sse_data_encryption
-        if self.sse is not None:
-            result['x-oss-server-side-encryption'] = self.sse
+        if self.server_side_encryption is not None:
+            result['x-oss-server-side-encryption'] = self.server_side_encryption
         if self.sse_key_id is not None:
             result['x-oss-server-side-encryption-key-id'] = self.sse_key_id
         if self.storage_class is not None:
@@ -10223,13 +10478,13 @@ class PutObjectHeaders(TeaModel):
         if m.get('x-oss-forbid-overwrite') is not None:
             self.forbid_overwrite = m.get('x-oss-forbid-overwrite')
         if m.get('x-oss-meta-*') is not None:
-            self.user_metadata = m.get('x-oss-meta-*')
+            self.meta_data = m.get('x-oss-meta-*')
         if m.get('x-oss-object-acl') is not None:
             self.acl = m.get('x-oss-object-acl')
         if m.get('x-oss-server-side-data-encryption') is not None:
             self.sse_data_encryption = m.get('x-oss-server-side-data-encryption')
         if m.get('x-oss-server-side-encryption') is not None:
-            self.sse = m.get('x-oss-server-side-encryption')
+            self.server_side_encryption = m.get('x-oss-server-side-encryption')
         if m.get('x-oss-server-side-encryption-key-id') is not None:
             self.sse_key_id = m.get('x-oss-server-side-encryption-key-id')
         if m.get('x-oss-storage-class') is not None:
@@ -10446,13 +10701,13 @@ class PutSymlinkHeaders(TeaModel):
     def __init__(
         self,
         common_headers: Dict[str, str] = None,
-        x_oss_forbid_overwrite: str = None,
+        forbid_overwrite: str = None,
         acl: str = None,
         storage_class: str = None,
         symlink_target_key: str = None,
     ):
         self.common_headers = common_headers
-        self.x_oss_forbid_overwrite = x_oss_forbid_overwrite
+        self.forbid_overwrite = forbid_overwrite
         self.acl = acl
         self.storage_class = storage_class
         self.symlink_target_key = symlink_target_key
@@ -10468,8 +10723,8 @@ class PutSymlinkHeaders(TeaModel):
         result = dict()
         if self.common_headers is not None:
             result['commonHeaders'] = self.common_headers
-        if self.x_oss_forbid_overwrite is not None:
-            result['x-oss-forbid-overwrite'] = self.x_oss_forbid_overwrite
+        if self.forbid_overwrite is not None:
+            result['x-oss-forbid-overwrite'] = self.forbid_overwrite
         if self.acl is not None:
             result['x-oss-object-acl'] = self.acl
         if self.storage_class is not None:
@@ -10483,7 +10738,7 @@ class PutSymlinkHeaders(TeaModel):
         if m.get('commonHeaders') is not None:
             self.common_headers = m.get('commonHeaders')
         if m.get('x-oss-forbid-overwrite') is not None:
-            self.x_oss_forbid_overwrite = m.get('x-oss-forbid-overwrite')
+            self.forbid_overwrite = m.get('x-oss-forbid-overwrite')
         if m.get('x-oss-object-acl') is not None:
             self.acl = m.get('x-oss-object-acl')
         if m.get('x-oss-storage-class') is not None:
@@ -10524,8 +10779,10 @@ class RestoreObjectRequest(TeaModel):
     def __init__(
         self,
         body: RestoreRequest = None,
+        version_id: str = None,
     ):
         self.body = body
+        self.version_id = version_id
 
     def validate(self):
         if self.body:
@@ -10539,6 +10796,8 @@ class RestoreObjectRequest(TeaModel):
         result = dict()
         if self.body is not None:
             result['body'] = self.body.to_map()
+        if self.version_id is not None:
+            result['versionId'] = self.version_id
         return result
 
     def from_map(self, m: dict = None):
@@ -10546,6 +10805,8 @@ class RestoreObjectRequest(TeaModel):
         if m.get('body') is not None:
             temp_model = RestoreRequest()
             self.body = temp_model.from_map(m['body'])
+        if m.get('versionId') is not None:
+            self.version_id = m.get('versionId')
         return self
 
 
@@ -10643,7 +10904,7 @@ class UploadPartRequest(TeaModel):
     def __init__(
         self,
         body: BinaryIO = None,
-        part_number: str = None,
+        part_number: int = None,
         upload_id: str = None,
     ):
         self.body = body
@@ -10709,22 +10970,20 @@ class UploadPartCopyHeaders(TeaModel):
     def __init__(
         self,
         common_headers: Dict[str, str] = None,
-        source_bucket: str = None,
-        source_key: str = None,
-        x_oss_copy_source_if_match: str = None,
-        x_oss_copy_source_if_modified_since: str = None,
-        x_oss_copy_source_if_none_match: str = None,
-        x_oss_copy_source_if_unmodified_since: str = None,
-        x_oss_copy_source_range: str = None,
+        copy_source: str = None,
+        copy_source_if_match: str = None,
+        copy_source_if_modified_since: str = None,
+        copy_source_if_none_match: str = None,
+        copy_source_if_unmodified_since: str = None,
+        copy_source_range: str = None,
     ):
         self.common_headers = common_headers
-        self.source_bucket = source_bucket
-        self.source_key = source_key
-        self.x_oss_copy_source_if_match = x_oss_copy_source_if_match
-        self.x_oss_copy_source_if_modified_since = x_oss_copy_source_if_modified_since
-        self.x_oss_copy_source_if_none_match = x_oss_copy_source_if_none_match
-        self.x_oss_copy_source_if_unmodified_since = x_oss_copy_source_if_unmodified_since
-        self.x_oss_copy_source_range = x_oss_copy_source_range
+        self.copy_source = copy_source
+        self.copy_source_if_match = copy_source_if_match
+        self.copy_source_if_modified_since = copy_source_if_modified_since
+        self.copy_source_if_none_match = copy_source_if_none_match
+        self.copy_source_if_unmodified_since = copy_source_if_unmodified_since
+        self.copy_source_range = copy_source_range
 
     def validate(self):
         pass
@@ -10737,40 +10996,36 @@ class UploadPartCopyHeaders(TeaModel):
         result = dict()
         if self.common_headers is not None:
             result['commonHeaders'] = self.common_headers
-        if self.source_bucket is not None:
-            result['source-bucket'] = self.source_bucket
-        if self.source_key is not None:
-            result['source-key'] = self.source_key
-        if self.x_oss_copy_source_if_match is not None:
-            result['x-oss-copy-source-if-match'] = self.x_oss_copy_source_if_match
-        if self.x_oss_copy_source_if_modified_since is not None:
-            result['x-oss-copy-source-if-modified-since'] = self.x_oss_copy_source_if_modified_since
-        if self.x_oss_copy_source_if_none_match is not None:
-            result['x-oss-copy-source-if-none-match'] = self.x_oss_copy_source_if_none_match
-        if self.x_oss_copy_source_if_unmodified_since is not None:
-            result['x-oss-copy-source-if-unmodified-since'] = self.x_oss_copy_source_if_unmodified_since
-        if self.x_oss_copy_source_range is not None:
-            result['x-oss-copy-source-range'] = self.x_oss_copy_source_range
+        if self.copy_source is not None:
+            result['x-oss-copy-source'] = self.copy_source
+        if self.copy_source_if_match is not None:
+            result['x-oss-copy-source-if-match'] = self.copy_source_if_match
+        if self.copy_source_if_modified_since is not None:
+            result['x-oss-copy-source-if-modified-since'] = self.copy_source_if_modified_since
+        if self.copy_source_if_none_match is not None:
+            result['x-oss-copy-source-if-none-match'] = self.copy_source_if_none_match
+        if self.copy_source_if_unmodified_since is not None:
+            result['x-oss-copy-source-if-unmodified-since'] = self.copy_source_if_unmodified_since
+        if self.copy_source_range is not None:
+            result['x-oss-copy-source-range'] = self.copy_source_range
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('commonHeaders') is not None:
             self.common_headers = m.get('commonHeaders')
-        if m.get('source-bucket') is not None:
-            self.source_bucket = m.get('source-bucket')
-        if m.get('source-key') is not None:
-            self.source_key = m.get('source-key')
+        if m.get('x-oss-copy-source') is not None:
+            self.copy_source = m.get('x-oss-copy-source')
         if m.get('x-oss-copy-source-if-match') is not None:
-            self.x_oss_copy_source_if_match = m.get('x-oss-copy-source-if-match')
+            self.copy_source_if_match = m.get('x-oss-copy-source-if-match')
         if m.get('x-oss-copy-source-if-modified-since') is not None:
-            self.x_oss_copy_source_if_modified_since = m.get('x-oss-copy-source-if-modified-since')
+            self.copy_source_if_modified_since = m.get('x-oss-copy-source-if-modified-since')
         if m.get('x-oss-copy-source-if-none-match') is not None:
-            self.x_oss_copy_source_if_none_match = m.get('x-oss-copy-source-if-none-match')
+            self.copy_source_if_none_match = m.get('x-oss-copy-source-if-none-match')
         if m.get('x-oss-copy-source-if-unmodified-since') is not None:
-            self.x_oss_copy_source_if_unmodified_since = m.get('x-oss-copy-source-if-unmodified-since')
+            self.copy_source_if_unmodified_since = m.get('x-oss-copy-source-if-unmodified-since')
         if m.get('x-oss-copy-source-range') is not None:
-            self.x_oss_copy_source_range = m.get('x-oss-copy-source-range')
+            self.copy_source_range = m.get('x-oss-copy-source-range')
         return self
 
 
@@ -10807,11 +11062,44 @@ class UploadPartCopyRequest(TeaModel):
         return self
 
 
+class UploadPartCopyResponseBody(TeaModel):
+    def __init__(
+        self,
+        etag: str = None,
+        last_modified: str = None,
+    ):
+        self.etag = etag
+        self.last_modified = last_modified
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.etag is not None:
+            result['ETag'] = self.etag
+        if self.last_modified is not None:
+            result['LastModified'] = self.last_modified
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ETag') is not None:
+            self.etag = m.get('ETag')
+        if m.get('LastModified') is not None:
+            self.last_modified = m.get('LastModified')
+        return self
+
+
 class UploadPartCopyResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: CopyPartResult = None,
+        body: UploadPartCopyResponseBody = None,
     ):
         self.headers = headers
         self.body = body
@@ -10839,7 +11127,7 @@ class UploadPartCopyResponse(TeaModel):
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('body') is not None:
-            temp_model = CopyPartResult()
+            temp_model = UploadPartCopyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
