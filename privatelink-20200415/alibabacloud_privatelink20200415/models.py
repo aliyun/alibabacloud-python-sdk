@@ -599,6 +599,7 @@ class CreateVpcEndpointRequest(TeaModel):
         endpoint_description: str = None,
         endpoint_name: str = None,
         endpoint_type: str = None,
+        protected_enabled: bool = None,
         region_id: str = None,
         security_group_id: List[str] = None,
         service_id: str = None,
@@ -612,6 +613,7 @@ class CreateVpcEndpointRequest(TeaModel):
         self.endpoint_description = endpoint_description
         self.endpoint_name = endpoint_name
         self.endpoint_type = endpoint_type
+        self.protected_enabled = protected_enabled
         self.region_id = region_id
         self.security_group_id = security_group_id
         self.service_id = service_id
@@ -642,6 +644,8 @@ class CreateVpcEndpointRequest(TeaModel):
             result['EndpointName'] = self.endpoint_name
         if self.endpoint_type is not None:
             result['EndpointType'] = self.endpoint_type
+        if self.protected_enabled is not None:
+            result['ProtectedEnabled'] = self.protected_enabled
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.security_group_id is not None:
@@ -672,6 +676,8 @@ class CreateVpcEndpointRequest(TeaModel):
             self.endpoint_name = m.get('EndpointName')
         if m.get('EndpointType') is not None:
             self.endpoint_type = m.get('EndpointType')
+        if m.get('ProtectedEnabled') is not None:
+            self.protected_enabled = m.get('ProtectedEnabled')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('SecurityGroupId') is not None:
