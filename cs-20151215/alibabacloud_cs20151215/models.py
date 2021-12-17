@@ -1598,6 +1598,7 @@ class CreateClusterNodePoolRequestKubernetesConfig(TeaModel):
         cms_enabled: bool = None,
         cpu_policy: str = None,
         labels: List[Tag] = None,
+        node_name_mode: str = None,
         runtime: str = None,
         runtime_version: str = None,
         taints: List[Taint] = None,
@@ -1609,6 +1610,8 @@ class CreateClusterNodePoolRequestKubernetesConfig(TeaModel):
         self.cpu_policy = cpu_policy
         # 节点标签。
         self.labels = labels
+        # 自定义节点名称
+        self.node_name_mode = node_name_mode
         # 容器运行时。
         self.runtime = runtime
         # 容器运行时版本。
@@ -1642,6 +1645,8 @@ class CreateClusterNodePoolRequestKubernetesConfig(TeaModel):
         if self.labels is not None:
             for k in self.labels:
                 result['labels'].append(k.to_map() if k else None)
+        if self.node_name_mode is not None:
+            result['node_name_mode'] = self.node_name_mode
         if self.runtime is not None:
             result['runtime'] = self.runtime
         if self.runtime_version is not None:
@@ -1665,6 +1670,8 @@ class CreateClusterNodePoolRequestKubernetesConfig(TeaModel):
             for k in m.get('labels'):
                 temp_model = Tag()
                 self.labels.append(temp_model.from_map(k))
+        if m.get('node_name_mode') is not None:
+            self.node_name_mode = m.get('node_name_mode')
         if m.get('runtime') is not None:
             self.runtime = m.get('runtime')
         if m.get('runtime_version') is not None:
@@ -1891,6 +1898,7 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         auto_renew_period: int = None,
         compensate_with_on_demand: bool = None,
         data_disks: List[DataDisk] = None,
+        deploymentset_id: str = None,
         image_id: str = None,
         image_type: str = None,
         instance_charge_type: str = None,
@@ -1927,6 +1935,8 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         self.compensate_with_on_demand = compensate_with_on_demand
         # 数据盘配置。
         self.data_disks = data_disks
+        # 部署集ID。
+        self.deploymentset_id = deploymentset_id
         # 自定义镜像。
         self.image_id = image_id
         # 操作系统镜像类型，和platform二选一
@@ -2012,6 +2022,8 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         if self.data_disks is not None:
             for k in self.data_disks:
                 result['data_disks'].append(k.to_map() if k else None)
+        if self.deploymentset_id is not None:
+            result['deploymentset_id'] = self.deploymentset_id
         if self.image_id is not None:
             result['image_id'] = self.image_id
         if self.image_type is not None:
@@ -2085,6 +2097,8 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
             for k in m.get('data_disks'):
                 temp_model = DataDisk()
                 self.data_disks.append(temp_model.from_map(k))
+        if m.get('deploymentset_id') is not None:
+            self.deploymentset_id = m.get('deploymentset_id')
         if m.get('image_id') is not None:
             self.image_id = m.get('image_id')
         if m.get('image_type') is not None:
@@ -2868,60 +2882,6 @@ class CreateTriggerResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = CreateTriggerResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DeleteAlertContactResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-    ):
-        self.headers = headers
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        return self
-
-
-class DeleteAlertContactGroupResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-    ):
-        self.headers = headers
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
         return self
 
 
@@ -4821,6 +4781,7 @@ class DescribeClusterNodePoolDetailResponseBodyKubernetesConfig(TeaModel):
         cms_enabled: bool = None,
         cpu_policy: str = None,
         labels: List[Tag] = None,
+        node_name_mode: str = None,
         runtime: str = None,
         runtime_version: str = None,
         taints: List[Taint] = None,
@@ -4832,6 +4793,8 @@ class DescribeClusterNodePoolDetailResponseBodyKubernetesConfig(TeaModel):
         self.cpu_policy = cpu_policy
         # 节点标签。
         self.labels = labels
+        # 自定义节点名称
+        self.node_name_mode = node_name_mode
         # 容器运行时
         self.runtime = runtime
         # 容器运行时版本。
@@ -4865,6 +4828,8 @@ class DescribeClusterNodePoolDetailResponseBodyKubernetesConfig(TeaModel):
         if self.labels is not None:
             for k in self.labels:
                 result['labels'].append(k.to_map() if k else None)
+        if self.node_name_mode is not None:
+            result['node_name_mode'] = self.node_name_mode
         if self.runtime is not None:
             result['runtime'] = self.runtime
         if self.runtime_version is not None:
@@ -4888,6 +4853,8 @@ class DescribeClusterNodePoolDetailResponseBodyKubernetesConfig(TeaModel):
             for k in m.get('labels'):
                 temp_model = Tag()
                 self.labels.append(temp_model.from_map(k))
+        if m.get('node_name_mode') is not None:
+            self.node_name_mode = m.get('node_name_mode')
         if m.get('runtime') is not None:
             self.runtime = m.get('runtime')
         if m.get('runtime_version') is not None:
@@ -5114,6 +5081,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         auto_renew_period: int = None,
         compensate_with_on_demand: bool = None,
         data_disks: List[DataDisk] = None,
+        deploymentset_id: str = None,
         image_id: str = None,
         instance_charge_type: str = None,
         instance_types: List[str] = None,
@@ -5151,6 +5119,8 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         self.compensate_with_on_demand = compensate_with_on_demand
         # 数据盘配置。
         self.data_disks = data_disks
+        # 部署集ID。
+        self.deploymentset_id = deploymentset_id
         # 自定义镜像ID。
         self.image_id = image_id
         # 节点付费类型。
@@ -5238,6 +5208,8 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         if self.data_disks is not None:
             for k in self.data_disks:
                 result['data_disks'].append(k.to_map() if k else None)
+        if self.deploymentset_id is not None:
+            result['deploymentset_id'] = self.deploymentset_id
         if self.image_id is not None:
             result['image_id'] = self.image_id
         if self.instance_charge_type is not None:
@@ -5313,6 +5285,8 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
             for k in m.get('data_disks'):
                 temp_model = DataDisk()
                 self.data_disks.append(temp_model.from_map(k))
+        if m.get('deploymentset_id') is not None:
+            self.deploymentset_id = m.get('deploymentset_id')
         if m.get('image_id') is not None:
             self.image_id = m.get('image_id')
         if m.get('instance_charge_type') is not None:
@@ -5766,6 +5740,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig(TeaModel):
         cms_enabled: bool = None,
         cpu_policy: str = None,
         labels: List[Tag] = None,
+        node_name_mode: str = None,
         runtime: str = None,
         runtime_version: str = None,
         taints: List[Taint] = None,
@@ -5777,6 +5752,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig(TeaModel):
         self.cpu_policy = cpu_policy
         # ECS标签
         self.labels = labels
+        # 自定义节点名称
+        self.node_name_mode = node_name_mode
         # 容器运行时	
         self.runtime = runtime
         # 容器运行时版本	
@@ -5810,6 +5787,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig(TeaModel):
         if self.labels is not None:
             for k in self.labels:
                 result['labels'].append(k.to_map() if k else None)
+        if self.node_name_mode is not None:
+            result['node_name_mode'] = self.node_name_mode
         if self.runtime is not None:
             result['runtime'] = self.runtime
         if self.runtime_version is not None:
@@ -5833,6 +5812,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig(TeaModel):
             for k in m.get('labels'):
                 temp_model = Tag()
                 self.labels.append(temp_model.from_map(k))
+        if m.get('node_name_mode') is not None:
+            self.node_name_mode = m.get('node_name_mode')
         if m.get('runtime') is not None:
             self.runtime = m.get('runtime')
         if m.get('runtime_version') is not None:
@@ -6059,6 +6040,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         auto_renew_period: int = None,
         compensate_with_on_demand: bool = None,
         data_disks: List[DataDisk] = None,
+        deploymentset_id: str = None,
         image_id: str = None,
         instance_charge_type: str = None,
         instance_types: List[str] = None,
@@ -6096,6 +6078,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         self.compensate_with_on_demand = compensate_with_on_demand
         # 数据盘配置	
         self.data_disks = data_disks
+        # 部署集ID。
+        self.deploymentset_id = deploymentset_id
         # 镜像ID	
         self.image_id = image_id
         # 节点付费类型	
@@ -6183,6 +6167,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         if self.data_disks is not None:
             for k in self.data_disks:
                 result['data_disks'].append(k.to_map() if k else None)
+        if self.deploymentset_id is not None:
+            result['deploymentset_id'] = self.deploymentset_id
         if self.image_id is not None:
             result['image_id'] = self.image_id
         if self.instance_charge_type is not None:
@@ -6258,6 +6244,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
             for k in m.get('data_disks'):
                 temp_model = DataDisk()
                 self.data_disks.append(temp_model.from_map(k))
+        if m.get('deploymentset_id') is not None:
+            self.deploymentset_id = m.get('deploymentset_id')
         if m.get('image_id') is not None:
             self.image_id = m.get('image_id')
         if m.get('instance_charge_type') is not None:
@@ -9045,6 +9033,7 @@ class DescribeKubernetesVersionMetadataRequest(TeaModel):
         kubernetes_version: str = None,
         profile: str = None,
         region: str = None,
+        runtime: str = None,
     ):
         # 集群类型。
         self.cluster_type = cluster_type
@@ -9054,6 +9043,8 @@ class DescribeKubernetesVersionMetadataRequest(TeaModel):
         self.profile = profile
         # 地域ID。
         self.region = region
+        # 运行时。
+        self.runtime = runtime
 
     def validate(self):
         pass
@@ -9072,6 +9063,8 @@ class DescribeKubernetesVersionMetadataRequest(TeaModel):
             result['Profile'] = self.profile
         if self.region is not None:
             result['Region'] = self.region
+        if self.runtime is not None:
+            result['runtime'] = self.runtime
         return result
 
     def from_map(self, m: dict = None):
@@ -9084,6 +9077,8 @@ class DescribeKubernetesVersionMetadataRequest(TeaModel):
             self.profile = m.get('Profile')
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('runtime') is not None:
+            self.runtime = m.get('runtime')
         return self
 
 
@@ -14601,33 +14596,6 @@ class ScaleOutClusterResponse(TeaModel):
         return self
 
 
-class StartAlertResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-    ):
-        self.headers = headers
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        return self
-
-
 class StartWorkflowRequest(TeaModel):
     def __init__(
         self,
@@ -14844,33 +14812,6 @@ class StartWorkflowResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = StartWorkflowResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class StopAlertResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-    ):
-        self.headers = headers
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
         return self
 
 
@@ -15205,33 +15146,6 @@ class UntagResourcesResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = UntagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class UpdateContactGroupForAlertResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-    ):
-        self.headers = headers
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
         return self
 
 

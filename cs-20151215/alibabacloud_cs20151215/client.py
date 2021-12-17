@@ -1410,122 +1410,6 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_alert_contact(self) -> cs20151215_models.DeleteAlertContactResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.delete_alert_contact_with_options(headers, runtime)
-
-    async def delete_alert_contact_async(self) -> cs20151215_models.DeleteAlertContactResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.delete_alert_contact_with_options_async(headers, runtime)
-
-    def delete_alert_contact_with_options(
-        self,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.DeleteAlertContactResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteAlertContact',
-            version='2015-12-15',
-            protocol='HTTPS',
-            pathname=f'/alert/contacts',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            cs20151215_models.DeleteAlertContactResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_alert_contact_with_options_async(
-        self,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.DeleteAlertContactResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteAlertContact',
-            version='2015-12-15',
-            protocol='HTTPS',
-            pathname=f'/alert/contacts',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            cs20151215_models.DeleteAlertContactResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_alert_contact_group(self) -> cs20151215_models.DeleteAlertContactGroupResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.delete_alert_contact_group_with_options(headers, runtime)
-
-    async def delete_alert_contact_group_async(self) -> cs20151215_models.DeleteAlertContactGroupResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.delete_alert_contact_group_with_options_async(headers, runtime)
-
-    def delete_alert_contact_group_with_options(
-        self,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.DeleteAlertContactGroupResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteAlertContactGroup',
-            version='2015-12-15',
-            protocol='HTTPS',
-            pathname=f'/alert/contact_groups',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            cs20151215_models.DeleteAlertContactGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_alert_contact_group_with_options_async(
-        self,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.DeleteAlertContactGroupResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteAlertContactGroup',
-            version='2015-12-15',
-            protocol='HTTPS',
-            pathname=f'/alert/contact_groups',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            cs20151215_models.DeleteAlertContactGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
     def delete_cluster(
         self,
         cluster_id: str,
@@ -4174,6 +4058,8 @@ class Client(OpenApiClient):
             query['Profile'] = request.profile
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
+        if not UtilClient.is_unset(request.runtime):
+            query['runtime'] = request.runtime
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4210,6 +4096,8 @@ class Client(OpenApiClient):
             query['Profile'] = request.profile
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
+        if not UtilClient.is_unset(request.runtime):
+            query['runtime'] = request.runtime
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -7166,74 +7054,6 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def start_alert(
-        self,
-        cluster_id: str,
-    ) -> cs20151215_models.StartAlertResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.start_alert_with_options(cluster_id, headers, runtime)
-
-    async def start_alert_async(
-        self,
-        cluster_id: str,
-    ) -> cs20151215_models.StartAlertResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.start_alert_with_options_async(cluster_id, headers, runtime)
-
-    def start_alert_with_options(
-        self,
-        cluster_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.StartAlertResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='StartAlert',
-            version='2015-12-15',
-            protocol='HTTPS',
-            pathname=f'/alert/{cluster_id}/alert_rule/start',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            cs20151215_models.StartAlertResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def start_alert_with_options_async(
-        self,
-        cluster_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.StartAlertResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='StartAlert',
-            version='2015-12-15',
-            protocol='HTTPS',
-            pathname=f'/alert/{cluster_id}/alert_rule/start',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            cs20151215_models.StartAlertResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
     def start_workflow(
         self,
         request: cs20151215_models.StartWorkflowRequest,
@@ -7379,74 +7199,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             cs20151215_models.StartWorkflowResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def stop_alert(
-        self,
-        cluster_id: str,
-    ) -> cs20151215_models.StopAlertResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.stop_alert_with_options(cluster_id, headers, runtime)
-
-    async def stop_alert_async(
-        self,
-        cluster_id: str,
-    ) -> cs20151215_models.StopAlertResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.stop_alert_with_options_async(cluster_id, headers, runtime)
-
-    def stop_alert_with_options(
-        self,
-        cluster_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.StopAlertResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='StopAlert',
-            version='2015-12-15',
-            protocol='HTTPS',
-            pathname=f'/alert/{cluster_id}/alert_rule/stop',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            cs20151215_models.StopAlertResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def stop_alert_with_options_async(
-        self,
-        cluster_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.StopAlertResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='StopAlert',
-            version='2015-12-15',
-            protocol='HTTPS',
-            pathname=f'/alert/{cluster_id}/alert_rule/stop',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            cs20151215_models.StopAlertResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -7703,74 +7455,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             cs20151215_models.UntagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_contact_group_for_alert(
-        self,
-        cluster_id: str,
-    ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.update_contact_group_for_alert_with_options(cluster_id, headers, runtime)
-
-    async def update_contact_group_for_alert_async(
-        self,
-        cluster_id: str,
-    ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.update_contact_group_for_alert_with_options_async(cluster_id, headers, runtime)
-
-    def update_contact_group_for_alert_with_options(
-        self,
-        cluster_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='UpdateContactGroupForAlert',
-            version='2015-12-15',
-            protocol='HTTPS',
-            pathname=f'/alert/{cluster_id}/alert_rule/contact_groups',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            cs20151215_models.UpdateContactGroupForAlertResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_contact_group_for_alert_with_options_async(
-        self,
-        cluster_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='UpdateContactGroupForAlert',
-            version='2015-12-15',
-            protocol='HTTPS',
-            pathname=f'/alert/{cluster_id}/alert_rule/contact_groups',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            cs20151215_models.UpdateContactGroupForAlertResponse(),
             await self.call_api_async(params, req, runtime)
         )
 

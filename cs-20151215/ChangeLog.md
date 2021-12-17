@@ -1,3 +1,6 @@
+2021-12-17 Version: 3.0.4
+- CreateClusterNodePool support user-defined node names .
+
 2021-11-30 Version: 3.0.3
 - Generated python 2015-12-15 for CS.
 
