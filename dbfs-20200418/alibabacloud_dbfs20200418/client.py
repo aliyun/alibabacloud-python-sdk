@@ -92,8 +92,7 @@ class Client(OpenApiClient):
         query['RegionId'] = request.region_id
         query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddTagsBatch',
@@ -103,7 +102,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -123,8 +122,7 @@ class Client(OpenApiClient):
         query['RegionId'] = request.region_id
         query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddTagsBatch',
@@ -134,7 +132,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -170,8 +168,7 @@ class Client(OpenApiClient):
         query['RegionId'] = request.region_id
         query['ServerUrl'] = request.server_url
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AttachDbfs',
@@ -181,7 +178,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -203,8 +200,7 @@ class Client(OpenApiClient):
         query['RegionId'] = request.region_id
         query['ServerUrl'] = request.server_url
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AttachDbfs',
@@ -214,7 +210,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -259,8 +255,7 @@ class Client(OpenApiClient):
         query['UsedScene'] = request.used_scene
         query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateDbfs',
@@ -270,7 +265,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -301,8 +296,7 @@ class Client(OpenApiClient):
         query['UsedScene'] = request.used_scene
         query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateDbfs',
@@ -312,7 +306,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -344,8 +338,7 @@ class Client(OpenApiClient):
         query['ClientToken'] = request.client_token
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateServiceLinkedRole',
@@ -355,7 +348,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -373,8 +366,7 @@ class Client(OpenApiClient):
         query['ClientToken'] = request.client_token
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateServiceLinkedRole',
@@ -384,7 +376,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -420,8 +412,7 @@ class Client(OpenApiClient):
         query['RetentionDays'] = request.retention_days
         query['SnapshotName'] = request.snapshot_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateSnapshot',
@@ -431,7 +422,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -453,8 +444,7 @@ class Client(OpenApiClient):
         query['RetentionDays'] = request.retention_days
         query['SnapshotName'] = request.snapshot_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateSnapshot',
@@ -464,7 +454,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -496,8 +486,7 @@ class Client(OpenApiClient):
         query['FsId'] = request.fs_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDbfs',
@@ -507,7 +496,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -525,8 +514,7 @@ class Client(OpenApiClient):
         query['FsId'] = request.fs_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDbfs',
@@ -536,7 +524,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -569,8 +557,7 @@ class Client(OpenApiClient):
         query['RegionId'] = request.region_id
         query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSnapshot',
@@ -580,7 +567,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -599,8 +586,7 @@ class Client(OpenApiClient):
         query['RegionId'] = request.region_id
         query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSnapshot',
@@ -610,7 +596,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -643,8 +629,7 @@ class Client(OpenApiClient):
         query['RegionId'] = request.region_id
         query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteTagsBatch',
@@ -654,7 +639,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -673,8 +658,7 @@ class Client(OpenApiClient):
         query['RegionId'] = request.region_id
         query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteTagsBatch',
@@ -684,7 +668,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -717,8 +701,7 @@ class Client(OpenApiClient):
         query['EcsInstanceType'] = request.ecs_instance_type
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDbfsSpecifications',
@@ -728,7 +711,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -747,8 +730,7 @@ class Client(OpenApiClient):
         query['EcsInstanceType'] = request.ecs_instance_type
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDbfsSpecifications',
@@ -758,7 +740,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -789,8 +771,7 @@ class Client(OpenApiClient):
         query = {}
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeInstanceTypes',
@@ -800,7 +781,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -817,8 +798,7 @@ class Client(OpenApiClient):
         query = {}
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeInstanceTypes',
@@ -828,7 +808,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -861,8 +841,7 @@ class Client(OpenApiClient):
         query['FsId'] = request.fs_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetachDbfs',
@@ -872,7 +851,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -891,8 +870,7 @@ class Client(OpenApiClient):
         query['FsId'] = request.fs_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetachDbfs',
@@ -902,7 +880,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -934,8 +912,7 @@ class Client(OpenApiClient):
         query['FsId'] = request.fs_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetDbfs',
@@ -945,7 +922,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -963,8 +940,7 @@ class Client(OpenApiClient):
         query['FsId'] = request.fs_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetDbfs',
@@ -974,7 +950,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1005,8 +981,7 @@ class Client(OpenApiClient):
         query = {}
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetServiceLinkedRole',
@@ -1016,7 +991,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1033,8 +1008,7 @@ class Client(OpenApiClient):
         query = {}
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetServiceLinkedRole',
@@ -1044,7 +1018,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1082,8 +1056,7 @@ class Client(OpenApiClient):
         query['SortType'] = request.sort_type
         query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDbfs',
@@ -1093,7 +1066,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1117,8 +1090,7 @@ class Client(OpenApiClient):
         query['SortType'] = request.sort_type
         query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDbfs',
@@ -1128,7 +1100,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1159,8 +1131,7 @@ class Client(OpenApiClient):
         query = {}
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDbfsAttachableEcsInstances',
@@ -1170,7 +1141,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1187,8 +1158,7 @@ class Client(OpenApiClient):
         query = {}
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDbfsAttachableEcsInstances',
@@ -1198,7 +1168,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1230,8 +1200,7 @@ class Client(OpenApiClient):
         query['FsId'] = request.fs_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDbfsAttachedEcsInstances',
@@ -1241,7 +1210,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1259,8 +1228,7 @@ class Client(OpenApiClient):
         query['FsId'] = request.fs_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDbfsAttachedEcsInstances',
@@ -1270,7 +1238,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1312,8 +1280,7 @@ class Client(OpenApiClient):
         query['SortType'] = request.sort_type
         query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListSnapshot',
@@ -1323,7 +1290,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1351,8 +1318,7 @@ class Client(OpenApiClient):
         query['SortType'] = request.sort_type
         query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListSnapshot',
@@ -1362,7 +1328,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1393,8 +1359,7 @@ class Client(OpenApiClient):
         query = {}
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTagKeys',
@@ -1404,7 +1369,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1421,8 +1386,7 @@ class Client(OpenApiClient):
         query = {}
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTagKeys',
@@ -1432,7 +1396,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1464,8 +1428,7 @@ class Client(OpenApiClient):
         query['RegionId'] = request.region_id
         query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTagValues',
@@ -1475,7 +1438,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1493,8 +1456,7 @@ class Client(OpenApiClient):
         query['RegionId'] = request.region_id
         query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTagValues',
@@ -1504,7 +1466,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1526,88 +1488,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_values_with_options_async(request, runtime)
 
-    def list_task_with_options(
-        self,
-        request: dbfs20200418_models.ListTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dbfs20200418_models.ListTaskResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['FilterKey'] = request.filter_key
-        query['FilterValue'] = request.filter_value
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['SortKey'] = request.sort_key
-        query['SortType'] = request.sort_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListTask',
-            version='2020-04-18',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dbfs20200418_models.ListTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_task_with_options_async(
-        self,
-        request: dbfs20200418_models.ListTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dbfs20200418_models.ListTaskResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['FilterKey'] = request.filter_key
-        query['FilterValue'] = request.filter_value
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['SortKey'] = request.sort_key
-        query['SortType'] = request.sort_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='ListTask',
-            version='2020-04-18',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dbfs20200418_models.ListTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_task(
-        self,
-        request: dbfs20200418_models.ListTaskRequest,
-    ) -> dbfs20200418_models.ListTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_task_with_options(request, runtime)
-
-    async def list_task_async(
-        self,
-        request: dbfs20200418_models.ListTaskRequest,
-    ) -> dbfs20200418_models.ListTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_task_with_options_async(request, runtime)
-
     def rename_dbfs_with_options(
         self,
         request: dbfs20200418_models.RenameDbfsRequest,
@@ -1619,8 +1499,7 @@ class Client(OpenApiClient):
         query['FsName'] = request.fs_name
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RenameDbfs',
@@ -1630,7 +1509,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1649,8 +1528,7 @@ class Client(OpenApiClient):
         query['FsName'] = request.fs_name
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RenameDbfs',
@@ -1660,7 +1538,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1693,8 +1571,7 @@ class Client(OpenApiClient):
         query['RegionId'] = request.region_id
         query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ResetDbfs',
@@ -1704,7 +1581,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1723,8 +1600,7 @@ class Client(OpenApiClient):
         query['RegionId'] = request.region_id
         query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ResetDbfs',
@@ -1734,7 +1610,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1767,8 +1643,7 @@ class Client(OpenApiClient):
         query['NewSizeG'] = request.new_size_g
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ResizeDbfs',
@@ -1778,7 +1653,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1797,8 +1672,7 @@ class Client(OpenApiClient):
         query['NewSizeG'] = request.new_size_g
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ResizeDbfs',
@@ -1808,7 +1682,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1841,8 +1715,7 @@ class Client(OpenApiClient):
         query['RegionId'] = request.region_id
         query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TagDbfs',
@@ -1852,7 +1725,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1871,8 +1744,7 @@ class Client(OpenApiClient):
         query['RegionId'] = request.region_id
         query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TagDbfs',
@@ -1882,7 +1754,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1903,77 +1775,3 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.TagDbfsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.tag_dbfs_with_options_async(request, runtime)
-
-    def update_task_with_options(
-        self,
-        request: dbfs20200418_models.UpdateTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dbfs20200418_models.UpdateTaskResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['RegionId'] = request.region_id
-        query['TaskIds'] = request.task_ids
-        query['TaskProgress'] = request.task_progress
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateTask',
-            version='2020-04-18',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dbfs20200418_models.UpdateTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_task_with_options_async(
-        self,
-        request: dbfs20200418_models.UpdateTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dbfs20200418_models.UpdateTaskResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['RegionId'] = request.region_id
-        query['TaskIds'] = request.task_ids
-        query['TaskProgress'] = request.task_progress
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateTask',
-            version='2020-04-18',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dbfs20200418_models.UpdateTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_task(
-        self,
-        request: dbfs20200418_models.UpdateTaskRequest,
-    ) -> dbfs20200418_models.UpdateTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_task_with_options(request, runtime)
-
-    async def update_task_async(
-        self,
-        request: dbfs20200418_models.UpdateTaskRequest,
-    ) -> dbfs20200418_models.UpdateTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_task_with_options_async(request, runtime)
