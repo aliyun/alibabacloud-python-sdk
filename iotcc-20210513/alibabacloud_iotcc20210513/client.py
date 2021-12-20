@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_iotcc20210513 import models as io_tcc20210513_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -40,18 +41,191 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_cidr_to_connection_pool_with_options(
+        self,
+        request: io_tcc20210513_models.AddCidrToConnectionPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.AddCidrToConnectionPoolResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['Cidrs'] = request.cidrs
+        query['ClientToken'] = request.client_token
+        query['ConnectionPoolId'] = request.connection_pool_id
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddCidrToConnectionPool',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.AddCidrToConnectionPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_cidr_to_connection_pool_with_options_async(
+        self,
+        request: io_tcc20210513_models.AddCidrToConnectionPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.AddCidrToConnectionPoolResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['Cidrs'] = request.cidrs
+        query['ClientToken'] = request.client_token
+        query['ConnectionPoolId'] = request.connection_pool_id
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddCidrToConnectionPool',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.AddCidrToConnectionPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_cidr_to_connection_pool(
+        self,
+        request: io_tcc20210513_models.AddCidrToConnectionPoolRequest,
+    ) -> io_tcc20210513_models.AddCidrToConnectionPoolResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_cidr_to_connection_pool_with_options(request, runtime)
+
+    async def add_cidr_to_connection_pool_async(
+        self,
+        request: io_tcc20210513_models.AddCidrToConnectionPoolRequest,
+    ) -> io_tcc20210513_models.AddCidrToConnectionPoolResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_cidr_to_connection_pool_with_options_async(request, runtime)
+
+    def add_io_tcloud_connector_to_group_with_options(
+        self,
+        request: io_tcc20210513_models.AddIoTCloudConnectorToGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.AddIoTCloudConnectorToGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddIoTCloudConnectorToGroup',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.AddIoTCloudConnectorToGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_io_tcloud_connector_to_group_with_options_async(
+        self,
+        request: io_tcc20210513_models.AddIoTCloudConnectorToGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.AddIoTCloudConnectorToGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddIoTCloudConnectorToGroup',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.AddIoTCloudConnectorToGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_io_tcloud_connector_to_group(
+        self,
+        request: io_tcc20210513_models.AddIoTCloudConnectorToGroupRequest,
+    ) -> io_tcc20210513_models.AddIoTCloudConnectorToGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_io_tcloud_connector_to_group_with_options(request, runtime)
+
+    async def add_io_tcloud_connector_to_group_async(
+        self,
+        request: io_tcc20210513_models.AddIoTCloudConnectorToGroupRequest,
+    ) -> io_tcc20210513_models.AddIoTCloudConnectorToGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_io_tcloud_connector_to_group_with_options_async(request, runtime)
+
     def associate_ip_with_connection_pool_with_options(
         self,
         request: io_tcc20210513_models.AssociateIpWithConnectionPoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.AssociateIpWithConnectionPoolResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['ConnectionPoolId'] = request.connection_pool_id
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['Ips'] = request.ips
+        query['IpsFilePath'] = request.ips_file_path
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssociateIpWithConnectionPool',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.AssociateIpWithConnectionPoolResponse(),
-            self.do_rpcrequest('AssociateIpWithConnectionPool', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def associate_ip_with_connection_pool_with_options_async(
@@ -60,12 +234,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.AssociateIpWithConnectionPoolResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['ConnectionPoolId'] = request.connection_pool_id
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['Ips'] = request.ips
+        query['IpsFilePath'] = request.ips_file_path
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssociateIpWithConnectionPool',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.AssociateIpWithConnectionPoolResponse(),
-            await self.do_rpcrequest_async('AssociateIpWithConnectionPool', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def associate_ip_with_connection_pool(
@@ -88,12 +281,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.AssociateVSwitchWithIoTCloudConnectorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        query['VSwitchList'] = request.v_switch_list
+        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssociateVSwitchWithIoTCloudConnector',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.AssociateVSwitchWithIoTCloudConnectorResponse(),
-            self.do_rpcrequest('AssociateVSwitchWithIoTCloudConnector', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def associate_vswitch_with_io_tcloud_connector_with_options_async(
@@ -102,12 +313,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.AssociateVSwitchWithIoTCloudConnectorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        query['VSwitchList'] = request.v_switch_list
+        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssociateVSwitchWithIoTCloudConnector',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.AssociateVSwitchWithIoTCloudConnectorResponse(),
-            await self.do_rpcrequest_async('AssociateVSwitchWithIoTCloudConnector', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def associate_vswitch_with_io_tcloud_connector(
@@ -130,12 +359,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.CreateAuthorizationRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuthorizationRuleDescription'] = request.authorization_rule_description
+        query['AuthorizationRuleName'] = request.authorization_rule_name
+        query['ClientToken'] = request.client_token
+        query['Destination'] = request.destination
+        query['DestinationType'] = request.destination_type
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['Policy'] = request.policy
+        query['RegionId'] = request.region_id
+        query['SourceCidrs'] = request.source_cidrs
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAuthorizationRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.CreateAuthorizationRuleResponse(),
-            self.do_rpcrequest('CreateAuthorizationRule', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_authorization_rule_with_options_async(
@@ -144,12 +395,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.CreateAuthorizationRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuthorizationRuleDescription'] = request.authorization_rule_description
+        query['AuthorizationRuleName'] = request.authorization_rule_name
+        query['ClientToken'] = request.client_token
+        query['Destination'] = request.destination
+        query['DestinationType'] = request.destination_type
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['Policy'] = request.policy
+        query['RegionId'] = request.region_id
+        query['SourceCidrs'] = request.source_cidrs
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAuthorizationRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.CreateAuthorizationRuleResponse(),
-            await self.do_rpcrequest_async('CreateAuthorizationRule', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_authorization_rule(
@@ -172,12 +445,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.CreateConnectionPoolResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Cidrs'] = request.cidrs
+        query['ClientToken'] = request.client_token
+        query['ConnectionPoolDescription'] = request.connection_pool_description
+        query['ConnectionPoolName'] = request.connection_pool_name
+        query['Count'] = request.count
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateConnectionPool',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.CreateConnectionPoolResponse(),
-            self.do_rpcrequest('CreateConnectionPool', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_connection_pool_with_options_async(
@@ -186,12 +479,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.CreateConnectionPoolResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Cidrs'] = request.cidrs
+        query['ClientToken'] = request.client_token
+        query['ConnectionPoolDescription'] = request.connection_pool_description
+        query['ConnectionPoolName'] = request.connection_pool_name
+        query['Count'] = request.count
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateConnectionPool',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.CreateConnectionPoolResponse(),
-            await self.do_rpcrequest_async('CreateConnectionPool', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_connection_pool(
@@ -208,18 +521,125 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_connection_pool_with_options_async(request, runtime)
 
+    def create_group_authorization_rule_with_options(
+        self,
+        request: io_tcc20210513_models.CreateGroupAuthorizationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.CreateGroupAuthorizationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AuthorizationRuleDescription'] = request.authorization_rule_description
+        query['AuthorizationRuleName'] = request.authorization_rule_name
+        query['ClientToken'] = request.client_token
+        query['Destination'] = request.destination
+        query['DestinationType'] = request.destination_type
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        query['Policy'] = request.policy
+        query['RegionId'] = request.region_id
+        query['SourceCidrs'] = request.source_cidrs
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGroupAuthorizationRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.CreateGroupAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_group_authorization_rule_with_options_async(
+        self,
+        request: io_tcc20210513_models.CreateGroupAuthorizationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.CreateGroupAuthorizationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AuthorizationRuleDescription'] = request.authorization_rule_description
+        query['AuthorizationRuleName'] = request.authorization_rule_name
+        query['ClientToken'] = request.client_token
+        query['Destination'] = request.destination
+        query['DestinationType'] = request.destination_type
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        query['Policy'] = request.policy
+        query['RegionId'] = request.region_id
+        query['SourceCidrs'] = request.source_cidrs
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGroupAuthorizationRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.CreateGroupAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_group_authorization_rule(
+        self,
+        request: io_tcc20210513_models.CreateGroupAuthorizationRuleRequest,
+    ) -> io_tcc20210513_models.CreateGroupAuthorizationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_group_authorization_rule_with_options(request, runtime)
+
+    async def create_group_authorization_rule_async(
+        self,
+        request: io_tcc20210513_models.CreateGroupAuthorizationRuleRequest,
+    ) -> io_tcc20210513_models.CreateGroupAuthorizationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_group_authorization_rule_with_options_async(request, runtime)
+
     def create_io_tcloud_connector_with_options(
         self,
         request: io_tcc20210513_models.CreateIoTCloudConnectorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.CreateIoTCloudConnectorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['APN'] = request.apn
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ISP'] = request.isp
+        query['IoTCloudConnectorDescription'] = request.io_tcloud_connector_description
+        query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
+        query['RegionId'] = request.region_id
+        query['ResourceUid'] = request.resource_uid
+        query['WildcardDomainEnabled'] = request.wildcard_domain_enabled
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIoTCloudConnector',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.CreateIoTCloudConnectorResponse(),
-            self.do_rpcrequest('CreateIoTCloudConnector', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_io_tcloud_connector_with_options_async(
@@ -228,12 +648,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.CreateIoTCloudConnectorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['APN'] = request.apn
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['ISP'] = request.isp
+        query['IoTCloudConnectorDescription'] = request.io_tcloud_connector_description
+        query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
+        query['RegionId'] = request.region_id
+        query['ResourceUid'] = request.resource_uid
+        query['WildcardDomainEnabled'] = request.wildcard_domain_enabled
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIoTCloudConnector',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.CreateIoTCloudConnectorResponse(),
-            await self.do_rpcrequest_async('CreateIoTCloudConnector', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_io_tcloud_connector(
@@ -250,18 +691,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_io_tcloud_connector_with_options_async(request, runtime)
 
+    def create_io_tcloud_connector_group_with_options(
+        self,
+        request: io_tcc20210513_models.CreateIoTCloudConnectorGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.CreateIoTCloudConnectorGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['DryRun'] = request.dry_run
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIoTCloudConnectorGroup',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.CreateIoTCloudConnectorGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_io_tcloud_connector_group_with_options_async(
+        self,
+        request: io_tcc20210513_models.CreateIoTCloudConnectorGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.CreateIoTCloudConnectorGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['DryRun'] = request.dry_run
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIoTCloudConnectorGroup',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.CreateIoTCloudConnectorGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_io_tcloud_connector_group(
+        self,
+        request: io_tcc20210513_models.CreateIoTCloudConnectorGroupRequest,
+    ) -> io_tcc20210513_models.CreateIoTCloudConnectorGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_io_tcloud_connector_group_with_options(request, runtime)
+
+    async def create_io_tcloud_connector_group_async(
+        self,
+        request: io_tcc20210513_models.CreateIoTCloudConnectorGroupRequest,
+    ) -> io_tcc20210513_models.CreateIoTCloudConnectorGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_io_tcloud_connector_group_with_options_async(request, runtime)
+
     def create_service_with_options(
         self,
         request: io_tcc20210513_models.CreateServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.CreateServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        query['ServiceDescription'] = request.service_description
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateService',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.CreateServiceResponse(),
-            self.do_rpcrequest('CreateService', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_service_with_options_async(
@@ -270,12 +805,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.CreateServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        query['ServiceDescription'] = request.service_description
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateService',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.CreateServiceResponse(),
-            await self.do_rpcrequest_async('CreateService', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_service(
@@ -298,12 +851,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.CreateServiceEntryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        query['ServiceEntryDescription'] = request.service_entry_description
+        query['ServiceEntryName'] = request.service_entry_name
+        query['ServiceId'] = request.service_id
+        query['Target'] = request.target
+        query['TargetType'] = request.target_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceEntry',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.CreateServiceEntryResponse(),
-            self.do_rpcrequest('CreateServiceEntry', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_service_entry_with_options_async(
@@ -312,12 +886,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.CreateServiceEntryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        query['ServiceEntryDescription'] = request.service_entry_description
+        query['ServiceEntryName'] = request.service_entry_name
+        query['ServiceId'] = request.service_id
+        query['Target'] = request.target
+        query['TargetType'] = request.target_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceEntry',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.CreateServiceEntryResponse(),
-            await self.do_rpcrequest_async('CreateServiceEntry', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_service_entry(
@@ -340,12 +935,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.DeleteAuthorizationRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuthorizationRuleId'] = request.authorization_rule_id
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAuthorizationRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.DeleteAuthorizationRuleResponse(),
-            self.do_rpcrequest('DeleteAuthorizationRule', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_authorization_rule_with_options_async(
@@ -354,12 +966,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.DeleteAuthorizationRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuthorizationRuleId'] = request.authorization_rule_id
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAuthorizationRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.DeleteAuthorizationRuleResponse(),
-            await self.do_rpcrequest_async('DeleteAuthorizationRule', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_authorization_rule(
@@ -382,12 +1011,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.DeleteConnectionPoolResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['ConnectionPoolId'] = request.connection_pool_id
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConnectionPool',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.DeleteConnectionPoolResponse(),
-            self.do_rpcrequest('DeleteConnectionPool', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_connection_pool_with_options_async(
@@ -396,12 +1042,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.DeleteConnectionPoolResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['ConnectionPoolId'] = request.connection_pool_id
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConnectionPool',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.DeleteConnectionPoolResponse(),
-            await self.do_rpcrequest_async('DeleteConnectionPool', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_connection_pool(
@@ -418,18 +1081,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_connection_pool_with_options_async(request, runtime)
 
+    def delete_group_authorization_rule_with_options(
+        self,
+        request: io_tcc20210513_models.DeleteGroupAuthorizationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.DeleteGroupAuthorizationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AuthorizationRuleId'] = request.authorization_rule_id
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGroupAuthorizationRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.DeleteGroupAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_group_authorization_rule_with_options_async(
+        self,
+        request: io_tcc20210513_models.DeleteGroupAuthorizationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.DeleteGroupAuthorizationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AuthorizationRuleId'] = request.authorization_rule_id
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGroupAuthorizationRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.DeleteGroupAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_group_authorization_rule(
+        self,
+        request: io_tcc20210513_models.DeleteGroupAuthorizationRuleRequest,
+    ) -> io_tcc20210513_models.DeleteGroupAuthorizationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_group_authorization_rule_with_options(request, runtime)
+
+    async def delete_group_authorization_rule_async(
+        self,
+        request: io_tcc20210513_models.DeleteGroupAuthorizationRuleRequest,
+    ) -> io_tcc20210513_models.DeleteGroupAuthorizationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_group_authorization_rule_with_options_async(request, runtime)
+
     def delete_io_tcloud_connector_with_options(
         self,
         request: io_tcc20210513_models.DeleteIoTCloudConnectorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.DeleteIoTCloudConnectorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIoTCloudConnector',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.DeleteIoTCloudConnectorResponse(),
-            self.do_rpcrequest('DeleteIoTCloudConnector', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_io_tcloud_connector_with_options_async(
@@ -438,12 +1193,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.DeleteIoTCloudConnectorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIoTCloudConnector',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.DeleteIoTCloudConnectorResponse(),
-            await self.do_rpcrequest_async('DeleteIoTCloudConnector', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_io_tcloud_connector(
@@ -460,18 +1231,109 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_io_tcloud_connector_with_options_async(request, runtime)
 
+    def delete_io_tcloud_connector_group_with_options(
+        self,
+        request: io_tcc20210513_models.DeleteIoTCloudConnectorGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.DeleteIoTCloudConnectorGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIoTCloudConnectorGroup',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.DeleteIoTCloudConnectorGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_io_tcloud_connector_group_with_options_async(
+        self,
+        request: io_tcc20210513_models.DeleteIoTCloudConnectorGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.DeleteIoTCloudConnectorGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIoTCloudConnectorGroup',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.DeleteIoTCloudConnectorGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_io_tcloud_connector_group(
+        self,
+        request: io_tcc20210513_models.DeleteIoTCloudConnectorGroupRequest,
+    ) -> io_tcc20210513_models.DeleteIoTCloudConnectorGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_io_tcloud_connector_group_with_options(request, runtime)
+
+    async def delete_io_tcloud_connector_group_async(
+        self,
+        request: io_tcc20210513_models.DeleteIoTCloudConnectorGroupRequest,
+    ) -> io_tcc20210513_models.DeleteIoTCloudConnectorGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_io_tcloud_connector_group_with_options_async(request, runtime)
+
     def delete_service_with_options(
         self,
         request: io_tcc20210513_models.DeleteServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.DeleteServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteService',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.DeleteServiceResponse(),
-            self.do_rpcrequest('DeleteService', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_service_with_options_async(
@@ -480,12 +1342,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.DeleteServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteService',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.DeleteServiceResponse(),
-            await self.do_rpcrequest_async('DeleteService', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_service(
@@ -508,12 +1387,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.DeleteServiceEntryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        query['ServiceEntryId'] = request.service_entry_id
+        query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteServiceEntry',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.DeleteServiceEntryResponse(),
-            self.do_rpcrequest('DeleteServiceEntry', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_service_entry_with_options_async(
@@ -522,12 +1419,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.DeleteServiceEntryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        query['ServiceEntryId'] = request.service_entry_id
+        query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteServiceEntry',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.DeleteServiceEntryResponse(),
-            await self.do_rpcrequest_async('DeleteServiceEntry', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_service_entry(
@@ -550,12 +1465,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.DisableIoTCloudConnectorAccessLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableIoTCloudConnectorAccessLog',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.DisableIoTCloudConnectorAccessLogResponse(),
-            self.do_rpcrequest('DisableIoTCloudConnectorAccessLog', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def disable_io_tcloud_connector_access_log_with_options_async(
@@ -564,12 +1495,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.DisableIoTCloudConnectorAccessLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableIoTCloudConnectorAccessLog',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.DisableIoTCloudConnectorAccessLogResponse(),
-            await self.do_rpcrequest_async('DisableIoTCloudConnectorAccessLog', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def disable_io_tcloud_connector_access_log(
@@ -592,12 +1539,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.DissociateIpFromConnectionPoolResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['ConnectionPoolId'] = request.connection_pool_id
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['Ips'] = request.ips
+        query['IpsFilePath'] = request.ips_file_path
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DissociateIpFromConnectionPool',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.DissociateIpFromConnectionPoolResponse(),
-            self.do_rpcrequest('DissociateIpFromConnectionPool', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def dissociate_ip_from_connection_pool_with_options_async(
@@ -606,12 +1572,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.DissociateIpFromConnectionPoolResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['ConnectionPoolId'] = request.connection_pool_id
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['Ips'] = request.ips
+        query['IpsFilePath'] = request.ips_file_path
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DissociateIpFromConnectionPool',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.DissociateIpFromConnectionPoolResponse(),
-            await self.do_rpcrequest_async('DissociateIpFromConnectionPool', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def dissociate_ip_from_connection_pool(
@@ -634,12 +1619,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.DissociateVSwitchFromIoTCloudConnectorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DissociateVSwitchFromIoTCloudConnector',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.DissociateVSwitchFromIoTCloudConnectorResponse(),
-            self.do_rpcrequest('DissociateVSwitchFromIoTCloudConnector', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def dissociate_vswitch_from_io_tcloud_connector_with_options_async(
@@ -648,12 +1649,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.DissociateVSwitchFromIoTCloudConnectorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DissociateVSwitchFromIoTCloudConnector',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.DissociateVSwitchFromIoTCloudConnectorResponse(),
-            await self.do_rpcrequest_async('DissociateVSwitchFromIoTCloudConnector', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def dissociate_vswitch_from_io_tcloud_connector(
@@ -676,12 +1693,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.EnableIoTCloudConnectorAccessLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessLogSlsLogStore'] = request.access_log_sls_log_store
+        query['AccessLogSlsProject'] = request.access_log_sls_project
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableIoTCloudConnectorAccessLog',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.EnableIoTCloudConnectorAccessLogResponse(),
-            self.do_rpcrequest('EnableIoTCloudConnectorAccessLog', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def enable_io_tcloud_connector_access_log_with_options_async(
@@ -690,12 +1725,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.EnableIoTCloudConnectorAccessLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AccessLogSlsLogStore'] = request.access_log_sls_log_store
+        query['AccessLogSlsProject'] = request.access_log_sls_project
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableIoTCloudConnectorAccessLog',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.EnableIoTCloudConnectorAccessLogResponse(),
-            await self.do_rpcrequest_async('EnableIoTCloudConnectorAccessLog', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def enable_io_tcloud_connector_access_log(
@@ -718,12 +1771,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.GetConnectionPoolIpOperationResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConnectionPoolId'] = request.connection_pool_id
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['QueryRequestId'] = request.query_request_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConnectionPoolIpOperationResult',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.GetConnectionPoolIpOperationResultResponse(),
-            self.do_rpcrequest('GetConnectionPoolIpOperationResult', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_connection_pool_ip_operation_result_with_options_async(
@@ -732,12 +1801,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.GetConnectionPoolIpOperationResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConnectionPoolId'] = request.connection_pool_id
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['QueryRequestId'] = request.query_request_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConnectionPoolIpOperationResult',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.GetConnectionPoolIpOperationResultResponse(),
-            await self.do_rpcrequest_async('GetConnectionPoolIpOperationResult', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_connection_pool_ip_operation_result(
@@ -760,12 +1845,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.GetIoTCloudConnectorAccessLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIoTCloudConnectorAccessLog',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.GetIoTCloudConnectorAccessLogResponse(),
-            self.do_rpcrequest('GetIoTCloudConnectorAccessLog', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_io_tcloud_connector_access_log_with_options_async(
@@ -774,12 +1875,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.GetIoTCloudConnectorAccessLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIoTCloudConnectorAccessLog',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.GetIoTCloudConnectorAccessLogResponse(),
-            await self.do_rpcrequest_async('GetIoTCloudConnectorAccessLog', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_io_tcloud_connector_access_log(
@@ -802,12 +1919,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.GetStsInfoAndOssPathResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['ConnectionPoolId'] = request.connection_pool_id
+        query['DryRun'] = request.dry_run
+        query['FileName'] = request.file_name
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStsInfoAndOssPath',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.GetStsInfoAndOssPathResponse(),
-            self.do_rpcrequest('GetStsInfoAndOssPath', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_sts_info_and_oss_path_with_options_async(
@@ -816,12 +1951,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.GetStsInfoAndOssPathResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['ConnectionPoolId'] = request.connection_pool_id
+        query['DryRun'] = request.dry_run
+        query['FileName'] = request.file_name
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStsInfoAndOssPath',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.GetStsInfoAndOssPathResponse(),
-            await self.do_rpcrequest_async('GetStsInfoAndOssPath', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_sts_info_and_oss_path(
@@ -844,12 +1997,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.GrantVirtualBorderRouterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['VirtualBorderRouterId'] = request.virtual_border_router_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GrantVirtualBorderRouter',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.GrantVirtualBorderRouterResponse(),
-            self.do_rpcrequest('GrantVirtualBorderRouter', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def grant_virtual_border_router_with_options_async(
@@ -858,12 +2025,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.GrantVirtualBorderRouterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
+        query['VirtualBorderRouterId'] = request.virtual_border_router_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GrantVirtualBorderRouter',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.GrantVirtualBorderRouterResponse(),
-            await self.do_rpcrequest_async('GrantVirtualBorderRouter', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def grant_virtual_border_router(
@@ -886,12 +2067,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.ListAPNsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['APN'] = request.apn
+        query['ISP'] = request.isp
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAPNs',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.ListAPNsResponse(),
-            self.do_rpcrequest('ListAPNs', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_apns_with_options_async(
@@ -900,12 +2098,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.ListAPNsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['APN'] = request.apn
+        query['ISP'] = request.isp
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAPNs',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.ListAPNsResponse(),
-            await self.do_rpcrequest_async('ListAPNs', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_apns(
@@ -928,12 +2143,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.ListAuthorizationRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuthorizationRuleIds'] = request.authorization_rule_ids
+        query['AuthorizationRuleName'] = request.authorization_rule_name
+        query['AuthorizationRuleStatus'] = request.authorization_rule_status
+        query['Destination'] = request.destination
+        query['DestinationType'] = request.destination_type
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['Policy'] = request.policy
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizationRules',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.ListAuthorizationRulesResponse(),
-            self.do_rpcrequest('ListAuthorizationRules', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_authorization_rules_with_options_async(
@@ -942,12 +2179,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.ListAuthorizationRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuthorizationRuleIds'] = request.authorization_rule_ids
+        query['AuthorizationRuleName'] = request.authorization_rule_name
+        query['AuthorizationRuleStatus'] = request.authorization_rule_status
+        query['Destination'] = request.destination
+        query['DestinationType'] = request.destination_type
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['Policy'] = request.policy
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorizationRules',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.ListAuthorizationRulesResponse(),
-            await self.do_rpcrequest_async('ListAuthorizationRules', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_authorization_rules(
@@ -964,18 +2223,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_authorization_rules_with_options_async(request, runtime)
 
+    def list_connection_pool_all_ips_with_options(
+        self,
+        request: io_tcc20210513_models.ListConnectionPoolAllIpsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.ListConnectionPoolAllIpsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ConnectionPoolId'] = request.connection_pool_id
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['Ip'] = request.ip
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
+        query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConnectionPoolAllIps',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.ListConnectionPoolAllIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_connection_pool_all_ips_with_options_async(
+        self,
+        request: io_tcc20210513_models.ListConnectionPoolAllIpsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.ListConnectionPoolAllIpsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ConnectionPoolId'] = request.connection_pool_id
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['Ip'] = request.ip
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
+        query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConnectionPoolAllIps',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.ListConnectionPoolAllIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_connection_pool_all_ips(
+        self,
+        request: io_tcc20210513_models.ListConnectionPoolAllIpsRequest,
+    ) -> io_tcc20210513_models.ListConnectionPoolAllIpsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_connection_pool_all_ips_with_options(request, runtime)
+
+    async def list_connection_pool_all_ips_async(
+        self,
+        request: io_tcc20210513_models.ListConnectionPoolAllIpsRequest,
+    ) -> io_tcc20210513_models.ListConnectionPoolAllIpsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_connection_pool_all_ips_with_options_async(request, runtime)
+
     def list_connection_pool_ips_with_options(
         self,
         request: io_tcc20210513_models.ListConnectionPoolIpsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.ListConnectionPoolIpsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConnectionPoolId'] = request.connection_pool_id
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['Ip'] = request.ip
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConnectionPoolIps',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.ListConnectionPoolIpsResponse(),
-            self.do_rpcrequest('ListConnectionPoolIps', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_connection_pool_ips_with_options_async(
@@ -984,12 +2341,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.ListConnectionPoolIpsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConnectionPoolId'] = request.connection_pool_id
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['Ip'] = request.ip
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConnectionPoolIps',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.ListConnectionPoolIpsResponse(),
-            await self.do_rpcrequest_async('ListConnectionPoolIps', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_connection_pool_ips(
@@ -1012,12 +2387,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.ListConnectionPoolsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConnectionPoolIds'] = request.connection_pool_ids
+        query['ConnectionPoolName'] = request.connection_pool_name
+        query['ConnectionPoolStatus'] = request.connection_pool_status
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConnectionPools',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.ListConnectionPoolsResponse(),
-            self.do_rpcrequest('ListConnectionPools', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_connection_pools_with_options_async(
@@ -1026,12 +2420,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.ListConnectionPoolsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ConnectionPoolIds'] = request.connection_pool_ids
+        query['ConnectionPoolName'] = request.connection_pool_name
+        query['ConnectionPoolStatus'] = request.connection_pool_status
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConnectionPools',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.ListConnectionPoolsResponse(),
-            await self.do_rpcrequest_async('ListConnectionPools', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_connection_pools(
@@ -1048,18 +2461,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_connection_pools_with_options_async(request, runtime)
 
+    def list_group_authorization_rules_with_options(
+        self,
+        request: io_tcc20210513_models.ListGroupAuthorizationRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.ListGroupAuthorizationRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AuthorizationRuleIds'] = request.authorization_rule_ids
+        query['AuthorizationRuleName'] = request.authorization_rule_name
+        query['AuthorizationRuleStatus'] = request.authorization_rule_status
+        query['Destination'] = request.destination
+        query['DestinationType'] = request.destination_type
+        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['Policy'] = request.policy
+        query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGroupAuthorizationRules',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.ListGroupAuthorizationRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_group_authorization_rules_with_options_async(
+        self,
+        request: io_tcc20210513_models.ListGroupAuthorizationRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.ListGroupAuthorizationRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AuthorizationRuleIds'] = request.authorization_rule_ids
+        query['AuthorizationRuleName'] = request.authorization_rule_name
+        query['AuthorizationRuleStatus'] = request.authorization_rule_status
+        query['Destination'] = request.destination
+        query['DestinationType'] = request.destination_type
+        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['Policy'] = request.policy
+        query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGroupAuthorizationRules',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.ListGroupAuthorizationRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_group_authorization_rules(
+        self,
+        request: io_tcc20210513_models.ListGroupAuthorizationRulesRequest,
+    ) -> io_tcc20210513_models.ListGroupAuthorizationRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_group_authorization_rules_with_options(request, runtime)
+
+    async def list_group_authorization_rules_async(
+        self,
+        request: io_tcc20210513_models.ListGroupAuthorizationRulesRequest,
+    ) -> io_tcc20210513_models.ListGroupAuthorizationRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_group_authorization_rules_with_options_async(request, runtime)
+
     def list_io_tcloud_connector_available_zones_with_options(
         self,
         request: io_tcc20210513_models.ListIoTCloudConnectorAvailableZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.ListIoTCloudConnectorAvailableZonesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIoTCloudConnectorAvailableZones',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.ListIoTCloudConnectorAvailableZonesResponse(),
-            self.do_rpcrequest('ListIoTCloudConnectorAvailableZones', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_io_tcloud_connector_available_zones_with_options_async(
@@ -1068,12 +2581,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.ListIoTCloudConnectorAvailableZonesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIoTCloudConnectorAvailableZones',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.ListIoTCloudConnectorAvailableZonesResponse(),
-            await self.do_rpcrequest_async('ListIoTCloudConnectorAvailableZones', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_io_tcloud_connector_available_zones(
@@ -1090,18 +2617,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_io_tcloud_connector_available_zones_with_options_async(request, runtime)
 
+    def list_io_tcloud_connector_groups_with_options(
+        self,
+        request: io_tcc20210513_models.ListIoTCloudConnectorGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.ListIoTCloudConnectorGroupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['IoTCloudConnectorGroupIds'] = request.io_tcloud_connector_group_ids
+        query['IoTCloudConnectorGroupName'] = request.io_tcloud_connector_group_name
+        query['IoTCloudConnectorGroupStatus'] = request.io_tcloud_connector_group_status
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIoTCloudConnectorGroups',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.ListIoTCloudConnectorGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_io_tcloud_connector_groups_with_options_async(
+        self,
+        request: io_tcc20210513_models.ListIoTCloudConnectorGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.ListIoTCloudConnectorGroupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['IoTCloudConnectorGroupIds'] = request.io_tcloud_connector_group_ids
+        query['IoTCloudConnectorGroupName'] = request.io_tcloud_connector_group_name
+        query['IoTCloudConnectorGroupStatus'] = request.io_tcloud_connector_group_status
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIoTCloudConnectorGroups',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.ListIoTCloudConnectorGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_io_tcloud_connector_groups(
+        self,
+        request: io_tcc20210513_models.ListIoTCloudConnectorGroupsRequest,
+    ) -> io_tcc20210513_models.ListIoTCloudConnectorGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_io_tcloud_connector_groups_with_options(request, runtime)
+
+    async def list_io_tcloud_connector_groups_async(
+        self,
+        request: io_tcc20210513_models.ListIoTCloudConnectorGroupsRequest,
+    ) -> io_tcc20210513_models.ListIoTCloudConnectorGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_io_tcloud_connector_groups_with_options_async(request, runtime)
+
     def list_io_tcloud_connectors_with_options(
         self,
         request: io_tcc20210513_models.ListIoTCloudConnectorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.ListIoTCloudConnectorsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['APN'] = request.apn
+        query['ISP'] = request.isp
+        query['IoTCloudConnectorIds'] = request.io_tcloud_connector_ids
+        query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
+        query['IoTCloudConnectorStatus'] = request.io_tcloud_connector_status
+        query['IsInGroup'] = request.is_in_group
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
+        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIoTCloudConnectors',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.ListIoTCloudConnectorsResponse(),
-            self.do_rpcrequest('ListIoTCloudConnectors', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_io_tcloud_connectors_with_options_async(
@@ -1110,12 +2737,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.ListIoTCloudConnectorsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['APN'] = request.apn
+        query['ISP'] = request.isp
+        query['IoTCloudConnectorIds'] = request.io_tcloud_connector_ids
+        query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
+        query['IoTCloudConnectorStatus'] = request.io_tcloud_connector_status
+        query['IsInGroup'] = request.is_in_group
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
+        query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIoTCloudConnectors',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.ListIoTCloudConnectorsResponse(),
-            await self.do_rpcrequest_async('ListIoTCloudConnectors', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_io_tcloud_connectors(
@@ -1138,12 +2787,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.ListRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AcceptLanguage'] = request.accept_language
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRegions',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.ListRegionsResponse(),
-            self.do_rpcrequest('ListRegions', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_regions_with_options_async(
@@ -1152,12 +2815,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.ListRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AcceptLanguage'] = request.accept_language
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRegions',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.ListRegionsResponse(),
-            await self.do_rpcrequest_async('ListRegions', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_regions(
@@ -1180,12 +2857,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.ListServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
+        query['ResourceStatuses'] = request.resource_statuses
+        query['ServiceIds'] = request.service_ids
+        query['ServiceNames'] = request.service_names
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListService',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.ListServiceResponse(),
-            self.do_rpcrequest('ListService', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_service_with_options_async(
@@ -1194,12 +2890,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.ListServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
+        query['ResourceStatuses'] = request.resource_statuses
+        query['ServiceIds'] = request.service_ids
+        query['ServiceNames'] = request.service_names
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListService',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.ListServiceResponse(),
-            await self.do_rpcrequest_async('ListService', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_service(
@@ -1222,12 +2937,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.ListServiceEntriesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
+        query['ServiceEntryIds'] = request.service_entry_ids
+        query['ServiceEntryName'] = request.service_entry_name
+        query['ServiceEntryStatus'] = request.service_entry_status
+        query['ServiceId'] = request.service_id
+        query['Target'] = request.target
+        query['TargetType'] = request.target_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServiceEntries',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.ListServiceEntriesResponse(),
-            self.do_rpcrequest('ListServiceEntries', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_service_entries_with_options_async(
@@ -1236,12 +2973,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.ListServiceEntriesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['RegionId'] = request.region_id
+        query['ServiceEntryIds'] = request.service_entry_ids
+        query['ServiceEntryName'] = request.service_entry_name
+        query['ServiceEntryStatus'] = request.service_entry_status
+        query['ServiceId'] = request.service_id
+        query['Target'] = request.target
+        query['TargetType'] = request.target_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServiceEntries',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.ListServiceEntriesResponse(),
-            await self.do_rpcrequest_async('ListServiceEntries', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_service_entries(
@@ -1264,12 +3023,25 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.OpenIoTCloudConnectorServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenIoTCloudConnectorService',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.OpenIoTCloudConnectorServiceResponse(),
-            self.do_rpcrequest('OpenIoTCloudConnectorService', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def open_io_tcloud_connector_service_with_options_async(
@@ -1278,12 +3050,25 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.OpenIoTCloudConnectorServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenIoTCloudConnectorService',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.OpenIoTCloudConnectorServiceResponse(),
-            await self.do_rpcrequest_async('OpenIoTCloudConnectorService', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def open_io_tcloud_connector_service(
@@ -1300,18 +3085,117 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.open_io_tcloud_connector_service_with_options_async(request, runtime)
 
+    def remove_io_tcloud_connector_from_group_with_options(
+        self,
+        request: io_tcc20210513_models.RemoveIoTCloudConnectorFromGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.RemoveIoTCloudConnectorFromGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveIoTCloudConnectorFromGroup',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.RemoveIoTCloudConnectorFromGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_io_tcloud_connector_from_group_with_options_async(
+        self,
+        request: io_tcc20210513_models.RemoveIoTCloudConnectorFromGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.RemoveIoTCloudConnectorFromGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveIoTCloudConnectorFromGroup',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.RemoveIoTCloudConnectorFromGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_io_tcloud_connector_from_group(
+        self,
+        request: io_tcc20210513_models.RemoveIoTCloudConnectorFromGroupRequest,
+    ) -> io_tcc20210513_models.RemoveIoTCloudConnectorFromGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.remove_io_tcloud_connector_from_group_with_options(request, runtime)
+
+    async def remove_io_tcloud_connector_from_group_async(
+        self,
+        request: io_tcc20210513_models.RemoveIoTCloudConnectorFromGroupRequest,
+    ) -> io_tcc20210513_models.RemoveIoTCloudConnectorFromGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_io_tcloud_connector_from_group_with_options_async(request, runtime)
+
     def update_authorization_rule_attribute_with_options(
         self,
         request: io_tcc20210513_models.UpdateAuthorizationRuleAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.UpdateAuthorizationRuleAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuthorizationRuleDescription'] = request.authorization_rule_description
+        query['AuthorizationRuleId'] = request.authorization_rule_id
+        query['AuthorizationRuleName'] = request.authorization_rule_name
+        query['ClientToken'] = request.client_token
+        query['Destination'] = request.destination
+        query['DestinationType'] = request.destination_type
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['Policy'] = request.policy
+        query['RegionId'] = request.region_id
+        query['SourceCidrs'] = request.source_cidrs
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAuthorizationRuleAttribute',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.UpdateAuthorizationRuleAttributeResponse(),
-            self.do_rpcrequest('UpdateAuthorizationRuleAttribute', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_authorization_rule_attribute_with_options_async(
@@ -1320,12 +3204,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.UpdateAuthorizationRuleAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['AuthorizationRuleDescription'] = request.authorization_rule_description
+        query['AuthorizationRuleId'] = request.authorization_rule_id
+        query['AuthorizationRuleName'] = request.authorization_rule_name
+        query['ClientToken'] = request.client_token
+        query['Destination'] = request.destination
+        query['DestinationType'] = request.destination_type
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['Policy'] = request.policy
+        query['RegionId'] = request.region_id
+        query['SourceCidrs'] = request.source_cidrs
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAuthorizationRuleAttribute',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.UpdateAuthorizationRuleAttributeResponse(),
-            await self.do_rpcrequest_async('UpdateAuthorizationRuleAttribute', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_authorization_rule_attribute(
@@ -1348,12 +3255,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.UpdateConnectionPoolAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Cidrs'] = request.cidrs
+        query['ClientToken'] = request.client_token
+        query['ConnectionPoolDescription'] = request.connection_pool_description
+        query['ConnectionPoolId'] = request.connection_pool_id
+        query['ConnectionPoolName'] = request.connection_pool_name
+        query['Count'] = request.count
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateConnectionPoolAttribute',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.UpdateConnectionPoolAttributeResponse(),
-            self.do_rpcrequest('UpdateConnectionPoolAttribute', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_connection_pool_attribute_with_options_async(
@@ -1362,12 +3290,33 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.UpdateConnectionPoolAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['Cidrs'] = request.cidrs
+        query['ClientToken'] = request.client_token
+        query['ConnectionPoolDescription'] = request.connection_pool_description
+        query['ConnectionPoolId'] = request.connection_pool_id
+        query['ConnectionPoolName'] = request.connection_pool_name
+        query['Count'] = request.count
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateConnectionPoolAttribute',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.UpdateConnectionPoolAttributeResponse(),
-            await self.do_rpcrequest_async('UpdateConnectionPoolAttribute', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_connection_pool_attribute(
@@ -1384,18 +3333,125 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_connection_pool_attribute_with_options_async(request, runtime)
 
+    def update_group_authorization_rule_attribute_with_options(
+        self,
+        request: io_tcc20210513_models.UpdateGroupAuthorizationRuleAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.UpdateGroupAuthorizationRuleAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AuthorizationRuleDescription'] = request.authorization_rule_description
+        query['AuthorizationRuleId'] = request.authorization_rule_id
+        query['AuthorizationRuleName'] = request.authorization_rule_name
+        query['ClientToken'] = request.client_token
+        query['Destination'] = request.destination
+        query['DestinationType'] = request.destination_type
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        query['Policy'] = request.policy
+        query['RegionId'] = request.region_id
+        query['SourceCidrs'] = request.source_cidrs
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGroupAuthorizationRuleAttribute',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.UpdateGroupAuthorizationRuleAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_group_authorization_rule_attribute_with_options_async(
+        self,
+        request: io_tcc20210513_models.UpdateGroupAuthorizationRuleAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.UpdateGroupAuthorizationRuleAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AuthorizationRuleDescription'] = request.authorization_rule_description
+        query['AuthorizationRuleId'] = request.authorization_rule_id
+        query['AuthorizationRuleName'] = request.authorization_rule_name
+        query['ClientToken'] = request.client_token
+        query['Destination'] = request.destination
+        query['DestinationType'] = request.destination_type
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        query['Policy'] = request.policy
+        query['RegionId'] = request.region_id
+        query['SourceCidrs'] = request.source_cidrs
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGroupAuthorizationRuleAttribute',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.UpdateGroupAuthorizationRuleAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_group_authorization_rule_attribute(
+        self,
+        request: io_tcc20210513_models.UpdateGroupAuthorizationRuleAttributeRequest,
+    ) -> io_tcc20210513_models.UpdateGroupAuthorizationRuleAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_group_authorization_rule_attribute_with_options(request, runtime)
+
+    async def update_group_authorization_rule_attribute_async(
+        self,
+        request: io_tcc20210513_models.UpdateGroupAuthorizationRuleAttributeRequest,
+    ) -> io_tcc20210513_models.UpdateGroupAuthorizationRuleAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_group_authorization_rule_attribute_with_options_async(request, runtime)
+
     def update_io_tcloud_connector_attribute_with_options(
         self,
         request: io_tcc20210513_models.UpdateIoTCloudConnectorAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.UpdateIoTCloudConnectorAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorDescription'] = request.io_tcloud_connector_description
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
+        query['RegionId'] = request.region_id
+        query['WildcardDomainEnabled'] = request.wildcard_domain_enabled
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateIoTCloudConnectorAttribute',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.UpdateIoTCloudConnectorAttributeResponse(),
-            self.do_rpcrequest('UpdateIoTCloudConnectorAttribute', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_io_tcloud_connector_attribute_with_options_async(
@@ -1404,12 +3460,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.UpdateIoTCloudConnectorAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorDescription'] = request.io_tcloud_connector_description
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
+        query['RegionId'] = request.region_id
+        query['WildcardDomainEnabled'] = request.wildcard_domain_enabled
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateIoTCloudConnectorAttribute',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.UpdateIoTCloudConnectorAttributeResponse(),
-            await self.do_rpcrequest_async('UpdateIoTCloudConnectorAttribute', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_io_tcloud_connector_attribute(
@@ -1426,18 +3501,115 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_io_tcloud_connector_attribute_with_options_async(request, runtime)
 
+    def update_io_tcloud_connector_group_attribute_with_options(
+        self,
+        request: io_tcc20210513_models.UpdateIoTCloudConnectorGroupAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.UpdateIoTCloudConnectorGroupAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateIoTCloudConnectorGroupAttribute',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.UpdateIoTCloudConnectorGroupAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_io_tcloud_connector_group_attribute_with_options_async(
+        self,
+        request: io_tcc20210513_models.UpdateIoTCloudConnectorGroupAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.UpdateIoTCloudConnectorGroupAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['Description'] = request.description
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        query['Name'] = request.name
+        query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateIoTCloudConnectorGroupAttribute',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.UpdateIoTCloudConnectorGroupAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_io_tcloud_connector_group_attribute(
+        self,
+        request: io_tcc20210513_models.UpdateIoTCloudConnectorGroupAttributeRequest,
+    ) -> io_tcc20210513_models.UpdateIoTCloudConnectorGroupAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_io_tcloud_connector_group_attribute_with_options(request, runtime)
+
+    async def update_io_tcloud_connector_group_attribute_async(
+        self,
+        request: io_tcc20210513_models.UpdateIoTCloudConnectorGroupAttributeRequest,
+    ) -> io_tcc20210513_models.UpdateIoTCloudConnectorGroupAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_io_tcloud_connector_group_attribute_with_options_async(request, runtime)
+
     def update_service_attribute_with_options(
         self,
         request: io_tcc20210513_models.UpdateServiceAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.UpdateServiceAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        query['ServiceDescription'] = request.service_description
+        query['ServiceId'] = request.service_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateServiceAttribute',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.UpdateServiceAttributeResponse(),
-            self.do_rpcrequest('UpdateServiceAttribute', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_service_attribute_with_options_async(
@@ -1446,12 +3618,31 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.UpdateServiceAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        query['ServiceDescription'] = request.service_description
+        query['ServiceId'] = request.service_id
+        query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateServiceAttribute',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.UpdateServiceAttributeResponse(),
-            await self.do_rpcrequest_async('UpdateServiceAttribute', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_service_attribute(
@@ -1474,12 +3665,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.UpdateServiceEntryAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        query['ServiceEntryDescription'] = request.service_entry_description
+        query['ServiceEntryId'] = request.service_entry_id
+        query['ServiceEntryName'] = request.service_entry_name
+        query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateServiceEntryAttribute',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.UpdateServiceEntryAttributeResponse(),
-            self.do_rpcrequest('UpdateServiceEntryAttribute', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_service_entry_attribute_with_options_async(
@@ -1488,12 +3699,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> io_tcc20210513_models.UpdateServiceEntryAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        query['RegionId'] = request.region_id
+        query['ServiceEntryDescription'] = request.service_entry_description
+        query['ServiceEntryId'] = request.service_entry_id
+        query['ServiceEntryName'] = request.service_entry_name
+        query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateServiceEntryAttribute',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             io_tcc20210513_models.UpdateServiceEntryAttributeResponse(),
-            await self.do_rpcrequest_async('UpdateServiceEntryAttribute', '2021-05-13', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_service_entry_attribute(
