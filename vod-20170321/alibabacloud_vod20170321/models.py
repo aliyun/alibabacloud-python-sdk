@@ -29917,9 +29917,13 @@ class UploadStreamByURLResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        source_url: str = None,
+        stream_file_url: str = None,
         stream_job_id: str = None,
     ):
         self.request_id = request_id
+        self.source_url = source_url
+        self.stream_file_url = stream_file_url
         self.stream_job_id = stream_job_id
 
     def validate(self):
@@ -29933,6 +29937,10 @@ class UploadStreamByURLResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.source_url is not None:
+            result['SourceURL'] = self.source_url
+        if self.stream_file_url is not None:
+            result['StreamFileURL'] = self.stream_file_url
         if self.stream_job_id is not None:
             result['StreamJobId'] = self.stream_job_id
         return result
@@ -29941,6 +29949,10 @@ class UploadStreamByURLResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SourceURL') is not None:
+            self.source_url = m.get('SourceURL')
+        if m.get('StreamFileURL') is not None:
+            self.stream_file_url = m.get('StreamFileURL')
         if m.get('StreamJobId') is not None:
             self.stream_job_id = m.get('StreamJobId')
         return self

@@ -1,3 +1,6 @@
+2021-12-20 Version: 2.16.5
+- Add return fields to UploadStreamByURL.
+
 2021-11-24 Version: 2.16.4
 - Set API DescribeVodDomainSrcBpsData to public.
 
