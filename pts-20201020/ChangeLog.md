@@ -1,3 +1,6 @@
+2021-12-20 Version: 1.8.10
+- Set JmeterPluginLabel visibel.
+
 2021-12-20 Version: 1.8.7
 - Add runningData reponse field, startTimeTS, hordFor.
 
