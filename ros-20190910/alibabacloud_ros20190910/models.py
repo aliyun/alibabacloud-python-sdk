@@ -733,6 +733,7 @@ class CreateStackRequest(TeaModel):
         template_body: str = None,
         template_id: str = None,
         template_scratch_id: str = None,
+        template_scratch_region_id: str = None,
         template_url: str = None,
         template_version: str = None,
         timeout_in_minutes: int = None,
@@ -754,6 +755,7 @@ class CreateStackRequest(TeaModel):
         self.template_body = template_body
         self.template_id = template_id
         self.template_scratch_id = template_scratch_id
+        self.template_scratch_region_id = template_scratch_region_id
         self.template_url = template_url
         self.template_version = template_version
         self.timeout_in_minutes = timeout_in_minutes
@@ -812,6 +814,8 @@ class CreateStackRequest(TeaModel):
             result['TemplateId'] = self.template_id
         if self.template_scratch_id is not None:
             result['TemplateScratchId'] = self.template_scratch_id
+        if self.template_scratch_region_id is not None:
+            result['TemplateScratchRegionId'] = self.template_scratch_region_id
         if self.template_url is not None:
             result['TemplateURL'] = self.template_url
         if self.template_version is not None:
@@ -862,6 +866,8 @@ class CreateStackRequest(TeaModel):
             self.template_id = m.get('TemplateId')
         if m.get('TemplateScratchId') is not None:
             self.template_scratch_id = m.get('TemplateScratchId')
+        if m.get('TemplateScratchRegionId') is not None:
+            self.template_scratch_region_id = m.get('TemplateScratchRegionId')
         if m.get('TemplateURL') is not None:
             self.template_url = m.get('TemplateURL')
         if m.get('TemplateVersion') is not None:
@@ -7258,11 +7264,13 @@ class GetTemplateResponseBodyPermissions(TeaModel):
         self,
         account_id: str = None,
         share_option: str = None,
+        share_source: str = None,
         template_version: str = None,
         version_option: str = None,
     ):
         self.account_id = account_id
         self.share_option = share_option
+        self.share_source = share_source
         self.template_version = template_version
         self.version_option = version_option
 
@@ -7279,6 +7287,8 @@ class GetTemplateResponseBodyPermissions(TeaModel):
             result['AccountId'] = self.account_id
         if self.share_option is not None:
             result['ShareOption'] = self.share_option
+        if self.share_source is not None:
+            result['ShareSource'] = self.share_source
         if self.template_version is not None:
             result['TemplateVersion'] = self.template_version
         if self.version_option is not None:
@@ -7291,6 +7301,8 @@ class GetTemplateResponseBodyPermissions(TeaModel):
             self.account_id = m.get('AccountId')
         if m.get('ShareOption') is not None:
             self.share_option = m.get('ShareOption')
+        if m.get('ShareSource') is not None:
+            self.share_source = m.get('ShareSource')
         if m.get('TemplateVersion') is not None:
             self.template_version = m.get('TemplateVersion')
         if m.get('VersionOption') is not None:
@@ -7508,6 +7520,7 @@ class GetTemplateEstimateCostRequest(TeaModel):
         template_body: str = None,
         template_id: str = None,
         template_scratch_id: str = None,
+        template_scratch_region_id: str = None,
         template_url: str = None,
         template_version: str = None,
     ):
@@ -7517,6 +7530,7 @@ class GetTemplateEstimateCostRequest(TeaModel):
         self.template_body = template_body
         self.template_id = template_id
         self.template_scratch_id = template_scratch_id
+        self.template_scratch_region_id = template_scratch_region_id
         self.template_url = template_url
         self.template_version = template_version
 
@@ -7546,6 +7560,8 @@ class GetTemplateEstimateCostRequest(TeaModel):
             result['TemplateId'] = self.template_id
         if self.template_scratch_id is not None:
             result['TemplateScratchId'] = self.template_scratch_id
+        if self.template_scratch_region_id is not None:
+            result['TemplateScratchRegionId'] = self.template_scratch_region_id
         if self.template_url is not None:
             result['TemplateURL'] = self.template_url
         if self.template_version is not None:
@@ -7569,6 +7585,8 @@ class GetTemplateEstimateCostRequest(TeaModel):
             self.template_id = m.get('TemplateId')
         if m.get('TemplateScratchId') is not None:
             self.template_scratch_id = m.get('TemplateScratchId')
+        if m.get('TemplateScratchRegionId') is not None:
+            self.template_scratch_region_id = m.get('TemplateScratchRegionId')
         if m.get('TemplateURL') is not None:
             self.template_url = m.get('TemplateURL')
         if m.get('TemplateVersion') is not None:
@@ -8172,14 +8190,49 @@ class GetTemplateScratchResponseBodyTemplateScratchSourceTag(TeaModel):
         return self
 
 
+class GetTemplateScratchResponseBodyTemplateScratchStackProvision(TeaModel):
+    def __init__(
+        self,
+        creatable: bool = None,
+        importable: bool = None,
+    ):
+        self.creatable = creatable
+        self.importable = importable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creatable is not None:
+            result['Creatable'] = self.creatable
+        if self.importable is not None:
+            result['Importable'] = self.importable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Creatable') is not None:
+            self.creatable = m.get('Creatable')
+        if m.get('Importable') is not None:
+            self.importable = m.get('Importable')
+        return self
+
+
 class GetTemplateScratchResponseBodyTemplateScratchStacks(TeaModel):
     def __init__(
         self,
         region_id: str = None,
         stack_id: str = None,
+        usage_type: str = None,
     ):
         self.region_id = region_id
         self.stack_id = stack_id
+        self.usage_type = usage_type
 
     def validate(self):
         pass
@@ -8194,6 +8247,8 @@ class GetTemplateScratchResponseBodyTemplateScratchStacks(TeaModel):
             result['RegionId'] = self.region_id
         if self.stack_id is not None:
             result['StackId'] = self.stack_id
+        if self.usage_type is not None:
+            result['UsageType'] = self.usage_type
         return result
 
     def from_map(self, m: dict = None):
@@ -8202,6 +8257,8 @@ class GetTemplateScratchResponseBodyTemplateScratchStacks(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('StackId') is not None:
             self.stack_id = m.get('StackId')
+        if m.get('UsageType') is not None:
+            self.usage_type = m.get('UsageType')
         return self
 
 
@@ -8216,6 +8273,7 @@ class GetTemplateScratchResponseBodyTemplateScratch(TeaModel):
         source_resource_group: GetTemplateScratchResponseBodyTemplateScratchSourceResourceGroup = None,
         source_resources: List[GetTemplateScratchResponseBodyTemplateScratchSourceResources] = None,
         source_tag: GetTemplateScratchResponseBodyTemplateScratchSourceTag = None,
+        stack_provision: GetTemplateScratchResponseBodyTemplateScratchStackProvision = None,
         stacks: List[GetTemplateScratchResponseBodyTemplateScratchStacks] = None,
         status: str = None,
         status_reason: str = None,
@@ -8232,6 +8290,7 @@ class GetTemplateScratchResponseBodyTemplateScratch(TeaModel):
         self.source_resource_group = source_resource_group
         self.source_resources = source_resources
         self.source_tag = source_tag
+        self.stack_provision = stack_provision
         self.stacks = stacks
         self.status = status
         self.status_reason = status_reason
@@ -8253,6 +8312,8 @@ class GetTemplateScratchResponseBodyTemplateScratch(TeaModel):
                     k.validate()
         if self.source_tag:
             self.source_tag.validate()
+        if self.stack_provision:
+            self.stack_provision.validate()
         if self.stacks:
             for k in self.stacks:
                 if k:
@@ -8284,6 +8345,8 @@ class GetTemplateScratchResponseBodyTemplateScratch(TeaModel):
                 result['SourceResources'].append(k.to_map() if k else None)
         if self.source_tag is not None:
             result['SourceTag'] = self.source_tag.to_map()
+        if self.stack_provision is not None:
+            result['StackProvision'] = self.stack_provision.to_map()
         result['Stacks'] = []
         if self.stacks is not None:
             for k in self.stacks:
@@ -8328,6 +8391,9 @@ class GetTemplateScratchResponseBodyTemplateScratch(TeaModel):
         if m.get('SourceTag') is not None:
             temp_model = GetTemplateScratchResponseBodyTemplateScratchSourceTag()
             self.source_tag = temp_model.from_map(m['SourceTag'])
+        if m.get('StackProvision') is not None:
+            temp_model = GetTemplateScratchResponseBodyTemplateScratchStackProvision()
+            self.stack_provision = temp_model.from_map(m['StackProvision'])
         self.stacks = []
         if m.get('Stacks') is not None:
             for k in m.get('Stacks'):
@@ -12608,6 +12674,7 @@ class PreviewStackRequest(TeaModel):
         template_body: str = None,
         template_id: str = None,
         template_scratch_id: str = None,
+        template_scratch_region_id: str = None,
         template_url: str = None,
         template_version: str = None,
         timeout_in_minutes: int = None,
@@ -12623,6 +12690,7 @@ class PreviewStackRequest(TeaModel):
         self.template_body = template_body
         self.template_id = template_id
         self.template_scratch_id = template_scratch_id
+        self.template_scratch_region_id = template_scratch_region_id
         self.template_url = template_url
         self.template_version = template_version
         self.timeout_in_minutes = timeout_in_minutes
@@ -12663,6 +12731,8 @@ class PreviewStackRequest(TeaModel):
             result['TemplateId'] = self.template_id
         if self.template_scratch_id is not None:
             result['TemplateScratchId'] = self.template_scratch_id
+        if self.template_scratch_region_id is not None:
+            result['TemplateScratchRegionId'] = self.template_scratch_region_id
         if self.template_url is not None:
             result['TemplateURL'] = self.template_url
         if self.template_version is not None:
@@ -12698,6 +12768,8 @@ class PreviewStackRequest(TeaModel):
             self.template_id = m.get('TemplateId')
         if m.get('TemplateScratchId') is not None:
             self.template_scratch_id = m.get('TemplateScratchId')
+        if m.get('TemplateScratchRegionId') is not None:
+            self.template_scratch_region_id = m.get('TemplateScratchRegionId')
         if m.get('TemplateURL') is not None:
             self.template_url = m.get('TemplateURL')
         if m.get('TemplateVersion') is not None:

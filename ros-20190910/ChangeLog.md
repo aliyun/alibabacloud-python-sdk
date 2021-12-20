@@ -1,3 +1,8 @@
+2021-12-20 Version: 3.0.4
+- CreateStack, PreviewStack and GetTemplateEstimateCost parameters supports specifing TemplateScratchRegionId.
+- GetTemplateScratch return value adds StackProvision and UsageType in Stacks.
+- GetTemplate return value adds ShareSource in Permissions.
+
 2021-12-14 Version: 3.0.3
 - Fix the issue that some parameters cannot be passed.
 
