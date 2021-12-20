@@ -1217,11 +1217,13 @@ class GetJMeterSceneRunningDataResponseBodyRunningData(TeaModel):
         all_sample_stat: Dict[str, Any] = None,
         concurrency: int = None,
         has_report: bool = None,
+        hold_for: int = None,
         is_debugging: bool = None,
         sample_stat_list: List[Dict[str, Any]] = None,
         scene_id: str = None,
         scene_name: str = None,
         stage_name: str = None,
+        start_time_ts: int = None,
         status: str = None,
         vum: int = None,
     ):
@@ -1235,6 +1237,8 @@ class GetJMeterSceneRunningDataResponseBodyRunningData(TeaModel):
         self.concurrency = concurrency
         # 是否生成了报告
         self.has_report = has_report
+        # 压测计划持续时间，单位s
+        self.hold_for = hold_for
         # 是否是调试
         self.is_debugging = is_debugging
         # 每一个采样器的状态
@@ -1245,6 +1249,8 @@ class GetJMeterSceneRunningDataResponseBodyRunningData(TeaModel):
         self.scene_name = scene_name
         # 当前所处阶段
         self.stage_name = stage_name
+        # 压测计划开始时间戳，单位ms
+        self.start_time_ts = start_time_ts
         # 状态
         self.status = status
         # 目前消耗的vum
@@ -1269,6 +1275,8 @@ class GetJMeterSceneRunningDataResponseBodyRunningData(TeaModel):
             result['Concurrency'] = self.concurrency
         if self.has_report is not None:
             result['HasReport'] = self.has_report
+        if self.hold_for is not None:
+            result['HoldFor'] = self.hold_for
         if self.is_debugging is not None:
             result['IsDebugging'] = self.is_debugging
         if self.sample_stat_list is not None:
@@ -1279,6 +1287,8 @@ class GetJMeterSceneRunningDataResponseBodyRunningData(TeaModel):
             result['SceneName'] = self.scene_name
         if self.stage_name is not None:
             result['StageName'] = self.stage_name
+        if self.start_time_ts is not None:
+            result['StartTimeTS'] = self.start_time_ts
         if self.status is not None:
             result['Status'] = self.status
         if self.vum is not None:
@@ -1297,6 +1307,8 @@ class GetJMeterSceneRunningDataResponseBodyRunningData(TeaModel):
             self.concurrency = m.get('Concurrency')
         if m.get('HasReport') is not None:
             self.has_report = m.get('HasReport')
+        if m.get('HoldFor') is not None:
+            self.hold_for = m.get('HoldFor')
         if m.get('IsDebugging') is not None:
             self.is_debugging = m.get('IsDebugging')
         if m.get('SampleStatList') is not None:
@@ -1307,6 +1319,8 @@ class GetJMeterSceneRunningDataResponseBodyRunningData(TeaModel):
             self.scene_name = m.get('SceneName')
         if m.get('StageName') is not None:
             self.stage_name = m.get('StageName')
+        if m.get('StartTimeTS') is not None:
+            self.start_time_ts = m.get('StartTimeTS')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Vum') is not None:
@@ -6623,7 +6637,6 @@ class SaveEnvRequestEnv(TeaModel):
         env_id: str = None,
         env_name: str = None,
         files: List[SaveEnvRequestEnvFiles] = None,
-        jmeter_plugin_label: str = None,
         properties: List[SaveEnvRequestEnvProperties] = None,
     ):
         # 环境id，不填表示新建环境，填了表示修改该环境
@@ -6632,8 +6645,6 @@ class SaveEnvRequestEnv(TeaModel):
         self.env_name = env_name
         # 环境依赖的文件
         self.files = files
-        # jmeter插件的环境标签
-        self.jmeter_plugin_label = jmeter_plugin_label
         # jmeter属性
         self.properties = properties
 
@@ -6661,8 +6672,6 @@ class SaveEnvRequestEnv(TeaModel):
         if self.files is not None:
             for k in self.files:
                 result['Files'].append(k.to_map() if k else None)
-        if self.jmeter_plugin_label is not None:
-            result['JmeterPluginLabel'] = self.jmeter_plugin_label
         result['Properties'] = []
         if self.properties is not None:
             for k in self.properties:
@@ -6680,8 +6689,6 @@ class SaveEnvRequestEnv(TeaModel):
             for k in m.get('Files'):
                 temp_model = SaveEnvRequestEnvFiles()
                 self.files.append(temp_model.from_map(k))
-        if m.get('JmeterPluginLabel') is not None:
-            self.jmeter_plugin_label = m.get('JmeterPluginLabel')
         self.properties = []
         if m.get('Properties') is not None:
             for k in m.get('Properties'):
@@ -6997,7 +7004,6 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
         file_list: List[SaveOpenJMeterSceneRequestOpenJMeterSceneFileList] = None,
         is_vpc_test: bool = None,
         jmeter_properties: List[SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties] = None,
-        jmeter_plugin_label: str = None,
         ramp_up: int = None,
         region_id: str = None,
         scene_id: str = None,
@@ -7027,8 +7033,6 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
         self.is_vpc_test = is_vpc_test
         # Jmeter属性
         self.jmeter_properties = jmeter_properties
-        # jmeter插件的环境标签
-        self.jmeter_plugin_label = jmeter_plugin_label
         # 预热时间
         self.ramp_up = ramp_up
         # region的id，VPC压测时配置
@@ -7090,8 +7094,6 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
         if self.jmeter_properties is not None:
             for k in self.jmeter_properties:
                 result['JMeterProperties'].append(k.to_map() if k else None)
-        if self.jmeter_plugin_label is not None:
-            result['JmeterPluginLabel'] = self.jmeter_plugin_label
         if self.ramp_up is not None:
             result['RampUp'] = self.ramp_up
         if self.region_id is not None:
@@ -7141,8 +7143,6 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
             for k in m.get('JMeterProperties'):
                 temp_model = SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties()
                 self.jmeter_properties.append(temp_model.from_map(k))
-        if m.get('JmeterPluginLabel') is not None:
-            self.jmeter_plugin_label = m.get('JmeterPluginLabel')
         if m.get('RampUp') is not None:
             self.ramp_up = m.get('RampUp')
         if m.get('RegionId') is not None:

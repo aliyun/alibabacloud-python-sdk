@@ -1,3 +1,6 @@
+2021-12-20 Version: 1.8.7
+- Add runningData reponse field, startTimeTS, hordFor.
+
 2021-12-07 Version: 1.8.6
 - Add jmeter_plugin_label field.
 
