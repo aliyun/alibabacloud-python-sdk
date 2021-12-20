@@ -7,11 +7,13 @@ from typing import Dict, List, Any
 class AddLogicTableRouteConfigRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         route_expr: str = None,
         route_key: str = None,
         table_id: int = None,
         tid: int = None,
     ):
+        self.region_id = region_id
         self.route_expr = route_expr
         self.route_key = route_key
         self.table_id = table_id
@@ -26,6 +28,8 @@ class AddLogicTableRouteConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.route_expr is not None:
             result['RouteExpr'] = self.route_expr
         if self.route_key is not None:
@@ -38,6 +42,8 @@ class AddLogicTableRouteConfigRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RouteExpr') is not None:
             self.route_expr = m.get('RouteExpr')
         if m.get('RouteKey') is not None:
@@ -136,11 +142,13 @@ class ApproveOrderRequest(TeaModel):
         self,
         approval_type: str = None,
         comment: str = None,
+        region_id: str = None,
         tid: int = None,
         workflow_instance_id: int = None,
     ):
         self.approval_type = approval_type
         self.comment = comment
+        self.region_id = region_id
         self.tid = tid
         self.workflow_instance_id = workflow_instance_id
 
@@ -157,6 +165,8 @@ class ApproveOrderRequest(TeaModel):
             result['ApprovalType'] = self.approval_type
         if self.comment is not None:
             result['Comment'] = self.comment
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.workflow_instance_id is not None:
@@ -169,6 +179,8 @@ class ApproveOrderRequest(TeaModel):
             self.approval_type = m.get('ApprovalType')
         if m.get('Comment') is not None:
             self.comment = m.get('Comment')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         if m.get('WorkflowInstanceId') is not None:
@@ -265,6 +277,7 @@ class ChangeColumnSecLevelRequest(TeaModel):
         db_id: int = None,
         is_logic: bool = None,
         new_level: str = None,
+        region_id: str = None,
         schema_name: str = None,
         table_name: str = None,
         tid: int = None,
@@ -274,6 +287,7 @@ class ChangeColumnSecLevelRequest(TeaModel):
         self.is_logic = is_logic
         # 新的敏感等级
         self.new_level = new_level
+        self.region_id = region_id
         self.schema_name = schema_name
         self.table_name = table_name
         self.tid = tid
@@ -295,6 +309,8 @@ class ChangeColumnSecLevelRequest(TeaModel):
             result['IsLogic'] = self.is_logic
         if self.new_level is not None:
             result['NewLevel'] = self.new_level
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.schema_name is not None:
             result['SchemaName'] = self.schema_name
         if self.table_name is not None:
@@ -313,6 +329,8 @@ class ChangeColumnSecLevelRequest(TeaModel):
             self.is_logic = m.get('IsLogic')
         if m.get('NewLevel') is not None:
             self.new_level = m.get('NewLevel')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SchemaName') is not None:
             self.schema_name = m.get('SchemaName')
         if m.get('TableName') is not None:
@@ -409,10 +427,12 @@ class CloseOrderRequest(TeaModel):
         self,
         close_reason: str = None,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.close_reason = close_reason
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -428,6 +448,8 @@ class CloseOrderRequest(TeaModel):
             result['CloseReason'] = self.close_reason
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -438,6 +460,8 @@ class CloseOrderRequest(TeaModel):
             self.close_reason = m.get('CloseReason')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -647,12 +671,14 @@ class CreateDataCorrectOrderRequest(TeaModel):
         attachment_key: str = None,
         comment: str = None,
         param: CreateDataCorrectOrderRequestParam = None,
+        region_id: str = None,
         related_user_list: List[int] = None,
         tid: int = None,
     ):
         self.attachment_key = attachment_key
         self.comment = comment
         self.param = param
+        self.region_id = region_id
         self.related_user_list = related_user_list
         self.tid = tid
 
@@ -672,6 +698,8 @@ class CreateDataCorrectOrderRequest(TeaModel):
             result['Comment'] = self.comment
         if self.param is not None:
             result['Param'] = self.param.to_map()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.related_user_list is not None:
             result['RelatedUserList'] = self.related_user_list
         if self.tid is not None:
@@ -687,6 +715,8 @@ class CreateDataCorrectOrderRequest(TeaModel):
         if m.get('Param') is not None:
             temp_model = CreateDataCorrectOrderRequestParam()
             self.param = temp_model.from_map(m['Param'])
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RelatedUserList') is not None:
             self.related_user_list = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -700,12 +730,14 @@ class CreateDataCorrectOrderShrinkRequest(TeaModel):
         attachment_key: str = None,
         comment: str = None,
         param_shrink: str = None,
+        region_id: str = None,
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
         self.attachment_key = attachment_key
         self.comment = comment
         self.param_shrink = param_shrink
+        self.region_id = region_id
         self.related_user_list_shrink = related_user_list_shrink
         self.tid = tid
 
@@ -724,6 +756,8 @@ class CreateDataCorrectOrderShrinkRequest(TeaModel):
             result['Comment'] = self.comment
         if self.param_shrink is not None:
             result['Param'] = self.param_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.related_user_list_shrink is not None:
             result['RelatedUserList'] = self.related_user_list_shrink
         if self.tid is not None:
@@ -738,6 +772,8 @@ class CreateDataCorrectOrderShrinkRequest(TeaModel):
             self.comment = m.get('Comment')
         if m.get('Param') is not None:
             self.param_shrink = m.get('Param')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RelatedUserList') is not None:
             self.related_user_list_shrink = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -998,12 +1034,14 @@ class CreateDataCronClearOrderRequest(TeaModel):
         attachment_key: str = None,
         comment: str = None,
         param: CreateDataCronClearOrderRequestParam = None,
+        region_id: str = None,
         related_user_list: List[int] = None,
         tid: int = None,
     ):
         self.attachment_key = attachment_key
         self.comment = comment
         self.param = param
+        self.region_id = region_id
         self.related_user_list = related_user_list
         self.tid = tid
 
@@ -1023,6 +1061,8 @@ class CreateDataCronClearOrderRequest(TeaModel):
             result['Comment'] = self.comment
         if self.param is not None:
             result['Param'] = self.param.to_map()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.related_user_list is not None:
             result['RelatedUserList'] = self.related_user_list
         if self.tid is not None:
@@ -1038,6 +1078,8 @@ class CreateDataCronClearOrderRequest(TeaModel):
         if m.get('Param') is not None:
             temp_model = CreateDataCronClearOrderRequestParam()
             self.param = temp_model.from_map(m['Param'])
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RelatedUserList') is not None:
             self.related_user_list = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -1051,12 +1093,14 @@ class CreateDataCronClearOrderShrinkRequest(TeaModel):
         attachment_key: str = None,
         comment: str = None,
         param_shrink: str = None,
+        region_id: str = None,
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
         self.attachment_key = attachment_key
         self.comment = comment
         self.param_shrink = param_shrink
+        self.region_id = region_id
         self.related_user_list_shrink = related_user_list_shrink
         self.tid = tid
 
@@ -1075,6 +1119,8 @@ class CreateDataCronClearOrderShrinkRequest(TeaModel):
             result['Comment'] = self.comment
         if self.param_shrink is not None:
             result['Param'] = self.param_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.related_user_list_shrink is not None:
             result['RelatedUserList'] = self.related_user_list_shrink
         if self.tid is not None:
@@ -1089,6 +1135,8 @@ class CreateDataCronClearOrderShrinkRequest(TeaModel):
             self.comment = m.get('Comment')
         if m.get('Param') is not None:
             self.param_shrink = m.get('Param')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RelatedUserList') is not None:
             self.related_user_list_shrink = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -1331,12 +1379,14 @@ class CreateDataImportOrderRequest(TeaModel):
         attachment_key: str = None,
         comment: str = None,
         param: CreateDataImportOrderRequestParam = None,
+        region_id: str = None,
         related_user_list: List[int] = None,
         tid: int = None,
     ):
         self.attachment_key = attachment_key
         self.comment = comment
         self.param = param
+        self.region_id = region_id
         self.related_user_list = related_user_list
         self.tid = tid
 
@@ -1356,6 +1406,8 @@ class CreateDataImportOrderRequest(TeaModel):
             result['Comment'] = self.comment
         if self.param is not None:
             result['Param'] = self.param.to_map()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.related_user_list is not None:
             result['RelatedUserList'] = self.related_user_list
         if self.tid is not None:
@@ -1371,6 +1423,8 @@ class CreateDataImportOrderRequest(TeaModel):
         if m.get('Param') is not None:
             temp_model = CreateDataImportOrderRequestParam()
             self.param = temp_model.from_map(m['Param'])
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RelatedUserList') is not None:
             self.related_user_list = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -1384,12 +1438,14 @@ class CreateDataImportOrderShrinkRequest(TeaModel):
         attachment_key: str = None,
         comment: str = None,
         param_shrink: str = None,
+        region_id: str = None,
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
         self.attachment_key = attachment_key
         self.comment = comment
         self.param_shrink = param_shrink
+        self.region_id = region_id
         self.related_user_list_shrink = related_user_list_shrink
         self.tid = tid
 
@@ -1408,6 +1464,8 @@ class CreateDataImportOrderShrinkRequest(TeaModel):
             result['Comment'] = self.comment
         if self.param_shrink is not None:
             result['Param'] = self.param_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.related_user_list_shrink is not None:
             result['RelatedUserList'] = self.related_user_list_shrink
         if self.tid is not None:
@@ -1422,6 +1480,8 @@ class CreateDataImportOrderShrinkRequest(TeaModel):
             self.comment = m.get('Comment')
         if m.get('Param') is not None:
             self.param_shrink = m.get('Param')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RelatedUserList') is not None:
             self.related_user_list_shrink = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -1634,12 +1694,14 @@ class CreateFreeLockCorrectOrderRequest(TeaModel):
         attachment_key: str = None,
         comment: str = None,
         param: CreateFreeLockCorrectOrderRequestParam = None,
+        region_id: str = None,
         related_user_list: List[int] = None,
         tid: int = None,
     ):
         self.attachment_key = attachment_key
         self.comment = comment
         self.param = param
+        self.region_id = region_id
         self.related_user_list = related_user_list
         self.tid = tid
 
@@ -1659,6 +1721,8 @@ class CreateFreeLockCorrectOrderRequest(TeaModel):
             result['Comment'] = self.comment
         if self.param is not None:
             result['Param'] = self.param.to_map()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.related_user_list is not None:
             result['RelatedUserList'] = self.related_user_list
         if self.tid is not None:
@@ -1674,6 +1738,8 @@ class CreateFreeLockCorrectOrderRequest(TeaModel):
         if m.get('Param') is not None:
             temp_model = CreateFreeLockCorrectOrderRequestParam()
             self.param = temp_model.from_map(m['Param'])
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RelatedUserList') is not None:
             self.related_user_list = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -1687,12 +1753,14 @@ class CreateFreeLockCorrectOrderShrinkRequest(TeaModel):
         attachment_key: str = None,
         comment: str = None,
         param_shrink: str = None,
+        region_id: str = None,
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
         self.attachment_key = attachment_key
         self.comment = comment
         self.param_shrink = param_shrink
+        self.region_id = region_id
         self.related_user_list_shrink = related_user_list_shrink
         self.tid = tid
 
@@ -1711,6 +1779,8 @@ class CreateFreeLockCorrectOrderShrinkRequest(TeaModel):
             result['Comment'] = self.comment
         if self.param_shrink is not None:
             result['Param'] = self.param_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.related_user_list_shrink is not None:
             result['RelatedUserList'] = self.related_user_list_shrink
         if self.tid is not None:
@@ -1725,6 +1795,8 @@ class CreateFreeLockCorrectOrderShrinkRequest(TeaModel):
             self.comment = m.get('Comment')
         if m.get('Param') is not None:
             self.param_shrink = m.get('Param')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RelatedUserList') is not None:
             self.related_user_list_shrink = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -1826,10 +1898,12 @@ class CreateLogicDatabaseRequest(TeaModel):
         self,
         alias: str = None,
         database_ids: List[int] = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.alias = alias
         self.database_ids = database_ids
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -1845,6 +1919,8 @@ class CreateLogicDatabaseRequest(TeaModel):
             result['Alias'] = self.alias
         if self.database_ids is not None:
             result['DatabaseIds'] = self.database_ids
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -1855,6 +1931,8 @@ class CreateLogicDatabaseRequest(TeaModel):
             self.alias = m.get('Alias')
         if m.get('DatabaseIds') is not None:
             self.database_ids = m.get('DatabaseIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -1865,10 +1943,12 @@ class CreateLogicDatabaseShrinkRequest(TeaModel):
         self,
         alias: str = None,
         database_ids_shrink: str = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.alias = alias
         self.database_ids_shrink = database_ids_shrink
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -1884,6 +1964,8 @@ class CreateLogicDatabaseShrinkRequest(TeaModel):
             result['Alias'] = self.alias
         if self.database_ids_shrink is not None:
             result['DatabaseIds'] = self.database_ids_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -1894,6 +1976,8 @@ class CreateLogicDatabaseShrinkRequest(TeaModel):
             self.alias = m.get('Alias')
         if m.get('DatabaseIds') is not None:
             self.database_ids_shrink = m.get('DatabaseIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -1995,6 +2079,7 @@ class CreateOrderRequest(TeaModel):
         comment: str = None,
         plugin_param: Dict[str, Any] = None,
         plugin_type: str = None,
+        region_id: str = None,
         related_user_list: str = None,
         tid: int = None,
     ):
@@ -2002,6 +2087,7 @@ class CreateOrderRequest(TeaModel):
         self.comment = comment
         self.plugin_param = plugin_param
         self.plugin_type = plugin_type
+        self.region_id = region_id
         self.related_user_list = related_user_list
         self.tid = tid
 
@@ -2022,6 +2108,8 @@ class CreateOrderRequest(TeaModel):
             result['PluginParam'] = self.plugin_param
         if self.plugin_type is not None:
             result['PluginType'] = self.plugin_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.related_user_list is not None:
             result['RelatedUserList'] = self.related_user_list
         if self.tid is not None:
@@ -2038,6 +2126,8 @@ class CreateOrderRequest(TeaModel):
             self.plugin_param = m.get('PluginParam')
         if m.get('PluginType') is not None:
             self.plugin_type = m.get('PluginType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RelatedUserList') is not None:
             self.related_user_list = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -2052,6 +2142,7 @@ class CreateOrderShrinkRequest(TeaModel):
         comment: str = None,
         plugin_param_shrink: str = None,
         plugin_type: str = None,
+        region_id: str = None,
         related_user_list: str = None,
         tid: int = None,
     ):
@@ -2059,6 +2150,7 @@ class CreateOrderShrinkRequest(TeaModel):
         self.comment = comment
         self.plugin_param_shrink = plugin_param_shrink
         self.plugin_type = plugin_type
+        self.region_id = region_id
         self.related_user_list = related_user_list
         self.tid = tid
 
@@ -2079,6 +2171,8 @@ class CreateOrderShrinkRequest(TeaModel):
             result['PluginParam'] = self.plugin_param_shrink
         if self.plugin_type is not None:
             result['PluginType'] = self.plugin_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.related_user_list is not None:
             result['RelatedUserList'] = self.related_user_list
         if self.tid is not None:
@@ -2095,6 +2189,8 @@ class CreateOrderShrinkRequest(TeaModel):
             self.plugin_param_shrink = m.get('PluginParam')
         if m.get('PluginType') is not None:
             self.plugin_type = m.get('PluginType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RelatedUserList') is not None:
             self.related_user_list = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -2224,11 +2320,13 @@ class CreateProxyRequest(TeaModel):
         self,
         instance_id: int = None,
         password: str = None,
+        region_id: str = None,
         tid: int = None,
         username: str = None,
     ):
         self.instance_id = instance_id
         self.password = password
+        self.region_id = region_id
         self.tid = tid
         self.username = username
 
@@ -2245,6 +2343,8 @@ class CreateProxyRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.password is not None:
             result['Password'] = self.password
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.username is not None:
@@ -2257,6 +2357,8 @@ class CreateProxyRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Password') is not None:
             self.password = m.get('Password')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         if m.get('Username') is not None:
@@ -2359,12 +2461,14 @@ class CreateProxyAccessRequest(TeaModel):
         indep_account: str = None,
         indep_password: str = None,
         proxy_id: int = None,
+        region_id: str = None,
         tid: int = None,
         user_id: int = None,
     ):
         self.indep_account = indep_account
         self.indep_password = indep_password
         self.proxy_id = proxy_id
+        self.region_id = region_id
         self.tid = tid
         self.user_id = user_id
 
@@ -2383,6 +2487,8 @@ class CreateProxyAccessRequest(TeaModel):
             result['IndepPassword'] = self.indep_password
         if self.proxy_id is not None:
             result['ProxyId'] = self.proxy_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.user_id is not None:
@@ -2397,6 +2503,8 @@ class CreateProxyAccessRequest(TeaModel):
             self.indep_password = m.get('IndepPassword')
         if m.get('ProxyId') is not None:
             self.proxy_id = m.get('ProxyId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         if m.get('UserId') is not None:
@@ -2501,6 +2609,7 @@ class CreatePublishGroupTaskRequest(TeaModel):
         order_id: int = None,
         plan_time: str = None,
         publish_strategy: str = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.db_id = db_id
@@ -2508,6 +2617,7 @@ class CreatePublishGroupTaskRequest(TeaModel):
         self.order_id = order_id
         self.plan_time = plan_time
         self.publish_strategy = publish_strategy
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -2529,6 +2639,8 @@ class CreatePublishGroupTaskRequest(TeaModel):
             result['PlanTime'] = self.plan_time
         if self.publish_strategy is not None:
             result['PublishStrategy'] = self.publish_strategy
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -2545,6 +2657,8 @@ class CreatePublishGroupTaskRequest(TeaModel):
             self.plan_time = m.get('PlanTime')
         if m.get('PublishStrategy') is not None:
             self.publish_strategy = m.get('PublishStrategy')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -2682,11 +2796,13 @@ class CreateSQLReviewOrderRequest(TeaModel):
         self,
         comment: str = None,
         param: CreateSQLReviewOrderRequestParam = None,
+        region_id: str = None,
         related_user_list: List[int] = None,
         tid: int = None,
     ):
         self.comment = comment
         self.param = param
+        self.region_id = region_id
         self.related_user_list = related_user_list
         self.tid = tid
 
@@ -2704,6 +2820,8 @@ class CreateSQLReviewOrderRequest(TeaModel):
             result['Comment'] = self.comment
         if self.param is not None:
             result['Param'] = self.param.to_map()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.related_user_list is not None:
             result['RelatedUserList'] = self.related_user_list
         if self.tid is not None:
@@ -2717,6 +2835,8 @@ class CreateSQLReviewOrderRequest(TeaModel):
         if m.get('Param') is not None:
             temp_model = CreateSQLReviewOrderRequestParam()
             self.param = temp_model.from_map(m['Param'])
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RelatedUserList') is not None:
             self.related_user_list = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -2729,11 +2849,13 @@ class CreateSQLReviewOrderShrinkRequest(TeaModel):
         self,
         comment: str = None,
         param_shrink: str = None,
+        region_id: str = None,
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
         self.comment = comment
         self.param_shrink = param_shrink
+        self.region_id = region_id
         self.related_user_list_shrink = related_user_list_shrink
         self.tid = tid
 
@@ -2750,6 +2872,8 @@ class CreateSQLReviewOrderShrinkRequest(TeaModel):
             result['Comment'] = self.comment
         if self.param_shrink is not None:
             result['Param'] = self.param_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.related_user_list_shrink is not None:
             result['RelatedUserList'] = self.related_user_list_shrink
         if self.tid is not None:
@@ -2762,6 +2886,8 @@ class CreateSQLReviewOrderShrinkRequest(TeaModel):
             self.comment = m.get('Comment')
         if m.get('Param') is not None:
             self.param_shrink = m.get('Param')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RelatedUserList') is not None:
             self.related_user_list_shrink = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -3046,12 +3172,14 @@ class CreateStructSyncOrderRequest(TeaModel):
         attachment_key: str = None,
         comment: str = None,
         param: CreateStructSyncOrderRequestParam = None,
+        region_id: str = None,
         related_user_list: List[int] = None,
         tid: int = None,
     ):
         self.attachment_key = attachment_key
         self.comment = comment
         self.param = param
+        self.region_id = region_id
         self.related_user_list = related_user_list
         self.tid = tid
 
@@ -3071,6 +3199,8 @@ class CreateStructSyncOrderRequest(TeaModel):
             result['Comment'] = self.comment
         if self.param is not None:
             result['Param'] = self.param.to_map()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.related_user_list is not None:
             result['RelatedUserList'] = self.related_user_list
         if self.tid is not None:
@@ -3086,6 +3216,8 @@ class CreateStructSyncOrderRequest(TeaModel):
         if m.get('Param') is not None:
             temp_model = CreateStructSyncOrderRequestParam()
             self.param = temp_model.from_map(m['Param'])
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RelatedUserList') is not None:
             self.related_user_list = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -3099,12 +3231,14 @@ class CreateStructSyncOrderShrinkRequest(TeaModel):
         attachment_key: str = None,
         comment: str = None,
         param_shrink: str = None,
+        region_id: str = None,
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
         self.attachment_key = attachment_key
         self.comment = comment
         self.param_shrink = param_shrink
+        self.region_id = region_id
         self.related_user_list_shrink = related_user_list_shrink
         self.tid = tid
 
@@ -3123,6 +3257,8 @@ class CreateStructSyncOrderShrinkRequest(TeaModel):
             result['Comment'] = self.comment
         if self.param_shrink is not None:
             result['Param'] = self.param_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.related_user_list_shrink is not None:
             result['RelatedUserList'] = self.related_user_list_shrink
         if self.tid is not None:
@@ -3137,6 +3273,8 @@ class CreateStructSyncOrderShrinkRequest(TeaModel):
             self.comment = m.get('Comment')
         if m.get('Param') is not None:
             self.param_shrink = m.get('Param')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RelatedUserList') is not None:
             self.related_user_list_shrink = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -3238,11 +3376,13 @@ class CreateUploadFileJobRequest(TeaModel):
         self,
         file_name: str = None,
         file_source: str = None,
+        region_id: str = None,
         tid: int = None,
         upload_url: str = None,
     ):
         self.file_name = file_name
         self.file_source = file_source
+        self.region_id = region_id
         self.tid = tid
         self.upload_url = upload_url
 
@@ -3259,6 +3399,8 @@ class CreateUploadFileJobRequest(TeaModel):
             result['FileName'] = self.file_name
         if self.file_source is not None:
             result['FileSource'] = self.file_source
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.upload_url is not None:
@@ -3271,6 +3413,8 @@ class CreateUploadFileJobRequest(TeaModel):
             self.file_name = m.get('FileName')
         if m.get('FileSource') is not None:
             self.file_source = m.get('FileSource')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         if m.get('UploadURL') is not None:
@@ -3411,11 +3555,13 @@ class CreateUploadOSSFileJobRequest(TeaModel):
         self,
         file_name: str = None,
         file_source: str = None,
+        region_id: str = None,
         tid: int = None,
         upload_target: CreateUploadOSSFileJobRequestUploadTarget = None,
     ):
         self.file_name = file_name
         self.file_source = file_source
+        self.region_id = region_id
         self.tid = tid
         self.upload_target = upload_target
 
@@ -3433,6 +3579,8 @@ class CreateUploadOSSFileJobRequest(TeaModel):
             result['FileName'] = self.file_name
         if self.file_source is not None:
             result['FileSource'] = self.file_source
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.upload_target is not None:
@@ -3445,6 +3593,8 @@ class CreateUploadOSSFileJobRequest(TeaModel):
             self.file_name = m.get('FileName')
         if m.get('FileSource') is not None:
             self.file_source = m.get('FileSource')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         if m.get('UploadTarget') is not None:
@@ -3458,11 +3608,13 @@ class CreateUploadOSSFileJobShrinkRequest(TeaModel):
         self,
         file_name: str = None,
         file_source: str = None,
+        region_id: str = None,
         tid: int = None,
         upload_target_shrink: str = None,
     ):
         self.file_name = file_name
         self.file_source = file_source
+        self.region_id = region_id
         self.tid = tid
         self.upload_target_shrink = upload_target_shrink
 
@@ -3479,6 +3631,8 @@ class CreateUploadOSSFileJobShrinkRequest(TeaModel):
             result['FileName'] = self.file_name
         if self.file_source is not None:
             result['FileSource'] = self.file_source
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.upload_target_shrink is not None:
@@ -3491,6 +3645,8 @@ class CreateUploadOSSFileJobShrinkRequest(TeaModel):
             self.file_name = m.get('FileName')
         if m.get('FileSource') is not None:
             self.file_source = m.get('FileSource')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         if m.get('UploadTarget') is not None:
@@ -3592,11 +3748,13 @@ class DeleteInstanceRequest(TeaModel):
         self,
         host: str = None,
         port: int = None,
+        region_id: str = None,
         sid: str = None,
         tid: int = None,
     ):
         self.host = host
         self.port = port
+        self.region_id = region_id
         self.sid = sid
         self.tid = tid
 
@@ -3613,6 +3771,8 @@ class DeleteInstanceRequest(TeaModel):
             result['Host'] = self.host
         if self.port is not None:
             result['Port'] = self.port
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.sid is not None:
             result['Sid'] = self.sid
         if self.tid is not None:
@@ -3625,6 +3785,8 @@ class DeleteInstanceRequest(TeaModel):
             self.host = m.get('Host')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Sid') is not None:
             self.sid = m.get('Sid')
         if m.get('Tid') is not None:
@@ -3718,9 +3880,11 @@ class DeleteLogicDatabaseRequest(TeaModel):
     def __init__(
         self,
         logic_db_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.logic_db_id = logic_db_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -3734,6 +3898,8 @@ class DeleteLogicDatabaseRequest(TeaModel):
         result = dict()
         if self.logic_db_id is not None:
             result['LogicDbId'] = self.logic_db_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -3742,6 +3908,8 @@ class DeleteLogicDatabaseRequest(TeaModel):
         m = m or dict()
         if m.get('LogicDbId') is not None:
             self.logic_db_id = m.get('LogicDbId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -3833,10 +4001,12 @@ class DeleteLogicDatabaseResponse(TeaModel):
 class DeleteLogicTableRouteConfigRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         route_key: str = None,
         table_id: int = None,
         tid: int = None,
     ):
+        self.region_id = region_id
         self.route_key = route_key
         self.table_id = table_id
         self.tid = tid
@@ -3850,6 +4020,8 @@ class DeleteLogicTableRouteConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.route_key is not None:
             result['RouteKey'] = self.route_key
         if self.table_id is not None:
@@ -3860,6 +4032,8 @@ class DeleteLogicTableRouteConfigRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RouteKey') is not None:
             self.route_key = m.get('RouteKey')
         if m.get('TableId') is not None:
@@ -3955,9 +4129,11 @@ class DeleteProxyRequest(TeaModel):
     def __init__(
         self,
         proxy_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.proxy_id = proxy_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -3971,6 +4147,8 @@ class DeleteProxyRequest(TeaModel):
         result = dict()
         if self.proxy_id is not None:
             result['ProxyId'] = self.proxy_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -3979,6 +4157,8 @@ class DeleteProxyRequest(TeaModel):
         m = m or dict()
         if m.get('ProxyId') is not None:
             self.proxy_id = m.get('ProxyId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -4071,9 +4251,11 @@ class DeleteProxyAccessRequest(TeaModel):
     def __init__(
         self,
         proxy_access_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.proxy_access_id = proxy_access_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -4087,6 +4269,8 @@ class DeleteProxyAccessRequest(TeaModel):
         result = dict()
         if self.proxy_access_id is not None:
             result['ProxyAccessId'] = self.proxy_access_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -4095,6 +4279,8 @@ class DeleteProxyAccessRequest(TeaModel):
         m = m or dict()
         if m.get('ProxyAccessId') is not None:
             self.proxy_access_id = m.get('ProxyAccessId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -4186,9 +4372,11 @@ class DeleteProxyAccessResponse(TeaModel):
 class DeleteUserRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         tid: int = None,
         uid: str = None,
     ):
+        self.region_id = region_id
         self.tid = tid
         self.uid = uid
 
@@ -4201,6 +4389,8 @@ class DeleteUserRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.uid is not None:
@@ -4209,6 +4399,8 @@ class DeleteUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         if m.get('Uid') is not None:
@@ -4301,9 +4493,11 @@ class DeleteUserResponse(TeaModel):
 class DisableUserRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         tid: int = None,
         uid: str = None,
     ):
+        self.region_id = region_id
         self.tid = tid
         self.uid = uid
 
@@ -4316,6 +4510,8 @@ class DisableUserRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.uid is not None:
@@ -4324,6 +4520,8 @@ class DisableUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         if m.get('Uid') is not None:
@@ -4419,11 +4617,13 @@ class EditLogicDatabaseRequest(TeaModel):
         alias: str = None,
         database_ids: List[int] = None,
         logic_db_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.alias = alias
         self.database_ids = database_ids
         self.logic_db_id = logic_db_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -4441,6 +4641,8 @@ class EditLogicDatabaseRequest(TeaModel):
             result['DatabaseIds'] = self.database_ids
         if self.logic_db_id is not None:
             result['LogicDbId'] = self.logic_db_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -4453,6 +4655,8 @@ class EditLogicDatabaseRequest(TeaModel):
             self.database_ids = m.get('DatabaseIds')
         if m.get('LogicDbId') is not None:
             self.logic_db_id = m.get('LogicDbId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -4464,11 +4668,13 @@ class EditLogicDatabaseShrinkRequest(TeaModel):
         alias: str = None,
         database_ids_shrink: str = None,
         logic_db_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.alias = alias
         self.database_ids_shrink = database_ids_shrink
         self.logic_db_id = logic_db_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -4486,6 +4692,8 @@ class EditLogicDatabaseShrinkRequest(TeaModel):
             result['DatabaseIds'] = self.database_ids_shrink
         if self.logic_db_id is not None:
             result['LogicDbId'] = self.logic_db_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -4498,6 +4706,8 @@ class EditLogicDatabaseShrinkRequest(TeaModel):
             self.database_ids_shrink = m.get('DatabaseIds')
         if m.get('LogicDbId') is not None:
             self.logic_db_id = m.get('LogicDbId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -4589,9 +4799,11 @@ class EditLogicDatabaseResponse(TeaModel):
 class EnableUserRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         tid: int = None,
         uid: str = None,
     ):
+        self.region_id = region_id
         self.tid = tid
         self.uid = uid
 
@@ -4604,6 +4816,8 @@ class EnableUserRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.uid is not None:
@@ -4612,6 +4826,8 @@ class EnableUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         if m.get('Uid') is not None:
@@ -4706,10 +4922,12 @@ class ExecuteDataCorrectRequest(TeaModel):
         self,
         action_detail: Dict[str, Any] = None,
         order_id: int = None,
+        region_id: str = None,
         tid: str = None,
     ):
         self.action_detail = action_detail
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -4725,6 +4943,8 @@ class ExecuteDataCorrectRequest(TeaModel):
             result['ActionDetail'] = self.action_detail
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -4735,6 +4955,8 @@ class ExecuteDataCorrectRequest(TeaModel):
             self.action_detail = m.get('ActionDetail')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -4745,10 +4967,12 @@ class ExecuteDataCorrectShrinkRequest(TeaModel):
         self,
         action_detail_shrink: str = None,
         order_id: int = None,
+        region_id: str = None,
         tid: str = None,
     ):
         self.action_detail_shrink = action_detail_shrink
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -4764,6 +4988,8 @@ class ExecuteDataCorrectShrinkRequest(TeaModel):
             result['ActionDetail'] = self.action_detail_shrink
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -4774,6 +5000,8 @@ class ExecuteDataCorrectShrinkRequest(TeaModel):
             self.action_detail_shrink = m.get('ActionDetail')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -4866,10 +5094,12 @@ class ExecuteDataExportRequest(TeaModel):
         self,
         action_detail: Dict[str, Any] = None,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.action_detail = action_detail
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -4885,6 +5115,8 @@ class ExecuteDataExportRequest(TeaModel):
             result['ActionDetail'] = self.action_detail
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -4895,6 +5127,8 @@ class ExecuteDataExportRequest(TeaModel):
             self.action_detail = m.get('ActionDetail')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -4905,10 +5139,12 @@ class ExecuteDataExportShrinkRequest(TeaModel):
         self,
         action_detail_shrink: str = None,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.action_detail_shrink = action_detail_shrink
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -4924,6 +5160,8 @@ class ExecuteDataExportShrinkRequest(TeaModel):
             result['ActionDetail'] = self.action_detail_shrink
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -4934,6 +5172,8 @@ class ExecuteDataExportShrinkRequest(TeaModel):
             self.action_detail_shrink = m.get('ActionDetail')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -5026,11 +5266,13 @@ class ExecuteScriptRequest(TeaModel):
         self,
         db_id: int = None,
         logic: bool = None,
+        region_id: str = None,
         script: str = None,
         tid: int = None,
     ):
         self.db_id = db_id
         self.logic = logic
+        self.region_id = region_id
         self.script = script
         self.tid = tid
 
@@ -5047,6 +5289,8 @@ class ExecuteScriptRequest(TeaModel):
             result['DbId'] = self.db_id
         if self.logic is not None:
             result['Logic'] = self.logic
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.script is not None:
             result['Script'] = self.script
         if self.tid is not None:
@@ -5059,6 +5303,8 @@ class ExecuteScriptRequest(TeaModel):
             self.db_id = m.get('DbId')
         if m.get('Logic') is not None:
             self.logic = m.get('Logic')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Script') is not None:
             self.script = m.get('Script')
         if m.get('Tid') is not None:
@@ -5217,9 +5463,11 @@ class ExecuteStructSyncRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -5233,6 +5481,8 @@ class ExecuteStructSyncRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -5241,6 +5491,8 @@ class ExecuteStructSyncRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -5332,9 +5584,11 @@ class ExecuteStructSyncResponse(TeaModel):
 class GetApprovalDetailRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         tid: int = None,
         workflow_instance_id: int = None,
     ):
+        self.region_id = region_id
         self.tid = tid
         self.workflow_instance_id = workflow_instance_id
 
@@ -5347,6 +5601,8 @@ class GetApprovalDetailRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.workflow_instance_id is not None:
@@ -5355,6 +5611,8 @@ class GetApprovalDetailRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         if m.get('WorkflowInstanceId') is not None:
@@ -5761,9 +6019,11 @@ class GetDBTaskSQLJobLogRequest(TeaModel):
     def __init__(
         self,
         job_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.job_id = job_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -5777,6 +6037,8 @@ class GetDBTaskSQLJobLogRequest(TeaModel):
         result = dict()
         if self.job_id is not None:
             result['JobId'] = self.job_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -5785,6 +6047,8 @@ class GetDBTaskSQLJobLogRequest(TeaModel):
         m = m or dict()
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -5883,9 +6147,11 @@ class GetDBTopologyRequest(TeaModel):
     def __init__(
         self,
         logic_db_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.logic_db_id = logic_db_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -5899,6 +6165,8 @@ class GetDBTopologyRequest(TeaModel):
         result = dict()
         if self.logic_db_id is not None:
             result['LogicDbId'] = self.logic_db_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -5907,6 +6175,8 @@ class GetDBTopologyRequest(TeaModel):
         m = m or dict()
         if m.get('LogicDbId') is not None:
             self.logic_db_id = m.get('LogicDbId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -6160,10 +6430,12 @@ class GetDataCorrectBackupFilesRequest(TeaModel):
         self,
         action_detail: Dict[str, Any] = None,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.action_detail = action_detail
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -6179,6 +6451,8 @@ class GetDataCorrectBackupFilesRequest(TeaModel):
             result['ActionDetail'] = self.action_detail
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -6189,6 +6463,8 @@ class GetDataCorrectBackupFilesRequest(TeaModel):
             self.action_detail = m.get('ActionDetail')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -6199,10 +6475,12 @@ class GetDataCorrectBackupFilesShrinkRequest(TeaModel):
         self,
         action_detail_shrink: str = None,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.action_detail_shrink = action_detail_shrink
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -6218,6 +6496,8 @@ class GetDataCorrectBackupFilesShrinkRequest(TeaModel):
             result['ActionDetail'] = self.action_detail_shrink
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -6228,6 +6508,8 @@ class GetDataCorrectBackupFilesShrinkRequest(TeaModel):
             self.action_detail_shrink = m.get('ActionDetail')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -6354,9 +6636,11 @@ class GetDataCorrectOrderDetailRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -6370,6 +6654,8 @@ class GetDataCorrectOrderDetailRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -6378,6 +6664,8 @@ class GetDataCorrectOrderDetailRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -6777,9 +7065,11 @@ class GetDataCorrectSQLFileRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -6793,6 +7083,8 @@ class GetDataCorrectSQLFileRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -6801,6 +7093,8 @@ class GetDataCorrectSQLFileRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -6899,9 +7193,11 @@ class GetDataCorrectTaskDetailRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -6915,6 +7211,8 @@ class GetDataCorrectTaskDetailRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -6923,6 +7221,8 @@ class GetDataCorrectTaskDetailRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -7070,11 +7370,13 @@ class GetDataCronClearTaskDetailListRequest(TeaModel):
         order_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -7092,6 +7394,8 @@ class GetDataCronClearTaskDetailListRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -7104,6 +7408,8 @@ class GetDataCronClearTaskDetailListRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -7261,9 +7567,11 @@ class GetDataExportDownloadURLRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -7277,6 +7585,8 @@ class GetDataExportDownloadURLRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -7285,6 +7595,8 @@ class GetDataExportDownloadURLRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -7423,9 +7735,11 @@ class GetDataExportOrderDetailRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -7439,6 +7753,8 @@ class GetDataExportOrderDetailRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -7447,6 +7763,8 @@ class GetDataExportOrderDetailRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -7693,12 +8011,14 @@ class GetDatabaseRequest(TeaModel):
         self,
         host: str = None,
         port: int = None,
+        region_id: str = None,
         schema_name: str = None,
         sid: str = None,
         tid: int = None,
     ):
         self.host = host
         self.port = port
+        self.region_id = region_id
         self.schema_name = schema_name
         self.sid = sid
         self.tid = tid
@@ -7716,6 +8036,8 @@ class GetDatabaseRequest(TeaModel):
             result['Host'] = self.host
         if self.port is not None:
             result['Port'] = self.port
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.schema_name is not None:
             result['SchemaName'] = self.schema_name
         if self.sid is not None:
@@ -7730,6 +8052,8 @@ class GetDatabaseRequest(TeaModel):
             self.host = m.get('Host')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SchemaName') is not None:
             self.schema_name = m.get('SchemaName')
         if m.get('Sid') is not None:
@@ -8010,11 +8334,13 @@ class GetInstanceRequest(TeaModel):
         self,
         host: str = None,
         port: int = None,
+        region_id: str = None,
         sid: str = None,
         tid: int = None,
     ):
         self.host = host
         self.port = port
+        self.region_id = region_id
         self.sid = sid
         self.tid = tid
 
@@ -8031,6 +8357,8 @@ class GetInstanceRequest(TeaModel):
             result['Host'] = self.host
         if self.port is not None:
             result['Port'] = self.port
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.sid is not None:
             result['Sid'] = self.sid
         if self.tid is not None:
@@ -8043,6 +8371,8 @@ class GetInstanceRequest(TeaModel):
             self.host = m.get('Host')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Sid') is not None:
             self.sid = m.get('Sid')
         if m.get('Tid') is not None:
@@ -8410,9 +8740,11 @@ class GetLogicDatabaseRequest(TeaModel):
     def __init__(
         self,
         db_id: str = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.db_id = db_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -8426,6 +8758,8 @@ class GetLogicDatabaseRequest(TeaModel):
         result = dict()
         if self.db_id is not None:
             result['DbId'] = self.db_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -8434,6 +8768,8 @@ class GetLogicDatabaseRequest(TeaModel):
         m = m or dict()
         if m.get('DbId') is not None:
             self.db_id = m.get('DbId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -8666,9 +9002,11 @@ class GetLogicDatabaseResponse(TeaModel):
 class GetMetaTableColumnRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         table_guid: str = None,
         tid: int = None,
     ):
+        self.region_id = region_id
         self.table_guid = table_guid
         self.tid = tid
 
@@ -8681,6 +9019,8 @@ class GetMetaTableColumnRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.table_guid is not None:
             result['TableGuid'] = self.table_guid
         if self.tid is not None:
@@ -8689,6 +9029,8 @@ class GetMetaTableColumnRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('TableGuid') is not None:
             self.table_guid = m.get('TableGuid')
         if m.get('Tid') is not None:
@@ -8888,9 +9230,11 @@ class GetMetaTableColumnResponse(TeaModel):
 class GetMetaTableDetailInfoRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         table_guid: str = None,
         tid: int = None,
     ):
+        self.region_id = region_id
         self.table_guid = table_guid
         self.tid = tid
 
@@ -8903,6 +9247,8 @@ class GetMetaTableDetailInfoRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.table_guid is not None:
             result['TableGuid'] = self.table_guid
         if self.tid is not None:
@@ -8911,6 +9257,8 @@ class GetMetaTableDetailInfoRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('TableGuid') is not None:
             self.table_guid = m.get('TableGuid')
         if m.get('Tid') is not None:
@@ -9197,6 +9545,7 @@ class GetOpLogRequest(TeaModel):
         module: str = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         start_time: str = None,
         tid: int = None,
     ):
@@ -9204,6 +9553,7 @@ class GetOpLogRequest(TeaModel):
         self.module = module
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.start_time = start_time
         self.tid = tid
 
@@ -9224,6 +9574,8 @@ class GetOpLogRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.tid is not None:
@@ -9240,6 +9592,8 @@ class GetOpLogRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Tid') is not None:
@@ -9451,9 +9805,11 @@ class GetOrderBaseInfoRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -9467,6 +9823,8 @@ class GetOrderBaseInfoRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -9475,6 +9833,8 @@ class GetOrderBaseInfoRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -9732,9 +10092,11 @@ class GetOwnerApplyOrderDetailRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -9748,6 +10110,8 @@ class GetOwnerApplyOrderDetailRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -9756,6 +10120,8 @@ class GetOwnerApplyOrderDetailRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -9995,9 +10361,11 @@ class GetPermApplyOrderDetailRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -10011,6 +10379,8 @@ class GetPermApplyOrderDetailRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -10019,6 +10389,8 @@ class GetPermApplyOrderDetailRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -10432,9 +10804,11 @@ class GetPhysicalDatabaseRequest(TeaModel):
     def __init__(
         self,
         db_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.db_id = db_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -10448,6 +10822,8 @@ class GetPhysicalDatabaseRequest(TeaModel):
         result = dict()
         if self.db_id is not None:
             result['DbId'] = self.db_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -10456,6 +10832,8 @@ class GetPhysicalDatabaseRequest(TeaModel):
         m = m or dict()
         if m.get('DbId') is not None:
             self.db_id = m.get('DbId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -10732,10 +11110,12 @@ class GetProxyRequest(TeaModel):
         self,
         instance_id: int = None,
         proxy_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.instance_id = instance_id
         self.proxy_id = proxy_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -10751,6 +11131,8 @@ class GetProxyRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.proxy_id is not None:
             result['ProxyId'] = self.proxy_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -10761,6 +11143,8 @@ class GetProxyRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('ProxyId') is not None:
             self.proxy_id = m.get('ProxyId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -10913,9 +11297,11 @@ class GetSQLReviewCheckResultStatusRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -10929,6 +11315,8 @@ class GetSQLReviewCheckResultStatusRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -10937,6 +11325,8 @@ class GetSQLReviewCheckResultStatusRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -11199,9 +11589,11 @@ class GetSQLReviewCheckResultStatusResponse(TeaModel):
 class GetSQLReviewOptimizeDetailRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         sqlreview_query_key: str = None,
         tid: int = None,
     ):
+        self.region_id = region_id
         self.sqlreview_query_key = sqlreview_query_key
         self.tid = tid
 
@@ -11214,6 +11606,8 @@ class GetSQLReviewOptimizeDetailRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.sqlreview_query_key is not None:
             result['SQLReviewQueryKey'] = self.sqlreview_query_key
         if self.tid is not None:
@@ -11222,6 +11616,8 @@ class GetSQLReviewOptimizeDetailRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SQLReviewQueryKey') is not None:
             self.sqlreview_query_key = m.get('SQLReviewQueryKey')
         if m.get('Tid') is not None:
@@ -11529,11 +11925,13 @@ class GetStructSyncExecSqlDetailRequest(TeaModel):
         order_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -11551,6 +11949,8 @@ class GetStructSyncExecSqlDetailRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -11563,6 +11963,8 @@ class GetStructSyncExecSqlDetailRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -11699,12 +12101,14 @@ class GetStructSyncJobAnalyzeResultRequest(TeaModel):
         order_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.compare_type = compare_type
         self.order_id = order_id
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -11724,6 +12128,8 @@ class GetStructSyncJobAnalyzeResultRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -11738,6 +12144,8 @@ class GetStructSyncJobAnalyzeResultRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -11960,9 +12368,11 @@ class GetStructSyncJobDetailRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -11976,6 +12386,8 @@ class GetStructSyncJobDetailRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -11984,6 +12396,8 @@ class GetStructSyncJobDetailRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -12153,9 +12567,11 @@ class GetStructSyncOrderDetailRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -12169,6 +12585,8 @@ class GetStructSyncOrderDetailRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -12177,6 +12595,8 @@ class GetStructSyncOrderDetailRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -12554,9 +12974,11 @@ class GetStructSyncOrderDetailResponse(TeaModel):
 class GetTableDBTopologyRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         table_guid: str = None,
         tid: int = None,
     ):
+        self.region_id = region_id
         self.table_guid = table_guid
         self.tid = tid
 
@@ -12569,6 +12991,8 @@ class GetTableDBTopologyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.table_guid is not None:
             result['TableGuid'] = self.table_guid
         if self.tid is not None:
@@ -12577,6 +13001,8 @@ class GetTableDBTopologyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('TableGuid') is not None:
             self.table_guid = m.get('TableGuid')
         if m.get('Tid') is not None:
@@ -12881,9 +13307,11 @@ class GetTableDBTopologyResponse(TeaModel):
 class GetTableTopologyRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         table_guid: str = None,
         tid: int = None,
     ):
+        self.region_id = region_id
         self.table_guid = table_guid
         self.tid = tid
 
@@ -12896,6 +13324,8 @@ class GetTableTopologyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.table_guid is not None:
             result['TableGuid'] = self.table_guid
         if self.tid is not None:
@@ -12904,6 +13334,8 @@ class GetTableTopologyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('TableGuid') is not None:
             self.table_guid = m.get('TableGuid')
         if m.get('Tid') is not None:
@@ -13145,10 +13577,12 @@ class GetTableTopologyResponse(TeaModel):
 class GetUserRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         tid: int = None,
         uid: str = None,
         user_id: str = None,
     ):
+        self.region_id = region_id
         self.tid = tid
         self.uid = uid
         self.user_id = user_id
@@ -13162,6 +13596,8 @@ class GetUserRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.uid is not None:
@@ -13172,6 +13608,8 @@ class GetUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         if m.get('Uid') is not None:
@@ -13462,8 +13900,10 @@ class GetUserResponse(TeaModel):
 class GetUserActiveTenantRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         tid: int = None,
     ):
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -13475,12 +13915,16 @@ class GetUserActiveTenantRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -13619,9 +14063,11 @@ class GetUserUploadFileJobRequest(TeaModel):
     def __init__(
         self,
         job_key: str = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.job_key = job_key
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -13635,6 +14081,8 @@ class GetUserUploadFileJobRequest(TeaModel):
         result = dict()
         if self.job_key is not None:
             result['JobKey'] = self.job_key
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -13643,6 +14091,8 @@ class GetUserUploadFileJobRequest(TeaModel):
         m = m or dict()
         if m.get('JobKey') is not None:
             self.job_key = m.get('JobKey')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -13876,6 +14326,7 @@ class GrantUserPermissionRequest(TeaModel):
         instance_id: int = None,
         logic: bool = None,
         perm_types: str = None,
+        region_id: str = None,
         table_id: str = None,
         table_name: str = None,
         tid: int = None,
@@ -13887,6 +14338,7 @@ class GrantUserPermissionRequest(TeaModel):
         self.instance_id = instance_id
         self.logic = logic
         self.perm_types = perm_types
+        self.region_id = region_id
         self.table_id = table_id
         self.table_name = table_name
         self.tid = tid
@@ -13913,6 +14365,8 @@ class GrantUserPermissionRequest(TeaModel):
             result['Logic'] = self.logic
         if self.perm_types is not None:
             result['PermTypes'] = self.perm_types
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.table_id is not None:
             result['TableId'] = self.table_id
         if self.table_name is not None:
@@ -13937,6 +14391,8 @@ class GrantUserPermissionRequest(TeaModel):
             self.logic = m.get('Logic')
         if m.get('PermTypes') is not None:
             self.perm_types = m.get('PermTypes')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('TableId') is not None:
             self.table_id = m.get('TableId')
         if m.get('TableName') is not None:
@@ -14034,9 +14490,11 @@ class InspectProxyAccessSecretRequest(TeaModel):
     def __init__(
         self,
         proxy_access_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.proxy_access_id = proxy_access_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -14050,6 +14508,8 @@ class InspectProxyAccessSecretRequest(TeaModel):
         result = dict()
         if self.proxy_access_id is not None:
             result['ProxyAccessId'] = self.proxy_access_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -14058,6 +14518,8 @@ class InspectProxyAccessSecretRequest(TeaModel):
         m = m or dict()
         if m.get('ProxyAccessId') is not None:
             self.proxy_access_id = m.get('ProxyAccessId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -14156,10 +14618,12 @@ class ListColumnsRequest(TeaModel):
     def __init__(
         self,
         logic: bool = None,
+        region_id: str = None,
         table_id: str = None,
         tid: int = None,
     ):
         self.logic = logic
+        self.region_id = region_id
         self.table_id = table_id
         self.tid = tid
 
@@ -14174,6 +14638,8 @@ class ListColumnsRequest(TeaModel):
         result = dict()
         if self.logic is not None:
             result['Logic'] = self.logic
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.table_id is not None:
             result['TableId'] = self.table_id
         if self.tid is not None:
@@ -14184,6 +14650,8 @@ class ListColumnsRequest(TeaModel):
         m = m or dict()
         if m.get('Logic') is not None:
             self.logic = m.get('Logic')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('TableId') is not None:
             self.table_id = m.get('TableId')
         if m.get('Tid') is not None:
@@ -14421,11 +14889,13 @@ class ListDBTaskSQLJobRequest(TeaModel):
         dbtask_group_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.dbtask_group_id = dbtask_group_id
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -14443,6 +14913,8 @@ class ListDBTaskSQLJobRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -14455,6 +14927,8 @@ class ListDBTaskSQLJobRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -14656,11 +15130,13 @@ class ListDBTaskSQLJobDetailRequest(TeaModel):
         job_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.job_id = job_id
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -14678,6 +15154,8 @@ class ListDBTaskSQLJobDetailRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -14690,6 +15168,8 @@ class ListDBTaskSQLJobDetailRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -14698,8 +15178,10 @@ class ListDBTaskSQLJobDetailRequest(TeaModel):
 class ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList(TeaModel):
     def __init__(
         self,
+        affect_rows: int = None,
         current_sql: str = None,
         db_id: int = None,
+        end_time: str = None,
         execute_count: int = None,
         job_detail_id: int = None,
         job_id: int = None,
@@ -14707,10 +15189,14 @@ class ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList(TeaModel):
         logic: bool = None,
         skip: bool = None,
         sql_type: str = None,
+        start_time: str = None,
         status: str = None,
+        time_delay: int = None,
     ):
+        self.affect_rows = affect_rows
         self.current_sql = current_sql
         self.db_id = db_id
+        self.end_time = end_time
         self.execute_count = execute_count
         self.job_detail_id = job_detail_id
         self.job_id = job_id
@@ -14718,7 +15204,9 @@ class ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList(TeaModel):
         self.logic = logic
         self.skip = skip
         self.sql_type = sql_type
+        self.start_time = start_time
         self.status = status
+        self.time_delay = time_delay
 
     def validate(self):
         pass
@@ -14729,10 +15217,14 @@ class ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList(TeaModel):
             return _map
 
         result = dict()
+        if self.affect_rows is not None:
+            result['AffectRows'] = self.affect_rows
         if self.current_sql is not None:
             result['CurrentSql'] = self.current_sql
         if self.db_id is not None:
             result['DbId'] = self.db_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.execute_count is not None:
             result['ExecuteCount'] = self.execute_count
         if self.job_detail_id is not None:
@@ -14747,16 +15239,24 @@ class ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList(TeaModel):
             result['Skip'] = self.skip
         if self.sql_type is not None:
             result['SqlType'] = self.sql_type
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         if self.status is not None:
             result['Status'] = self.status
+        if self.time_delay is not None:
+            result['TimeDelay'] = self.time_delay
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AffectRows') is not None:
+            self.affect_rows = m.get('AffectRows')
         if m.get('CurrentSql') is not None:
             self.current_sql = m.get('CurrentSql')
         if m.get('DbId') is not None:
             self.db_id = m.get('DbId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('ExecuteCount') is not None:
             self.execute_count = m.get('ExecuteCount')
         if m.get('JobDetailId') is not None:
@@ -14771,8 +15271,12 @@ class ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList(TeaModel):
             self.skip = m.get('Skip')
         if m.get('SqlType') is not None:
             self.sql_type = m.get('SqlType')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('TimeDelay') is not None:
+            self.time_delay = m.get('TimeDelay')
         return self
 
 
@@ -14883,9 +15387,11 @@ class ListDDLPublishRecordsRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -14899,6 +15405,8 @@ class ListDDLPublishRecordsRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -14907,6 +15415,8 @@ class ListDDLPublishRecordsRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -15232,11 +15742,13 @@ class ListDataCorrectPreCheckDBRequest(TeaModel):
         order_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -15254,6 +15766,8 @@ class ListDataCorrectPreCheckDBRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -15266,6 +15780,8 @@ class ListDataCorrectPreCheckDBRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -15414,12 +15930,14 @@ class ListDataCorrectPreCheckSQLRequest(TeaModel):
         order_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.db_id = db_id
         self.order_id = order_id
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -15439,6 +15957,8 @@ class ListDataCorrectPreCheckSQLRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -15453,6 +15973,8 @@ class ListDataCorrectPreCheckSQLRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -15620,6 +16142,7 @@ class ListDatabaseUserPermssionsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         perm_type: str = None,
+        region_id: str = None,
         tid: int = None,
         user_name: str = None,
     ):
@@ -15628,6 +16151,7 @@ class ListDatabaseUserPermssionsRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.perm_type = perm_type
+        self.region_id = region_id
         self.tid = tid
         self.user_name = user_name
 
@@ -15650,6 +16174,8 @@ class ListDatabaseUserPermssionsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.perm_type is not None:
             result['PermType'] = self.perm_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.user_name is not None:
@@ -15668,6 +16194,8 @@ class ListDatabaseUserPermssionsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('PermType') is not None:
             self.perm_type = m.get('PermType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         if m.get('UserName') is not None:
@@ -16017,11 +16545,13 @@ class ListDatabasesRequest(TeaModel):
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.instance_id = instance_id
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -16039,6 +16569,8 @@ class ListDatabasesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -16051,6 +16583,8 @@ class ListDatabasesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -16367,10 +16901,12 @@ class ListIndexesRequest(TeaModel):
     def __init__(
         self,
         logic: bool = None,
+        region_id: str = None,
         table_id: str = None,
         tid: int = None,
     ):
         self.logic = logic
+        self.region_id = region_id
         self.table_id = table_id
         self.tid = tid
 
@@ -16385,6 +16921,8 @@ class ListIndexesRequest(TeaModel):
         result = dict()
         if self.logic is not None:
             result['Logic'] = self.logic
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.table_id is not None:
             result['TableId'] = self.table_id
         if self.tid is not None:
@@ -16395,6 +16933,8 @@ class ListIndexesRequest(TeaModel):
         m = m or dict()
         if m.get('Logic') is not None:
             self.logic = m.get('Logic')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('TableId') is not None:
             self.table_id = m.get('TableId')
         if m.get('Tid') is not None:
@@ -16585,6 +17125,7 @@ class ListInstanceLoginAuditLogRequest(TeaModel):
         op_user_name: str = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         search_name: str = None,
         start_time: str = None,
         tid: int = None,
@@ -16593,6 +17134,7 @@ class ListInstanceLoginAuditLogRequest(TeaModel):
         self.op_user_name = op_user_name
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.search_name = search_name
         self.start_time = start_time
         self.tid = tid
@@ -16614,6 +17156,8 @@ class ListInstanceLoginAuditLogRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.search_name is not None:
             result['SearchName'] = self.search_name
         if self.start_time is not None:
@@ -16632,6 +17176,8 @@ class ListInstanceLoginAuditLogRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SearchName') is not None:
             self.search_name = m.get('SearchName')
         if m.get('StartTime') is not None:
@@ -16841,12 +17387,14 @@ class ListInstanceUserPermissionsRequest(TeaModel):
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         tid: int = None,
         user_name: str = None,
     ):
         self.instance_id = instance_id
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.tid = tid
         self.user_name = user_name
 
@@ -16865,6 +17413,8 @@ class ListInstanceUserPermissionsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.user_name is not None:
@@ -16879,6 +17429,8 @@ class ListInstanceUserPermissionsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         if m.get('UserName') is not None:
@@ -17166,6 +17718,7 @@ class ListInstancesRequest(TeaModel):
         net_type: str = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         search_key: str = None,
         tid: int = None,
     ):
@@ -17176,6 +17729,7 @@ class ListInstancesRequest(TeaModel):
         self.net_type = net_type
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.search_key = search_key
         self.tid = tid
 
@@ -17202,6 +17756,8 @@ class ListInstancesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.search_key is not None:
             result['SearchKey'] = self.search_key
         if self.tid is not None:
@@ -17224,6 +17780,8 @@ class ListInstancesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SearchKey') is not None:
             self.search_key = m.get('SearchKey')
         if m.get('Tid') is not None:
@@ -17633,10 +18191,12 @@ class ListLogicDatabasesRequest(TeaModel):
         self,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -17652,6 +18212,8 @@ class ListLogicDatabasesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -17662,6 +18224,8 @@ class ListLogicDatabasesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -17724,6 +18288,7 @@ class ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseOwnerNameList(
 class ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase(TeaModel):
     def __init__(
         self,
+        alias: str = None,
         database_id: str = None,
         db_type: str = None,
         env_type: str = None,
@@ -17733,6 +18298,7 @@ class ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase(TeaModel):
         schema_name: str = None,
         search_name: str = None,
     ):
+        self.alias = alias
         self.database_id = database_id
         self.db_type = db_type
         self.env_type = env_type
@@ -17754,6 +18320,8 @@ class ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase(TeaModel):
             return _map
 
         result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
         if self.database_id is not None:
             result['DatabaseId'] = self.database_id
         if self.db_type is not None:
@@ -17774,6 +18342,8 @@ class ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
         if m.get('DatabaseId') is not None:
             self.database_id = m.get('DatabaseId')
         if m.get('DbType') is not None:
@@ -17929,9 +18499,11 @@ class ListLogicDatabasesResponse(TeaModel):
 class ListLogicTableRouteConfigRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         table_id: int = None,
         tid: int = None,
     ):
+        self.region_id = region_id
         self.table_id = table_id
         self.tid = tid
 
@@ -17944,6 +18516,8 @@ class ListLogicTableRouteConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.table_id is not None:
             result['TableId'] = self.table_id
         if self.tid is not None:
@@ -17952,6 +18526,8 @@ class ListLogicTableRouteConfigRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('TableId') is not None:
             self.table_id = m.get('TableId')
         if m.get('Tid') is not None:
@@ -18129,6 +18705,7 @@ class ListLogicTablesRequest(TeaModel):
         database_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         return_guid: bool = None,
         search_name: str = None,
         tid: int = None,
@@ -18136,6 +18713,7 @@ class ListLogicTablesRequest(TeaModel):
         self.database_id = database_id
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.return_guid = return_guid
         self.search_name = search_name
         self.tid = tid
@@ -18155,6 +18733,8 @@ class ListLogicTablesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.return_guid is not None:
             result['ReturnGuid'] = self.return_guid
         if self.search_name is not None:
@@ -18171,6 +18751,8 @@ class ListLogicTablesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ReturnGuid') is not None:
             self.return_guid = m.get('ReturnGuid')
         if m.get('SearchName') is not None:
@@ -18460,6 +19042,7 @@ class ListOrdersRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         plugin_type: str = None,
+        region_id: str = None,
         search_content: str = None,
         search_date_type: str = None,
         start_time: str = None,
@@ -18471,6 +19054,7 @@ class ListOrdersRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.plugin_type = plugin_type
+        self.region_id = region_id
         self.search_content = search_content
         self.search_date_type = search_date_type
         self.start_time = start_time
@@ -18497,6 +19081,8 @@ class ListOrdersRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.plugin_type is not None:
             result['PluginType'] = self.plugin_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.search_content is not None:
             result['SearchContent'] = self.search_content
         if self.search_date_type is not None:
@@ -18521,6 +19107,8 @@ class ListOrdersRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('PluginType') is not None:
             self.plugin_type = m.get('PluginType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SearchContent') is not None:
             self.search_content = m.get('SearchContent')
         if m.get('SearchDateType') is not None:
@@ -18741,8 +19329,10 @@ class ListOrdersResponse(TeaModel):
 class ListProxiesRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         tid: int = None,
     ):
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -18754,12 +19344,16 @@ class ListProxiesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -18947,9 +19541,11 @@ class ListProxyAccessesRequest(TeaModel):
     def __init__(
         self,
         proxy_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.proxy_id = proxy_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -18963,6 +19559,8 @@ class ListProxyAccessesRequest(TeaModel):
         result = dict()
         if self.proxy_id is not None:
             result['ProxyId'] = self.proxy_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -18971,6 +19569,8 @@ class ListProxyAccessesRequest(TeaModel):
         m = m or dict()
         if m.get('ProxyId') is not None:
             self.proxy_id = m.get('ProxyId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -19162,6 +19762,7 @@ class ListProxySQLExecAuditLogRequest(TeaModel):
         op_user_name: str = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         sqltype: str = None,
         search_name: str = None,
         start_time: int = None,
@@ -19172,6 +19773,7 @@ class ListProxySQLExecAuditLogRequest(TeaModel):
         self.op_user_name = op_user_name
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.sqltype = sqltype
         self.search_name = search_name
         self.start_time = start_time
@@ -19196,6 +19798,8 @@ class ListProxySQLExecAuditLogRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.sqltype is not None:
             result['SQLType'] = self.sqltype
         if self.search_name is not None:
@@ -19218,6 +19822,8 @@ class ListProxySQLExecAuditLogRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SQLType') is not None:
             self.sqltype = m.get('SQLType')
         if m.get('SearchName') is not None:
@@ -19461,6 +20067,7 @@ class ListSQLExecAuditLogRequest(TeaModel):
         op_user_name: str = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         search_name: str = None,
         sql_type: str = None,
         start_time: str = None,
@@ -19471,6 +20078,7 @@ class ListSQLExecAuditLogRequest(TeaModel):
         self.op_user_name = op_user_name
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.search_name = search_name
         self.sql_type = sql_type
         self.start_time = start_time
@@ -19495,6 +20103,8 @@ class ListSQLExecAuditLogRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.search_name is not None:
             result['SearchName'] = self.search_name
         if self.sql_type is not None:
@@ -19517,6 +20127,8 @@ class ListSQLExecAuditLogRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SearchName') is not None:
             self.search_name = m.get('SearchName')
         if m.get('SqlType') is not None:
@@ -19849,10 +20461,12 @@ class ListSQLReviewOriginSQLRequest(TeaModel):
         self,
         order_action_detail: ListSQLReviewOriginSQLRequestOrderActionDetail = None,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_action_detail = order_action_detail
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -19869,6 +20483,8 @@ class ListSQLReviewOriginSQLRequest(TeaModel):
             result['OrderActionDetail'] = self.order_action_detail.to_map()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -19880,6 +20496,8 @@ class ListSQLReviewOriginSQLRequest(TeaModel):
             self.order_action_detail = temp_model.from_map(m['OrderActionDetail'])
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -19890,10 +20508,12 @@ class ListSQLReviewOriginSQLShrinkRequest(TeaModel):
         self,
         order_action_detail_shrink: str = None,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_action_detail_shrink = order_action_detail_shrink
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -19909,6 +20529,8 @@ class ListSQLReviewOriginSQLShrinkRequest(TeaModel):
             result['OrderActionDetail'] = self.order_action_detail_shrink
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -19919,6 +20541,8 @@ class ListSQLReviewOriginSQLShrinkRequest(TeaModel):
             self.order_action_detail_shrink = m.get('OrderActionDetail')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -20115,6 +20739,7 @@ class ListSensitiveColumnsRequest(TeaModel):
         logic: bool = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         schema_name: str = None,
         security_level: str = None,
         table_name: str = None,
@@ -20125,6 +20750,7 @@ class ListSensitiveColumnsRequest(TeaModel):
         self.logic = logic
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.schema_name = schema_name
         self.security_level = security_level
         self.table_name = table_name
@@ -20149,6 +20775,8 @@ class ListSensitiveColumnsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.schema_name is not None:
             result['SchemaName'] = self.schema_name
         if self.security_level is not None:
@@ -20171,6 +20799,8 @@ class ListSensitiveColumnsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SchemaName') is not None:
             self.schema_name = m.get('SchemaName')
         if m.get('SecurityLevel') is not None:
@@ -20376,6 +21006,7 @@ class ListSensitiveColumnsDetailRequest(TeaModel):
         column_name: str = None,
         db_id: int = None,
         logic: bool = None,
+        region_id: str = None,
         schema_name: str = None,
         table_name: str = None,
         tid: int = None,
@@ -20383,6 +21014,7 @@ class ListSensitiveColumnsDetailRequest(TeaModel):
         self.column_name = column_name
         self.db_id = db_id
         self.logic = logic
+        self.region_id = region_id
         self.schema_name = schema_name
         self.table_name = table_name
         self.tid = tid
@@ -20402,6 +21034,8 @@ class ListSensitiveColumnsDetailRequest(TeaModel):
             result['DbId'] = self.db_id
         if self.logic is not None:
             result['Logic'] = self.logic
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.schema_name is not None:
             result['SchemaName'] = self.schema_name
         if self.table_name is not None:
@@ -20418,6 +21052,8 @@ class ListSensitiveColumnsDetailRequest(TeaModel):
             self.db_id = m.get('DbId')
         if m.get('Logic') is not None:
             self.logic = m.get('Logic')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SchemaName') is not None:
             self.schema_name = m.get('SchemaName')
         if m.get('TableName') is not None:
@@ -20639,6 +21275,7 @@ class ListTablesRequest(TeaModel):
         database_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         return_guid: bool = None,
         search_name: str = None,
         tid: int = None,
@@ -20646,6 +21283,7 @@ class ListTablesRequest(TeaModel):
         self.database_id = database_id
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.return_guid = return_guid
         self.search_name = search_name
         self.tid = tid
@@ -20665,6 +21303,8 @@ class ListTablesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.return_guid is not None:
             result['ReturnGuid'] = self.return_guid
         if self.search_name is not None:
@@ -20681,6 +21321,8 @@ class ListTablesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ReturnGuid') is not None:
             self.return_guid = m.get('ReturnGuid')
         if m.get('SearchName') is not None:
@@ -20989,6 +21631,7 @@ class ListUserPermissionsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         perm_type: str = None,
+        region_id: str = None,
         search_key: str = None,
         tid: int = None,
         user_id: str = None,
@@ -21000,6 +21643,7 @@ class ListUserPermissionsRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.perm_type = perm_type
+        self.region_id = region_id
         self.search_key = search_key
         self.tid = tid
         self.user_id = user_id
@@ -21027,6 +21671,8 @@ class ListUserPermissionsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.perm_type is not None:
             result['PermType'] = self.perm_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.search_key is not None:
             result['SearchKey'] = self.search_key
         if self.tid is not None:
@@ -21051,6 +21697,8 @@ class ListUserPermissionsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('PermType') is not None:
             self.perm_type = m.get('PermType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SearchKey') is not None:
             self.search_key = m.get('SearchKey')
         if m.get('Tid') is not None:
@@ -21411,8 +22059,10 @@ class ListUserPermissionsResponse(TeaModel):
 class ListUserTenantsRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         tid: int = None,
     ):
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -21424,12 +22074,16 @@ class ListUserTenantsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -21575,6 +22229,7 @@ class ListUsersRequest(TeaModel):
         self,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         role: str = None,
         search_key: str = None,
         tid: int = None,
@@ -21582,6 +22237,7 @@ class ListUsersRequest(TeaModel):
     ):
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.role = role
         self.search_key = search_key
         self.tid = tid
@@ -21600,6 +22256,8 @@ class ListUsersRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.role is not None:
             result['Role'] = self.role
         if self.search_key is not None:
@@ -21616,6 +22274,8 @@ class ListUsersRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Role') is not None:
             self.role = m.get('Role')
         if m.get('SearchKey') is not None:
@@ -21949,9 +22609,11 @@ class ListUsersResponse(TeaModel):
 class ListWorkFlowNodesRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         search_name: str = None,
         tid: int = None,
     ):
+        self.region_id = region_id
         self.search_name = search_name
         self.tid = tid
 
@@ -21964,6 +22626,8 @@ class ListWorkFlowNodesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.search_name is not None:
             result['SearchName'] = self.search_name
         if self.tid is not None:
@@ -21972,6 +22636,8 @@ class ListWorkFlowNodesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SearchName') is not None:
             self.search_name = m.get('SearchName')
         if m.get('Tid') is not None:
@@ -22246,9 +22912,11 @@ class ListWorkFlowNodesResponse(TeaModel):
 class ListWorkFlowTemplatesRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         search_name: str = None,
         tid: int = None,
     ):
+        self.region_id = region_id
         self.search_name = search_name
         self.tid = tid
 
@@ -22261,6 +22929,8 @@ class ListWorkFlowTemplatesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.search_name is not None:
             result['SearchName'] = self.search_name
         if self.tid is not None:
@@ -22269,6 +22939,8 @@ class ListWorkFlowTemplatesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SearchName') is not None:
             self.search_name = m.get('SearchName')
         if m.get('Tid') is not None:
@@ -22569,10 +23241,12 @@ class ModifyDataCorrectExecSQLRequest(TeaModel):
         self,
         exec_sql: str = None,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.exec_sql = exec_sql
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -22588,6 +23262,8 @@ class ModifyDataCorrectExecSQLRequest(TeaModel):
             result['ExecSQL'] = self.exec_sql
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -22598,6 +23274,8 @@ class ModifyDataCorrectExecSQLRequest(TeaModel):
             self.exec_sql = m.get('ExecSQL')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -22705,6 +23383,7 @@ class RegisterInstanceRequest(TeaModel):
         network_type: str = None,
         port: int = None,
         query_timeout: int = None,
+        region_id: str = None,
         safe_rule: str = None,
         sid: str = None,
         skip_test: bool = None,
@@ -22728,6 +23407,7 @@ class RegisterInstanceRequest(TeaModel):
         self.network_type = network_type
         self.port = port
         self.query_timeout = query_timeout
+        self.region_id = region_id
         self.safe_rule = safe_rule
         self.sid = sid
         self.skip_test = skip_test
@@ -22776,6 +23456,8 @@ class RegisterInstanceRequest(TeaModel):
             result['Port'] = self.port
         if self.query_timeout is not None:
             result['QueryTimeout'] = self.query_timeout
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.safe_rule is not None:
             result['SafeRule'] = self.safe_rule
         if self.sid is not None:
@@ -22824,6 +23506,8 @@ class RegisterInstanceRequest(TeaModel):
             self.port = m.get('Port')
         if m.get('QueryTimeout') is not None:
             self.query_timeout = m.get('QueryTimeout')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SafeRule') is not None:
             self.safe_rule = m.get('SafeRule')
         if m.get('Sid') is not None:
@@ -22925,12 +23609,14 @@ class RegisterUserRequest(TeaModel):
     def __init__(
         self,
         mobile: str = None,
+        region_id: str = None,
         role_names: str = None,
         tid: int = None,
         uid: str = None,
         user_nick: str = None,
     ):
         self.mobile = mobile
+        self.region_id = region_id
         self.role_names = role_names
         self.tid = tid
         self.uid = uid
@@ -22947,6 +23633,8 @@ class RegisterUserRequest(TeaModel):
         result = dict()
         if self.mobile is not None:
             result['Mobile'] = self.mobile
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.role_names is not None:
             result['RoleNames'] = self.role_names
         if self.tid is not None:
@@ -22961,6 +23649,8 @@ class RegisterUserRequest(TeaModel):
         m = m or dict()
         if m.get('Mobile') is not None:
             self.mobile = m.get('Mobile')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoleNames') is not None:
             self.role_names = m.get('RoleNames')
         if m.get('Tid') is not None:
@@ -23058,9 +23748,11 @@ class RetryDataCorrectPreCheckRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -23074,6 +23766,8 @@ class RetryDataCorrectPreCheckRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -23082,6 +23776,8 @@ class RetryDataCorrectPreCheckRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -23178,6 +23874,7 @@ class RevokeUserPermissionRequest(TeaModel):
         instance_id: int = None,
         logic: bool = None,
         perm_types: str = None,
+        region_id: str = None,
         table_id: str = None,
         table_name: str = None,
         tid: int = None,
@@ -23189,6 +23886,7 @@ class RevokeUserPermissionRequest(TeaModel):
         self.instance_id = instance_id
         self.logic = logic
         self.perm_types = perm_types
+        self.region_id = region_id
         self.table_id = table_id
         self.table_name = table_name
         self.tid = tid
@@ -23214,6 +23912,8 @@ class RevokeUserPermissionRequest(TeaModel):
             result['Logic'] = self.logic
         if self.perm_types is not None:
             result['PermTypes'] = self.perm_types
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.table_id is not None:
             result['TableId'] = self.table_id
         if self.table_name is not None:
@@ -23238,6 +23938,8 @@ class RevokeUserPermissionRequest(TeaModel):
             self.logic = m.get('Logic')
         if m.get('PermTypes') is not None:
             self.perm_types = m.get('PermTypes')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('TableId') is not None:
             self.table_id = m.get('TableId')
         if m.get('TableName') is not None:
@@ -23340,6 +24042,7 @@ class SearchDatabaseRequest(TeaModel):
         env_type: str = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         search_key: str = None,
         search_range: str = None,
         search_target: str = None,
@@ -23349,6 +24052,7 @@ class SearchDatabaseRequest(TeaModel):
         self.env_type = env_type
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.search_key = search_key
         self.search_range = search_range
         self.search_target = search_target
@@ -23371,6 +24075,8 @@ class SearchDatabaseRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.search_key is not None:
             result['SearchKey'] = self.search_key
         if self.search_range is not None:
@@ -23391,6 +24097,8 @@ class SearchDatabaseRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SearchKey') is not None:
             self.search_key = m.get('SearchKey')
         if m.get('SearchRange') is not None:
@@ -23710,6 +24418,7 @@ class SearchTableRequest(TeaModel):
         env_type: str = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         return_guid: bool = None,
         search_key: str = None,
         search_range: str = None,
@@ -23720,6 +24429,7 @@ class SearchTableRequest(TeaModel):
         self.env_type = env_type
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.return_guid = return_guid
         self.search_key = search_key
         self.search_range = search_range
@@ -23743,6 +24453,8 @@ class SearchTableRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.return_guid is not None:
             result['ReturnGuid'] = self.return_guid
         if self.search_key is not None:
@@ -23765,6 +24477,8 @@ class SearchTableRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ReturnGuid') is not None:
             self.return_guid = m.get('ReturnGuid')
         if m.get('SearchKey') is not None:
@@ -24084,11 +24798,13 @@ class SetOwnersRequest(TeaModel):
         self,
         owner_ids: str = None,
         owner_type: str = None,
+        region_id: str = None,
         resource_id: str = None,
         tid: int = None,
     ):
         self.owner_ids = owner_ids
         self.owner_type = owner_type
+        self.region_id = region_id
         self.resource_id = resource_id
         self.tid = tid
 
@@ -24105,6 +24821,8 @@ class SetOwnersRequest(TeaModel):
             result['OwnerIds'] = self.owner_ids
         if self.owner_type is not None:
             result['OwnerType'] = self.owner_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.tid is not None:
@@ -24117,6 +24835,8 @@ class SetOwnersRequest(TeaModel):
             self.owner_ids = m.get('OwnerIds')
         if m.get('OwnerType') is not None:
             self.owner_type = m.get('OwnerType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('Tid') is not None:
@@ -24210,9 +24930,11 @@ class SubmitOrderApprovalRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -24226,6 +24948,8 @@ class SubmitOrderApprovalRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -24234,6 +24958,8 @@ class SubmitOrderApprovalRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -24325,9 +25051,11 @@ class SubmitStructSyncOrderApprovalRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.order_id = order_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -24341,6 +25069,8 @@ class SubmitStructSyncOrderApprovalRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -24349,6 +25079,8 @@ class SubmitStructSyncOrderApprovalRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -24448,10 +25180,12 @@ class SyncDatabaseMetaRequest(TeaModel):
         self,
         db_id: str = None,
         logic: bool = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.db_id = db_id
         self.logic = logic
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -24467,6 +25201,8 @@ class SyncDatabaseMetaRequest(TeaModel):
             result['DbId'] = self.db_id
         if self.logic is not None:
             result['Logic'] = self.logic
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -24477,6 +25213,8 @@ class SyncDatabaseMetaRequest(TeaModel):
             self.db_id = m.get('DbId')
         if m.get('Logic') is not None:
             self.logic = m.get('Logic')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -24569,10 +25307,12 @@ class SyncInstanceMetaRequest(TeaModel):
         self,
         ignore_table: bool = None,
         instance_id: str = None,
+        region_id: str = None,
         tid: int = None,
     ):
         self.ignore_table = ignore_table
         self.instance_id = instance_id
+        self.region_id = region_id
         self.tid = tid
 
     def validate(self):
@@ -24588,6 +25328,8 @@ class SyncInstanceMetaRequest(TeaModel):
             result['IgnoreTable'] = self.ignore_table
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -24598,6 +25340,8 @@ class SyncInstanceMetaRequest(TeaModel):
             self.ignore_table = m.get('IgnoreTable')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -24704,6 +25448,7 @@ class UpdateInstanceRequest(TeaModel):
         instance_type: str = None,
         port: int = None,
         query_timeout: int = None,
+        region_id: str = None,
         safe_rule_id: str = None,
         sid: str = None,
         skip_test: bool = None,
@@ -24727,6 +25472,7 @@ class UpdateInstanceRequest(TeaModel):
         self.instance_type = instance_type
         self.port = port
         self.query_timeout = query_timeout
+        self.region_id = region_id
         self.safe_rule_id = safe_rule_id
         self.sid = sid
         self.skip_test = skip_test
@@ -24775,6 +25521,8 @@ class UpdateInstanceRequest(TeaModel):
             result['Port'] = self.port
         if self.query_timeout is not None:
             result['QueryTimeout'] = self.query_timeout
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.safe_rule_id is not None:
             result['SafeRuleId'] = self.safe_rule_id
         if self.sid is not None:
@@ -24823,6 +25571,8 @@ class UpdateInstanceRequest(TeaModel):
             self.port = m.get('Port')
         if m.get('QueryTimeout') is not None:
             self.query_timeout = m.get('QueryTimeout')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SafeRuleId') is not None:
             self.safe_rule_id = m.get('SafeRuleId')
         if m.get('Sid') is not None:
@@ -24926,6 +25676,7 @@ class UpdateUserRequest(TeaModel):
         max_execute_count: int = None,
         max_result_count: int = None,
         mobile: str = None,
+        region_id: str = None,
         role_names: str = None,
         tid: int = None,
         uid: int = None,
@@ -24934,6 +25685,7 @@ class UpdateUserRequest(TeaModel):
         self.max_execute_count = max_execute_count
         self.max_result_count = max_result_count
         self.mobile = mobile
+        self.region_id = region_id
         self.role_names = role_names
         self.tid = tid
         self.uid = uid
@@ -24954,6 +25706,8 @@ class UpdateUserRequest(TeaModel):
             result['MaxResultCount'] = self.max_result_count
         if self.mobile is not None:
             result['Mobile'] = self.mobile
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.role_names is not None:
             result['RoleNames'] = self.role_names
         if self.tid is not None:
@@ -24972,6 +25726,8 @@ class UpdateUserRequest(TeaModel):
             self.max_result_count = m.get('MaxResultCount')
         if m.get('Mobile') is not None:
             self.mobile = m.get('Mobile')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RoleNames') is not None:
             self.role_names = m.get('RoleNames')
         if m.get('Tid') is not None:
