@@ -1,3 +1,8 @@
+2021-12-20 Version: 1.0.8
+- Update createBasicAccelerator Api.
+- Add UpdateAcceleratorAutoRenewAttribute Api.
+- Add DescribeAcceleratorAutoRenewAttribute Api.
+
 2021-11-30 Version: 1.0.7
 - Update createBasicAccelerator Api.
 - Add UpdateAcceleratorAutoRenewAttribute Api.
