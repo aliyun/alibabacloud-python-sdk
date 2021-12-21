@@ -101,8 +101,7 @@ class Client(OpenApiClient):
         query = {}
         query['OrderId'] = request.order_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CancelCertificateForPackageRequest',
@@ -112,7 +111,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -129,8 +128,7 @@ class Client(OpenApiClient):
         query = {}
         query['OrderId'] = request.order_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CancelCertificateForPackageRequest',
@@ -140,7 +138,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -171,8 +169,7 @@ class Client(OpenApiClient):
         query = {}
         query['OrderId'] = request.order_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CancelOrderRequest',
@@ -182,7 +179,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -199,8 +196,7 @@ class Client(OpenApiClient):
         query = {}
         query['OrderId'] = request.order_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CancelOrderRequest',
@@ -210,7 +206,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -239,17 +235,16 @@ class Client(OpenApiClient):
     ) -> cas_20200407_models.CreateCertificateForPackageRequestResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['CompanyName'] = request.company_name
         query['Csr'] = request.csr
+        query['Domain'] = request.domain
+        query['Email'] = request.email
+        query['Phone'] = request.phone
         query['ProductCode'] = request.product_code
         query['Username'] = request.username
-        query['Phone'] = request.phone
-        query['Email'] = request.email
-        query['Domain'] = request.domain
-        query['CompanyName'] = request.company_name
         query['ValidateType'] = request.validate_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateCertificateForPackageRequest',
@@ -259,7 +254,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -274,17 +269,16 @@ class Client(OpenApiClient):
     ) -> cas_20200407_models.CreateCertificateForPackageRequestResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['CompanyName'] = request.company_name
         query['Csr'] = request.csr
+        query['Domain'] = request.domain
+        query['Email'] = request.email
+        query['Phone'] = request.phone
         query['ProductCode'] = request.product_code
         query['Username'] = request.username
-        query['Phone'] = request.phone
-        query['Email'] = request.email
-        query['Domain'] = request.domain
-        query['CompanyName'] = request.company_name
         query['ValidateType'] = request.validate_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateCertificateForPackageRequest',
@@ -294,7 +288,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -323,15 +317,14 @@ class Client(OpenApiClient):
     ) -> cas_20200407_models.CreateCertificateRequestResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['Domain'] = request.domain
+        query['Email'] = request.email
+        query['Phone'] = request.phone
         query['ProductCode'] = request.product_code
         query['Username'] = request.username
-        query['Phone'] = request.phone
-        query['Email'] = request.email
-        query['Domain'] = request.domain
         query['ValidateType'] = request.validate_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateCertificateRequest',
@@ -341,7 +334,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -356,15 +349,14 @@ class Client(OpenApiClient):
     ) -> cas_20200407_models.CreateCertificateRequestResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['Domain'] = request.domain
+        query['Email'] = request.email
+        query['Phone'] = request.phone
         query['ProductCode'] = request.product_code
         query['Username'] = request.username
-        query['Phone'] = request.phone
-        query['Email'] = request.email
-        query['Domain'] = request.domain
         query['ValidateType'] = request.validate_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateCertificateRequest',
@@ -374,7 +366,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -404,14 +396,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = {}
         query['Csr'] = request.csr
+        query['Email'] = request.email
+        query['Phone'] = request.phone
         query['ProductCode'] = request.product_code
         query['Username'] = request.username
-        query['Phone'] = request.phone
-        query['Email'] = request.email
         query['ValidateType'] = request.validate_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateCertificateWithCsrRequest',
@@ -421,7 +412,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -437,14 +428,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = {}
         query['Csr'] = request.csr
+        query['Email'] = request.email
+        query['Phone'] = request.phone
         query['ProductCode'] = request.product_code
         query['Username'] = request.username
-        query['Phone'] = request.phone
-        query['Email'] = request.email
         query['ValidateType'] = request.validate_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateCertificateWithCsrRequest',
@@ -454,7 +444,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -485,8 +475,7 @@ class Client(OpenApiClient):
         query = {}
         query['OrderId'] = request.order_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteCertificateRequest',
@@ -496,7 +485,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -513,8 +502,7 @@ class Client(OpenApiClient):
         query = {}
         query['OrderId'] = request.order_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteCertificateRequest',
@@ -524,7 +512,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -555,8 +543,7 @@ class Client(OpenApiClient):
         query = {}
         query['OrderId'] = request.order_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCertificateState',
@@ -566,7 +553,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -583,8 +570,7 @@ class Client(OpenApiClient):
         query = {}
         query['OrderId'] = request.order_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCertificateState',
@@ -594,7 +580,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -625,8 +611,7 @@ class Client(OpenApiClient):
         query = {}
         query['ProductCode'] = request.product_code
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePackageState',
@@ -636,7 +621,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -653,8 +638,7 @@ class Client(OpenApiClient):
         query = {}
         query['ProductCode'] = request.product_code
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePackageState',
@@ -664,7 +648,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -693,11 +677,10 @@ class Client(OpenApiClient):
     ) -> cas_20200407_models.RenewCertificateOrderForPackageRequestResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
         query['Csr'] = request.csr
+        query['OrderId'] = request.order_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RenewCertificateOrderForPackageRequest',
@@ -707,7 +690,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -722,11 +705,10 @@ class Client(OpenApiClient):
     ) -> cas_20200407_models.RenewCertificateOrderForPackageRequestResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
         query['Csr'] = request.csr
+        query['OrderId'] = request.order_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RenewCertificateOrderForPackageRequest',
@@ -736,7 +718,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
