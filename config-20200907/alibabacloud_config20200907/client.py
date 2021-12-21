@@ -55,8 +55,7 @@ class Client(OpenApiClient):
         query['AggregatorId'] = request.aggregator_id
         query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ActiveAggregateConfigRules',
@@ -66,7 +65,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -84,8 +83,7 @@ class Client(OpenApiClient):
         query['AggregatorId'] = request.aggregator_id
         query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ActiveAggregateConfigRules',
@@ -95,7 +93,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -128,8 +126,7 @@ class Client(OpenApiClient):
         query['CompliancePackId'] = request.compliance_pack_id
         query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AttachAggregateConfigRuleToCompliancePack',
@@ -139,7 +136,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -158,8 +155,7 @@ class Client(OpenApiClient):
         query['CompliancePackId'] = request.compliance_pack_id
         query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AttachAggregateConfigRuleToCompliancePack',
@@ -169,7 +165,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -201,8 +197,7 @@ class Client(OpenApiClient):
         query['CompliancePackId'] = request.compliance_pack_id
         query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AttachConfigRuleToCompliancePack',
@@ -212,7 +207,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -230,8 +225,7 @@ class Client(OpenApiClient):
         query['CompliancePackId'] = request.compliance_pack_id
         query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AttachConfigRuleToCompliancePack',
@@ -241,7 +235,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -273,8 +267,23 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.config_rules):
             request.config_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_rules, 'ConfigRules', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compliance_pack_name):
+            body['CompliancePackName'] = request.compliance_pack_name
+        if not UtilClient.is_unset(request.compliance_pack_template_id):
+            body['CompliancePackTemplateId'] = request.compliance_pack_template_id
+        if not UtilClient.is_unset(request.config_rules_shrink):
+            body['ConfigRules'] = request.config_rules_shrink
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateAggregateCompliancePack',
@@ -302,8 +311,23 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.config_rules):
             request.config_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_rules, 'ConfigRules', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compliance_pack_name):
+            body['CompliancePackName'] = request.compliance_pack_name
+        if not UtilClient.is_unset(request.compliance_pack_template_id):
+            body['CompliancePackTemplateId'] = request.compliance_pack_template_id
+        if not UtilClient.is_unset(request.config_rules_shrink):
+            body['ConfigRules'] = request.config_rules_shrink
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateAggregateCompliancePack',
@@ -347,8 +371,41 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_rule_name):
+            body['ConfigRuleName'] = request.config_rule_name
+        if not UtilClient.is_unset(request.config_rule_trigger_types):
+            body['ConfigRuleTriggerTypes'] = request.config_rule_trigger_types
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.input_parameters_shrink):
+            body['InputParameters'] = request.input_parameters_shrink
+        if not UtilClient.is_unset(request.maximum_execution_frequency):
+            body['MaximumExecutionFrequency'] = request.maximum_execution_frequency
+        if not UtilClient.is_unset(request.region_ids_scope):
+            body['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_types_scope_shrink):
+            body['ResourceTypesScope'] = request.resource_types_scope_shrink
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.source_identifier):
+            body['SourceIdentifier'] = request.source_identifier
+        if not UtilClient.is_unset(request.source_owner):
+            body['SourceOwner'] = request.source_owner
+        if not UtilClient.is_unset(request.tag_key_scope):
+            body['TagKeyScope'] = request.tag_key_scope
+        if not UtilClient.is_unset(request.tag_value_scope):
+            body['TagValueScope'] = request.tag_value_scope
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateAggregateConfigRule',
@@ -378,8 +435,41 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_rule_name):
+            body['ConfigRuleName'] = request.config_rule_name
+        if not UtilClient.is_unset(request.config_rule_trigger_types):
+            body['ConfigRuleTriggerTypes'] = request.config_rule_trigger_types
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.input_parameters_shrink):
+            body['InputParameters'] = request.input_parameters_shrink
+        if not UtilClient.is_unset(request.maximum_execution_frequency):
+            body['MaximumExecutionFrequency'] = request.maximum_execution_frequency
+        if not UtilClient.is_unset(request.region_ids_scope):
+            body['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_types_scope_shrink):
+            body['ResourceTypesScope'] = request.resource_types_scope_shrink
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.source_identifier):
+            body['SourceIdentifier'] = request.source_identifier
+        if not UtilClient.is_unset(request.source_owner):
+            body['SourceOwner'] = request.source_owner
+        if not UtilClient.is_unset(request.tag_key_scope):
+            body['TagKeyScope'] = request.tag_key_scope
+        if not UtilClient.is_unset(request.tag_value_scope):
+            body['TagValueScope'] = request.tag_value_scope
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateAggregateConfigRule',
@@ -421,8 +511,19 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.aggregator_accounts):
             request.aggregator_accounts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aggregator_accounts, 'AggregatorAccounts', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_accounts_shrink):
+            body['AggregatorAccounts'] = request.aggregator_accounts_shrink
+        if not UtilClient.is_unset(request.aggregator_name):
+            body['AggregatorName'] = request.aggregator_name
+        if not UtilClient.is_unset(request.aggregator_type):
+            body['AggregatorType'] = request.aggregator_type
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateAggregator',
@@ -450,8 +551,19 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.aggregator_accounts):
             request.aggregator_accounts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aggregator_accounts, 'AggregatorAccounts', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_accounts_shrink):
+            body['AggregatorAccounts'] = request.aggregator_accounts_shrink
+        if not UtilClient.is_unset(request.aggregator_name):
+            body['AggregatorName'] = request.aggregator_name
+        if not UtilClient.is_unset(request.aggregator_type):
+            body['AggregatorType'] = request.aggregator_type
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateAggregator',
@@ -493,8 +605,21 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.config_rules):
             request.config_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_rules, 'ConfigRules', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compliance_pack_name):
+            body['CompliancePackName'] = request.compliance_pack_name
+        if not UtilClient.is_unset(request.compliance_pack_template_id):
+            body['CompliancePackTemplateId'] = request.compliance_pack_template_id
+        if not UtilClient.is_unset(request.config_rules_shrink):
+            body['ConfigRules'] = request.config_rules_shrink
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateCompliancePack',
@@ -522,8 +647,21 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.config_rules):
             request.config_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_rules, 'ConfigRules', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compliance_pack_name):
+            body['CompliancePackName'] = request.compliance_pack_name
+        if not UtilClient.is_unset(request.compliance_pack_template_id):
+            body['CompliancePackTemplateId'] = request.compliance_pack_template_id
+        if not UtilClient.is_unset(request.config_rules_shrink):
+            body['ConfigRules'] = request.config_rules_shrink
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateCompliancePack',
@@ -567,8 +705,39 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_rule_name):
+            body['ConfigRuleName'] = request.config_rule_name
+        if not UtilClient.is_unset(request.config_rule_trigger_types):
+            body['ConfigRuleTriggerTypes'] = request.config_rule_trigger_types
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.input_parameters_shrink):
+            body['InputParameters'] = request.input_parameters_shrink
+        if not UtilClient.is_unset(request.maximum_execution_frequency):
+            body['MaximumExecutionFrequency'] = request.maximum_execution_frequency
+        if not UtilClient.is_unset(request.region_ids_scope):
+            body['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_types_scope_shrink):
+            body['ResourceTypesScope'] = request.resource_types_scope_shrink
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.source_identifier):
+            body['SourceIdentifier'] = request.source_identifier
+        if not UtilClient.is_unset(request.source_owner):
+            body['SourceOwner'] = request.source_owner
+        if not UtilClient.is_unset(request.tag_key_scope):
+            body['TagKeyScope'] = request.tag_key_scope
+        if not UtilClient.is_unset(request.tag_value_scope):
+            body['TagValueScope'] = request.tag_value_scope
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateConfigRule',
@@ -598,8 +767,39 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_rule_name):
+            body['ConfigRuleName'] = request.config_rule_name
+        if not UtilClient.is_unset(request.config_rule_trigger_types):
+            body['ConfigRuleTriggerTypes'] = request.config_rule_trigger_types
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.input_parameters_shrink):
+            body['InputParameters'] = request.input_parameters_shrink
+        if not UtilClient.is_unset(request.maximum_execution_frequency):
+            body['MaximumExecutionFrequency'] = request.maximum_execution_frequency
+        if not UtilClient.is_unset(request.region_ids_scope):
+            body['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_types_scope_shrink):
+            body['ResourceTypesScope'] = request.resource_types_scope_shrink
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.source_identifier):
+            body['SourceIdentifier'] = request.source_identifier
+        if not UtilClient.is_unset(request.source_owner):
+            body['SourceOwner'] = request.source_owner
+        if not UtilClient.is_unset(request.tag_key_scope):
+            body['TagKeyScope'] = request.tag_key_scope
+        if not UtilClient.is_unset(request.tag_value_scope):
+            body['TagValueScope'] = request.tag_value_scope
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateConfigRule',
@@ -641,8 +841,7 @@ class Client(OpenApiClient):
         query['AggregatorId'] = request.aggregator_id
         query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeactiveAggregateConfigRules',
@@ -652,7 +851,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -670,8 +869,7 @@ class Client(OpenApiClient):
         query['AggregatorId'] = request.aggregator_id
         query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeactiveAggregateConfigRules',
@@ -681,7 +879,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -712,8 +910,7 @@ class Client(OpenApiClient):
         query = {}
         query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeactiveConfigRules',
@@ -723,7 +920,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -740,8 +937,7 @@ class Client(OpenApiClient):
         query = {}
         query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeactiveConfigRules',
@@ -751,7 +947,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -779,8 +975,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregateCompliancePacksResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compliance_pack_ids):
+            body['CompliancePackIds'] = request.compliance_pack_ids
+        if not UtilClient.is_unset(request.delete_rule):
+            body['DeleteRule'] = request.delete_rule
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteAggregateCompliancePacks',
@@ -804,8 +1009,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregateCompliancePacksResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compliance_pack_ids):
+            body['CompliancePackIds'] = request.compliance_pack_ids
+        if not UtilClient.is_unset(request.delete_rule):
+            body['DeleteRule'] = request.delete_rule
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteAggregateCompliancePacks',
@@ -847,8 +1061,7 @@ class Client(OpenApiClient):
         query['AggregatorId'] = request.aggregator_id
         query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAggregateConfigRules',
@@ -858,7 +1071,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -876,8 +1089,7 @@ class Client(OpenApiClient):
         query['AggregatorId'] = request.aggregator_id
         query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAggregateConfigRules',
@@ -887,7 +1099,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -915,8 +1127,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregatorsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_ids):
+            body['AggregatorIds'] = request.aggregator_ids
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteAggregators',
@@ -940,8 +1157,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregatorsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_ids):
+            body['AggregatorIds'] = request.aggregator_ids
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteAggregators',
@@ -979,8 +1201,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteCompliancePacksResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compliance_pack_ids):
+            body['CompliancePackIds'] = request.compliance_pack_ids
+        if not UtilClient.is_unset(request.delete_rule):
+            body['DeleteRule'] = request.delete_rule
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteCompliancePacks',
@@ -1004,8 +1233,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteCompliancePacksResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compliance_pack_ids):
+            body['CompliancePackIds'] = request.compliance_pack_ids
+        if not UtilClient.is_unset(request.delete_rule):
+            body['DeleteRule'] = request.delete_rule
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteCompliancePacks',
@@ -1048,8 +1284,7 @@ class Client(OpenApiClient):
         query['CompliancePackId'] = request.compliance_pack_id
         query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetachAggregateConfigRuleToCompliancePack',
@@ -1059,7 +1294,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1078,8 +1313,7 @@ class Client(OpenApiClient):
         query['CompliancePackId'] = request.compliance_pack_id
         query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetachAggregateConfigRuleToCompliancePack',
@@ -1089,7 +1323,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1121,8 +1355,7 @@ class Client(OpenApiClient):
         query['CompliancePackId'] = request.compliance_pack_id
         query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetachConfigRuleToCompliancePack',
@@ -1132,7 +1365,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1150,8 +1383,7 @@ class Client(OpenApiClient):
         query['CompliancePackId'] = request.compliance_pack_id
         query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetachConfigRuleToCompliancePack',
@@ -1161,7 +1393,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1189,8 +1421,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateAggregateCompliancePackReportResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            body['CompliancePackId'] = request.compliance_pack_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GenerateAggregateCompliancePackReport',
@@ -1214,8 +1453,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateAggregateCompliancePackReportResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            body['CompliancePackId'] = request.compliance_pack_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GenerateAggregateCompliancePackReport',
@@ -1253,8 +1499,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateAggregateConfigRulesReportResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GenerateAggregateConfigRulesReport',
@@ -1278,8 +1529,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateAggregateConfigRulesReportResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GenerateAggregateConfigRulesReport',
@@ -1317,8 +1573,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateCompliancePackReportResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            body['CompliancePackId'] = request.compliance_pack_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GenerateCompliancePackReport',
@@ -1342,8 +1603,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateCompliancePackReportResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            body['CompliancePackId'] = request.compliance_pack_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GenerateCompliancePackReport',
@@ -1381,8 +1647,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateConfigRulesReportResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GenerateConfigRulesReport',
@@ -1406,8 +1675,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateConfigRulesReportResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GenerateConfigRulesReport',
@@ -1457,7 +1729,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1483,7 +1755,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1523,7 +1795,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1549,7 +1821,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1589,7 +1861,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1615,7 +1887,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1647,8 +1919,7 @@ class Client(OpenApiClient):
         query['AggregatorId'] = request.aggregator_id
         query['ConfigRuleId'] = request.config_rule_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetAggregateConfigRule',
@@ -1658,7 +1929,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1676,8 +1947,7 @@ class Client(OpenApiClient):
         query['AggregatorId'] = request.aggregator_id
         query['ConfigRuleId'] = request.config_rule_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetAggregateConfigRule',
@@ -1687,7 +1957,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1727,7 +1997,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1753,7 +2023,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1793,7 +2063,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1819,7 +2089,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1859,7 +2129,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1885,7 +2155,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1925,7 +2195,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1951,7 +2221,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1991,7 +2261,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2017,7 +2287,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2057,7 +2327,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2083,7 +2353,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2123,7 +2393,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2149,7 +2419,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2189,7 +2459,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2215,7 +2485,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2255,7 +2525,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2281,7 +2551,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2321,7 +2591,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2347,7 +2617,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2387,7 +2657,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2413,7 +2683,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2453,7 +2723,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2479,7 +2749,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2510,8 +2780,7 @@ class Client(OpenApiClient):
         query = {}
         query['ConfigRuleId'] = request.config_rule_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetConfigRule',
@@ -2521,7 +2790,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2538,8 +2807,7 @@ class Client(OpenApiClient):
         query = {}
         query['ConfigRuleId'] = request.config_rule_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetConfigRule',
@@ -2549,7 +2817,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2589,7 +2857,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2615,7 +2883,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2650,7 +2918,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2671,7 +2939,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2700,7 +2968,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2721,7 +2989,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2755,7 +3023,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2781,7 +3049,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2821,7 +3089,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2847,7 +3115,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2887,7 +3155,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2913,7 +3181,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2953,7 +3221,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2979,7 +3247,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3019,7 +3287,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3045,7 +3313,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3085,7 +3353,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3111,7 +3379,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3143,8 +3411,17 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.resources):
             request.resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resources, 'Resources', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.config_rule_id):
+            body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.reason):
+            body['Reason'] = request.reason
+        if not UtilClient.is_unset(request.resources_shrink):
+            body['Resources'] = request.resources_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='IgnoreAggregateEvaluationResults',
@@ -3172,8 +3449,17 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.resources):
             request.resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resources, 'Resources', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.config_rule_id):
+            body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.reason):
+            body['Reason'] = request.reason
+        if not UtilClient.is_unset(request.resources_shrink):
+            body['Resources'] = request.resources_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='IgnoreAggregateEvaluationResults',
@@ -3215,8 +3501,15 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.resources):
             request.resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resources, 'Resources', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.config_rule_id):
+            body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.reason):
+            body['Reason'] = request.reason
+        if not UtilClient.is_unset(request.resources_shrink):
+            body['Resources'] = request.resources_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='IgnoreEvaluationResults',
@@ -3244,8 +3537,15 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.resources):
             request.resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resources, 'Resources', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.config_rule_id):
+            body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.reason):
+            body['Reason'] = request.reason
+        if not UtilClient.is_unset(request.resources_shrink):
+            body['Resources'] = request.resources_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='IgnoreEvaluationResults',
@@ -3295,7 +3595,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3321,7 +3621,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3361,7 +3661,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3387,7 +3687,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3427,7 +3727,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3453,7 +3753,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3493,7 +3793,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3519,7 +3819,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3559,7 +3859,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3585,7 +3885,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3625,7 +3925,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3651,7 +3951,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3691,7 +3991,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3717,7 +4017,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3757,7 +4057,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3783,7 +4083,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3823,7 +4123,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3849,7 +4149,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3881,8 +4181,15 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.resources):
             request.resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resources, 'Resources', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.config_rule_id):
+            body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.resources_shrink):
+            body['Resources'] = request.resources_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RevertAggregateEvaluationResults',
@@ -3910,8 +4217,15 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.resources):
             request.resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resources, 'Resources', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.config_rule_id):
+            body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.resources_shrink):
+            body['Resources'] = request.resources_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RevertAggregateEvaluationResults',
@@ -3953,8 +4267,13 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.resources):
             request.resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resources, 'Resources', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.config_rule_id):
+            body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.resources_shrink):
+            body['Resources'] = request.resources_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RevertEvaluationResults',
@@ -3982,8 +4301,13 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.resources):
             request.resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resources, 'Resources', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.config_rule_id):
+            body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.resources_shrink):
+            body['Resources'] = request.resources_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RevertEvaluationResults',
@@ -4027,8 +4351,7 @@ class Client(OpenApiClient):
         query['ConfigRuleId'] = request.config_rule_id
         query['RevertEvaluation'] = request.revert_evaluation
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StartAggregateConfigRuleEvaluation',
@@ -4038,7 +4361,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4058,8 +4381,7 @@ class Client(OpenApiClient):
         query['ConfigRuleId'] = request.config_rule_id
         query['RevertEvaluation'] = request.revert_evaluation
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StartAggregateConfigRuleEvaluation',
@@ -4069,7 +4391,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4101,8 +4423,23 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.config_rules):
             request.config_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_rules, 'ConfigRules', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            body['CompliancePackId'] = request.compliance_pack_id
+        if not UtilClient.is_unset(request.compliance_pack_name):
+            body['CompliancePackName'] = request.compliance_pack_name
+        if not UtilClient.is_unset(request.config_rules_shrink):
+            body['ConfigRules'] = request.config_rules_shrink
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateAggregateCompliancePack',
@@ -4130,8 +4467,23 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.config_rules):
             request.config_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_rules, 'ConfigRules', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            body['CompliancePackId'] = request.compliance_pack_id
+        if not UtilClient.is_unset(request.compliance_pack_name):
+            body['CompliancePackName'] = request.compliance_pack_name
+        if not UtilClient.is_unset(request.config_rules_shrink):
+            body['ConfigRules'] = request.config_rules_shrink
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateAggregateCompliancePack',
@@ -4175,8 +4527,39 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_rule_id):
+            body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.config_rule_name):
+            body['ConfigRuleName'] = request.config_rule_name
+        if not UtilClient.is_unset(request.config_rule_trigger_types):
+            body['ConfigRuleTriggerTypes'] = request.config_rule_trigger_types
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.input_parameters_shrink):
+            body['InputParameters'] = request.input_parameters_shrink
+        if not UtilClient.is_unset(request.maximum_execution_frequency):
+            body['MaximumExecutionFrequency'] = request.maximum_execution_frequency
+        if not UtilClient.is_unset(request.region_ids_scope):
+            body['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_types_scope_shrink):
+            body['ResourceTypesScope'] = request.resource_types_scope_shrink
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.tag_key_scope):
+            body['TagKeyScope'] = request.tag_key_scope
+        if not UtilClient.is_unset(request.tag_value_scope):
+            body['TagValueScope'] = request.tag_value_scope
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateAggregateConfigRule',
@@ -4206,8 +4589,39 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_rule_id):
+            body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.config_rule_name):
+            body['ConfigRuleName'] = request.config_rule_name
+        if not UtilClient.is_unset(request.config_rule_trigger_types):
+            body['ConfigRuleTriggerTypes'] = request.config_rule_trigger_types
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.input_parameters_shrink):
+            body['InputParameters'] = request.input_parameters_shrink
+        if not UtilClient.is_unset(request.maximum_execution_frequency):
+            body['MaximumExecutionFrequency'] = request.maximum_execution_frequency
+        if not UtilClient.is_unset(request.region_ids_scope):
+            body['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_types_scope_shrink):
+            body['ResourceTypesScope'] = request.resource_types_scope_shrink
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.tag_key_scope):
+            body['TagKeyScope'] = request.tag_key_scope
+        if not UtilClient.is_unset(request.tag_value_scope):
+            body['TagValueScope'] = request.tag_value_scope
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateAggregateConfigRule',
@@ -4249,8 +4663,19 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.aggregator_accounts):
             request.aggregator_accounts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aggregator_accounts, 'AggregatorAccounts', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_accounts_shrink):
+            body['AggregatorAccounts'] = request.aggregator_accounts_shrink
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.aggregator_name):
+            body['AggregatorName'] = request.aggregator_name
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateAggregator',
@@ -4278,8 +4703,19 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.aggregator_accounts):
             request.aggregator_accounts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aggregator_accounts, 'AggregatorAccounts', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_accounts_shrink):
+            body['AggregatorAccounts'] = request.aggregator_accounts_shrink
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.aggregator_name):
+            body['AggregatorName'] = request.aggregator_name
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateAggregator',
@@ -4321,8 +4757,21 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.config_rules):
             request.config_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_rules, 'ConfigRules', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            body['CompliancePackId'] = request.compliance_pack_id
+        if not UtilClient.is_unset(request.compliance_pack_name):
+            body['CompliancePackName'] = request.compliance_pack_name
+        if not UtilClient.is_unset(request.config_rules_shrink):
+            body['ConfigRules'] = request.config_rules_shrink
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateCompliancePack',
@@ -4350,8 +4799,21 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.config_rules):
             request.config_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_rules, 'ConfigRules', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            body['CompliancePackId'] = request.compliance_pack_id
+        if not UtilClient.is_unset(request.compliance_pack_name):
+            body['CompliancePackName'] = request.compliance_pack_name
+        if not UtilClient.is_unset(request.config_rules_shrink):
+            body['ConfigRules'] = request.config_rules_shrink
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateCompliancePack',
@@ -4395,8 +4857,37 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_rule_id):
+            body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.config_rule_name):
+            body['ConfigRuleName'] = request.config_rule_name
+        if not UtilClient.is_unset(request.config_rule_trigger_types):
+            body['ConfigRuleTriggerTypes'] = request.config_rule_trigger_types
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.input_parameters_shrink):
+            body['InputParameters'] = request.input_parameters_shrink
+        if not UtilClient.is_unset(request.maximum_execution_frequency):
+            body['MaximumExecutionFrequency'] = request.maximum_execution_frequency
+        if not UtilClient.is_unset(request.region_ids_scope):
+            body['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_types_scope_shrink):
+            body['ResourceTypesScope'] = request.resource_types_scope_shrink
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.tag_key_scope):
+            body['TagKeyScope'] = request.tag_key_scope
+        if not UtilClient.is_unset(request.tag_value_scope):
+            body['TagValueScope'] = request.tag_value_scope
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateConfigRule',
@@ -4426,8 +4917,37 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_rule_id):
+            body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.config_rule_name):
+            body['ConfigRuleName'] = request.config_rule_name
+        if not UtilClient.is_unset(request.config_rule_trigger_types):
+            body['ConfigRuleTriggerTypes'] = request.config_rule_trigger_types
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+            body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.input_parameters_shrink):
+            body['InputParameters'] = request.input_parameters_shrink
+        if not UtilClient.is_unset(request.maximum_execution_frequency):
+            body['MaximumExecutionFrequency'] = request.maximum_execution_frequency
+        if not UtilClient.is_unset(request.region_ids_scope):
+            body['RegionIdsScope'] = request.region_ids_scope
+        if not UtilClient.is_unset(request.resource_group_ids_scope):
+            body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_types_scope_shrink):
+            body['ResourceTypesScope'] = request.resource_types_scope_shrink
+        if not UtilClient.is_unset(request.risk_level):
+            body['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.tag_key_scope):
+            body['TagKeyScope'] = request.tag_key_scope
+        if not UtilClient.is_unset(request.tag_value_scope):
+            body['TagValueScope'] = request.tag_value_scope
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateConfigRule',
