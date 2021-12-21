@@ -874,6 +874,385 @@ class CreateClusterV2Response(TeaModel):
         return self
 
 
+class CreateFlowJobRequestResourceList(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        path: str = None,
+    ):
+        self.alias = alias
+        self.path = path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.path is not None:
+            result['Path'] = self.path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        return self
+
+
+class CreateFlowJobRequest(TeaModel):
+    def __init__(
+        self,
+        adhoc: bool = None,
+        alert_conf: str = None,
+        client_token: str = None,
+        cluster_id: str = None,
+        custom_variables: str = None,
+        description: str = None,
+        env_conf: str = None,
+        fail_act: str = None,
+        mode: str = None,
+        monitor_conf: str = None,
+        name: str = None,
+        param_conf: str = None,
+        params: str = None,
+        parent_category: str = None,
+        project_id: str = None,
+        region_id: str = None,
+        resource_list: List[CreateFlowJobRequestResourceList] = None,
+        retry_policy: str = None,
+        run_conf: str = None,
+        type: str = None,
+    ):
+        self.adhoc = adhoc
+        self.alert_conf = alert_conf
+        self.client_token = client_token
+        self.cluster_id = cluster_id
+        self.custom_variables = custom_variables
+        self.description = description
+        self.env_conf = env_conf
+        self.fail_act = fail_act
+        self.mode = mode
+        self.monitor_conf = monitor_conf
+        self.name = name
+        self.param_conf = param_conf
+        self.params = params
+        self.parent_category = parent_category
+        self.project_id = project_id
+        self.region_id = region_id
+        self.resource_list = resource_list
+        self.retry_policy = retry_policy
+        self.run_conf = run_conf
+        self.type = type
+
+    def validate(self):
+        if self.resource_list:
+            for k in self.resource_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adhoc is not None:
+            result['Adhoc'] = self.adhoc
+        if self.alert_conf is not None:
+            result['AlertConf'] = self.alert_conf
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.custom_variables is not None:
+            result['CustomVariables'] = self.custom_variables
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.env_conf is not None:
+            result['EnvConf'] = self.env_conf
+        if self.fail_act is not None:
+            result['FailAct'] = self.fail_act
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.monitor_conf is not None:
+            result['MonitorConf'] = self.monitor_conf
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.param_conf is not None:
+            result['ParamConf'] = self.param_conf
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.parent_category is not None:
+            result['ParentCategory'] = self.parent_category
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        result['ResourceList'] = []
+        if self.resource_list is not None:
+            for k in self.resource_list:
+                result['ResourceList'].append(k.to_map() if k else None)
+        if self.retry_policy is not None:
+            result['RetryPolicy'] = self.retry_policy
+        if self.run_conf is not None:
+            result['RunConf'] = self.run_conf
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Adhoc') is not None:
+            self.adhoc = m.get('Adhoc')
+        if m.get('AlertConf') is not None:
+            self.alert_conf = m.get('AlertConf')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('CustomVariables') is not None:
+            self.custom_variables = m.get('CustomVariables')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EnvConf') is not None:
+            self.env_conf = m.get('EnvConf')
+        if m.get('FailAct') is not None:
+            self.fail_act = m.get('FailAct')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('MonitorConf') is not None:
+            self.monitor_conf = m.get('MonitorConf')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ParamConf') is not None:
+            self.param_conf = m.get('ParamConf')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('ParentCategory') is not None:
+            self.parent_category = m.get('ParentCategory')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        self.resource_list = []
+        if m.get('ResourceList') is not None:
+            for k in m.get('ResourceList'):
+                temp_model = CreateFlowJobRequestResourceList()
+                self.resource_list.append(temp_model.from_map(k))
+        if m.get('RetryPolicy') is not None:
+            self.retry_policy = m.get('RetryPolicy')
+        if m.get('RunConf') is not None:
+            self.run_conf = m.get('RunConf')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateFlowJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateFlowJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateFlowJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateFlowJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateFlowProjectRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        description: str = None,
+        name: str = None,
+        product_type: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+    ):
+        self.client_token = client_token
+        self.description = description
+        self.name = name
+        self.product_type = product_type
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class CreateFlowProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateFlowProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateFlowProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateFlowProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeClusterV2Request(TeaModel):
     def __init__(
         self,
@@ -2875,6 +3254,204 @@ class ListClustersResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListClustersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListMainVersionsRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ListMainVersionsResponseBodyMainVersionListClusterTypeInfoList(TeaModel):
+    def __init__(
+        self,
+        cluster_type: str = None,
+    ):
+        self.cluster_type = cluster_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
+        return self
+
+
+class ListMainVersionsResponseBodyMainVersionList(TeaModel):
+    def __init__(
+        self,
+        cluster_type_info_list: List[ListMainVersionsResponseBodyMainVersionListClusterTypeInfoList] = None,
+        extra_info: str = None,
+        main_version_name: str = None,
+        region_id: str = None,
+    ):
+        self.cluster_type_info_list = cluster_type_info_list
+        self.extra_info = extra_info
+        self.main_version_name = main_version_name
+        self.region_id = region_id
+
+    def validate(self):
+        if self.cluster_type_info_list:
+            for k in self.cluster_type_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ClusterTypeInfoList'] = []
+        if self.cluster_type_info_list is not None:
+            for k in self.cluster_type_info_list:
+                result['ClusterTypeInfoList'].append(k.to_map() if k else None)
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info
+        if self.main_version_name is not None:
+            result['MainVersionName'] = self.main_version_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cluster_type_info_list = []
+        if m.get('ClusterTypeInfoList') is not None:
+            for k in m.get('ClusterTypeInfoList'):
+                temp_model = ListMainVersionsResponseBodyMainVersionListClusterTypeInfoList()
+                self.cluster_type_info_list.append(temp_model.from_map(k))
+        if m.get('ExtraInfo') is not None:
+            self.extra_info = m.get('ExtraInfo')
+        if m.get('MainVersionName') is not None:
+            self.main_version_name = m.get('MainVersionName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListMainVersionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        main_version_list: List[ListMainVersionsResponseBodyMainVersionList] = None,
+        request_id: str = None,
+    ):
+        self.main_version_list = main_version_list
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.main_version_list:
+            for k in self.main_version_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MainVersionList'] = []
+        if self.main_version_list is not None:
+            for k in self.main_version_list:
+                result['MainVersionList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.main_version_list = []
+        if m.get('MainVersionList') is not None:
+            for k in m.get('MainVersionList'):
+                temp_model = ListMainVersionsResponseBodyMainVersionList()
+                self.main_version_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListMainVersionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListMainVersionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListMainVersionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
