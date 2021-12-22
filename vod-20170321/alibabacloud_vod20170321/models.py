@@ -7482,6 +7482,227 @@ class DescribeVodDomainSrcBpsDataResponse(TeaModel):
         return self
 
 
+class DescribeVodDomainSrcTrafficDataRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        end_time: str = None,
+        interval: str = None,
+        owner_id: int = None,
+        start_time: str = None,
+    ):
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.interval = interval
+        self.owner_id = owner_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule(TeaModel):
+    def __init__(
+        self,
+        https_value: str = None,
+        time_stamp: str = None,
+        value: str = None,
+    ):
+        self.https_value = https_value
+        self.time_stamp = time_stamp
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.https_value is not None:
+            result['HttpsValue'] = self.https_value
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HttpsValue') is not None:
+            self.https_value = m.get('HttpsValue')
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval(TeaModel):
+    def __init__(
+        self,
+        data_module: List[DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule] = None,
+    ):
+        self.data_module = data_module
+
+    def validate(self):
+        if self.data_module:
+            for k in self.data_module:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataModule'] = []
+        if self.data_module is not None:
+            for k in self.data_module:
+                result['DataModule'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_module = []
+        if m.get('DataModule') is not None:
+            for k in m.get('DataModule'):
+                temp_model = DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule()
+                self.data_module.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVodDomainSrcTrafficDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_interval: str = None,
+        domain_name: str = None,
+        end_time: str = None,
+        request_id: str = None,
+        src_traffic_data_per_interval: DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval = None,
+        start_time: str = None,
+    ):
+        self.data_interval = data_interval
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.request_id = request_id
+        self.src_traffic_data_per_interval = src_traffic_data_per_interval
+        self.start_time = start_time
+
+    def validate(self):
+        if self.src_traffic_data_per_interval:
+            self.src_traffic_data_per_interval.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_interval is not None:
+            result['DataInterval'] = self.data_interval
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.src_traffic_data_per_interval is not None:
+            result['SrcTrafficDataPerInterval'] = self.src_traffic_data_per_interval.to_map()
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataInterval') is not None:
+            self.data_interval = m.get('DataInterval')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SrcTrafficDataPerInterval') is not None:
+            temp_model = DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval()
+            self.src_traffic_data_per_interval = temp_model.from_map(m['SrcTrafficDataPerInterval'])
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeVodDomainSrcTrafficDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeVodDomainSrcTrafficDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeVodDomainSrcTrafficDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeVodDomainTrafficDataRequest(TeaModel):
     def __init__(
         self,
@@ -29916,14 +30137,14 @@ class UploadStreamByURLRequest(TeaModel):
 class UploadStreamByURLResponseBody(TeaModel):
     def __init__(
         self,
+        file_url: str = None,
         request_id: str = None,
         source_url: str = None,
-        stream_file_url: str = None,
         stream_job_id: str = None,
     ):
+        self.file_url = file_url
         self.request_id = request_id
         self.source_url = source_url
-        self.stream_file_url = stream_file_url
         self.stream_job_id = stream_job_id
 
     def validate(self):
@@ -29935,24 +30156,24 @@ class UploadStreamByURLResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.file_url is not None:
+            result['FileURL'] = self.file_url
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.source_url is not None:
             result['SourceURL'] = self.source_url
-        if self.stream_file_url is not None:
-            result['StreamFileURL'] = self.stream_file_url
         if self.stream_job_id is not None:
             result['StreamJobId'] = self.stream_job_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FileURL') is not None:
+            self.file_url = m.get('FileURL')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SourceURL') is not None:
             self.source_url = m.get('SourceURL')
-        if m.get('StreamFileURL') is not None:
-            self.stream_file_url = m.get('StreamFileURL')
         if m.get('StreamJobId') is not None:
             self.stream_job_id = m.get('StreamJobId')
         return self

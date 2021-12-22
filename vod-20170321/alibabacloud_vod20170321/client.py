@@ -3745,6 +3745,82 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vod_domain_src_bps_data_with_options_async(request, runtime)
 
+    def describe_vod_domain_src_traffic_data_with_options(
+        self,
+        request: vod_20170321_models.DescribeVodDomainSrcTrafficDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainSrcTrafficDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainSrcTrafficData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainSrcTrafficDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vod_domain_src_traffic_data_with_options_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainSrcTrafficDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainSrcTrafficDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['DomainName'] = request.domain_name
+        query['EndTime'] = request.end_time
+        query['Interval'] = request.interval
+        query['OwnerId'] = request.owner_id
+        query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainSrcTrafficData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainSrcTrafficDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vod_domain_src_traffic_data(
+        self,
+        request: vod_20170321_models.DescribeVodDomainSrcTrafficDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainSrcTrafficDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vod_domain_src_traffic_data_with_options(request, runtime)
+
+    async def describe_vod_domain_src_traffic_data_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainSrcTrafficDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainSrcTrafficDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vod_domain_src_traffic_data_with_options_async(request, runtime)
+
     def describe_vod_domain_traffic_data_with_options(
         self,
         request: vod_20170321_models.DescribeVodDomainTrafficDataRequest,
