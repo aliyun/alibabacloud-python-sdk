@@ -1,3 +1,6 @@
+2021-12-23 Version: 1.1.6
+- Add a new API called SubmitDynamicChartJob, which produce chart video throuth xlsx file.
+
 2021-11-26 Version: 1.1.5
 - Add a new API called GetPublicMediaInfo, which gets information of copyrighted public media.
 - Add a new API called DescribeMaterialPackageInfo, which describes the available material packages.

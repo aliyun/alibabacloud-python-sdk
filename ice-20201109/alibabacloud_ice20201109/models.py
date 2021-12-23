@@ -9,11 +9,13 @@ class AddEditingProjectMaterialsRequest(TeaModel):
         self,
         material_maps: str = None,
         project_id: str = None,
+        region_id: str = None,
     ):
         # 素材ID
         self.material_maps = material_maps
         # 云剪辑工程ID
         self.project_id = project_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -28,6 +30,8 @@ class AddEditingProjectMaterialsRequest(TeaModel):
             result['MaterialMaps'] = self.material_maps
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -36,6 +40,8 @@ class AddEditingProjectMaterialsRequest(TeaModel):
             self.material_maps = m.get('MaterialMaps')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -523,8 +529,10 @@ class AddFavoritePublicMediaRequest(TeaModel):
     def __init__(
         self,
         media_ids: str = None,
+        region_id: str = None,
     ):
         self.media_ids = media_ids
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -537,12 +545,16 @@ class AddFavoritePublicMediaRequest(TeaModel):
         result = dict()
         if self.media_ids is not None:
             result['MediaIds'] = self.media_ids
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('MediaIds') is not None:
             self.media_ids = m.get('MediaIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -857,9 +869,11 @@ class BatchGetMediaInfosRequest(TeaModel):
         self,
         addition_type: str = None,
         media_ids: str = None,
+        region_id: str = None,
     ):
         self.addition_type = addition_type
         self.media_ids = media_ids
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -874,6 +888,8 @@ class BatchGetMediaInfosRequest(TeaModel):
             result['AdditionType'] = self.addition_type
         if self.media_ids is not None:
             result['MediaIds'] = self.media_ids
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -882,6 +898,8 @@ class BatchGetMediaInfosRequest(TeaModel):
             self.addition_type = m.get('AdditionType')
         if m.get('MediaIds') is not None:
             self.media_ids = m.get('MediaIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1297,8 +1315,10 @@ class CancelFavoritePublicMediaRequest(TeaModel):
     def __init__(
         self,
         media_ids: str = None,
+        region_id: str = None,
     ):
         self.media_ids = media_ids
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1311,12 +1331,16 @@ class CancelFavoritePublicMediaRequest(TeaModel):
         result = dict()
         if self.media_ids is not None:
             result['MediaIds'] = self.media_ids
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('MediaIds') is not None:
             self.media_ids = m.get('MediaIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1700,6 +1724,7 @@ class DeleteEditingProjectMaterialsRequest(TeaModel):
         material_ids: str = None,
         material_type: str = None,
         project_id: str = None,
+        region_id: str = None,
     ):
         # 素材ID
         self.material_ids = material_ids
@@ -1707,6 +1732,7 @@ class DeleteEditingProjectMaterialsRequest(TeaModel):
         self.material_type = material_type
         # 云剪辑工程ID
         self.project_id = project_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1723,6 +1749,8 @@ class DeleteEditingProjectMaterialsRequest(TeaModel):
             result['MaterialType'] = self.material_type
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1733,6 +1761,8 @@ class DeleteEditingProjectMaterialsRequest(TeaModel):
             self.material_type = m.get('MaterialType')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1805,9 +1835,11 @@ class DeleteEditingProjectsRequest(TeaModel):
     def __init__(
         self,
         project_ids: str = None,
+        region_id: str = None,
     ):
         # 云剪辑工程ID。支持多个云剪辑工程，以逗号分隔。
         self.project_ids = project_ids
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1820,12 +1852,16 @@ class DeleteEditingProjectsRequest(TeaModel):
         result = dict()
         if self.project_ids is not None:
             result['ProjectIds'] = self.project_ids
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ProjectIds') is not None:
             self.project_ids = m.get('ProjectIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1899,11 +1935,13 @@ class DeleteMediaInfosRequest(TeaModel):
         self,
         input_urls: str = None,
         media_ids: str = None,
+        region_id: str = None,
     ):
         # 待注册的媒资在相应系统中的地址
         self.input_urls = input_urls
         # ICE 媒资ID
         self.media_ids = media_ids
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1918,6 +1956,8 @@ class DeleteMediaInfosRequest(TeaModel):
             result['InputURLs'] = self.input_urls
         if self.media_ids is not None:
             result['MediaIds'] = self.media_ids
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1926,6 +1966,8 @@ class DeleteMediaInfosRequest(TeaModel):
             self.input_urls = m.get('InputURLs')
         if m.get('MediaIds') is not None:
             self.media_ids = m.get('MediaIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -2005,8 +2047,10 @@ class DeleteSmartJobRequest(TeaModel):
     def __init__(
         self,
         job_id: str = None,
+        region_id: str = None,
     ):
         self.job_id = job_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -2019,12 +2063,16 @@ class DeleteSmartJobRequest(TeaModel):
         result = dict()
         if self.job_id is not None:
             result['JobId'] = self.job_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -2202,8 +2250,10 @@ class DescribeIceProductStatusRequest(TeaModel):
     def __init__(
         self,
         commodity_code: str = None,
+        region_id: str = None,
     ):
         self.commodity_code = commodity_code
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -2216,12 +2266,16 @@ class DescribeIceProductStatusRequest(TeaModel):
         result = dict()
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -2301,10 +2355,12 @@ class DescribeMaterialPackageInfoRequest(TeaModel):
         self,
         material_package_id: str = None,
         material_package_type: str = None,
+        region_id: str = None,
         status: str = None,
     ):
         self.material_package_id = material_package_id
         self.material_package_type = material_package_type
+        self.region_id = region_id
         self.status = status
 
     def validate(self):
@@ -2320,6 +2376,8 @@ class DescribeMaterialPackageInfoRequest(TeaModel):
             result['MaterialPackageId'] = self.material_package_id
         if self.material_package_type is not None:
             result['MaterialPackageType'] = self.material_package_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -2330,6 +2388,8 @@ class DescribeMaterialPackageInfoRequest(TeaModel):
             self.material_package_id = m.get('MaterialPackageId')
         if m.get('MaterialPackageType') is not None:
             self.material_package_type = m.get('MaterialPackageType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -2542,6 +2602,33 @@ class DescribeMaterialPackageInfoResponse(TeaModel):
         return self
 
 
+class DescribeRelatedAuthorizationStatusRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
 class DescribeRelatedAuthorizationStatusResponseBody(TeaModel):
     def __init__(
         self,
@@ -2628,6 +2715,33 @@ class DescribeRelatedAuthorizationStatusResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = DescribeRelatedAuthorizationStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDefaultStorageLocationRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -2728,9 +2842,11 @@ class GetEditingProjectRequest(TeaModel):
     def __init__(
         self,
         project_id: str = None,
+        region_id: str = None,
     ):
         # 云剪辑工程ID
         self.project_id = project_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -2743,12 +2859,16 @@ class GetEditingProjectRequest(TeaModel):
         result = dict()
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -2966,9 +3086,11 @@ class GetEditingProjectMaterialsRequest(TeaModel):
     def __init__(
         self,
         project_id: str = None,
+        region_id: str = None,
     ):
         # 云剪辑工程ID
         self.project_id = project_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -2981,12 +3103,16 @@ class GetEditingProjectMaterialsRequest(TeaModel):
         result = dict()
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -3470,6 +3596,33 @@ class GetEditingProjectMaterialsResponse(TeaModel):
         return self
 
 
+class GetEventCallbackRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
 class GetEventCallbackResponseBody(TeaModel):
     def __init__(
         self,
@@ -3553,11 +3706,13 @@ class GetLiveEditingIndexFileRequest(TeaModel):
         app_name: str = None,
         domain_name: str = None,
         project_id: str = None,
+        region_id: str = None,
         stream_name: str = None,
     ):
         self.app_name = app_name
         self.domain_name = domain_name
         self.project_id = project_id
+        self.region_id = region_id
         self.stream_name = stream_name
 
     def validate(self):
@@ -3575,6 +3730,8 @@ class GetLiveEditingIndexFileRequest(TeaModel):
             result['DomainName'] = self.domain_name
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.stream_name is not None:
             result['StreamName'] = self.stream_name
         return result
@@ -3587,6 +3744,8 @@ class GetLiveEditingIndexFileRequest(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('StreamName') is not None:
             self.stream_name = m.get('StreamName')
         return self
@@ -3668,6 +3827,7 @@ class GetLiveEditingJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # 直播剪辑JobId
         self.job_id = job_id
 
     def validate(self):
@@ -3697,8 +3857,11 @@ class GetLiveEditingJobResponseBodyLiveEditingJobLiveStreamConfig(TeaModel):
         domain_name: str = None,
         stream_name: str = None,
     ):
+        # 播流所属应用名称
         self.app_name = app_name
+        # 播流所属域名
         self.domain_name = domain_name
+        # 播流所属流名
         self.stream_name = stream_name
 
     def validate(self):
@@ -3734,6 +3897,7 @@ class GetLiveEditingJobResponseBodyLiveEditingJobMediaProduceConfig(TeaModel):
         self,
         mode: str = None,
     ):
+        # 剪辑模式，默认Accurate
         self.mode = mode
 
     def validate(self):
@@ -3767,12 +3931,19 @@ class GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig(TeaModel):
         vod_template_group_id: str = None,
         width: int = None,
     ):
+        # 输出成品的码率，单位为Kbps。可以不填，默认值是多个素材的最高码率
         self.bitrate = bitrate
+        # 当 OutputMediaTarget 的目标为 vod-media 时，指定 fileName(包含文件后缀，不含路径）作为输出文件名
         self.file_name = file_name
+        # 输出成品的高。可以不填，默认值是多个素材的最大高
         self.height = height
+        # 输出成片的文件地址
         self.media_url = media_url
+        # 当 OutputMediaTarget 的目标为 vod-media 时， 指定 storage location 来存储媒资到 VOD; storage location 是 VOD 中的文件存储位置， 不包含 http:// 的前缀， 如:  outin-xxxxxx.oss-cn-shanghai.aliyuncs.com
         self.storage_location = storage_location
+        # 合成成片输出到vod，指定vod转码模板组。如不需要VOD转码，请填写 "VOD_NO_TRANSCODE".
         self.vod_template_group_id = vod_template_group_id
+        # 输出成品的宽。可以不填，默认值是多个素材的最大宽
         self.width = width
 
     def validate(self):
@@ -3838,20 +4009,35 @@ class GetLiveEditingJobResponseBodyLiveEditingJob(TeaModel):
         status: str = None,
         user_data: str = None,
     ):
+        # 剪辑片段列表
         self.clips = clips
+        # 剪辑合成作业错误码  注：作业失败时关注该字段
         self.code = code
+        # 直播剪辑作业完成时间，格式为utc时间。  格式为："YYYY-MM-DD'T'hh:mm:ss'Z'"。
         self.complete_time = complete_time
+        # 直播剪辑作业创建时间，格式为utc时间。  格式为："YYYY-MM-DD'T'hh:mm:ss'Z'"。
         self.creation_time = creation_time
+        # 直播剪辑任务ID
         self.job_id = job_id
+        # 直播剪辑配置
         self.live_stream_config = live_stream_config
+        # 输出成品的资源Id
         self.media_id = media_id
+        # 直播剪辑合成配置
         self.media_produce_config = media_produce_config
+        # 输出成品的资源文件URL
         self.media_url = media_url
+        # 剪辑合成作业错误信息  注：作业失败时关注该字段
         self.message = message
+        # 直播剪辑作业修改时间，格式为utc时间。  格式为："YYYY-MM-DD'T'hh:mm:ss'Z'"。
         self.modified_time = modified_time
+        # 输出成片的存储配置
         self.output_media_config = output_media_config
+        # 直播剪辑工程ID
         self.project_id = project_id
+        # 直播剪辑作业状态，取值可能为如下值：  -Init （初始状态）  -Queuing（排队中）  -Processing（处理中）  -Success（成功）  -Failed（失败）
         self.status = status
+        # 用户数据
         self.user_data = user_data
 
     def validate(self):
@@ -3944,8 +4130,9 @@ class GetLiveEditingJobResponseBody(TeaModel):
         live_editing_job: GetLiveEditingJobResponseBodyLiveEditingJob = None,
         request_id: str = None,
     ):
+        # 直播剪辑任务
         self.live_editing_job = live_editing_job
-        # Id of the request
+        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -4017,10 +4204,12 @@ class GetMediaInfoRequest(TeaModel):
         input_url: str = None,
         media_id: str = None,
         output_type: str = None,
+        region_id: str = None,
     ):
         self.input_url = input_url
         self.media_id = media_id
         self.output_type = output_type
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -4037,6 +4226,8 @@ class GetMediaInfoRequest(TeaModel):
             result['MediaId'] = self.media_id
         if self.output_type is not None:
             result['OutputType'] = self.output_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4047,6 +4238,8 @@ class GetMediaInfoRequest(TeaModel):
             self.media_id = m.get('MediaId')
         if m.get('OutputType') is not None:
             self.output_type = m.get('OutputType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -5012,8 +5205,10 @@ class GetMediaProducingJobRequest(TeaModel):
     def __init__(
         self,
         job_id: str = None,
+        region_id: str = None,
     ):
         self.job_id = job_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -5026,12 +5221,16 @@ class GetMediaProducingJobRequest(TeaModel):
         result = dict()
         if self.job_id is not None:
             result['JobId'] = self.job_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -5223,8 +5422,10 @@ class GetPublicMediaInfoRequest(TeaModel):
     def __init__(
         self,
         media_id: str = None,
+        region_id: str = None,
     ):
         self.media_id = media_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -5237,12 +5438,16 @@ class GetPublicMediaInfoRequest(TeaModel):
         result = dict()
         if self.media_id is not None:
             result['MediaId'] = self.media_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('MediaId') is not None:
             self.media_id = m.get('MediaId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -6760,10 +6965,13 @@ class ListAllPublicMediaTagsRequest(TeaModel):
         self,
         business_type: str = None,
         entity_id: str = None,
+        region_id: str = None,
     ):
         # 媒资业务类型
         self.business_type = business_type
         self.entity_id = entity_id
+        # 区域标识
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -6778,6 +6986,8 @@ class ListAllPublicMediaTagsRequest(TeaModel):
             result['BusinessType'] = self.business_type
         if self.entity_id is not None:
             result['EntityId'] = self.entity_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6786,6 +6996,8 @@ class ListAllPublicMediaTagsRequest(TeaModel):
             self.business_type = m.get('BusinessType')
         if m.get('EntityId') is not None:
             self.entity_id = m.get('EntityId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -6974,6 +7186,7 @@ class ListMediaBasicInfosRequest(TeaModel):
         max_results: int = None,
         media_type: str = None,
         next_token: str = None,
+        region_id: str = None,
         sort_by: str = None,
         source: str = None,
         start_time: str = None,
@@ -6993,6 +7206,7 @@ class ListMediaBasicInfosRequest(TeaModel):
         self.media_type = media_type
         # 页号
         self.next_token = next_token
+        self.region_id = region_id
         # 排序
         self.sort_by = sort_by
         # 来源
@@ -7025,6 +7239,8 @@ class ListMediaBasicInfosRequest(TeaModel):
             result['MediaType'] = self.media_type
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         if self.source is not None:
@@ -7051,6 +7267,8 @@ class ListMediaBasicInfosRequest(TeaModel):
             self.media_type = m.get('MediaType')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         if m.get('Source') is not None:
@@ -7492,8 +7710,10 @@ class ListMediaBasicInfosResponse(TeaModel):
 class ListMediaProducingJobsRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         status: str = None,
     ):
+        self.region_id = region_id
         # 查询以下状态的合成任务，支持多值，以英文逗号分隔
         self.status = status
 
@@ -7506,12 +7726,16 @@ class ListMediaProducingJobsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.status is not None:
             result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -7702,6 +7926,7 @@ class ListPublicMediaBasicInfosRequest(TeaModel):
         max_results: int = None,
         media_tag_id: str = None,
         next_token: str = None,
+        region_id: str = None,
     ):
         # 返回值中是否包含文件基础信息
         self.include_file_basic_info = include_file_basic_info
@@ -7711,6 +7936,8 @@ class ListPublicMediaBasicInfosRequest(TeaModel):
         self.media_tag_id = media_tag_id
         # 下一次读取的位置
         self.next_token = next_token
+        # 区域标识
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -7729,6 +7956,8 @@ class ListPublicMediaBasicInfosRequest(TeaModel):
             result['MediaTagId'] = self.media_tag_id
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7741,6 +7970,8 @@ class ListPublicMediaBasicInfosRequest(TeaModel):
             self.media_tag_id = m.get('MediaTagId')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -8173,6 +8404,7 @@ class ListSmartJobsRequest(TeaModel):
         next_token: str = None,
         page_no: int = None,
         page_size: int = None,
+        region_id: str = None,
         sort_by: str = None,
         status: int = None,
     ):
@@ -8182,6 +8414,7 @@ class ListSmartJobsRequest(TeaModel):
         self.next_token = next_token
         self.page_no = page_no
         self.page_size = page_size
+        self.region_id = region_id
         self.sort_by = sort_by
         self.status = status
 
@@ -8206,6 +8439,8 @@ class ListSmartJobsRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         if self.status is not None:
@@ -8226,6 +8461,8 @@ class ListSmartJobsRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         if m.get('Status') is not None:
@@ -8499,12 +8736,14 @@ class ListSysTemplatesRequest(TeaModel):
         self,
         max_results: int = None,
         next_token: str = None,
+        region_id: str = None,
         type: str = None,
     ):
         # 本次读取的最大数据记录数量
         self.max_results = max_results
         # 标记当前开始读取的位置，置空表示从头开始
         self.next_token = next_token
+        self.region_id = region_id
         self.type = type
 
     def validate(self):
@@ -8520,6 +8759,8 @@ class ListSysTemplatesRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -8530,6 +8771,8 @@ class ListSysTemplatesRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -8947,6 +9190,7 @@ class RegisterMediaInfoRequest(TeaModel):
         media_tags: str = None,
         media_type: str = None,
         overwrite: bool = None,
+        region_id: str = None,
         register_config: str = None,
         title: str = None,
         user_data: str = None,
@@ -8971,6 +9215,7 @@ class RegisterMediaInfoRequest(TeaModel):
         self.media_type = media_type
         # 是否覆盖已有媒资
         self.overwrite = overwrite
+        self.region_id = region_id
         # 注册媒资的配置
         self.register_config = register_config
         # 标题
@@ -9007,6 +9252,8 @@ class RegisterMediaInfoRequest(TeaModel):
             result['MediaType'] = self.media_type
         if self.overwrite is not None:
             result['Overwrite'] = self.overwrite
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.register_config is not None:
             result['RegisterConfig'] = self.register_config
         if self.title is not None:
@@ -9037,6 +9284,8 @@ class RegisterMediaInfoRequest(TeaModel):
             self.media_type = m.get('MediaType')
         if m.get('Overwrite') is not None:
             self.overwrite = m.get('Overwrite')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RegisterConfig') is not None:
             self.register_config = m.get('RegisterConfig')
         if m.get('Title') is not None:
@@ -9126,6 +9375,7 @@ class SearchEditingProjectRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         project_type: str = None,
+        region_id: str = None,
         sort_by: str = None,
         start_time: str = None,
         status: str = None,
@@ -9140,6 +9390,8 @@ class SearchEditingProjectRequest(TeaModel):
         # 分页参数
         self.next_token = next_token
         self.project_type = project_type
+        # RegionId
+        self.region_id = region_id
         # 结果排序方式
         self.sort_by = sort_by
         # CreateTime（创建时间）的开始时间
@@ -9168,6 +9420,8 @@ class SearchEditingProjectRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.project_type is not None:
             result['ProjectType'] = self.project_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         if self.start_time is not None:
@@ -9190,6 +9444,8 @@ class SearchEditingProjectRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('ProjectType') is not None:
             self.project_type = m.get('ProjectType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         if m.get('StartTime') is not None:
@@ -9447,6 +9703,7 @@ class SearchPublicMediaInfoRequest(TeaModel):
         media_ids: str = None,
         page_no: int = None,
         page_size: int = None,
+        region_id: str = None,
         sort_by: str = None,
     ):
         self.authorized = authorized
@@ -9456,6 +9713,7 @@ class SearchPublicMediaInfoRequest(TeaModel):
         self.media_ids = media_ids
         self.page_no = page_no
         self.page_size = page_size
+        self.region_id = region_id
         self.sort_by = sort_by
 
     def validate(self):
@@ -9481,6 +9739,8 @@ class SearchPublicMediaInfoRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         return result
@@ -9501,6 +9761,8 @@ class SearchPublicMediaInfoRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         return self
@@ -9848,10 +10110,12 @@ class SetDefaultStorageLocationRequest(TeaModel):
         self,
         bucket: str = None,
         path: str = None,
+        region_id: str = None,
         storage_type: str = None,
     ):
         self.bucket = bucket
         self.path = path
+        self.region_id = region_id
         self.storage_type = storage_type
 
     def validate(self):
@@ -9867,6 +10131,8 @@ class SetDefaultStorageLocationRequest(TeaModel):
             result['Bucket'] = self.bucket
         if self.path is not None:
             result['Path'] = self.path
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
         return result
@@ -9877,6 +10143,8 @@ class SetDefaultStorageLocationRequest(TeaModel):
             self.bucket = m.get('Bucket')
         if m.get('Path') is not None:
             self.path = m.get('Path')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')
         return self
@@ -9958,9 +10226,11 @@ class SetEventCallbackRequest(TeaModel):
         self,
         callback_queue_name: str = None,
         event_type_list: str = None,
+        region_id: str = None,
     ):
         self.callback_queue_name = callback_queue_name
         self.event_type_list = event_type_list
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -9975,6 +10245,8 @@ class SetEventCallbackRequest(TeaModel):
             result['CallbackQueueName'] = self.callback_queue_name
         if self.event_type_list is not None:
             result['EventTypeList'] = self.event_type_list
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9983,6 +10255,8 @@ class SetEventCallbackRequest(TeaModel):
             self.callback_queue_name = m.get('CallbackQueueName')
         if m.get('EventTypeList') is not None:
             self.event_type_list = m.get('EventTypeList')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -10358,6 +10632,7 @@ class SubmitDelogoJobRequest(TeaModel):
         output_config: str = None,
         output_media_target: str = None,
         overwrite: bool = None,
+        region_id: str = None,
         title: str = None,
         user_data: str = None,
     ):
@@ -10372,6 +10647,7 @@ class SubmitDelogoJobRequest(TeaModel):
         self.output_media_target = output_media_target
         # 是否强制覆盖现有OSS文件
         self.overwrite = overwrite
+        self.region_id = region_id
         self.title = title
         self.user_data = user_data
 
@@ -10396,6 +10672,8 @@ class SubmitDelogoJobRequest(TeaModel):
             result['OutputMediaTarget'] = self.output_media_target
         if self.overwrite is not None:
             result['Overwrite'] = self.overwrite
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.title is not None:
             result['Title'] = self.title
         if self.user_data is not None:
@@ -10416,6 +10694,8 @@ class SubmitDelogoJobRequest(TeaModel):
             self.output_media_target = m.get('OutputMediaTarget')
         if m.get('Overwrite') is not None:
             self.overwrite = m.get('Overwrite')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         if m.get('UserData') is not None:
@@ -10512,6 +10792,196 @@ class SubmitDelogoJobResponse(TeaModel):
         return self
 
 
+class SubmitDynamicChartJobRequest(TeaModel):
+    def __init__(
+        self,
+        axis_params: str = None,
+        background: str = None,
+        chart_config: str = None,
+        chart_title: str = None,
+        chart_type: str = None,
+        data_source: str = None,
+        description: str = None,
+        input: str = None,
+        output_config: str = None,
+        region_id: str = None,
+        subtitle: str = None,
+        title: str = None,
+        unit: str = None,
+        user_data: str = None,
+    ):
+        # 坐标样式。XAxisFontInterval不传或为0则算法自动计算间距
+        self.axis_params = axis_params
+        # 图表背景
+        self.background = background
+        # 图表配置
+        self.chart_config = chart_config
+        # 主标题
+        self.chart_title = chart_title
+        # 图表类型
+        self.chart_type = chart_type
+        # 数据来源
+        self.data_source = data_source
+        # 任务描述
+        self.description = description
+        # 图表输入数据
+        self.input = input
+        # 输出设置
+        self.output_config = output_config
+        self.region_id = region_id
+        # 副标题
+        self.subtitle = subtitle
+        # 任务标题
+        self.title = title
+        # 单位
+        self.unit = unit
+        # 自定义数据，JSON格式
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.axis_params is not None:
+            result['AxisParams'] = self.axis_params
+        if self.background is not None:
+            result['Background'] = self.background
+        if self.chart_config is not None:
+            result['ChartConfig'] = self.chart_config
+        if self.chart_title is not None:
+            result['ChartTitle'] = self.chart_title
+        if self.chart_type is not None:
+            result['ChartType'] = self.chart_type
+        if self.data_source is not None:
+            result['DataSource'] = self.data_source
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.input is not None:
+            result['Input'] = self.input
+        if self.output_config is not None:
+            result['OutputConfig'] = self.output_config
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.subtitle is not None:
+            result['Subtitle'] = self.subtitle
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.unit is not None:
+            result['Unit'] = self.unit
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AxisParams') is not None:
+            self.axis_params = m.get('AxisParams')
+        if m.get('Background') is not None:
+            self.background = m.get('Background')
+        if m.get('ChartConfig') is not None:
+            self.chart_config = m.get('ChartConfig')
+        if m.get('ChartTitle') is not None:
+            self.chart_title = m.get('ChartTitle')
+        if m.get('ChartType') is not None:
+            self.chart_type = m.get('ChartType')
+        if m.get('DataSource') is not None:
+            self.data_source = m.get('DataSource')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Input') is not None:
+            self.input = m.get('Input')
+        if m.get('OutputConfig') is not None:
+            self.output_config = m.get('OutputConfig')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Subtitle') is not None:
+            self.subtitle = m.get('Subtitle')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Unit') is not None:
+            self.unit = m.get('Unit')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class SubmitDynamicChartJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        request_id: str = None,
+    ):
+        # 任务Id
+        self.job_id = job_id
+        # 请求Id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SubmitDynamicChartJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SubmitDynamicChartJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SubmitDynamicChartJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SubmitH2VJobRequest(TeaModel):
     def __init__(
         self,
@@ -10521,6 +10991,7 @@ class SubmitH2VJobRequest(TeaModel):
         output_config: str = None,
         output_media_target: str = None,
         overwrite: bool = None,
+        region_id: str = None,
         title: str = None,
         user_data: str = None,
     ):
@@ -10535,6 +11006,7 @@ class SubmitH2VJobRequest(TeaModel):
         self.output_media_target = output_media_target
         # 是否强制覆盖现有OSS文件
         self.overwrite = overwrite
+        self.region_id = region_id
         self.title = title
         self.user_data = user_data
 
@@ -10559,6 +11031,8 @@ class SubmitH2VJobRequest(TeaModel):
             result['OutputMediaTarget'] = self.output_media_target
         if self.overwrite is not None:
             result['Overwrite'] = self.overwrite
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.title is not None:
             result['Title'] = self.title
         if self.user_data is not None:
@@ -10579,6 +11053,8 @@ class SubmitH2VJobRequest(TeaModel):
             self.output_media_target = m.get('OutputMediaTarget')
         if m.get('Overwrite') is not None:
             self.overwrite = m.get('Overwrite')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         if m.get('UserData') is not None:
@@ -10681,12 +11157,14 @@ class SubmitKeyWordCutJobRequest(TeaModel):
         description: str = None,
         input_file: str = None,
         keyword: str = None,
+        region_id: str = None,
         title: str = None,
         user_data: str = None,
     ):
         self.description = description
         self.input_file = input_file
         self.keyword = keyword
+        self.region_id = region_id
         self.title = title
         self.user_data = user_data
 
@@ -10705,6 +11183,8 @@ class SubmitKeyWordCutJobRequest(TeaModel):
             result['InputFile'] = self.input_file
         if self.keyword is not None:
             result['Keyword'] = self.keyword
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.title is not None:
             result['Title'] = self.title
         if self.user_data is not None:
@@ -10719,6 +11199,8 @@ class SubmitKeyWordCutJobRequest(TeaModel):
             self.input_file = m.get('InputFile')
         if m.get('Keyword') is not None:
             self.keyword = m.get('Keyword')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         if m.get('UserData') is not None:
@@ -10824,6 +11306,7 @@ class SubmitLiveEditingJobRequest(TeaModel):
         output_media_config: str = None,
         output_media_target: str = None,
         project_id: str = None,
+        region_id: str = None,
         user_data: str = None,
     ):
         self.clips = clips
@@ -10832,6 +11315,7 @@ class SubmitLiveEditingJobRequest(TeaModel):
         self.output_media_config = output_media_config
         self.output_media_target = output_media_target
         self.project_id = project_id
+        self.region_id = region_id
         self.user_data = user_data
 
     def validate(self):
@@ -10855,6 +11339,8 @@ class SubmitLiveEditingJobRequest(TeaModel):
             result['OutputMediaTarget'] = self.output_media_target
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.user_data is not None:
             result['UserData'] = self.user_data
         return result
@@ -10873,6 +11359,8 @@ class SubmitLiveEditingJobRequest(TeaModel):
             self.output_media_target = m.get('OutputMediaTarget')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
         return self
@@ -10976,6 +11464,7 @@ class SubmitMattingJobRequest(TeaModel):
         output_config: str = None,
         output_media_target: str = None,
         overwrite: str = None,
+        region_id: str = None,
         title: str = None,
         user_data: str = None,
     ):
@@ -10990,6 +11479,7 @@ class SubmitMattingJobRequest(TeaModel):
         self.output_media_target = output_media_target
         # 是否强制覆盖现有OSS文件
         self.overwrite = overwrite
+        self.region_id = region_id
         self.title = title
         self.user_data = user_data
 
@@ -11014,6 +11504,8 @@ class SubmitMattingJobRequest(TeaModel):
             result['OutputMediaTarget'] = self.output_media_target
         if self.overwrite is not None:
             result['Overwrite'] = self.overwrite
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.title is not None:
             result['Title'] = self.title
         if self.user_data is not None:
@@ -11034,6 +11526,8 @@ class SubmitMattingJobRequest(TeaModel):
             self.output_media_target = m.get('OutputMediaTarget')
         if m.get('Overwrite') is not None:
             self.overwrite = m.get('Overwrite')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         if m.get('UserData') is not None:
@@ -11140,6 +11634,7 @@ class SubmitMediaProducingJobRequest(TeaModel):
         output_media_target: str = None,
         project_id: str = None,
         project_metadata: str = None,
+        region_id: str = None,
         source: str = None,
         template_id: str = None,
         timeline: str = None,
@@ -11152,6 +11647,7 @@ class SubmitMediaProducingJobRequest(TeaModel):
         self.output_media_target = output_media_target
         self.project_id = project_id
         self.project_metadata = project_metadata
+        self.region_id = region_id
         self.source = source
         self.template_id = template_id
         self.timeline = timeline
@@ -11180,6 +11676,8 @@ class SubmitMediaProducingJobRequest(TeaModel):
             result['ProjectId'] = self.project_id
         if self.project_metadata is not None:
             result['ProjectMetadata'] = self.project_metadata
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.source is not None:
             result['Source'] = self.source
         if self.template_id is not None:
@@ -11206,6 +11704,8 @@ class SubmitMediaProducingJobRequest(TeaModel):
             self.project_id = m.get('ProjectId')
         if m.get('ProjectMetadata') is not None:
             self.project_metadata = m.get('ProjectMetadata')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('TemplateId') is not None:
@@ -11315,11 +11815,13 @@ class SubmitPPTCutJobRequest(TeaModel):
         self,
         description: str = None,
         input_file: str = None,
+        region_id: str = None,
         title: str = None,
         user_data: str = None,
     ):
         self.description = description
         self.input_file = input_file
+        self.region_id = region_id
         self.title = title
         self.user_data = user_data
 
@@ -11336,6 +11838,8 @@ class SubmitPPTCutJobRequest(TeaModel):
             result['Description'] = self.description
         if self.input_file is not None:
             result['InputFile'] = self.input_file
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.title is not None:
             result['Title'] = self.title
         if self.user_data is not None:
@@ -11348,6 +11852,8 @@ class SubmitPPTCutJobRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('InputFile') is not None:
             self.input_file = m.get('InputFile')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         if m.get('UserData') is not None:
@@ -11452,6 +11958,7 @@ class SubmitSubtitleProduceJobRequest(TeaModel):
         input_config: str = None,
         is_async: int = None,
         output_config: str = None,
+        region_id: str = None,
         title: str = None,
         type: str = None,
         user_data: str = None,
@@ -11461,6 +11968,7 @@ class SubmitSubtitleProduceJobRequest(TeaModel):
         self.input_config = input_config
         self.is_async = is_async
         self.output_config = output_config
+        self.region_id = region_id
         self.title = title
         self.type = type
         self.user_data = user_data
@@ -11484,6 +11992,8 @@ class SubmitSubtitleProduceJobRequest(TeaModel):
             result['IsAsync'] = self.is_async
         if self.output_config is not None:
             result['OutputConfig'] = self.output_config
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.title is not None:
             result['Title'] = self.title
         if self.type is not None:
@@ -11504,6 +12014,8 @@ class SubmitSubtitleProduceJobRequest(TeaModel):
             self.is_async = m.get('IsAsync')
         if m.get('OutputConfig') is not None:
             self.output_config = m.get('OutputConfig')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         if m.get('Type') is not None:
@@ -11592,6 +12104,7 @@ class UpdateEditingProjectRequest(TeaModel):
         cover_url: str = None,
         description: str = None,
         project_id: str = None,
+        region_id: str = None,
         template_id: str = None,
         timeline: str = None,
         title: str = None,
@@ -11605,6 +12118,7 @@ class UpdateEditingProjectRequest(TeaModel):
         self.description = description
         # 云剪辑工程ID
         self.project_id = project_id
+        self.region_id = region_id
         # 模板Id
         self.template_id = template_id
         # 云剪辑工程时间线，Json格式
@@ -11631,6 +12145,8 @@ class UpdateEditingProjectRequest(TeaModel):
             result['Description'] = self.description
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         if self.timeline is not None:
@@ -11651,6 +12167,8 @@ class UpdateEditingProjectRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         if m.get('Timeline') is not None:
@@ -11738,6 +12256,7 @@ class UpdateMediaInfoRequest(TeaModel):
         input_url: str = None,
         media_id: str = None,
         media_tags: str = None,
+        region_id: str = None,
         title: str = None,
         user_data: str = None,
     ):
@@ -11761,6 +12280,7 @@ class UpdateMediaInfoRequest(TeaModel):
         self.media_id = media_id
         # 标签,如果有多个标签用逗号隔开
         self.media_tags = media_tags
+        self.region_id = region_id
         # 标题
         self.title = title
         # 用户数据，最大1024字节
@@ -11795,6 +12315,8 @@ class UpdateMediaInfoRequest(TeaModel):
             result['MediaId'] = self.media_id
         if self.media_tags is not None:
             result['MediaTags'] = self.media_tags
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.title is not None:
             result['Title'] = self.title
         if self.user_data is not None:
@@ -11823,6 +12345,8 @@ class UpdateMediaInfoRequest(TeaModel):
             self.media_id = m.get('MediaId')
         if m.get('MediaTags') is not None:
             self.media_tags = m.get('MediaTags')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         if m.get('UserData') is not None:
@@ -11907,9 +12431,11 @@ class UpdateSmartJobRequest(TeaModel):
         self,
         feextend: str = None,
         job_id: str = None,
+        region_id: str = None,
     ):
         self.feextend = feextend
         self.job_id = job_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -11924,6 +12450,8 @@ class UpdateSmartJobRequest(TeaModel):
             result['FEExtend'] = self.feextend
         if self.job_id is not None:
             result['JobId'] = self.job_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -11932,6 +12460,8 @@ class UpdateSmartJobRequest(TeaModel):
             self.feextend = m.get('FEExtend')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
