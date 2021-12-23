@@ -1,3 +1,6 @@
+2021-12-23 Version: 1.14.12
+- Set DataDisk param for AddNodes and SetAutoScaleConfig.
+
 2021-11-25 Version: 1.14.11
 - Set withoutAgent param in CreateCluster API.
 
