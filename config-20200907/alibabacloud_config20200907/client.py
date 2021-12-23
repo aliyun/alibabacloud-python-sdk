@@ -267,6 +267,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.config_rules):
             request.config_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_rules, 'ConfigRules', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
@@ -311,6 +312,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.config_rules):
             request.config_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_rules, 'ConfigRules', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
@@ -371,6 +373,7 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
@@ -435,6 +438,7 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
@@ -511,6 +515,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.aggregator_accounts):
             request.aggregator_accounts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aggregator_accounts, 'AggregatorAccounts', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_accounts_shrink):
             body['AggregatorAccounts'] = request.aggregator_accounts_shrink
@@ -551,6 +556,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.aggregator_accounts):
             request.aggregator_accounts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aggregator_accounts, 'AggregatorAccounts', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_accounts_shrink):
             body['AggregatorAccounts'] = request.aggregator_accounts_shrink
@@ -605,6 +611,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.config_rules):
             request.config_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_rules, 'ConfigRules', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -647,6 +654,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.config_rules):
             request.config_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_rules, 'ConfigRules', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -705,6 +713,7 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -767,6 +776,7 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -975,6 +985,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregateCompliancePacksResponse:
         UtilClient.validate_model(request)
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
@@ -1009,6 +1020,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregateCompliancePacksResponse:
         UtilClient.validate_model(request)
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
@@ -1127,6 +1139,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregatorsResponse:
         UtilClient.validate_model(request)
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_ids):
             body['AggregatorIds'] = request.aggregator_ids
@@ -1157,6 +1170,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregatorsResponse:
         UtilClient.validate_model(request)
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_ids):
             body['AggregatorIds'] = request.aggregator_ids
@@ -1201,6 +1215,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteCompliancePacksResponse:
         UtilClient.validate_model(request)
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -1233,6 +1248,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteCompliancePacksResponse:
         UtilClient.validate_model(request)
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -1421,6 +1437,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateAggregateCompliancePackReportResponse:
         UtilClient.validate_model(request)
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
@@ -1453,6 +1470,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateAggregateCompliancePackReportResponse:
         UtilClient.validate_model(request)
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
@@ -1499,6 +1517,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateAggregateConfigRulesReportResponse:
         UtilClient.validate_model(request)
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
@@ -1529,6 +1548,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateAggregateConfigRulesReportResponse:
         UtilClient.validate_model(request)
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
@@ -1573,6 +1593,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateCompliancePackReportResponse:
         UtilClient.validate_model(request)
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -1603,6 +1624,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateCompliancePackReportResponse:
         UtilClient.validate_model(request)
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -1647,6 +1669,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateConfigRulesReportResponse:
         UtilClient.validate_model(request)
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -1675,6 +1698,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateConfigRulesReportResponse:
         UtilClient.validate_model(request)
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -3411,6 +3435,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.resources):
             request.resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resources, 'Resources', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
@@ -3449,6 +3474,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.resources):
             request.resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resources, 'Resources', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
@@ -3501,6 +3527,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.resources):
             request.resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resources, 'Resources', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.config_rule_id):
             body['ConfigRuleId'] = request.config_rule_id
@@ -3537,6 +3564,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.resources):
             request.resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resources, 'Resources', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.config_rule_id):
             body['ConfigRuleId'] = request.config_rule_id
@@ -4181,6 +4209,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.resources):
             request.resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resources, 'Resources', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
@@ -4217,6 +4246,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.resources):
             request.resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resources, 'Resources', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
@@ -4267,6 +4297,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.resources):
             request.resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resources, 'Resources', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.config_rule_id):
             body['ConfigRuleId'] = request.config_rule_id
@@ -4301,6 +4332,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.resources):
             request.resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resources, 'Resources', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.config_rule_id):
             body['ConfigRuleId'] = request.config_rule_id
@@ -4423,6 +4455,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.config_rules):
             request.config_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_rules, 'ConfigRules', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
@@ -4467,6 +4500,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.config_rules):
             request.config_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_rules, 'ConfigRules', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
@@ -4527,6 +4561,7 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
@@ -4589,6 +4624,7 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
@@ -4663,6 +4699,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.aggregator_accounts):
             request.aggregator_accounts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aggregator_accounts, 'AggregatorAccounts', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_accounts_shrink):
             body['AggregatorAccounts'] = request.aggregator_accounts_shrink
@@ -4703,6 +4740,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.aggregator_accounts):
             request.aggregator_accounts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aggregator_accounts, 'AggregatorAccounts', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.aggregator_accounts_shrink):
             body['AggregatorAccounts'] = request.aggregator_accounts_shrink
@@ -4757,6 +4795,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.config_rules):
             request.config_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_rules, 'ConfigRules', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -4799,6 +4838,7 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.config_rules):
             request.config_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_rules, 'ConfigRules', 'json')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -4857,6 +4897,7 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -4917,6 +4958,7 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        query = {}
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
