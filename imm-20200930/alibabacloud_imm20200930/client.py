@@ -56,13 +56,10 @@ class Client(OpenApiClient):
             request.uris_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.uris, 'URIs', 'json')
         query = {}
         query['DatasetName'] = request.dataset_name
-        query['NotifyEndpoint'] = request.notify_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
         query['ProjectName'] = request.project_name
         query['URIs'] = request.uris_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchDeleteFileMeta',
@@ -72,7 +69,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -92,13 +89,10 @@ class Client(OpenApiClient):
             request.uris_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.uris, 'URIs', 'json')
         query = {}
         query['DatasetName'] = request.dataset_name
-        query['NotifyEndpoint'] = request.notify_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
         query['ProjectName'] = request.project_name
         query['URIs'] = request.uris_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchDeleteFileMeta',
@@ -108,7 +102,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -145,8 +139,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['URIs'] = request.uris_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchGetFileMeta',
@@ -156,7 +149,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -179,8 +172,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['URIs'] = request.uris_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchGetFileMeta',
@@ -190,7 +182,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -229,8 +221,7 @@ class Client(OpenApiClient):
         query['NotifyTopicName'] = request.notify_topic_name
         query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchIndexFileMeta',
@@ -240,7 +231,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -265,8 +256,7 @@ class Client(OpenApiClient):
         query['NotifyTopicName'] = request.notify_topic_name
         query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchIndexFileMeta',
@@ -276,7 +266,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -311,12 +301,9 @@ class Client(OpenApiClient):
         query = {}
         query['DatasetName'] = request.dataset_name
         query['Files'] = request.files_shrink
-        query['NotifyEndpoint'] = request.notify_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
         query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchUpdateFileMeta',
@@ -326,7 +313,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -347,12 +334,9 @@ class Client(OpenApiClient):
         query = {}
         query['DatasetName'] = request.dataset_name
         query['Files'] = request.files_shrink
-        query['NotifyEndpoint'] = request.notify_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
         query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchUpdateFileMeta',
@@ -362,7 +346,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -384,6 +368,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_update_file_meta_with_options_async(request, runtime)
 
+    def cluster_figures_with_options(
+        self,
+        request: imm_20200930_models.ClusterFiguresRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.ClusterFiguresResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['CustomMessage'] = request.custom_message
+        query['DatasetName'] = request.dataset_name
+        query['FigureType'] = request.figure_type
+        query['NotifyTopicEndpoint'] = request.notify_topic_endpoint
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClusterFigures',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.ClusterFiguresResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cluster_figures_with_options_async(
+        self,
+        request: imm_20200930_models.ClusterFiguresRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.ClusterFiguresResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['CustomMessage'] = request.custom_message
+        query['DatasetName'] = request.dataset_name
+        query['FigureType'] = request.figure_type
+        query['NotifyTopicEndpoint'] = request.notify_topic_endpoint
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClusterFigures',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.ClusterFiguresResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cluster_figures(
+        self,
+        request: imm_20200930_models.ClusterFiguresRequest,
+    ) -> imm_20200930_models.ClusterFiguresResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cluster_figures_with_options(request, runtime)
+
+    async def cluster_figures_async(
+        self,
+        request: imm_20200930_models.ClusterFiguresRequest,
+    ) -> imm_20200930_models.ClusterFiguresResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cluster_figures_with_options_async(request, runtime)
+
     def create_binding_with_options(
         self,
         request: imm_20200930_models.CreateBindingRequest,
@@ -395,8 +457,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateBinding',
@@ -406,7 +467,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -425,8 +486,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateBinding',
@@ -436,7 +496,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -475,8 +535,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateDataset',
@@ -486,7 +545,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -511,8 +570,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateDataset',
@@ -522,7 +580,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -544,117 +602,77 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_dataset_with_options_async(request, runtime)
 
-    def create_office_conversion_task_with_options(
+    def create_detect_video_labels_task_with_options(
         self,
-        request: imm_20200930_models.CreateOfficeConversionTaskRequest,
+        request: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imm_20200930_models.CreateOfficeConversionTaskResponse:
+    ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndPage'] = request.end_page
-        query['FirstPage'] = request.first_page
-        query['FitToHeight'] = request.fit_to_height
-        query['FitToWidth'] = request.fit_to_width
-        query['IsHorizontal'] = request.is_horizontal
-        query['LongPic'] = request.long_pic
-        query['NotifyEndpoint'] = request.notify_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
-        query['PaperSize'] = request.paper_size
-        query['Password'] = request.password
         query['ProjectName'] = request.project_name
-        query['Quality'] = request.quality
-        query['Scale'] = request.scale
-        query['SheetCount'] = request.sheet_count
-        query['SheetIndex'] = request.sheet_index
-        query['ShowComments'] = request.show_comments
-        query['SourceType'] = request.source_type
-        query['SourceUri'] = request.source_uri
-        query['StartPage'] = request.start_page
-        query['TargetType'] = request.target_type
-        query['TargetUri'] = request.target_uri
+        query['SourceURI'] = request.source_uri
         query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='CreateOfficeConversionTask',
+            action='CreateDetectVideoLabelsTask',
             version='2020-09-30',
             protocol='HTTPS',
             pathname='/',
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
-            imm_20200930_models.CreateOfficeConversionTaskResponse(),
+            imm_20200930_models.CreateDetectVideoLabelsTaskResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def create_office_conversion_task_with_options_async(
+    async def create_detect_video_labels_task_with_options_async(
         self,
-        request: imm_20200930_models.CreateOfficeConversionTaskRequest,
+        request: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imm_20200930_models.CreateOfficeConversionTaskResponse:
+    ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndPage'] = request.end_page
-        query['FirstPage'] = request.first_page
-        query['FitToHeight'] = request.fit_to_height
-        query['FitToWidth'] = request.fit_to_width
-        query['IsHorizontal'] = request.is_horizontal
-        query['LongPic'] = request.long_pic
-        query['NotifyEndpoint'] = request.notify_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
-        query['PaperSize'] = request.paper_size
-        query['Password'] = request.password
         query['ProjectName'] = request.project_name
-        query['Quality'] = request.quality
-        query['Scale'] = request.scale
-        query['SheetCount'] = request.sheet_count
-        query['SheetIndex'] = request.sheet_index
-        query['ShowComments'] = request.show_comments
-        query['SourceType'] = request.source_type
-        query['SourceUri'] = request.source_uri
-        query['StartPage'] = request.start_page
-        query['TargetType'] = request.target_type
-        query['TargetUri'] = request.target_uri
+        query['SourceURI'] = request.source_uri
         query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='CreateOfficeConversionTask',
+            action='CreateDetectVideoLabelsTask',
             version='2020-09-30',
             protocol='HTTPS',
             pathname='/',
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
-            imm_20200930_models.CreateOfficeConversionTaskResponse(),
+            imm_20200930_models.CreateDetectVideoLabelsTaskResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_office_conversion_task(
+    def create_detect_video_labels_task(
         self,
-        request: imm_20200930_models.CreateOfficeConversionTaskRequest,
-    ) -> imm_20200930_models.CreateOfficeConversionTaskResponse:
+        request: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
+    ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
         runtime = util_models.RuntimeOptions()
-        return self.create_office_conversion_task_with_options(request, runtime)
+        return self.create_detect_video_labels_task_with_options(request, runtime)
 
-    async def create_office_conversion_task_async(
+    async def create_detect_video_labels_task_async(
         self,
-        request: imm_20200930_models.CreateOfficeConversionTaskRequest,
-    ) -> imm_20200930_models.CreateOfficeConversionTaskResponse:
+        request: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
+    ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.create_office_conversion_task_with_options_async(request, runtime)
+        return await self.create_detect_video_labels_task_with_options_async(request, runtime)
 
     def create_project_with_options(
         self,
@@ -676,8 +694,7 @@ class Client(OpenApiClient):
         query['ServiceRole'] = request.service_role
         query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateProject',
@@ -687,7 +704,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -715,8 +732,7 @@ class Client(OpenApiClient):
         query['ServiceRole'] = request.service_role
         query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateProject',
@@ -726,7 +742,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -759,8 +775,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteBinding',
@@ -770,7 +785,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -789,8 +804,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteBinding',
@@ -800,7 +814,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -832,8 +846,7 @@ class Client(OpenApiClient):
         query['DatasetName'] = request.dataset_name
         query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDataset',
@@ -843,7 +856,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -861,8 +874,7 @@ class Client(OpenApiClient):
         query['DatasetName'] = request.dataset_name
         query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDataset',
@@ -872,7 +884,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -902,13 +914,10 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = {}
         query['DatasetName'] = request.dataset_name
-        query['NotifyEndpoint'] = request.notify_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
         query['ProjectName'] = request.project_name
         query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteFileMeta',
@@ -918,7 +927,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -934,13 +943,10 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = {}
         query['DatasetName'] = request.dataset_name
-        query['NotifyEndpoint'] = request.notify_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
         query['ProjectName'] = request.project_name
         query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteFileMeta',
@@ -950,7 +956,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -981,8 +987,7 @@ class Client(OpenApiClient):
         query = {}
         query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteProject',
@@ -992,7 +997,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1009,8 +1014,7 @@ class Client(OpenApiClient):
         query = {}
         query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteProject',
@@ -1020,7 +1024,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1053,8 +1057,7 @@ class Client(OpenApiClient):
         query['SourceURI'] = request.source_uri
         query['Threshold'] = request.threshold
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetectImageLabels',
@@ -1064,7 +1067,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1083,8 +1086,7 @@ class Client(OpenApiClient):
         query['SourceURI'] = request.source_uri
         query['Threshold'] = request.threshold
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetectImageLabels',
@@ -1094,7 +1096,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1129,8 +1131,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['Query'] = request.query
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='FuzzyQuery',
@@ -1140,7 +1141,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1161,8 +1162,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['Query'] = request.query
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='FuzzyQuery',
@@ -1172,7 +1172,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1205,8 +1205,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetBinding',
@@ -1216,7 +1215,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1235,8 +1234,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetBinding',
@@ -1246,7 +1244,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1279,8 +1277,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['WithStatistics'] = request.with_statistics
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetDataset',
@@ -1290,7 +1287,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1309,8 +1306,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['WithStatistics'] = request.with_statistics
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetDataset',
@@ -1320,7 +1316,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1342,6 +1338,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_dataset_with_options_async(request, runtime)
 
+    def get_detect_video_labels_result_with_options(
+        self,
+        request: imm_20200930_models.GetDetectVideoLabelsResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetDetectVideoLabelsResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ProjectName'] = request.project_name
+        query['TaskId'] = request.task_id
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDetectVideoLabelsResult',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetDetectVideoLabelsResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_detect_video_labels_result_with_options_async(
+        self,
+        request: imm_20200930_models.GetDetectVideoLabelsResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetDetectVideoLabelsResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ProjectName'] = request.project_name
+        query['TaskId'] = request.task_id
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDetectVideoLabelsResult',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetDetectVideoLabelsResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_detect_video_labels_result(
+        self,
+        request: imm_20200930_models.GetDetectVideoLabelsResultRequest,
+    ) -> imm_20200930_models.GetDetectVideoLabelsResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_detect_video_labels_result_with_options(request, runtime)
+
+    async def get_detect_video_labels_result_async(
+        self,
+        request: imm_20200930_models.GetDetectVideoLabelsResultRequest,
+    ) -> imm_20200930_models.GetDetectVideoLabelsResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_detect_video_labels_result_with_options_async(request, runtime)
+
+    def get_figure_cluster_with_options(
+        self,
+        request: imm_20200930_models.GetFigureClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetFigureClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['DatasetName'] = request.dataset_name
+        query['FigureClusterId'] = request.figure_cluster_id
+        query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFigureCluster',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetFigureClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_figure_cluster_with_options_async(
+        self,
+        request: imm_20200930_models.GetFigureClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetFigureClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['DatasetName'] = request.dataset_name
+        query['FigureClusterId'] = request.figure_cluster_id
+        query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFigureCluster',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetFigureClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_figure_cluster(
+        self,
+        request: imm_20200930_models.GetFigureClusterRequest,
+    ) -> imm_20200930_models.GetFigureClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_figure_cluster_with_options(request, runtime)
+
+    async def get_figure_cluster_async(
+        self,
+        request: imm_20200930_models.GetFigureClusterRequest,
+    ) -> imm_20200930_models.GetFigureClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_figure_cluster_with_options_async(request, runtime)
+
     def get_file_meta_with_options(
         self,
         request: imm_20200930_models.GetFileMetaRequest,
@@ -1353,8 +1493,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetFileMeta',
@@ -1364,7 +1503,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1383,8 +1522,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetFileMeta',
@@ -1394,7 +1532,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1426,8 +1564,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetFileSignedURI',
@@ -1437,7 +1574,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1455,8 +1592,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetFileSignedURI',
@@ -1466,7 +1602,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1488,78 +1624,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_file_signed_uriwith_options_async(request, runtime)
 
-    def get_office_conversion_task_with_options(
-        self,
-        request: imm_20200930_models.GetOfficeConversionTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20200930_models.GetOfficeConversionTaskResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['ProjectName'] = request.project_name
-        query['TaskId'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetOfficeConversionTask',
-            version='2020-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imm_20200930_models.GetOfficeConversionTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_office_conversion_task_with_options_async(
-        self,
-        request: imm_20200930_models.GetOfficeConversionTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20200930_models.GetOfficeConversionTaskResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['ProjectName'] = request.project_name
-        query['TaskId'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetOfficeConversionTask',
-            version='2020-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imm_20200930_models.GetOfficeConversionTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_office_conversion_task(
-        self,
-        request: imm_20200930_models.GetOfficeConversionTaskRequest,
-    ) -> imm_20200930_models.GetOfficeConversionTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_office_conversion_task_with_options(request, runtime)
-
-    async def get_office_conversion_task_async(
-        self,
-        request: imm_20200930_models.GetOfficeConversionTaskRequest,
-    ) -> imm_20200930_models.GetOfficeConversionTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_office_conversion_task_with_options_async(request, runtime)
-
     def get_project_with_options(
         self,
         request: imm_20200930_models.GetProjectRequest,
@@ -1570,8 +1634,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['WithStatistics'] = request.with_statistics
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetProject',
@@ -1581,7 +1644,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1599,8 +1662,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['WithStatistics'] = request.with_statistics
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetProject',
@@ -1610,7 +1672,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1631,6 +1693,78 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.GetProjectResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_project_with_options_async(request, runtime)
+
+    def get_task_with_options(
+        self,
+        request: imm_20200930_models.GetTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ProjectName'] = request.project_name
+        query['TaskId'] = request.task_id
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_task_with_options_async(
+        self,
+        request: imm_20200930_models.GetTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ProjectName'] = request.project_name
+        query['TaskId'] = request.task_id
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_task(
+        self,
+        request: imm_20200930_models.GetTaskRequest,
+    ) -> imm_20200930_models.GetTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_task_with_options(request, runtime)
+
+    async def get_task_async(
+        self,
+        request: imm_20200930_models.GetTaskRequest,
+    ) -> imm_20200930_models.GetTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_task_with_options_async(request, runtime)
 
     def get_weboffice_urlwith_options(
         self,
@@ -1665,8 +1799,7 @@ class Client(OpenApiClient):
         query['UserData'] = request.user_data
         query['Watermark'] = request.watermark_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetWebofficeURL',
@@ -1676,7 +1809,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1717,8 +1850,7 @@ class Client(OpenApiClient):
         query['UserData'] = request.user_data
         query['Watermark'] = request.watermark_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetWebofficeURL',
@@ -1728,7 +1860,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1767,8 +1899,7 @@ class Client(OpenApiClient):
         query['NotifyTopicName'] = request.notify_topic_name
         query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='IndexFileMeta',
@@ -1778,7 +1909,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1803,8 +1934,7 @@ class Client(OpenApiClient):
         query['NotifyTopicName'] = request.notify_topic_name
         query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='IndexFileMeta',
@@ -1814,7 +1944,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1848,8 +1978,7 @@ class Client(OpenApiClient):
         query['NextToken'] = request.next_token
         query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListBindings',
@@ -1859,7 +1988,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1879,8 +2008,7 @@ class Client(OpenApiClient):
         query['NextToken'] = request.next_token
         query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListBindings',
@@ -1890,7 +2018,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1924,8 +2052,7 @@ class Client(OpenApiClient):
         query['Prefix'] = request.prefix
         query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDatasets',
@@ -1935,7 +2062,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1955,8 +2082,7 @@ class Client(OpenApiClient):
         query['Prefix'] = request.prefix
         query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDatasets',
@@ -1966,7 +2092,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1988,79 +2114,85 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_datasets_with_options_async(request, runtime)
 
-    def list_office_conversion_task_with_options(
+    def list_figure_clusters_with_options(
         self,
-        request: imm_20200930_models.ListOfficeConversionTaskRequest,
+        request: imm_20200930_models.ListFigureClustersRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imm_20200930_models.ListOfficeConversionTaskResponse:
+    ) -> imm_20200930_models.ListFigureClustersResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['DatasetName'] = request.dataset_name
+        query['Labels'] = request.labels
         query['MaxResults'] = request.max_results
         query['NextToken'] = request.next_token
+        query['Order'] = request.order
         query['ProjectName'] = request.project_name
+        query['Sort'] = request.sort
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListOfficeConversionTask',
+            action='ListFigureClusters',
             version='2020-09-30',
             protocol='HTTPS',
             pathname='/',
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
-            imm_20200930_models.ListOfficeConversionTaskResponse(),
+            imm_20200930_models.ListFigureClustersResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def list_office_conversion_task_with_options_async(
+    async def list_figure_clusters_with_options_async(
         self,
-        request: imm_20200930_models.ListOfficeConversionTaskRequest,
+        request: imm_20200930_models.ListFigureClustersRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imm_20200930_models.ListOfficeConversionTaskResponse:
+    ) -> imm_20200930_models.ListFigureClustersResponse:
         UtilClient.validate_model(request)
         query = {}
+        query['DatasetName'] = request.dataset_name
+        query['Labels'] = request.labels
         query['MaxResults'] = request.max_results
         query['NextToken'] = request.next_token
+        query['Order'] = request.order
         query['ProjectName'] = request.project_name
+        query['Sort'] = request.sort
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListOfficeConversionTask',
+            action='ListFigureClusters',
             version='2020-09-30',
             protocol='HTTPS',
             pathname='/',
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
-            imm_20200930_models.ListOfficeConversionTaskResponse(),
+            imm_20200930_models.ListFigureClustersResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_office_conversion_task(
+    def list_figure_clusters(
         self,
-        request: imm_20200930_models.ListOfficeConversionTaskRequest,
-    ) -> imm_20200930_models.ListOfficeConversionTaskResponse:
+        request: imm_20200930_models.ListFigureClustersRequest,
+    ) -> imm_20200930_models.ListFigureClustersResponse:
         runtime = util_models.RuntimeOptions()
-        return self.list_office_conversion_task_with_options(request, runtime)
+        return self.list_figure_clusters_with_options(request, runtime)
 
-    async def list_office_conversion_task_async(
+    async def list_figure_clusters_async(
         self,
-        request: imm_20200930_models.ListOfficeConversionTaskRequest,
-    ) -> imm_20200930_models.ListOfficeConversionTaskResponse:
+        request: imm_20200930_models.ListFigureClustersRequest,
+    ) -> imm_20200930_models.ListFigureClustersResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.list_office_conversion_task_with_options_async(request, runtime)
+        return await self.list_figure_clusters_with_options_async(request, runtime)
 
     def list_projects_with_options(
         self,
@@ -2073,8 +2205,7 @@ class Client(OpenApiClient):
         query['NextToken'] = request.next_token
         query['Prefix'] = request.prefix
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListProjects',
@@ -2084,7 +2215,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2103,8 +2234,7 @@ class Client(OpenApiClient):
         query['NextToken'] = request.next_token
         query['Prefix'] = request.prefix
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListProjects',
@@ -2114,7 +2244,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2136,6 +2266,162 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_projects_with_options_async(request, runtime)
 
+    def list_tasks_with_options(
+        self,
+        request: imm_20200930_models.ListTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.ListTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ProjectName'] = request.project_name
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTasks',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.ListTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tasks_with_options_async(
+        self,
+        request: imm_20200930_models.ListTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.ListTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ProjectName'] = request.project_name
+        query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTasks',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.ListTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tasks(
+        self,
+        request: imm_20200930_models.ListTasksRequest,
+    ) -> imm_20200930_models.ListTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_tasks_with_options(request, runtime)
+
+    async def list_tasks_async(
+        self,
+        request: imm_20200930_models.ListTasksRequest,
+    ) -> imm_20200930_models.ListTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tasks_with_options_async(request, runtime)
+
+    def merge_figure_clusters_with_options(
+        self,
+        request: imm_20200930_models.MergeFigureClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.MergeFigureClustersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClusterIdFrom'] = request.cluster_id_from
+        query['ClusterIdTo'] = request.cluster_id_to
+        query['CustomMessage'] = request.custom_message
+        query['DatasetName'] = request.dataset_name
+        query['FigureType'] = request.figure_type
+        query['NotifyTopicEndpoint'] = request.notify_topic_endpoint
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MergeFigureClusters',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.MergeFigureClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def merge_figure_clusters_with_options_async(
+        self,
+        request: imm_20200930_models.MergeFigureClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.MergeFigureClustersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['ClusterIdFrom'] = request.cluster_id_from
+        query['ClusterIdTo'] = request.cluster_id_to
+        query['CustomMessage'] = request.custom_message
+        query['DatasetName'] = request.dataset_name
+        query['FigureType'] = request.figure_type
+        query['NotifyTopicEndpoint'] = request.notify_topic_endpoint
+        query['NotifyTopicName'] = request.notify_topic_name
+        query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MergeFigureClusters',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.MergeFigureClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def merge_figure_clusters(
+        self,
+        request: imm_20200930_models.MergeFigureClustersRequest,
+    ) -> imm_20200930_models.MergeFigureClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.merge_figure_clusters_with_options(request, runtime)
+
+    async def merge_figure_clusters_async(
+        self,
+        request: imm_20200930_models.MergeFigureClustersRequest,
+    ) -> imm_20200930_models.MergeFigureClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.merge_figure_clusters_with_options_async(request, runtime)
+
     def refresh_weboffice_token_with_options(
         self,
         tmp_req: imm_20200930_models.RefreshWebofficeTokenRequest,
@@ -2152,8 +2438,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['RefreshToken'] = request.refresh_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RefreshWebofficeToken',
@@ -2163,7 +2448,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2187,8 +2472,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['RefreshToken'] = request.refresh_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RefreshWebofficeToken',
@@ -2198,7 +2482,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2231,8 +2515,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ResumeBinding',
@@ -2242,7 +2525,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2261,8 +2544,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ResumeBinding',
@@ -2272,7 +2554,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2293,6 +2575,82 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.ResumeBindingResponse:
         runtime = util_models.RuntimeOptions()
         return await self.resume_binding_with_options_async(request, runtime)
+
+    def semantic_query_with_options(
+        self,
+        request: imm_20200930_models.SemanticQueryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.SemanticQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['DatasetName'] = request.dataset_name
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ProjectName'] = request.project_name
+        query['Query'] = request.query
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SemanticQuery',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.SemanticQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def semantic_query_with_options_async(
+        self,
+        request: imm_20200930_models.SemanticQueryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.SemanticQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['DatasetName'] = request.dataset_name
+        query['MaxResults'] = request.max_results
+        query['NextToken'] = request.next_token
+        query['ProjectName'] = request.project_name
+        query['Query'] = request.query
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SemanticQuery',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.SemanticQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def semantic_query(
+        self,
+        request: imm_20200930_models.SemanticQueryRequest,
+    ) -> imm_20200930_models.SemanticQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.semantic_query_with_options(request, runtime)
+
+    async def semantic_query_async(
+        self,
+        request: imm_20200930_models.SemanticQueryRequest,
+    ) -> imm_20200930_models.SemanticQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.semantic_query_with_options_async(request, runtime)
 
     def simple_query_with_options(
         self,
@@ -2316,8 +2674,7 @@ class Client(OpenApiClient):
         query['Query'] = request.query_shrink
         query['Sort'] = request.sort
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SimpleQuery',
@@ -2327,7 +2684,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2357,8 +2714,7 @@ class Client(OpenApiClient):
         query['Query'] = request.query_shrink
         query['Sort'] = request.sort
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SimpleQuery',
@@ -2368,7 +2724,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2402,8 +2758,7 @@ class Client(OpenApiClient):
         query['Reason'] = request.reason
         query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StopBinding',
@@ -2413,7 +2768,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2433,8 +2788,7 @@ class Client(OpenApiClient):
         query['Reason'] = request.reason
         query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StopBinding',
@@ -2444,7 +2798,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2483,8 +2837,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDataset',
@@ -2494,7 +2847,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2519,8 +2872,7 @@ class Client(OpenApiClient):
         query['ProjectName'] = request.project_name
         query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDataset',
@@ -2530,7 +2882,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2552,6 +2904,86 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_dataset_with_options_async(request, runtime)
 
+    def update_figure_cluster_with_options(
+        self,
+        tmp_req: imm_20200930_models.UpdateFigureClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.UpdateFigureClusterResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.UpdateFigureClusterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.figure_cluster):
+            request.figure_cluster_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.figure_cluster), 'FigureCluster', 'json')
+        query = {}
+        query['DatasetName'] = request.dataset_name
+        query['FigureCluster'] = request.figure_cluster_shrink
+        query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateFigureCluster',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.UpdateFigureClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_figure_cluster_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.UpdateFigureClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.UpdateFigureClusterResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.UpdateFigureClusterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.figure_cluster):
+            request.figure_cluster_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.figure_cluster), 'FigureCluster', 'json')
+        query = {}
+        query['DatasetName'] = request.dataset_name
+        query['FigureCluster'] = request.figure_cluster_shrink
+        query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateFigureCluster',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.UpdateFigureClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_figure_cluster(
+        self,
+        request: imm_20200930_models.UpdateFigureClusterRequest,
+    ) -> imm_20200930_models.UpdateFigureClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_figure_cluster_with_options(request, runtime)
+
+    async def update_figure_cluster_async(
+        self,
+        request: imm_20200930_models.UpdateFigureClusterRequest,
+    ) -> imm_20200930_models.UpdateFigureClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_figure_cluster_with_options_async(request, runtime)
+
     def update_file_meta_with_options(
         self,
         tmp_req: imm_20200930_models.UpdateFileMetaRequest,
@@ -2565,12 +2997,9 @@ class Client(OpenApiClient):
         query = {}
         query['DatasetName'] = request.dataset_name
         query['File'] = request.file_shrink
-        query['NotifyEndpoint'] = request.notify_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
         query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateFileMeta',
@@ -2580,7 +3009,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2601,12 +3030,9 @@ class Client(OpenApiClient):
         query = {}
         query['DatasetName'] = request.dataset_name
         query['File'] = request.file_shrink
-        query['NotifyEndpoint'] = request.notify_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
         query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateFileMeta',
@@ -2616,7 +3042,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2658,8 +3084,7 @@ class Client(OpenApiClient):
         query['ServiceRole'] = request.service_role
         query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateProject',
@@ -2669,7 +3094,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2697,8 +3122,7 @@ class Client(OpenApiClient):
         query['ServiceRole'] = request.service_role
         query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateProject',
@@ -2708,7 +3132,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(

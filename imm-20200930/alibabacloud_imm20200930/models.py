@@ -418,6 +418,128 @@ class Boundary(TeaModel):
         return self
 
 
+class ClusterForReqCoverFigures(TeaModel):
+    def __init__(
+        self,
+        figure_id: str = None,
+    ):
+        # FigureId
+        self.figure_id = figure_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.figure_id is not None:
+            result['FigureId'] = self.figure_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FigureId') is not None:
+            self.figure_id = m.get('FigureId')
+        return self
+
+
+class ClusterForReqCover(TeaModel):
+    def __init__(
+        self,
+        figures: List[ClusterForReqCoverFigures] = None,
+    ):
+        # Figures
+        self.figures = figures
+
+    def validate(self):
+        if self.figures:
+            for k in self.figures:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Figures'] = []
+        if self.figures is not None:
+            for k in self.figures:
+                result['Figures'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.figures = []
+        if m.get('Figures') is not None:
+            for k in m.get('Figures'):
+                temp_model = ClusterForReqCoverFigures()
+                self.figures.append(temp_model.from_map(k))
+        return self
+
+
+class ClusterForReq(TeaModel):
+    def __init__(
+        self,
+        cover: ClusterForReqCover = None,
+        custom_id: str = None,
+        custom_labels: Dict[str, Any] = None,
+        name: str = None,
+        object_id: str = None,
+    ):
+        # Cover
+        self.cover = cover
+        # CustomId
+        self.custom_id = custom_id
+        # CustomLabels
+        self.custom_labels = custom_labels
+        # Name
+        self.name = name
+        # ObjectId
+        self.object_id = object_id
+
+    def validate(self):
+        if self.cover:
+            self.cover.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover is not None:
+            result['Cover'] = self.cover.to_map()
+        if self.custom_id is not None:
+            result['CustomId'] = self.custom_id
+        if self.custom_labels is not None:
+            result['CustomLabels'] = self.custom_labels
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cover') is not None:
+            temp_model = ClusterForReqCover()
+            self.cover = temp_model.from_map(m['Cover'])
+        if m.get('CustomId') is not None:
+            self.custom_id = m.get('CustomId')
+        if m.get('CustomLabels') is not None:
+            self.custom_labels = m.get('CustomLabels')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        return self
+
+
 class CroppingSuggestion(TeaModel):
     def __init__(
         self,
@@ -843,6 +965,213 @@ class Face(TeaModel):
         return self
 
 
+class Figure(TeaModel):
+    def __init__(
+        self,
+        age: int = None,
+        age_sd: float = None,
+        attractive: float = None,
+        beard: str = None,
+        beard_confidence: float = None,
+        boundary: Boundary = None,
+        emotion: str = None,
+        emotion_confidence: float = None,
+        face_quality: float = None,
+        figure_cluster_confidence: float = None,
+        figure_cluster_id: str = None,
+        figure_confidence: float = None,
+        figure_id: str = None,
+        figure_type: str = None,
+        gender: str = None,
+        gender_confidence: float = None,
+        glasses: str = None,
+        glasses_confidence: float = None,
+        hat: str = None,
+        hat_confidence: float = None,
+        head_pose: HeadPose = None,
+        mask: str = None,
+        mask_confidence: float = None,
+        mouth: str = None,
+        mouth_confidence: float = None,
+        sharpness: float = None,
+    ):
+        # Age
+        self.age = age
+        # AgeSD
+        self.age_sd = age_sd
+        # Attractive
+        self.attractive = attractive
+        # Beard
+        self.beard = beard
+        # BeardConfidence
+        self.beard_confidence = beard_confidence
+        # Boundary
+        self.boundary = boundary
+        # Emotion
+        self.emotion = emotion
+        # EmotionConfidence
+        self.emotion_confidence = emotion_confidence
+        # FaceQuality
+        self.face_quality = face_quality
+        # FigureClusterConfidence
+        self.figure_cluster_confidence = figure_cluster_confidence
+        # FigureClusterId
+        self.figure_cluster_id = figure_cluster_id
+        # FigureConfidence
+        self.figure_confidence = figure_confidence
+        # FigureId
+        self.figure_id = figure_id
+        # FigureType
+        self.figure_type = figure_type
+        # Gender
+        self.gender = gender
+        # GenderConfidence
+        self.gender_confidence = gender_confidence
+        # Glasses
+        self.glasses = glasses
+        # GlassesConfidence
+        self.glasses_confidence = glasses_confidence
+        # Hat
+        self.hat = hat
+        # HatConfidence
+        self.hat_confidence = hat_confidence
+        self.head_pose = head_pose
+        # Mask
+        self.mask = mask
+        # MaskConfidence
+        self.mask_confidence = mask_confidence
+        # Mouth
+        self.mouth = mouth
+        # MouthConfidence
+        self.mouth_confidence = mouth_confidence
+        # Sharpness
+        self.sharpness = sharpness
+
+    def validate(self):
+        if self.boundary:
+            self.boundary.validate()
+        if self.head_pose:
+            self.head_pose.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.age is not None:
+            result['Age'] = self.age
+        if self.age_sd is not None:
+            result['AgeSD'] = self.age_sd
+        if self.attractive is not None:
+            result['Attractive'] = self.attractive
+        if self.beard is not None:
+            result['Beard'] = self.beard
+        if self.beard_confidence is not None:
+            result['BeardConfidence'] = self.beard_confidence
+        if self.boundary is not None:
+            result['Boundary'] = self.boundary.to_map()
+        if self.emotion is not None:
+            result['Emotion'] = self.emotion
+        if self.emotion_confidence is not None:
+            result['EmotionConfidence'] = self.emotion_confidence
+        if self.face_quality is not None:
+            result['FaceQuality'] = self.face_quality
+        if self.figure_cluster_confidence is not None:
+            result['FigureClusterConfidence'] = self.figure_cluster_confidence
+        if self.figure_cluster_id is not None:
+            result['FigureClusterId'] = self.figure_cluster_id
+        if self.figure_confidence is not None:
+            result['FigureConfidence'] = self.figure_confidence
+        if self.figure_id is not None:
+            result['FigureId'] = self.figure_id
+        if self.figure_type is not None:
+            result['FigureType'] = self.figure_type
+        if self.gender is not None:
+            result['Gender'] = self.gender
+        if self.gender_confidence is not None:
+            result['GenderConfidence'] = self.gender_confidence
+        if self.glasses is not None:
+            result['Glasses'] = self.glasses
+        if self.glasses_confidence is not None:
+            result['GlassesConfidence'] = self.glasses_confidence
+        if self.hat is not None:
+            result['Hat'] = self.hat
+        if self.hat_confidence is not None:
+            result['HatConfidence'] = self.hat_confidence
+        if self.head_pose is not None:
+            result['HeadPose'] = self.head_pose.to_map()
+        if self.mask is not None:
+            result['Mask'] = self.mask
+        if self.mask_confidence is not None:
+            result['MaskConfidence'] = self.mask_confidence
+        if self.mouth is not None:
+            result['Mouth'] = self.mouth
+        if self.mouth_confidence is not None:
+            result['MouthConfidence'] = self.mouth_confidence
+        if self.sharpness is not None:
+            result['Sharpness'] = self.sharpness
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Age') is not None:
+            self.age = m.get('Age')
+        if m.get('AgeSD') is not None:
+            self.age_sd = m.get('AgeSD')
+        if m.get('Attractive') is not None:
+            self.attractive = m.get('Attractive')
+        if m.get('Beard') is not None:
+            self.beard = m.get('Beard')
+        if m.get('BeardConfidence') is not None:
+            self.beard_confidence = m.get('BeardConfidence')
+        if m.get('Boundary') is not None:
+            temp_model = Boundary()
+            self.boundary = temp_model.from_map(m['Boundary'])
+        if m.get('Emotion') is not None:
+            self.emotion = m.get('Emotion')
+        if m.get('EmotionConfidence') is not None:
+            self.emotion_confidence = m.get('EmotionConfidence')
+        if m.get('FaceQuality') is not None:
+            self.face_quality = m.get('FaceQuality')
+        if m.get('FigureClusterConfidence') is not None:
+            self.figure_cluster_confidence = m.get('FigureClusterConfidence')
+        if m.get('FigureClusterId') is not None:
+            self.figure_cluster_id = m.get('FigureClusterId')
+        if m.get('FigureConfidence') is not None:
+            self.figure_confidence = m.get('FigureConfidence')
+        if m.get('FigureId') is not None:
+            self.figure_id = m.get('FigureId')
+        if m.get('FigureType') is not None:
+            self.figure_type = m.get('FigureType')
+        if m.get('Gender') is not None:
+            self.gender = m.get('Gender')
+        if m.get('GenderConfidence') is not None:
+            self.gender_confidence = m.get('GenderConfidence')
+        if m.get('Glasses') is not None:
+            self.glasses = m.get('Glasses')
+        if m.get('GlassesConfidence') is not None:
+            self.glasses_confidence = m.get('GlassesConfidence')
+        if m.get('Hat') is not None:
+            self.hat = m.get('Hat')
+        if m.get('HatConfidence') is not None:
+            self.hat_confidence = m.get('HatConfidence')
+        if m.get('HeadPose') is not None:
+            temp_model = HeadPose()
+            self.head_pose = temp_model.from_map(m['HeadPose'])
+        if m.get('Mask') is not None:
+            self.mask = m.get('Mask')
+        if m.get('MaskConfidence') is not None:
+            self.mask_confidence = m.get('MaskConfidence')
+        if m.get('Mouth') is not None:
+            self.mouth = m.get('Mouth')
+        if m.get('MouthConfidence') is not None:
+            self.mouth_confidence = m.get('MouthConfidence')
+        if m.get('Sharpness') is not None:
+            self.sharpness = m.get('Sharpness')
+        return self
+
+
 class ImageScore(TeaModel):
     def __init__(
         self,
@@ -1007,11 +1336,15 @@ class Image(TeaModel):
 class Label(TeaModel):
     def __init__(
         self,
+        centric_score: float = None,
         label_confidence: float = None,
         label_level: int = None,
         label_name: str = None,
         language: str = None,
+        parent_label_name: str = None,
     ):
+        # CentricScore
+        self.centric_score = centric_score
         # LabelConfidence
         self.label_confidence = label_confidence
         # LabelLevel
@@ -1020,6 +1353,8 @@ class Label(TeaModel):
         self.label_name = label_name
         # Language
         self.language = language
+        # ParentLabelName
+        self.parent_label_name = parent_label_name
 
     def validate(self):
         pass
@@ -1030,6 +1365,8 @@ class Label(TeaModel):
             return _map
 
         result = dict()
+        if self.centric_score is not None:
+            result['CentricScore'] = self.centric_score
         if self.label_confidence is not None:
             result['LabelConfidence'] = self.label_confidence
         if self.label_level is not None:
@@ -1038,10 +1375,14 @@ class Label(TeaModel):
             result['LabelName'] = self.label_name
         if self.language is not None:
             result['Language'] = self.language
+        if self.parent_label_name is not None:
+            result['ParentLabelName'] = self.parent_label_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CentricScore') is not None:
+            self.centric_score = m.get('CentricScore')
         if m.get('LabelConfidence') is not None:
             self.label_confidence = m.get('LabelConfidence')
         if m.get('LabelLevel') is not None:
@@ -1050,6 +1391,8 @@ class Label(TeaModel):
             self.label_name = m.get('LabelName')
         if m.get('Language') is not None:
             self.language = m.get('Language')
+        if m.get('ParentLabelName') is not None:
+            self.parent_label_name = m.get('ParentLabelName')
         return self
 
 
@@ -1282,8 +1625,6 @@ class File(TeaModel):
         audio_bitrate: float = None,
         audio_covers: List[Image] = None,
         audio_duration: float = None,
-        audio_embeddings_float_32: List[float] = None,
-        audio_embeddings_int_8: List[int] = None,
         audio_language: str = None,
         audio_streams: List[AudioStream] = None,
         audio_taken_time: str = None,
@@ -1300,20 +1641,16 @@ class File(TeaModel):
         custom_labels: Dict[str, Any] = None,
         dataset_name: str = None,
         document_content: str = None,
-        document_embeddings_float_32: List[float] = None,
-        document_embeddings_int_8: List[int] = None,
         document_language: str = None,
         etag: str = None,
         exif: str = None,
-        face_count: int = None,
-        faces: List[Face] = None,
+        figure_count: int = None,
+        figures: List[Figure] = None,
         file_access_time: str = None,
         file_create_time: str = None,
         file_hash: str = None,
         file_modified_time: str = None,
         filename: str = None,
-        image_embeddings_float_32: List[float] = None,
-        image_embeddings_int_8: List[int] = None,
         image_height: int = None,
         image_score: ImageScore = None,
         image_width: int = None,
@@ -1321,11 +1658,14 @@ class File(TeaModel):
         lat_long: str = None,
         media_type: str = None,
         ocrcontents: List[OCRContents] = None,
+        osscrc64: str = None,
         ossdelete_marker: str = None,
         ossexpiration: str = None,
         ossobject_type: str = None,
+        ossstorage_class: str = None,
         osstagging: Dict[str, Any] = None,
         osstagging_count: int = None,
+        ossuri: str = None,
         ossuser_meta: Dict[str, Any] = None,
         ossversion_id: str = None,
         object_acl: str = None,
@@ -1342,7 +1682,6 @@ class File(TeaModel):
         server_side_encryption_customer_algorithm: str = None,
         server_side_encryption_key_id: str = None,
         size: int = None,
-        storage_class: str = None,
         subtitles: List[SubtitleStream] = None,
         timezone: str = None,
         title: str = None,
@@ -1351,8 +1690,6 @@ class File(TeaModel):
         update_time: str = None,
         video_bitrate: int = None,
         video_duration: float = None,
-        video_embeddings_float_32: List[float] = None,
-        video_embeddings_int_8: List[int] = None,
         video_height: int = None,
         video_start_time: float = None,
         video_streams: List[VideoStream] = None,
@@ -1377,10 +1714,6 @@ class File(TeaModel):
         self.audio_covers = audio_covers
         # AudioDuration
         self.audio_duration = audio_duration
-        # AudioEmbeddingsFloat32
-        self.audio_embeddings_float_32 = audio_embeddings_float_32
-        # AudioEmbeddingsInt8
-        self.audio_embeddings_int_8 = audio_embeddings_int_8
         # AudioLanguage
         self.audio_language = audio_language
         # AudioStreams
@@ -1413,20 +1746,16 @@ class File(TeaModel):
         self.dataset_name = dataset_name
         # DocumentContent
         self.document_content = document_content
-        # DocumentEmbeddingsFloat32
-        self.document_embeddings_float_32 = document_embeddings_float_32
-        # DocumentEmbeddingsInt8
-        self.document_embeddings_int_8 = document_embeddings_int_8
         # DocumentLanguage
         self.document_language = document_language
         # ETag
         self.etag = etag
         # EXIF
         self.exif = exif
-        # FaceCount
-        self.face_count = face_count
-        # Faces
-        self.faces = faces
+        # FigureCount
+        self.figure_count = figure_count
+        # Figures
+        self.figures = figures
         # FileAccessTime
         self.file_access_time = file_access_time
         # FileCreateTime
@@ -1437,10 +1766,6 @@ class File(TeaModel):
         self.file_modified_time = file_modified_time
         # Filename
         self.filename = filename
-        # ImageEmbeddingsFloat32
-        self.image_embeddings_float_32 = image_embeddings_float_32
-        # ImageEmbeddingsInt8
-        self.image_embeddings_int_8 = image_embeddings_int_8
         # ImageHeight
         self.image_height = image_height
         self.image_score = image_score
@@ -1454,16 +1779,22 @@ class File(TeaModel):
         self.media_type = media_type
         # OCRContents
         self.ocrcontents = ocrcontents
+        # OSSCRC64
+        self.osscrc64 = osscrc64
         # OSSDeleteMarker
         self.ossdelete_marker = ossdelete_marker
         # OSSExpiration
         self.ossexpiration = ossexpiration
         # OSSObjectType
         self.ossobject_type = ossobject_type
+        # OSSStorageClass
+        self.ossstorage_class = ossstorage_class
         # OSSTagging
         self.osstagging = osstagging
         # OSSTaggingCount
         self.osstagging_count = osstagging_count
+        # OSSURI
+        self.ossuri = ossuri
         # OSSUserMeta
         self.ossuser_meta = ossuser_meta
         # OSSVersionId
@@ -1496,8 +1827,6 @@ class File(TeaModel):
         self.server_side_encryption_key_id = server_side_encryption_key_id
         # Size
         self.size = size
-        # StorageClass
-        self.storage_class = storage_class
         # Subtitles
         self.subtitles = subtitles
         # Timezone
@@ -1514,10 +1843,6 @@ class File(TeaModel):
         self.video_bitrate = video_bitrate
         # VideoDuration
         self.video_duration = video_duration
-        # VideoEmbeddingsFloat32
-        self.video_embeddings_float_32 = video_embeddings_float_32
-        # VideoEmbeddingsInt8
-        self.video_embeddings_int_8 = video_embeddings_int_8
         # VideoHeight
         self.video_height = video_height
         # VideoStartTime
@@ -1546,8 +1871,8 @@ class File(TeaModel):
             for k in self.cropping_suggestions:
                 if k:
                     k.validate()
-        if self.faces:
-            for k in self.faces:
+        if self.figures:
+            for k in self.figures:
                 if k:
                     k.validate()
         if self.image_score:
@@ -1597,10 +1922,6 @@ class File(TeaModel):
                 result['AudioCovers'].append(k.to_map() if k else None)
         if self.audio_duration is not None:
             result['AudioDuration'] = self.audio_duration
-        if self.audio_embeddings_float_32 is not None:
-            result['AudioEmbeddingsFloat32'] = self.audio_embeddings_float_32
-        if self.audio_embeddings_int_8 is not None:
-            result['AudioEmbeddingsInt8'] = self.audio_embeddings_int_8
         if self.audio_language is not None:
             result['AudioLanguage'] = self.audio_language
         result['AudioStreams'] = []
@@ -1637,22 +1958,18 @@ class File(TeaModel):
             result['DatasetName'] = self.dataset_name
         if self.document_content is not None:
             result['DocumentContent'] = self.document_content
-        if self.document_embeddings_float_32 is not None:
-            result['DocumentEmbeddingsFloat32'] = self.document_embeddings_float_32
-        if self.document_embeddings_int_8 is not None:
-            result['DocumentEmbeddingsInt8'] = self.document_embeddings_int_8
         if self.document_language is not None:
             result['DocumentLanguage'] = self.document_language
         if self.etag is not None:
             result['ETag'] = self.etag
         if self.exif is not None:
             result['EXIF'] = self.exif
-        if self.face_count is not None:
-            result['FaceCount'] = self.face_count
-        result['Faces'] = []
-        if self.faces is not None:
-            for k in self.faces:
-                result['Faces'].append(k.to_map() if k else None)
+        if self.figure_count is not None:
+            result['FigureCount'] = self.figure_count
+        result['Figures'] = []
+        if self.figures is not None:
+            for k in self.figures:
+                result['Figures'].append(k.to_map() if k else None)
         if self.file_access_time is not None:
             result['FileAccessTime'] = self.file_access_time
         if self.file_create_time is not None:
@@ -1663,10 +1980,6 @@ class File(TeaModel):
             result['FileModifiedTime'] = self.file_modified_time
         if self.filename is not None:
             result['Filename'] = self.filename
-        if self.image_embeddings_float_32 is not None:
-            result['ImageEmbeddingsFloat32'] = self.image_embeddings_float_32
-        if self.image_embeddings_int_8 is not None:
-            result['ImageEmbeddingsInt8'] = self.image_embeddings_int_8
         if self.image_height is not None:
             result['ImageHeight'] = self.image_height
         if self.image_score is not None:
@@ -1685,16 +1998,22 @@ class File(TeaModel):
         if self.ocrcontents is not None:
             for k in self.ocrcontents:
                 result['OCRContents'].append(k.to_map() if k else None)
+        if self.osscrc64 is not None:
+            result['OSSCRC64'] = self.osscrc64
         if self.ossdelete_marker is not None:
             result['OSSDeleteMarker'] = self.ossdelete_marker
         if self.ossexpiration is not None:
             result['OSSExpiration'] = self.ossexpiration
         if self.ossobject_type is not None:
             result['OSSObjectType'] = self.ossobject_type
+        if self.ossstorage_class is not None:
+            result['OSSStorageClass'] = self.ossstorage_class
         if self.osstagging is not None:
             result['OSSTagging'] = self.osstagging
         if self.osstagging_count is not None:
             result['OSSTaggingCount'] = self.osstagging_count
+        if self.ossuri is not None:
+            result['OSSURI'] = self.ossuri
         if self.ossuser_meta is not None:
             result['OSSUserMeta'] = self.ossuser_meta
         if self.ossversion_id is not None:
@@ -1727,8 +2046,6 @@ class File(TeaModel):
             result['ServerSideEncryptionKeyId'] = self.server_side_encryption_key_id
         if self.size is not None:
             result['Size'] = self.size
-        if self.storage_class is not None:
-            result['StorageClass'] = self.storage_class
         result['Subtitles'] = []
         if self.subtitles is not None:
             for k in self.subtitles:
@@ -1747,10 +2064,6 @@ class File(TeaModel):
             result['VideoBitrate'] = self.video_bitrate
         if self.video_duration is not None:
             result['VideoDuration'] = self.video_duration
-        if self.video_embeddings_float_32 is not None:
-            result['VideoEmbeddingsFloat32'] = self.video_embeddings_float_32
-        if self.video_embeddings_int_8 is not None:
-            result['VideoEmbeddingsInt8'] = self.video_embeddings_int_8
         if self.video_height is not None:
             result['VideoHeight'] = self.video_height
         if self.video_start_time is not None:
@@ -1791,10 +2104,6 @@ class File(TeaModel):
                 self.audio_covers.append(temp_model.from_map(k))
         if m.get('AudioDuration') is not None:
             self.audio_duration = m.get('AudioDuration')
-        if m.get('AudioEmbeddingsFloat32') is not None:
-            self.audio_embeddings_float_32 = m.get('AudioEmbeddingsFloat32')
-        if m.get('AudioEmbeddingsInt8') is not None:
-            self.audio_embeddings_int_8 = m.get('AudioEmbeddingsInt8')
         if m.get('AudioLanguage') is not None:
             self.audio_language = m.get('AudioLanguage')
         self.audio_streams = []
@@ -1833,23 +2142,19 @@ class File(TeaModel):
             self.dataset_name = m.get('DatasetName')
         if m.get('DocumentContent') is not None:
             self.document_content = m.get('DocumentContent')
-        if m.get('DocumentEmbeddingsFloat32') is not None:
-            self.document_embeddings_float_32 = m.get('DocumentEmbeddingsFloat32')
-        if m.get('DocumentEmbeddingsInt8') is not None:
-            self.document_embeddings_int_8 = m.get('DocumentEmbeddingsInt8')
         if m.get('DocumentLanguage') is not None:
             self.document_language = m.get('DocumentLanguage')
         if m.get('ETag') is not None:
             self.etag = m.get('ETag')
         if m.get('EXIF') is not None:
             self.exif = m.get('EXIF')
-        if m.get('FaceCount') is not None:
-            self.face_count = m.get('FaceCount')
-        self.faces = []
-        if m.get('Faces') is not None:
-            for k in m.get('Faces'):
-                temp_model = Face()
-                self.faces.append(temp_model.from_map(k))
+        if m.get('FigureCount') is not None:
+            self.figure_count = m.get('FigureCount')
+        self.figures = []
+        if m.get('Figures') is not None:
+            for k in m.get('Figures'):
+                temp_model = Figure()
+                self.figures.append(temp_model.from_map(k))
         if m.get('FileAccessTime') is not None:
             self.file_access_time = m.get('FileAccessTime')
         if m.get('FileCreateTime') is not None:
@@ -1860,10 +2165,6 @@ class File(TeaModel):
             self.file_modified_time = m.get('FileModifiedTime')
         if m.get('Filename') is not None:
             self.filename = m.get('Filename')
-        if m.get('ImageEmbeddingsFloat32') is not None:
-            self.image_embeddings_float_32 = m.get('ImageEmbeddingsFloat32')
-        if m.get('ImageEmbeddingsInt8') is not None:
-            self.image_embeddings_int_8 = m.get('ImageEmbeddingsInt8')
         if m.get('ImageHeight') is not None:
             self.image_height = m.get('ImageHeight')
         if m.get('ImageScore') is not None:
@@ -1885,16 +2186,22 @@ class File(TeaModel):
             for k in m.get('OCRContents'):
                 temp_model = OCRContents()
                 self.ocrcontents.append(temp_model.from_map(k))
+        if m.get('OSSCRC64') is not None:
+            self.osscrc64 = m.get('OSSCRC64')
         if m.get('OSSDeleteMarker') is not None:
             self.ossdelete_marker = m.get('OSSDeleteMarker')
         if m.get('OSSExpiration') is not None:
             self.ossexpiration = m.get('OSSExpiration')
         if m.get('OSSObjectType') is not None:
             self.ossobject_type = m.get('OSSObjectType')
+        if m.get('OSSStorageClass') is not None:
+            self.ossstorage_class = m.get('OSSStorageClass')
         if m.get('OSSTagging') is not None:
             self.osstagging = m.get('OSSTagging')
         if m.get('OSSTaggingCount') is not None:
             self.osstagging_count = m.get('OSSTaggingCount')
+        if m.get('OSSURI') is not None:
+            self.ossuri = m.get('OSSURI')
         if m.get('OSSUserMeta') is not None:
             self.ossuser_meta = m.get('OSSUserMeta')
         if m.get('OSSVersionId') is not None:
@@ -1927,8 +2234,6 @@ class File(TeaModel):
             self.server_side_encryption_key_id = m.get('ServerSideEncryptionKeyId')
         if m.get('Size') is not None:
             self.size = m.get('Size')
-        if m.get('StorageClass') is not None:
-            self.storage_class = m.get('StorageClass')
         self.subtitles = []
         if m.get('Subtitles') is not None:
             for k in m.get('Subtitles'):
@@ -1948,10 +2253,6 @@ class File(TeaModel):
             self.video_bitrate = m.get('VideoBitrate')
         if m.get('VideoDuration') is not None:
             self.video_duration = m.get('VideoDuration')
-        if m.get('VideoEmbeddingsFloat32') is not None:
-            self.video_embeddings_float_32 = m.get('VideoEmbeddingsFloat32')
-        if m.get('VideoEmbeddingsInt8') is not None:
-            self.video_embeddings_int_8 = m.get('VideoEmbeddingsInt8')
         if m.get('VideoHeight') is not None:
             self.video_height = m.get('VideoHeight')
         if m.get('VideoStartTime') is not None:
@@ -1968,25 +2269,168 @@ class File(TeaModel):
         return self
 
 
-class FileForReq(TeaModel):
+class FigureCluster(TeaModel):
     def __init__(
         self,
+        average_age: float = None,
+        cover: File = None,
+        create_time: str = None,
         custom_id: str = None,
         custom_labels: Dict[str, Any] = None,
-        file_hash: str = None,
-        ossuri: str = None,
-        uri: str = None,
+        dataset_name: str = None,
+        face_count: int = None,
+        gender: str = None,
+        image_count: int = None,
+        max_age: float = None,
+        min_age: float = None,
+        name: str = None,
+        object_id: str = None,
+        object_type: str = None,
+        owner_id: str = None,
+        project_name: str = None,
+        update_time: str = None,
+        version: str = None,
     ):
+        # AverageAge
+        self.average_age = average_age
+        # Cover
+        self.cover = cover
+        # CreateTime
+        self.create_time = create_time
         # CustomId
         self.custom_id = custom_id
         # CustomLabels
         self.custom_labels = custom_labels
-        # FileHash
-        self.file_hash = file_hash
-        # OSSURI
-        self.ossuri = ossuri
-        # URI
-        self.uri = uri
+        # DatasetName
+        self.dataset_name = dataset_name
+        # FaceCount
+        self.face_count = face_count
+        # Gender
+        self.gender = gender
+        # ImageCount
+        self.image_count = image_count
+        # MaxAge
+        self.max_age = max_age
+        # MinAge
+        self.min_age = min_age
+        # Name
+        self.name = name
+        # ObjectId
+        self.object_id = object_id
+        # ObjectType
+        self.object_type = object_type
+        # OwnerId
+        self.owner_id = owner_id
+        # ProjectName
+        self.project_name = project_name
+        # UpdateTime
+        self.update_time = update_time
+        # Version
+        self.version = version
+
+    def validate(self):
+        if self.cover:
+            self.cover.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.average_age is not None:
+            result['AverageAge'] = self.average_age
+        if self.cover is not None:
+            result['Cover'] = self.cover.to_map()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.custom_id is not None:
+            result['CustomId'] = self.custom_id
+        if self.custom_labels is not None:
+            result['CustomLabels'] = self.custom_labels
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.face_count is not None:
+            result['FaceCount'] = self.face_count
+        if self.gender is not None:
+            result['Gender'] = self.gender
+        if self.image_count is not None:
+            result['ImageCount'] = self.image_count
+        if self.max_age is not None:
+            result['MaxAge'] = self.max_age
+        if self.min_age is not None:
+            result['MinAge'] = self.min_age
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AverageAge') is not None:
+            self.average_age = m.get('AverageAge')
+        if m.get('Cover') is not None:
+            temp_model = File()
+            self.cover = temp_model.from_map(m['Cover'])
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CustomId') is not None:
+            self.custom_id = m.get('CustomId')
+        if m.get('CustomLabels') is not None:
+            self.custom_labels = m.get('CustomLabels')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('FaceCount') is not None:
+            self.face_count = m.get('FaceCount')
+        if m.get('Gender') is not None:
+            self.gender = m.get('Gender')
+        if m.get('ImageCount') is not None:
+            self.image_count = m.get('ImageCount')
+        if m.get('MaxAge') is not None:
+            self.max_age = m.get('MaxAge')
+        if m.get('MinAge') is not None:
+            self.min_age = m.get('MinAge')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class FileForReqFigures(TeaModel):
+    def __init__(
+        self,
+        figure_cluster_id: str = None,
+        figure_id: str = None,
+        figure_type: str = None,
+    ):
+        # FigureClusterId
+        self.figure_cluster_id = figure_cluster_id
+        # FigureId
+        self.figure_id = figure_id
+        # FigureType
+        self.figure_type = figure_type
 
     def validate(self):
         pass
@@ -1997,12 +2441,80 @@ class FileForReq(TeaModel):
             return _map
 
         result = dict()
+        if self.figure_cluster_id is not None:
+            result['FigureClusterId'] = self.figure_cluster_id
+        if self.figure_id is not None:
+            result['FigureId'] = self.figure_id
+        if self.figure_type is not None:
+            result['FigureType'] = self.figure_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FigureClusterId') is not None:
+            self.figure_cluster_id = m.get('FigureClusterId')
+        if m.get('FigureId') is not None:
+            self.figure_id = m.get('FigureId')
+        if m.get('FigureType') is not None:
+            self.figure_type = m.get('FigureType')
+        return self
+
+
+class FileForReq(TeaModel):
+    def __init__(
+        self,
+        content_type: str = None,
+        custom_id: str = None,
+        custom_labels: Dict[str, Any] = None,
+        figures: List[FileForReqFigures] = None,
+        file_hash: str = None,
+        media_type: str = None,
+        ossuri: str = None,
+        uri: str = None,
+    ):
+        # ContentType
+        self.content_type = content_type
+        # CustomId
+        self.custom_id = custom_id
+        # CustomLabels
+        self.custom_labels = custom_labels
+        # Figures
+        self.figures = figures
+        # FileHash
+        self.file_hash = file_hash
+        # MediaType
+        self.media_type = media_type
+        # OSSURI
+        self.ossuri = ossuri
+        # URI
+        self.uri = uri
+
+    def validate(self):
+        if self.figures:
+            for k in self.figures:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
         if self.custom_id is not None:
             result['CustomId'] = self.custom_id
         if self.custom_labels is not None:
             result['CustomLabels'] = self.custom_labels
+        result['Figures'] = []
+        if self.figures is not None:
+            for k in self.figures:
+                result['Figures'].append(k.to_map() if k else None)
         if self.file_hash is not None:
             result['FileHash'] = self.file_hash
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
         if self.ossuri is not None:
             result['OSSURI'] = self.ossuri
         if self.uri is not None:
@@ -2011,12 +2523,21 @@ class FileForReq(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
         if m.get('CustomId') is not None:
             self.custom_id = m.get('CustomId')
         if m.get('CustomLabels') is not None:
             self.custom_labels = m.get('CustomLabels')
+        self.figures = []
+        if m.get('Figures') is not None:
+            for k in m.get('Figures'):
+                temp_model = FileForReqFigures()
+                self.figures.append(temp_model.from_map(k))
         if m.get('FileHash') is not None:
             self.file_hash = m.get('FileHash')
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
         if m.get('OSSURI') is not None:
             self.ossuri = m.get('OSSURI')
         if m.get('URI') is not None:
@@ -2056,83 +2577,6 @@ class KeyValuePair(TeaModel):
             self.key = m.get('Key')
         if m.get('Value') is not None:
             self.value = m.get('Value')
-        return self
-
-
-class OfficeConversionTask(TeaModel):
-    def __init__(
-        self,
-        create_time: str = None,
-        end_time: str = None,
-        reason: str = None,
-        start_time: str = None,
-        status: str = None,
-        task_id: str = None,
-        total_pages: int = None,
-        user_data: str = None,
-    ):
-        # 任务创建时间
-        self.create_time = create_time
-        # 任务解释时间
-        self.end_time = end_time
-        # Status 解释
-        self.reason = reason
-        # 任务开始时间
-        self.start_time = start_time
-        # 任务状态
-        self.status = status
-        # 任务 id
-        self.task_id = task_id
-        # 转换页数
-        self.total_pages = total_pages
-        # 用户自定义内容
-        self.user_data = user_data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.reason is not None:
-            result['Reason'] = self.reason
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
-        if self.total_pages is not None:
-            result['TotalPages'] = self.total_pages
-        if self.user_data is not None:
-            result['UserData'] = self.user_data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('Reason') is not None:
-            self.reason = m.get('Reason')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
-        if m.get('TotalPages') is not None:
-            self.total_pages = m.get('TotalPages')
-        if m.get('UserData') is not None:
-            self.user_data = m.get('UserData')
         return self
 
 
@@ -2369,6 +2813,83 @@ class SimpleQuery(TeaModel):
         return self
 
 
+class TaskInfo(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        end_time: str = None,
+        message: str = None,
+        start_time: str = None,
+        status: str = None,
+        task_id: str = None,
+        task_type: str = None,
+        user_data: str = None,
+    ):
+        # 错误码
+        self.code = code
+        # 任务结束时间
+        self.end_time = end_time
+        # 错误消息
+        self.message = message
+        # 任务开始时间
+        self.start_time = start_time
+        # 任务状态
+        self.status = status
+        # 任务唯一ID
+        self.task_id = task_id
+        # 任务类型
+        self.task_type = task_type
+        # 用户自定义信息
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
 class WebofficePermission(TeaModel):
     def __init__(
         self,
@@ -2548,14 +3069,10 @@ class BatchDeleteFileMetaRequest(TeaModel):
     def __init__(
         self,
         dataset_name: str = None,
-        notify_endpoint: str = None,
-        notify_topic_name: str = None,
         project_name: str = None,
         uris: List[str] = None,
     ):
         self.dataset_name = dataset_name
-        self.notify_endpoint = notify_endpoint
-        self.notify_topic_name = notify_topic_name
         self.project_name = project_name
         self.uris = uris
 
@@ -2570,10 +3087,6 @@ class BatchDeleteFileMetaRequest(TeaModel):
         result = dict()
         if self.dataset_name is not None:
             result['DatasetName'] = self.dataset_name
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
-        if self.notify_topic_name is not None:
-            result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.uris is not None:
@@ -2584,10 +3097,6 @@ class BatchDeleteFileMetaRequest(TeaModel):
         m = m or dict()
         if m.get('DatasetName') is not None:
             self.dataset_name = m.get('DatasetName')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
-        if m.get('NotifyTopicName') is not None:
-            self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('URIs') is not None:
@@ -2599,14 +3108,10 @@ class BatchDeleteFileMetaShrinkRequest(TeaModel):
     def __init__(
         self,
         dataset_name: str = None,
-        notify_endpoint: str = None,
-        notify_topic_name: str = None,
         project_name: str = None,
         uris_shrink: str = None,
     ):
         self.dataset_name = dataset_name
-        self.notify_endpoint = notify_endpoint
-        self.notify_topic_name = notify_topic_name
         self.project_name = project_name
         self.uris_shrink = uris_shrink
 
@@ -2621,10 +3126,6 @@ class BatchDeleteFileMetaShrinkRequest(TeaModel):
         result = dict()
         if self.dataset_name is not None:
             result['DatasetName'] = self.dataset_name
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
-        if self.notify_topic_name is not None:
-            result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.uris_shrink is not None:
@@ -2635,10 +3136,6 @@ class BatchDeleteFileMetaShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('DatasetName') is not None:
             self.dataset_name = m.get('DatasetName')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
-        if m.get('NotifyTopicName') is not None:
-            self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('URIs') is not None:
@@ -2649,10 +3146,8 @@ class BatchDeleteFileMetaShrinkRequest(TeaModel):
 class BatchDeleteFileMetaResponseBody(TeaModel):
     def __init__(
         self,
-        event_id: str = None,
         request_id: str = None,
     ):
-        self.event_id = event_id
         # Id of the request
         self.request_id = request_id
 
@@ -2665,16 +3160,12 @@ class BatchDeleteFileMetaResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.event_id is not None:
-            result['EventId'] = self.event_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('EventId') is not None:
-            self.event_id = m.get('EventId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -3060,14 +3551,10 @@ class BatchUpdateFileMetaRequest(TeaModel):
         self,
         dataset_name: str = None,
         files: List[FileForReq] = None,
-        notify_endpoint: str = None,
-        notify_topic_name: str = None,
         project_name: str = None,
     ):
         self.dataset_name = dataset_name
         self.files = files
-        self.notify_endpoint = notify_endpoint
-        self.notify_topic_name = notify_topic_name
         self.project_name = project_name
 
     def validate(self):
@@ -3088,10 +3575,6 @@ class BatchUpdateFileMetaRequest(TeaModel):
         if self.files is not None:
             for k in self.files:
                 result['Files'].append(k.to_map() if k else None)
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
-        if self.notify_topic_name is not None:
-            result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         return result
@@ -3105,10 +3588,6 @@ class BatchUpdateFileMetaRequest(TeaModel):
             for k in m.get('Files'):
                 temp_model = FileForReq()
                 self.files.append(temp_model.from_map(k))
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
-        if m.get('NotifyTopicName') is not None:
-            self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         return self
@@ -3119,14 +3598,10 @@ class BatchUpdateFileMetaShrinkRequest(TeaModel):
         self,
         dataset_name: str = None,
         files_shrink: str = None,
-        notify_endpoint: str = None,
-        notify_topic_name: str = None,
         project_name: str = None,
     ):
         self.dataset_name = dataset_name
         self.files_shrink = files_shrink
-        self.notify_endpoint = notify_endpoint
-        self.notify_topic_name = notify_topic_name
         self.project_name = project_name
 
     def validate(self):
@@ -3142,10 +3617,6 @@ class BatchUpdateFileMetaShrinkRequest(TeaModel):
             result['DatasetName'] = self.dataset_name
         if self.files_shrink is not None:
             result['Files'] = self.files_shrink
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
-        if self.notify_topic_name is not None:
-            result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         return result
@@ -3156,24 +3627,21 @@ class BatchUpdateFileMetaShrinkRequest(TeaModel):
             self.dataset_name = m.get('DatasetName')
         if m.get('Files') is not None:
             self.files_shrink = m.get('Files')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
-        if m.get('NotifyTopicName') is not None:
-            self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         return self
 
 
-class BatchUpdateFileMetaResponseBody(TeaModel):
+class BatchUpdateFileMetaResponseBodyFiles(TeaModel):
     def __init__(
         self,
-        event_id: str = None,
-        request_id: str = None,
+        message: str = None,
+        success: bool = None,
+        uri: str = None,
     ):
-        self.event_id = event_id
-        # Id of the request
-        self.request_id = request_id
+        self.message = message
+        self.success = success
+        self.uri = uri
 
     def validate(self):
         pass
@@ -3184,16 +3652,62 @@ class BatchUpdateFileMetaResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.event_id is not None:
-            result['EventId'] = self.event_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.uri is not None:
+            result['URI'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        return self
+
+
+class BatchUpdateFileMetaResponseBody(TeaModel):
+    def __init__(
+        self,
+        files: List[BatchUpdateFileMetaResponseBodyFiles] = None,
+        request_id: str = None,
+    ):
+        self.files = files
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.files:
+            for k in self.files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Files'] = []
+        if self.files is not None:
+            for k in self.files:
+                result['Files'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('EventId') is not None:
-            self.event_id = m.get('EventId')
+        self.files = []
+        if m.get('Files') is not None:
+            for k in m.get('Files'):
+                temp_model = BatchUpdateFileMetaResponseBodyFiles()
+                self.files.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -3232,6 +3746,134 @@ class BatchUpdateFileMetaResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = BatchUpdateFileMetaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ClusterFiguresRequest(TeaModel):
+    def __init__(
+        self,
+        custom_message: str = None,
+        dataset_name: str = None,
+        figure_type: str = None,
+        notify_topic_endpoint: str = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+    ):
+        self.custom_message = custom_message
+        self.dataset_name = dataset_name
+        self.figure_type = figure_type
+        self.notify_topic_endpoint = notify_topic_endpoint
+        self.notify_topic_name = notify_topic_name
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_message is not None:
+            result['CustomMessage'] = self.custom_message
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.figure_type is not None:
+            result['FigureType'] = self.figure_type
+        if self.notify_topic_endpoint is not None:
+            result['NotifyTopicEndpoint'] = self.notify_topic_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomMessage') is not None:
+            self.custom_message = m.get('CustomMessage')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('FigureType') is not None:
+            self.figure_type = m.get('FigureType')
+        if m.get('NotifyTopicEndpoint') is not None:
+            self.notify_topic_endpoint = m.get('NotifyTopicEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class ClusterFiguresResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ClusterFiguresResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ClusterFiguresResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ClusterFiguresResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3508,70 +4150,18 @@ class CreateDatasetResponse(TeaModel):
         return self
 
 
-class CreateOfficeConversionTaskRequest(TeaModel):
+class CreateDetectVideoLabelsTaskRequest(TeaModel):
     def __init__(
         self,
-        end_page: str = None,
-        first_page: bool = None,
-        fit_to_height: bool = None,
-        fit_to_width: bool = None,
-        is_horizontal: bool = None,
-        long_pic: bool = None,
-        notify_endpoint: str = None,
-        notify_topic_name: str = None,
-        paper_size: str = None,
-        password: str = None,
         project_name: str = None,
-        quality: int = None,
-        scale: int = None,
-        sheet_count: str = None,
-        sheet_index: int = None,
-        show_comments: bool = None,
-        source_type: str = None,
         source_uri: str = None,
-        start_page: str = None,
-        target_type: str = None,
-        target_uri: str = None,
         user_data: str = None,
     ):
-        # 结束转换页，如果是 excel 需要指定 SheetIndex
-        self.end_page = end_page
-        # 表格转图片参数，只返回表格的第一张图片，图片包含的行数列数是自动切割的结果。必须在LongPic为true的情况下才有效。默认为false
-        self.first_page = first_page
-        # 表格转图片，所有行输出到一张图片
-        self.fit_to_height = fit_to_height
-        # 表格转图片，所有列输出到一张图片
-        self.fit_to_width = fit_to_width
-        # 水平放置纸张，默认 false
-        self.is_horizontal = is_horizontal
-        # 转图片，合成一个一张产长图，最多20张图片，默认 false
-        self.long_pic = long_pic
-        # mns 消息地址
-        self.notify_endpoint = notify_endpoint
-        # mns 消息 topic
-        self.notify_topic_name = notify_topic_name
-        # 纸张大小 A4, A2, A0，默认 A4
-        self.paper_size = paper_size
-        self.password = password
         # 项目名称
         self.project_name = project_name
-        # 转化质量0~100
-        self.quality = quality
-        # 缩放大小 20~200，默认100，小于100缩放，大于100放大
-        self.scale = scale
-        # excel 转换 sheet 的数量，默认转换所有
-        self.sheet_count = sheet_count
-        # excel 标签页，从 1 开始
-        self.sheet_index = sheet_index
-        # 显示批注
-        self.show_comments = show_comments
-        self.source_type = source_type
+        # SourceURI
         self.source_uri = source_uri
-        # 开始转换页，如果是 excel 需要指定 SheetIndex
-        self.start_page = start_page
-        self.target_type = target_type
-        self.target_uri = target_uri
-        # 用户自定义信息，此信息将在 Task 中回传
+        # UserData
         self.user_data = user_data
 
     def validate(self):
@@ -3583,111 +4173,62 @@ class CreateOfficeConversionTaskRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.end_page is not None:
-            result['EndPage'] = self.end_page
-        if self.first_page is not None:
-            result['FirstPage'] = self.first_page
-        if self.fit_to_height is not None:
-            result['FitToHeight'] = self.fit_to_height
-        if self.fit_to_width is not None:
-            result['FitToWidth'] = self.fit_to_width
-        if self.is_horizontal is not None:
-            result['IsHorizontal'] = self.is_horizontal
-        if self.long_pic is not None:
-            result['LongPic'] = self.long_pic
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
-        if self.notify_topic_name is not None:
-            result['NotifyTopicName'] = self.notify_topic_name
-        if self.paper_size is not None:
-            result['PaperSize'] = self.paper_size
-        if self.password is not None:
-            result['Password'] = self.password
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
-        if self.quality is not None:
-            result['Quality'] = self.quality
-        if self.scale is not None:
-            result['Scale'] = self.scale
-        if self.sheet_count is not None:
-            result['SheetCount'] = self.sheet_count
-        if self.sheet_index is not None:
-            result['SheetIndex'] = self.sheet_index
-        if self.show_comments is not None:
-            result['ShowComments'] = self.show_comments
-        if self.source_type is not None:
-            result['SourceType'] = self.source_type
         if self.source_uri is not None:
-            result['SourceUri'] = self.source_uri
-        if self.start_page is not None:
-            result['StartPage'] = self.start_page
-        if self.target_type is not None:
-            result['TargetType'] = self.target_type
-        if self.target_uri is not None:
-            result['TargetUri'] = self.target_uri
+            result['SourceURI'] = self.source_uri
         if self.user_data is not None:
             result['UserData'] = self.user_data
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('EndPage') is not None:
-            self.end_page = m.get('EndPage')
-        if m.get('FirstPage') is not None:
-            self.first_page = m.get('FirstPage')
-        if m.get('FitToHeight') is not None:
-            self.fit_to_height = m.get('FitToHeight')
-        if m.get('FitToWidth') is not None:
-            self.fit_to_width = m.get('FitToWidth')
-        if m.get('IsHorizontal') is not None:
-            self.is_horizontal = m.get('IsHorizontal')
-        if m.get('LongPic') is not None:
-            self.long_pic = m.get('LongPic')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
-        if m.get('NotifyTopicName') is not None:
-            self.notify_topic_name = m.get('NotifyTopicName')
-        if m.get('PaperSize') is not None:
-            self.paper_size = m.get('PaperSize')
-        if m.get('Password') is not None:
-            self.password = m.get('Password')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
-        if m.get('Quality') is not None:
-            self.quality = m.get('Quality')
-        if m.get('Scale') is not None:
-            self.scale = m.get('Scale')
-        if m.get('SheetCount') is not None:
-            self.sheet_count = m.get('SheetCount')
-        if m.get('SheetIndex') is not None:
-            self.sheet_index = m.get('SheetIndex')
-        if m.get('ShowComments') is not None:
-            self.show_comments = m.get('ShowComments')
-        if m.get('SourceType') is not None:
-            self.source_type = m.get('SourceType')
-        if m.get('SourceUri') is not None:
-            self.source_uri = m.get('SourceUri')
-        if m.get('StartPage') is not None:
-            self.start_page = m.get('StartPage')
-        if m.get('TargetType') is not None:
-            self.target_type = m.get('TargetType')
-        if m.get('TargetUri') is not None:
-            self.target_uri = m.get('TargetUri')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
         return self
 
 
-class CreateOfficeConversionTaskResponseBody(TeaModel):
+class CreateDetectVideoLabelsTaskResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        end_time: str = None,
+        event_id: str = None,
+        message: str = None,
+        project_name: str = None,
         request_id: str = None,
+        start_time: str = None,
+        status: str = None,
         task_id: str = None,
+        task_type: str = None,
+        user_data: str = None,
     ):
-        # 请求 id
+        # 任务错误码
+        self.code = code
+        # 任务结束时间
+        self.end_time = end_time
+        # 事件Id
+        self.event_id = event_id
+        # 任务错误消息
+        self.message = message
+        # 项目名称
+        self.project_name = project_name
+        # 请求唯一Id
         self.request_id = request_id
-        # 任务 id
+        # 任务开始时间
+        self.start_time = start_time
+        # 任务运行状态
+        self.status = status
+        # 任务唯一ID
         self.task_id = task_id
+        # 任务类型
+        self.task_type = task_type
+        # 用户自定义信息
+        self.user_data = user_data
 
     def validate(self):
         pass
@@ -3698,26 +4239,62 @@ class CreateOfficeConversionTaskResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
         if self.task_id is not None:
             result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         return self
 
 
-class CreateOfficeConversionTaskResponse(TeaModel):
+class CreateDetectVideoLabelsTaskResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: CreateOfficeConversionTaskResponseBody = None,
+        body: CreateDetectVideoLabelsTaskResponseBody = None,
     ):
         self.headers = headers
         self.body = body
@@ -3745,7 +4322,7 @@ class CreateOfficeConversionTaskResponse(TeaModel):
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('body') is not None:
-            temp_model = CreateOfficeConversionTaskResponseBody()
+            temp_model = CreateDetectVideoLabelsTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4124,14 +4701,10 @@ class DeleteFileMetaRequest(TeaModel):
     def __init__(
         self,
         dataset_name: str = None,
-        notify_endpoint: str = None,
-        notify_topic_name: str = None,
         project_name: str = None,
         uri: str = None,
     ):
         self.dataset_name = dataset_name
-        self.notify_endpoint = notify_endpoint
-        self.notify_topic_name = notify_topic_name
         self.project_name = project_name
         self.uri = uri
 
@@ -4146,10 +4719,6 @@ class DeleteFileMetaRequest(TeaModel):
         result = dict()
         if self.dataset_name is not None:
             result['DatasetName'] = self.dataset_name
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
-        if self.notify_topic_name is not None:
-            result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.uri is not None:
@@ -4160,10 +4729,6 @@ class DeleteFileMetaRequest(TeaModel):
         m = m or dict()
         if m.get('DatasetName') is not None:
             self.dataset_name = m.get('DatasetName')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
-        if m.get('NotifyTopicName') is not None:
-            self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('URI') is not None:
@@ -4174,10 +4739,8 @@ class DeleteFileMetaRequest(TeaModel):
 class DeleteFileMetaResponseBody(TeaModel):
     def __init__(
         self,
-        event_id: str = None,
         request_id: str = None,
     ):
-        self.event_id = event_id
         # Id of the request
         self.request_id = request_id
 
@@ -4190,16 +4753,12 @@ class DeleteFileMetaResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.event_id is not None:
-            result['EventId'] = self.event_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('EventId') is not None:
-            self.event_id = m.get('EventId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -4822,6 +5381,310 @@ class GetDatasetResponse(TeaModel):
         return self
 
 
+class GetDetectVideoLabelsResultRequest(TeaModel):
+    def __init__(
+        self,
+        project_name: str = None,
+        task_id: str = None,
+        task_type: str = None,
+    ):
+        # 项目名称
+        self.project_name = project_name
+        # TaskId
+        self.task_id = task_id
+        # TaskType
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class GetDetectVideoLabelsResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        end_time: str = None,
+        event_id: str = None,
+        labels: List[Label] = None,
+        message: str = None,
+        project_name: str = None,
+        request_id: str = None,
+        start_time: str = None,
+        status: str = None,
+        task_id: str = None,
+        task_type: str = None,
+        user_data: str = None,
+    ):
+        # 任务错误码
+        self.code = code
+        # 任务结束时间
+        self.end_time = end_time
+        # 事件Id
+        self.event_id = event_id
+        # 标签列表
+        self.labels = labels
+        # 任务错误消息
+        self.message = message
+        # 项目名称
+        self.project_name = project_name
+        # 请求唯一Id
+        self.request_id = request_id
+        # 任务开始时间
+        self.start_time = start_time
+        # 任务运行状态
+        self.status = status
+        # 任务唯一ID
+        self.task_id = task_id
+        # 任务类型
+        self.task_type = task_type
+        # 用户自定义信息
+        self.user_data = user_data
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = Label()
+                self.labels.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class GetDetectVideoLabelsResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetDetectVideoLabelsResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetDetectVideoLabelsResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetFigureClusterRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        figure_cluster_id: str = None,
+        project_name: str = None,
+    ):
+        self.dataset_name = dataset_name
+        self.figure_cluster_id = figure_cluster_id
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.figure_cluster_id is not None:
+            result['FigureClusterId'] = self.figure_cluster_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('FigureClusterId') is not None:
+            self.figure_cluster_id = m.get('FigureClusterId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class GetFigureClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        figure_cluster: FigureCluster = None,
+        request_id: str = None,
+    ):
+        self.figure_cluster = figure_cluster
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.figure_cluster:
+            self.figure_cluster.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.figure_cluster is not None:
+            result['FigureCluster'] = self.figure_cluster.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FigureCluster') is not None:
+            temp_model = FigureCluster()
+            self.figure_cluster = temp_model.from_map(m['FigureCluster'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetFigureClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetFigureClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetFigureClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetFileMetaRequest(TeaModel):
     def __init__(
         self,
@@ -5046,113 +5909,6 @@ class GetFileSignedURIResponse(TeaModel):
         return self
 
 
-class GetOfficeConversionTaskRequest(TeaModel):
-    def __init__(
-        self,
-        project_name: str = None,
-        task_id: str = None,
-    ):
-        # 项目名称
-        self.project_name = project_name
-        # 任务 id
-        self.task_id = task_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.project_name is not None:
-            result['ProjectName'] = self.project_name
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ProjectName') is not None:
-            self.project_name = m.get('ProjectName')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
-        return self
-
-
-class GetOfficeConversionTaskResponseBody(TeaModel):
-    def __init__(
-        self,
-        office_conversion_task: OfficeConversionTask = None,
-        request_id: str = None,
-    ):
-        self.office_conversion_task = office_conversion_task
-        self.request_id = request_id
-
-    def validate(self):
-        if self.office_conversion_task:
-            self.office_conversion_task.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.office_conversion_task is not None:
-            result['OfficeConversionTask'] = self.office_conversion_task.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OfficeConversionTask') is not None:
-            temp_model = OfficeConversionTask()
-            self.office_conversion_task = temp_model.from_map(m['OfficeConversionTask'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class GetOfficeConversionTaskResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: GetOfficeConversionTaskResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = GetOfficeConversionTaskResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class GetProjectRequest(TeaModel):
     def __init__(
         self,
@@ -5257,6 +6013,183 @@ class GetProjectResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTaskRequest(TeaModel):
+    def __init__(
+        self,
+        project_name: str = None,
+        task_id: str = None,
+        task_type: str = None,
+    ):
+        # 项目名称
+        self.project_name = project_name
+        # TaskId
+        self.task_id = task_id
+        # TaskType
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class GetTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        end_time: str = None,
+        event_id: str = None,
+        message: str = None,
+        project_name: str = None,
+        request_id: str = None,
+        start_time: str = None,
+        status: str = None,
+        task_id: str = None,
+        task_type: str = None,
+        user_data: str = None,
+    ):
+        # 任务错误码
+        self.code = code
+        # 任务结束时间
+        self.end_time = end_time
+        # 事件Id
+        self.event_id = event_id
+        # 任务错误消息
+        self.message = message
+        # 项目名称
+        self.project_name = project_name
+        # 请求唯一Id
+        self.request_id = request_id
+        # 任务开始时间
+        self.start_time = start_time
+        # 任务运行状态
+        self.status = status
+        # 任务唯一ID
+        self.task_id = task_id
+        # 任务类型
+        self.task_type = task_type
+        # 用户自定义信息
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class GetTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6064,19 +6997,24 @@ class ListDatasetsResponse(TeaModel):
         return self
 
 
-class ListOfficeConversionTaskRequest(TeaModel):
+class ListFigureClustersRequest(TeaModel):
     def __init__(
         self,
+        dataset_name: str = None,
+        labels: str = None,
         max_results: int = None,
         next_token: str = None,
+        order: str = None,
         project_name: str = None,
+        sort: str = None,
     ):
-        # 最大结果数
+        self.dataset_name = dataset_name
+        self.labels = labels
         self.max_results = max_results
-        # 下一条记录开始标记
         self.next_token = next_token
-        # 项目名称
+        self.order = order
         self.project_name = project_name
+        self.sort = sort
 
     def validate(self):
         pass
@@ -6087,39 +7025,56 @@ class ListOfficeConversionTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.labels is not None:
+            result['Labels'] = self.labels
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.order is not None:
+            result['Order'] = self.order
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.sort is not None:
+            result['Sort'] = self.sort
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
         return self
 
 
-class ListOfficeConversionTaskResponseBody(TeaModel):
+class ListFigureClustersResponseBody(TeaModel):
     def __init__(
         self,
+        figure_clusters: List[FigureCluster] = None,
         next_token: str = None,
-        office_conversion_tasks: List[OfficeConversionTask] = None,
         request_id: str = None,
     ):
+        self.figure_clusters = figure_clusters
         self.next_token = next_token
-        self.office_conversion_tasks = office_conversion_tasks
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
-        if self.office_conversion_tasks:
-            for k in self.office_conversion_tasks:
+        if self.figure_clusters:
+            for k in self.figure_clusters:
                 if k:
                     k.validate()
 
@@ -6129,35 +7084,35 @@ class ListOfficeConversionTaskResponseBody(TeaModel):
             return _map
 
         result = dict()
+        result['FigureClusters'] = []
+        if self.figure_clusters is not None:
+            for k in self.figure_clusters:
+                result['FigureClusters'].append(k.to_map() if k else None)
         if self.next_token is not None:
             result['NextToken'] = self.next_token
-        result['OfficeConversionTasks'] = []
-        if self.office_conversion_tasks is not None:
-            for k in self.office_conversion_tasks:
-                result['OfficeConversionTasks'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.figure_clusters = []
+        if m.get('FigureClusters') is not None:
+            for k in m.get('FigureClusters'):
+                temp_model = FigureCluster()
+                self.figure_clusters.append(temp_model.from_map(k))
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
-        self.office_conversion_tasks = []
-        if m.get('OfficeConversionTasks') is not None:
-            for k in m.get('OfficeConversionTasks'):
-                temp_model = OfficeConversionTask()
-                self.office_conversion_tasks.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
 
 
-class ListOfficeConversionTaskResponse(TeaModel):
+class ListFigureClustersResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: ListOfficeConversionTaskResponseBody = None,
+        body: ListFigureClustersResponseBody = None,
     ):
         self.headers = headers
         self.body = body
@@ -6185,7 +7140,7 @@ class ListOfficeConversionTaskResponse(TeaModel):
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('body') is not None:
-            temp_model = ListOfficeConversionTaskResponseBody()
+            temp_model = ListFigureClustersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6315,6 +7270,296 @@ class ListProjectsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListProjectsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTasksRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        project_name: str = None,
+        task_type: str = None,
+    ):
+        # MaxResults
+        self.max_results = max_results
+        # NextToken
+        self.next_token = next_token
+        # 项目名称
+        self.project_name = project_name
+        # TaskType
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class ListTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: str = None,
+        next_token: str = None,
+        project_name: str = None,
+        request_id: str = None,
+        tasks: List[TaskInfo] = None,
+    ):
+        # 最大结果数量
+        self.max_results = max_results
+        # 翻页标记
+        self.next_token = next_token
+        # 项目名称
+        self.project_name = project_name
+        # 请求唯一Id
+        self.request_id = request_id
+        # 任务信息
+        self.tasks = tasks
+
+    def validate(self):
+        if self.tasks:
+            for k in self.tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Tasks'] = []
+        if self.tasks is not None:
+            for k in self.tasks:
+                result['Tasks'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tasks = []
+        if m.get('Tasks') is not None:
+            for k in m.get('Tasks'):
+                temp_model = TaskInfo()
+                self.tasks.append(temp_model.from_map(k))
+        return self
+
+
+class ListTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class MergeFigureClustersRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id_from: str = None,
+        cluster_id_to: str = None,
+        custom_message: str = None,
+        dataset_name: str = None,
+        figure_type: str = None,
+        notify_topic_endpoint: str = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+    ):
+        self.cluster_id_from = cluster_id_from
+        self.cluster_id_to = cluster_id_to
+        self.custom_message = custom_message
+        self.dataset_name = dataset_name
+        self.figure_type = figure_type
+        self.notify_topic_endpoint = notify_topic_endpoint
+        self.notify_topic_name = notify_topic_name
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id_from is not None:
+            result['ClusterIdFrom'] = self.cluster_id_from
+        if self.cluster_id_to is not None:
+            result['ClusterIdTo'] = self.cluster_id_to
+        if self.custom_message is not None:
+            result['CustomMessage'] = self.custom_message
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.figure_type is not None:
+            result['FigureType'] = self.figure_type
+        if self.notify_topic_endpoint is not None:
+            result['NotifyTopicEndpoint'] = self.notify_topic_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterIdFrom') is not None:
+            self.cluster_id_from = m.get('ClusterIdFrom')
+        if m.get('ClusterIdTo') is not None:
+            self.cluster_id_to = m.get('ClusterIdTo')
+        if m.get('CustomMessage') is not None:
+            self.custom_message = m.get('CustomMessage')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('FigureType') is not None:
+            self.figure_type = m.get('FigureType')
+        if m.get('NotifyTopicEndpoint') is not None:
+            self.notify_topic_endpoint = m.get('NotifyTopicEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class MergeFigureClustersResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class MergeFigureClustersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: MergeFigureClustersResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = MergeFigureClustersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6616,6 +7861,257 @@ class ResumeBindingResponse(TeaModel):
         return self
 
 
+class SemanticQueryRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        project_name: str = None,
+        query: str = None,
+    ):
+        # Dataset 名称
+        self.dataset_name = dataset_name
+        # 本次读取的最大数据记录数量
+        self.max_results = max_results
+        # 标记当前开始读取的位置，置空表示从头开始
+        self.next_token = next_token
+        # 项目名称
+        self.project_name = project_name
+        # 需要搜索的内容，使用自然语言描述
+        self.query = query
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.query is not None:
+            result['Query'] = self.query
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        return self
+
+
+class SemanticQueryResponseBodyAggregationsGroups(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        value: str = None,
+    ):
+        # 分组聚合的计数
+        self.count = count
+        # 分组聚合的值
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class SemanticQueryResponseBodyAggregations(TeaModel):
+    def __init__(
+        self,
+        field: str = None,
+        groups: List[SemanticQueryResponseBodyAggregationsGroups] = None,
+        operation: str = None,
+        value: float = None,
+    ):
+        # 聚合字段名
+        self.field = field
+        # 分组聚合的结果
+        self.groups = groups
+        # 聚合字段的聚合操作符
+        self.operation = operation
+        # 聚合的统计结果
+        self.value = value
+
+    def validate(self):
+        if self.groups:
+            for k in self.groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field is not None:
+            result['Field'] = self.field
+        result['Groups'] = []
+        if self.groups is not None:
+            for k in self.groups:
+                result['Groups'].append(k.to_map() if k else None)
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Field') is not None:
+            self.field = m.get('Field')
+        self.groups = []
+        if m.get('Groups') is not None:
+            for k in m.get('Groups'):
+                temp_model = SemanticQueryResponseBodyAggregationsGroups()
+                self.groups.append(temp_model.from_map(k))
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class SemanticQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        aggregations: List[SemanticQueryResponseBodyAggregations] = None,
+        files: List[File] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        # 聚合字段的字段名
+        self.aggregations = aggregations
+        # 文件列表
+        self.files = files
+        # 表示当前调用返回读取到的位置，空代表数据已经读取完毕
+        self.next_token = next_token
+        # 本次请求的唯一 Id
+        self.request_id = request_id
+
+    def validate(self):
+        if self.aggregations:
+            for k in self.aggregations:
+                if k:
+                    k.validate()
+        if self.files:
+            for k in self.files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Aggregations'] = []
+        if self.aggregations is not None:
+            for k in self.aggregations:
+                result['Aggregations'].append(k.to_map() if k else None)
+        result['Files'] = []
+        if self.files is not None:
+            for k in self.files:
+                result['Files'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.aggregations = []
+        if m.get('Aggregations') is not None:
+            for k in m.get('Aggregations'):
+                temp_model = SemanticQueryResponseBodyAggregations()
+                self.aggregations.append(temp_model.from_map(k))
+        self.files = []
+        if m.get('Files') is not None:
+            for k in m.get('Files'):
+                temp_model = File()
+                self.files.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SemanticQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SemanticQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SemanticQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SimpleQueryRequestAggregations(TeaModel):
     def __init__(
         self,
@@ -6817,13 +8313,13 @@ class SimpleQueryShrinkRequest(TeaModel):
 class SimpleQueryResponseBodyAggregationsGroups(TeaModel):
     def __init__(
         self,
-        value: str = None,
         count: int = None,
+        value: str = None,
     ):
-        # 分组聚合的值
-        self.value = value
         # 分组聚合的计数
         self.count = count
+        # 分组聚合的值
+        self.value = value
 
     def validate(self):
         pass
@@ -6834,18 +8330,18 @@ class SimpleQueryResponseBodyAggregationsGroups(TeaModel):
             return _map
 
         result = dict()
-        if self.value is not None:
-            result['Value'] = self.value
         if self.count is not None:
             result['Count'] = self.count
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
         if m.get('Count') is not None:
             self.count = m.get('Count')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -6853,18 +8349,18 @@ class SimpleQueryResponseBodyAggregations(TeaModel):
     def __init__(
         self,
         field: str = None,
+        groups: List[SimpleQueryResponseBodyAggregationsGroups] = None,
         operation: str = None,
         value: float = None,
-        groups: List[SimpleQueryResponseBodyAggregationsGroups] = None,
     ):
         # 聚合字段名
         self.field = field
+        # 分组聚合的结果
+        self.groups = groups
         # 聚合字段的聚合操作符
         self.operation = operation
         # 聚合的统计结果
         self.value = value
-        # 分组聚合的结果
-        self.groups = groups
 
     def validate(self):
         if self.groups:
@@ -6880,29 +8376,29 @@ class SimpleQueryResponseBodyAggregations(TeaModel):
         result = dict()
         if self.field is not None:
             result['Field'] = self.field
-        if self.operation is not None:
-            result['Operation'] = self.operation
-        if self.value is not None:
-            result['Value'] = self.value
         result['Groups'] = []
         if self.groups is not None:
             for k in self.groups:
                 result['Groups'].append(k.to_map() if k else None)
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Field') is not None:
             self.field = m.get('Field')
-        if m.get('Operation') is not None:
-            self.operation = m.get('Operation')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
         self.groups = []
         if m.get('Groups') is not None:
             for k in m.get('Groups'):
                 temp_model = SimpleQueryResponseBodyAggregationsGroups()
                 self.groups.append(temp_model.from_map(k))
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -7276,19 +8772,160 @@ class UpdateDatasetResponse(TeaModel):
         return self
 
 
+class UpdateFigureClusterRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        figure_cluster: FigureCluster = None,
+        project_name: str = None,
+    ):
+        self.dataset_name = dataset_name
+        self.figure_cluster = figure_cluster
+        self.project_name = project_name
+
+    def validate(self):
+        if self.figure_cluster:
+            self.figure_cluster.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.figure_cluster is not None:
+            result['FigureCluster'] = self.figure_cluster.to_map()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('FigureCluster') is not None:
+            temp_model = FigureCluster()
+            self.figure_cluster = temp_model.from_map(m['FigureCluster'])
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class UpdateFigureClusterShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        figure_cluster_shrink: str = None,
+        project_name: str = None,
+    ):
+        self.dataset_name = dataset_name
+        self.figure_cluster_shrink = figure_cluster_shrink
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.figure_cluster_shrink is not None:
+            result['FigureCluster'] = self.figure_cluster_shrink
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('FigureCluster') is not None:
+            self.figure_cluster_shrink = m.get('FigureCluster')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class UpdateFigureClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateFigureClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateFigureClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateFigureClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateFileMetaRequest(TeaModel):
     def __init__(
         self,
         dataset_name: str = None,
         file: FileForReq = None,
-        notify_endpoint: str = None,
-        notify_topic_name: str = None,
         project_name: str = None,
     ):
         self.dataset_name = dataset_name
         self.file = file
-        self.notify_endpoint = notify_endpoint
-        self.notify_topic_name = notify_topic_name
         self.project_name = project_name
 
     def validate(self):
@@ -7305,10 +8942,6 @@ class UpdateFileMetaRequest(TeaModel):
             result['DatasetName'] = self.dataset_name
         if self.file is not None:
             result['File'] = self.file.to_map()
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
-        if self.notify_topic_name is not None:
-            result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         return result
@@ -7320,10 +8953,6 @@ class UpdateFileMetaRequest(TeaModel):
         if m.get('File') is not None:
             temp_model = FileForReq()
             self.file = temp_model.from_map(m['File'])
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
-        if m.get('NotifyTopicName') is not None:
-            self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         return self
@@ -7334,14 +8963,10 @@ class UpdateFileMetaShrinkRequest(TeaModel):
         self,
         dataset_name: str = None,
         file_shrink: str = None,
-        notify_endpoint: str = None,
-        notify_topic_name: str = None,
         project_name: str = None,
     ):
         self.dataset_name = dataset_name
         self.file_shrink = file_shrink
-        self.notify_endpoint = notify_endpoint
-        self.notify_topic_name = notify_topic_name
         self.project_name = project_name
 
     def validate(self):
@@ -7357,10 +8982,6 @@ class UpdateFileMetaShrinkRequest(TeaModel):
             result['DatasetName'] = self.dataset_name
         if self.file_shrink is not None:
             result['File'] = self.file_shrink
-        if self.notify_endpoint is not None:
-            result['NotifyEndpoint'] = self.notify_endpoint
-        if self.notify_topic_name is not None:
-            result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         return result
@@ -7371,10 +8992,6 @@ class UpdateFileMetaShrinkRequest(TeaModel):
             self.dataset_name = m.get('DatasetName')
         if m.get('File') is not None:
             self.file_shrink = m.get('File')
-        if m.get('NotifyEndpoint') is not None:
-            self.notify_endpoint = m.get('NotifyEndpoint')
-        if m.get('NotifyTopicName') is not None:
-            self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         return self
@@ -7383,10 +9000,8 @@ class UpdateFileMetaShrinkRequest(TeaModel):
 class UpdateFileMetaResponseBody(TeaModel):
     def __init__(
         self,
-        event_id: str = None,
         request_id: str = None,
     ):
-        self.event_id = event_id
         # Id of the request
         self.request_id = request_id
 
@@ -7399,16 +9014,12 @@ class UpdateFileMetaResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.event_id is not None:
-            result['EventId'] = self.event_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('EventId') is not None:
-            self.event_id = m.get('EventId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
