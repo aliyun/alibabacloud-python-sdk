@@ -16057,6 +16057,184 @@ class UpdateListenerLogConfigResponse(TeaModel):
         return self
 
 
+class UpdateLoadBalancerAddressTypeConfigRequestZoneMappings(TeaModel):
+    def __init__(
+        self,
+        allocation_id: str = None,
+        v_switch_id: str = None,
+        zone_id: str = None,
+    ):
+        # 弹性公网IP
+        self.allocation_id = allocation_id
+        # 交换机标识
+        self.v_switch_id = v_switch_id
+        # 可用区
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allocation_id is not None:
+            result['AllocationId'] = self.allocation_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllocationId') is not None:
+            self.allocation_id = m.get('AllocationId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class UpdateLoadBalancerAddressTypeConfigRequest(TeaModel):
+    def __init__(
+        self,
+        address_type: str = None,
+        client_token: str = None,
+        dry_run: str = None,
+        load_balancer_id: str = None,
+        zone_mappings: List[UpdateLoadBalancerAddressTypeConfigRequestZoneMappings] = None,
+    ):
+        # 目标网络类型
+        self.address_type = address_type
+        # 幂等标识
+        self.client_token = client_token
+        # 是否只预检此次请求
+        self.dry_run = dry_run
+        # 实例id
+        self.load_balancer_id = load_balancer_id
+        # 可用区及交换机映射列表
+        self.zone_mappings = zone_mappings
+
+    def validate(self):
+        if self.zone_mappings:
+            for k in self.zone_mappings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        result['ZoneMappings'] = []
+        if self.zone_mappings is not None:
+            for k in self.zone_mappings:
+                result['ZoneMappings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        self.zone_mappings = []
+        if m.get('ZoneMappings') is not None:
+            for k in m.get('ZoneMappings'):
+                temp_model = UpdateLoadBalancerAddressTypeConfigRequestZoneMappings()
+                self.zone_mappings.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateLoadBalancerAddressTypeConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        request_id: str = None,
+    ):
+        # 异步任务id
+        self.job_id = job_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateLoadBalancerAddressTypeConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateLoadBalancerAddressTypeConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateLoadBalancerAddressTypeConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateLoadBalancerAttributeRequestModificationProtectionConfig(TeaModel):
     def __init__(
         self,

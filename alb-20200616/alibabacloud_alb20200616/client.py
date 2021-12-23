@@ -53,8 +53,7 @@ class Client(OpenApiClient):
         query['ClientToken'] = request.client_token
         query['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddEntriesToAcl',
@@ -64,7 +63,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -84,8 +83,7 @@ class Client(OpenApiClient):
         query['ClientToken'] = request.client_token
         query['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddEntriesToAcl',
@@ -95,7 +93,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -129,8 +127,7 @@ class Client(OpenApiClient):
         query['ServerGroupId'] = request.server_group_id
         query['Servers'] = request.servers
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddServersToServerGroup',
@@ -140,7 +137,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -160,8 +157,7 @@ class Client(OpenApiClient):
         query['ServerGroupId'] = request.server_group_id
         query['Servers'] = request.servers
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddServersToServerGroup',
@@ -171,7 +167,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -205,8 +201,7 @@ class Client(OpenApiClient):
         query['HealthCheckTemplateId'] = request.health_check_template_id
         query['ServerGroupId'] = request.server_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ApplyHealthCheckTemplateToServerGroup',
@@ -216,7 +211,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -236,8 +231,7 @@ class Client(OpenApiClient):
         query['HealthCheckTemplateId'] = request.health_check_template_id
         query['ServerGroupId'] = request.server_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ApplyHealthCheckTemplateToServerGroup',
@@ -247,7 +241,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -282,8 +276,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AssociateAclsWithListener',
@@ -293,7 +286,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -314,8 +307,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AssociateAclsWithListener',
@@ -325,7 +317,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -359,8 +351,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AssociateAdditionalCertificatesWithListener',
@@ -370,7 +361,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -390,8 +381,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AssociateAdditionalCertificatesWithListener',
@@ -401,7 +391,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -436,8 +426,7 @@ class Client(OpenApiClient):
         query['LoadBalancerId'] = request.load_balancer_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AttachCommonBandwidthPackageToLoadBalancer',
@@ -447,7 +436,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -468,8 +457,7 @@ class Client(OpenApiClient):
         query['LoadBalancerId'] = request.load_balancer_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AttachCommonBandwidthPackageToLoadBalancer',
@@ -479,7 +467,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -513,8 +501,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateAcl',
@@ -524,7 +511,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -544,8 +531,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateAcl',
@@ -555,7 +541,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -599,8 +585,7 @@ class Client(OpenApiClient):
         query['HealthyThreshold'] = request.healthy_threshold
         query['UnhealthyThreshold'] = request.unhealthy_threshold
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateHealthCheckTemplate',
@@ -610,7 +595,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -640,8 +625,7 @@ class Client(OpenApiClient):
         query['HealthyThreshold'] = request.healthy_threshold
         query['UnhealthyThreshold'] = request.unhealthy_threshold
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateHealthCheckTemplate',
@@ -651,7 +635,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -698,8 +682,7 @@ class Client(OpenApiClient):
         query['SecurityPolicyId'] = request.security_policy_id
         query['XForwardedForConfig'] = request.xforwarded_for_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateListener',
@@ -709,7 +692,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -742,8 +725,7 @@ class Client(OpenApiClient):
         query['SecurityPolicyId'] = request.security_policy_id
         query['XForwardedForConfig'] = request.xforwarded_for_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateListener',
@@ -753,7 +735,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -795,8 +777,7 @@ class Client(OpenApiClient):
         query['VpcId'] = request.vpc_id
         query['ZoneMappings'] = request.zone_mappings
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateLoadBalancer',
@@ -806,7 +787,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -834,8 +815,7 @@ class Client(OpenApiClient):
         query['VpcId'] = request.vpc_id
         query['ZoneMappings'] = request.zone_mappings
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateLoadBalancer',
@@ -845,7 +825,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -882,8 +862,7 @@ class Client(OpenApiClient):
         query['RuleConditions'] = request.rule_conditions
         query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateRule',
@@ -893,7 +872,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -916,8 +895,7 @@ class Client(OpenApiClient):
         query['RuleConditions'] = request.rule_conditions
         query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateRule',
@@ -927,7 +905,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -961,8 +939,7 @@ class Client(OpenApiClient):
         query['ListenerId'] = request.listener_id
         query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateRules',
@@ -972,7 +949,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -992,8 +969,7 @@ class Client(OpenApiClient):
         query['ListenerId'] = request.listener_id
         query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateRules',
@@ -1003,7 +979,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1039,8 +1015,7 @@ class Client(OpenApiClient):
         query['SecurityPolicyName'] = request.security_policy_name
         query['TLSVersions'] = request.tlsversions
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateSecurityPolicy',
@@ -1050,7 +1025,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1072,8 +1047,7 @@ class Client(OpenApiClient):
         query['SecurityPolicyName'] = request.security_policy_name
         query['TLSVersions'] = request.tlsversions
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateSecurityPolicy',
@@ -1083,7 +1057,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1123,8 +1097,7 @@ class Client(OpenApiClient):
         query['StickySessionConfig'] = request.sticky_session_config
         query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateServerGroup',
@@ -1134,7 +1107,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1160,8 +1133,7 @@ class Client(OpenApiClient):
         query['StickySessionConfig'] = request.sticky_session_config
         query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateServerGroup',
@@ -1171,7 +1143,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1204,8 +1176,7 @@ class Client(OpenApiClient):
         query['ClientToken'] = request.client_token
         query['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAcl',
@@ -1215,7 +1186,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1234,8 +1205,7 @@ class Client(OpenApiClient):
         query['ClientToken'] = request.client_token
         query['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAcl',
@@ -1245,7 +1215,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1278,8 +1248,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['HealthCheckTemplateIds'] = request.health_check_template_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteHealthCheckTemplates',
@@ -1289,7 +1258,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1308,8 +1277,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['HealthCheckTemplateIds'] = request.health_check_template_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteHealthCheckTemplates',
@@ -1319,7 +1287,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1352,8 +1320,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteListener',
@@ -1363,7 +1330,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1382,8 +1349,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteListener',
@@ -1393,7 +1359,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1426,8 +1392,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteLoadBalancer',
@@ -1437,7 +1402,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1456,8 +1421,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteLoadBalancer',
@@ -1467,7 +1431,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1500,8 +1464,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteRule',
@@ -1511,7 +1474,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1530,8 +1493,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteRule',
@@ -1541,7 +1503,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1574,8 +1536,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['RuleIds'] = request.rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteRules',
@@ -1585,7 +1546,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1604,8 +1565,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['RuleIds'] = request.rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteRules',
@@ -1615,7 +1575,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1648,8 +1608,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['SecurityPolicyId'] = request.security_policy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSecurityPolicy',
@@ -1659,7 +1618,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1678,8 +1637,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['SecurityPolicyId'] = request.security_policy_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSecurityPolicy',
@@ -1689,7 +1647,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1722,8 +1680,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ServerGroupId'] = request.server_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteServerGroup',
@@ -1733,7 +1690,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1752,8 +1709,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ServerGroupId'] = request.server_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteServerGroup',
@@ -1763,7 +1719,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1794,8 +1750,7 @@ class Client(OpenApiClient):
         query = {}
         query['AcceptLanguage'] = request.accept_language
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRegions',
@@ -1805,7 +1760,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1822,8 +1777,7 @@ class Client(OpenApiClient):
         query = {}
         query['AcceptLanguage'] = request.accept_language
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRegions',
@@ -1833,7 +1787,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1868,7 +1822,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1889,7 +1843,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1918,8 +1872,7 @@ class Client(OpenApiClient):
         query['LoadBalancerId'] = request.load_balancer_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetachCommonBandwidthPackageFromLoadBalancer',
@@ -1929,7 +1882,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1950,8 +1903,7 @@ class Client(OpenApiClient):
         query['LoadBalancerId'] = request.load_balancer_id
         query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetachCommonBandwidthPackageFromLoadBalancer',
@@ -1961,7 +1913,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1994,8 +1946,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DisableDeletionProtection',
@@ -2005,7 +1956,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2024,8 +1975,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DisableDeletionProtection',
@@ -2035,7 +1985,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2068,8 +2018,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DisableLoadBalancerAccessLog',
@@ -2079,7 +2028,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2098,8 +2047,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DisableLoadBalancerAccessLog',
@@ -2109,7 +2057,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2143,8 +2091,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DissociateAclsFromListener',
@@ -2154,7 +2101,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2174,8 +2121,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DissociateAclsFromListener',
@@ -2185,7 +2131,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2219,8 +2165,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DissociateAdditionalCertificatesFromListener',
@@ -2230,7 +2175,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2250,8 +2195,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DissociateAdditionalCertificatesFromListener',
@@ -2261,7 +2205,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2294,8 +2238,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='EnableDeletionProtection',
@@ -2305,7 +2248,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2324,8 +2267,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='EnableDeletionProtection',
@@ -2335,7 +2277,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2370,8 +2312,7 @@ class Client(OpenApiClient):
         query['LogProject'] = request.log_project
         query['LogStore'] = request.log_store
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='EnableLoadBalancerAccessLog',
@@ -2381,7 +2322,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2402,8 +2343,7 @@ class Client(OpenApiClient):
         query['LogProject'] = request.log_project
         query['LogStore'] = request.log_store
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='EnableLoadBalancerAccessLog',
@@ -2413,7 +2353,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2444,8 +2384,7 @@ class Client(OpenApiClient):
         query = {}
         query['HealthCheckTemplateId'] = request.health_check_template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetHealthCheckTemplateAttribute',
@@ -2455,7 +2394,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2472,8 +2411,7 @@ class Client(OpenApiClient):
         query = {}
         query['HealthCheckTemplateId'] = request.health_check_template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetHealthCheckTemplateAttribute',
@@ -2483,7 +2421,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2514,8 +2452,7 @@ class Client(OpenApiClient):
         query = {}
         query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetListenerAttribute',
@@ -2525,7 +2462,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2542,8 +2479,7 @@ class Client(OpenApiClient):
         query = {}
         query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetListenerAttribute',
@@ -2553,7 +2489,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2587,8 +2523,7 @@ class Client(OpenApiClient):
         query['MaxResults'] = request.max_results
         query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetListenerHealthStatus',
@@ -2598,7 +2533,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2618,8 +2553,7 @@ class Client(OpenApiClient):
         query['MaxResults'] = request.max_results
         query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetListenerHealthStatus',
@@ -2629,7 +2563,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2660,8 +2594,7 @@ class Client(OpenApiClient):
         query = {}
         query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetLoadBalancerAttribute',
@@ -2671,7 +2604,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2688,8 +2621,7 @@ class Client(OpenApiClient):
         query = {}
         query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetLoadBalancerAttribute',
@@ -2699,7 +2631,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2732,8 +2664,7 @@ class Client(OpenApiClient):
         query['MaxResults'] = request.max_results
         query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAclEntries',
@@ -2743,7 +2674,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2762,8 +2693,7 @@ class Client(OpenApiClient):
         query['MaxResults'] = request.max_results
         query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAclEntries',
@@ -2773,7 +2703,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2804,8 +2734,7 @@ class Client(OpenApiClient):
         query = {}
         query['AclIds'] = request.acl_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAclRelations',
@@ -2815,7 +2744,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2832,8 +2761,7 @@ class Client(OpenApiClient):
         query = {}
         query['AclIds'] = request.acl_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAclRelations',
@@ -2843,7 +2771,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2878,8 +2806,7 @@ class Client(OpenApiClient):
         query['NextToken'] = request.next_token
         query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAcls',
@@ -2889,7 +2816,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2910,8 +2837,7 @@ class Client(OpenApiClient):
         query['NextToken'] = request.next_token
         query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAcls',
@@ -2921,7 +2847,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2959,8 +2885,7 @@ class Client(OpenApiClient):
         query['ResourceIds'] = request.resource_ids
         query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAsynJobs',
@@ -2970,7 +2895,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2994,8 +2919,7 @@ class Client(OpenApiClient):
         query['ResourceIds'] = request.resource_ids
         query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAsynJobs',
@@ -3005,7 +2929,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3039,8 +2963,7 @@ class Client(OpenApiClient):
         query['MaxResults'] = request.max_results
         query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListHealthCheckTemplates',
@@ -3050,7 +2973,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3070,8 +2993,7 @@ class Client(OpenApiClient):
         query['MaxResults'] = request.max_results
         query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListHealthCheckTemplates',
@@ -3081,7 +3003,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3115,8 +3037,7 @@ class Client(OpenApiClient):
         query['MaxResults'] = request.max_results
         query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListListenerCertificates',
@@ -3126,7 +3047,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3146,8 +3067,7 @@ class Client(OpenApiClient):
         query['MaxResults'] = request.max_results
         query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListListenerCertificates',
@@ -3157,7 +3077,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3192,8 +3112,7 @@ class Client(OpenApiClient):
         query['MaxResults'] = request.max_results
         query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListListeners',
@@ -3203,7 +3122,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3224,8 +3143,7 @@ class Client(OpenApiClient):
         query['MaxResults'] = request.max_results
         query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListListeners',
@@ -3235,7 +3153,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3277,8 +3195,7 @@ class Client(OpenApiClient):
         query['VpcIds'] = request.vpc_ids
         query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListLoadBalancers',
@@ -3288,7 +3205,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3316,8 +3233,7 @@ class Client(OpenApiClient):
         query['VpcIds'] = request.vpc_ids
         query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListLoadBalancers',
@@ -3327,7 +3243,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3362,8 +3278,7 @@ class Client(OpenApiClient):
         query['NextToken'] = request.next_token
         query['RuleIds'] = request.rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListRules',
@@ -3373,7 +3288,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3394,8 +3309,7 @@ class Client(OpenApiClient):
         query['NextToken'] = request.next_token
         query['RuleIds'] = request.rule_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListRules',
@@ -3405,7 +3319,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3440,8 +3354,7 @@ class Client(OpenApiClient):
         query['SecurityPolicyIds'] = request.security_policy_ids
         query['SecurityPolicyNames'] = request.security_policy_names
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListSecurityPolicies',
@@ -3451,7 +3364,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3472,8 +3385,7 @@ class Client(OpenApiClient):
         query['SecurityPolicyIds'] = request.security_policy_ids
         query['SecurityPolicyNames'] = request.security_policy_names
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListSecurityPolicies',
@@ -3483,7 +3395,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3514,8 +3426,7 @@ class Client(OpenApiClient):
         query = {}
         query['SecurityPolicyIds'] = request.security_policy_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListSecurityPolicyRelations',
@@ -3525,7 +3436,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3542,8 +3453,7 @@ class Client(OpenApiClient):
         query = {}
         query['SecurityPolicyIds'] = request.security_policy_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListSecurityPolicyRelations',
@@ -3553,7 +3463,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3588,8 +3498,7 @@ class Client(OpenApiClient):
         query['ServerIds'] = request.server_ids
         query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListServerGroupServers',
@@ -3599,7 +3508,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3620,8 +3529,7 @@ class Client(OpenApiClient):
         query['ServerIds'] = request.server_ids
         query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListServerGroupServers',
@@ -3631,7 +3539,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3668,8 +3576,7 @@ class Client(OpenApiClient):
         query['Tag'] = request.tag
         query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListServerGroups',
@@ -3679,7 +3586,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3702,8 +3609,7 @@ class Client(OpenApiClient):
         query['Tag'] = request.tag
         query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListServerGroups',
@@ -3713,7 +3619,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3748,7 +3654,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3769,7 +3675,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3798,8 +3704,7 @@ class Client(OpenApiClient):
         query['NextToken'] = request.next_token
         query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTagKeys',
@@ -3809,7 +3714,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3830,8 +3735,7 @@ class Client(OpenApiClient):
         query['NextToken'] = request.next_token
         query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTagKeys',
@@ -3841,7 +3745,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3876,8 +3780,7 @@ class Client(OpenApiClient):
         query['ResourceType'] = request.resource_type
         query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTagResources',
@@ -3887,7 +3790,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3908,8 +3811,7 @@ class Client(OpenApiClient):
         query['ResourceType'] = request.resource_type
         query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTagResources',
@@ -3919,7 +3821,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3954,8 +3856,7 @@ class Client(OpenApiClient):
         query['ResourceType'] = request.resource_type
         query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTagValues',
@@ -3965,7 +3866,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3986,8 +3887,7 @@ class Client(OpenApiClient):
         query['ResourceType'] = request.resource_type
         query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTagValues',
@@ -3997,7 +3897,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4030,8 +3930,7 @@ class Client(OpenApiClient):
         query['ResourceId'] = request.resource_id
         query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='MoveResourceGroup',
@@ -4041,7 +3940,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4060,8 +3959,7 @@ class Client(OpenApiClient):
         query['ResourceId'] = request.resource_id
         query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='MoveResourceGroup',
@@ -4071,7 +3969,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4105,8 +4003,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['Entries'] = request.entries
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RemoveEntriesFromAcl',
@@ -4116,7 +4013,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4136,8 +4033,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['Entries'] = request.entries
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RemoveEntriesFromAcl',
@@ -4147,7 +4043,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4181,8 +4077,7 @@ class Client(OpenApiClient):
         query['ServerGroupId'] = request.server_group_id
         query['Servers'] = request.servers
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RemoveServersFromServerGroup',
@@ -4192,7 +4087,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4212,8 +4107,7 @@ class Client(OpenApiClient):
         query['ServerGroupId'] = request.server_group_id
         query['Servers'] = request.servers
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RemoveServersFromServerGroup',
@@ -4223,7 +4117,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4258,8 +4152,7 @@ class Client(OpenApiClient):
         query['RemovedServers'] = request.removed_servers
         query['ServerGroupId'] = request.server_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReplaceServersInServerGroup',
@@ -4269,7 +4162,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4290,8 +4183,7 @@ class Client(OpenApiClient):
         query['RemovedServers'] = request.removed_servers
         query['ServerGroupId'] = request.server_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReplaceServersInServerGroup',
@@ -4301,7 +4193,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4334,8 +4226,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StartListener',
@@ -4345,7 +4236,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4364,8 +4255,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StartListener',
@@ -4375,7 +4265,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4408,8 +4298,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StopListener',
@@ -4419,7 +4308,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4438,8 +4327,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StopListener',
@@ -4449,7 +4337,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4482,8 +4370,7 @@ class Client(OpenApiClient):
         query['ResourceType'] = request.resource_type
         query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TagResources',
@@ -4493,7 +4380,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4512,8 +4399,7 @@ class Client(OpenApiClient):
         query['ResourceType'] = request.resource_type
         query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TagResources',
@@ -4523,7 +4409,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4557,8 +4443,7 @@ class Client(OpenApiClient):
         query['Tag'] = request.tag
         query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnTagResources',
@@ -4568,7 +4453,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4588,8 +4473,7 @@ class Client(OpenApiClient):
         query['Tag'] = request.tag
         query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnTagResources',
@@ -4599,7 +4483,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4633,8 +4517,7 @@ class Client(OpenApiClient):
         query['ClientToken'] = request.client_token
         query['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateAclAttribute',
@@ -4644,7 +4527,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4664,8 +4547,7 @@ class Client(OpenApiClient):
         query['ClientToken'] = request.client_token
         query['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateAclAttribute',
@@ -4675,7 +4557,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4720,8 +4602,7 @@ class Client(OpenApiClient):
         query['HealthyThreshold'] = request.healthy_threshold
         query['UnhealthyThreshold'] = request.unhealthy_threshold
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateHealthCheckTemplateAttribute',
@@ -4731,7 +4612,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4762,8 +4643,7 @@ class Client(OpenApiClient):
         query['HealthyThreshold'] = request.healthy_threshold
         query['UnhealthyThreshold'] = request.unhealthy_threshold
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateHealthCheckTemplateAttribute',
@@ -4773,7 +4653,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4818,8 +4698,7 @@ class Client(OpenApiClient):
         query['SecurityPolicyId'] = request.security_policy_id
         query['XForwardedForConfig'] = request.xforwarded_for_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateListenerAttribute',
@@ -4829,7 +4708,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4860,8 +4739,7 @@ class Client(OpenApiClient):
         query['SecurityPolicyId'] = request.security_policy_id
         query['XForwardedForConfig'] = request.xforwarded_for_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateListenerAttribute',
@@ -4871,7 +4749,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4906,8 +4784,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateListenerLogConfig',
@@ -4917,7 +4794,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4938,8 +4815,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateListenerLogConfig',
@@ -4949,7 +4825,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4971,6 +4847,82 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_listener_log_config_with_options_async(request, runtime)
 
+    def update_load_balancer_address_type_config_with_options(
+        self,
+        request: alb_20200616_models.UpdateLoadBalancerAddressTypeConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.UpdateLoadBalancerAddressTypeConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AddressType'] = request.address_type
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerId'] = request.load_balancer_id
+        query['ZoneMappings'] = request.zone_mappings
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateLoadBalancerAddressTypeConfig',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.UpdateLoadBalancerAddressTypeConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_load_balancer_address_type_config_with_options_async(
+        self,
+        request: alb_20200616_models.UpdateLoadBalancerAddressTypeConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.UpdateLoadBalancerAddressTypeConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        query['AddressType'] = request.address_type
+        query['ClientToken'] = request.client_token
+        query['DryRun'] = request.dry_run
+        query['LoadBalancerId'] = request.load_balancer_id
+        query['ZoneMappings'] = request.zone_mappings
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateLoadBalancerAddressTypeConfig',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.UpdateLoadBalancerAddressTypeConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_load_balancer_address_type_config(
+        self,
+        request: alb_20200616_models.UpdateLoadBalancerAddressTypeConfigRequest,
+    ) -> alb_20200616_models.UpdateLoadBalancerAddressTypeConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_load_balancer_address_type_config_with_options(request, runtime)
+
+    async def update_load_balancer_address_type_config_async(
+        self,
+        request: alb_20200616_models.UpdateLoadBalancerAddressTypeConfigRequest,
+    ) -> alb_20200616_models.UpdateLoadBalancerAddressTypeConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_load_balancer_address_type_config_with_options_async(request, runtime)
+
     def update_load_balancer_attribute_with_options(
         self,
         request: alb_20200616_models.UpdateLoadBalancerAttributeRequest,
@@ -4984,8 +4936,7 @@ class Client(OpenApiClient):
         query['LoadBalancerName'] = request.load_balancer_name
         query['ModificationProtectionConfig'] = request.modification_protection_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateLoadBalancerAttribute',
@@ -4995,7 +4946,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5016,8 +4967,7 @@ class Client(OpenApiClient):
         query['LoadBalancerName'] = request.load_balancer_name
         query['ModificationProtectionConfig'] = request.modification_protection_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateLoadBalancerAttribute',
@@ -5027,7 +4977,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5061,8 +5011,7 @@ class Client(OpenApiClient):
         query['LoadBalancerEdition'] = request.load_balancer_edition
         query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateLoadBalancerEdition',
@@ -5072,7 +5021,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5092,8 +5041,7 @@ class Client(OpenApiClient):
         query['LoadBalancerEdition'] = request.load_balancer_edition
         query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateLoadBalancerEdition',
@@ -5103,7 +5051,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5137,8 +5085,7 @@ class Client(OpenApiClient):
         query['LoadBalancerId'] = request.load_balancer_id
         query['ZoneMappings'] = request.zone_mappings
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateLoadBalancerZones',
@@ -5148,7 +5095,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5168,8 +5115,7 @@ class Client(OpenApiClient):
         query['LoadBalancerId'] = request.load_balancer_id
         query['ZoneMappings'] = request.zone_mappings
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateLoadBalancerZones',
@@ -5179,7 +5125,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5216,8 +5162,7 @@ class Client(OpenApiClient):
         query['RuleId'] = request.rule_id
         query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateRuleAttribute',
@@ -5227,7 +5172,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5250,8 +5195,7 @@ class Client(OpenApiClient):
         query['RuleId'] = request.rule_id
         query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateRuleAttribute',
@@ -5261,7 +5205,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5294,8 +5238,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateRulesAttribute',
@@ -5305,7 +5248,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5324,8 +5267,7 @@ class Client(OpenApiClient):
         query['DryRun'] = request.dry_run
         query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateRulesAttribute',
@@ -5335,7 +5277,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5371,8 +5313,7 @@ class Client(OpenApiClient):
         query['SecurityPolicyName'] = request.security_policy_name
         query['TLSVersions'] = request.tlsversions
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateSecurityPolicyAttribute',
@@ -5382,7 +5323,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5404,8 +5345,7 @@ class Client(OpenApiClient):
         query['SecurityPolicyName'] = request.security_policy_name
         query['TLSVersions'] = request.tlsversions
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateSecurityPolicyAttribute',
@@ -5415,7 +5355,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5452,8 +5392,7 @@ class Client(OpenApiClient):
         query['ServerGroupName'] = request.server_group_name
         query['StickySessionConfig'] = request.sticky_session_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateServerGroupAttribute',
@@ -5463,7 +5402,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5486,8 +5425,7 @@ class Client(OpenApiClient):
         query['ServerGroupName'] = request.server_group_name
         query['StickySessionConfig'] = request.sticky_session_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateServerGroupAttribute',
@@ -5497,7 +5435,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5531,8 +5469,7 @@ class Client(OpenApiClient):
         query['ServerGroupId'] = request.server_group_id
         query['Servers'] = request.servers
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateServerGroupServersAttribute',
@@ -5542,7 +5479,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5562,8 +5499,7 @@ class Client(OpenApiClient):
         query['ServerGroupId'] = request.server_group_id
         query['Servers'] = request.servers
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateServerGroupServersAttribute',
@@ -5573,7 +5509,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
