@@ -124,9 +124,13 @@ class CreateCertificateWithExtensionRequest(TeaModel):
 class CreateCertificateWithExtensionResponseBody(TeaModel):
     def __init__(
         self,
+        certificate: str = None,
+        certificate_chain: str = None,
         identifier: str = None,
         request_id: str = None,
     ):
+        self.certificate = certificate
+        self.certificate_chain = certificate_chain
         self.identifier = identifier
         self.request_id = request_id
 
@@ -139,6 +143,10 @@ class CreateCertificateWithExtensionResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.certificate is not None:
+            result['Certificate'] = self.certificate
+        if self.certificate_chain is not None:
+            result['CertificateChain'] = self.certificate_chain
         if self.identifier is not None:
             result['Identifier'] = self.identifier
         if self.request_id is not None:
@@ -147,6 +155,10 @@ class CreateCertificateWithExtensionResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Certificate') is not None:
+            self.certificate = m.get('Certificate')
+        if m.get('CertificateChain') is not None:
+            self.certificate_chain = m.get('CertificateChain')
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
         if m.get('RequestId') is not None:
@@ -263,12 +275,14 @@ class CreateClientCertificateRequest(TeaModel):
 class CreateClientCertificateResponseBody(TeaModel):
     def __init__(
         self,
+        certificate_chain: str = None,
         identifier: str = None,
         parent_x509certificate: str = None,
         request_id: str = None,
         root_x509certificate: str = None,
         x_509certificate: str = None,
     ):
+        self.certificate_chain = certificate_chain
         self.identifier = identifier
         self.parent_x509certificate = parent_x509certificate
         self.request_id = request_id
@@ -284,6 +298,8 @@ class CreateClientCertificateResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.certificate_chain is not None:
+            result['CertificateChain'] = self.certificate_chain
         if self.identifier is not None:
             result['Identifier'] = self.identifier
         if self.parent_x509certificate is not None:
@@ -298,6 +314,8 @@ class CreateClientCertificateResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CertificateChain') is not None:
+            self.certificate_chain = m.get('CertificateChain')
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
         if m.get('ParentX509Certificate') is not None:
@@ -414,12 +432,14 @@ class CreateClientCertificateWithCsrRequest(TeaModel):
 class CreateClientCertificateWithCsrResponseBody(TeaModel):
     def __init__(
         self,
+        certificate_chain: str = None,
         identifier: str = None,
         parent_x509certificate: str = None,
         request_id: str = None,
         root_x509certificate: str = None,
         x_509certificate: str = None,
     ):
+        self.certificate_chain = certificate_chain
         self.identifier = identifier
         self.parent_x509certificate = parent_x509certificate
         self.request_id = request_id
@@ -435,6 +455,8 @@ class CreateClientCertificateWithCsrResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.certificate_chain is not None:
+            result['CertificateChain'] = self.certificate_chain
         if self.identifier is not None:
             result['Identifier'] = self.identifier
         if self.parent_x509certificate is not None:
@@ -449,6 +471,8 @@ class CreateClientCertificateWithCsrResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CertificateChain') is not None:
+            self.certificate_chain = m.get('CertificateChain')
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
         if m.get('ParentX509Certificate') is not None:
@@ -662,9 +686,13 @@ class CreateRootCACertificateRequest(TeaModel):
 class CreateRootCACertificateResponseBody(TeaModel):
     def __init__(
         self,
+        certificate: str = None,
+        certificate_chain: str = None,
         identifier: str = None,
         request_id: str = None,
     ):
+        self.certificate = certificate
+        self.certificate_chain = certificate_chain
         self.identifier = identifier
         self.request_id = request_id
 
@@ -677,6 +705,10 @@ class CreateRootCACertificateResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.certificate is not None:
+            result['Certificate'] = self.certificate
+        if self.certificate_chain is not None:
+            result['CertificateChain'] = self.certificate_chain
         if self.identifier is not None:
             result['Identifier'] = self.identifier
         if self.request_id is not None:
@@ -685,6 +717,10 @@ class CreateRootCACertificateResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Certificate') is not None:
+            self.certificate = m.get('Certificate')
+        if m.get('CertificateChain') is not None:
+            self.certificate_chain = m.get('CertificateChain')
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
         if m.get('RequestId') is not None:
@@ -795,12 +831,14 @@ class CreateServerCertificateRequest(TeaModel):
 class CreateServerCertificateResponseBody(TeaModel):
     def __init__(
         self,
+        certificate_chain: str = None,
         identifier: str = None,
         parent_x509certificate: str = None,
         request_id: str = None,
         root_x509certificate: str = None,
         x_509certificate: str = None,
     ):
+        self.certificate_chain = certificate_chain
         self.identifier = identifier
         self.parent_x509certificate = parent_x509certificate
         self.request_id = request_id
@@ -816,6 +854,8 @@ class CreateServerCertificateResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.certificate_chain is not None:
+            result['CertificateChain'] = self.certificate_chain
         if self.identifier is not None:
             result['Identifier'] = self.identifier
         if self.parent_x509certificate is not None:
@@ -830,6 +870,8 @@ class CreateServerCertificateResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CertificateChain') is not None:
+            self.certificate_chain = m.get('CertificateChain')
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
         if m.get('ParentX509Certificate') is not None:
@@ -940,12 +982,14 @@ class CreateServerCertificateWithCsrRequest(TeaModel):
 class CreateServerCertificateWithCsrResponseBody(TeaModel):
     def __init__(
         self,
+        certificate_chain: str = None,
         identifier: str = None,
         parent_x509certificate: str = None,
         request_id: str = None,
         root_x509certificate: str = None,
         x_509certificate: str = None,
     ):
+        self.certificate_chain = certificate_chain
         self.identifier = identifier
         self.parent_x509certificate = parent_x509certificate
         self.request_id = request_id
@@ -961,6 +1005,8 @@ class CreateServerCertificateWithCsrResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.certificate_chain is not None:
+            result['CertificateChain'] = self.certificate_chain
         if self.identifier is not None:
             result['Identifier'] = self.identifier
         if self.parent_x509certificate is not None:
@@ -975,6 +1021,8 @@ class CreateServerCertificateWithCsrResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CertificateChain') is not None:
+            self.certificate_chain = m.get('CertificateChain')
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
         if m.get('ParentX509Certificate') is not None:
@@ -1103,9 +1151,13 @@ class CreateSubCACertificateRequest(TeaModel):
 class CreateSubCACertificateResponseBody(TeaModel):
     def __init__(
         self,
+        certificate: str = None,
+        certificate_chain: str = None,
         identifier: str = None,
         request_id: str = None,
     ):
+        self.certificate = certificate
+        self.certificate_chain = certificate_chain
         self.identifier = identifier
         self.request_id = request_id
 
@@ -1118,6 +1170,10 @@ class CreateSubCACertificateResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.certificate is not None:
+            result['Certificate'] = self.certificate
+        if self.certificate_chain is not None:
+            result['CertificateChain'] = self.certificate_chain
         if self.identifier is not None:
             result['Identifier'] = self.identifier
         if self.request_id is not None:
@@ -1126,6 +1182,10 @@ class CreateSubCACertificateResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Certificate') is not None:
+            self.certificate = m.get('Certificate')
+        if m.get('CertificateChain') is not None:
+            self.certificate_chain = m.get('CertificateChain')
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
         if m.get('RequestId') is not None:
