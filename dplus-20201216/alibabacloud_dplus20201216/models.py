@@ -1,7 +1,183 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import BinaryIO, Dict, List
+
+
+class AePredictCategoryRequest(TeaModel):
+    def __init__(
+        self,
+        pic_url: str = None,
+    ):
+        self.pic_url = pic_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pic_url is not None:
+            result['PicUrl'] = self.pic_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PicUrl') is not None:
+            self.pic_url = m.get('PicUrl')
+        return self
+
+
+class AePredictCategoryAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        pic_url_object: BinaryIO = None,
+    ):
+        self.pic_url_object = pic_url_object
+
+    def validate(self):
+        self.validate_required(self.pic_url_object, 'pic_url_object')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pic_url_object is not None:
+            result['PicUrlObject'] = self.pic_url_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PicUrlObject') is not None:
+            self.pic_url_object = m.get('PicUrlObject')
+        return self
+
+
+class AePredictCategoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: dict = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
+class AePropRecRequest(TeaModel):
+    def __init__(
+        self,
+        pic_url: str = None,
+    ):
+        self.pic_url = pic_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pic_url is not None:
+            result['PicUrl'] = self.pic_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PicUrl') is not None:
+            self.pic_url = m.get('PicUrl')
+        return self
+
+
+class AePropRecAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        pic_url_object: BinaryIO = None,
+    ):
+        self.pic_url_object = pic_url_object
+
+    def validate(self):
+        self.validate_required(self.pic_url_object, 'pic_url_object')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pic_url_object is not None:
+            result['PicUrlObject'] = self.pic_url_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PicUrlObject') is not None:
+            self.pic_url_object = m.get('PicUrlObject')
+        return self
+
+
+class AePropRecResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: dict = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
 
 
 class CreateImageAmazonTaskRequest(TeaModel):
@@ -500,6 +676,221 @@ class GetTaskStatusResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = GetTaskStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RemoveWordsRequest(TeaModel):
+    def __init__(
+        self,
+        pic_url: str = None,
+    ):
+        self.pic_url = pic_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pic_url is not None:
+            result['PicUrl'] = self.pic_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PicUrl') is not None:
+            self.pic_url = m.get('PicUrl')
+        return self
+
+
+class RemoveWordsAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        pic_url_object: BinaryIO = None,
+    ):
+        self.pic_url_object = pic_url_object
+
+    def validate(self):
+        self.validate_required(self.pic_url_object, 'pic_url_object')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pic_url_object is not None:
+            result['PicUrlObject'] = self.pic_url_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PicUrlObject') is not None:
+            self.pic_url_object = m.get('PicUrlObject')
+        return self
+
+
+class RemoveWordsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: dict = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
+class ReplaceBackgroundRequest(TeaModel):
+    def __init__(
+        self,
+        background_id: str = None,
+        num: int = None,
+        pic_background_url: str = None,
+        pic_url: str = None,
+    ):
+        # 返回的图片背景图片ID
+        self.background_id = background_id
+        self.num = num
+        self.pic_background_url = pic_background_url
+        # 图片地址
+        self.pic_url = pic_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.background_id is not None:
+            result['BackgroundId'] = self.background_id
+        if self.num is not None:
+            result['Num'] = self.num
+        if self.pic_background_url is not None:
+            result['PicBackgroundUrl'] = self.pic_background_url
+        if self.pic_url is not None:
+            result['PicUrl'] = self.pic_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackgroundId') is not None:
+            self.background_id = m.get('BackgroundId')
+        if m.get('Num') is not None:
+            self.num = m.get('Num')
+        if m.get('PicBackgroundUrl') is not None:
+            self.pic_background_url = m.get('PicBackgroundUrl')
+        if m.get('PicUrl') is not None:
+            self.pic_url = m.get('PicUrl')
+        return self
+
+
+class ReplaceBackgroundAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        pic_url_object: BinaryIO = None,
+        background_id: str = None,
+        num: int = None,
+        pic_background_url: str = None,
+    ):
+        self.pic_url_object = pic_url_object
+        # 返回的图片背景图片ID
+        self.background_id = background_id
+        self.num = num
+        self.pic_background_url = pic_background_url
+
+    def validate(self):
+        self.validate_required(self.pic_url_object, 'pic_url_object')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pic_url_object is not None:
+            result['PicUrlObject'] = self.pic_url_object
+        if self.background_id is not None:
+            result['BackgroundId'] = self.background_id
+        if self.num is not None:
+            result['Num'] = self.num
+        if self.pic_background_url is not None:
+            result['PicBackgroundUrl'] = self.pic_background_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PicUrlObject') is not None:
+            self.pic_url_object = m.get('PicUrlObject')
+        if m.get('BackgroundId') is not None:
+            self.background_id = m.get('BackgroundId')
+        if m.get('Num') is not None:
+            self.num = m.get('Num')
+        if m.get('PicBackgroundUrl') is not None:
+            self.pic_background_url = m.get('PicBackgroundUrl')
+        return self
+
+
+class ReplaceBackgroundResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: dict = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            self.body = m.get('body')
         return self
 
 
