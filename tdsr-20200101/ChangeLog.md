@@ -1,3 +1,6 @@
+2021-12-24 Version: 3.0.4
+- Add addRoomPlan interface.
+
 2021-11-26 Version: 3.0.3
 - Add mix scene.
 

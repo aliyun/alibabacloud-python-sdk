@@ -381,6 +381,199 @@ class AddRelativePositionResponse(TeaModel):
         return self
 
 
+class AddRoomPlanRequest(TeaModel):
+    def __init__(
+        self,
+        scene_id: str = None,
+    ):
+        # 场景ID
+        self.scene_id = scene_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        return self
+
+
+class AddRoomPlanResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        callback: str = None,
+        dir: str = None,
+        expire: str = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+    ):
+        # accessId
+        self.access_id = access_id
+        # 上传回调
+        self.callback = callback
+        # 授权路径
+        self.dir = dir
+        # 授权失效时间(s)
+        self.expire = expire
+        # 上传地址
+        self.host = host
+        # 授权
+        self.policy = policy
+        # 签名
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.callback is not None:
+            result['Callback'] = self.callback
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('Callback') is not None:
+            self.callback = m.get('Callback')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        return self
+
+
+class AddRoomPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: AddRoomPlanResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 返回码
+        self.code = code
+        # 文件上传凭据
+        self.data = data
+        # 错误消息
+        self.message = message
+        # 请求ID，与入参requestId对应
+        self.request_id = request_id
+        # 是否请求成功
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = AddRoomPlanResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddRoomPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: AddRoomPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = AddRoomPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddSceneRequest(TeaModel):
     def __init__(
         self,

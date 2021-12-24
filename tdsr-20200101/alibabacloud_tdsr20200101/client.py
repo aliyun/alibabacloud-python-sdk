@@ -51,11 +51,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.AddMosaicsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MarkPosition'] = request.mark_position
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.mark_position):
+            query['MarkPosition'] = request.mark_position
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddMosaics',
@@ -65,7 +66,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -80,11 +81,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.AddMosaicsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MarkPosition'] = request.mark_position
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.mark_position):
+            query['MarkPosition'] = request.mark_position
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddMosaics',
@@ -94,7 +96,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -123,11 +125,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.AddProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BusinessId'] = request.business_id
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.business_id):
+            query['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddProject',
@@ -137,7 +140,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -152,11 +155,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.AddProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BusinessId'] = request.business_id
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.business_id):
+            query['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddProject',
@@ -166,7 +170,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -195,11 +199,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.AddRelativePositionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RelativePosition'] = request.relative_position
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.relative_position):
+            query['RelativePosition'] = request.relative_position
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddRelativePosition',
@@ -209,7 +214,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -224,11 +229,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.AddRelativePositionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RelativePosition'] = request.relative_position
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.relative_position):
+            query['RelativePosition'] = request.relative_position
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddRelativePosition',
@@ -238,7 +244,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -260,6 +266,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_relative_position_with_options_async(request, runtime)
 
+    def add_room_plan_with_options(
+        self,
+        request: tdsr_20200101_models.AddRoomPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.AddRoomPlanResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddRoomPlan',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.AddRoomPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_room_plan_with_options_async(
+        self,
+        request: tdsr_20200101_models.AddRoomPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tdsr_20200101_models.AddRoomPlanResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddRoomPlan',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tdsr_20200101_models.AddRoomPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_room_plan(
+        self,
+        request: tdsr_20200101_models.AddRoomPlanRequest,
+    ) -> tdsr_20200101_models.AddRoomPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_room_plan_with_options(request, runtime)
+
+    async def add_room_plan_async(
+        self,
+        request: tdsr_20200101_models.AddRoomPlanRequest,
+    ) -> tdsr_20200101_models.AddRoomPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_room_plan_with_options_async(request, runtime)
+
     def add_scene_with_options(
         self,
         request: tdsr_20200101_models.AddSceneRequest,
@@ -267,12 +343,14 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.AddSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['ProjectId'] = request.project_id
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddScene',
@@ -282,7 +360,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -297,12 +375,14 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.AddSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['ProjectId'] = request.project_id
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddScene',
@@ -312,7 +392,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -341,12 +421,14 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.AddSubSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['SceneId'] = request.scene_id
-        query['UploadType'] = request.upload_type
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.upload_type):
+            query['UploadType'] = request.upload_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddSubScene',
@@ -356,7 +438,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -371,12 +453,14 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.AddSubSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['SceneId'] = request.scene_id
-        query['UploadType'] = request.upload_type
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.upload_type):
+            query['UploadType'] = request.upload_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddSubScene',
@@ -386,7 +470,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -415,23 +499,36 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.CheckResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bid'] = request.bid
-        query['Country'] = request.country
-        query['GmtWakeup'] = request.gmt_wakeup
-        query['Hid'] = request.hid
-        query['Interrupt'] = request.interrupt
-        query['Invoker'] = request.invoker
-        query['Level'] = request.level
-        query['Message'] = request.message
-        query['Pk'] = request.pk
-        query['Prompt'] = request.prompt
-        query['Success'] = request.success
-        query['TaskExtraData'] = request.task_extra_data
-        query['TaskIdentifier'] = request.task_identifier
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.bid):
+            query['Bid'] = request.bid
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.gmt_wakeup):
+            query['GmtWakeup'] = request.gmt_wakeup
+        if not UtilClient.is_unset(request.hid):
+            query['Hid'] = request.hid
+        if not UtilClient.is_unset(request.interrupt):
+            query['Interrupt'] = request.interrupt
+        if not UtilClient.is_unset(request.invoker):
+            query['Invoker'] = request.invoker
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.pk):
+            query['Pk'] = request.pk
+        if not UtilClient.is_unset(request.prompt):
+            query['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.success):
+            query['Success'] = request.success
+        if not UtilClient.is_unset(request.task_extra_data):
+            query['TaskExtraData'] = request.task_extra_data
+        if not UtilClient.is_unset(request.task_identifier):
+            query['TaskIdentifier'] = request.task_identifier
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CheckResource',
@@ -441,7 +538,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -456,23 +553,36 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.CheckResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bid'] = request.bid
-        query['Country'] = request.country
-        query['GmtWakeup'] = request.gmt_wakeup
-        query['Hid'] = request.hid
-        query['Interrupt'] = request.interrupt
-        query['Invoker'] = request.invoker
-        query['Level'] = request.level
-        query['Message'] = request.message
-        query['Pk'] = request.pk
-        query['Prompt'] = request.prompt
-        query['Success'] = request.success
-        query['TaskExtraData'] = request.task_extra_data
-        query['TaskIdentifier'] = request.task_identifier
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.bid):
+            query['Bid'] = request.bid
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.gmt_wakeup):
+            query['GmtWakeup'] = request.gmt_wakeup
+        if not UtilClient.is_unset(request.hid):
+            query['Hid'] = request.hid
+        if not UtilClient.is_unset(request.interrupt):
+            query['Interrupt'] = request.interrupt
+        if not UtilClient.is_unset(request.invoker):
+            query['Invoker'] = request.invoker
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.pk):
+            query['Pk'] = request.pk
+        if not UtilClient.is_unset(request.prompt):
+            query['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.success):
+            query['Success'] = request.success
+        if not UtilClient.is_unset(request.task_extra_data):
+            query['TaskExtraData'] = request.task_extra_data
+        if not UtilClient.is_unset(request.task_identifier):
+            query['TaskIdentifier'] = request.task_identifier
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CheckResource',
@@ -482,7 +592,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -511,14 +621,18 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.CreateProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BuilderUserIdList'] = request.builder_user_id_list
-        query['BusinessId'] = request.business_id
-        query['BusinessUserIdList'] = request.business_user_id_list
-        query['GatherUserIdList'] = request.gather_user_id_list
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.builder_user_id_list):
+            query['BuilderUserIdList'] = request.builder_user_id_list
+        if not UtilClient.is_unset(request.business_id):
+            query['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.business_user_id_list):
+            query['BusinessUserIdList'] = request.business_user_id_list
+        if not UtilClient.is_unset(request.gather_user_id_list):
+            query['GatherUserIdList'] = request.gather_user_id_list
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateProject',
@@ -528,7 +642,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -543,14 +657,18 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.CreateProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BuilderUserIdList'] = request.builder_user_id_list
-        query['BusinessId'] = request.business_id
-        query['BusinessUserIdList'] = request.business_user_id_list
-        query['GatherUserIdList'] = request.gather_user_id_list
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.builder_user_id_list):
+            query['BuilderUserIdList'] = request.builder_user_id_list
+        if not UtilClient.is_unset(request.business_id):
+            query['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.business_user_id_list):
+            query['BusinessUserIdList'] = request.business_user_id_list
+        if not UtilClient.is_unset(request.gather_user_id_list):
+            query['GatherUserIdList'] = request.gather_user_id_list
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateProject',
@@ -560,7 +678,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -589,11 +707,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.CreateSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateScene',
@@ -603,7 +722,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -618,11 +737,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.CreateSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateScene',
@@ -632,7 +752,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -661,11 +781,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.DeleteFileResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ParamFile'] = request.param_file
-        query['SubSceneUuid'] = request.sub_scene_uuid
+        if not UtilClient.is_unset(request.param_file):
+            query['ParamFile'] = request.param_file
+        if not UtilClient.is_unset(request.sub_scene_uuid):
+            query['SubSceneUuid'] = request.sub_scene_uuid
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteFile',
@@ -675,7 +796,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -690,11 +811,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.DeleteFileResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ParamFile'] = request.param_file
-        query['SubSceneUuid'] = request.sub_scene_uuid
+        if not UtilClient.is_unset(request.param_file):
+            query['ParamFile'] = request.param_file
+        if not UtilClient.is_unset(request.sub_scene_uuid):
+            query['SubSceneUuid'] = request.sub_scene_uuid
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteFile',
@@ -704,7 +826,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -733,10 +855,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.DeleteProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteProject',
@@ -746,7 +868,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -761,10 +883,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.DeleteProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteProject',
@@ -774,7 +896,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -803,10 +925,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.DetailProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetailProject',
@@ -816,7 +938,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -831,10 +953,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.DetailProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetailProject',
@@ -844,7 +966,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -873,10 +995,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.DetailSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetailScene',
@@ -886,7 +1008,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -901,10 +1023,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.DetailSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetailScene',
@@ -914,7 +1036,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -943,10 +1065,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.DetailSubSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetailSubScene',
@@ -956,7 +1078,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -971,10 +1093,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.DetailSubSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetailSubScene',
@@ -984,7 +1106,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1013,10 +1135,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.DropProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DropProject',
@@ -1026,7 +1148,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1041,10 +1163,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.DropProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DropProject',
@@ -1054,7 +1176,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1083,10 +1205,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.DropSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DropScene',
@@ -1096,7 +1218,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1111,10 +1233,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.DropSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DropScene',
@@ -1124,7 +1246,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1153,10 +1275,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.DropSubSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DropSubScene',
@@ -1166,7 +1288,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1181,10 +1303,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.DropSubSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DropSubScene',
@@ -1194,7 +1316,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1223,10 +1345,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetConnDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetConnData',
@@ -1236,7 +1358,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1251,10 +1373,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetConnDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetConnData',
@@ -1264,7 +1386,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1293,13 +1415,16 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetHotspotConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['Enabled'] = request.enabled
-        query['PreviewToken'] = request.preview_token
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.preview_token):
+            query['PreviewToken'] = request.preview_token
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetHotspotConfig',
@@ -1309,7 +1434,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1324,13 +1449,16 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetHotspotConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['Enabled'] = request.enabled
-        query['PreviewToken'] = request.preview_token
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.preview_token):
+            query['PreviewToken'] = request.preview_token
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetHotspotConfig',
@@ -1340,7 +1468,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1369,13 +1497,16 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetHotspotSceneDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['Enabled'] = request.enabled
-        query['PreviewToken'] = request.preview_token
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.preview_token):
+            query['PreviewToken'] = request.preview_token
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetHotspotSceneData',
@@ -1385,7 +1516,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1400,13 +1531,16 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetHotspotSceneDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['Enabled'] = request.enabled
-        query['PreviewToken'] = request.preview_token
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.preview_token):
+            query['PreviewToken'] = request.preview_token
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetHotspotSceneData',
@@ -1416,7 +1550,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1445,14 +1579,18 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetHotspotTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['Enabled'] = request.enabled
-        query['PreviewToken'] = request.preview_token
-        query['SubSceneUuid'] = request.sub_scene_uuid
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.preview_token):
+            query['PreviewToken'] = request.preview_token
+        if not UtilClient.is_unset(request.sub_scene_uuid):
+            query['SubSceneUuid'] = request.sub_scene_uuid
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetHotspotTag',
@@ -1462,7 +1600,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1477,14 +1615,18 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetHotspotTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['Enabled'] = request.enabled
-        query['PreviewToken'] = request.preview_token
-        query['SubSceneUuid'] = request.sub_scene_uuid
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.preview_token):
+            query['PreviewToken'] = request.preview_token
+        if not UtilClient.is_unset(request.sub_scene_uuid):
+            query['SubSceneUuid'] = request.sub_scene_uuid
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetHotspotTag',
@@ -1494,7 +1636,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1523,10 +1665,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetLayoutDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetLayoutData',
@@ -1536,7 +1678,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1551,10 +1693,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetLayoutDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetLayoutData',
@@ -1564,7 +1706,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1593,10 +1735,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetOriginLayoutDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetOriginLayoutData',
@@ -1606,7 +1748,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1621,10 +1763,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetOriginLayoutDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetOriginLayoutData',
@@ -1634,7 +1776,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1663,10 +1805,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetOssPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetOssPolicy',
@@ -1676,7 +1818,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1691,10 +1833,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetOssPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetOssPolicy',
@@ -1704,7 +1846,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1733,11 +1875,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubSceneUuid'] = request.sub_scene_uuid
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.sub_scene_uuid):
+            query['SubSceneUuid'] = request.sub_scene_uuid
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetPolicy',
@@ -1747,7 +1890,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1762,11 +1905,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubSceneUuid'] = request.sub_scene_uuid
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.sub_scene_uuid):
+            query['SubSceneUuid'] = request.sub_scene_uuid
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetPolicy',
@@ -1776,7 +1920,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1805,10 +1949,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetRectifyImageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetRectifyImage',
@@ -1818,7 +1962,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1833,10 +1977,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetRectifyImageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetRectifyImage',
@@ -1846,7 +1990,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1875,10 +2019,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetSceneBuildTaskStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetSceneBuildTaskStatus',
@@ -1888,7 +2032,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1903,10 +2047,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetSceneBuildTaskStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetSceneBuildTaskStatus',
@@ -1916,7 +2060,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1945,12 +2089,14 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetScenePreviewInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['Enabled'] = request.enabled
-        query['ModelToken'] = request.model_token
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.model_token):
+            query['ModelToken'] = request.model_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetScenePreviewInfo',
@@ -1960,7 +2106,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1975,12 +2121,14 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetScenePreviewInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['Enabled'] = request.enabled
-        query['ModelToken'] = request.model_token
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.model_token):
+            query['ModelToken'] = request.model_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetScenePreviewInfo',
@@ -1990,7 +2138,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2019,10 +2167,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetSingleConnDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetSingleConnData',
@@ -2032,7 +2180,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2047,10 +2195,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetSingleConnDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetSingleConnData',
@@ -2060,7 +2208,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2089,10 +2237,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetSubSceneTaskStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetSubSceneTaskStatus',
@@ -2102,7 +2250,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2117,10 +2265,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetSubSceneTaskStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetSubSceneTaskStatus',
@@ -2130,7 +2278,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2159,10 +2307,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetTaskStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetTaskStatus',
@@ -2172,7 +2320,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2187,10 +2335,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetTaskStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetTaskStatus',
@@ -2200,7 +2348,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2229,10 +2377,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetWindowConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PreviewToken'] = request.preview_token
+        if not UtilClient.is_unset(request.preview_token):
+            query['PreviewToken'] = request.preview_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetWindowConfig',
@@ -2242,7 +2390,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2257,10 +2405,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.GetWindowConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PreviewToken'] = request.preview_token
+        if not UtilClient.is_unset(request.preview_token):
+            query['PreviewToken'] = request.preview_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetWindowConfig',
@@ -2270,7 +2418,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2299,11 +2447,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.LabelBuildResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Mode'] = request.mode
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='LabelBuild',
@@ -2313,7 +2462,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2328,11 +2477,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.LabelBuildResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Mode'] = request.mode
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='LabelBuild',
@@ -2342,7 +2492,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2371,13 +2521,16 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.LinkImageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CameraHeight'] = request.camera_height
-        query['FileName'] = request.file_name
-        query['Platform'] = request.platform
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.camera_height):
+            query['CameraHeight'] = request.camera_height
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='LinkImage',
@@ -2387,7 +2540,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2402,13 +2555,16 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.LinkImageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CameraHeight'] = request.camera_height
-        query['FileName'] = request.file_name
-        query['Platform'] = request.platform
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.camera_height):
+            query['CameraHeight'] = request.camera_height
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='LinkImage',
@@ -2418,7 +2574,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2447,12 +2603,14 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.ListProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListProject',
@@ -2462,7 +2620,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2477,12 +2635,14 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.ListProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListProject',
@@ -2492,7 +2652,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2521,13 +2681,16 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.ListSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListScene',
@@ -2537,7 +2700,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2552,13 +2715,16 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.ListSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListScene',
@@ -2568,7 +2734,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2597,11 +2763,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.ListScenesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IsPublishQuery'] = request.is_publish_query
-        query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.is_publish_query):
+            query['IsPublishQuery'] = request.is_publish_query
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListScenes',
@@ -2611,7 +2778,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2626,11 +2793,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.ListScenesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IsPublishQuery'] = request.is_publish_query
-        query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.is_publish_query):
+            query['IsPublishQuery'] = request.is_publish_query
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListScenes',
@@ -2640,7 +2808,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2669,13 +2837,16 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.ListSubSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['SceneId'] = request.scene_id
-        query['ShowLayoutData'] = request.show_layout_data
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.show_layout_data):
+            query['ShowLayoutData'] = request.show_layout_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListSubScene',
@@ -2685,7 +2856,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2700,13 +2871,16 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.ListSubSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNum'] = request.page_num
-        query['PageSize'] = request.page_size
-        query['SceneId'] = request.scene_id
-        query['ShowLayoutData'] = request.show_layout_data
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.show_layout_data):
+            query['ShowLayoutData'] = request.show_layout_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListSubScene',
@@ -2716,7 +2890,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2745,10 +2919,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.OptimizeRightAngleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='OptimizeRightAngle',
@@ -2758,7 +2932,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2773,10 +2947,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.OptimizeRightAngleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='OptimizeRightAngle',
@@ -2786,7 +2960,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2815,13 +2989,16 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.PredImageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CorrectVertical'] = request.correct_vertical
-        query['CountDetectDoor'] = request.count_detect_door
-        query['DetectDoor'] = request.detect_door
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.correct_vertical):
+            query['CorrectVertical'] = request.correct_vertical
+        if not UtilClient.is_unset(request.count_detect_door):
+            query['CountDetectDoor'] = request.count_detect_door
+        if not UtilClient.is_unset(request.detect_door):
+            query['DetectDoor'] = request.detect_door
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PredImage',
@@ -2831,7 +3008,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2846,13 +3023,16 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.PredImageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CorrectVertical'] = request.correct_vertical
-        query['CountDetectDoor'] = request.count_detect_door
-        query['DetectDoor'] = request.detect_door
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.correct_vertical):
+            query['CorrectVertical'] = request.correct_vertical
+        if not UtilClient.is_unset(request.count_detect_door):
+            query['CountDetectDoor'] = request.count_detect_door
+        if not UtilClient.is_unset(request.detect_door):
+            query['DetectDoor'] = request.detect_door
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PredImage',
@@ -2862,7 +3042,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2891,11 +3071,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.PredictionWallLineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CameraHeight'] = request.camera_height
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.camera_height):
+            query['CameraHeight'] = request.camera_height
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PredictionWallLine',
@@ -2905,7 +3086,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2920,11 +3101,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.PredictionWallLineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CameraHeight'] = request.camera_height
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.camera_height):
+            query['CameraHeight'] = request.camera_height
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PredictionWallLine',
@@ -2934,7 +3116,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2963,11 +3145,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.PublishHotspotResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ParamTag'] = request.param_tag
-        query['SubSceneUuid'] = request.sub_scene_uuid
+        if not UtilClient.is_unset(request.param_tag):
+            query['ParamTag'] = request.param_tag
+        if not UtilClient.is_unset(request.sub_scene_uuid):
+            query['SubSceneUuid'] = request.sub_scene_uuid
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PublishHotspot',
@@ -2977,7 +3160,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2992,11 +3175,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.PublishHotspotResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ParamTag'] = request.param_tag
-        query['SubSceneUuid'] = request.sub_scene_uuid
+        if not UtilClient.is_unset(request.param_tag):
+            query['ParamTag'] = request.param_tag
+        if not UtilClient.is_unset(request.sub_scene_uuid):
+            query['SubSceneUuid'] = request.sub_scene_uuid
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PublishHotspot',
@@ -3006,7 +3190,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3035,10 +3219,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.PublishSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PublishScene',
@@ -3048,7 +3232,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3063,10 +3247,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.PublishSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PublishScene',
@@ -3076,7 +3260,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3105,10 +3289,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.PublishStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PublishStatus',
@@ -3118,7 +3302,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3133,10 +3317,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.PublishStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PublishStatus',
@@ -3146,7 +3330,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3175,10 +3359,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.RecoveryOriginImageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RecoveryOriginImage',
@@ -3188,7 +3372,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3203,10 +3387,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.RecoveryOriginImageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RecoveryOriginImage',
@@ -3216,7 +3400,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3245,13 +3429,16 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.RectVerticalResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CountDetectDoor'] = request.count_detect_door
-        query['DetectDoor'] = request.detect_door
-        query['SubSceneId'] = request.sub_scene_id
-        query['VerticalRect'] = request.vertical_rect
+        if not UtilClient.is_unset(request.count_detect_door):
+            query['CountDetectDoor'] = request.count_detect_door
+        if not UtilClient.is_unset(request.detect_door):
+            query['DetectDoor'] = request.detect_door
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.vertical_rect):
+            query['VerticalRect'] = request.vertical_rect
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RectVertical',
@@ -3261,7 +3448,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3276,13 +3463,16 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.RectVerticalResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CountDetectDoor'] = request.count_detect_door
-        query['DetectDoor'] = request.detect_door
-        query['SubSceneId'] = request.sub_scene_id
-        query['VerticalRect'] = request.vertical_rect
+        if not UtilClient.is_unset(request.count_detect_door):
+            query['CountDetectDoor'] = request.count_detect_door
+        if not UtilClient.is_unset(request.detect_door):
+            query['DetectDoor'] = request.detect_door
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.vertical_rect):
+            query['VerticalRect'] = request.vertical_rect
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RectVertical',
@@ -3292,7 +3482,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3321,11 +3511,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.RectifyImageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CameraHeight'] = request.camera_height
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.camera_height):
+            query['CameraHeight'] = request.camera_height
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RectifyImage',
@@ -3335,7 +3526,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3350,11 +3541,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.RectifyImageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CameraHeight'] = request.camera_height
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.camera_height):
+            query['CameraHeight'] = request.camera_height
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RectifyImage',
@@ -3364,7 +3556,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3393,10 +3585,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.RollbackSubSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RollbackSubScene',
@@ -3406,7 +3598,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3421,10 +3613,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.RollbackSubSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RollbackSubScene',
@@ -3434,7 +3626,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3463,11 +3655,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.SaveHotspotConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ParamTag'] = request.param_tag
-        query['PreviewToken'] = request.preview_token
+        if not UtilClient.is_unset(request.param_tag):
+            query['ParamTag'] = request.param_tag
+        if not UtilClient.is_unset(request.preview_token):
+            query['PreviewToken'] = request.preview_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SaveHotspotConfig',
@@ -3477,7 +3670,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3492,11 +3685,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.SaveHotspotConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ParamTag'] = request.param_tag
-        query['PreviewToken'] = request.preview_token
+        if not UtilClient.is_unset(request.param_tag):
+            query['ParamTag'] = request.param_tag
+        if not UtilClient.is_unset(request.preview_token):
+            query['PreviewToken'] = request.preview_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SaveHotspotConfig',
@@ -3506,7 +3700,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3535,11 +3729,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.SaveHotspotTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ParamTag'] = request.param_tag
-        query['SubSceneUuid'] = request.sub_scene_uuid
+        if not UtilClient.is_unset(request.param_tag):
+            query['ParamTag'] = request.param_tag
+        if not UtilClient.is_unset(request.sub_scene_uuid):
+            query['SubSceneUuid'] = request.sub_scene_uuid
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SaveHotspotTag',
@@ -3549,7 +3744,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3564,11 +3759,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.SaveHotspotTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ParamTag'] = request.param_tag
-        query['SubSceneUuid'] = request.sub_scene_uuid
+        if not UtilClient.is_unset(request.param_tag):
+            query['ParamTag'] = request.param_tag
+        if not UtilClient.is_unset(request.sub_scene_uuid):
+            query['SubSceneUuid'] = request.sub_scene_uuid
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SaveHotspotTag',
@@ -3578,7 +3774,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3607,10 +3803,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.ScenePublishResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ScenePublish',
@@ -3620,7 +3816,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3635,10 +3831,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.ScenePublishResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ScenePublish',
@@ -3648,7 +3844,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3677,10 +3873,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.TempPreviewResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TempPreview',
@@ -3690,7 +3886,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3705,10 +3901,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.TempPreviewResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TempPreview',
@@ -3718,7 +3914,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3747,10 +3943,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.TempPreviewStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TempPreviewStatus',
@@ -3760,7 +3956,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3775,10 +3971,10 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.TempPreviewStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TempPreviewStatus',
@@ -3788,7 +3984,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3817,11 +4013,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.UpdateConnDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConnData'] = request.conn_data
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.conn_data):
+            query['ConnData'] = request.conn_data
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateConnData',
@@ -3831,7 +4028,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3846,11 +4043,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.UpdateConnDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConnData'] = request.conn_data
-        query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.conn_data):
+            query['ConnData'] = request.conn_data
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateConnData',
@@ -3860,7 +4058,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3889,11 +4087,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.UpdateLayoutDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['LayoutData'] = request.layout_data
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.layout_data):
+            query['LayoutData'] = request.layout_data
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateLayoutData',
@@ -3903,7 +4102,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3918,11 +4117,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.UpdateLayoutDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['LayoutData'] = request.layout_data
-        query['SubSceneId'] = request.sub_scene_id
+        if not UtilClient.is_unset(request.layout_data):
+            query['LayoutData'] = request.layout_data
+        if not UtilClient.is_unset(request.sub_scene_id):
+            query['SubSceneId'] = request.sub_scene_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateLayoutData',
@@ -3932,7 +4132,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3961,12 +4161,14 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.UpdateProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BusinessId'] = request.business_id
-        query['Id'] = request.id
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.business_id):
+            query['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateProject',
@@ -3976,7 +4178,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3991,12 +4193,14 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.UpdateProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BusinessId'] = request.business_id
-        query['Id'] = request.id
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.business_id):
+            query['BusinessId'] = request.business_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateProject',
@@ -4006,7 +4210,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4035,11 +4239,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.UpdateSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateScene',
@@ -4049,7 +4254,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4064,11 +4269,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.UpdateSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateScene',
@@ -4078,7 +4284,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4107,11 +4313,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.UpdateSubSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateSubScene',
@@ -4121,7 +4328,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4136,11 +4343,12 @@ class Client(OpenApiClient):
     ) -> tdsr_20200101_models.UpdateSubSceneResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateSubScene',
@@ -4150,7 +4358,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
