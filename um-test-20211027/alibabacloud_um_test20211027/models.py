@@ -11,7 +11,6 @@ class GetOssUploadParamRequest(TeaModel):
         data_source_id: str = None,
         file_name: str = None,
         file_type: int = None,
-        user_id: int = None,
     ):
         # App版本号
         self.app_version = app_version
@@ -21,8 +20,6 @@ class GetOssUploadParamRequest(TeaModel):
         self.file_name = file_name
         # 文件类型(1 mapping文件；2 so文件；3 dSYM文件压缩包)
         self.file_type = file_type
-        # 友盟用户id
-        self.user_id = user_id
 
     def validate(self):
         pass
@@ -41,8 +38,6 @@ class GetOssUploadParamRequest(TeaModel):
             result['fileName'] = self.file_name
         if self.file_type is not None:
             result['fileType'] = self.file_type
-        if self.user_id is not None:
-            result['userId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
@@ -55,8 +50,6 @@ class GetOssUploadParamRequest(TeaModel):
             self.file_name = m.get('fileName')
         if m.get('fileType') is not None:
             self.file_type = m.get('fileType')
-        if m.get('userId') is not None:
-            self.user_id = m.get('userId')
         return self
 
 
@@ -126,12 +119,15 @@ class GetOssUploadParamResponseBodyData(TeaModel):
 class GetOssUploadParamResponseBody(TeaModel):
     def __init__(
         self,
+        request_id: str = None,
         code: int = None,
         data: GetOssUploadParamResponseBodyData = None,
         msg: str = None,
         success: bool = None,
         trace_id: str = None,
     ):
+        # 请求唯一ID
+        self.request_id = request_id
         # code
         self.code = code
         # data
@@ -153,6 +149,8 @@ class GetOssUploadParamResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.code is not None:
             result['code'] = self.code
         if self.data is not None:
@@ -167,6 +165,8 @@ class GetOssUploadParamResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('code') is not None:
             self.code = m.get('code')
         if m.get('data') is not None:
