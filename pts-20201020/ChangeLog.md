@@ -1,3 +1,6 @@
+2021-12-27 Version: 1.8.11
+- Set JmeterPluginLabel visibel.
+
 2021-12-20 Version: 1.8.10
 - Set JmeterPluginLabel visibel.
 
