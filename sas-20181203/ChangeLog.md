@@ -1,3 +1,6 @@
+2021-12-27 Version: 1.0.11
+- Support DescribeAccessKeyLeakDetail API.
+
 2021-11-12 Version: 1.0.10
 - Support ExportVul API.
 
