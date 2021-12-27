@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_dysmsapi20180501 import models as dysmsapi_20180501_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -46,60 +47,40 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def query_message_with_options(
-        self,
-        request: dysmsapi_20180501_models.QueryMessageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20180501_models.QueryMessageResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dysmsapi_20180501_models.QueryMessageResponse(),
-            self.do_rpcrequest('QueryMessage', '2018-05-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def query_message_with_options_async(
-        self,
-        request: dysmsapi_20180501_models.QueryMessageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20180501_models.QueryMessageResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dysmsapi_20180501_models.QueryMessageResponse(),
-            await self.do_rpcrequest_async('QueryMessage', '2018-05-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def query_message(
-        self,
-        request: dysmsapi_20180501_models.QueryMessageRequest,
-    ) -> dysmsapi_20180501_models.QueryMessageResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_message_with_options(request, runtime)
-
-    async def query_message_async(
-        self,
-        request: dysmsapi_20180501_models.QueryMessageRequest,
-    ) -> dysmsapi_20180501_models.QueryMessageResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_message_with_options_async(request, runtime)
-
     def batch_send_message_to_globe_with_options(
         self,
         request: dysmsapi_20180501_models.BatchSendMessageToGlobeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20180501_models.BatchSendMessageToGlobeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchSendMessageToGlobe',
+            version='2018-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20180501_models.BatchSendMessageToGlobeResponse(),
-            self.do_rpcrequest('BatchSendMessageToGlobe', '2018-05-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_send_message_to_globe_with_options_async(
@@ -108,12 +89,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20180501_models.BatchSendMessageToGlobeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchSendMessageToGlobe',
+            version='2018-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20180501_models.BatchSendMessageToGlobeResponse(),
-            await self.do_rpcrequest_async('BatchSendMessageToGlobe', '2018-05-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_send_message_to_globe(
@@ -130,102 +133,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_send_message_to_globe_with_options_async(request, runtime)
 
-    def sms_conversion_with_options(
-        self,
-        request: dysmsapi_20180501_models.SmsConversionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20180501_models.SmsConversionResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dysmsapi_20180501_models.SmsConversionResponse(),
-            self.do_rpcrequest('SmsConversion', '2018-05-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def sms_conversion_with_options_async(
-        self,
-        request: dysmsapi_20180501_models.SmsConversionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20180501_models.SmsConversionResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dysmsapi_20180501_models.SmsConversionResponse(),
-            await self.do_rpcrequest_async('SmsConversion', '2018-05-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def sms_conversion(
-        self,
-        request: dysmsapi_20180501_models.SmsConversionRequest,
-    ) -> dysmsapi_20180501_models.SmsConversionResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.sms_conversion_with_options(request, runtime)
-
-    async def sms_conversion_async(
-        self,
-        request: dysmsapi_20180501_models.SmsConversionRequest,
-    ) -> dysmsapi_20180501_models.SmsConversionResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.sms_conversion_with_options_async(request, runtime)
-
-    def send_message_to_globe_with_options(
-        self,
-        request: dysmsapi_20180501_models.SendMessageToGlobeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20180501_models.SendMessageToGlobeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dysmsapi_20180501_models.SendMessageToGlobeResponse(),
-            self.do_rpcrequest('SendMessageToGlobe', '2018-05-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def send_message_to_globe_with_options_async(
-        self,
-        request: dysmsapi_20180501_models.SendMessageToGlobeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20180501_models.SendMessageToGlobeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dysmsapi_20180501_models.SendMessageToGlobeResponse(),
-            await self.do_rpcrequest_async('SendMessageToGlobe', '2018-05-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def send_message_to_globe(
-        self,
-        request: dysmsapi_20180501_models.SendMessageToGlobeRequest,
-    ) -> dysmsapi_20180501_models.SendMessageToGlobeResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.send_message_to_globe_with_options(request, runtime)
-
-    async def send_message_to_globe_async(
-        self,
-        request: dysmsapi_20180501_models.SendMessageToGlobeRequest,
-    ) -> dysmsapi_20180501_models.SendMessageToGlobeResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.send_message_to_globe_with_options_async(request, runtime)
-
     def conversion_data_with_options(
         self,
         request: dysmsapi_20180501_models.ConversionDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20180501_models.ConversionDataResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conversion_rate):
+            body['ConversionRate'] = request.conversion_rate
+        if not UtilClient.is_unset(request.report_time):
+            body['ReportTime'] = request.report_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConversionData',
+            version='2018-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20180501_models.ConversionDataResponse(),
-            self.do_rpcrequest('ConversionData', '2018-05-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def conversion_data_with_options_async(
@@ -234,12 +169,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20180501_models.ConversionDataResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conversion_rate):
+            body['ConversionRate'] = request.conversion_rate
+        if not UtilClient.is_unset(request.report_time):
+            body['ReportTime'] = request.report_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConversionData',
+            version='2018-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20180501_models.ConversionDataResponse(),
-            await self.do_rpcrequest_async('ConversionData', '2018-05-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def conversion_data(
@@ -256,18 +207,192 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.conversion_data_with_options_async(request, runtime)
 
+    def query_message_with_options(
+        self,
+        request: dysmsapi_20180501_models.QueryMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20180501_models.QueryMessageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.message_id):
+            query['MessageId'] = request.message_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryMessage',
+            version='2018-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20180501_models.QueryMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_message_with_options_async(
+        self,
+        request: dysmsapi_20180501_models.QueryMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20180501_models.QueryMessageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.message_id):
+            query['MessageId'] = request.message_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryMessage',
+            version='2018-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20180501_models.QueryMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_message(
+        self,
+        request: dysmsapi_20180501_models.QueryMessageRequest,
+    ) -> dysmsapi_20180501_models.QueryMessageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_message_with_options(request, runtime)
+
+    async def query_message_async(
+        self,
+        request: dysmsapi_20180501_models.QueryMessageRequest,
+    ) -> dysmsapi_20180501_models.QueryMessageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_message_with_options_async(request, runtime)
+
+    def send_message_to_globe_with_options(
+        self,
+        request: dysmsapi_20180501_models.SendMessageToGlobeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20180501_models.SendMessageToGlobeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendMessageToGlobe',
+            version='2018-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20180501_models.SendMessageToGlobeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_message_to_globe_with_options_async(
+        self,
+        request: dysmsapi_20180501_models.SendMessageToGlobeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20180501_models.SendMessageToGlobeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendMessageToGlobe',
+            version='2018-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20180501_models.SendMessageToGlobeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_message_to_globe(
+        self,
+        request: dysmsapi_20180501_models.SendMessageToGlobeRequest,
+    ) -> dysmsapi_20180501_models.SendMessageToGlobeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_message_to_globe_with_options(request, runtime)
+
+    async def send_message_to_globe_async(
+        self,
+        request: dysmsapi_20180501_models.SendMessageToGlobeRequest,
+    ) -> dysmsapi_20180501_models.SendMessageToGlobeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_message_to_globe_with_options_async(request, runtime)
+
     def send_message_with_template_with_options(
         self,
         request: dysmsapi_20180501_models.SendMessageWithTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20180501_models.SendMessageWithTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.sms_up_extend_code):
+            query['SmsUpExtendCode'] = request.sms_up_extend_code
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_param):
+            query['TemplateParam'] = request.template_param
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendMessageWithTemplate',
+            version='2018-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20180501_models.SendMessageWithTemplateResponse(),
-            self.do_rpcrequest('SendMessageWithTemplate', '2018-05-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def send_message_with_template_with_options_async(
@@ -276,12 +401,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20180501_models.SendMessageWithTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.sms_up_extend_code):
+            query['SmsUpExtendCode'] = request.sms_up_extend_code
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_param):
+            query['TemplateParam'] = request.template_param
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendMessageWithTemplate',
+            version='2018-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dysmsapi_20180501_models.SendMessageWithTemplateResponse(),
-            await self.do_rpcrequest_async('SendMessageWithTemplate', '2018-05-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def send_message_with_template(
@@ -297,3 +444,81 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20180501_models.SendMessageWithTemplateResponse:
         runtime = util_models.RuntimeOptions()
         return await self.send_message_with_template_with_options_async(request, runtime)
+
+    def sms_conversion_with_options(
+        self,
+        request: dysmsapi_20180501_models.SmsConversionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20180501_models.SmsConversionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.conversion_time):
+            query['ConversionTime'] = request.conversion_time
+        if not UtilClient.is_unset(request.delivered):
+            query['Delivered'] = request.delivered
+        if not UtilClient.is_unset(request.message_id):
+            query['MessageId'] = request.message_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SmsConversion',
+            version='2018-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20180501_models.SmsConversionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sms_conversion_with_options_async(
+        self,
+        request: dysmsapi_20180501_models.SmsConversionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20180501_models.SmsConversionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.conversion_time):
+            query['ConversionTime'] = request.conversion_time
+        if not UtilClient.is_unset(request.delivered):
+            query['Delivered'] = request.delivered
+        if not UtilClient.is_unset(request.message_id):
+            query['MessageId'] = request.message_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SmsConversion',
+            version='2018-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20180501_models.SmsConversionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sms_conversion(
+        self,
+        request: dysmsapi_20180501_models.SmsConversionRequest,
+    ) -> dysmsapi_20180501_models.SmsConversionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.sms_conversion_with_options(request, runtime)
+
+    async def sms_conversion_async(
+        self,
+        request: dysmsapi_20180501_models.SmsConversionRequest,
+    ) -> dysmsapi_20180501_models.SmsConversionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.sms_conversion_with_options_async(request, runtime)
