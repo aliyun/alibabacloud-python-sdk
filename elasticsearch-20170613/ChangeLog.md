@@ -1,3 +1,12 @@
+2021-12-28 Version: 1.0.12
+- Add UpdateComponentIndex.
+- Add DescribeDeprecatedTemplate.
+- Add CreateComponentIndex.
+- Add DeleteComponentIndex.
+- Add ListDeprecatedTemplates.
+- Add DescribeComponentIndex.
+- Add ListComponentIndices.
+
 2021-11-26 Version: 1.0.11
 - CreateVpcEndpoint change body format.
 - UpdateBlackIps Offline.
