@@ -937,6 +937,7 @@ class CreateAggregateConfigRuleRequest(TeaModel):
         risk_level: int = None,
         source_identifier: str = None,
         source_owner: str = None,
+        tag_key_logic_scope: str = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
     ):
@@ -954,6 +955,7 @@ class CreateAggregateConfigRuleRequest(TeaModel):
         self.risk_level = risk_level
         self.source_identifier = source_identifier
         self.source_owner = source_owner
+        self.tag_key_logic_scope = tag_key_logic_scope
         self.tag_key_scope = tag_key_scope
         self.tag_value_scope = tag_value_scope
 
@@ -994,6 +996,8 @@ class CreateAggregateConfigRuleRequest(TeaModel):
             result['SourceIdentifier'] = self.source_identifier
         if self.source_owner is not None:
             result['SourceOwner'] = self.source_owner
+        if self.tag_key_logic_scope is not None:
+            result['TagKeyLogicScope'] = self.tag_key_logic_scope
         if self.tag_key_scope is not None:
             result['TagKeyScope'] = self.tag_key_scope
         if self.tag_value_scope is not None:
@@ -1030,6 +1034,8 @@ class CreateAggregateConfigRuleRequest(TeaModel):
             self.source_identifier = m.get('SourceIdentifier')
         if m.get('SourceOwner') is not None:
             self.source_owner = m.get('SourceOwner')
+        if m.get('TagKeyLogicScope') is not None:
+            self.tag_key_logic_scope = m.get('TagKeyLogicScope')
         if m.get('TagKeyScope') is not None:
             self.tag_key_scope = m.get('TagKeyScope')
         if m.get('TagValueScope') is not None:
@@ -1054,6 +1060,7 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
         risk_level: int = None,
         source_identifier: str = None,
         source_owner: str = None,
+        tag_key_logic_scope: str = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
     ):
@@ -1071,6 +1078,7 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
         self.risk_level = risk_level
         self.source_identifier = source_identifier
         self.source_owner = source_owner
+        self.tag_key_logic_scope = tag_key_logic_scope
         self.tag_key_scope = tag_key_scope
         self.tag_value_scope = tag_value_scope
 
@@ -1111,6 +1119,8 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
             result['SourceIdentifier'] = self.source_identifier
         if self.source_owner is not None:
             result['SourceOwner'] = self.source_owner
+        if self.tag_key_logic_scope is not None:
+            result['TagKeyLogicScope'] = self.tag_key_logic_scope
         if self.tag_key_scope is not None:
             result['TagKeyScope'] = self.tag_key_scope
         if self.tag_value_scope is not None:
@@ -1147,6 +1157,8 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
             self.source_identifier = m.get('SourceIdentifier')
         if m.get('SourceOwner') is not None:
             self.source_owner = m.get('SourceOwner')
+        if m.get('TagKeyLogicScope') is not None:
+            self.tag_key_logic_scope = m.get('TagKeyLogicScope')
         if m.get('TagKeyScope') is not None:
             self.tag_key_scope = m.get('TagKeyScope')
         if m.get('TagValueScope') is not None:
@@ -1749,6 +1761,7 @@ class CreateConfigRuleRequest(TeaModel):
         risk_level: int = None,
         source_identifier: str = None,
         source_owner: str = None,
+        tag_key_logic_scope: str = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
     ):
@@ -1765,6 +1778,7 @@ class CreateConfigRuleRequest(TeaModel):
         self.risk_level = risk_level
         self.source_identifier = source_identifier
         self.source_owner = source_owner
+        self.tag_key_logic_scope = tag_key_logic_scope
         self.tag_key_scope = tag_key_scope
         self.tag_value_scope = tag_value_scope
 
@@ -1803,6 +1817,8 @@ class CreateConfigRuleRequest(TeaModel):
             result['SourceIdentifier'] = self.source_identifier
         if self.source_owner is not None:
             result['SourceOwner'] = self.source_owner
+        if self.tag_key_logic_scope is not None:
+            result['TagKeyLogicScope'] = self.tag_key_logic_scope
         if self.tag_key_scope is not None:
             result['TagKeyScope'] = self.tag_key_scope
         if self.tag_value_scope is not None:
@@ -1837,6 +1853,8 @@ class CreateConfigRuleRequest(TeaModel):
             self.source_identifier = m.get('SourceIdentifier')
         if m.get('SourceOwner') is not None:
             self.source_owner = m.get('SourceOwner')
+        if m.get('TagKeyLogicScope') is not None:
+            self.tag_key_logic_scope = m.get('TagKeyLogicScope')
         if m.get('TagKeyScope') is not None:
             self.tag_key_scope = m.get('TagKeyScope')
         if m.get('TagValueScope') is not None:
@@ -1860,6 +1878,7 @@ class CreateConfigRuleShrinkRequest(TeaModel):
         risk_level: int = None,
         source_identifier: str = None,
         source_owner: str = None,
+        tag_key_logic_scope: str = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
     ):
@@ -1876,6 +1895,7 @@ class CreateConfigRuleShrinkRequest(TeaModel):
         self.risk_level = risk_level
         self.source_identifier = source_identifier
         self.source_owner = source_owner
+        self.tag_key_logic_scope = tag_key_logic_scope
         self.tag_key_scope = tag_key_scope
         self.tag_value_scope = tag_value_scope
 
@@ -1914,6 +1934,8 @@ class CreateConfigRuleShrinkRequest(TeaModel):
             result['SourceIdentifier'] = self.source_identifier
         if self.source_owner is not None:
             result['SourceOwner'] = self.source_owner
+        if self.tag_key_logic_scope is not None:
+            result['TagKeyLogicScope'] = self.tag_key_logic_scope
         if self.tag_key_scope is not None:
             result['TagKeyScope'] = self.tag_key_scope
         if self.tag_value_scope is not None:
@@ -1948,6 +1970,8 @@ class CreateConfigRuleShrinkRequest(TeaModel):
             self.source_identifier = m.get('SourceIdentifier')
         if m.get('SourceOwner') is not None:
             self.source_owner = m.get('SourceOwner')
+        if m.get('TagKeyLogicScope') is not None:
+            self.tag_key_logic_scope = m.get('TagKeyLogicScope')
         if m.get('TagKeyScope') is not None:
             self.tag_key_scope = m.get('TagKeyScope')
         if m.get('TagValueScope') is not None:
@@ -3589,9 +3613,11 @@ class GenerateAggregateConfigRulesReportRequest(TeaModel):
         self,
         aggregator_id: str = None,
         client_token: str = None,
+        config_rule_ids: str = None,
     ):
         self.aggregator_id = aggregator_id
         self.client_token = client_token
+        self.config_rule_ids = config_rule_ids
 
     def validate(self):
         pass
@@ -3606,6 +3632,8 @@ class GenerateAggregateConfigRulesReportRequest(TeaModel):
             result['AggregatorId'] = self.aggregator_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.config_rule_ids is not None:
+            result['ConfigRuleIds'] = self.config_rule_ids
         return result
 
     def from_map(self, m: dict = None):
@@ -3614,6 +3642,8 @@ class GenerateAggregateConfigRulesReportRequest(TeaModel):
             self.aggregator_id = m.get('AggregatorId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('ConfigRuleIds') is not None:
+            self.config_rule_ids = m.get('ConfigRuleIds')
         return self
 
 
@@ -3621,9 +3651,11 @@ class GenerateAggregateConfigRulesReportResponseBody(TeaModel):
     def __init__(
         self,
         aggregator_id: str = None,
+        report_id: str = None,
         request_id: str = None,
     ):
         self.aggregator_id = aggregator_id
+        self.report_id = report_id
         self.request_id = request_id
 
     def validate(self):
@@ -3637,6 +3669,8 @@ class GenerateAggregateConfigRulesReportResponseBody(TeaModel):
         result = dict()
         if self.aggregator_id is not None:
             result['AggregatorId'] = self.aggregator_id
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -3645,6 +3679,8 @@ class GenerateAggregateConfigRulesReportResponseBody(TeaModel):
         m = m or dict()
         if m.get('AggregatorId') is not None:
             self.aggregator_id = m.get('AggregatorId')
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -3794,8 +3830,10 @@ class GenerateConfigRulesReportRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        config_rule_ids: str = None,
     ):
         self.client_token = client_token
+        self.config_rule_ids = config_rule_ids
 
     def validate(self):
         pass
@@ -3808,20 +3846,26 @@ class GenerateConfigRulesReportRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.config_rule_ids is not None:
+            result['ConfigRuleIds'] = self.config_rule_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('ConfigRuleIds') is not None:
+            self.config_rule_ids = m.get('ConfigRuleIds')
         return self
 
 
 class GenerateConfigRulesReportResponseBody(TeaModel):
     def __init__(
         self,
+        report_id: str = None,
         request_id: str = None,
     ):
+        self.report_id = report_id
         self.request_id = request_id
 
     def validate(self):
@@ -3833,12 +3877,16 @@ class GenerateConfigRulesReportResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -4915,6 +4963,7 @@ class GetAggregateConfigRuleResponseBodyConfigRule(TeaModel):
         resource_types_scope: str = None,
         risk_level: int = None,
         source: GetAggregateConfigRuleResponseBodyConfigRuleSource = None,
+        tag_key_logic_scope: str = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
     ):
@@ -4937,6 +4986,7 @@ class GetAggregateConfigRuleResponseBodyConfigRule(TeaModel):
         self.resource_types_scope = resource_types_scope
         self.risk_level = risk_level
         self.source = source
+        self.tag_key_logic_scope = tag_key_logic_scope
         self.tag_key_scope = tag_key_scope
         self.tag_value_scope = tag_value_scope
 
@@ -4994,6 +5044,8 @@ class GetAggregateConfigRuleResponseBodyConfigRule(TeaModel):
             result['RiskLevel'] = self.risk_level
         if self.source is not None:
             result['Source'] = self.source.to_map()
+        if self.tag_key_logic_scope is not None:
+            result['TagKeyLogicScope'] = self.tag_key_logic_scope
         if self.tag_key_scope is not None:
             result['TagKeyScope'] = self.tag_key_scope
         if self.tag_value_scope is not None:
@@ -5044,6 +5096,8 @@ class GetAggregateConfigRuleResponseBodyConfigRule(TeaModel):
         if m.get('Source') is not None:
             temp_model = GetAggregateConfigRuleResponseBodyConfigRuleSource()
             self.source = temp_model.from_map(m['Source'])
+        if m.get('TagKeyLogicScope') is not None:
+            self.tag_key_logic_scope = m.get('TagKeyLogicScope')
         if m.get('TagKeyScope') is not None:
             self.tag_key_scope = m.get('TagKeyScope')
         if m.get('TagValueScope') is not None:
@@ -5468,8 +5522,10 @@ class GetAggregateConfigRulesReportRequest(TeaModel):
     def __init__(
         self,
         aggregator_id: str = None,
+        report_id: str = None,
     ):
         self.aggregator_id = aggregator_id
+        self.report_id = report_id
 
     def validate(self):
         pass
@@ -5482,12 +5538,16 @@ class GetAggregateConfigRulesReportRequest(TeaModel):
         result = dict()
         if self.aggregator_id is not None:
             result['AggregatorId'] = self.aggregator_id
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AggregatorId') is not None:
             self.aggregator_id = m.get('AggregatorId')
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
         return self
 
 
@@ -5497,12 +5557,14 @@ class GetAggregateConfigRulesReportResponseBodyConfigRulesReport(TeaModel):
         account_id: int = None,
         aggregator_id: str = None,
         report_create_timestamp: int = None,
+        report_id: str = None,
         report_status: str = None,
         report_url: str = None,
     ):
         self.account_id = account_id
         self.aggregator_id = aggregator_id
         self.report_create_timestamp = report_create_timestamp
+        self.report_id = report_id
         self.report_status = report_status
         self.report_url = report_url
 
@@ -5521,6 +5583,8 @@ class GetAggregateConfigRulesReportResponseBodyConfigRulesReport(TeaModel):
             result['AggregatorId'] = self.aggregator_id
         if self.report_create_timestamp is not None:
             result['ReportCreateTimestamp'] = self.report_create_timestamp
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
         if self.report_status is not None:
             result['ReportStatus'] = self.report_status
         if self.report_url is not None:
@@ -5535,6 +5599,8 @@ class GetAggregateConfigRulesReportResponseBodyConfigRulesReport(TeaModel):
             self.aggregator_id = m.get('AggregatorId')
         if m.get('ReportCreateTimestamp') is not None:
             self.report_create_timestamp = m.get('ReportCreateTimestamp')
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
         if m.get('ReportStatus') is not None:
             self.report_status = m.get('ReportStatus')
         if m.get('ReportUrl') is not None:
@@ -5939,6 +6005,434 @@ class GetAggregateResourceComplianceByPackResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetAggregateResourceComplianceByPackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAggregateResourceComplianceGroupByRegionRequest(TeaModel):
+    def __init__(
+        self,
+        aggregator_id: str = None,
+        config_rule_ids: str = None,
+    ):
+        self.aggregator_id = aggregator_id
+        self.config_rule_ids = config_rule_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.config_rule_ids is not None:
+            result['ConfigRuleIds'] = self.config_rule_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('ConfigRuleIds') is not None:
+            self.config_rule_ids = m.get('ConfigRuleIds')
+        return self
+
+
+class GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances(TeaModel):
+    def __init__(
+        self,
+        compliance_type: str = None,
+        count: int = None,
+    ):
+        self.compliance_type = compliance_type
+        self.count = count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compliance_type is not None:
+            result['ComplianceType'] = self.compliance_type
+        if self.count is not None:
+            result['Count'] = self.count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComplianceType') is not None:
+            self.compliance_type = m.get('ComplianceType')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        return self
+
+
+class GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList(TeaModel):
+    def __init__(
+        self,
+        compliances: List[GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances] = None,
+        region_id: str = None,
+    ):
+        self.compliances = compliances
+        self.region_id = region_id
+
+    def validate(self):
+        if self.compliances:
+            for k in self.compliances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Compliances'] = []
+        if self.compliances is not None:
+            for k in self.compliances:
+                result['Compliances'].append(k.to_map() if k else None)
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.compliances = []
+        if m.get('Compliances') is not None:
+            for k in m.get('Compliances'):
+                temp_model = GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances()
+                self.compliances.append(temp_model.from_map(k))
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResult(TeaModel):
+    def __init__(
+        self,
+        compliance_result_list: List[GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList] = None,
+    ):
+        self.compliance_result_list = compliance_result_list
+
+    def validate(self):
+        if self.compliance_result_list:
+            for k in self.compliance_result_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ComplianceResultList'] = []
+        if self.compliance_result_list is not None:
+            for k in self.compliance_result_list:
+                result['ComplianceResultList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.compliance_result_list = []
+        if m.get('ComplianceResultList') is not None:
+            for k in m.get('ComplianceResultList'):
+                temp_model = GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList()
+                self.compliance_result_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetAggregateResourceComplianceGroupByRegionResponseBody(TeaModel):
+    def __init__(
+        self,
+        compliance_result: GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResult = None,
+        request_id: str = None,
+    ):
+        self.compliance_result = compliance_result
+        self.request_id = request_id
+
+    def validate(self):
+        if self.compliance_result:
+            self.compliance_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compliance_result is not None:
+            result['ComplianceResult'] = self.compliance_result.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComplianceResult') is not None:
+            temp_model = GetAggregateResourceComplianceGroupByRegionResponseBodyComplianceResult()
+            self.compliance_result = temp_model.from_map(m['ComplianceResult'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetAggregateResourceComplianceGroupByRegionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetAggregateResourceComplianceGroupByRegionResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetAggregateResourceComplianceGroupByRegionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAggregateResourceComplianceGroupByResourceTypeRequest(TeaModel):
+    def __init__(
+        self,
+        aggregator_id: str = None,
+        config_rule_ids: str = None,
+    ):
+        self.aggregator_id = aggregator_id
+        self.config_rule_ids = config_rule_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.config_rule_ids is not None:
+            result['ConfigRuleIds'] = self.config_rule_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('ConfigRuleIds') is not None:
+            self.config_rule_ids = m.get('ConfigRuleIds')
+        return self
+
+
+class GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances(TeaModel):
+    def __init__(
+        self,
+        compliance_type: str = None,
+        count: int = None,
+    ):
+        self.compliance_type = compliance_type
+        self.count = count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compliance_type is not None:
+            result['ComplianceType'] = self.compliance_type
+        if self.count is not None:
+            result['Count'] = self.count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComplianceType') is not None:
+            self.compliance_type = m.get('ComplianceType')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        return self
+
+
+class GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList(TeaModel):
+    def __init__(
+        self,
+        compliances: List[GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances] = None,
+        resource_type: str = None,
+    ):
+        self.compliances = compliances
+        self.resource_type = resource_type
+
+    def validate(self):
+        if self.compliances:
+            for k in self.compliances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Compliances'] = []
+        if self.compliances is not None:
+            for k in self.compliances:
+                result['Compliances'].append(k.to_map() if k else None)
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.compliances = []
+        if m.get('Compliances') is not None:
+            for k in m.get('Compliances'):
+                temp_model = GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances()
+                self.compliances.append(temp_model.from_map(k))
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResult(TeaModel):
+    def __init__(
+        self,
+        compliance_result_list: List[GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList] = None,
+    ):
+        self.compliance_result_list = compliance_result_list
+
+    def validate(self):
+        if self.compliance_result_list:
+            for k in self.compliance_result_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ComplianceResultList'] = []
+        if self.compliance_result_list is not None:
+            for k in self.compliance_result_list:
+                result['ComplianceResultList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.compliance_result_list = []
+        if m.get('ComplianceResultList') is not None:
+            for k in m.get('ComplianceResultList'):
+                temp_model = GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList()
+                self.compliance_result_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetAggregateResourceComplianceGroupByResourceTypeResponseBody(TeaModel):
+    def __init__(
+        self,
+        compliance_result: GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResult = None,
+        request_id: str = None,
+    ):
+        self.compliance_result = compliance_result
+        self.request_id = request_id
+
+    def validate(self):
+        if self.compliance_result:
+            self.compliance_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compliance_result is not None:
+            result['ComplianceResult'] = self.compliance_result.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComplianceResult') is not None:
+            temp_model = GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResult()
+            self.compliance_result = temp_model.from_map(m['ComplianceResult'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetAggregateResourceComplianceGroupByResourceTypeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetAggregateResourceComplianceGroupByResourceTypeResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetAggregateResourceComplianceGroupByResourceTypeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7849,6 +8343,7 @@ class GetConfigRuleResponseBodyConfigRule(TeaModel):
         resource_types_scope: str = None,
         risk_level: int = None,
         source: GetConfigRuleResponseBodyConfigRuleSource = None,
+        tag_key_logic_scope: str = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
     ):
@@ -7871,6 +8366,7 @@ class GetConfigRuleResponseBodyConfigRule(TeaModel):
         self.resource_types_scope = resource_types_scope
         self.risk_level = risk_level
         self.source = source
+        self.tag_key_logic_scope = tag_key_logic_scope
         self.tag_key_scope = tag_key_scope
         self.tag_value_scope = tag_value_scope
 
@@ -7928,6 +8424,8 @@ class GetConfigRuleResponseBodyConfigRule(TeaModel):
             result['RiskLevel'] = self.risk_level
         if self.source is not None:
             result['Source'] = self.source.to_map()
+        if self.tag_key_logic_scope is not None:
+            result['TagKeyLogicScope'] = self.tag_key_logic_scope
         if self.tag_key_scope is not None:
             result['TagKeyScope'] = self.tag_key_scope
         if self.tag_value_scope is not None:
@@ -7978,6 +8476,8 @@ class GetConfigRuleResponseBodyConfigRule(TeaModel):
         if m.get('Source') is not None:
             temp_model = GetConfigRuleResponseBodyConfigRuleSource()
             self.source = temp_model.from_map(m['Source'])
+        if m.get('TagKeyLogicScope') is not None:
+            self.tag_key_logic_scope = m.get('TagKeyLogicScope')
         if m.get('TagKeyScope') is not None:
             self.tag_key_scope = m.get('TagKeyScope')
         if m.get('TagValueScope') is not None:
@@ -8365,16 +8865,45 @@ class GetConfigRuleSummaryByRiskLevelResponse(TeaModel):
         return self
 
 
+class GetConfigRulesReportRequest(TeaModel):
+    def __init__(
+        self,
+        report_id: str = None,
+    ):
+        self.report_id = report_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
+        return self
+
+
 class GetConfigRulesReportResponseBodyConfigRulesReport(TeaModel):
     def __init__(
         self,
         account_id: int = None,
         report_create_timestamp: int = None,
+        report_id: str = None,
         report_status: str = None,
         report_url: str = None,
     ):
         self.account_id = account_id
         self.report_create_timestamp = report_create_timestamp
+        self.report_id = report_id
         self.report_status = report_status
         self.report_url = report_url
 
@@ -8391,6 +8920,8 @@ class GetConfigRulesReportResponseBodyConfigRulesReport(TeaModel):
             result['AccountId'] = self.account_id
         if self.report_create_timestamp is not None:
             result['ReportCreateTimestamp'] = self.report_create_timestamp
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
         if self.report_status is not None:
             result['ReportStatus'] = self.report_status
         if self.report_url is not None:
@@ -8403,6 +8934,8 @@ class GetConfigRulesReportResponseBodyConfigRulesReport(TeaModel):
             self.account_id = m.get('AccountId')
         if m.get('ReportCreateTimestamp') is not None:
             self.report_create_timestamp = m.get('ReportCreateTimestamp')
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
         if m.get('ReportStatus') is not None:
             self.report_status = m.get('ReportStatus')
         if m.get('ReportUrl') is not None:
@@ -8758,6 +9291,257 @@ class GetDiscoveredResourceCountsGroupByResourceTypeResponse(TeaModel):
         return self
 
 
+class GetManagedRuleRequest(TeaModel):
+    def __init__(
+        self,
+        identifier: str = None,
+    ):
+        self.identifier = identifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identifier is not None:
+            result['Identifier'] = self.identifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Identifier') is not None:
+            self.identifier = m.get('Identifier')
+        return self
+
+
+class GetManagedRuleResponseBodyManagedRuleScope(TeaModel):
+    def __init__(
+        self,
+        compliance_resource_types: List[str] = None,
+    ):
+        self.compliance_resource_types = compliance_resource_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compliance_resource_types is not None:
+            result['ComplianceResourceTypes'] = self.compliance_resource_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComplianceResourceTypes') is not None:
+            self.compliance_resource_types = m.get('ComplianceResourceTypes')
+        return self
+
+
+class GetManagedRuleResponseBodyManagedRuleSourceDetails(TeaModel):
+    def __init__(
+        self,
+        maximum_execution_frequency: str = None,
+        message_type: str = None,
+    ):
+        self.maximum_execution_frequency = maximum_execution_frequency
+        self.message_type = message_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.maximum_execution_frequency is not None:
+            result['MaximumExecutionFrequency'] = self.maximum_execution_frequency
+        if self.message_type is not None:
+            result['MessageType'] = self.message_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaximumExecutionFrequency') is not None:
+            self.maximum_execution_frequency = m.get('MaximumExecutionFrequency')
+        if m.get('MessageType') is not None:
+            self.message_type = m.get('MessageType')
+        return self
+
+
+class GetManagedRuleResponseBodyManagedRule(TeaModel):
+    def __init__(
+        self,
+        compulsory_input_parameter_details: List[str] = None,
+        config_rule_name: str = None,
+        description: str = None,
+        help_urls: str = None,
+        identifier: str = None,
+        labels: List[str] = None,
+        optional_input_parameter_details: List[str] = None,
+        risk_level: int = None,
+        scope: GetManagedRuleResponseBodyManagedRuleScope = None,
+        source_details: List[GetManagedRuleResponseBodyManagedRuleSourceDetails] = None,
+    ):
+        self.compulsory_input_parameter_details = compulsory_input_parameter_details
+        self.config_rule_name = config_rule_name
+        self.description = description
+        self.help_urls = help_urls
+        self.identifier = identifier
+        self.labels = labels
+        self.optional_input_parameter_details = optional_input_parameter_details
+        self.risk_level = risk_level
+        self.scope = scope
+        self.source_details = source_details
+
+    def validate(self):
+        if self.scope:
+            self.scope.validate()
+        if self.source_details:
+            for k in self.source_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compulsory_input_parameter_details is not None:
+            result['CompulsoryInputParameterDetails'] = self.compulsory_input_parameter_details
+        if self.config_rule_name is not None:
+            result['ConfigRuleName'] = self.config_rule_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.help_urls is not None:
+            result['HelpUrls'] = self.help_urls
+        if self.identifier is not None:
+            result['Identifier'] = self.identifier
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        if self.optional_input_parameter_details is not None:
+            result['OptionalInputParameterDetails'] = self.optional_input_parameter_details
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        if self.scope is not None:
+            result['Scope'] = self.scope.to_map()
+        result['SourceDetails'] = []
+        if self.source_details is not None:
+            for k in self.source_details:
+                result['SourceDetails'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompulsoryInputParameterDetails') is not None:
+            self.compulsory_input_parameter_details = m.get('CompulsoryInputParameterDetails')
+        if m.get('ConfigRuleName') is not None:
+            self.config_rule_name = m.get('ConfigRuleName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('HelpUrls') is not None:
+            self.help_urls = m.get('HelpUrls')
+        if m.get('Identifier') is not None:
+            self.identifier = m.get('Identifier')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        if m.get('OptionalInputParameterDetails') is not None:
+            self.optional_input_parameter_details = m.get('OptionalInputParameterDetails')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        if m.get('Scope') is not None:
+            temp_model = GetManagedRuleResponseBodyManagedRuleScope()
+            self.scope = temp_model.from_map(m['Scope'])
+        self.source_details = []
+        if m.get('SourceDetails') is not None:
+            for k in m.get('SourceDetails'):
+                temp_model = GetManagedRuleResponseBodyManagedRuleSourceDetails()
+                self.source_details.append(temp_model.from_map(k))
+        return self
+
+
+class GetManagedRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        managed_rule: GetManagedRuleResponseBodyManagedRule = None,
+        request_id: str = None,
+    ):
+        self.managed_rule = managed_rule
+        self.request_id = request_id
+
+    def validate(self):
+        if self.managed_rule:
+            self.managed_rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.managed_rule is not None:
+            result['ManagedRule'] = self.managed_rule.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ManagedRule') is not None:
+            temp_model = GetManagedRuleResponseBodyManagedRule()
+            self.managed_rule = temp_model.from_map(m['ManagedRule'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetManagedRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetManagedRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetManagedRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetResourceComplianceByConfigRuleRequest(TeaModel):
     def __init__(
         self,
@@ -9071,6 +9855,422 @@ class GetResourceComplianceByPackResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetResourceComplianceByPackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetResourceComplianceGroupByRegionRequest(TeaModel):
+    def __init__(
+        self,
+        config_rule_ids: str = None,
+    ):
+        self.config_rule_ids = config_rule_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_rule_ids is not None:
+            result['ConfigRuleIds'] = self.config_rule_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigRuleIds') is not None:
+            self.config_rule_ids = m.get('ConfigRuleIds')
+        return self
+
+
+class GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances(TeaModel):
+    def __init__(
+        self,
+        compliance_type: str = None,
+        count: int = None,
+    ):
+        self.compliance_type = compliance_type
+        self.count = count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compliance_type is not None:
+            result['ComplianceType'] = self.compliance_type
+        if self.count is not None:
+            result['Count'] = self.count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComplianceType') is not None:
+            self.compliance_type = m.get('ComplianceType')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        return self
+
+
+class GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList(TeaModel):
+    def __init__(
+        self,
+        compliances: List[GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances] = None,
+        region_id: str = None,
+    ):
+        self.compliances = compliances
+        self.region_id = region_id
+
+    def validate(self):
+        if self.compliances:
+            for k in self.compliances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Compliances'] = []
+        if self.compliances is not None:
+            for k in self.compliances:
+                result['Compliances'].append(k.to_map() if k else None)
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.compliances = []
+        if m.get('Compliances') is not None:
+            for k in m.get('Compliances'):
+                temp_model = GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultListCompliances()
+                self.compliances.append(temp_model.from_map(k))
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetResourceComplianceGroupByRegionResponseBodyComplianceResult(TeaModel):
+    def __init__(
+        self,
+        compliance_result_list: List[GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList] = None,
+    ):
+        self.compliance_result_list = compliance_result_list
+
+    def validate(self):
+        if self.compliance_result_list:
+            for k in self.compliance_result_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ComplianceResultList'] = []
+        if self.compliance_result_list is not None:
+            for k in self.compliance_result_list:
+                result['ComplianceResultList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.compliance_result_list = []
+        if m.get('ComplianceResultList') is not None:
+            for k in m.get('ComplianceResultList'):
+                temp_model = GetResourceComplianceGroupByRegionResponseBodyComplianceResultComplianceResultList()
+                self.compliance_result_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetResourceComplianceGroupByRegionResponseBody(TeaModel):
+    def __init__(
+        self,
+        compliance_result: GetResourceComplianceGroupByRegionResponseBodyComplianceResult = None,
+        request_id: str = None,
+    ):
+        self.compliance_result = compliance_result
+        self.request_id = request_id
+
+    def validate(self):
+        if self.compliance_result:
+            self.compliance_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compliance_result is not None:
+            result['ComplianceResult'] = self.compliance_result.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComplianceResult') is not None:
+            temp_model = GetResourceComplianceGroupByRegionResponseBodyComplianceResult()
+            self.compliance_result = temp_model.from_map(m['ComplianceResult'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetResourceComplianceGroupByRegionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetResourceComplianceGroupByRegionResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetResourceComplianceGroupByRegionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetResourceComplianceGroupByResourceTypeRequest(TeaModel):
+    def __init__(
+        self,
+        config_rule_ids: str = None,
+    ):
+        self.config_rule_ids = config_rule_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_rule_ids is not None:
+            result['ConfigRuleIds'] = self.config_rule_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigRuleIds') is not None:
+            self.config_rule_ids = m.get('ConfigRuleIds')
+        return self
+
+
+class GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances(TeaModel):
+    def __init__(
+        self,
+        compliance_type: str = None,
+        count: int = None,
+    ):
+        self.compliance_type = compliance_type
+        self.count = count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compliance_type is not None:
+            result['ComplianceType'] = self.compliance_type
+        if self.count is not None:
+            result['Count'] = self.count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComplianceType') is not None:
+            self.compliance_type = m.get('ComplianceType')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        return self
+
+
+class GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList(TeaModel):
+    def __init__(
+        self,
+        compliances: List[GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances] = None,
+        resource_type: str = None,
+    ):
+        self.compliances = compliances
+        self.resource_type = resource_type
+
+    def validate(self):
+        if self.compliances:
+            for k in self.compliances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Compliances'] = []
+        if self.compliances is not None:
+            for k in self.compliances:
+                result['Compliances'].append(k.to_map() if k else None)
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.compliances = []
+        if m.get('Compliances') is not None:
+            for k in m.get('Compliances'):
+                temp_model = GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances()
+                self.compliances.append(temp_model.from_map(k))
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResult(TeaModel):
+    def __init__(
+        self,
+        compliance_result_list: List[GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList] = None,
+    ):
+        self.compliance_result_list = compliance_result_list
+
+    def validate(self):
+        if self.compliance_result_list:
+            for k in self.compliance_result_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ComplianceResultList'] = []
+        if self.compliance_result_list is not None:
+            for k in self.compliance_result_list:
+                result['ComplianceResultList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.compliance_result_list = []
+        if m.get('ComplianceResultList') is not None:
+            for k in m.get('ComplianceResultList'):
+                temp_model = GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList()
+                self.compliance_result_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetResourceComplianceGroupByResourceTypeResponseBody(TeaModel):
+    def __init__(
+        self,
+        compliance_result: GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResult = None,
+        request_id: str = None,
+    ):
+        self.compliance_result = compliance_result
+        self.request_id = request_id
+
+    def validate(self):
+        if self.compliance_result:
+            self.compliance_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compliance_result is not None:
+            result['ComplianceResult'] = self.compliance_result.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComplianceResult') is not None:
+            temp_model = GetResourceComplianceGroupByResourceTypeResponseBodyComplianceResult()
+            self.compliance_result = temp_model.from_map(m['ComplianceResult'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetResourceComplianceGroupByResourceTypeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetResourceComplianceGroupByResourceTypeResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetResourceComplianceGroupByResourceTypeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12494,6 +13694,239 @@ class ListConfigRuleEvaluationResultsResponse(TeaModel):
         return self
 
 
+class ListManagedRulesRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        risk_level: int = None,
+    ):
+        self.keyword = keyword
+        self.page_number = page_number
+        self.page_size = page_size
+        self.risk_level = risk_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        return self
+
+
+class ListManagedRulesResponseBodyManagedRulesManagedRuleList(TeaModel):
+    def __init__(
+        self,
+        config_rule_name: str = None,
+        description: str = None,
+        help_urls: str = None,
+        identifier: str = None,
+        labels: List[str] = None,
+        risk_level: int = None,
+    ):
+        self.config_rule_name = config_rule_name
+        self.description = description
+        self.help_urls = help_urls
+        self.identifier = identifier
+        self.labels = labels
+        self.risk_level = risk_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_rule_name is not None:
+            result['ConfigRuleName'] = self.config_rule_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.help_urls is not None:
+            result['HelpUrls'] = self.help_urls
+        if self.identifier is not None:
+            result['Identifier'] = self.identifier
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigRuleName') is not None:
+            self.config_rule_name = m.get('ConfigRuleName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('HelpUrls') is not None:
+            self.help_urls = m.get('HelpUrls')
+        if m.get('Identifier') is not None:
+            self.identifier = m.get('Identifier')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        return self
+
+
+class ListManagedRulesResponseBodyManagedRules(TeaModel):
+    def __init__(
+        self,
+        managed_rule_list: List[ListManagedRulesResponseBodyManagedRulesManagedRuleList] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.managed_rule_list = managed_rule_list
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.managed_rule_list:
+            for k in self.managed_rule_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ManagedRuleList'] = []
+        if self.managed_rule_list is not None:
+            for k in self.managed_rule_list:
+                result['ManagedRuleList'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.managed_rule_list = []
+        if m.get('ManagedRuleList') is not None:
+            for k in m.get('ManagedRuleList'):
+                temp_model = ListManagedRulesResponseBodyManagedRulesManagedRuleList()
+                self.managed_rule_list.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListManagedRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        managed_rules: List[ListManagedRulesResponseBodyManagedRules] = None,
+        request_id: str = None,
+    ):
+        self.managed_rules = managed_rules
+        self.request_id = request_id
+
+    def validate(self):
+        if self.managed_rules:
+            for k in self.managed_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ManagedRules'] = []
+        if self.managed_rules is not None:
+            for k in self.managed_rules:
+                result['ManagedRules'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.managed_rules = []
+        if m.get('ManagedRules') is not None:
+            for k in m.get('ManagedRules'):
+                temp_model = ListManagedRulesResponseBodyManagedRules()
+                self.managed_rules.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListManagedRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListManagedRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListManagedRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListResourceEvaluationResultsRequest(TeaModel):
     def __init__(
         self,
@@ -13650,6 +15083,7 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
         resource_group_ids_scope: str = None,
         resource_types_scope: List[str] = None,
         risk_level: int = None,
+        tag_key_logic_scope: str = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
     ):
@@ -13666,6 +15100,7 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         self.resource_types_scope = resource_types_scope
         self.risk_level = risk_level
+        self.tag_key_logic_scope = tag_key_logic_scope
         self.tag_key_scope = tag_key_scope
         self.tag_value_scope = tag_value_scope
 
@@ -13704,6 +15139,8 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
             result['ResourceTypesScope'] = self.resource_types_scope
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
+        if self.tag_key_logic_scope is not None:
+            result['TagKeyLogicScope'] = self.tag_key_logic_scope
         if self.tag_key_scope is not None:
             result['TagKeyScope'] = self.tag_key_scope
         if self.tag_value_scope is not None:
@@ -13738,6 +15175,8 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
             self.resource_types_scope = m.get('ResourceTypesScope')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
+        if m.get('TagKeyLogicScope') is not None:
+            self.tag_key_logic_scope = m.get('TagKeyLogicScope')
         if m.get('TagKeyScope') is not None:
             self.tag_key_scope = m.get('TagKeyScope')
         if m.get('TagValueScope') is not None:
@@ -13761,6 +15200,7 @@ class UpdateAggregateConfigRuleShrinkRequest(TeaModel):
         resource_group_ids_scope: str = None,
         resource_types_scope_shrink: str = None,
         risk_level: int = None,
+        tag_key_logic_scope: str = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
     ):
@@ -13777,6 +15217,7 @@ class UpdateAggregateConfigRuleShrinkRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         self.resource_types_scope_shrink = resource_types_scope_shrink
         self.risk_level = risk_level
+        self.tag_key_logic_scope = tag_key_logic_scope
         self.tag_key_scope = tag_key_scope
         self.tag_value_scope = tag_value_scope
 
@@ -13815,6 +15256,8 @@ class UpdateAggregateConfigRuleShrinkRequest(TeaModel):
             result['ResourceTypesScope'] = self.resource_types_scope_shrink
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
+        if self.tag_key_logic_scope is not None:
+            result['TagKeyLogicScope'] = self.tag_key_logic_scope
         if self.tag_key_scope is not None:
             result['TagKeyScope'] = self.tag_key_scope
         if self.tag_value_scope is not None:
@@ -13849,6 +15292,8 @@ class UpdateAggregateConfigRuleShrinkRequest(TeaModel):
             self.resource_types_scope_shrink = m.get('ResourceTypesScope')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
+        if m.get('TagKeyLogicScope') is not None:
+            self.tag_key_logic_scope = m.get('TagKeyLogicScope')
         if m.get('TagKeyScope') is not None:
             self.tag_key_scope = m.get('TagKeyScope')
         if m.get('TagValueScope') is not None:
@@ -14450,6 +15895,7 @@ class UpdateConfigRuleRequest(TeaModel):
         resource_group_ids_scope: str = None,
         resource_types_scope: List[str] = None,
         risk_level: int = None,
+        tag_key_logic_scope: str = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
     ):
@@ -14465,6 +15911,7 @@ class UpdateConfigRuleRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         self.resource_types_scope = resource_types_scope
         self.risk_level = risk_level
+        self.tag_key_logic_scope = tag_key_logic_scope
         self.tag_key_scope = tag_key_scope
         self.tag_value_scope = tag_value_scope
 
@@ -14501,6 +15948,8 @@ class UpdateConfigRuleRequest(TeaModel):
             result['ResourceTypesScope'] = self.resource_types_scope
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
+        if self.tag_key_logic_scope is not None:
+            result['TagKeyLogicScope'] = self.tag_key_logic_scope
         if self.tag_key_scope is not None:
             result['TagKeyScope'] = self.tag_key_scope
         if self.tag_value_scope is not None:
@@ -14533,6 +15982,8 @@ class UpdateConfigRuleRequest(TeaModel):
             self.resource_types_scope = m.get('ResourceTypesScope')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
+        if m.get('TagKeyLogicScope') is not None:
+            self.tag_key_logic_scope = m.get('TagKeyLogicScope')
         if m.get('TagKeyScope') is not None:
             self.tag_key_scope = m.get('TagKeyScope')
         if m.get('TagValueScope') is not None:
@@ -14555,6 +16006,7 @@ class UpdateConfigRuleShrinkRequest(TeaModel):
         resource_group_ids_scope: str = None,
         resource_types_scope_shrink: str = None,
         risk_level: int = None,
+        tag_key_logic_scope: str = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
     ):
@@ -14570,6 +16022,7 @@ class UpdateConfigRuleShrinkRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         self.resource_types_scope_shrink = resource_types_scope_shrink
         self.risk_level = risk_level
+        self.tag_key_logic_scope = tag_key_logic_scope
         self.tag_key_scope = tag_key_scope
         self.tag_value_scope = tag_value_scope
 
@@ -14606,6 +16059,8 @@ class UpdateConfigRuleShrinkRequest(TeaModel):
             result['ResourceTypesScope'] = self.resource_types_scope_shrink
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
+        if self.tag_key_logic_scope is not None:
+            result['TagKeyLogicScope'] = self.tag_key_logic_scope
         if self.tag_key_scope is not None:
             result['TagKeyScope'] = self.tag_key_scope
         if self.tag_value_scope is not None:
@@ -14638,6 +16093,8 @@ class UpdateConfigRuleShrinkRequest(TeaModel):
             self.resource_types_scope_shrink = m.get('ResourceTypesScope')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
+        if m.get('TagKeyLogicScope') is not None:
+            self.tag_key_logic_scope = m.get('TagKeyLogicScope')
         if m.get('TagKeyScope') is not None:
             self.tag_key_scope = m.get('TagKeyScope')
         if m.get('TagValueScope') is not None:
