@@ -468,6 +468,7 @@ class CreateScanTaskRequest(TeaModel):
         self,
         data_limit_id: int = None,
         interval_day: int = None,
+        lang: str = None,
         oss_scan_path: str = None,
         resource_type: int = None,
         run_hour: int = None,
@@ -479,6 +480,7 @@ class CreateScanTaskRequest(TeaModel):
     ):
         self.data_limit_id = data_limit_id
         self.interval_day = interval_day
+        self.lang = lang
         self.oss_scan_path = oss_scan_path
         self.resource_type = resource_type
         self.run_hour = run_hour
@@ -501,6 +503,8 @@ class CreateScanTaskRequest(TeaModel):
             result['DataLimitId'] = self.data_limit_id
         if self.interval_day is not None:
             result['IntervalDay'] = self.interval_day
+        if self.lang is not None:
+            result['Lang'] = self.lang
         if self.oss_scan_path is not None:
             result['OssScanPath'] = self.oss_scan_path
         if self.resource_type is not None:
@@ -525,6 +529,8 @@ class CreateScanTaskRequest(TeaModel):
             self.data_limit_id = m.get('DataLimitId')
         if m.get('IntervalDay') is not None:
             self.interval_day = m.get('IntervalDay')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
         if m.get('OssScanPath') is not None:
             self.oss_scan_path = m.get('OssScanPath')
         if m.get('ResourceType') is not None:
@@ -610,6 +616,103 @@ class CreateScanTaskResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = CreateScanTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSlrRoleRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+    ):
+        self.lang = lang
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        return self
+
+
+class CreateSlrRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        has_permission: bool = None,
+        request_id: str = None,
+    ):
+        self.has_permission = has_permission
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.has_permission is not None:
+            result['HasPermission'] = self.has_permission
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HasPermission') is not None:
+            self.has_permission = m.get('HasPermission')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateSlrRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateSlrRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateSlrRoleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6868,11 +6971,11 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
         self,
         access_key_id: str = None,
         authed: bool = None,
-        buyed: bool = None,
         charge_type: str = None,
         instance_id: str = None,
         instance_num: int = None,
         lab_status: int = None,
+        purchased: bool = None,
         remain_days: int = None,
         trail: bool = None,
         use_instance_num: int = None,
@@ -6880,11 +6983,11 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
     ):
         self.access_key_id = access_key_id
         self.authed = authed
-        self.buyed = buyed
         self.charge_type = charge_type
         self.instance_id = instance_id
         self.instance_num = instance_num
         self.lab_status = lab_status
+        self.purchased = purchased
         self.remain_days = remain_days
         self.trail = trail
         self.use_instance_num = use_instance_num
@@ -6903,8 +7006,6 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
             result['AccessKeyId'] = self.access_key_id
         if self.authed is not None:
             result['Authed'] = self.authed
-        if self.buyed is not None:
-            result['Buyed'] = self.buyed
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
         if self.instance_id is not None:
@@ -6913,6 +7014,8 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
             result['InstanceNum'] = self.instance_num
         if self.lab_status is not None:
             result['LabStatus'] = self.lab_status
+        if self.purchased is not None:
+            result['Purchased'] = self.purchased
         if self.remain_days is not None:
             result['RemainDays'] = self.remain_days
         if self.trail is not None:
@@ -6929,8 +7032,6 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
             self.access_key_id = m.get('AccessKeyId')
         if m.get('Authed') is not None:
             self.authed = m.get('Authed')
-        if m.get('Buyed') is not None:
-            self.buyed = m.get('Buyed')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
         if m.get('InstanceId') is not None:
@@ -6939,6 +7040,8 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
             self.instance_num = m.get('InstanceNum')
         if m.get('LabStatus') is not None:
             self.lab_status = m.get('LabStatus')
+        if m.get('Purchased') is not None:
+            self.purchased = m.get('Purchased')
         if m.get('RemainDays') is not None:
             self.remain_days = m.get('RemainDays')
         if m.get('Trail') is not None:
@@ -7123,9 +7226,11 @@ class ExecDatamaskRequest(TeaModel):
     def __init__(
         self,
         data: str = None,
+        lang: str = None,
         template_id: int = None,
     ):
         self.data = data
+        self.lang = lang
         self.template_id = template_id
 
     def validate(self):
@@ -7139,6 +7244,8 @@ class ExecDatamaskRequest(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data
+        if self.lang is not None:
+            result['Lang'] = self.lang
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         return result
@@ -7147,6 +7254,8 @@ class ExecDatamaskRequest(TeaModel):
         m = m or dict()
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         return self
@@ -7787,6 +7896,103 @@ class ModifyEventTypeStatusResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ModifyEventTypeStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyReportTaskStatusRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        report_task_status: int = None,
+    ):
+        self.lang = lang
+        self.report_task_status = report_task_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.report_task_status is not None:
+            result['ReportTaskStatus'] = self.report_task_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('ReportTaskStatus') is not None:
+            self.report_task_status = m.get('ReportTaskStatus')
+        return self
+
+
+class ModifyReportTaskStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyReportTaskStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyReportTaskStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyReportTaskStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

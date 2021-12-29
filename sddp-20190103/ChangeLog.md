@@ -1,3 +1,7 @@
+2021-12-29 Version: 1.0.5
+- Make CreateSlrRole Public.
+- Add ModifyReportTaskStatus Api.
+
 2021-11-22 Version: 1.0.4
 - Fix some apis.
 
