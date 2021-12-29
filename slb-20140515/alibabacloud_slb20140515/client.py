@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_slb20140515 import models as slb_20140515_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -91,12 +92,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddAccessControlListEntryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_entrys):
+            query['AclEntrys'] = request.acl_entrys
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddAccessControlListEntry',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.AddAccessControlListEntryResponse(),
-            self.do_rpcrequest('AddAccessControlListEntry', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_access_control_list_entry_with_options_async(
@@ -105,12 +132,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddAccessControlListEntryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_entrys):
+            query['AclEntrys'] = request.acl_entrys
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddAccessControlListEntry',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.AddAccessControlListEntryResponse(),
-            await self.do_rpcrequest_async('AddAccessControlListEntry', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_access_control_list_entry(
@@ -133,12 +186,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddBackendServersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_servers):
+            query['BackendServers'] = request.backend_servers
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddBackendServers',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.AddBackendServersResponse(),
-            self.do_rpcrequest('AddBackendServers', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_backend_servers_with_options_async(
@@ -147,12 +226,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddBackendServersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_servers):
+            query['BackendServers'] = request.backend_servers
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddBackendServers',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.AddBackendServersResponse(),
-            await self.do_rpcrequest_async('AddBackendServers', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_backend_servers(
@@ -175,12 +280,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddListenerWhiteListItemResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_items):
+            query['SourceItems'] = request.source_items
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddListenerWhiteListItem',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.AddListenerWhiteListItemResponse(),
-            self.do_rpcrequest('AddListenerWhiteListItem', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_listener_white_list_item_with_options_async(
@@ -189,12 +324,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddListenerWhiteListItemResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_items):
+            query['SourceItems'] = request.source_items
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddListenerWhiteListItem',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.AddListenerWhiteListItemResponse(),
-            await self.do_rpcrequest_async('AddListenerWhiteListItem', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_listener_white_list_item(
@@ -217,12 +382,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddTags',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.AddTagsResponse(),
-            self.do_rpcrequest('AddTags', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_tags_with_options_async(
@@ -231,12 +422,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddTags',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.AddTagsResponse(),
-            await self.do_rpcrequest_async('AddTags', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_tags(
@@ -259,12 +476,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddVServerGroupBackendServersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_servers):
+            query['BackendServers'] = request.backend_servers
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddVServerGroupBackendServers',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.AddVServerGroupBackendServersResponse(),
-            self.do_rpcrequest('AddVServerGroupBackendServers', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_vserver_group_backend_servers_with_options_async(
@@ -273,12 +516,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddVServerGroupBackendServersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_servers):
+            query['BackendServers'] = request.backend_servers
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddVServerGroupBackendServers',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.AddVServerGroupBackendServersResponse(),
-            await self.do_rpcrequest_async('AddVServerGroupBackendServers', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_vserver_group_backend_servers(
@@ -301,12 +570,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateAccessControlListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_name):
+            query['AclName'] = request.acl_name
+        if not UtilClient.is_unset(request.address_ipversion):
+            query['AddressIPVersion'] = request.address_ipversion
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAccessControlList',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateAccessControlListResponse(),
-            self.do_rpcrequest('CreateAccessControlList', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_access_control_list_with_options_async(
@@ -315,12 +612,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateAccessControlListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_name):
+            query['AclName'] = request.acl_name
+        if not UtilClient.is_unset(request.address_ipversion):
+            query['AddressIPVersion'] = request.address_ipversion
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAccessControlList',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateAccessControlListResponse(),
-            await self.do_rpcrequest_async('CreateAccessControlList', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_access_control_list(
@@ -343,12 +668,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateDomainExtensionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.server_certificate_id):
+            query['ServerCertificateId'] = request.server_certificate_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDomainExtension',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateDomainExtensionResponse(),
-            self.do_rpcrequest('CreateDomainExtension', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_domain_extension_with_options_async(
@@ -357,12 +712,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateDomainExtensionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.server_certificate_id):
+            query['ServerCertificateId'] = request.server_certificate_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDomainExtension',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateDomainExtensionResponse(),
-            await self.do_rpcrequest_async('CreateDomainExtension', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_domain_extension(
@@ -385,12 +770,74 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.address_ipversion):
+            query['AddressIPVersion'] = request.address_ipversion
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.delete_protection):
+            query['DeleteProtection'] = request.delete_protection
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.load_balancer_name):
+            query['LoadBalancerName'] = request.load_balancer_name
+        if not UtilClient.is_unset(request.load_balancer_spec):
+            query['LoadBalancerSpec'] = request.load_balancer_spec
+        if not UtilClient.is_unset(request.master_zone_id):
+            query['MasterZoneId'] = request.master_zone_id
+        if not UtilClient.is_unset(request.modification_protection_reason):
+            query['ModificationProtectionReason'] = request.modification_protection_reason
+        if not UtilClient.is_unset(request.modification_protection_status):
+            query['ModificationProtectionStatus'] = request.modification_protection_status
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.slave_zone_id):
+            query['SlaveZoneId'] = request.slave_zone_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLoadBalancer',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateLoadBalancerResponse(),
-            self.do_rpcrequest('CreateLoadBalancer', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_load_balancer_with_options_async(
@@ -399,12 +846,74 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.address_ipversion):
+            query['AddressIPVersion'] = request.address_ipversion
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.delete_protection):
+            query['DeleteProtection'] = request.delete_protection
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.load_balancer_name):
+            query['LoadBalancerName'] = request.load_balancer_name
+        if not UtilClient.is_unset(request.load_balancer_spec):
+            query['LoadBalancerSpec'] = request.load_balancer_spec
+        if not UtilClient.is_unset(request.master_zone_id):
+            query['MasterZoneId'] = request.master_zone_id
+        if not UtilClient.is_unset(request.modification_protection_reason):
+            query['ModificationProtectionReason'] = request.modification_protection_reason
+        if not UtilClient.is_unset(request.modification_protection_status):
+            query['ModificationProtectionStatus'] = request.modification_protection_status
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.slave_zone_id):
+            query['SlaveZoneId'] = request.slave_zone_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLoadBalancer',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateLoadBalancerResponse(),
-            await self.do_rpcrequest_async('CreateLoadBalancer', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_load_balancer(
@@ -427,12 +936,100 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerHTTPListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_status):
+            query['AclStatus'] = request.acl_status
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.backend_server_port):
+            query['BackendServerPort'] = request.backend_server_port
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.cookie):
+            query['Cookie'] = request.cookie
+        if not UtilClient.is_unset(request.cookie_timeout):
+            query['CookieTimeout'] = request.cookie_timeout
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.forward_port):
+            query['ForwardPort'] = request.forward_port
+        if not UtilClient.is_unset(request.gzip):
+            query['Gzip'] = request.gzip
+        if not UtilClient.is_unset(request.health_check):
+            query['HealthCheck'] = request.health_check
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_domain):
+            query['HealthCheckDomain'] = request.health_check_domain
+        if not UtilClient.is_unset(request.health_check_http_code):
+            query['HealthCheckHttpCode'] = request.health_check_http_code
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_method):
+            query['HealthCheckMethod'] = request.health_check_method
+        if not UtilClient.is_unset(request.health_check_timeout):
+            query['HealthCheckTimeout'] = request.health_check_timeout
+        if not UtilClient.is_unset(request.health_check_uri):
+            query['HealthCheckURI'] = request.health_check_uri
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.idle_timeout):
+            query['IdleTimeout'] = request.idle_timeout
+        if not UtilClient.is_unset(request.listener_forward):
+            query['ListenerForward'] = request.listener_forward
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_timeout):
+            query['RequestTimeout'] = request.request_timeout
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.sticky_session):
+            query['StickySession'] = request.sticky_session
+        if not UtilClient.is_unset(request.sticky_session_type):
+            query['StickySessionType'] = request.sticky_session_type
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
+        if not UtilClient.is_unset(request.xforwarded_for):
+            query['XForwardedFor'] = request.xforwarded_for
+        if not UtilClient.is_unset(request.xforwarded_for__slbid):
+            query['XForwardedFor_SLBID'] = request.xforwarded_for__slbid
+        if not UtilClient.is_unset(request.xforwarded_for__slbip):
+            query['XForwardedFor_SLBIP'] = request.xforwarded_for__slbip
+        if not UtilClient.is_unset(request.xforwarded_for_proto):
+            query['XForwardedFor_proto'] = request.xforwarded_for_proto
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLoadBalancerHTTPListener',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateLoadBalancerHTTPListenerResponse(),
-            self.do_rpcrequest('CreateLoadBalancerHTTPListener', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_load_balancer_httplistener_with_options_async(
@@ -441,12 +1038,100 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerHTTPListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_status):
+            query['AclStatus'] = request.acl_status
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.backend_server_port):
+            query['BackendServerPort'] = request.backend_server_port
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.cookie):
+            query['Cookie'] = request.cookie
+        if not UtilClient.is_unset(request.cookie_timeout):
+            query['CookieTimeout'] = request.cookie_timeout
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.forward_port):
+            query['ForwardPort'] = request.forward_port
+        if not UtilClient.is_unset(request.gzip):
+            query['Gzip'] = request.gzip
+        if not UtilClient.is_unset(request.health_check):
+            query['HealthCheck'] = request.health_check
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_domain):
+            query['HealthCheckDomain'] = request.health_check_domain
+        if not UtilClient.is_unset(request.health_check_http_code):
+            query['HealthCheckHttpCode'] = request.health_check_http_code
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_method):
+            query['HealthCheckMethod'] = request.health_check_method
+        if not UtilClient.is_unset(request.health_check_timeout):
+            query['HealthCheckTimeout'] = request.health_check_timeout
+        if not UtilClient.is_unset(request.health_check_uri):
+            query['HealthCheckURI'] = request.health_check_uri
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.idle_timeout):
+            query['IdleTimeout'] = request.idle_timeout
+        if not UtilClient.is_unset(request.listener_forward):
+            query['ListenerForward'] = request.listener_forward
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_timeout):
+            query['RequestTimeout'] = request.request_timeout
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.sticky_session):
+            query['StickySession'] = request.sticky_session
+        if not UtilClient.is_unset(request.sticky_session_type):
+            query['StickySessionType'] = request.sticky_session_type
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
+        if not UtilClient.is_unset(request.xforwarded_for):
+            query['XForwardedFor'] = request.xforwarded_for
+        if not UtilClient.is_unset(request.xforwarded_for__slbid):
+            query['XForwardedFor_SLBID'] = request.xforwarded_for__slbid
+        if not UtilClient.is_unset(request.xforwarded_for__slbip):
+            query['XForwardedFor_SLBIP'] = request.xforwarded_for__slbip
+        if not UtilClient.is_unset(request.xforwarded_for_proto):
+            query['XForwardedFor_proto'] = request.xforwarded_for_proto
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLoadBalancerHTTPListener',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateLoadBalancerHTTPListenerResponse(),
-            await self.do_rpcrequest_async('CreateLoadBalancerHTTPListener', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_load_balancer_httplistener(
@@ -469,12 +1154,104 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerHTTPSListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_status):
+            query['AclStatus'] = request.acl_status
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.backend_server_port):
+            query['BackendServerPort'] = request.backend_server_port
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.cacertificate_id):
+            query['CACertificateId'] = request.cacertificate_id
+        if not UtilClient.is_unset(request.cookie):
+            query['Cookie'] = request.cookie
+        if not UtilClient.is_unset(request.cookie_timeout):
+            query['CookieTimeout'] = request.cookie_timeout
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_http_2):
+            query['EnableHttp2'] = request.enable_http_2
+        if not UtilClient.is_unset(request.gzip):
+            query['Gzip'] = request.gzip
+        if not UtilClient.is_unset(request.health_check):
+            query['HealthCheck'] = request.health_check
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_domain):
+            query['HealthCheckDomain'] = request.health_check_domain
+        if not UtilClient.is_unset(request.health_check_http_code):
+            query['HealthCheckHttpCode'] = request.health_check_http_code
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_method):
+            query['HealthCheckMethod'] = request.health_check_method
+        if not UtilClient.is_unset(request.health_check_timeout):
+            query['HealthCheckTimeout'] = request.health_check_timeout
+        if not UtilClient.is_unset(request.health_check_uri):
+            query['HealthCheckURI'] = request.health_check_uri
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.idle_timeout):
+            query['IdleTimeout'] = request.idle_timeout
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_timeout):
+            query['RequestTimeout'] = request.request_timeout
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.server_certificate_id):
+            query['ServerCertificateId'] = request.server_certificate_id
+        if not UtilClient.is_unset(request.sticky_session):
+            query['StickySession'] = request.sticky_session
+        if not UtilClient.is_unset(request.sticky_session_type):
+            query['StickySessionType'] = request.sticky_session_type
+        if not UtilClient.is_unset(request.tlscipher_policy):
+            query['TLSCipherPolicy'] = request.tlscipher_policy
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
+        if not UtilClient.is_unset(request.xforwarded_for):
+            query['XForwardedFor'] = request.xforwarded_for
+        if not UtilClient.is_unset(request.xforwarded_for__slbid):
+            query['XForwardedFor_SLBID'] = request.xforwarded_for__slbid
+        if not UtilClient.is_unset(request.xforwarded_for__slbip):
+            query['XForwardedFor_SLBIP'] = request.xforwarded_for__slbip
+        if not UtilClient.is_unset(request.xforwarded_for_proto):
+            query['XForwardedFor_proto'] = request.xforwarded_for_proto
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLoadBalancerHTTPSListener',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateLoadBalancerHTTPSListenerResponse(),
-            self.do_rpcrequest('CreateLoadBalancerHTTPSListener', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_load_balancer_httpslistener_with_options_async(
@@ -483,12 +1260,104 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerHTTPSListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_status):
+            query['AclStatus'] = request.acl_status
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.backend_server_port):
+            query['BackendServerPort'] = request.backend_server_port
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.cacertificate_id):
+            query['CACertificateId'] = request.cacertificate_id
+        if not UtilClient.is_unset(request.cookie):
+            query['Cookie'] = request.cookie
+        if not UtilClient.is_unset(request.cookie_timeout):
+            query['CookieTimeout'] = request.cookie_timeout
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_http_2):
+            query['EnableHttp2'] = request.enable_http_2
+        if not UtilClient.is_unset(request.gzip):
+            query['Gzip'] = request.gzip
+        if not UtilClient.is_unset(request.health_check):
+            query['HealthCheck'] = request.health_check
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_domain):
+            query['HealthCheckDomain'] = request.health_check_domain
+        if not UtilClient.is_unset(request.health_check_http_code):
+            query['HealthCheckHttpCode'] = request.health_check_http_code
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_method):
+            query['HealthCheckMethod'] = request.health_check_method
+        if not UtilClient.is_unset(request.health_check_timeout):
+            query['HealthCheckTimeout'] = request.health_check_timeout
+        if not UtilClient.is_unset(request.health_check_uri):
+            query['HealthCheckURI'] = request.health_check_uri
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.idle_timeout):
+            query['IdleTimeout'] = request.idle_timeout
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_timeout):
+            query['RequestTimeout'] = request.request_timeout
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.server_certificate_id):
+            query['ServerCertificateId'] = request.server_certificate_id
+        if not UtilClient.is_unset(request.sticky_session):
+            query['StickySession'] = request.sticky_session
+        if not UtilClient.is_unset(request.sticky_session_type):
+            query['StickySessionType'] = request.sticky_session_type
+        if not UtilClient.is_unset(request.tlscipher_policy):
+            query['TLSCipherPolicy'] = request.tlscipher_policy
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
+        if not UtilClient.is_unset(request.xforwarded_for):
+            query['XForwardedFor'] = request.xforwarded_for
+        if not UtilClient.is_unset(request.xforwarded_for__slbid):
+            query['XForwardedFor_SLBID'] = request.xforwarded_for__slbid
+        if not UtilClient.is_unset(request.xforwarded_for__slbip):
+            query['XForwardedFor_SLBIP'] = request.xforwarded_for__slbip
+        if not UtilClient.is_unset(request.xforwarded_for_proto):
+            query['XForwardedFor_proto'] = request.xforwarded_for_proto
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLoadBalancerHTTPSListener',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateLoadBalancerHTTPSListenerResponse(),
-            await self.do_rpcrequest_async('CreateLoadBalancerHTTPSListener', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_load_balancer_httpslistener(
@@ -511,12 +1380,82 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerTCPListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_status):
+            query['AclStatus'] = request.acl_status
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.backend_server_port):
+            query['BackendServerPort'] = request.backend_server_port
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.connection_drain):
+            query['ConnectionDrain'] = request.connection_drain
+        if not UtilClient.is_unset(request.connection_drain_timeout):
+            query['ConnectionDrainTimeout'] = request.connection_drain_timeout
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.established_timeout):
+            query['EstablishedTimeout'] = request.established_timeout
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_connect_timeout):
+            query['HealthCheckConnectTimeout'] = request.health_check_connect_timeout
+        if not UtilClient.is_unset(request.health_check_domain):
+            query['HealthCheckDomain'] = request.health_check_domain
+        if not UtilClient.is_unset(request.health_check_http_code):
+            query['HealthCheckHttpCode'] = request.health_check_http_code
+        if not UtilClient.is_unset(request.health_check_type):
+            query['HealthCheckType'] = request.health_check_type
+        if not UtilClient.is_unset(request.health_check_uri):
+            query['HealthCheckURI'] = request.health_check_uri
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.master_slave_server_group_id):
+            query['MasterSlaveServerGroupId'] = request.master_slave_server_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.persistence_timeout):
+            query['PersistenceTimeout'] = request.persistence_timeout
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['healthCheckInterval'] = request.health_check_interval
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLoadBalancerTCPListener',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateLoadBalancerTCPListenerResponse(),
-            self.do_rpcrequest('CreateLoadBalancerTCPListener', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_load_balancer_tcplistener_with_options_async(
@@ -525,12 +1464,82 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerTCPListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_status):
+            query['AclStatus'] = request.acl_status
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.backend_server_port):
+            query['BackendServerPort'] = request.backend_server_port
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.connection_drain):
+            query['ConnectionDrain'] = request.connection_drain
+        if not UtilClient.is_unset(request.connection_drain_timeout):
+            query['ConnectionDrainTimeout'] = request.connection_drain_timeout
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.established_timeout):
+            query['EstablishedTimeout'] = request.established_timeout
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_connect_timeout):
+            query['HealthCheckConnectTimeout'] = request.health_check_connect_timeout
+        if not UtilClient.is_unset(request.health_check_domain):
+            query['HealthCheckDomain'] = request.health_check_domain
+        if not UtilClient.is_unset(request.health_check_http_code):
+            query['HealthCheckHttpCode'] = request.health_check_http_code
+        if not UtilClient.is_unset(request.health_check_type):
+            query['HealthCheckType'] = request.health_check_type
+        if not UtilClient.is_unset(request.health_check_uri):
+            query['HealthCheckURI'] = request.health_check_uri
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.master_slave_server_group_id):
+            query['MasterSlaveServerGroupId'] = request.master_slave_server_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.persistence_timeout):
+            query['PersistenceTimeout'] = request.persistence_timeout
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['healthCheckInterval'] = request.health_check_interval
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLoadBalancerTCPListener',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateLoadBalancerTCPListenerResponse(),
-            await self.do_rpcrequest_async('CreateLoadBalancerTCPListener', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_load_balancer_tcplistener(
@@ -553,12 +1562,70 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerUDPListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_status):
+            query['AclStatus'] = request.acl_status
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.backend_server_port):
+            query['BackendServerPort'] = request.backend_server_port
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_connect_timeout):
+            query['HealthCheckConnectTimeout'] = request.health_check_connect_timeout
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.master_slave_server_group_id):
+            query['MasterSlaveServerGroupId'] = request.master_slave_server_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
+        if not UtilClient.is_unset(request.health_check_exp):
+            query['healthCheckExp'] = request.health_check_exp
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['healthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_req):
+            query['healthCheckReq'] = request.health_check_req
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLoadBalancerUDPListener',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateLoadBalancerUDPListenerResponse(),
-            self.do_rpcrequest('CreateLoadBalancerUDPListener', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_load_balancer_udplistener_with_options_async(
@@ -567,12 +1634,70 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerUDPListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_status):
+            query['AclStatus'] = request.acl_status
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.backend_server_port):
+            query['BackendServerPort'] = request.backend_server_port
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_connect_timeout):
+            query['HealthCheckConnectTimeout'] = request.health_check_connect_timeout
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.master_slave_server_group_id):
+            query['MasterSlaveServerGroupId'] = request.master_slave_server_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
+        if not UtilClient.is_unset(request.health_check_exp):
+            query['healthCheckExp'] = request.health_check_exp
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['healthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_req):
+            query['healthCheckReq'] = request.health_check_req
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLoadBalancerUDPListener',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateLoadBalancerUDPListenerResponse(),
-            await self.do_rpcrequest_async('CreateLoadBalancerUDPListener', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_load_balancer_udplistener(
@@ -595,12 +1720,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateMasterSlaveServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.master_slave_backend_servers):
+            query['MasterSlaveBackendServers'] = request.master_slave_backend_servers
+        if not UtilClient.is_unset(request.master_slave_server_group_name):
+            query['MasterSlaveServerGroupName'] = request.master_slave_server_group_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMasterSlaveServerGroup',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateMasterSlaveServerGroupResponse(),
-            self.do_rpcrequest('CreateMasterSlaveServerGroup', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_master_slave_server_group_with_options_async(
@@ -609,12 +1762,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateMasterSlaveServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.master_slave_backend_servers):
+            query['MasterSlaveBackendServers'] = request.master_slave_backend_servers
+        if not UtilClient.is_unset(request.master_slave_server_group_name):
+            query['MasterSlaveServerGroupName'] = request.master_slave_server_group_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMasterSlaveServerGroup',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateMasterSlaveServerGroupResponse(),
-            await self.do_rpcrequest_async('CreateMasterSlaveServerGroup', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_master_slave_server_group(
@@ -637,12 +1818,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_list):
+            query['RuleList'] = request.rule_list
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRules',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateRulesResponse(),
-            self.do_rpcrequest('CreateRules', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_rules_with_options_async(
@@ -651,12 +1862,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_list):
+            query['RuleList'] = request.rule_list
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRules',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateRulesResponse(),
-            await self.do_rpcrequest_async('CreateRules', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_rules(
@@ -679,12 +1920,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateTLSCipherPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ciphers):
+            query['Ciphers'] = request.ciphers
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tlsversions):
+            query['TLSVersions'] = request.tlsversions
+        if not UtilClient.is_unset(request.access_key_id):
+            query['access_key_id'] = request.access_key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTLSCipherPolicy',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateTLSCipherPolicyResponse(),
-            self.do_rpcrequest('CreateTLSCipherPolicy', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_tlscipher_policy_with_options_async(
@@ -693,12 +1964,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateTLSCipherPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ciphers):
+            query['Ciphers'] = request.ciphers
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tlsversions):
+            query['TLSVersions'] = request.tlsversions
+        if not UtilClient.is_unset(request.access_key_id):
+            query['access_key_id'] = request.access_key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTLSCipherPolicy',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateTLSCipherPolicyResponse(),
-            await self.do_rpcrequest_async('CreateTLSCipherPolicy', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_tlscipher_policy(
@@ -721,12 +2022,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateVServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_servers):
+            query['BackendServers'] = request.backend_servers
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vserver_group_name):
+            query['VServerGroupName'] = request.vserver_group_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVServerGroup',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateVServerGroupResponse(),
-            self.do_rpcrequest('CreateVServerGroup', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_vserver_group_with_options_async(
@@ -735,12 +2064,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateVServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_servers):
+            query['BackendServers'] = request.backend_servers
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vserver_group_name):
+            query['VServerGroupName'] = request.vserver_group_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVServerGroup',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.CreateVServerGroupResponse(),
-            await self.do_rpcrequest_async('CreateVServerGroup', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_vserver_group(
@@ -763,12 +2120,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteAccessControlListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAccessControlList',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteAccessControlListResponse(),
-            self.do_rpcrequest('DeleteAccessControlList', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_access_control_list_with_options_async(
@@ -777,12 +2158,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteAccessControlListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAccessControlList',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteAccessControlListResponse(),
-            await self.do_rpcrequest_async('DeleteAccessControlList', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_access_control_list(
@@ -805,12 +2210,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteCACertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cacertificate_id):
+            query['CACertificateId'] = request.cacertificate_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCACertificate',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteCACertificateResponse(),
-            self.do_rpcrequest('DeleteCACertificate', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_cacertificate_with_options_async(
@@ -819,12 +2248,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteCACertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cacertificate_id):
+            query['CACertificateId'] = request.cacertificate_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCACertificate',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteCACertificateResponse(),
-            await self.do_rpcrequest_async('DeleteCACertificate', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_cacertificate(
@@ -847,12 +2300,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteDomainExtensionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_extension_id):
+            query['DomainExtensionId'] = request.domain_extension_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDomainExtension',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteDomainExtensionResponse(),
-            self.do_rpcrequest('DeleteDomainExtension', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_domain_extension_with_options_async(
@@ -861,12 +2338,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteDomainExtensionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_extension_id):
+            query['DomainExtensionId'] = request.domain_extension_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDomainExtension',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteDomainExtensionResponse(),
-            await self.do_rpcrequest_async('DeleteDomainExtension', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_domain_extension(
@@ -889,12 +2390,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteLoadBalancerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLoadBalancer',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteLoadBalancerResponse(),
-            self.do_rpcrequest('DeleteLoadBalancer', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_load_balancer_with_options_async(
@@ -903,12 +2428,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteLoadBalancerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLoadBalancer',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteLoadBalancerResponse(),
-            await self.do_rpcrequest_async('DeleteLoadBalancer', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_load_balancer(
@@ -931,12 +2480,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteLoadBalancerListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLoadBalancerListener',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteLoadBalancerListenerResponse(),
-            self.do_rpcrequest('DeleteLoadBalancerListener', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_load_balancer_listener_with_options_async(
@@ -945,12 +2522,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteLoadBalancerListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLoadBalancerListener',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteLoadBalancerListenerResponse(),
-            await self.do_rpcrequest_async('DeleteLoadBalancerListener', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_load_balancer_listener(
@@ -973,12 +2578,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteMasterSlaveServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.master_slave_server_group_id):
+            query['MasterSlaveServerGroupId'] = request.master_slave_server_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMasterSlaveServerGroup',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteMasterSlaveServerGroupResponse(),
-            self.do_rpcrequest('DeleteMasterSlaveServerGroup', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_master_slave_server_group_with_options_async(
@@ -987,12 +2616,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteMasterSlaveServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.master_slave_server_group_id):
+            query['MasterSlaveServerGroupId'] = request.master_slave_server_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMasterSlaveServerGroup',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteMasterSlaveServerGroupResponse(),
-            await self.do_rpcrequest_async('DeleteMasterSlaveServerGroup', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_master_slave_server_group(
@@ -1015,12 +2668,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_ids):
+            query['RuleIds'] = request.rule_ids
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRules',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteRulesResponse(),
-            self.do_rpcrequest('DeleteRules', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_rules_with_options_async(
@@ -1029,12 +2706,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_ids):
+            query['RuleIds'] = request.rule_ids
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRules',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteRulesResponse(),
-            await self.do_rpcrequest_async('DeleteRules', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_rules(
@@ -1057,12 +2758,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteServerCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.server_certificate_id):
+            query['ServerCertificateId'] = request.server_certificate_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteServerCertificate',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteServerCertificateResponse(),
-            self.do_rpcrequest('DeleteServerCertificate', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_server_certificate_with_options_async(
@@ -1071,12 +2796,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteServerCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.server_certificate_id):
+            query['ServerCertificateId'] = request.server_certificate_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteServerCertificate',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteServerCertificateResponse(),
-            await self.do_rpcrequest_async('DeleteServerCertificate', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_server_certificate(
@@ -1099,12 +2848,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteTLSCipherPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tlscipher_policy_id):
+            query['TLSCipherPolicyId'] = request.tlscipher_policy_id
+        if not UtilClient.is_unset(request.access_key_id):
+            query['access_key_id'] = request.access_key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTLSCipherPolicy',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteTLSCipherPolicyResponse(),
-            self.do_rpcrequest('DeleteTLSCipherPolicy', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_tlscipher_policy_with_options_async(
@@ -1113,12 +2888,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteTLSCipherPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tlscipher_policy_id):
+            query['TLSCipherPolicyId'] = request.tlscipher_policy_id
+        if not UtilClient.is_unset(request.access_key_id):
+            query['access_key_id'] = request.access_key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTLSCipherPolicy',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteTLSCipherPolicyResponse(),
-            await self.do_rpcrequest_async('DeleteTLSCipherPolicy', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_tlscipher_policy(
@@ -1141,12 +2942,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteVServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVServerGroup',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteVServerGroupResponse(),
-            self.do_rpcrequest('DeleteVServerGroup', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_vserver_group_with_options_async(
@@ -1155,12 +2980,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteVServerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVServerGroup',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DeleteVServerGroupResponse(),
-            await self.do_rpcrequest_async('DeleteVServerGroup', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_vserver_group(
@@ -1183,12 +3032,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeAccessControlListAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_entry_comment):
+            query['AclEntryComment'] = request.acl_entry_comment
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessControlListAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeAccessControlListAttributeResponse(),
-            self.do_rpcrequest('DescribeAccessControlListAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_access_control_list_attribute_with_options_async(
@@ -1197,12 +3072,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeAccessControlListAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_entry_comment):
+            query['AclEntryComment'] = request.acl_entry_comment
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessControlListAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeAccessControlListAttributeResponse(),
-            await self.do_rpcrequest_async('DescribeAccessControlListAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_access_control_list_attribute(
@@ -1225,12 +3126,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeAccessControlListsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_name):
+            query['AclName'] = request.acl_name
+        if not UtilClient.is_unset(request.address_ipversion):
+            query['AddressIPVersion'] = request.address_ipversion
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessControlLists',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeAccessControlListsResponse(),
-            self.do_rpcrequest('DescribeAccessControlLists', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_access_control_lists_with_options_async(
@@ -1239,12 +3172,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeAccessControlListsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_name):
+            query['AclName'] = request.acl_name
+        if not UtilClient.is_unset(request.address_ipversion):
+            query['AddressIPVersion'] = request.address_ipversion
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessControlLists',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeAccessControlListsResponse(),
-            await self.do_rpcrequest_async('DescribeAccessControlLists', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_access_control_lists(
@@ -1267,12 +3232,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeAvailableResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_ipversion):
+            query['AddressIPVersion'] = request.address_ipversion
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAvailableResource',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeAvailableResourceResponse(),
-            self.do_rpcrequest('DescribeAvailableResource', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_available_resource_with_options_async(
@@ -1281,12 +3272,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeAvailableResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_ipversion):
+            query['AddressIPVersion'] = request.address_ipversion
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAvailableResource',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeAvailableResourceResponse(),
-            await self.do_rpcrequest_async('DescribeAvailableResource', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_available_resource(
@@ -1309,12 +3326,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeCACertificatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cacertificate_id):
+            query['CACertificateId'] = request.cacertificate_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCACertificates',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeCACertificatesResponse(),
-            self.do_rpcrequest('DescribeCACertificates', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cacertificates_with_options_async(
@@ -1323,12 +3366,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeCACertificatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cacertificate_id):
+            query['CACertificateId'] = request.cacertificate_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCACertificates',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeCACertificatesResponse(),
-            await self.do_rpcrequest_async('DescribeCACertificates', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cacertificates(
@@ -1351,12 +3420,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeDomainExtensionAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_extension_id):
+            query['DomainExtensionId'] = request.domain_extension_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainExtensionAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeDomainExtensionAttributeResponse(),
-            self.do_rpcrequest('DescribeDomainExtensionAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_extension_attribute_with_options_async(
@@ -1365,12 +3458,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeDomainExtensionAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_extension_id):
+            query['DomainExtensionId'] = request.domain_extension_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainExtensionAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeDomainExtensionAttributeResponse(),
-            await self.do_rpcrequest_async('DescribeDomainExtensionAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_extension_attribute(
@@ -1393,12 +3510,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeDomainExtensionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_extension_id):
+            query['DomainExtensionId'] = request.domain_extension_id
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainExtensions',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeDomainExtensionsResponse(),
-            self.do_rpcrequest('DescribeDomainExtensions', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_domain_extensions_with_options_async(
@@ -1407,12 +3552,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeDomainExtensionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_extension_id):
+            query['DomainExtensionId'] = request.domain_extension_id
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainExtensions',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeDomainExtensionsResponse(),
-            await self.do_rpcrequest_async('DescribeDomainExtensions', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_domain_extensions(
@@ -1435,12 +3608,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeHealthStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHealthStatus',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeHealthStatusResponse(),
-            self.do_rpcrequest('DescribeHealthStatus', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_health_status_with_options_async(
@@ -1449,12 +3650,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeHealthStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHealthStatus',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeHealthStatusResponse(),
-            await self.do_rpcrequest_async('DescribeHealthStatus', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_health_status(
@@ -1477,12 +3706,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeListenerAccessControlAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeListenerAccessControlAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeListenerAccessControlAttributeResponse(),
-            self.do_rpcrequest('DescribeListenerAccessControlAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_listener_access_control_attribute_with_options_async(
@@ -1491,12 +3748,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeListenerAccessControlAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeListenerAccessControlAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeListenerAccessControlAttributeResponse(),
-            await self.do_rpcrequest_async('DescribeListenerAccessControlAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_listener_access_control_attribute(
@@ -1519,12 +3804,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoadBalancerAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeLoadBalancerAttributeResponse(),
-            self.do_rpcrequest('DescribeLoadBalancerAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_load_balancer_attribute_with_options_async(
@@ -1533,12 +3842,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoadBalancerAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeLoadBalancerAttributeResponse(),
-            await self.do_rpcrequest_async('DescribeLoadBalancerAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_load_balancer_attribute(
@@ -1561,12 +3894,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerHTTPListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoadBalancerHTTPListenerAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeLoadBalancerHTTPListenerAttributeResponse(),
-            self.do_rpcrequest('DescribeLoadBalancerHTTPListenerAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_load_balancer_httplistener_attribute_with_options_async(
@@ -1575,12 +3934,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerHTTPListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoadBalancerHTTPListenerAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeLoadBalancerHTTPListenerAttributeResponse(),
-            await self.do_rpcrequest_async('DescribeLoadBalancerHTTPListenerAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_load_balancer_httplistener_attribute(
@@ -1603,12 +3988,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerHTTPSListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoadBalancerHTTPSListenerAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeLoadBalancerHTTPSListenerAttributeResponse(),
-            self.do_rpcrequest('DescribeLoadBalancerHTTPSListenerAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_load_balancer_httpslistener_attribute_with_options_async(
@@ -1617,12 +4028,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerHTTPSListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoadBalancerHTTPSListenerAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeLoadBalancerHTTPSListenerAttributeResponse(),
-            await self.do_rpcrequest_async('DescribeLoadBalancerHTTPSListenerAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_load_balancer_httpslistener_attribute(
@@ -1645,12 +4082,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerListenersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoadBalancerListeners',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeLoadBalancerListenersResponse(),
-            self.do_rpcrequest('DescribeLoadBalancerListeners', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_load_balancer_listeners_with_options_async(
@@ -1659,12 +4126,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerListenersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoadBalancerListeners',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeLoadBalancerListenersResponse(),
-            await self.do_rpcrequest_async('DescribeLoadBalancerListeners', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_load_balancer_listeners(
@@ -1681,60 +4178,44 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_load_balancer_listeners_with_options_async(request, runtime)
 
-    def describe_load_balancers_with_options(
-        self,
-        request: slb_20140515_models.DescribeLoadBalancersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> slb_20140515_models.DescribeLoadBalancersResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            slb_20140515_models.DescribeLoadBalancersResponse(),
-            self.do_rpcrequest('DescribeLoadBalancers', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_load_balancers_with_options_async(
-        self,
-        request: slb_20140515_models.DescribeLoadBalancersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> slb_20140515_models.DescribeLoadBalancersResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            slb_20140515_models.DescribeLoadBalancersResponse(),
-            await self.do_rpcrequest_async('DescribeLoadBalancers', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_load_balancers(
-        self,
-        request: slb_20140515_models.DescribeLoadBalancersRequest,
-    ) -> slb_20140515_models.DescribeLoadBalancersResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_load_balancers_with_options(request, runtime)
-
-    async def describe_load_balancers_async(
-        self,
-        request: slb_20140515_models.DescribeLoadBalancersRequest,
-    ) -> slb_20140515_models.DescribeLoadBalancersResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_load_balancers_with_options_async(request, runtime)
-
     def describe_load_balancer_tcplistener_attribute_with_options(
         self,
         request: slb_20140515_models.DescribeLoadBalancerTCPListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerTCPListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoadBalancerTCPListenerAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeLoadBalancerTCPListenerAttributeResponse(),
-            self.do_rpcrequest('DescribeLoadBalancerTCPListenerAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_load_balancer_tcplistener_attribute_with_options_async(
@@ -1743,12 +4224,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerTCPListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoadBalancerTCPListenerAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeLoadBalancerTCPListenerAttributeResponse(),
-            await self.do_rpcrequest_async('DescribeLoadBalancerTCPListenerAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_load_balancer_tcplistener_attribute(
@@ -1771,12 +4278,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerUDPListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoadBalancerUDPListenerAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeLoadBalancerUDPListenerAttributeResponse(),
-            self.do_rpcrequest('DescribeLoadBalancerUDPListenerAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_load_balancer_udplistener_attribute_with_options_async(
@@ -1785,12 +4318,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerUDPListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoadBalancerUDPListenerAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeLoadBalancerUDPListenerAttributeResponse(),
-            await self.do_rpcrequest_async('DescribeLoadBalancerUDPListenerAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_load_balancer_udplistener_attribute(
@@ -1807,18 +4366,204 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_load_balancer_udplistener_attribute_with_options_async(request, runtime)
 
+    def describe_load_balancers_with_options(
+        self,
+        request: slb_20140515_models.DescribeLoadBalancersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> slb_20140515_models.DescribeLoadBalancersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.address_ipversion):
+            query['AddressIPVersion'] = request.address_ipversion
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.load_balancer_name):
+            query['LoadBalancerName'] = request.load_balancer_name
+        if not UtilClient.is_unset(request.load_balancer_status):
+            query['LoadBalancerStatus'] = request.load_balancer_status
+        if not UtilClient.is_unset(request.master_zone_id):
+            query['MasterZoneId'] = request.master_zone_id
+        if not UtilClient.is_unset(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.server_id):
+            query['ServerId'] = request.server_id
+        if not UtilClient.is_unset(request.server_intranet_address):
+            query['ServerIntranetAddress'] = request.server_intranet_address
+        if not UtilClient.is_unset(request.slave_zone_id):
+            query['SlaveZoneId'] = request.slave_zone_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoadBalancers',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            slb_20140515_models.DescribeLoadBalancersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_load_balancers_with_options_async(
+        self,
+        request: slb_20140515_models.DescribeLoadBalancersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> slb_20140515_models.DescribeLoadBalancersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.address_ipversion):
+            query['AddressIPVersion'] = request.address_ipversion
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.load_balancer_name):
+            query['LoadBalancerName'] = request.load_balancer_name
+        if not UtilClient.is_unset(request.load_balancer_status):
+            query['LoadBalancerStatus'] = request.load_balancer_status
+        if not UtilClient.is_unset(request.master_zone_id):
+            query['MasterZoneId'] = request.master_zone_id
+        if not UtilClient.is_unset(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.server_id):
+            query['ServerId'] = request.server_id
+        if not UtilClient.is_unset(request.server_intranet_address):
+            query['ServerIntranetAddress'] = request.server_intranet_address
+        if not UtilClient.is_unset(request.slave_zone_id):
+            query['SlaveZoneId'] = request.slave_zone_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLoadBalancers',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            slb_20140515_models.DescribeLoadBalancersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_load_balancers(
+        self,
+        request: slb_20140515_models.DescribeLoadBalancersRequest,
+    ) -> slb_20140515_models.DescribeLoadBalancersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_load_balancers_with_options(request, runtime)
+
+    async def describe_load_balancers_async(
+        self,
+        request: slb_20140515_models.DescribeLoadBalancersRequest,
+    ) -> slb_20140515_models.DescribeLoadBalancersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_load_balancers_with_options_async(request, runtime)
+
     def describe_master_slave_server_group_attribute_with_options(
         self,
         request: slb_20140515_models.DescribeMasterSlaveServerGroupAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeMasterSlaveServerGroupAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.master_slave_server_group_id):
+            query['MasterSlaveServerGroupId'] = request.master_slave_server_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMasterSlaveServerGroupAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeMasterSlaveServerGroupAttributeResponse(),
-            self.do_rpcrequest('DescribeMasterSlaveServerGroupAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_master_slave_server_group_attribute_with_options_async(
@@ -1827,12 +4572,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeMasterSlaveServerGroupAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.master_slave_server_group_id):
+            query['MasterSlaveServerGroupId'] = request.master_slave_server_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMasterSlaveServerGroupAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeMasterSlaveServerGroupAttributeResponse(),
-            await self.do_rpcrequest_async('DescribeMasterSlaveServerGroupAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_master_slave_server_group_attribute(
@@ -1855,12 +4624,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeMasterSlaveServerGroupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.include_listener):
+            query['IncludeListener'] = request.include_listener
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMasterSlaveServerGroups',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeMasterSlaveServerGroupsResponse(),
-            self.do_rpcrequest('DescribeMasterSlaveServerGroups', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_master_slave_server_groups_with_options_async(
@@ -1869,12 +4664,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeMasterSlaveServerGroupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.include_listener):
+            query['IncludeListener'] = request.include_listener
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMasterSlaveServerGroups',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeMasterSlaveServerGroupsResponse(),
-            await self.do_rpcrequest_async('DescribeMasterSlaveServerGroups', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_master_slave_server_groups(
@@ -1897,12 +4718,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeRegionsResponse(),
-            self.do_rpcrequest('DescribeRegions', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_regions_with_options_async(
@@ -1911,12 +4756,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeRegionsResponse(),
-            await self.do_rpcrequest_async('DescribeRegions', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_regions(
@@ -1939,12 +4808,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeRuleAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRuleAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeRuleAttributeResponse(),
-            self.do_rpcrequest('DescribeRuleAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_rule_attribute_with_options_async(
@@ -1953,12 +4846,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeRuleAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRuleAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeRuleAttributeResponse(),
-            await self.do_rpcrequest_async('DescribeRuleAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_rule_attribute(
@@ -1981,12 +4898,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRules',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeRulesResponse(),
-            self.do_rpcrequest('DescribeRules', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_rules_with_options_async(
@@ -1995,12 +4940,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeRulesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRules',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeRulesResponse(),
-            await self.do_rpcrequest_async('DescribeRules', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_rules(
@@ -2023,12 +4996,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeServerCertificatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.server_certificate_id):
+            query['ServerCertificateId'] = request.server_certificate_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeServerCertificates',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeServerCertificatesResponse(),
-            self.do_rpcrequest('DescribeServerCertificates', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_server_certificates_with_options_async(
@@ -2037,12 +5036,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeServerCertificatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.server_certificate_id):
+            query['ServerCertificateId'] = request.server_certificate_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeServerCertificates',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeServerCertificatesResponse(),
-            await self.do_rpcrequest_async('DescribeServerCertificates', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_server_certificates(
@@ -2065,12 +5090,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.distinct_key):
+            query['DistinctKey'] = request.distinct_key
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTags',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeTagsResponse(),
-            self.do_rpcrequest('DescribeTags', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_tags_with_options_async(
@@ -2079,12 +5136,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.distinct_key):
+            query['DistinctKey'] = request.distinct_key
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTags',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeTagsResponse(),
-            await self.do_rpcrequest_async('DescribeTags', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_tags(
@@ -2107,12 +5196,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeVServerGroupAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVServerGroupAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeVServerGroupAttributeResponse(),
-            self.do_rpcrequest('DescribeVServerGroupAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vserver_group_attribute_with_options_async(
@@ -2121,12 +5234,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeVServerGroupAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVServerGroupAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeVServerGroupAttributeResponse(),
-            await self.do_rpcrequest_async('DescribeVServerGroupAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vserver_group_attribute(
@@ -2149,12 +5286,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeVServerGroupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.include_listener):
+            query['IncludeListener'] = request.include_listener
+        if not UtilClient.is_unset(request.include_rule):
+            query['IncludeRule'] = request.include_rule
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVServerGroups',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeVServerGroupsResponse(),
-            self.do_rpcrequest('DescribeVServerGroups', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_vserver_groups_with_options_async(
@@ -2163,12 +5328,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeVServerGroupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.include_listener):
+            query['IncludeListener'] = request.include_listener
+        if not UtilClient.is_unset(request.include_rule):
+            query['IncludeRule'] = request.include_rule
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVServerGroups',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeVServerGroupsResponse(),
-            await self.do_rpcrequest_async('DescribeVServerGroups', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_vserver_groups(
@@ -2191,12 +5384,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeZonesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeZones',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeZonesResponse(),
-            self.do_rpcrequest('DescribeZones', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_zones_with_options_async(
@@ -2205,12 +5420,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeZonesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeZones',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.DescribeZonesResponse(),
-            await self.do_rpcrequest_async('DescribeZones', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_zones(
@@ -2227,60 +5464,52 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
 
-    def list_tag_resources_with_options(
-        self,
-        request: slb_20140515_models.ListTagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> slb_20140515_models.ListTagResourcesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            slb_20140515_models.ListTagResourcesResponse(),
-            self.do_rpcrequest('ListTagResources', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def list_tag_resources_with_options_async(
-        self,
-        request: slb_20140515_models.ListTagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> slb_20140515_models.ListTagResourcesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            slb_20140515_models.ListTagResourcesResponse(),
-            await self.do_rpcrequest_async('ListTagResources', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def list_tag_resources(
-        self,
-        request: slb_20140515_models.ListTagResourcesRequest,
-    ) -> slb_20140515_models.ListTagResourcesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_tag_resources_with_options(request, runtime)
-
-    async def list_tag_resources_async(
-        self,
-        request: slb_20140515_models.ListTagResourcesRequest,
-    ) -> slb_20140515_models.ListTagResourcesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_tag_resources_with_options_async(request, runtime)
-
     def list_tlscipher_policies_with_options(
         self,
         request: slb_20140515_models.ListTLSCipherPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ListTLSCipherPoliciesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.include_listener):
+            query['IncludeListener'] = request.include_listener
+        if not UtilClient.is_unset(request.max_items):
+            query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tlscipher_policy_id):
+            query['TLSCipherPolicyId'] = request.tlscipher_policy_id
+        if not UtilClient.is_unset(request.access_key_id):
+            query['access_key_id'] = request.access_key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTLSCipherPolicies',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.ListTLSCipherPoliciesResponse(),
-            self.do_rpcrequest('ListTLSCipherPolicies', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_tlscipher_policies_with_options_async(
@@ -2289,12 +5518,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ListTLSCipherPoliciesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.include_listener):
+            query['IncludeListener'] = request.include_listener
+        if not UtilClient.is_unset(request.max_items):
+            query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tlscipher_policy_id):
+            query['TLSCipherPolicyId'] = request.tlscipher_policy_id
+        if not UtilClient.is_unset(request.access_key_id):
+            query['access_key_id'] = request.access_key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTLSCipherPolicies',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.ListTLSCipherPoliciesResponse(),
-            await self.do_rpcrequest_async('ListTLSCipherPolicies', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tlscipher_policies(
@@ -2311,18 +5574,148 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_tlscipher_policies_with_options_async(request, runtime)
 
+    def list_tag_resources_with_options(
+        self,
+        request: slb_20140515_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> slb_20140515_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            slb_20140515_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: slb_20140515_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> slb_20140515_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            slb_20140515_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: slb_20140515_models.ListTagResourcesRequest,
+    ) -> slb_20140515_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: slb_20140515_models.ListTagResourcesRequest,
+    ) -> slb_20140515_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
+
     def modify_load_balancer_instance_spec_with_options(
         self,
         request: slb_20140515_models.ModifyLoadBalancerInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyLoadBalancerInstanceSpecResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.load_balancer_spec):
+            query['LoadBalancerSpec'] = request.load_balancer_spec
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyLoadBalancerInstanceSpec',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.ModifyLoadBalancerInstanceSpecResponse(),
-            self.do_rpcrequest('ModifyLoadBalancerInstanceSpec', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_load_balancer_instance_spec_with_options_async(
@@ -2331,12 +5724,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyLoadBalancerInstanceSpecResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.load_balancer_spec):
+            query['LoadBalancerSpec'] = request.load_balancer_spec
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyLoadBalancerInstanceSpec',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.ModifyLoadBalancerInstanceSpecResponse(),
-            await self.do_rpcrequest_async('ModifyLoadBalancerInstanceSpec', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_load_balancer_instance_spec(
@@ -2359,12 +5780,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyLoadBalancerInternetSpecResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyLoadBalancerInternetSpec',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.ModifyLoadBalancerInternetSpecResponse(),
-            self.do_rpcrequest('ModifyLoadBalancerInternetSpec', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_load_balancer_internet_spec_with_options_async(
@@ -2373,12 +5824,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyLoadBalancerInternetSpecResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyLoadBalancerInternetSpec',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.ModifyLoadBalancerInternetSpecResponse(),
-            await self.do_rpcrequest_async('ModifyLoadBalancerInternetSpec', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_load_balancer_internet_spec(
@@ -2401,12 +5882,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyLoadBalancerPayTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyLoadBalancerPayType',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.ModifyLoadBalancerPayTypeResponse(),
-            self.do_rpcrequest('ModifyLoadBalancerPayType', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_load_balancer_pay_type_with_options_async(
@@ -2415,12 +5928,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyLoadBalancerPayTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyLoadBalancerPayType',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.ModifyLoadBalancerPayTypeResponse(),
-            await self.do_rpcrequest_async('ModifyLoadBalancerPayType', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_load_balancer_pay_type(
@@ -2443,12 +5988,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyVServerGroupBackendServersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.new_backend_servers):
+            query['NewBackendServers'] = request.new_backend_servers
+        if not UtilClient.is_unset(request.old_backend_servers):
+            query['OldBackendServers'] = request.old_backend_servers
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVServerGroupBackendServers',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.ModifyVServerGroupBackendServersResponse(),
-            self.do_rpcrequest('ModifyVServerGroupBackendServers', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_vserver_group_backend_servers_with_options_async(
@@ -2457,12 +6030,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyVServerGroupBackendServersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.new_backend_servers):
+            query['NewBackendServers'] = request.new_backend_servers
+        if not UtilClient.is_unset(request.old_backend_servers):
+            query['OldBackendServers'] = request.old_backend_servers
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVServerGroupBackendServers',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.ModifyVServerGroupBackendServersResponse(),
-            await self.do_rpcrequest_async('ModifyVServerGroupBackendServers', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_vserver_group_backend_servers(
@@ -2485,12 +6086,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveAccessControlListEntryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_entrys):
+            query['AclEntrys'] = request.acl_entrys
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveAccessControlListEntry',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.RemoveAccessControlListEntryResponse(),
-            self.do_rpcrequest('RemoveAccessControlListEntry', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_access_control_list_entry_with_options_async(
@@ -2499,12 +6126,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveAccessControlListEntryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_entrys):
+            query['AclEntrys'] = request.acl_entrys
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveAccessControlListEntry',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.RemoveAccessControlListEntryResponse(),
-            await self.do_rpcrequest_async('RemoveAccessControlListEntry', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_access_control_list_entry(
@@ -2527,12 +6180,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveBackendServersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_servers):
+            query['BackendServers'] = request.backend_servers
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveBackendServers',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.RemoveBackendServersResponse(),
-            self.do_rpcrequest('RemoveBackendServers', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_backend_servers_with_options_async(
@@ -2541,12 +6220,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveBackendServersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_servers):
+            query['BackendServers'] = request.backend_servers
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveBackendServers',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.RemoveBackendServersResponse(),
-            await self.do_rpcrequest_async('RemoveBackendServers', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_backend_servers(
@@ -2569,12 +6274,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveListenerWhiteListItemResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_items):
+            query['SourceItems'] = request.source_items
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveListenerWhiteListItem',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.RemoveListenerWhiteListItemResponse(),
-            self.do_rpcrequest('RemoveListenerWhiteListItem', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_listener_white_list_item_with_options_async(
@@ -2583,12 +6318,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveListenerWhiteListItemResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_items):
+            query['SourceItems'] = request.source_items
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveListenerWhiteListItem',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.RemoveListenerWhiteListItemResponse(),
-            await self.do_rpcrequest_async('RemoveListenerWhiteListItem', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_listener_white_list_item(
@@ -2611,12 +6376,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveTags',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.RemoveTagsResponse(),
-            self.do_rpcrequest('RemoveTags', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_tags_with_options_async(
@@ -2625,12 +6416,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveTags',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.RemoveTagsResponse(),
-            await self.do_rpcrequest_async('RemoveTags', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_tags(
@@ -2653,12 +6470,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveVServerGroupBackendServersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_servers):
+            query['BackendServers'] = request.backend_servers
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveVServerGroupBackendServers',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.RemoveVServerGroupBackendServersResponse(),
-            self.do_rpcrequest('RemoveVServerGroupBackendServers', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_vserver_group_backend_servers_with_options_async(
@@ -2667,12 +6510,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveVServerGroupBackendServersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_servers):
+            query['BackendServers'] = request.backend_servers
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveVServerGroupBackendServers',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.RemoveVServerGroupBackendServersResponse(),
-            await self.do_rpcrequest_async('RemoveVServerGroupBackendServers', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_vserver_group_backend_servers(
@@ -2695,12 +6564,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetAccessControlListAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_name):
+            query['AclName'] = request.acl_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetAccessControlListAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetAccessControlListAttributeResponse(),
-            self.do_rpcrequest('SetAccessControlListAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_access_control_list_attribute_with_options_async(
@@ -2709,12 +6604,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetAccessControlListAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_name):
+            query['AclName'] = request.acl_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetAccessControlListAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetAccessControlListAttributeResponse(),
-            await self.do_rpcrequest_async('SetAccessControlListAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_access_control_list_attribute(
@@ -2737,12 +6658,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetBackendServersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_servers):
+            query['BackendServers'] = request.backend_servers
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetBackendServers',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetBackendServersResponse(),
-            self.do_rpcrequest('SetBackendServers', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_backend_servers_with_options_async(
@@ -2751,12 +6698,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetBackendServersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_servers):
+            query['BackendServers'] = request.backend_servers
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetBackendServers',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetBackendServersResponse(),
-            await self.do_rpcrequest_async('SetBackendServers', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_backend_servers(
@@ -2779,12 +6752,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetCACertificateNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cacertificate_id):
+            query['CACertificateId'] = request.cacertificate_id
+        if not UtilClient.is_unset(request.cacertificate_name):
+            query['CACertificateName'] = request.cacertificate_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetCACertificateName',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetCACertificateNameResponse(),
-            self.do_rpcrequest('SetCACertificateName', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_cacertificate_name_with_options_async(
@@ -2793,12 +6792,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetCACertificateNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cacertificate_id):
+            query['CACertificateId'] = request.cacertificate_id
+        if not UtilClient.is_unset(request.cacertificate_name):
+            query['CACertificateName'] = request.cacertificate_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetCACertificateName',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetCACertificateNameResponse(),
-            await self.do_rpcrequest_async('SetCACertificateName', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_cacertificate_name(
@@ -2821,12 +6846,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetDomainExtensionAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_extension_id):
+            query['DomainExtensionId'] = request.domain_extension_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.server_certificate_id):
+            query['ServerCertificateId'] = request.server_certificate_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDomainExtensionAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetDomainExtensionAttributeResponse(),
-            self.do_rpcrequest('SetDomainExtensionAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_domain_extension_attribute_with_options_async(
@@ -2835,12 +6886,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetDomainExtensionAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_extension_id):
+            query['DomainExtensionId'] = request.domain_extension_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.server_certificate_id):
+            query['ServerCertificateId'] = request.server_certificate_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDomainExtensionAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetDomainExtensionAttributeResponse(),
-            await self.do_rpcrequest_async('SetDomainExtensionAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_domain_extension_attribute(
@@ -2863,12 +6940,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetListenerAccessControlStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_control_status):
+            query['AccessControlStatus'] = request.access_control_status
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetListenerAccessControlStatus',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetListenerAccessControlStatusResponse(),
-            self.do_rpcrequest('SetListenerAccessControlStatus', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_listener_access_control_status_with_options_async(
@@ -2877,12 +6984,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetListenerAccessControlStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_control_status):
+            query['AccessControlStatus'] = request.access_control_status
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetListenerAccessControlStatus',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetListenerAccessControlStatusResponse(),
-            await self.do_rpcrequest_async('SetListenerAccessControlStatus', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_listener_access_control_status(
@@ -2905,12 +7042,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerDeleteProtectionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delete_protection):
+            query['DeleteProtection'] = request.delete_protection
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoadBalancerDeleteProtection',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetLoadBalancerDeleteProtectionResponse(),
-            self.do_rpcrequest('SetLoadBalancerDeleteProtection', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_load_balancer_delete_protection_with_options_async(
@@ -2919,12 +7082,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerDeleteProtectionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delete_protection):
+            query['DeleteProtection'] = request.delete_protection
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoadBalancerDeleteProtection',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetLoadBalancerDeleteProtectionResponse(),
-            await self.do_rpcrequest_async('SetLoadBalancerDeleteProtection', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_load_balancer_delete_protection(
@@ -2947,12 +7136,96 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerHTTPListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_status):
+            query['AclStatus'] = request.acl_status
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.cookie):
+            query['Cookie'] = request.cookie
+        if not UtilClient.is_unset(request.cookie_timeout):
+            query['CookieTimeout'] = request.cookie_timeout
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.gzip):
+            query['Gzip'] = request.gzip
+        if not UtilClient.is_unset(request.health_check):
+            query['HealthCheck'] = request.health_check
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_domain):
+            query['HealthCheckDomain'] = request.health_check_domain
+        if not UtilClient.is_unset(request.health_check_http_code):
+            query['HealthCheckHttpCode'] = request.health_check_http_code
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_method):
+            query['HealthCheckMethod'] = request.health_check_method
+        if not UtilClient.is_unset(request.health_check_timeout):
+            query['HealthCheckTimeout'] = request.health_check_timeout
+        if not UtilClient.is_unset(request.health_check_uri):
+            query['HealthCheckURI'] = request.health_check_uri
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.idle_timeout):
+            query['IdleTimeout'] = request.idle_timeout
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_timeout):
+            query['RequestTimeout'] = request.request_timeout
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.sticky_session):
+            query['StickySession'] = request.sticky_session
+        if not UtilClient.is_unset(request.sticky_session_type):
+            query['StickySessionType'] = request.sticky_session_type
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.vserver_group):
+            query['VServerGroup'] = request.vserver_group
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
+        if not UtilClient.is_unset(request.xforwarded_for):
+            query['XForwardedFor'] = request.xforwarded_for
+        if not UtilClient.is_unset(request.xforwarded_for__slbid):
+            query['XForwardedFor_SLBID'] = request.xforwarded_for__slbid
+        if not UtilClient.is_unset(request.xforwarded_for__slbip):
+            query['XForwardedFor_SLBIP'] = request.xforwarded_for__slbip
+        if not UtilClient.is_unset(request.xforwarded_for_proto):
+            query['XForwardedFor_proto'] = request.xforwarded_for_proto
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoadBalancerHTTPListenerAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetLoadBalancerHTTPListenerAttributeResponse(),
-            self.do_rpcrequest('SetLoadBalancerHTTPListenerAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_load_balancer_httplistener_attribute_with_options_async(
@@ -2961,12 +7234,96 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerHTTPListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_status):
+            query['AclStatus'] = request.acl_status
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.cookie):
+            query['Cookie'] = request.cookie
+        if not UtilClient.is_unset(request.cookie_timeout):
+            query['CookieTimeout'] = request.cookie_timeout
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.gzip):
+            query['Gzip'] = request.gzip
+        if not UtilClient.is_unset(request.health_check):
+            query['HealthCheck'] = request.health_check
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_domain):
+            query['HealthCheckDomain'] = request.health_check_domain
+        if not UtilClient.is_unset(request.health_check_http_code):
+            query['HealthCheckHttpCode'] = request.health_check_http_code
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_method):
+            query['HealthCheckMethod'] = request.health_check_method
+        if not UtilClient.is_unset(request.health_check_timeout):
+            query['HealthCheckTimeout'] = request.health_check_timeout
+        if not UtilClient.is_unset(request.health_check_uri):
+            query['HealthCheckURI'] = request.health_check_uri
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.idle_timeout):
+            query['IdleTimeout'] = request.idle_timeout
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_timeout):
+            query['RequestTimeout'] = request.request_timeout
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.sticky_session):
+            query['StickySession'] = request.sticky_session
+        if not UtilClient.is_unset(request.sticky_session_type):
+            query['StickySessionType'] = request.sticky_session_type
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.vserver_group):
+            query['VServerGroup'] = request.vserver_group
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
+        if not UtilClient.is_unset(request.xforwarded_for):
+            query['XForwardedFor'] = request.xforwarded_for
+        if not UtilClient.is_unset(request.xforwarded_for__slbid):
+            query['XForwardedFor_SLBID'] = request.xforwarded_for__slbid
+        if not UtilClient.is_unset(request.xforwarded_for__slbip):
+            query['XForwardedFor_SLBIP'] = request.xforwarded_for__slbip
+        if not UtilClient.is_unset(request.xforwarded_for_proto):
+            query['XForwardedFor_proto'] = request.xforwarded_for_proto
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoadBalancerHTTPListenerAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetLoadBalancerHTTPListenerAttributeResponse(),
-            await self.do_rpcrequest_async('SetLoadBalancerHTTPListenerAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_load_balancer_httplistener_attribute(
@@ -2989,12 +7346,104 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerHTTPSListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_status):
+            query['AclStatus'] = request.acl_status
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.cacertificate_id):
+            query['CACertificateId'] = request.cacertificate_id
+        if not UtilClient.is_unset(request.cookie):
+            query['Cookie'] = request.cookie
+        if not UtilClient.is_unset(request.cookie_timeout):
+            query['CookieTimeout'] = request.cookie_timeout
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_http_2):
+            query['EnableHttp2'] = request.enable_http_2
+        if not UtilClient.is_unset(request.gzip):
+            query['Gzip'] = request.gzip
+        if not UtilClient.is_unset(request.health_check):
+            query['HealthCheck'] = request.health_check
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_domain):
+            query['HealthCheckDomain'] = request.health_check_domain
+        if not UtilClient.is_unset(request.health_check_http_code):
+            query['HealthCheckHttpCode'] = request.health_check_http_code
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_method):
+            query['HealthCheckMethod'] = request.health_check_method
+        if not UtilClient.is_unset(request.health_check_timeout):
+            query['HealthCheckTimeout'] = request.health_check_timeout
+        if not UtilClient.is_unset(request.health_check_uri):
+            query['HealthCheckURI'] = request.health_check_uri
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.idle_timeout):
+            query['IdleTimeout'] = request.idle_timeout
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_timeout):
+            query['RequestTimeout'] = request.request_timeout
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.server_certificate_id):
+            query['ServerCertificateId'] = request.server_certificate_id
+        if not UtilClient.is_unset(request.sticky_session):
+            query['StickySession'] = request.sticky_session
+        if not UtilClient.is_unset(request.sticky_session_type):
+            query['StickySessionType'] = request.sticky_session_type
+        if not UtilClient.is_unset(request.tlscipher_policy):
+            query['TLSCipherPolicy'] = request.tlscipher_policy
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.vserver_group):
+            query['VServerGroup'] = request.vserver_group
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
+        if not UtilClient.is_unset(request.xforwarded_for):
+            query['XForwardedFor'] = request.xforwarded_for
+        if not UtilClient.is_unset(request.xforwarded_for__slbid):
+            query['XForwardedFor_SLBID'] = request.xforwarded_for__slbid
+        if not UtilClient.is_unset(request.xforwarded_for__slbip):
+            query['XForwardedFor_SLBIP'] = request.xforwarded_for__slbip
+        if not UtilClient.is_unset(request.xforwarded_for_proto):
+            query['XForwardedFor_proto'] = request.xforwarded_for_proto
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoadBalancerHTTPSListenerAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetLoadBalancerHTTPSListenerAttributeResponse(),
-            self.do_rpcrequest('SetLoadBalancerHTTPSListenerAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_load_balancer_httpslistener_attribute_with_options_async(
@@ -3003,12 +7452,104 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerHTTPSListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_status):
+            query['AclStatus'] = request.acl_status
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.cacertificate_id):
+            query['CACertificateId'] = request.cacertificate_id
+        if not UtilClient.is_unset(request.cookie):
+            query['Cookie'] = request.cookie
+        if not UtilClient.is_unset(request.cookie_timeout):
+            query['CookieTimeout'] = request.cookie_timeout
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_http_2):
+            query['EnableHttp2'] = request.enable_http_2
+        if not UtilClient.is_unset(request.gzip):
+            query['Gzip'] = request.gzip
+        if not UtilClient.is_unset(request.health_check):
+            query['HealthCheck'] = request.health_check
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_domain):
+            query['HealthCheckDomain'] = request.health_check_domain
+        if not UtilClient.is_unset(request.health_check_http_code):
+            query['HealthCheckHttpCode'] = request.health_check_http_code
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_method):
+            query['HealthCheckMethod'] = request.health_check_method
+        if not UtilClient.is_unset(request.health_check_timeout):
+            query['HealthCheckTimeout'] = request.health_check_timeout
+        if not UtilClient.is_unset(request.health_check_uri):
+            query['HealthCheckURI'] = request.health_check_uri
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.idle_timeout):
+            query['IdleTimeout'] = request.idle_timeout
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_timeout):
+            query['RequestTimeout'] = request.request_timeout
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.server_certificate_id):
+            query['ServerCertificateId'] = request.server_certificate_id
+        if not UtilClient.is_unset(request.sticky_session):
+            query['StickySession'] = request.sticky_session
+        if not UtilClient.is_unset(request.sticky_session_type):
+            query['StickySessionType'] = request.sticky_session_type
+        if not UtilClient.is_unset(request.tlscipher_policy):
+            query['TLSCipherPolicy'] = request.tlscipher_policy
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.vserver_group):
+            query['VServerGroup'] = request.vserver_group
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
+        if not UtilClient.is_unset(request.xforwarded_for):
+            query['XForwardedFor'] = request.xforwarded_for
+        if not UtilClient.is_unset(request.xforwarded_for__slbid):
+            query['XForwardedFor_SLBID'] = request.xforwarded_for__slbid
+        if not UtilClient.is_unset(request.xforwarded_for__slbip):
+            query['XForwardedFor_SLBIP'] = request.xforwarded_for__slbip
+        if not UtilClient.is_unset(request.xforwarded_for_proto):
+            query['XForwardedFor_proto'] = request.xforwarded_for_proto
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoadBalancerHTTPSListenerAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetLoadBalancerHTTPSListenerAttributeResponse(),
-            await self.do_rpcrequest_async('SetLoadBalancerHTTPSListenerAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_load_balancer_httpslistener_attribute(
@@ -3031,12 +7572,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerModificationProtectionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.modification_protection_reason):
+            query['ModificationProtectionReason'] = request.modification_protection_reason
+        if not UtilClient.is_unset(request.modification_protection_status):
+            query['ModificationProtectionStatus'] = request.modification_protection_status
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoadBalancerModificationProtection',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetLoadBalancerModificationProtectionResponse(),
-            self.do_rpcrequest('SetLoadBalancerModificationProtection', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_load_balancer_modification_protection_with_options_async(
@@ -3045,12 +7614,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerModificationProtectionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.modification_protection_reason):
+            query['ModificationProtectionReason'] = request.modification_protection_reason
+        if not UtilClient.is_unset(request.modification_protection_status):
+            query['ModificationProtectionStatus'] = request.modification_protection_status
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoadBalancerModificationProtection',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetLoadBalancerModificationProtectionResponse(),
-            await self.do_rpcrequest_async('SetLoadBalancerModificationProtection', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_load_balancer_modification_protection(
@@ -3073,12 +7670,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.load_balancer_name):
+            query['LoadBalancerName'] = request.load_balancer_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoadBalancerName',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetLoadBalancerNameResponse(),
-            self.do_rpcrequest('SetLoadBalancerName', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_load_balancer_name_with_options_async(
@@ -3087,12 +7710,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.load_balancer_name):
+            query['LoadBalancerName'] = request.load_balancer_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoadBalancerName',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetLoadBalancerNameResponse(),
-            await self.do_rpcrequest_async('SetLoadBalancerName', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_load_balancer_name(
@@ -3115,12 +7764,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.load_balancer_status):
+            query['LoadBalancerStatus'] = request.load_balancer_status
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoadBalancerStatus',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetLoadBalancerStatusResponse(),
-            self.do_rpcrequest('SetLoadBalancerStatus', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_load_balancer_status_with_options_async(
@@ -3129,12 +7804,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.load_balancer_status):
+            query['LoadBalancerStatus'] = request.load_balancer_status
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoadBalancerStatus',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetLoadBalancerStatusResponse(),
-            await self.do_rpcrequest_async('SetLoadBalancerStatus', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_load_balancer_status(
@@ -3157,12 +7858,86 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerTCPListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_status):
+            query['AclStatus'] = request.acl_status
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.connection_drain):
+            query['ConnectionDrain'] = request.connection_drain
+        if not UtilClient.is_unset(request.connection_drain_timeout):
+            query['ConnectionDrainTimeout'] = request.connection_drain_timeout
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.established_timeout):
+            query['EstablishedTimeout'] = request.established_timeout
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_connect_timeout):
+            query['HealthCheckConnectTimeout'] = request.health_check_connect_timeout
+        if not UtilClient.is_unset(request.health_check_domain):
+            query['HealthCheckDomain'] = request.health_check_domain
+        if not UtilClient.is_unset(request.health_check_http_code):
+            query['HealthCheckHttpCode'] = request.health_check_http_code
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_type):
+            query['HealthCheckType'] = request.health_check_type
+        if not UtilClient.is_unset(request.health_check_uri):
+            query['HealthCheckURI'] = request.health_check_uri
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.master_slave_server_group):
+            query['MasterSlaveServerGroup'] = request.master_slave_server_group
+        if not UtilClient.is_unset(request.master_slave_server_group_id):
+            query['MasterSlaveServerGroupId'] = request.master_slave_server_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.persistence_timeout):
+            query['PersistenceTimeout'] = request.persistence_timeout
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.syn_proxy):
+            query['SynProxy'] = request.syn_proxy
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.vserver_group):
+            query['VServerGroup'] = request.vserver_group
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoadBalancerTCPListenerAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetLoadBalancerTCPListenerAttributeResponse(),
-            self.do_rpcrequest('SetLoadBalancerTCPListenerAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_load_balancer_tcplistener_attribute_with_options_async(
@@ -3171,12 +7946,86 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerTCPListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_status):
+            query['AclStatus'] = request.acl_status
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.connection_drain):
+            query['ConnectionDrain'] = request.connection_drain
+        if not UtilClient.is_unset(request.connection_drain_timeout):
+            query['ConnectionDrainTimeout'] = request.connection_drain_timeout
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.established_timeout):
+            query['EstablishedTimeout'] = request.established_timeout
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_connect_timeout):
+            query['HealthCheckConnectTimeout'] = request.health_check_connect_timeout
+        if not UtilClient.is_unset(request.health_check_domain):
+            query['HealthCheckDomain'] = request.health_check_domain
+        if not UtilClient.is_unset(request.health_check_http_code):
+            query['HealthCheckHttpCode'] = request.health_check_http_code
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_type):
+            query['HealthCheckType'] = request.health_check_type
+        if not UtilClient.is_unset(request.health_check_uri):
+            query['HealthCheckURI'] = request.health_check_uri
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.master_slave_server_group):
+            query['MasterSlaveServerGroup'] = request.master_slave_server_group
+        if not UtilClient.is_unset(request.master_slave_server_group_id):
+            query['MasterSlaveServerGroupId'] = request.master_slave_server_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.persistence_timeout):
+            query['PersistenceTimeout'] = request.persistence_timeout
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.syn_proxy):
+            query['SynProxy'] = request.syn_proxy
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.vserver_group):
+            query['VServerGroup'] = request.vserver_group
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoadBalancerTCPListenerAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetLoadBalancerTCPListenerAttributeResponse(),
-            await self.do_rpcrequest_async('SetLoadBalancerTCPListenerAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_load_balancer_tcplistener_attribute(
@@ -3199,12 +8048,72 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerUDPListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_status):
+            query['AclStatus'] = request.acl_status
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_connect_timeout):
+            query['HealthCheckConnectTimeout'] = request.health_check_connect_timeout
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.master_slave_server_group):
+            query['MasterSlaveServerGroup'] = request.master_slave_server_group
+        if not UtilClient.is_unset(request.master_slave_server_group_id):
+            query['MasterSlaveServerGroupId'] = request.master_slave_server_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.vserver_group):
+            query['VServerGroup'] = request.vserver_group
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
+        if not UtilClient.is_unset(request.health_check_exp):
+            query['healthCheckExp'] = request.health_check_exp
+        if not UtilClient.is_unset(request.health_check_req):
+            query['healthCheckReq'] = request.health_check_req
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoadBalancerUDPListenerAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetLoadBalancerUDPListenerAttributeResponse(),
-            self.do_rpcrequest('SetLoadBalancerUDPListenerAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_load_balancer_udplistener_attribute_with_options_async(
@@ -3213,12 +8122,72 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerUDPListenerAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_status):
+            query['AclStatus'] = request.acl_status
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_connect_timeout):
+            query['HealthCheckConnectTimeout'] = request.health_check_connect_timeout
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.master_slave_server_group):
+            query['MasterSlaveServerGroup'] = request.master_slave_server_group
+        if not UtilClient.is_unset(request.master_slave_server_group_id):
+            query['MasterSlaveServerGroupId'] = request.master_slave_server_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.vserver_group):
+            query['VServerGroup'] = request.vserver_group
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
+        if not UtilClient.is_unset(request.health_check_exp):
+            query['healthCheckExp'] = request.health_check_exp
+        if not UtilClient.is_unset(request.health_check_req):
+            query['healthCheckReq'] = request.health_check_req
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetLoadBalancerUDPListenerAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetLoadBalancerUDPListenerAttributeResponse(),
-            await self.do_rpcrequest_async('SetLoadBalancerUDPListenerAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_load_balancer_udplistener_attribute(
@@ -3241,12 +8210,70 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cookie):
+            query['Cookie'] = request.cookie
+        if not UtilClient.is_unset(request.cookie_timeout):
+            query['CookieTimeout'] = request.cookie_timeout
+        if not UtilClient.is_unset(request.health_check):
+            query['HealthCheck'] = request.health_check
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_domain):
+            query['HealthCheckDomain'] = request.health_check_domain
+        if not UtilClient.is_unset(request.health_check_http_code):
+            query['HealthCheckHttpCode'] = request.health_check_http_code
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_timeout):
+            query['HealthCheckTimeout'] = request.health_check_timeout
+        if not UtilClient.is_unset(request.health_check_uri):
+            query['HealthCheckURI'] = request.health_check_uri
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.listener_sync):
+            query['ListenerSync'] = request.listener_sync
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.sticky_session):
+            query['StickySession'] = request.sticky_session
+        if not UtilClient.is_unset(request.sticky_session_type):
+            query['StickySessionType'] = request.sticky_session_type
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetRule',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetRuleResponse(),
-            self.do_rpcrequest('SetRule', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_rule_with_options_async(
@@ -3255,12 +8282,70 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cookie):
+            query['Cookie'] = request.cookie
+        if not UtilClient.is_unset(request.cookie_timeout):
+            query['CookieTimeout'] = request.cookie_timeout
+        if not UtilClient.is_unset(request.health_check):
+            query['HealthCheck'] = request.health_check
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_domain):
+            query['HealthCheckDomain'] = request.health_check_domain
+        if not UtilClient.is_unset(request.health_check_http_code):
+            query['HealthCheckHttpCode'] = request.health_check_http_code
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_timeout):
+            query['HealthCheckTimeout'] = request.health_check_timeout
+        if not UtilClient.is_unset(request.health_check_uri):
+            query['HealthCheckURI'] = request.health_check_uri
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.listener_sync):
+            query['ListenerSync'] = request.listener_sync
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.sticky_session):
+            query['StickySession'] = request.sticky_session
+        if not UtilClient.is_unset(request.sticky_session_type):
+            query['StickySessionType'] = request.sticky_session_type
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetRule',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetRuleResponse(),
-            await self.do_rpcrequest_async('SetRule', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_rule(
@@ -3283,12 +8368,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetServerCertificateNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.server_certificate_id):
+            query['ServerCertificateId'] = request.server_certificate_id
+        if not UtilClient.is_unset(request.server_certificate_name):
+            query['ServerCertificateName'] = request.server_certificate_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetServerCertificateName',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetServerCertificateNameResponse(),
-            self.do_rpcrequest('SetServerCertificateName', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_server_certificate_name_with_options_async(
@@ -3297,12 +8408,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetServerCertificateNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.server_certificate_id):
+            query['ServerCertificateId'] = request.server_certificate_id
+        if not UtilClient.is_unset(request.server_certificate_name):
+            query['ServerCertificateName'] = request.server_certificate_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetServerCertificateName',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetServerCertificateNameResponse(),
-            await self.do_rpcrequest_async('SetServerCertificateName', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_server_certificate_name(
@@ -3325,12 +8462,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetTLSCipherPolicyAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ciphers):
+            query['Ciphers'] = request.ciphers
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tlscipher_policy_id):
+            query['TLSCipherPolicyId'] = request.tlscipher_policy_id
+        if not UtilClient.is_unset(request.tlsversions):
+            query['TLSVersions'] = request.tlsversions
+        if not UtilClient.is_unset(request.access_key_id):
+            query['access_key_id'] = request.access_key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetTLSCipherPolicyAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetTLSCipherPolicyAttributeResponse(),
-            self.do_rpcrequest('SetTLSCipherPolicyAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_tlscipher_policy_attribute_with_options_async(
@@ -3339,12 +8508,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetTLSCipherPolicyAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ciphers):
+            query['Ciphers'] = request.ciphers
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tlscipher_policy_id):
+            query['TLSCipherPolicyId'] = request.tlscipher_policy_id
+        if not UtilClient.is_unset(request.tlsversions):
+            query['TLSVersions'] = request.tlsversions
+        if not UtilClient.is_unset(request.access_key_id):
+            query['access_key_id'] = request.access_key_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetTLSCipherPolicyAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetTLSCipherPolicyAttributeResponse(),
-            await self.do_rpcrequest_async('SetTLSCipherPolicyAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_tlscipher_policy_attribute(
@@ -3367,12 +8568,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetVServerGroupAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_servers):
+            query['BackendServers'] = request.backend_servers
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
+        if not UtilClient.is_unset(request.vserver_group_name):
+            query['VServerGroupName'] = request.vserver_group_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetVServerGroupAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetVServerGroupAttributeResponse(),
-            self.do_rpcrequest('SetVServerGroupAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_vserver_group_attribute_with_options_async(
@@ -3381,12 +8610,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetVServerGroupAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_servers):
+            query['BackendServers'] = request.backend_servers
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vserver_group_id):
+            query['VServerGroupId'] = request.vserver_group_id
+        if not UtilClient.is_unset(request.vserver_group_name):
+            query['VServerGroupName'] = request.vserver_group_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetVServerGroupAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.SetVServerGroupAttributeResponse(),
-            await self.do_rpcrequest_async('SetVServerGroupAttribute', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_vserver_group_attribute(
@@ -3409,12 +8666,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.StartLoadBalancerListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartLoadBalancerListener',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.StartLoadBalancerListenerResponse(),
-            self.do_rpcrequest('StartLoadBalancerListener', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def start_load_balancer_listener_with_options_async(
@@ -3423,12 +8708,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.StartLoadBalancerListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartLoadBalancerListener',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.StartLoadBalancerListenerResponse(),
-            await self.do_rpcrequest_async('StartLoadBalancerListener', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_load_balancer_listener(
@@ -3451,12 +8764,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.StopLoadBalancerListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopLoadBalancerListener',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.StopLoadBalancerListenerResponse(),
-            self.do_rpcrequest('StopLoadBalancerListener', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def stop_load_balancer_listener_with_options_async(
@@ -3465,12 +8806,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.StopLoadBalancerListenerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopLoadBalancerListener',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.StopLoadBalancerListenerResponse(),
-            await self.do_rpcrequest_async('StopLoadBalancerListener', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_load_balancer_listener(
@@ -3493,12 +8862,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.TagResourcesResponse(),
-            self.do_rpcrequest('TagResources', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def tag_resources_with_options_async(
@@ -3507,12 +8904,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.TagResourcesResponse(),
-            await self.do_rpcrequest_async('TagResources', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def tag_resources(
@@ -3535,12 +8960,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.UntagResourcesResponse(),
-            self.do_rpcrequest('UntagResources', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def untag_resources_with_options_async(
@@ -3549,12 +9004,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.UntagResourcesResponse(),
-            await self.do_rpcrequest_async('UntagResources', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def untag_resources(
@@ -3577,12 +9062,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.UploadCACertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cacertificate):
+            query['CACertificate'] = request.cacertificate
+        if not UtilClient.is_unset(request.cacertificate_name):
+            query['CACertificateName'] = request.cacertificate_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UploadCACertificate',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.UploadCACertificateResponse(),
-            self.do_rpcrequest('UploadCACertificate', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def upload_cacertificate_with_options_async(
@@ -3591,12 +9104,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.UploadCACertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cacertificate):
+            query['CACertificate'] = request.cacertificate
+        if not UtilClient.is_unset(request.cacertificate_name):
+            query['CACertificateName'] = request.cacertificate_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UploadCACertificate',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.UploadCACertificateResponse(),
-            await self.do_rpcrequest_async('UploadCACertificate', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def upload_cacertificate(
@@ -3619,12 +9160,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.UploadServerCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_cloud_certificate_id):
+            query['AliCloudCertificateId'] = request.ali_cloud_certificate_id
+        if not UtilClient.is_unset(request.ali_cloud_certificate_name):
+            query['AliCloudCertificateName'] = request.ali_cloud_certificate_name
+        if not UtilClient.is_unset(request.ali_cloud_certificate_region_id):
+            query['AliCloudCertificateRegionId'] = request.ali_cloud_certificate_region_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.private_key):
+            query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.server_certificate):
+            query['ServerCertificate'] = request.server_certificate
+        if not UtilClient.is_unset(request.server_certificate_name):
+            query['ServerCertificateName'] = request.server_certificate_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UploadServerCertificate',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.UploadServerCertificateResponse(),
-            self.do_rpcrequest('UploadServerCertificate', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def upload_server_certificate_with_options_async(
@@ -3633,12 +9210,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.UploadServerCertificateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_cloud_certificate_id):
+            query['AliCloudCertificateId'] = request.ali_cloud_certificate_id
+        if not UtilClient.is_unset(request.ali_cloud_certificate_name):
+            query['AliCloudCertificateName'] = request.ali_cloud_certificate_name
+        if not UtilClient.is_unset(request.ali_cloud_certificate_region_id):
+            query['AliCloudCertificateRegionId'] = request.ali_cloud_certificate_region_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.private_key):
+            query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.server_certificate):
+            query['ServerCertificate'] = request.server_certificate
+        if not UtilClient.is_unset(request.server_certificate_name):
+            query['ServerCertificateName'] = request.server_certificate_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UploadServerCertificate',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             slb_20140515_models.UploadServerCertificateResponse(),
-            await self.do_rpcrequest_async('UploadServerCertificate', '2014-05-15', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def upload_server_certificate(

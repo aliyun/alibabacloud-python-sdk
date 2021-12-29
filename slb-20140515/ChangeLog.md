@@ -1,3 +1,6 @@
+2021-12-29 Version: 3.3.9
+- Support tags.
+
 2021-08-03 Version: 2.0.3
 - Support query tags for DescribeLoadBalancers.
 
