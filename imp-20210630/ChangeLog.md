@@ -1,3 +1,6 @@
+2021-12-29 Version: 2.8.8
+- Add GetClassRecord API.
+
 2021-12-14 Version: 2.8.7
 - Add ListRoomUsers API.
 

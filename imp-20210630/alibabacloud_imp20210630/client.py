@@ -47,8 +47,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.AddMemberResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.from_user_id):
+            body['FromUserId'] = request.from_user_id
+        if not UtilClient.is_unset(request.to_user_id):
+            body['ToUserId'] = request.to_user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddMember',
@@ -72,8 +79,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.AddMemberResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.from_user_id):
+            body['FromUserId'] = request.from_user_id
+        if not UtilClient.is_unset(request.to_user_id):
+            body['ToUserId'] = request.to_user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddMember',
@@ -111,8 +125,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.AgreeLinkMicResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.from_user_id):
+            body['FromUserId'] = request.from_user_id
+        if not UtilClient.is_unset(request.to_user_id):
+            body['ToUserId'] = request.to_user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AgreeLinkMic',
@@ -136,8 +157,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.AgreeLinkMicResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.from_user_id):
+            body['FromUserId'] = request.from_user_id
+        if not UtilClient.is_unset(request.to_user_id):
+            body['ToUserId'] = request.to_user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AgreeLinkMic',
@@ -175,8 +203,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ApplyLinkMicResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ApplyLinkMic',
@@ -200,8 +233,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ApplyLinkMicResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ApplyLinkMic',
@@ -239,8 +277,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.AttachStandardRoomHttpsCertificateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.certificate_private_key):
+            body['CertificatePrivateKey'] = request.certificate_private_key
+        if not UtilClient.is_unset(request.certificate_public_key):
+            body['CertificatePublicKey'] = request.certificate_public_key
+        if not UtilClient.is_unset(request.domain_name):
+            body['DomainName'] = request.domain_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AttachStandardRoomHttpsCertificate',
@@ -264,8 +311,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.AttachStandardRoomHttpsCertificateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.certificate_private_key):
+            body['CertificatePrivateKey'] = request.certificate_private_key
+        if not UtilClient.is_unset(request.certificate_public_key):
+            body['CertificatePublicKey'] = request.certificate_public_key
+        if not UtilClient.is_unset(request.domain_name):
+            body['DomainName'] = request.domain_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AttachStandardRoomHttpsCertificate',
@@ -303,8 +359,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.BanAllCommentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BanAllComment',
@@ -328,8 +391,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.BanAllCommentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BanAllComment',
@@ -367,8 +437,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.BanCommentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.ban_comment_time):
+            body['BanCommentTime'] = request.ban_comment_time
+        if not UtilClient.is_unset(request.ban_comment_user):
+            body['BanCommentUser'] = request.ban_comment_user
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BanComment',
@@ -392,8 +473,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.BanCommentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.ban_comment_time):
+            body['BanCommentTime'] = request.ban_comment_time
+        if not UtilClient.is_unset(request.ban_comment_user):
+            body['BanCommentUser'] = request.ban_comment_user
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BanComment',
@@ -431,8 +523,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.CancelApplyLinkMicResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CancelApplyLinkMic',
@@ -456,8 +553,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.CancelApplyLinkMicResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CancelApplyLinkMic',
@@ -495,8 +597,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.CancelBanAllCommentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CancelBanAllComment',
@@ -520,8 +629,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.CancelBanAllCommentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CancelBanAllComment',
@@ -559,8 +675,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.CancelBanCommentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.ban_comment_user):
+            body['BanCommentUser'] = request.ban_comment_user
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CancelBanComment',
@@ -584,8 +709,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.CancelBanCommentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.ban_comment_user):
+            body['BanCommentUser'] = request.ban_comment_user
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CancelBanComment',
@@ -623,8 +757,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.CreateAppResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_name):
+            body['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_template_id):
+            body['AppTemplateId'] = request.app_template_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateApp',
@@ -648,8 +787,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.CreateAppResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_name):
+            body['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_template_id):
+            body['AppTemplateId'] = request.app_template_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateApp',
@@ -691,8 +835,17 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.component_list):
             request.component_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.component_list, 'ComponentList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_template_name):
+            body['AppTemplateName'] = request.app_template_name
+        if not UtilClient.is_unset(request.component_list_shrink):
+            body['ComponentList'] = request.component_list_shrink
+        if not UtilClient.is_unset(request.integration_mode):
+            body['IntegrationMode'] = request.integration_mode
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateAppTemplate',
@@ -720,8 +873,17 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.component_list):
             request.component_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.component_list, 'ComponentList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_template_name):
+            body['AppTemplateName'] = request.app_template_name
+        if not UtilClient.is_unset(request.component_list_shrink):
+            body['ComponentList'] = request.component_list_shrink
+        if not UtilClient.is_unset(request.integration_mode):
+            body['IntegrationMode'] = request.integration_mode
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateAppTemplate',
@@ -759,8 +921,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.CreateClassResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.create_nickname):
+            body['CreateNickname'] = request.create_nickname
+        if not UtilClient.is_unset(request.create_user_id):
+            body['CreateUserId'] = request.create_user_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateClass',
@@ -784,8 +955,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.CreateClassResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.create_nickname):
+            body['CreateNickname'] = request.create_nickname
+        if not UtilClient.is_unset(request.create_user_id):
+            body['CreateUserId'] = request.create_user_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateClass',
@@ -823,8 +1003,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.CreateConferenceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateConference',
@@ -848,8 +1037,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.CreateConferenceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateConference',
@@ -887,8 +1085,25 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.CreateLiveResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.anchor_id):
+            body['AnchorId'] = request.anchor_id
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.code_level):
+            body['CodeLevel'] = request.code_level
+        if not UtilClient.is_unset(request.introduction):
+            body['Introduction'] = request.introduction
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateLive',
@@ -912,8 +1127,25 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.CreateLiveResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.anchor_id):
+            body['AnchorId'] = request.anchor_id
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.code_level):
+            body['CodeLevel'] = request.code_level
+        if not UtilClient.is_unset(request.introduction):
+            body['Introduction'] = request.introduction
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateLive',
@@ -955,8 +1187,25 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.extension):
             request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.anchor_id):
+            body['AnchorId'] = request.anchor_id
+        if not UtilClient.is_unset(request.anchor_nick):
+            body['AnchorNick'] = request.anchor_nick
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.cover_url):
+            body['CoverUrl'] = request.cover_url
+        if not UtilClient.is_unset(request.extension_shrink):
+            body['Extension'] = request.extension_shrink
+        if not UtilClient.is_unset(request.notice):
+            body['Notice'] = request.notice
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateLiveRoom',
@@ -984,8 +1233,25 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.extension):
             request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.anchor_id):
+            body['AnchorId'] = request.anchor_id
+        if not UtilClient.is_unset(request.anchor_nick):
+            body['AnchorNick'] = request.anchor_nick
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.cover_url):
+            body['CoverUrl'] = request.cover_url
+        if not UtilClient.is_unset(request.extension_shrink):
+            body['Extension'] = request.extension_shrink
+        if not UtilClient.is_unset(request.notice):
+            body['Notice'] = request.notice
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateLiveRoom',
@@ -1027,8 +1293,23 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.extension):
             request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.extension_shrink):
+            body['Extension'] = request.extension_shrink
+        if not UtilClient.is_unset(request.notice):
+            body['Notice'] = request.notice
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.room_owner_id):
+            body['RoomOwnerId'] = request.room_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateRoom',
@@ -1056,8 +1337,23 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.extension):
             request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.extension_shrink):
+            body['Extension'] = request.extension_shrink
+        if not UtilClient.is_unset(request.notice):
+            body['Notice'] = request.notice
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.room_owner_id):
+            body['RoomOwnerId'] = request.room_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateRoom',
@@ -1095,8 +1391,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.DeleteAppResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteApp',
@@ -1120,8 +1419,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.DeleteAppResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteApp',
@@ -1159,8 +1461,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.DeleteAppTemplateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_template_id):
+            body['AppTemplateId'] = request.app_template_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteAppTemplate',
@@ -1184,8 +1489,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.DeleteAppTemplateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_template_id):
+            body['AppTemplateId'] = request.app_template_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteAppTemplate',
@@ -1223,8 +1531,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.DeleteClassResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.class_id):
+            body['ClassId'] = request.class_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteClass',
@@ -1248,8 +1563,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.DeleteClassResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.class_id):
+            body['ClassId'] = request.class_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteClass',
@@ -1287,8 +1609,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.DeleteCommentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        body_flat = {}
+        if not UtilClient.is_unset(request.comment_id_list):
+            body_flat['CommentIdList'] = request.comment_id_list
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteComment',
@@ -1312,8 +1646,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.DeleteCommentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        body_flat = {}
+        if not UtilClient.is_unset(request.comment_id_list):
+            body_flat['CommentIdList'] = request.comment_id_list
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteComment',
@@ -1351,8 +1697,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.DeleteConferenceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteConference',
@@ -1376,8 +1731,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.DeleteConferenceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteConference',
@@ -1415,8 +1779,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.DeleteLiveResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteLive',
@@ -1440,8 +1807,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.DeleteLiveResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteLive',
@@ -1479,8 +1849,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.DeleteLiveRoomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteLiveRoom',
@@ -1504,8 +1881,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.DeleteLiveRoomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteLiveRoom',
@@ -1543,8 +1927,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.DeleteRoomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteRoom',
@@ -1568,8 +1957,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.DeleteRoomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteRoom',
@@ -1607,8 +2001,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetAppResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetApp',
@@ -1632,8 +2029,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetAppResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetApp',
@@ -1671,8 +2071,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetAppTemplateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_template_id):
+            body['AppTemplateId'] = request.app_template_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetAppTemplate',
@@ -1696,8 +2099,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetAppTemplateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_template_id):
+            body['AppTemplateId'] = request.app_template_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetAppTemplate',
@@ -1735,8 +2141,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetAuthTokenResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_key):
+            body['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.device_id):
+            body['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetAuthToken',
@@ -1760,8 +2175,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetAuthTokenResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_key):
+            body['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.device_id):
+            body['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetAuthToken',
@@ -1799,8 +2223,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetClassDetailResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.class_id):
+            body['ClassId'] = request.class_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetClassDetail',
@@ -1824,8 +2255,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetClassDetailResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.class_id):
+            body['ClassId'] = request.class_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetClassDetail',
@@ -1857,14 +2295,95 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_class_detail_with_options_async(request, runtime)
 
+    def get_class_record_with_options(
+        self,
+        request: imp_20210630_models.GetClassRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetClassRecordResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.class_id):
+            body['ClassId'] = request.class_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetClassRecord',
+            version='2021-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetClassRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_class_record_with_options_async(
+        self,
+        request: imp_20210630_models.GetClassRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imp_20210630_models.GetClassRecordResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.class_id):
+            body['ClassId'] = request.class_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetClassRecord',
+            version='2021-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imp_20210630_models.GetClassRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_class_record(
+        self,
+        request: imp_20210630_models.GetClassRecordRequest,
+    ) -> imp_20210630_models.GetClassRecordResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_class_record_with_options(request, runtime)
+
+    async def get_class_record_async(
+        self,
+        request: imp_20210630_models.GetClassRecordRequest,
+    ) -> imp_20210630_models.GetClassRecordResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_class_record_with_options_async(request, runtime)
+
     def get_conference_with_options(
         self,
         request: imp_20210630_models.GetConferenceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetConferenceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetConference',
@@ -1888,8 +2407,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetConferenceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetConference',
@@ -1927,8 +2449,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetDomainOwnerVerifyContentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.live_domain_name):
+            body['LiveDomainName'] = request.live_domain_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetDomainOwnerVerifyContent',
@@ -1952,8 +2477,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetDomainOwnerVerifyContentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.live_domain_name):
+            body['LiveDomainName'] = request.live_domain_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetDomainOwnerVerifyContent',
@@ -1987,13 +2515,9 @@ class Client(OpenApiClient):
 
     def get_imp_product_status_with_options(
         self,
-        request: imp_20210630_models.GetImpProductStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetImpProductStatusResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetImpProductStatus',
             version='2021-06-30',
@@ -2002,7 +2526,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2012,13 +2536,9 @@ class Client(OpenApiClient):
 
     async def get_imp_product_status_with_options_async(
         self,
-        request: imp_20210630_models.GetImpProductStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetImpProductStatusResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetImpProductStatus',
             version='2021-06-30',
@@ -2027,7 +2547,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2035,19 +2555,13 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_imp_product_status(
-        self,
-        request: imp_20210630_models.GetImpProductStatusRequest,
-    ) -> imp_20210630_models.GetImpProductStatusResponse:
+    def get_imp_product_status(self) -> imp_20210630_models.GetImpProductStatusResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_imp_product_status_with_options(request, runtime)
+        return self.get_imp_product_status_with_options(runtime)
 
-    async def get_imp_product_status_async(
-        self,
-        request: imp_20210630_models.GetImpProductStatusRequest,
-    ) -> imp_20210630_models.GetImpProductStatusResponse:
+    async def get_imp_product_status_async(self) -> imp_20210630_models.GetImpProductStatusResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_imp_product_status_with_options_async(request, runtime)
+        return await self.get_imp_product_status_with_options_async(runtime)
 
     def get_live_with_options(
         self,
@@ -2055,8 +2569,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetLiveResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetLive',
@@ -2080,8 +2597,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetLiveResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetLive',
@@ -2123,8 +2643,15 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.live_domain_list):
             request.live_domain_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.live_domain_list, 'LiveDomainList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_domain_list_shrink):
+            body['LiveDomainList'] = request.live_domain_list_shrink
+        if not UtilClient.is_unset(request.live_domain_type):
+            body['LiveDomainType'] = request.live_domain_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetLiveDomainStatus',
@@ -2152,8 +2679,15 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.live_domain_list):
             request.live_domain_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.live_domain_list, 'LiveDomainList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_domain_list_shrink):
+            body['LiveDomainList'] = request.live_domain_list_shrink
+        if not UtilClient.is_unset(request.live_domain_type):
+            body['LiveDomainType'] = request.live_domain_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetLiveDomainStatus',
@@ -2191,8 +2725,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetLiveRoomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetLiveRoom',
@@ -2216,8 +2755,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetLiveRoomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetLiveRoom',
@@ -2255,8 +2799,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetLiveRoomStatisticsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetLiveRoomStatistics',
@@ -2280,8 +2829,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetLiveRoomStatisticsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetLiveRoomStatistics',
@@ -2319,8 +2873,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetLiveRoomUserStatisticsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetLiveRoomUserStatistics',
@@ -2344,8 +2907,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetLiveRoomUserStatisticsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetLiveRoomUserStatistics',
@@ -2383,8 +2955,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetRoomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetRoom',
@@ -2408,8 +2985,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetRoomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetRoom',
@@ -2447,8 +3029,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetStandardRoomHttpsCertificateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.certificate_id):
+            body['CertificateId'] = request.certificate_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetStandardRoomHttpsCertificate',
@@ -2472,8 +3057,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetStandardRoomHttpsCertificateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.certificate_id):
+            body['CertificateId'] = request.certificate_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetStandardRoomHttpsCertificate',
@@ -2511,8 +3099,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetStandardRoomJumpUrlResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_key):
+            body['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.biz_id):
+            body['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.platform):
+            body['Platform'] = request.platform
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.user_nick):
+            body['UserNick'] = request.user_nick
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetStandardRoomJumpUrl',
@@ -2536,8 +3139,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.GetStandardRoomJumpUrlResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_key):
+            body['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.biz_id):
+            body['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.platform):
+            body['Platform'] = request.platform
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.user_nick):
+            body['UserNick'] = request.user_nick
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetStandardRoomJumpUrl',
@@ -2575,8 +3193,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListAppTemplatesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListAppTemplates',
@@ -2600,8 +3223,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListAppTemplatesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListAppTemplates',
@@ -2639,8 +3267,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListApplyLinkMicUsersResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListApplyLinkMicUsers',
@@ -2664,8 +3299,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListApplyLinkMicUsersResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListApplyLinkMicUsers',
@@ -2703,8 +3345,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListAppsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.integration_mode):
+            body['IntegrationMode'] = request.integration_mode
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListApps',
@@ -2728,8 +3379,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListAppsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.integration_mode):
+            body['IntegrationMode'] = request.integration_mode
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListApps',
@@ -2767,8 +3427,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListClassesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListClasses',
@@ -2792,8 +3461,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListClassesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListClasses',
@@ -2831,8 +3509,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListCommentsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.sort_type):
+            body['SortType'] = request.sort_type
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListComments',
@@ -2856,8 +3547,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListCommentsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.sort_type):
+            body['SortType'] = request.sort_type
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListComments',
@@ -2895,8 +3599,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListComponentsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_template_id):
+            body['AppTemplateId'] = request.app_template_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListComponents',
@@ -2920,8 +3629,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListComponentsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_template_id):
+            body['AppTemplateId'] = request.app_template_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListComponents',
@@ -2959,8 +3673,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListConferenceUsersResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListConferenceUsers',
@@ -2984,8 +3705,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListConferenceUsersResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListConferenceUsers',
@@ -3023,8 +3751,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListLiveRoomsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListLiveRooms',
@@ -3048,8 +3785,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListLiveRoomsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListLiveRooms',
@@ -3091,8 +3837,13 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.live_id_list):
             request.live_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.live_id_list, 'LiveIdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id_list_shrink):
+            body['LiveIdList'] = request.live_id_list_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListLiveRoomsById',
@@ -3120,8 +3871,13 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.live_id_list):
             request.live_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.live_id_list, 'LiveIdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id_list_shrink):
+            body['LiveIdList'] = request.live_id_list_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListLiveRoomsById',
@@ -3163,8 +3919,21 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.room_id_list):
             request.room_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.room_id_list, 'RoomIdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.query_timestamp):
+            body['QueryTimestamp'] = request.query_timestamp
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.room_id_list_shrink):
+            body['RoomIdList'] = request.room_id_list_shrink
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListRoomLives',
@@ -3192,8 +3961,21 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.room_id_list):
             request.room_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.room_id_list, 'RoomIdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.query_timestamp):
+            body['QueryTimestamp'] = request.query_timestamp
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.room_id_list_shrink):
+            body['RoomIdList'] = request.room_id_list_shrink
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListRoomLives',
@@ -3231,8 +4013,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListRoomUsersResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListRoomUsers',
@@ -3256,8 +4047,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListRoomUsersResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListRoomUsers',
@@ -3295,8 +4095,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListRoomsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListRooms',
@@ -3320,8 +4127,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.ListRoomsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListRooms',
@@ -3359,8 +4173,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.PublishLiveResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PublishLive',
@@ -3384,8 +4203,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.PublishLiveResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PublishLive',
@@ -3423,8 +4247,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.PublishLiveRoomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PublishLiveRoom',
@@ -3448,8 +4279,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.PublishLiveRoomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PublishLiveRoom',
@@ -3487,8 +4325,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.RejectLinkMicResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.from_user_id):
+            body['FromUserId'] = request.from_user_id
+        if not UtilClient.is_unset(request.to_user_id):
+            body['ToUserId'] = request.to_user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RejectLinkMic',
@@ -3512,8 +4357,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.RejectLinkMicResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.from_user_id):
+            body['FromUserId'] = request.from_user_id
+        if not UtilClient.is_unset(request.to_user_id):
+            body['ToUserId'] = request.to_user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RejectLinkMic',
@@ -3551,8 +4403,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.RemoveMemberResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.from_user_id):
+            body['FromUserId'] = request.from_user_id
+        if not UtilClient.is_unset(request.to_user_id):
+            body['ToUserId'] = request.to_user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RemoveMember',
@@ -3576,8 +4435,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.RemoveMemberResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.from_user_id):
+            body['FromUserId'] = request.from_user_id
+        if not UtilClient.is_unset(request.to_user_id):
+            body['ToUserId'] = request.to_user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RemoveMember',
@@ -3619,8 +4485,21 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.extension):
             request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.extension_shrink):
+            body['Extension'] = request.extension_shrink
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.sender_id):
+            body['SenderId'] = request.sender_id
+        if not UtilClient.is_unset(request.sender_nick):
+            body['SenderNick'] = request.sender_nick
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SendComment',
@@ -3648,8 +4527,21 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.extension):
             request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.extension_shrink):
+            body['Extension'] = request.extension_shrink
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.sender_id):
+            body['SenderId'] = request.sender_id
+        if not UtilClient.is_unset(request.sender_nick):
+            body['SenderNick'] = request.sender_nick
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SendComment',
@@ -3687,8 +4579,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.SendCustomMessageToAllResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.body):
+            body['Body'] = request.body
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SendCustomMessageToAll',
@@ -3712,8 +4611,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.SendCustomMessageToAllResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.body):
+            body['Body'] = request.body
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SendCustomMessageToAll',
@@ -3751,8 +4657,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.SendCustomMessageToUsersResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.body):
+            body['Body'] = request.body
+        body_flat = {}
+        if not UtilClient.is_unset(request.receiver_list):
+            body_flat['ReceiverList'] = request.receiver_list
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SendCustomMessageToUsers',
@@ -3776,8 +4694,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.SendCustomMessageToUsersResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.body):
+            body['Body'] = request.body
+        body_flat = {}
+        if not UtilClient.is_unset(request.receiver_list):
+            body_flat['ReceiverList'] = request.receiver_list
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SendCustomMessageToUsers',
@@ -3815,8 +4745,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.StopClassResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.class_id):
+            body['ClassId'] = request.class_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='StopClass',
@@ -3840,8 +4777,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.StopClassResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.class_id):
+            body['ClassId'] = request.class_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='StopClass',
@@ -3879,8 +4823,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.StopLiveResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='StopLive',
@@ -3904,8 +4857,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.StopLiveResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='StopLive',
@@ -3943,8 +4905,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.StopLiveRoomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='StopLiveRoom',
@@ -3968,8 +4937,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.StopLiveRoomResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='StopLiveRoom',
@@ -4007,8 +4983,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.UpdateAppResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            body['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_status):
+            body['AppStatus'] = request.app_status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateApp',
@@ -4032,8 +5015,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.UpdateAppResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            body['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_status):
+            body['AppStatus'] = request.app_status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateApp',
@@ -4075,8 +5065,15 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.component_list):
             request.component_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.component_list, 'ComponentList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_template_id):
+            body['AppTemplateId'] = request.app_template_id
+        if not UtilClient.is_unset(request.app_template_name):
+            body['AppTemplateName'] = request.app_template_name
+        if not UtilClient.is_unset(request.component_list_shrink):
+            body['ComponentList'] = request.component_list_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateAppTemplate',
@@ -4104,8 +5101,15 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.component_list):
             request.component_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.component_list, 'ComponentList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_template_id):
+            body['AppTemplateId'] = request.app_template_id
+        if not UtilClient.is_unset(request.app_template_name):
+            body['AppTemplateName'] = request.app_template_name
+        if not UtilClient.is_unset(request.component_list_shrink):
+            body['ComponentList'] = request.component_list_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateAppTemplate',
@@ -4147,8 +5151,13 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.config_list):
             request.config_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_list, 'ConfigList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_template_id):
+            body['AppTemplateId'] = request.app_template_id
+        if not UtilClient.is_unset(request.config_list_shrink):
+            body['ConfigList'] = request.config_list_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateAppTemplateConfig',
@@ -4176,8 +5185,13 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.config_list):
             request.config_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_list, 'ConfigList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_template_id):
+            body['AppTemplateId'] = request.app_template_id
+        if not UtilClient.is_unset(request.config_list_shrink):
+            body['ConfigList'] = request.config_list_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateAppTemplateConfig',
@@ -4215,8 +5229,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.UpdateClassResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.class_id):
+            body['ClassId'] = request.class_id
+        if not UtilClient.is_unset(request.create_nickname):
+            body['CreateNickname'] = request.create_nickname
+        if not UtilClient.is_unset(request.create_user_id):
+            body['CreateUserId'] = request.create_user_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateClass',
@@ -4240,8 +5265,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.UpdateClassResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.class_id):
+            body['ClassId'] = request.class_id
+        if not UtilClient.is_unset(request.create_nickname):
+            body['CreateNickname'] = request.create_nickname
+        if not UtilClient.is_unset(request.create_user_id):
+            body['CreateUserId'] = request.create_user_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateClass',
@@ -4279,8 +5315,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.UpdateConferenceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateConference',
@@ -4304,8 +5345,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.UpdateConferenceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateConference',
@@ -4343,8 +5389,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.UpdateLiveResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.introduction):
+            body['Introduction'] = request.introduction
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateLive',
@@ -4368,8 +5421,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.UpdateLiveResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.introduction):
+            body['Introduction'] = request.introduction
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateLive',
@@ -4411,8 +5471,27 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.extension):
             request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.anchor_id):
+            body['AnchorId'] = request.anchor_id
+        if not UtilClient.is_unset(request.anchor_nick):
+            body['AnchorNick'] = request.anchor_nick
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.cover_url):
+            body['CoverUrl'] = request.cover_url
+        if not UtilClient.is_unset(request.extension_shrink):
+            body['Extension'] = request.extension_shrink
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        if not UtilClient.is_unset(request.notice):
+            body['Notice'] = request.notice
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateLiveRoom',
@@ -4440,8 +5519,27 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.extension):
             request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.anchor_id):
+            body['AnchorId'] = request.anchor_id
+        if not UtilClient.is_unset(request.anchor_nick):
+            body['AnchorNick'] = request.anchor_nick
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.cover_url):
+            body['CoverUrl'] = request.cover_url
+        if not UtilClient.is_unset(request.extension_shrink):
+            body['Extension'] = request.extension_shrink
+        if not UtilClient.is_unset(request.live_id):
+            body['LiveId'] = request.live_id
+        if not UtilClient.is_unset(request.notice):
+            body['Notice'] = request.notice
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateLiveRoom',
@@ -4483,8 +5581,21 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.extension):
             request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.extension_shrink):
+            body['Extension'] = request.extension_shrink
+        if not UtilClient.is_unset(request.notice):
+            body['Notice'] = request.notice
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.room_owner_id):
+            body['RoomOwnerId'] = request.room_owner_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateRoom',
@@ -4512,8 +5623,21 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.extension):
             request.extension_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extension, 'Extension', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.extension_shrink):
+            body['Extension'] = request.extension_shrink
+        if not UtilClient.is_unset(request.notice):
+            body['Notice'] = request.notice
+        if not UtilClient.is_unset(request.room_id):
+            body['RoomId'] = request.room_id
+        if not UtilClient.is_unset(request.room_owner_id):
+            body['RoomOwnerId'] = request.room_owner_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateRoom',
@@ -4551,8 +5675,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.VerifyDomainOwnerResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.live_domain_name):
+            body['LiveDomainName'] = request.live_domain_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='VerifyDomainOwner',
@@ -4576,8 +5703,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imp_20210630_models.VerifyDomainOwnerResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.live_domain_name):
+            body['LiveDomainName'] = request.live_domain_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='VerifyDomainOwner',
