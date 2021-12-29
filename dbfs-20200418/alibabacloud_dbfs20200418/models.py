@@ -2296,9 +2296,13 @@ class ListDbfsAttachableEcsInstancesRequest(TeaModel):
 class ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo(TeaModel):
     def __init__(
         self,
+        instance_type_family: str = None,
+        osname: str = None,
         label: str = None,
         value: str = None,
     ):
+        self.instance_type_family = instance_type_family
+        self.osname = osname
         self.label = label
         self.value = value
 
@@ -2311,6 +2315,10 @@ class ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.instance_type_family is not None:
+            result['InstanceTypeFamily'] = self.instance_type_family
+        if self.osname is not None:
+            result['OSName'] = self.osname
         if self.label is not None:
             result['label'] = self.label
         if self.value is not None:
@@ -2319,6 +2327,10 @@ class ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InstanceTypeFamily') is not None:
+            self.instance_type_family = m.get('InstanceTypeFamily')
+        if m.get('OSName') is not None:
+            self.osname = m.get('OSName')
         if m.get('label') is not None:
             self.label = m.get('label')
         if m.get('value') is not None:
@@ -2440,13 +2452,17 @@ class ListDbfsAttachedEcsInstancesRequest(TeaModel):
 class ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo(TeaModel):
     def __init__(
         self,
+        instance_type_family: str = None,
         mount_point: str = None,
         mounted_time: str = None,
+        osname: str = None,
         label: str = None,
         value: str = None,
     ):
+        self.instance_type_family = instance_type_family
         self.mount_point = mount_point
         self.mounted_time = mounted_time
+        self.osname = osname
         self.label = label
         self.value = value
 
@@ -2459,10 +2475,14 @@ class ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.instance_type_family is not None:
+            result['InstanceTypeFamily'] = self.instance_type_family
         if self.mount_point is not None:
             result['MountPoint'] = self.mount_point
         if self.mounted_time is not None:
             result['MountedTime'] = self.mounted_time
+        if self.osname is not None:
+            result['OSName'] = self.osname
         if self.label is not None:
             result['label'] = self.label
         if self.value is not None:
@@ -2471,10 +2491,14 @@ class ListDbfsAttachedEcsInstancesResponseBodyEcsLabelInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InstanceTypeFamily') is not None:
+            self.instance_type_family = m.get('InstanceTypeFamily')
         if m.get('MountPoint') is not None:
             self.mount_point = m.get('MountPoint')
         if m.get('MountedTime') is not None:
             self.mounted_time = m.get('MountedTime')
+        if m.get('OSName') is not None:
+            self.osname = m.get('OSName')
         if m.get('label') is not None:
             self.label = m.get('label')
         if m.get('value') is not None:

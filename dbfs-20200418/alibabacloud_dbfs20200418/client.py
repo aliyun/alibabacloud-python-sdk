@@ -87,10 +87,14 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.AddTagsBatchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DbfsList'] = request.dbfs_list
-        query['RegionId'] = request.region_id
-        query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbfs_list):
+            query['DbfsList'] = request.dbfs_list
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -117,10 +121,14 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.AddTagsBatchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DbfsList'] = request.dbfs_list
-        query['RegionId'] = request.region_id
-        query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbfs_list):
+            query['DbfsList'] = request.dbfs_list
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -161,12 +169,18 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.AttachDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AttachMode'] = request.attach_mode
-        query['AttachPoint'] = request.attach_point
-        query['ECSInstanceId'] = request.ecsinstance_id
-        query['FsId'] = request.fs_id
-        query['RegionId'] = request.region_id
-        query['ServerUrl'] = request.server_url
+        if not UtilClient.is_unset(request.attach_mode):
+            query['AttachMode'] = request.attach_mode
+        if not UtilClient.is_unset(request.attach_point):
+            query['AttachPoint'] = request.attach_point
+        if not UtilClient.is_unset(request.ecsinstance_id):
+            query['ECSInstanceId'] = request.ecsinstance_id
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.server_url):
+            query['ServerUrl'] = request.server_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -193,12 +207,18 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.AttachDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AttachMode'] = request.attach_mode
-        query['AttachPoint'] = request.attach_point
-        query['ECSInstanceId'] = request.ecsinstance_id
-        query['FsId'] = request.fs_id
-        query['RegionId'] = request.region_id
-        query['ServerUrl'] = request.server_url
+        if not UtilClient.is_unset(request.attach_mode):
+            query['AttachMode'] = request.attach_mode
+        if not UtilClient.is_unset(request.attach_point):
+            query['AttachPoint'] = request.attach_point
+        if not UtilClient.is_unset(request.ecsinstance_id):
+            query['ECSInstanceId'] = request.ecsinstance_id
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.server_url):
+            query['ServerUrl'] = request.server_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -239,21 +259,36 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.CreateDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Category'] = request.category
-        query['ClientToken'] = request.client_token
-        query['DeleteSnapshot'] = request.delete_snapshot
-        query['EnableRaid'] = request.enable_raid
-        query['Encryption'] = request.encryption
-        query['FsName'] = request.fs_name
-        query['InstanceType'] = request.instance_type
-        query['KMSKeyId'] = request.kmskey_id
-        query['PerformanceLevel'] = request.performance_level
-        query['RaidStripeUnitNumber'] = request.raid_stripe_unit_number
-        query['RegionId'] = request.region_id
-        query['SizeG'] = request.size_g
-        query['SnapshotId'] = request.snapshot_id
-        query['UsedScene'] = request.used_scene
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.delete_snapshot):
+            query['DeleteSnapshot'] = request.delete_snapshot
+        if not UtilClient.is_unset(request.enable_raid):
+            query['EnableRaid'] = request.enable_raid
+        if not UtilClient.is_unset(request.encryption):
+            query['Encryption'] = request.encryption
+        if not UtilClient.is_unset(request.fs_name):
+            query['FsName'] = request.fs_name
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.kmskey_id):
+            query['KMSKeyId'] = request.kmskey_id
+        if not UtilClient.is_unset(request.performance_level):
+            query['PerformanceLevel'] = request.performance_level
+        if not UtilClient.is_unset(request.raid_stripe_unit_number):
+            query['RaidStripeUnitNumber'] = request.raid_stripe_unit_number
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.size_g):
+            query['SizeG'] = request.size_g
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.used_scene):
+            query['UsedScene'] = request.used_scene
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -280,21 +315,36 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.CreateDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Category'] = request.category
-        query['ClientToken'] = request.client_token
-        query['DeleteSnapshot'] = request.delete_snapshot
-        query['EnableRaid'] = request.enable_raid
-        query['Encryption'] = request.encryption
-        query['FsName'] = request.fs_name
-        query['InstanceType'] = request.instance_type
-        query['KMSKeyId'] = request.kmskey_id
-        query['PerformanceLevel'] = request.performance_level
-        query['RaidStripeUnitNumber'] = request.raid_stripe_unit_number
-        query['RegionId'] = request.region_id
-        query['SizeG'] = request.size_g
-        query['SnapshotId'] = request.snapshot_id
-        query['UsedScene'] = request.used_scene
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.delete_snapshot):
+            query['DeleteSnapshot'] = request.delete_snapshot
+        if not UtilClient.is_unset(request.enable_raid):
+            query['EnableRaid'] = request.enable_raid
+        if not UtilClient.is_unset(request.encryption):
+            query['Encryption'] = request.encryption
+        if not UtilClient.is_unset(request.fs_name):
+            query['FsName'] = request.fs_name
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.kmskey_id):
+            query['KMSKeyId'] = request.kmskey_id
+        if not UtilClient.is_unset(request.performance_level):
+            query['PerformanceLevel'] = request.performance_level
+        if not UtilClient.is_unset(request.raid_stripe_unit_number):
+            query['RaidStripeUnitNumber'] = request.raid_stripe_unit_number
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.size_g):
+            query['SizeG'] = request.size_g
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.used_scene):
+            query['UsedScene'] = request.used_scene
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -335,8 +385,10 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.CreateServiceLinkedRoleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -363,8 +415,10 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.CreateServiceLinkedRoleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -405,12 +459,18 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.CreateSnapshotResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['FsId'] = request.fs_id
-        query['RegionId'] = request.region_id
-        query['RetentionDays'] = request.retention_days
-        query['SnapshotName'] = request.snapshot_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.retention_days):
+            query['RetentionDays'] = request.retention_days
+        if not UtilClient.is_unset(request.snapshot_name):
+            query['SnapshotName'] = request.snapshot_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -437,12 +497,18 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.CreateSnapshotResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['FsId'] = request.fs_id
-        query['RegionId'] = request.region_id
-        query['RetentionDays'] = request.retention_days
-        query['SnapshotName'] = request.snapshot_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.retention_days):
+            query['RetentionDays'] = request.retention_days
+        if not UtilClient.is_unset(request.snapshot_name):
+            query['SnapshotName'] = request.snapshot_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -483,8 +549,10 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.DeleteDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FsId'] = request.fs_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -511,8 +579,10 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.DeleteDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FsId'] = request.fs_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -553,9 +623,12 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.DeleteSnapshotResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Force'] = request.force
-        query['RegionId'] = request.region_id
-        query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -582,9 +655,12 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.DeleteSnapshotResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Force'] = request.force
-        query['RegionId'] = request.region_id
-        query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -625,9 +701,12 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.DeleteTagsBatchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbfsList'] = request.dbfs_list
-        query['RegionId'] = request.region_id
-        query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.dbfs_list):
+            query['DbfsList'] = request.dbfs_list
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -654,9 +733,12 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.DeleteTagsBatchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbfsList'] = request.dbfs_list
-        query['RegionId'] = request.region_id
-        query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.dbfs_list):
+            query['DbfsList'] = request.dbfs_list
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -697,9 +779,12 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.DescribeDbfsSpecificationsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Category'] = request.category
-        query['EcsInstanceType'] = request.ecs_instance_type
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.ecs_instance_type):
+            query['EcsInstanceType'] = request.ecs_instance_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -726,9 +811,12 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.DescribeDbfsSpecificationsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Category'] = request.category
-        query['EcsInstanceType'] = request.ecs_instance_type
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.ecs_instance_type):
+            query['EcsInstanceType'] = request.ecs_instance_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -769,7 +857,8 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.DescribeInstanceTypesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -796,7 +885,8 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.DescribeInstanceTypesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -837,9 +927,12 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.DetachDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ECSInstanceId'] = request.ecsinstance_id
-        query['FsId'] = request.fs_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.ecsinstance_id):
+            query['ECSInstanceId'] = request.ecsinstance_id
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -866,9 +959,12 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.DetachDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ECSInstanceId'] = request.ecsinstance_id
-        query['FsId'] = request.fs_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.ecsinstance_id):
+            query['ECSInstanceId'] = request.ecsinstance_id
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -909,8 +1005,10 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.GetDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FsId'] = request.fs_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -937,8 +1035,10 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.GetDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FsId'] = request.fs_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -979,7 +1079,8 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.GetServiceLinkedRoleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1006,7 +1107,8 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.GetServiceLinkedRoleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1047,14 +1149,22 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.ListDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FilterKey'] = request.filter_key
-        query['FilterValue'] = request.filter_value
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['SortKey'] = request.sort_key
-        query['SortType'] = request.sort_type
-        query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.filter_key):
+            query['FilterKey'] = request.filter_key
+        if not UtilClient.is_unset(request.filter_value):
+            query['FilterValue'] = request.filter_value
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sort_key):
+            query['SortKey'] = request.sort_key
+        if not UtilClient.is_unset(request.sort_type):
+            query['SortType'] = request.sort_type
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1081,14 +1191,22 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.ListDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FilterKey'] = request.filter_key
-        query['FilterValue'] = request.filter_value
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['SortKey'] = request.sort_key
-        query['SortType'] = request.sort_type
-        query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.filter_key):
+            query['FilterKey'] = request.filter_key
+        if not UtilClient.is_unset(request.filter_value):
+            query['FilterValue'] = request.filter_value
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sort_key):
+            query['SortKey'] = request.sort_key
+        if not UtilClient.is_unset(request.sort_type):
+            query['SortType'] = request.sort_type
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1129,7 +1247,8 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.ListDbfsAttachableEcsInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1156,7 +1275,8 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.ListDbfsAttachableEcsInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1197,8 +1317,10 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.ListDbfsAttachedEcsInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FsId'] = request.fs_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1225,8 +1347,10 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.ListDbfsAttachedEcsInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FsId'] = request.fs_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1267,18 +1391,30 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.ListSnapshotResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FilterKey'] = request.filter_key
-        query['FilterValue'] = request.filter_value
-        query['FsId'] = request.fs_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['SnapshotIds'] = request.snapshot_ids
-        query['SnapshotName'] = request.snapshot_name
-        query['SnapshotType'] = request.snapshot_type
-        query['SortKey'] = request.sort_key
-        query['SortType'] = request.sort_type
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.filter_key):
+            query['FilterKey'] = request.filter_key
+        if not UtilClient.is_unset(request.filter_value):
+            query['FilterValue'] = request.filter_value
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snapshot_ids):
+            query['SnapshotIds'] = request.snapshot_ids
+        if not UtilClient.is_unset(request.snapshot_name):
+            query['SnapshotName'] = request.snapshot_name
+        if not UtilClient.is_unset(request.snapshot_type):
+            query['SnapshotType'] = request.snapshot_type
+        if not UtilClient.is_unset(request.sort_key):
+            query['SortKey'] = request.sort_key
+        if not UtilClient.is_unset(request.sort_type):
+            query['SortType'] = request.sort_type
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1305,18 +1441,30 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.ListSnapshotResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FilterKey'] = request.filter_key
-        query['FilterValue'] = request.filter_value
-        query['FsId'] = request.fs_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['SnapshotIds'] = request.snapshot_ids
-        query['SnapshotName'] = request.snapshot_name
-        query['SnapshotType'] = request.snapshot_type
-        query['SortKey'] = request.sort_key
-        query['SortType'] = request.sort_type
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.filter_key):
+            query['FilterKey'] = request.filter_key
+        if not UtilClient.is_unset(request.filter_value):
+            query['FilterValue'] = request.filter_value
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snapshot_ids):
+            query['SnapshotIds'] = request.snapshot_ids
+        if not UtilClient.is_unset(request.snapshot_name):
+            query['SnapshotName'] = request.snapshot_name
+        if not UtilClient.is_unset(request.snapshot_type):
+            query['SnapshotType'] = request.snapshot_type
+        if not UtilClient.is_unset(request.sort_key):
+            query['SortKey'] = request.sort_key
+        if not UtilClient.is_unset(request.sort_type):
+            query['SortType'] = request.sort_type
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1357,7 +1505,8 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.ListTagKeysResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1384,7 +1533,8 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.ListTagKeysResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1425,8 +1575,10 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.ListTagValuesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1453,8 +1605,10 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.ListTagValuesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1495,9 +1649,12 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.RenameDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FsId'] = request.fs_id
-        query['FsName'] = request.fs_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.fs_name):
+            query['FsName'] = request.fs_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1524,9 +1681,12 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.RenameDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FsId'] = request.fs_id
-        query['FsName'] = request.fs_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.fs_name):
+            query['FsName'] = request.fs_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1567,9 +1727,12 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.ResetDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FsId'] = request.fs_id
-        query['RegionId'] = request.region_id
-        query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1596,9 +1759,12 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.ResetDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FsId'] = request.fs_id
-        query['RegionId'] = request.region_id
-        query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1639,9 +1805,12 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.ResizeDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FsId'] = request.fs_id
-        query['NewSizeG'] = request.new_size_g
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.new_size_g):
+            query['NewSizeG'] = request.new_size_g
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1668,9 +1837,12 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.ResizeDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FsId'] = request.fs_id
-        query['NewSizeG'] = request.new_size_g
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.fs_id):
+            query['FsId'] = request.fs_id
+        if not UtilClient.is_unset(request.new_size_g):
+            query['NewSizeG'] = request.new_size_g
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1711,9 +1883,12 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.TagDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbfsId'] = request.dbfs_id
-        query['RegionId'] = request.region_id
-        query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.dbfs_id):
+            query['DbfsId'] = request.dbfs_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1740,9 +1915,12 @@ class Client(OpenApiClient):
     ) -> dbfs20200418_models.TagDbfsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbfsId'] = request.dbfs_id
-        query['RegionId'] = request.region_id
-        query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.dbfs_id):
+            query['DbfsId'] = request.dbfs_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
