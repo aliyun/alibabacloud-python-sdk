@@ -565,6 +565,7 @@ class CreateEventSubscribeRequest(TeaModel):
         channel_id: str = None,
         client_token: str = None,
         events: List[str] = None,
+        need_callback_auth: bool = None,
         owner_id: int = None,
         users: List[str] = None,
     ):
@@ -573,6 +574,7 @@ class CreateEventSubscribeRequest(TeaModel):
         self.channel_id = channel_id
         self.client_token = client_token
         self.events = events
+        self.need_callback_auth = need_callback_auth
         self.owner_id = owner_id
         self.users = users
 
@@ -595,6 +597,8 @@ class CreateEventSubscribeRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.events is not None:
             result['Events'] = self.events
+        if self.need_callback_auth is not None:
+            result['NeedCallbackAuth'] = self.need_callback_auth
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.users is not None:
@@ -613,6 +617,8 @@ class CreateEventSubscribeRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Events') is not None:
             self.events = m.get('Events')
+        if m.get('NeedCallbackAuth') is not None:
+            self.need_callback_auth = m.get('NeedCallbackAuth')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('Users') is not None:
