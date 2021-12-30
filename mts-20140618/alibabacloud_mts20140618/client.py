@@ -92,14 +92,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ActivateMediaWorkflowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaWorkflowId'] = request.media_workflow_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_workflow_id):
+            query['MediaWorkflowId'] = request.media_workflow_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ActivateMediaWorkflow',
@@ -109,7 +113,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -124,14 +128,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ActivateMediaWorkflowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaWorkflowId'] = request.media_workflow_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_workflow_id):
+            query['MediaWorkflowId'] = request.media_workflow_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ActivateMediaWorkflow',
@@ -141,7 +149,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -170,16 +178,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddAsrPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddAsrPipeline',
@@ -189,7 +203,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -204,16 +218,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddAsrPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddAsrPipeline',
@@ -223,7 +243,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -252,15 +272,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateName'] = request.cate_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ParentId'] = request.parent_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cate_name):
+            query['CateName'] = request.cate_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parent_id):
+            query['ParentId'] = request.parent_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddCategory',
@@ -270,7 +295,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -285,15 +310,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateName'] = request.cate_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ParentId'] = request.parent_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cate_name):
+            query['CateName'] = request.cate_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parent_id):
+            query['ParentId'] = request.parent_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddCategory',
@@ -303,7 +333,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -332,16 +362,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddCensorPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddCensorPipeline',
@@ -351,7 +387,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -366,16 +402,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddCensorPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddCensorPipeline',
@@ -385,7 +427,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -414,17 +456,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddCoverPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Role'] = request.role
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddCoverPipeline',
@@ -434,7 +483,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -449,17 +498,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddCoverPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Role'] = request.role
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddCoverPipeline',
@@ -469,7 +525,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -498,24 +554,38 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddMCTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Abuse'] = request.abuse
-        query['Ad'] = request.ad
-        query['Contraband'] = request.contraband
-        query['Live'] = request.live
-        query['Logo'] = request.logo
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Politics'] = request.politics
-        query['Porn'] = request.porn
-        query['Qrcode'] = request.qrcode
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Terrorism'] = request.terrorism
-        query['spam'] = request.spam
+        if not UtilClient.is_unset(request.abuse):
+            query['Abuse'] = request.abuse
+        if not UtilClient.is_unset(request.ad):
+            query['Ad'] = request.ad
+        if not UtilClient.is_unset(request.contraband):
+            query['Contraband'] = request.contraband
+        if not UtilClient.is_unset(request.live):
+            query['Live'] = request.live
+        if not UtilClient.is_unset(request.logo):
+            query['Logo'] = request.logo
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.politics):
+            query['Politics'] = request.politics
+        if not UtilClient.is_unset(request.porn):
+            query['Porn'] = request.porn
+        if not UtilClient.is_unset(request.qrcode):
+            query['Qrcode'] = request.qrcode
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.terrorism):
+            query['Terrorism'] = request.terrorism
+        if not UtilClient.is_unset(request.spam):
+            query['spam'] = request.spam
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddMCTemplate',
@@ -525,7 +595,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -540,24 +610,38 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddMCTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Abuse'] = request.abuse
-        query['Ad'] = request.ad
-        query['Contraband'] = request.contraband
-        query['Live'] = request.live
-        query['Logo'] = request.logo
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Politics'] = request.politics
-        query['Porn'] = request.porn
-        query['Qrcode'] = request.qrcode
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Terrorism'] = request.terrorism
-        query['spam'] = request.spam
+        if not UtilClient.is_unset(request.abuse):
+            query['Abuse'] = request.abuse
+        if not UtilClient.is_unset(request.ad):
+            query['Ad'] = request.ad
+        if not UtilClient.is_unset(request.contraband):
+            query['Contraband'] = request.contraband
+        if not UtilClient.is_unset(request.live):
+            query['Live'] = request.live
+        if not UtilClient.is_unset(request.logo):
+            query['Logo'] = request.logo
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.politics):
+            query['Politics'] = request.politics
+        if not UtilClient.is_unset(request.porn):
+            query['Porn'] = request.porn
+        if not UtilClient.is_unset(request.qrcode):
+            query['Qrcode'] = request.qrcode
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.terrorism):
+            query['Terrorism'] = request.terrorism
+        if not UtilClient.is_unset(request.spam):
+            query['spam'] = request.spam
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddMCTemplate',
@@ -567,7 +651,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -596,23 +680,36 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['FileURL'] = request.file_url
-        query['InputUnbind'] = request.input_unbind
-        query['MediaWorkflowId'] = request.media_workflow_id
-        query['MediaWorkflowUserData'] = request.media_workflow_user_data
-        query['OverrideParams'] = request.override_params
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Tags'] = request.tags
-        query['Title'] = request.title
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.file_url):
+            query['FileURL'] = request.file_url
+        if not UtilClient.is_unset(request.input_unbind):
+            query['InputUnbind'] = request.input_unbind
+        if not UtilClient.is_unset(request.media_workflow_id):
+            query['MediaWorkflowId'] = request.media_workflow_id
+        if not UtilClient.is_unset(request.media_workflow_user_data):
+            query['MediaWorkflowUserData'] = request.media_workflow_user_data
+        if not UtilClient.is_unset(request.override_params):
+            query['OverrideParams'] = request.override_params
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddMedia',
@@ -622,7 +719,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -637,23 +734,36 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['FileURL'] = request.file_url
-        query['InputUnbind'] = request.input_unbind
-        query['MediaWorkflowId'] = request.media_workflow_id
-        query['MediaWorkflowUserData'] = request.media_workflow_user_data
-        query['OverrideParams'] = request.override_params
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Tags'] = request.tags
-        query['Title'] = request.title
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.file_url):
+            query['FileURL'] = request.file_url
+        if not UtilClient.is_unset(request.input_unbind):
+            query['InputUnbind'] = request.input_unbind
+        if not UtilClient.is_unset(request.media_workflow_id):
+            query['MediaWorkflowId'] = request.media_workflow_id
+        if not UtilClient.is_unset(request.media_workflow_user_data):
+            query['MediaWorkflowUserData'] = request.media_workflow_user_data
+        if not UtilClient.is_unset(request.override_params):
+            query['OverrideParams'] = request.override_params
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddMedia',
@@ -663,7 +773,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -692,15 +802,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddMediaTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddMediaTag',
@@ -710,7 +825,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -725,15 +840,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddMediaTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddMediaTag',
@@ -743,7 +863,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -772,16 +892,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddMediaWorkflowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Topology'] = request.topology
-        query['TriggerMode'] = request.trigger_mode
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.topology):
+            query['Topology'] = request.topology
+        if not UtilClient.is_unset(request.trigger_mode):
+            query['TriggerMode'] = request.trigger_mode
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddMediaWorkflow',
@@ -791,7 +917,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -806,16 +932,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddMediaWorkflowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Topology'] = request.topology
-        query['TriggerMode'] = request.trigger_mode
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.topology):
+            query['Topology'] = request.topology
+        if not UtilClient.is_unset(request.trigger_mode):
+            query['TriggerMode'] = request.trigger_mode
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddMediaWorkflow',
@@ -825,7 +957,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -854,18 +986,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Role'] = request.role
-        query['Speed'] = request.speed
-        query['SpeedLevel'] = request.speed_level
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        if not UtilClient.is_unset(request.speed):
+            query['Speed'] = request.speed
+        if not UtilClient.is_unset(request.speed_level):
+            query['SpeedLevel'] = request.speed_level
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddPipeline',
@@ -875,7 +1015,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -890,18 +1030,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Role'] = request.role
-        query['Speed'] = request.speed
-        query['SpeedLevel'] = request.speed_level
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        if not UtilClient.is_unset(request.speed):
+            query['Speed'] = request.speed
+        if not UtilClient.is_unset(request.speed_level):
+            query['SpeedLevel'] = request.speed_level
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddPipeline',
@@ -911,7 +1059,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -940,16 +1088,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddPornPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddPornPipeline',
@@ -959,7 +1113,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -974,16 +1128,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddPornPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddPornPipeline',
@@ -993,7 +1153,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1022,23 +1182,38 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddSmarttagTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AnalyseTypes'] = request.analyse_types
-        query['FaceCategoryIds'] = request.face_category_ids
-        query['Industry'] = request.industry
-        query['IsDefault'] = request.is_default
-        query['KeywordConfig'] = request.keyword_config
-        query['KnowledgeConfig'] = request.knowledge_config
-        query['LabelType'] = request.label_type
-        query['LabelVersion'] = request.label_version
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Scene'] = request.scene
-        query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.analyse_types):
+            query['AnalyseTypes'] = request.analyse_types
+        if not UtilClient.is_unset(request.face_category_ids):
+            query['FaceCategoryIds'] = request.face_category_ids
+        if not UtilClient.is_unset(request.face_custom_params_config):
+            query['FaceCustomParamsConfig'] = request.face_custom_params_config
+        if not UtilClient.is_unset(request.industry):
+            query['Industry'] = request.industry
+        if not UtilClient.is_unset(request.is_default):
+            query['IsDefault'] = request.is_default
+        if not UtilClient.is_unset(request.keyword_config):
+            query['KeywordConfig'] = request.keyword_config
+        if not UtilClient.is_unset(request.knowledge_config):
+            query['KnowledgeConfig'] = request.knowledge_config
+        if not UtilClient.is_unset(request.label_type):
+            query['LabelType'] = request.label_type
+        if not UtilClient.is_unset(request.label_version):
+            query['LabelVersion'] = request.label_version
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scene):
+            query['Scene'] = request.scene
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddSmarttagTemplate',
@@ -1048,7 +1223,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1063,23 +1238,38 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddSmarttagTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AnalyseTypes'] = request.analyse_types
-        query['FaceCategoryIds'] = request.face_category_ids
-        query['Industry'] = request.industry
-        query['IsDefault'] = request.is_default
-        query['KeywordConfig'] = request.keyword_config
-        query['KnowledgeConfig'] = request.knowledge_config
-        query['LabelType'] = request.label_type
-        query['LabelVersion'] = request.label_version
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Scene'] = request.scene
-        query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.analyse_types):
+            query['AnalyseTypes'] = request.analyse_types
+        if not UtilClient.is_unset(request.face_category_ids):
+            query['FaceCategoryIds'] = request.face_category_ids
+        if not UtilClient.is_unset(request.face_custom_params_config):
+            query['FaceCustomParamsConfig'] = request.face_custom_params_config
+        if not UtilClient.is_unset(request.industry):
+            query['Industry'] = request.industry
+        if not UtilClient.is_unset(request.is_default):
+            query['IsDefault'] = request.is_default
+        if not UtilClient.is_unset(request.keyword_config):
+            query['KeywordConfig'] = request.keyword_config
+        if not UtilClient.is_unset(request.knowledge_config):
+            query['KnowledgeConfig'] = request.knowledge_config
+        if not UtilClient.is_unset(request.label_type):
+            query['LabelType'] = request.label_type
+        if not UtilClient.is_unset(request.label_version):
+            query['LabelVersion'] = request.label_version
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scene):
+            query['Scene'] = request.scene
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddSmarttagTemplate',
@@ -1089,7 +1279,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1118,19 +1308,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Audio'] = request.audio
-        query['Container'] = request.container
-        query['MuxConfig'] = request.mux_config
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransConfig'] = request.trans_config
-        query['Video'] = request.video
+        if not UtilClient.is_unset(request.audio):
+            query['Audio'] = request.audio
+        if not UtilClient.is_unset(request.container):
+            query['Container'] = request.container
+        if not UtilClient.is_unset(request.mux_config):
+            query['MuxConfig'] = request.mux_config
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.trans_config):
+            query['TransConfig'] = request.trans_config
+        if not UtilClient.is_unset(request.video):
+            query['Video'] = request.video
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddTemplate',
@@ -1140,7 +1339,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1155,19 +1354,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Audio'] = request.audio
-        query['Container'] = request.container
-        query['MuxConfig'] = request.mux_config
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransConfig'] = request.trans_config
-        query['Video'] = request.video
+        if not UtilClient.is_unset(request.audio):
+            query['Audio'] = request.audio
+        if not UtilClient.is_unset(request.container):
+            query['Container'] = request.container
+        if not UtilClient.is_unset(request.mux_config):
+            query['MuxConfig'] = request.mux_config
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.trans_config):
+            query['TransConfig'] = request.trans_config
+        if not UtilClient.is_unset(request.video):
+            query['Video'] = request.video
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddTemplate',
@@ -1177,7 +1385,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1206,16 +1414,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddTerrorismPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddTerrorismPipeline',
@@ -1225,7 +1439,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1240,16 +1454,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddTerrorismPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddTerrorismPipeline',
@@ -1259,7 +1479,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1288,15 +1508,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddWaterMarkTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Config'] = request.config
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddWaterMarkTemplate',
@@ -1306,7 +1531,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1321,15 +1546,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.AddWaterMarkTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Config'] = request.config
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddWaterMarkTemplate',
@@ -1339,7 +1569,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1368,15 +1598,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.BindInputBucketResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bucket'] = request.bucket
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.bucket):
+            query['Bucket'] = request.bucket
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindInputBucket',
@@ -1386,7 +1621,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1401,15 +1636,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.BindInputBucketResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bucket'] = request.bucket
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.bucket):
+            query['Bucket'] = request.bucket
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindInputBucket',
@@ -1419,7 +1659,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1448,15 +1688,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.BindOutputBucketResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bucket'] = request.bucket
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.bucket):
+            query['Bucket'] = request.bucket
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindOutputBucket',
@@ -1466,7 +1711,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1481,15 +1726,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.BindOutputBucketResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bucket'] = request.bucket
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.bucket):
+            query['Bucket'] = request.bucket
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindOutputBucket',
@@ -1499,7 +1749,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1528,14 +1778,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.CancelJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CancelJob',
@@ -1545,7 +1799,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1560,14 +1814,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.CancelJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CancelJob',
@@ -1577,7 +1835,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1606,13 +1864,16 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.CategoryTreeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CategoryTree',
@@ -1622,7 +1883,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1637,13 +1898,16 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.CategoryTreeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CategoryTree',
@@ -1653,7 +1917,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1682,23 +1946,36 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.CheckResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bid'] = request.bid
-        query['Country'] = request.country
-        query['GmtWakeup'] = request.gmt_wakeup
-        query['Hid'] = request.hid
-        query['Interrupt'] = request.interrupt
-        query['Invoker'] = request.invoker
-        query['Level'] = request.level
-        query['Message'] = request.message
-        query['Pk'] = request.pk
-        query['Prompt'] = request.prompt
-        query['Success'] = request.success
-        query['TaskExtraData'] = request.task_extra_data
-        query['TaskIdentifier'] = request.task_identifier
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.bid):
+            query['Bid'] = request.bid
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.gmt_wakeup):
+            query['GmtWakeup'] = request.gmt_wakeup
+        if not UtilClient.is_unset(request.hid):
+            query['Hid'] = request.hid
+        if not UtilClient.is_unset(request.interrupt):
+            query['Interrupt'] = request.interrupt
+        if not UtilClient.is_unset(request.invoker):
+            query['Invoker'] = request.invoker
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.pk):
+            query['Pk'] = request.pk
+        if not UtilClient.is_unset(request.prompt):
+            query['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.success):
+            query['Success'] = request.success
+        if not UtilClient.is_unset(request.task_extra_data):
+            query['TaskExtraData'] = request.task_extra_data
+        if not UtilClient.is_unset(request.task_identifier):
+            query['TaskIdentifier'] = request.task_identifier
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CheckResource',
@@ -1708,7 +1985,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1723,23 +2000,36 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.CheckResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bid'] = request.bid
-        query['Country'] = request.country
-        query['GmtWakeup'] = request.gmt_wakeup
-        query['Hid'] = request.hid
-        query['Interrupt'] = request.interrupt
-        query['Invoker'] = request.invoker
-        query['Level'] = request.level
-        query['Message'] = request.message
-        query['Pk'] = request.pk
-        query['Prompt'] = request.prompt
-        query['Success'] = request.success
-        query['TaskExtraData'] = request.task_extra_data
-        query['TaskIdentifier'] = request.task_identifier
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.bid):
+            query['Bid'] = request.bid
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.gmt_wakeup):
+            query['GmtWakeup'] = request.gmt_wakeup
+        if not UtilClient.is_unset(request.hid):
+            query['Hid'] = request.hid
+        if not UtilClient.is_unset(request.interrupt):
+            query['Interrupt'] = request.interrupt
+        if not UtilClient.is_unset(request.invoker):
+            query['Invoker'] = request.invoker
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.pk):
+            query['Pk'] = request.pk
+        if not UtilClient.is_unset(request.prompt):
+            query['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.success):
+            query['Success'] = request.success
+        if not UtilClient.is_unset(request.task_extra_data):
+            query['TaskExtraData'] = request.task_extra_data
+        if not UtilClient.is_unset(request.task_identifier):
+            query['TaskIdentifier'] = request.task_identifier
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CheckResource',
@@ -1749,7 +2039,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1778,17 +2068,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.CreateFpShotDBResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Config'] = request.config
-        query['Description'] = request.description
-        query['ModelId'] = request.model_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.model_id):
+            query['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateFpShotDB',
@@ -1798,7 +2095,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1813,17 +2110,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.CreateFpShotDBResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Config'] = request.config
-        query['Description'] = request.description
-        query['ModelId'] = request.model_id
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.model_id):
+            query['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateFpShotDB',
@@ -1833,7 +2137,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1862,15 +2166,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.CreateInferenceServerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FunctionName'] = request.function_name
-        query['ModelPath'] = request.model_path
-        query['ModelType'] = request.model_type
-        query['PipelineId'] = request.pipeline_id
-        query['TestId'] = request.test_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.model_path):
+            query['ModelPath'] = request.model_path
+        if not UtilClient.is_unset(request.model_type):
+            query['ModelType'] = request.model_type
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.test_id):
+            query['TestId'] = request.test_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateInferenceServer',
@@ -1880,7 +2189,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1895,15 +2204,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.CreateInferenceServerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FunctionName'] = request.function_name
-        query['ModelPath'] = request.model_path
-        query['ModelType'] = request.model_type
-        query['PipelineId'] = request.pipeline_id
-        query['TestId'] = request.test_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.model_path):
+            query['ModelPath'] = request.model_path
+        if not UtilClient.is_unset(request.model_type):
+            query['ModelType'] = request.model_type
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.test_id):
+            query['TestId'] = request.test_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateInferenceServer',
@@ -1913,7 +2227,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1942,14 +2256,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.CreateMcuTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Template'] = request.template
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template):
+            query['Template'] = request.template
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateMcuTemplate',
@@ -1959,7 +2277,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1974,14 +2292,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.CreateMcuTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Template'] = request.template
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template):
+            query['Template'] = request.template
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateMcuTemplate',
@@ -1991,7 +2313,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2020,16 +2342,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.CreateSessionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndUserId'] = request.end_user_id
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SessionTime'] = request.session_time
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.session_time):
+            query['SessionTime'] = request.session_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateSession',
@@ -2039,7 +2367,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2054,16 +2382,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.CreateSessionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndUserId'] = request.end_user_id
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SessionTime'] = request.session_time
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.session_time):
+            query['SessionTime'] = request.session_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateSession',
@@ -2073,7 +2407,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2102,14 +2436,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeactivateMediaWorkflowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaWorkflowId'] = request.media_workflow_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_workflow_id):
+            query['MediaWorkflowId'] = request.media_workflow_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeactivateMediaWorkflow',
@@ -2119,7 +2457,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2134,14 +2472,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeactivateMediaWorkflowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaWorkflowId'] = request.media_workflow_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_workflow_id):
+            query['MediaWorkflowId'] = request.media_workflow_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeactivateMediaWorkflow',
@@ -2151,7 +2493,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2180,15 +2522,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DecryptKeyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CiphertextBlob'] = request.ciphertext_blob
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Rand'] = request.rand
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.ciphertext_blob):
+            query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rand):
+            query['Rand'] = request.rand
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DecryptKey',
@@ -2198,7 +2545,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2213,15 +2560,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DecryptKeyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CiphertextBlob'] = request.ciphertext_blob
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Rand'] = request.rand
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.ciphertext_blob):
+            query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rand):
+            query['Rand'] = request.rand
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DecryptKey',
@@ -2231,7 +2583,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2260,14 +2612,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteCategory',
@@ -2277,7 +2633,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2292,14 +2648,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteCategory',
@@ -2309,7 +2669,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2338,14 +2698,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteMCTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteMCTemplate',
@@ -2355,7 +2719,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2370,14 +2734,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteMCTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteMCTemplate',
@@ -2387,7 +2755,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2416,14 +2784,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteMcuJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteMcuJob',
@@ -2433,7 +2805,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2448,14 +2820,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteMcuJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteMcuJob',
@@ -2465,7 +2841,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2494,14 +2870,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteMcuTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteMcuTemplate',
@@ -2511,7 +2891,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2526,14 +2906,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteMcuTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteMcuTemplate',
@@ -2543,7 +2927,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2572,14 +2956,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaIds'] = request.media_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteMedia',
@@ -2589,7 +2977,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2604,14 +2992,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaIds'] = request.media_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteMedia',
@@ -2621,7 +3013,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2650,15 +3042,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteMediaTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteMediaTag',
@@ -2668,7 +3065,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2683,15 +3080,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteMediaTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteMediaTag',
@@ -2701,7 +3103,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2730,14 +3132,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteMediaWorkflowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaWorkflowId'] = request.media_workflow_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_workflow_id):
+            query['MediaWorkflowId'] = request.media_workflow_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteMediaWorkflow',
@@ -2747,7 +3153,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2762,14 +3168,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteMediaWorkflowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaWorkflowId'] = request.media_workflow_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_workflow_id):
+            query['MediaWorkflowId'] = request.media_workflow_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteMediaWorkflow',
@@ -2779,7 +3189,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2808,14 +3218,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeletePipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeletePipeline',
@@ -2825,7 +3239,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2840,14 +3254,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeletePipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeletePipeline',
@@ -2857,7 +3275,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2886,14 +3304,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteSmarttagTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSmarttagTemplate',
@@ -2903,7 +3325,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2918,14 +3340,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteSmarttagTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSmarttagTemplate',
@@ -2935,7 +3361,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2964,14 +3390,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteTemplate',
@@ -2981,7 +3411,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2996,14 +3426,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteTemplate',
@@ -3013,7 +3447,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3042,14 +3476,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteWaterMarkTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['WaterMarkTemplateId'] = request.water_mark_template_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.water_mark_template_id):
+            query['WaterMarkTemplateId'] = request.water_mark_template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteWaterMarkTemplate',
@@ -3059,7 +3497,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3074,14 +3512,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DeleteWaterMarkTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['WaterMarkTemplateId'] = request.water_mark_template_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.water_mark_template_id):
+            query['WaterMarkTemplateId'] = request.water_mark_template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteWaterMarkTemplate',
@@ -3091,7 +3533,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3120,11 +3562,12 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DescribeMtsUserResourcePackageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeMtsUserResourcePackage',
@@ -3134,7 +3577,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3149,11 +3592,12 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DescribeMtsUserResourcePackageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeMtsUserResourcePackage',
@@ -3163,7 +3607,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3192,10 +3636,10 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DetectImageSyncResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Image'] = request.image
+        if not UtilClient.is_unset(request.image):
+            query['Image'] = request.image
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetectImageSync',
@@ -3205,7 +3649,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3220,10 +3664,10 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.DetectImageSyncResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Image'] = request.image
+        if not UtilClient.is_unset(request.image):
+            query['Image'] = request.image
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DetectImageSync',
@@ -3233,7 +3677,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3273,7 +3717,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3299,7 +3743,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3328,18 +3772,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.GetLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Data'] = request.data
-        query['Header'] = request.header
-        query['LicenseUrl'] = request.license_url
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.data):
+            query['Data'] = request.data
+        if not UtilClient.is_unset(request.header):
+            query['Header'] = request.header
+        if not UtilClient.is_unset(request.license_url):
+            query['LicenseUrl'] = request.license_url
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetLicense',
@@ -3349,7 +3801,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3364,18 +3816,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.GetLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Data'] = request.data
-        query['Header'] = request.header
-        query['LicenseUrl'] = request.license_url
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.data):
+            query['Data'] = request.data
+        if not UtilClient.is_unset(request.header):
+            query['Header'] = request.header
+        if not UtilClient.is_unset(request.license_url):
+            query['LicenseUrl'] = request.license_url
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetLicense',
@@ -3385,7 +3845,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3414,14 +3874,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.GetPackageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Data'] = request.data
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.data):
+            query['Data'] = request.data
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetPackage',
@@ -3431,7 +3895,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3446,14 +3910,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.GetPackageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Data'] = request.data
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.data):
+            query['Data'] = request.data
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetPackage',
@@ -3463,7 +3931,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3492,16 +3960,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ImAuditResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BizType'] = request.biz_type
-        query['Contents'] = request.contents
-        query['Images'] = request.images
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Scenes'] = request.scenes
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.contents):
+            query['Contents'] = request.contents
+        if not UtilClient.is_unset(request.images):
+            query['Images'] = request.images
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scenes):
+            query['Scenes'] = request.scenes
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ImAudit',
@@ -3511,7 +3985,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3526,16 +4000,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ImAuditResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BizType'] = request.biz_type
-        query['Contents'] = request.contents
-        query['Images'] = request.images
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Scenes'] = request.scenes
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.contents):
+            query['Contents'] = request.contents
+        if not UtilClient.is_unset(request.images):
+            query['Images'] = request.images
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scenes):
+            query['Scenes'] = request.scenes
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ImAudit',
@@ -3545,7 +4025,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3574,18 +4054,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ImportFpShotJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FpDBId'] = request.fp_dbid
-        query['FpImportConfig'] = request.fp_import_config
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.fp_dbid):
+            query['FpDBId'] = request.fp_dbid
+        if not UtilClient.is_unset(request.fp_import_config):
+            query['FpImportConfig'] = request.fp_import_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ImportFpShotJob',
@@ -3595,7 +4083,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3610,18 +4098,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ImportFpShotJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FpDBId'] = request.fp_dbid
-        query['FpImportConfig'] = request.fp_import_config
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.fp_dbid):
+            query['FpDBId'] = request.fp_dbid
+        if not UtilClient.is_unset(request.fp_import_config):
+            query['FpImportConfig'] = request.fp_import_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ImportFpShotJob',
@@ -3631,7 +4127,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3660,13 +4156,16 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListAllCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAllCategory',
@@ -3676,7 +4175,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3691,13 +4190,16 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListAllCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAllCategory',
@@ -3707,7 +4209,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3736,15 +4238,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListAllMediaBucketResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAllMediaBucket',
@@ -3754,7 +4261,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3769,15 +4276,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListAllMediaBucketResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAllMediaBucket',
@@ -3787,7 +4299,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3816,16 +4328,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListAsrPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAsrPipeline',
@@ -3835,7 +4353,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3850,16 +4368,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListAsrPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAsrPipeline',
@@ -3869,7 +4393,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3898,16 +4422,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListCensorPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListCensorPipeline',
@@ -3917,7 +4447,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3932,16 +4462,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListCensorPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListCensorPipeline',
@@ -3951,7 +4487,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3980,16 +4516,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListCoverPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListCoverPipeline',
@@ -3999,7 +4541,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4014,16 +4556,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListCoverPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListCoverPipeline',
@@ -4033,7 +4581,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4062,15 +4610,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListCustomPersonsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CategoryId'] = request.category_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PersonId'] = request.person_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.person_id):
+            query['PersonId'] = request.person_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListCustomPersons',
@@ -4080,7 +4633,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4095,15 +4648,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListCustomPersonsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CategoryId'] = request.category_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PersonId'] = request.person_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.person_id):
+            query['PersonId'] = request.person_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListCustomPersons',
@@ -4113,7 +4671,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4142,14 +4700,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListFpShotDBResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FpDBIds'] = request.fp_dbids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.fp_dbids):
+            query['FpDBIds'] = request.fp_dbids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListFpShotDB',
@@ -4159,7 +4721,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4174,14 +4736,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListFpShotDBResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FpDBIds'] = request.fp_dbids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.fp_dbids):
+            query['FpDBIds'] = request.fp_dbids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListFpShotDB',
@@ -4191,7 +4757,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4220,16 +4786,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListFpShotFilesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FpDBId'] = request.fp_dbid
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.fp_dbid):
+            query['FpDBId'] = request.fp_dbid
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListFpShotFiles',
@@ -4239,7 +4811,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4254,16 +4826,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListFpShotFilesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FpDBId'] = request.fp_dbid
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.fp_dbid):
+            query['FpDBId'] = request.fp_dbid
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListFpShotFiles',
@@ -4273,7 +4851,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4302,14 +4880,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListFpShotImportJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListFpShotImportJob',
@@ -4319,7 +4901,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4334,14 +4916,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListFpShotImportJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListFpShotImportJob',
@@ -4351,7 +4937,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4380,18 +4966,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListFpShotNotaryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndOfCreatedTimeRange'] = request.end_of_created_time_range
-        query['FpDBId'] = request.fp_dbid
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartOfCreatedTimeRange'] = request.start_of_created_time_range
+        if not UtilClient.is_unset(request.end_of_created_time_range):
+            query['EndOfCreatedTimeRange'] = request.end_of_created_time_range
+        if not UtilClient.is_unset(request.fp_dbid):
+            query['FpDBId'] = request.fp_dbid
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_of_created_time_range):
+            query['StartOfCreatedTimeRange'] = request.start_of_created_time_range
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListFpShotNotary',
@@ -4401,7 +4995,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4416,18 +5010,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListFpShotNotaryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndOfCreatedTimeRange'] = request.end_of_created_time_range
-        query['FpDBId'] = request.fp_dbid
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartOfCreatedTimeRange'] = request.start_of_created_time_range
+        if not UtilClient.is_unset(request.end_of_created_time_range):
+            query['EndOfCreatedTimeRange'] = request.end_of_created_time_range
+        if not UtilClient.is_unset(request.fp_dbid):
+            query['FpDBId'] = request.fp_dbid
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_of_created_time_range):
+            query['StartOfCreatedTimeRange'] = request.start_of_created_time_range
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListFpShotNotary',
@@ -4437,7 +5039,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4466,12 +5068,14 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListInferenceJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxPageSize'] = request.max_page_size
-        query['PageNumber'] = request.page_number
-        query['ServerName'] = request.server_name
+        if not UtilClient.is_unset(request.max_page_size):
+            query['MaxPageSize'] = request.max_page_size
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.server_name):
+            query['ServerName'] = request.server_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListInferenceJob',
@@ -4481,7 +5085,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4496,12 +5100,14 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListInferenceJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxPageSize'] = request.max_page_size
-        query['PageNumber'] = request.page_number
-        query['ServerName'] = request.server_name
+        if not UtilClient.is_unset(request.max_page_size):
+            query['MaxPageSize'] = request.max_page_size
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.server_name):
+            query['ServerName'] = request.server_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListInferenceJob',
@@ -4511,7 +5117,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4540,19 +5146,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.end_of_job_created_time_range):
+            query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_of_job_created_time_range):
+            query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListJob',
@@ -4562,7 +5177,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4577,19 +5192,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.end_of_job_created_time_range):
+            query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_of_job_created_time_range):
+            query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListJob',
@@ -4599,7 +5223,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4628,17 +5252,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['From'] = request.from_
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['To'] = request.to
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListMedia',
@@ -4648,7 +5279,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4663,17 +5294,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['From'] = request.from_
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['To'] = request.to
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListMedia',
@@ -4683,7 +5321,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4712,18 +5350,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListMediaWorkflowExecutionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InputFileURL'] = request.input_file_url
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['MediaWorkflowId'] = request.media_workflow_id
-        query['MediaWorkflowName'] = request.media_workflow_name
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.input_file_url):
+            query['InputFileURL'] = request.input_file_url
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.media_workflow_id):
+            query['MediaWorkflowId'] = request.media_workflow_id
+        if not UtilClient.is_unset(request.media_workflow_name):
+            query['MediaWorkflowName'] = request.media_workflow_name
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListMediaWorkflowExecutions',
@@ -4733,7 +5379,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4748,18 +5394,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListMediaWorkflowExecutionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InputFileURL'] = request.input_file_url
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['MediaWorkflowId'] = request.media_workflow_id
-        query['MediaWorkflowName'] = request.media_workflow_name
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.input_file_url):
+            query['InputFileURL'] = request.input_file_url
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.media_workflow_id):
+            query['MediaWorkflowId'] = request.media_workflow_id
+        if not UtilClient.is_unset(request.media_workflow_name):
+            query['MediaWorkflowName'] = request.media_workflow_name
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListMediaWorkflowExecutions',
@@ -4769,7 +5423,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4798,16 +5452,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListPornPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPornPipeline',
@@ -4817,7 +5477,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4832,16 +5492,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListPornPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPornPipeline',
@@ -4851,7 +5517,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4880,16 +5546,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListTerrorismPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTerrorismPipeline',
@@ -4899,7 +5571,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4914,16 +5586,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ListTerrorismPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTerrorismPipeline',
@@ -4933,7 +5611,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4962,20 +5640,30 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.LogicalDeleteResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bid'] = request.bid
-        query['Country'] = request.country
-        query['GmtWakeup'] = request.gmt_wakeup
-        query['Hid'] = request.hid
-        query['Interrupt'] = request.interrupt
-        query['Invoker'] = request.invoker
-        query['Message'] = request.message
-        query['Pk'] = request.pk
-        query['Success'] = request.success
-        query['TaskExtraData'] = request.task_extra_data
-        query['TaskIdentifier'] = request.task_identifier
+        if not UtilClient.is_unset(request.bid):
+            query['Bid'] = request.bid
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.gmt_wakeup):
+            query['GmtWakeup'] = request.gmt_wakeup
+        if not UtilClient.is_unset(request.hid):
+            query['Hid'] = request.hid
+        if not UtilClient.is_unset(request.interrupt):
+            query['Interrupt'] = request.interrupt
+        if not UtilClient.is_unset(request.invoker):
+            query['Invoker'] = request.invoker
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.pk):
+            query['Pk'] = request.pk
+        if not UtilClient.is_unset(request.success):
+            query['Success'] = request.success
+        if not UtilClient.is_unset(request.task_extra_data):
+            query['TaskExtraData'] = request.task_extra_data
+        if not UtilClient.is_unset(request.task_identifier):
+            query['TaskIdentifier'] = request.task_identifier
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='LogicalDeleteResource',
@@ -4985,7 +5673,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5000,20 +5688,30 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.LogicalDeleteResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bid'] = request.bid
-        query['Country'] = request.country
-        query['GmtWakeup'] = request.gmt_wakeup
-        query['Hid'] = request.hid
-        query['Interrupt'] = request.interrupt
-        query['Invoker'] = request.invoker
-        query['Message'] = request.message
-        query['Pk'] = request.pk
-        query['Success'] = request.success
-        query['TaskExtraData'] = request.task_extra_data
-        query['TaskIdentifier'] = request.task_identifier
+        if not UtilClient.is_unset(request.bid):
+            query['Bid'] = request.bid
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.gmt_wakeup):
+            query['GmtWakeup'] = request.gmt_wakeup
+        if not UtilClient.is_unset(request.hid):
+            query['Hid'] = request.hid
+        if not UtilClient.is_unset(request.interrupt):
+            query['Interrupt'] = request.interrupt
+        if not UtilClient.is_unset(request.invoker):
+            query['Invoker'] = request.invoker
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.pk):
+            query['Pk'] = request.pk
+        if not UtilClient.is_unset(request.success):
+            query['Success'] = request.success
+        if not UtilClient.is_unset(request.task_extra_data):
+            query['TaskExtraData'] = request.task_extra_data
+        if not UtilClient.is_unset(request.task_identifier):
+            query['TaskIdentifier'] = request.task_identifier
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='LogicalDeleteResource',
@@ -5023,7 +5721,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5052,20 +5750,30 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.PhysicalDeleteResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bid'] = request.bid
-        query['Country'] = request.country
-        query['GmtWakeup'] = request.gmt_wakeup
-        query['Hid'] = request.hid
-        query['Interrupt'] = request.interrupt
-        query['Invoker'] = request.invoker
-        query['Message'] = request.message
-        query['Pk'] = request.pk
-        query['Success'] = request.success
-        query['TaskExtraData'] = request.task_extra_data
-        query['TaskIdentifier'] = request.task_identifier
+        if not UtilClient.is_unset(request.bid):
+            query['Bid'] = request.bid
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.gmt_wakeup):
+            query['GmtWakeup'] = request.gmt_wakeup
+        if not UtilClient.is_unset(request.hid):
+            query['Hid'] = request.hid
+        if not UtilClient.is_unset(request.interrupt):
+            query['Interrupt'] = request.interrupt
+        if not UtilClient.is_unset(request.invoker):
+            query['Invoker'] = request.invoker
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.pk):
+            query['Pk'] = request.pk
+        if not UtilClient.is_unset(request.success):
+            query['Success'] = request.success
+        if not UtilClient.is_unset(request.task_extra_data):
+            query['TaskExtraData'] = request.task_extra_data
+        if not UtilClient.is_unset(request.task_identifier):
+            query['TaskIdentifier'] = request.task_identifier
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PhysicalDeleteResource',
@@ -5075,7 +5783,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5090,20 +5798,30 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.PhysicalDeleteResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bid'] = request.bid
-        query['Country'] = request.country
-        query['GmtWakeup'] = request.gmt_wakeup
-        query['Hid'] = request.hid
-        query['Interrupt'] = request.interrupt
-        query['Invoker'] = request.invoker
-        query['Message'] = request.message
-        query['Pk'] = request.pk
-        query['Success'] = request.success
-        query['TaskExtraData'] = request.task_extra_data
-        query['TaskIdentifier'] = request.task_identifier
+        if not UtilClient.is_unset(request.bid):
+            query['Bid'] = request.bid
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.gmt_wakeup):
+            query['GmtWakeup'] = request.gmt_wakeup
+        if not UtilClient.is_unset(request.hid):
+            query['Hid'] = request.hid
+        if not UtilClient.is_unset(request.interrupt):
+            query['Interrupt'] = request.interrupt
+        if not UtilClient.is_unset(request.invoker):
+            query['Invoker'] = request.invoker
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.pk):
+            query['Pk'] = request.pk
+        if not UtilClient.is_unset(request.success):
+            query['Success'] = request.success
+        if not UtilClient.is_unset(request.task_extra_data):
+            query['TaskExtraData'] = request.task_extra_data
+        if not UtilClient.is_unset(request.task_identifier):
+            query['TaskIdentifier'] = request.task_identifier
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PhysicalDeleteResource',
@@ -5113,7 +5831,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5142,21 +5860,32 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.PlayInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthInfo'] = request.auth_info
-        query['AuthTimeout'] = request.auth_timeout
-        query['Formats'] = request.formats
-        query['HlsUriToken'] = request.hls_uri_token
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PlayDomain'] = request.play_domain
-        query['Rand'] = request.rand
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Terminal'] = request.terminal
+        if not UtilClient.is_unset(request.auth_info):
+            query['AuthInfo'] = request.auth_info
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
+        if not UtilClient.is_unset(request.formats):
+            query['Formats'] = request.formats
+        if not UtilClient.is_unset(request.hls_uri_token):
+            query['HlsUriToken'] = request.hls_uri_token
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.play_domain):
+            query['PlayDomain'] = request.play_domain
+        if not UtilClient.is_unset(request.rand):
+            query['Rand'] = request.rand
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.terminal):
+            query['Terminal'] = request.terminal
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PlayInfo',
@@ -5166,7 +5895,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5181,21 +5910,32 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.PlayInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthInfo'] = request.auth_info
-        query['AuthTimeout'] = request.auth_timeout
-        query['Formats'] = request.formats
-        query['HlsUriToken'] = request.hls_uri_token
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PlayDomain'] = request.play_domain
-        query['Rand'] = request.rand
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Terminal'] = request.terminal
+        if not UtilClient.is_unset(request.auth_info):
+            query['AuthInfo'] = request.auth_info
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
+        if not UtilClient.is_unset(request.formats):
+            query['Formats'] = request.formats
+        if not UtilClient.is_unset(request.hls_uri_token):
+            query['HlsUriToken'] = request.hls_uri_token
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.play_domain):
+            query['PlayDomain'] = request.play_domain
+        if not UtilClient.is_unset(request.rand):
+            query['Rand'] = request.rand
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.terminal):
+            query['Terminal'] = request.terminal
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PlayInfo',
@@ -5205,7 +5945,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5234,13 +5974,16 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.PlayerAuthResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PlayerAuth',
@@ -5250,7 +5993,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5265,13 +6008,16 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.PlayerAuthResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PlayerAuth',
@@ -5281,7 +6027,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5310,14 +6056,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryAnalysisJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AnalysisJobIds'] = request.analysis_job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.analysis_job_ids):
+            query['AnalysisJobIds'] = request.analysis_job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryAnalysisJobList',
@@ -5327,7 +6077,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5342,14 +6092,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryAnalysisJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AnalysisJobIds'] = request.analysis_job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.analysis_job_ids):
+            query['AnalysisJobIds'] = request.analysis_job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryAnalysisJobList',
@@ -5359,7 +6113,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5388,14 +6142,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryAnnotationJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AnnotationJobIds'] = request.annotation_job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.annotation_job_ids):
+            query['AnnotationJobIds'] = request.annotation_job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryAnnotationJobList',
@@ -5405,7 +6163,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5420,14 +6178,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryAnnotationJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AnnotationJobIds'] = request.annotation_job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.annotation_job_ids):
+            query['AnnotationJobIds'] = request.annotation_job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryAnnotationJobList',
@@ -5437,7 +6199,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5466,14 +6228,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryAsrJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryAsrJobList',
@@ -5483,7 +6249,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5498,14 +6264,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryAsrJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryAsrJobList',
@@ -5515,7 +6285,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5544,14 +6314,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryAsrPipelineListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineIds'] = request.pipeline_ids
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_ids):
+            query['PipelineIds'] = request.pipeline_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryAsrPipelineList',
@@ -5561,7 +6335,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5576,14 +6350,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryAsrPipelineListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineIds'] = request.pipeline_ids
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_ids):
+            query['PipelineIds'] = request.pipeline_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryAsrPipelineList',
@@ -5593,7 +6371,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5622,13 +6400,16 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryAuthConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryAuthConfig',
@@ -5638,7 +6419,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5653,13 +6434,16 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryAuthConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryAuthConfig',
@@ -5669,7 +6453,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5698,14 +6482,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryCensorJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryCensorJobList',
@@ -5715,7 +6503,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5730,14 +6518,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryCensorJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryCensorJobList',
@@ -5747,7 +6539,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5776,14 +6568,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryCensorPipelineListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineIds'] = request.pipeline_ids
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_ids):
+            query['PipelineIds'] = request.pipeline_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryCensorPipelineList',
@@ -5793,7 +6589,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5808,14 +6604,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryCensorPipelineListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineIds'] = request.pipeline_ids
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_ids):
+            query['PipelineIds'] = request.pipeline_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryCensorPipelineList',
@@ -5825,7 +6625,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5854,14 +6654,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryComplexJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryComplexJobList',
@@ -5871,7 +6675,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5886,14 +6690,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryComplexJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryComplexJobList',
@@ -5903,7 +6711,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5932,20 +6740,30 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryCoverJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CoverJobIds'] = request.cover_job_ids
-        query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.cover_job_ids):
+            query['CoverJobIds'] = request.cover_job_ids
+        if not UtilClient.is_unset(request.end_of_job_created_time_range):
+            query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_of_job_created_time_range):
+            query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryCoverJobList',
@@ -5955,7 +6773,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5970,20 +6788,30 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryCoverJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CoverJobIds'] = request.cover_job_ids
-        query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.cover_job_ids):
+            query['CoverJobIds'] = request.cover_job_ids
+        if not UtilClient.is_unset(request.end_of_job_created_time_range):
+            query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_of_job_created_time_range):
+            query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryCoverJobList',
@@ -5993,7 +6821,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6022,14 +6850,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryCoverPipelineListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineIds'] = request.pipeline_ids
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_ids):
+            query['PipelineIds'] = request.pipeline_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryCoverPipelineList',
@@ -6039,7 +6871,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6054,14 +6886,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryCoverPipelineListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineIds'] = request.pipeline_ids
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_ids):
+            query['PipelineIds'] = request.pipeline_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryCoverPipelineList',
@@ -6071,7 +6907,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6100,14 +6936,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryEditingJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryEditingJobList',
@@ -6117,7 +6957,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6132,14 +6972,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryEditingJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryEditingJobList',
@@ -6149,7 +6993,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6178,14 +7022,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryFacerecogJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FacerecogJobIds'] = request.facerecog_job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.facerecog_job_ids):
+            query['FacerecogJobIds'] = request.facerecog_job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryFacerecogJobList',
@@ -6195,7 +7043,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6210,14 +7058,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryFacerecogJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FacerecogJobIds'] = request.facerecog_job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.facerecog_job_ids):
+            query['FacerecogJobIds'] = request.facerecog_job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryFacerecogJobList',
@@ -6227,7 +7079,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6256,14 +7108,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryFpCompareJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryFpCompareJobList',
@@ -6273,7 +7129,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6288,14 +7144,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryFpCompareJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryFpCompareJobList',
@@ -6305,7 +7165,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6334,14 +7194,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryFpDBDeleteJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryFpDBDeleteJobList',
@@ -6351,7 +7215,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6366,14 +7230,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryFpDBDeleteJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryFpDBDeleteJobList',
@@ -6383,7 +7251,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6412,14 +7280,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryFpFileDeleteJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryFpFileDeleteJobList',
@@ -6429,7 +7301,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6444,14 +7316,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryFpFileDeleteJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryFpFileDeleteJobList',
@@ -6461,7 +7337,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6490,17 +7366,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryFpImportResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageIndex'] = request.page_index
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryFpImportResult',
@@ -6510,7 +7393,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6525,17 +7408,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryFpImportResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageIndex'] = request.page_index
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryFpImportResult',
@@ -6545,7 +7435,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6574,22 +7464,34 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryFpShotJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
-        query['JobIds'] = request.job_ids
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['PrimaryKeyList'] = request.primary_key_list
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
-        query['State'] = request.state
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.end_of_job_created_time_range):
+            query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.primary_key_list):
+            query['PrimaryKeyList'] = request.primary_key_list
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_of_job_created_time_range):
+            query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryFpShotJobList',
@@ -6599,7 +7501,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6614,22 +7516,34 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryFpShotJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
-        query['JobIds'] = request.job_ids
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['PrimaryKeyList'] = request.primary_key_list
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
-        query['State'] = request.state
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.end_of_job_created_time_range):
+            query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.primary_key_list):
+            query['PrimaryKeyList'] = request.primary_key_list
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_of_job_created_time_range):
+            query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryFpShotJobList',
@@ -6639,7 +7553,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6668,14 +7582,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryIProductionJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryIProductionJob',
@@ -6685,7 +7603,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6700,14 +7618,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryIProductionJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryIProductionJob',
@@ -6717,7 +7639,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6746,14 +7668,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryIProductionJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IProductionJobIds'] = request.iproduction_job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.iproduction_job_ids):
+            query['IProductionJobIds'] = request.iproduction_job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryIProductionJobList',
@@ -6763,7 +7689,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6778,14 +7704,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryIProductionJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IProductionJobIds'] = request.iproduction_job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.iproduction_job_ids):
+            query['IProductionJobIds'] = request.iproduction_job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryIProductionJobList',
@@ -6795,7 +7725,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6824,14 +7754,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryImageSearchJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryImageSearchJobList',
@@ -6841,7 +7775,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6856,14 +7790,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryImageSearchJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryImageSearchJobList',
@@ -6873,7 +7811,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6902,10 +7840,10 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryInferenceJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryInferenceJob',
@@ -6915,7 +7853,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6930,10 +7868,10 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryInferenceJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryInferenceJob',
@@ -6943,7 +7881,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6972,13 +7910,16 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryInferenceServerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CreateTime'] = request.create_time
-        query['MaxPageSize'] = request.max_page_size
-        query['ModelType'] = request.model_type
-        query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.create_time):
+            query['CreateTime'] = request.create_time
+        if not UtilClient.is_unset(request.max_page_size):
+            query['MaxPageSize'] = request.max_page_size
+        if not UtilClient.is_unset(request.model_type):
+            query['ModelType'] = request.model_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryInferenceServer',
@@ -6988,7 +7929,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7003,13 +7944,16 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryInferenceServerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CreateTime'] = request.create_time
-        query['MaxPageSize'] = request.max_page_size
-        query['ModelType'] = request.model_type
-        query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.create_time):
+            query['CreateTime'] = request.create_time
+        if not UtilClient.is_unset(request.max_page_size):
+            query['MaxPageSize'] = request.max_page_size
+        if not UtilClient.is_unset(request.model_type):
+            query['ModelType'] = request.model_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryInferenceServer',
@@ -7019,7 +7963,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7048,13 +7992,16 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryInnerJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryInnerJob',
@@ -7064,7 +8011,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7079,13 +8026,16 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryInnerJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryInnerJob',
@@ -7095,7 +8045,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7124,14 +8074,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryJobList',
@@ -7141,7 +8095,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7156,14 +8110,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryJobList',
@@ -7173,7 +8131,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7202,20 +8160,30 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMCJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
-        query['JobIds'] = request.job_ids
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.end_of_job_created_time_range):
+            query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_of_job_created_time_range):
+            query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMCJobList',
@@ -7225,7 +8193,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7240,20 +8208,30 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMCJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
-        query['JobIds'] = request.job_ids
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.end_of_job_created_time_range):
+            query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_of_job_created_time_range):
+            query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMCJobList',
@@ -7263,7 +8241,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7292,14 +8270,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMCTemplateListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_ids):
+            query['TemplateIds'] = request.template_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMCTemplateList',
@@ -7309,7 +8291,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7324,14 +8306,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMCTemplateListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_ids):
+            query['TemplateIds'] = request.template_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMCTemplateList',
@@ -7341,7 +8327,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7370,14 +8356,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMcuJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMcuJob',
@@ -7387,7 +8377,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7402,14 +8392,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMcuJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMcuJob',
@@ -7419,7 +8413,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7448,14 +8442,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMcuTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMcuTemplate',
@@ -7465,7 +8463,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7480,14 +8478,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMcuTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMcuTemplate',
@@ -7497,7 +8499,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7526,16 +8528,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMediaCensorJobDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMediaCensorJobDetail',
@@ -7545,7 +8553,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7560,16 +8568,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMediaCensorJobDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMediaCensorJobDetail',
@@ -7579,7 +8593,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7608,20 +8622,30 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMediaCensorJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
-        query['JobId'] = request.job_id
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.end_of_job_created_time_range):
+            query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_of_job_created_time_range):
+            query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMediaCensorJobList',
@@ -7631,7 +8655,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7646,20 +8670,30 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMediaCensorJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
-        query['JobId'] = request.job_id
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.end_of_job_created_time_range):
+            query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_of_job_created_time_range):
+            query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMediaCensorJobList',
@@ -7669,7 +8703,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7698,14 +8732,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMediaDetailJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMediaDetailJobList',
@@ -7715,7 +8753,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7730,14 +8768,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMediaDetailJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMediaDetailJobList',
@@ -7747,7 +8789,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7776,14 +8818,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMediaFpDeleteJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMediaFpDeleteJobList',
@@ -7793,7 +8839,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7808,14 +8854,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMediaFpDeleteJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMediaFpDeleteJobList',
@@ -7825,7 +8875,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7854,14 +8904,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMediaInfoJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaInfoJobIds'] = request.media_info_job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_info_job_ids):
+            query['MediaInfoJobIds'] = request.media_info_job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMediaInfoJobList',
@@ -7871,7 +8925,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7886,14 +8940,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMediaInfoJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaInfoJobIds'] = request.media_info_job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_info_job_ids):
+            query['MediaInfoJobIds'] = request.media_info_job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMediaInfoJobList',
@@ -7903,7 +8961,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7932,18 +8990,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMediaListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IncludeMediaInfo'] = request.include_media_info
-        query['IncludePlayList'] = request.include_play_list
-        query['IncludeSnapshotList'] = request.include_snapshot_list
-        query['IncludeSummaryList'] = request.include_summary_list
-        query['MediaIds'] = request.media_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.include_media_info):
+            query['IncludeMediaInfo'] = request.include_media_info
+        if not UtilClient.is_unset(request.include_play_list):
+            query['IncludePlayList'] = request.include_play_list
+        if not UtilClient.is_unset(request.include_snapshot_list):
+            query['IncludeSnapshotList'] = request.include_snapshot_list
+        if not UtilClient.is_unset(request.include_summary_list):
+            query['IncludeSummaryList'] = request.include_summary_list
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMediaList',
@@ -7953,7 +9019,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7968,18 +9034,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMediaListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IncludeMediaInfo'] = request.include_media_info
-        query['IncludePlayList'] = request.include_play_list
-        query['IncludeSnapshotList'] = request.include_snapshot_list
-        query['IncludeSummaryList'] = request.include_summary_list
-        query['MediaIds'] = request.media_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.include_media_info):
+            query['IncludeMediaInfo'] = request.include_media_info
+        if not UtilClient.is_unset(request.include_play_list):
+            query['IncludePlayList'] = request.include_play_list
+        if not UtilClient.is_unset(request.include_snapshot_list):
+            query['IncludeSnapshotList'] = request.include_snapshot_list
+        if not UtilClient.is_unset(request.include_summary_list):
+            query['IncludeSummaryList'] = request.include_summary_list
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMediaList',
@@ -7989,7 +9063,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8018,18 +9092,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMediaListByURLResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileURLs'] = request.file_urls
-        query['IncludeMediaInfo'] = request.include_media_info
-        query['IncludePlayList'] = request.include_play_list
-        query['IncludeSnapshotList'] = request.include_snapshot_list
-        query['IncludeSummaryList'] = request.include_summary_list
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.file_urls):
+            query['FileURLs'] = request.file_urls
+        if not UtilClient.is_unset(request.include_media_info):
+            query['IncludeMediaInfo'] = request.include_media_info
+        if not UtilClient.is_unset(request.include_play_list):
+            query['IncludePlayList'] = request.include_play_list
+        if not UtilClient.is_unset(request.include_snapshot_list):
+            query['IncludeSnapshotList'] = request.include_snapshot_list
+        if not UtilClient.is_unset(request.include_summary_list):
+            query['IncludeSummaryList'] = request.include_summary_list
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMediaListByURL',
@@ -8039,7 +9121,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8054,18 +9136,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMediaListByURLResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileURLs'] = request.file_urls
-        query['IncludeMediaInfo'] = request.include_media_info
-        query['IncludePlayList'] = request.include_play_list
-        query['IncludeSnapshotList'] = request.include_snapshot_list
-        query['IncludeSummaryList'] = request.include_summary_list
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.file_urls):
+            query['FileURLs'] = request.file_urls
+        if not UtilClient.is_unset(request.include_media_info):
+            query['IncludeMediaInfo'] = request.include_media_info
+        if not UtilClient.is_unset(request.include_play_list):
+            query['IncludePlayList'] = request.include_play_list
+        if not UtilClient.is_unset(request.include_snapshot_list):
+            query['IncludeSnapshotList'] = request.include_snapshot_list
+        if not UtilClient.is_unset(request.include_summary_list):
+            query['IncludeSummaryList'] = request.include_summary_list
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMediaListByURL',
@@ -8075,7 +9165,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8104,14 +9194,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMediaWorkflowExecutionListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RunIds'] = request.run_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.run_ids):
+            query['RunIds'] = request.run_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMediaWorkflowExecutionList',
@@ -8121,7 +9215,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8136,14 +9230,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMediaWorkflowExecutionListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RunIds'] = request.run_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.run_ids):
+            query['RunIds'] = request.run_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMediaWorkflowExecutionList',
@@ -8153,7 +9251,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8182,14 +9280,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMediaWorkflowListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaWorkflowIds'] = request.media_workflow_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_workflow_ids):
+            query['MediaWorkflowIds'] = request.media_workflow_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMediaWorkflowList',
@@ -8199,7 +9301,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8214,14 +9316,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryMediaWorkflowListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaWorkflowIds'] = request.media_workflow_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_workflow_ids):
+            query['MediaWorkflowIds'] = request.media_workflow_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryMediaWorkflowList',
@@ -8231,7 +9337,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8260,14 +9366,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryPipelineListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineIds'] = request.pipeline_ids
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_ids):
+            query['PipelineIds'] = request.pipeline_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryPipelineList',
@@ -8277,7 +9387,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8292,14 +9402,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryPipelineListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineIds'] = request.pipeline_ids
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_ids):
+            query['PipelineIds'] = request.pipeline_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryPipelineList',
@@ -8309,7 +9423,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8338,14 +9452,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryPornJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryPornJobList',
@@ -8355,7 +9473,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8370,14 +9488,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryPornJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryPornJobList',
@@ -8387,7 +9509,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8416,14 +9538,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryPornPipelineListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineIds'] = request.pipeline_ids
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_ids):
+            query['PipelineIds'] = request.pipeline_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryPornPipelineList',
@@ -8433,7 +9559,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8448,14 +9574,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryPornPipelineListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineIds'] = request.pipeline_ids
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_ids):
+            query['PipelineIds'] = request.pipeline_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryPornPipelineList',
@@ -8465,7 +9595,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8494,15 +9624,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QuerySmarttagJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Params'] = request.params
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySmarttagJob',
@@ -8512,7 +9647,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8527,15 +9662,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QuerySmarttagJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Params'] = request.params
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySmarttagJob',
@@ -8545,7 +9685,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8574,19 +9714,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QuerySmarttagJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
-        query['JobIds'] = request.job_ids
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
+        if not UtilClient.is_unset(request.end_of_job_created_time_range):
+            query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_of_job_created_time_range):
+            query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySmarttagJobList',
@@ -8596,7 +9745,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8611,19 +9760,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QuerySmarttagJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
-        query['JobIds'] = request.job_ids
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
+        if not UtilClient.is_unset(request.end_of_job_created_time_range):
+            query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_of_job_created_time_range):
+            query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySmarttagJobList',
@@ -8633,7 +9791,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8662,14 +9820,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QuerySmarttagTemplateListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySmarttagTemplateList',
@@ -8679,7 +9841,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8694,14 +9856,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QuerySmarttagTemplateListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySmarttagTemplateList',
@@ -8711,7 +9877,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8740,20 +9906,30 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QuerySnapshotJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SnapshotJobIds'] = request.snapshot_job_ids
-        query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.end_of_job_created_time_range):
+            query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.snapshot_job_ids):
+            query['SnapshotJobIds'] = request.snapshot_job_ids
+        if not UtilClient.is_unset(request.start_of_job_created_time_range):
+            query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySnapshotJobList',
@@ -8763,7 +9939,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8778,20 +9954,30 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QuerySnapshotJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
-        query['MaximumPageSize'] = request.maximum_page_size
-        query['NextPageToken'] = request.next_page_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SnapshotJobIds'] = request.snapshot_job_ids
-        query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.end_of_job_created_time_range):
+            query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.snapshot_job_ids):
+            query['SnapshotJobIds'] = request.snapshot_job_ids
+        if not UtilClient.is_unset(request.start_of_job_created_time_range):
+            query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySnapshotJobList',
@@ -8801,7 +9987,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8830,14 +10016,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QuerySubtitleJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySubtitleJobList',
@@ -8847,7 +10037,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8862,14 +10052,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QuerySubtitleJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySubtitleJobList',
@@ -8879,7 +10073,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8908,14 +10102,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryTagJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TagJobIds'] = request.tag_job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_job_ids):
+            query['TagJobIds'] = request.tag_job_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryTagJobList',
@@ -8925,7 +10123,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8940,14 +10138,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryTagJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TagJobIds'] = request.tag_job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_job_ids):
+            query['TagJobIds'] = request.tag_job_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryTagJobList',
@@ -8957,7 +10159,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8986,14 +10188,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryTemplateListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_ids):
+            query['TemplateIds'] = request.template_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryTemplateList',
@@ -9003,7 +10209,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9018,14 +10224,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryTemplateListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_ids):
+            query['TemplateIds'] = request.template_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryTemplateList',
@@ -9035,7 +10245,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9064,14 +10274,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryTerrorismJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryTerrorismJobList',
@@ -9081,7 +10295,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9096,14 +10310,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryTerrorismJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryTerrorismJobList',
@@ -9113,7 +10331,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9142,14 +10360,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryTerrorismPipelineListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineIds'] = request.pipeline_ids
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_ids):
+            query['PipelineIds'] = request.pipeline_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryTerrorismPipelineList',
@@ -9159,7 +10381,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9174,14 +10396,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryTerrorismPipelineListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineIds'] = request.pipeline_ids
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_ids):
+            query['PipelineIds'] = request.pipeline_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryTerrorismPipelineList',
@@ -9191,7 +10417,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9220,14 +10446,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryVideoGifJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryVideoGifJobList',
@@ -9237,7 +10467,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9252,14 +10482,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryVideoGifJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryVideoGifJobList',
@@ -9269,7 +10503,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9298,14 +10532,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryVideoPoseJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryVideoPoseJobList',
@@ -9315,7 +10553,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9330,14 +10568,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryVideoPoseJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryVideoPoseJobList',
@@ -9347,7 +10589,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9376,11 +10618,12 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryVideoQualityJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryVideoQualityJob',
@@ -9390,7 +10633,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9405,11 +10648,12 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryVideoQualityJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryVideoQualityJob',
@@ -9419,7 +10663,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9448,14 +10692,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryVideoSplitJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryVideoSplitJobList',
@@ -9465,7 +10713,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9480,14 +10728,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryVideoSplitJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryVideoSplitJobList',
@@ -9497,7 +10749,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9526,14 +10778,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryVideoSummaryJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryVideoSummaryJobList',
@@ -9543,7 +10799,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9558,14 +10814,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryVideoSummaryJobListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryVideoSummaryJobList',
@@ -9575,7 +10835,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9604,14 +10864,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryWaterMarkTemplateListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['WaterMarkTemplateIds'] = request.water_mark_template_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.water_mark_template_ids):
+            query['WaterMarkTemplateIds'] = request.water_mark_template_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryWaterMarkTemplateList',
@@ -9621,7 +10885,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9636,14 +10900,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.QueryWaterMarkTemplateListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['WaterMarkTemplateIds'] = request.water_mark_template_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.water_mark_template_ids):
+            query['WaterMarkTemplateIds'] = request.water_mark_template_ids
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryWaterMarkTemplateList',
@@ -9653,7 +10921,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9682,14 +10950,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.RefreshCdnDomainConfigsCacheResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domains'] = request.domains
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RefreshCdnDomainConfigsCache',
@@ -9699,7 +10971,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9714,14 +10986,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.RefreshCdnDomainConfigsCacheResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domains'] = request.domains
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RefreshCdnDomainConfigsCache',
@@ -9731,7 +11007,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9760,16 +11036,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.RegisterCustomFaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CategoryId'] = request.category_id
-        query['ImageUrl'] = request.image_url
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PersonId'] = request.person_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.person_id):
+            query['PersonId'] = request.person_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RegisterCustomFace',
@@ -9779,7 +11061,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9794,16 +11076,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.RegisterCustomFaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CategoryId'] = request.category_id
-        query['ImageUrl'] = request.image_url
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PersonId'] = request.person_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.person_id):
+            query['PersonId'] = request.person_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RegisterCustomFace',
@@ -9813,7 +11101,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9842,17 +11130,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.RegisterMediaDetailPersonResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Category'] = request.category
-        query['Images'] = request.images
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PersonLib'] = request.person_lib
-        query['PersonName'] = request.person_name
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.images):
+            query['Images'] = request.images
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.person_lib):
+            query['PersonLib'] = request.person_lib
+        if not UtilClient.is_unset(request.person_name):
+            query['PersonName'] = request.person_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RegisterMediaDetailPerson',
@@ -9862,7 +11157,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9877,17 +11172,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.RegisterMediaDetailPersonResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Category'] = request.category
-        query['Images'] = request.images
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PersonLib'] = request.person_lib
-        query['PersonName'] = request.person_name
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.images):
+            query['Images'] = request.images
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.person_lib):
+            query['PersonLib'] = request.person_lib
+        if not UtilClient.is_unset(request.person_name):
+            query['PersonName'] = request.person_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RegisterMediaDetailPerson',
@@ -9897,7 +11199,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9926,16 +11228,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.RegisterMediaDetailScenarioResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Description'] = request.description
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Scenario'] = request.scenario
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scenario):
+            query['Scenario'] = request.scenario
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RegisterMediaDetailScenario',
@@ -9945,7 +11253,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9960,16 +11268,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.RegisterMediaDetailScenarioResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Description'] = request.description
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Scenario'] = request.scenario
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scenario):
+            query['Scenario'] = request.scenario
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RegisterMediaDetailScenario',
@@ -9979,7 +11293,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10008,16 +11322,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportAnnotationJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Annotation'] = request.annotation
-        query['Details'] = request.details
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.annotation):
+            query['Annotation'] = request.annotation
+        if not UtilClient.is_unset(request.details):
+            query['Details'] = request.details
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportAnnotationJobResult',
@@ -10027,7 +11347,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10042,16 +11362,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportAnnotationJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Annotation'] = request.annotation
-        query['Details'] = request.details
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.annotation):
+            query['Annotation'] = request.annotation
+        if not UtilClient.is_unset(request.details):
+            query['Details'] = request.details
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportAnnotationJobResult',
@@ -10061,7 +11387,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10090,16 +11416,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportCensorJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Detail'] = request.detail
-        query['JobId'] = request.job_id
-        query['Label'] = request.label
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.detail):
+            query['Detail'] = request.detail
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportCensorJobResult',
@@ -10109,7 +11441,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10124,16 +11456,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportCensorJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Detail'] = request.detail
-        query['JobId'] = request.job_id
-        query['Label'] = request.label
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.detail):
+            query['Detail'] = request.detail
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportCensorJobResult',
@@ -10143,7 +11481,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10172,15 +11510,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportCoverJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Result'] = request.result
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.result):
+            query['Result'] = request.result
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportCoverJobResult',
@@ -10190,7 +11533,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10205,15 +11548,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportCoverJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Result'] = request.result
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.result):
+            query['Result'] = request.result
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportCoverJobResult',
@@ -10223,7 +11571,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10252,16 +11600,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportFacerecogJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Details'] = request.details
-        query['Facerecog'] = request.facerecog
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.details):
+            query['Details'] = request.details
+        if not UtilClient.is_unset(request.facerecog):
+            query['Facerecog'] = request.facerecog
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportFacerecogJobResult',
@@ -10271,7 +11625,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10286,16 +11640,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportFacerecogJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Details'] = request.details
-        query['Facerecog'] = request.facerecog
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.details):
+            query['Details'] = request.details
+        if not UtilClient.is_unset(request.facerecog):
+            query['Facerecog'] = request.facerecog
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportFacerecogJobResult',
@@ -10305,7 +11665,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10334,16 +11694,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportFpShotJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Details'] = request.details
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Result'] = request.result
+        if not UtilClient.is_unset(request.details):
+            query['Details'] = request.details
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.result):
+            query['Result'] = request.result
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportFpShotJobResult',
@@ -10353,7 +11719,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10368,16 +11734,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportFpShotJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Details'] = request.details
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Result'] = request.result
+        if not UtilClient.is_unset(request.details):
+            query['Details'] = request.details
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.result):
+            query['Result'] = request.result
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportFpShotJobResult',
@@ -10387,7 +11759,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10416,16 +11788,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportMediaDetailJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Results'] = request.results
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.results):
+            query['Results'] = request.results
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportMediaDetailJobResult',
@@ -10435,7 +11813,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10450,16 +11828,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportMediaDetailJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Results'] = request.results
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.results):
+            query['Results'] = request.results
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportMediaDetailJobResult',
@@ -10469,7 +11853,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10498,16 +11882,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportPornJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Detail'] = request.detail
-        query['JobId'] = request.job_id
-        query['Label'] = request.label
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.detail):
+            query['Detail'] = request.detail
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportPornJobResult',
@@ -10517,7 +11907,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10532,16 +11922,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportPornJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Detail'] = request.detail
-        query['JobId'] = request.job_id
-        query['Label'] = request.label
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.detail):
+            query['Detail'] = request.detail
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportPornJobResult',
@@ -10551,7 +11947,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10580,16 +11976,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportTagJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Result'] = request.result
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.result):
+            query['Result'] = request.result
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportTagJobResult',
@@ -10599,7 +12001,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10614,16 +12016,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportTagJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Result'] = request.result
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.result):
+            query['Result'] = request.result
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportTagJobResult',
@@ -10633,7 +12041,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10662,16 +12070,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportTerrorismJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Detail'] = request.detail
-        query['JobId'] = request.job_id
-        query['Label'] = request.label
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.detail):
+            query['Detail'] = request.detail
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportTerrorismJobResult',
@@ -10681,7 +12095,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10696,16 +12110,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportTerrorismJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Detail'] = request.detail
-        query['JobId'] = request.job_id
-        query['Label'] = request.label
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.detail):
+            query['Detail'] = request.detail
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportTerrorismJobResult',
@@ -10715,7 +12135,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10744,16 +12164,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportVideoSplitJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Details'] = request.details
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Result'] = request.result
+        if not UtilClient.is_unset(request.details):
+            query['Details'] = request.details
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.result):
+            query['Result'] = request.result
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportVideoSplitJobResult',
@@ -10763,7 +12189,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10778,16 +12204,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.ReportVideoSplitJobResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Details'] = request.details
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Result'] = request.result
+        if not UtilClient.is_unset(request.details):
+            query['Details'] = request.details
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.result):
+            query['Result'] = request.result
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReportVideoSplitJobResult',
@@ -10797,7 +12229,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10826,23 +12258,36 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SearchMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['Description'] = request.description
-        query['From'] = request.from_
-        query['KeyWord'] = request.key_word
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SortBy'] = request.sort_by
-        query['Tag'] = request.tag
-        query['Title'] = request.title
-        query['To'] = request.to
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SearchMedia',
@@ -10852,7 +12297,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10867,23 +12312,36 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SearchMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['Description'] = request.description
-        query['From'] = request.from_
-        query['KeyWord'] = request.key_word
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SortBy'] = request.sort_by
-        query['Tag'] = request.tag
-        query['Title'] = request.title
-        query['To'] = request.to
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SearchMedia',
@@ -10893,7 +12351,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10922,16 +12380,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SearchMediaWorkflowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StateList'] = request.state_list
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state_list):
+            query['StateList'] = request.state_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SearchMediaWorkflow',
@@ -10941,7 +12405,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10956,16 +12420,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SearchMediaWorkflowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StateList'] = request.state_list
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state_list):
+            query['StateList'] = request.state_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SearchMediaWorkflow',
@@ -10975,7 +12445,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11004,16 +12474,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SearchPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SearchPipeline',
@@ -11023,7 +12499,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11038,16 +12514,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SearchPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SearchPipeline',
@@ -11057,7 +12539,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11086,16 +12568,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SearchTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SearchTemplate',
@@ -11105,7 +12593,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11120,16 +12608,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SearchTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SearchTemplate',
@@ -11139,7 +12633,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11168,16 +12662,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SearchWaterMarkTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SearchWaterMarkTemplate',
@@ -11187,7 +12687,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11202,16 +12702,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SearchWaterMarkTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SearchWaterMarkTemplate',
@@ -11221,7 +12727,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11250,15 +12756,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SetAuthConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Key1'] = request.key_1
-        query['Key2'] = request.key_2
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.key_1):
+            query['Key1'] = request.key_1
+        if not UtilClient.is_unset(request.key_2):
+            query['Key2'] = request.key_2
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetAuthConfig',
@@ -11268,7 +12779,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11283,15 +12794,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SetAuthConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Key1'] = request.key_1
-        query['Key2'] = request.key_2
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.key_1):
+            query['Key1'] = request.key_1
+        if not UtilClient.is_unset(request.key_2):
+            query['Key2'] = request.key_2
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetAuthConfig',
@@ -11301,7 +12817,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11330,14 +12846,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.StopIProductionJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StopIProductionJob',
@@ -11347,7 +12867,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11362,14 +12882,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.StopIProductionJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StopIProductionJob',
@@ -11379,7 +12903,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11408,18 +12932,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitAnalysisJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AnalysisConfig'] = request.analysis_config
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.analysis_config):
+            query['AnalysisConfig'] = request.analysis_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitAnalysisJob',
@@ -11429,7 +12961,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11444,18 +12976,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitAnalysisJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AnalysisConfig'] = request.analysis_config
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.analysis_config):
+            query['AnalysisConfig'] = request.analysis_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitAnalysisJob',
@@ -11465,7 +13005,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11494,17 +13034,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitAnnotationJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AnnotationConfig'] = request.annotation_config
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.annotation_config):
+            query['AnnotationConfig'] = request.annotation_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitAnnotationJob',
@@ -11514,7 +13061,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11529,17 +13076,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitAnnotationJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AnnotationConfig'] = request.annotation_config
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.annotation_config):
+            query['AnnotationConfig'] = request.annotation_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitAnnotationJob',
@@ -11549,7 +13103,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11578,17 +13132,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitAsrJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AsrConfig'] = request.asr_config
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.asr_config):
+            query['AsrConfig'] = request.asr_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitAsrJob',
@@ -11598,7 +13159,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11613,17 +13174,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitAsrJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AsrConfig'] = request.asr_config
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.asr_config):
+            query['AsrConfig'] = request.asr_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitAsrJob',
@@ -11633,7 +13201,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11662,17 +13230,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitBeautifyJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Async'] = request.async_
-        query['BeautifyConfig'] = request.beautify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.async_):
+            query['Async'] = request.async_
+        if not UtilClient.is_unset(request.beautify_config):
+            query['BeautifyConfig'] = request.beautify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitBeautifyJobs',
@@ -11682,7 +13257,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11697,17 +13272,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitBeautifyJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Async'] = request.async_
-        query['BeautifyConfig'] = request.beautify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.async_):
+            query['Async'] = request.async_
+        if not UtilClient.is_unset(request.beautify_config):
+            query['BeautifyConfig'] = request.beautify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitBeautifyJobs',
@@ -11717,7 +13299,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11746,20 +13328,30 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitComplexJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ComplexConfigs'] = request.complex_configs
-        query['Inputs'] = request.inputs
-        query['OutputBucket'] = request.output_bucket
-        query['OutputLocation'] = request.output_location
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TranscodeOutput'] = request.transcode_output
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.complex_configs):
+            query['ComplexConfigs'] = request.complex_configs
+        if not UtilClient.is_unset(request.inputs):
+            query['Inputs'] = request.inputs
+        if not UtilClient.is_unset(request.output_bucket):
+            query['OutputBucket'] = request.output_bucket
+        if not UtilClient.is_unset(request.output_location):
+            query['OutputLocation'] = request.output_location
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transcode_output):
+            query['TranscodeOutput'] = request.transcode_output
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitComplexJob',
@@ -11769,7 +13361,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11784,20 +13376,30 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitComplexJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ComplexConfigs'] = request.complex_configs
-        query['Inputs'] = request.inputs
-        query['OutputBucket'] = request.output_bucket
-        query['OutputLocation'] = request.output_location
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TranscodeOutput'] = request.transcode_output
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.complex_configs):
+            query['ComplexConfigs'] = request.complex_configs
+        if not UtilClient.is_unset(request.inputs):
+            query['Inputs'] = request.inputs
+        if not UtilClient.is_unset(request.output_bucket):
+            query['OutputBucket'] = request.output_bucket
+        if not UtilClient.is_unset(request.output_location):
+            query['OutputLocation'] = request.output_location
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transcode_output):
+            query['TranscodeOutput'] = request.transcode_output
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitComplexJob',
@@ -11807,7 +13409,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11836,17 +13438,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitCoverJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CoverConfig'] = request.cover_config
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.cover_config):
+            query['CoverConfig'] = request.cover_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitCoverJob',
@@ -11856,7 +13465,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11871,17 +13480,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitCoverJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CoverConfig'] = request.cover_config
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.cover_config):
+            query['CoverConfig'] = request.cover_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitCoverJob',
@@ -11891,7 +13507,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11920,21 +13536,32 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitEditingJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EditingInputs'] = request.editing_inputs
-        query['EditingJobOssFileRoleArn'] = request.editing_job_oss_file_role_arn
-        query['EditingJobOssFileUid'] = request.editing_job_oss_file_uid
-        query['EditingJobOutputs'] = request.editing_job_outputs
-        query['EditingJobURL'] = request.editing_job_url
-        query['OutputBucket'] = request.output_bucket
-        query['OutputLocation'] = request.output_location
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.editing_inputs):
+            query['EditingInputs'] = request.editing_inputs
+        if not UtilClient.is_unset(request.editing_job_oss_file_role_arn):
+            query['EditingJobOssFileRoleArn'] = request.editing_job_oss_file_role_arn
+        if not UtilClient.is_unset(request.editing_job_oss_file_uid):
+            query['EditingJobOssFileUid'] = request.editing_job_oss_file_uid
+        if not UtilClient.is_unset(request.editing_job_outputs):
+            query['EditingJobOutputs'] = request.editing_job_outputs
+        if not UtilClient.is_unset(request.editing_job_url):
+            query['EditingJobURL'] = request.editing_job_url
+        if not UtilClient.is_unset(request.output_bucket):
+            query['OutputBucket'] = request.output_bucket
+        if not UtilClient.is_unset(request.output_location):
+            query['OutputLocation'] = request.output_location
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitEditingJobs',
@@ -11944,7 +13571,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11959,21 +13586,32 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitEditingJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EditingInputs'] = request.editing_inputs
-        query['EditingJobOssFileRoleArn'] = request.editing_job_oss_file_role_arn
-        query['EditingJobOssFileUid'] = request.editing_job_oss_file_uid
-        query['EditingJobOutputs'] = request.editing_job_outputs
-        query['EditingJobURL'] = request.editing_job_url
-        query['OutputBucket'] = request.output_bucket
-        query['OutputLocation'] = request.output_location
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.editing_inputs):
+            query['EditingInputs'] = request.editing_inputs
+        if not UtilClient.is_unset(request.editing_job_oss_file_role_arn):
+            query['EditingJobOssFileRoleArn'] = request.editing_job_oss_file_role_arn
+        if not UtilClient.is_unset(request.editing_job_oss_file_uid):
+            query['EditingJobOssFileUid'] = request.editing_job_oss_file_uid
+        if not UtilClient.is_unset(request.editing_job_outputs):
+            query['EditingJobOutputs'] = request.editing_job_outputs
+        if not UtilClient.is_unset(request.editing_job_url):
+            query['EditingJobURL'] = request.editing_job_url
+        if not UtilClient.is_unset(request.output_bucket):
+            query['OutputBucket'] = request.output_bucket
+        if not UtilClient.is_unset(request.output_location):
+            query['OutputLocation'] = request.output_location
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitEditingJobs',
@@ -11983,7 +13621,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12012,17 +13650,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitFacerecogJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FacerecogConfig'] = request.facerecog_config
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.facerecog_config):
+            query['FacerecogConfig'] = request.facerecog_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitFacerecogJob',
@@ -12032,7 +13677,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12047,17 +13692,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitFacerecogJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FacerecogConfig'] = request.facerecog_config
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.facerecog_config):
+            query['FacerecogConfig'] = request.facerecog_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitFacerecogJob',
@@ -12067,7 +13719,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12096,19 +13748,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitFpCompareJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FpDBId'] = request.fp_dbid
-        query['MasterMedia'] = request.master_media
-        query['MatchedFrameStorage'] = request.matched_frame_storage
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['QueryMedia'] = request.query_media
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.fp_dbid):
+            query['FpDBId'] = request.fp_dbid
+        if not UtilClient.is_unset(request.master_media):
+            query['MasterMedia'] = request.master_media
+        if not UtilClient.is_unset(request.matched_frame_storage):
+            query['MatchedFrameStorage'] = request.matched_frame_storage
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.query_media):
+            query['QueryMedia'] = request.query_media
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitFpCompareJob',
@@ -12118,7 +13779,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12133,19 +13794,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitFpCompareJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FpDBId'] = request.fp_dbid
-        query['MasterMedia'] = request.master_media
-        query['MatchedFrameStorage'] = request.matched_frame_storage
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['QueryMedia'] = request.query_media
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.fp_dbid):
+            query['FpDBId'] = request.fp_dbid
+        if not UtilClient.is_unset(request.master_media):
+            query['MasterMedia'] = request.master_media
+        if not UtilClient.is_unset(request.matched_frame_storage):
+            query['MatchedFrameStorage'] = request.matched_frame_storage
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.query_media):
+            query['QueryMedia'] = request.query_media
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitFpCompareJob',
@@ -12155,7 +13825,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12184,17 +13854,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitFpDBDeleteJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DelType'] = request.del_type
-        query['FpDBId'] = request.fp_dbid
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.del_type):
+            query['DelType'] = request.del_type
+        if not UtilClient.is_unset(request.fp_dbid):
+            query['FpDBId'] = request.fp_dbid
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitFpDBDeleteJob',
@@ -12204,7 +13881,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12219,17 +13896,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitFpDBDeleteJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DelType'] = request.del_type
-        query['FpDBId'] = request.fp_dbid
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.del_type):
+            query['DelType'] = request.del_type
+        if not UtilClient.is_unset(request.fp_dbid):
+            query['FpDBId'] = request.fp_dbid
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitFpDBDeleteJob',
@@ -12239,7 +13923,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12268,17 +13952,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitFpFileDeleteJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileIds'] = request.file_ids
-        query['FpDBId'] = request.fp_dbid
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.file_ids):
+            query['FileIds'] = request.file_ids
+        if not UtilClient.is_unset(request.fp_dbid):
+            query['FpDBId'] = request.fp_dbid
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitFpFileDeleteJob',
@@ -12288,7 +13979,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12303,17 +13994,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitFpFileDeleteJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileIds'] = request.file_ids
-        query['FpDBId'] = request.fp_dbid
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.file_ids):
+            query['FileIds'] = request.file_ids
+        if not UtilClient.is_unset(request.fp_dbid):
+            query['FpDBId'] = request.fp_dbid
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitFpFileDeleteJob',
@@ -12323,7 +14021,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12352,17 +14050,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitFpShotJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FpShotConfig'] = request.fp_shot_config
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.fp_shot_config):
+            query['FpShotConfig'] = request.fp_shot_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitFpShotJob',
@@ -12372,7 +14077,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12387,17 +14092,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitFpShotJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FpShotConfig'] = request.fp_shot_config
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.fp_shot_config):
+            query['FpShotConfig'] = request.fp_shot_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitFpShotJob',
@@ -12407,7 +14119,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12436,22 +14148,34 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitIProductionJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FunctionName'] = request.function_name
-        query['Input'] = request.input
-        query['JobParams'] = request.job_params
-        query['ModelId'] = request.model_id
-        query['NotifyUrl'] = request.notify_url
-        query['Output'] = request.output
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ScheduleParams'] = request.schedule_params
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.job_params):
+            query['JobParams'] = request.job_params
+        if not UtilClient.is_unset(request.model_id):
+            query['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.notify_url):
+            query['NotifyUrl'] = request.notify_url
+        if not UtilClient.is_unset(request.output):
+            query['Output'] = request.output
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.schedule_params):
+            query['ScheduleParams'] = request.schedule_params
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitIProductionJob',
@@ -12461,7 +14185,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12476,22 +14200,34 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitIProductionJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FunctionName'] = request.function_name
-        query['Input'] = request.input
-        query['JobParams'] = request.job_params
-        query['ModelId'] = request.model_id
-        query['NotifyUrl'] = request.notify_url
-        query['Output'] = request.output
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ScheduleParams'] = request.schedule_params
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.job_params):
+            query['JobParams'] = request.job_params
+        if not UtilClient.is_unset(request.model_id):
+            query['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.notify_url):
+            query['NotifyUrl'] = request.notify_url
+        if not UtilClient.is_unset(request.output):
+            query['Output'] = request.output
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.schedule_params):
+            query['ScheduleParams'] = request.schedule_params
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitIProductionJob',
@@ -12501,7 +14237,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12530,16 +14266,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitImageQualityJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitImageQualityJob',
@@ -12549,7 +14291,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12564,16 +14306,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitImageQualityJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitImageQualityJob',
@@ -12583,7 +14331,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12612,19 +14360,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitImageSearchJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Config'] = request.config
-        query['FpDBId'] = request.fp_dbid
-        query['InputImage'] = request.input_image
-        query['InputVideo'] = request.input_video
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.fp_dbid):
+            query['FpDBId'] = request.fp_dbid
+        if not UtilClient.is_unset(request.input_image):
+            query['InputImage'] = request.input_image
+        if not UtilClient.is_unset(request.input_video):
+            query['InputVideo'] = request.input_video
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitImageSearchJob',
@@ -12634,7 +14391,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12649,19 +14406,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitImageSearchJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Config'] = request.config
-        query['FpDBId'] = request.fp_dbid
-        query['InputImage'] = request.input_image
-        query['InputVideo'] = request.input_video
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.fp_dbid):
+            query['FpDBId'] = request.fp_dbid
+        if not UtilClient.is_unset(request.input_image):
+            query['InputImage'] = request.input_image
+        if not UtilClient.is_unset(request.input_video):
+            query['InputVideo'] = request.input_video
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitImageSearchJob',
@@ -12671,7 +14437,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12700,12 +14466,14 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitInferenceJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['ModelType'] = request.model_type
-        query['ServerName'] = request.server_name
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.model_type):
+            query['ModelType'] = request.model_type
+        if not UtilClient.is_unset(request.server_name):
+            query['ServerName'] = request.server_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitInferenceJob',
@@ -12715,7 +14483,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12730,12 +14498,14 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitInferenceJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['ModelType'] = request.model_type
-        query['ServerName'] = request.server_name
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.model_type):
+            query['ModelType'] = request.model_type
+        if not UtilClient.is_unset(request.server_name):
+            query['ServerName'] = request.server_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitInferenceJob',
@@ -12745,7 +14515,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12774,17 +14544,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitInnerJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Config'] = request.config
-        query['Images'] = request.images
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Uid'] = request.uid
-        query['Video'] = request.video
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.images):
+            query['Images'] = request.images
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.uid):
+            query['Uid'] = request.uid
+        if not UtilClient.is_unset(request.video):
+            query['Video'] = request.video
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitInnerJob',
@@ -12794,7 +14571,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12809,17 +14586,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitInnerJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Config'] = request.config
-        query['Images'] = request.images
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Uid'] = request.uid
-        query['Video'] = request.video
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.images):
+            query['Images'] = request.images
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.uid):
+            query['Uid'] = request.uid
+        if not UtilClient.is_unset(request.video):
+            query['Video'] = request.video
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitInnerJob',
@@ -12829,7 +14613,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12858,18 +14642,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OutputBucket'] = request.output_bucket
-        query['OutputLocation'] = request.output_location
-        query['Outputs'] = request.outputs
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.output_bucket):
+            query['OutputBucket'] = request.output_bucket
+        if not UtilClient.is_unset(request.output_location):
+            query['OutputLocation'] = request.output_location
+        if not UtilClient.is_unset(request.outputs):
+            query['Outputs'] = request.outputs
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitJobs',
@@ -12879,7 +14671,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12894,18 +14686,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OutputBucket'] = request.output_bucket
-        query['OutputLocation'] = request.output_location
-        query['Outputs'] = request.outputs
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.output_bucket):
+            query['OutputBucket'] = request.output_bucket
+        if not UtilClient.is_unset(request.output_location):
+            query['OutputLocation'] = request.output_location
+        if not UtilClient.is_unset(request.outputs):
+            query['Outputs'] = request.outputs
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitJobs',
@@ -12915,7 +14715,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12944,19 +14744,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitMCJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CensorConfig'] = request.censor_config
-        query['Images'] = request.images
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Texts'] = request.texts
-        query['UserData'] = request.user_data
-        query['Video'] = request.video
+        if not UtilClient.is_unset(request.censor_config):
+            query['CensorConfig'] = request.censor_config
+        if not UtilClient.is_unset(request.images):
+            query['Images'] = request.images
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.texts):
+            query['Texts'] = request.texts
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.video):
+            query['Video'] = request.video
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitMCJob',
@@ -12966,7 +14775,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12981,19 +14790,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitMCJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CensorConfig'] = request.censor_config
-        query['Images'] = request.images
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Texts'] = request.texts
-        query['UserData'] = request.user_data
-        query['Video'] = request.video
+        if not UtilClient.is_unset(request.censor_config):
+            query['CensorConfig'] = request.censor_config
+        if not UtilClient.is_unset(request.images):
+            query['Images'] = request.images
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.texts):
+            query['Texts'] = request.texts
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.video):
+            query['Video'] = request.video
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitMCJob',
@@ -13003,7 +14821,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13032,18 +14850,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitMcuJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Template'] = request.template
-        query['TemplateId'] = request.template_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template):
+            query['Template'] = request.template
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitMcuJob',
@@ -13053,7 +14879,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13068,18 +14894,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitMcuJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Template'] = request.template
-        query['TemplateId'] = request.template_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template):
+            query['Template'] = request.template
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitMcuJob',
@@ -13089,7 +14923,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13118,22 +14952,34 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitMediaCensorJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Barrages'] = request.barrages
-        query['CoverImages'] = request.cover_images
-        query['Description'] = request.description
-        query['ExternalUrl'] = request.external_url
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
-        query['VideoCensorConfig'] = request.video_censor_config
+        if not UtilClient.is_unset(request.barrages):
+            query['Barrages'] = request.barrages
+        if not UtilClient.is_unset(request.cover_images):
+            query['CoverImages'] = request.cover_images
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.external_url):
+            query['ExternalUrl'] = request.external_url
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.video_censor_config):
+            query['VideoCensorConfig'] = request.video_censor_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitMediaCensorJob',
@@ -13143,7 +14989,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13158,22 +15004,34 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitMediaCensorJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Barrages'] = request.barrages
-        query['CoverImages'] = request.cover_images
-        query['Description'] = request.description
-        query['ExternalUrl'] = request.external_url
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
-        query['VideoCensorConfig'] = request.video_censor_config
+        if not UtilClient.is_unset(request.barrages):
+            query['Barrages'] = request.barrages
+        if not UtilClient.is_unset(request.cover_images):
+            query['CoverImages'] = request.cover_images
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.external_url):
+            query['ExternalUrl'] = request.external_url
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.video_censor_config):
+            query['VideoCensorConfig'] = request.video_censor_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitMediaCensorJob',
@@ -13183,7 +15041,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13212,17 +15070,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitMediaDetailJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['MediaDetailConfig'] = request.media_detail_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.media_detail_config):
+            query['MediaDetailConfig'] = request.media_detail_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitMediaDetailJob',
@@ -13232,7 +15097,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13247,17 +15112,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitMediaDetailJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['MediaDetailConfig'] = request.media_detail_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.media_detail_config):
+            query['MediaDetailConfig'] = request.media_detail_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitMediaDetailJob',
@@ -13267,7 +15139,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13296,17 +15168,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitMediaFpDeleteJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FpDBId'] = request.fp_dbid
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['PrimaryKey'] = request.primary_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.fp_dbid):
+            query['FpDBId'] = request.fp_dbid
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.primary_key):
+            query['PrimaryKey'] = request.primary_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitMediaFpDeleteJob',
@@ -13316,7 +15195,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13331,17 +15210,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitMediaFpDeleteJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FpDBId'] = request.fp_dbid
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['PrimaryKey'] = request.primary_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.fp_dbid):
+            query['FpDBId'] = request.fp_dbid
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.primary_key):
+            query['PrimaryKey'] = request.primary_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitMediaFpDeleteJob',
@@ -13351,7 +15237,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13380,17 +15266,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitMediaInfoJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Async'] = request.async_
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.async_):
+            query['Async'] = request.async_
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitMediaInfoJob',
@@ -13400,7 +15293,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13415,17 +15308,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitMediaInfoJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Async'] = request.async_
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.async_):
+            query['Async'] = request.async_
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitMediaInfoJob',
@@ -13435,7 +15335,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13470,14 +15370,18 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.target_storage):
             request.target_storage_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.target_storage), 'TargetStorage', 'json')
         query = {}
-        query['Notify'] = request.notify
-        query['Region'] = request.region
-        query['SourceStorage'] = request.source_storage_shrink
-        query['TargetStorage'] = request.target_storage_shrink
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.notify):
+            query['Notify'] = request.notify
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.source_storage_shrink):
+            query['SourceStorage'] = request.source_storage_shrink
+        if not UtilClient.is_unset(request.target_storage_shrink):
+            query['TargetStorage'] = request.target_storage_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitOssFileCopyJob',
@@ -13487,7 +15391,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13508,14 +15412,18 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.target_storage):
             request.target_storage_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.target_storage), 'TargetStorage', 'json')
         query = {}
-        query['Notify'] = request.notify
-        query['Region'] = request.region
-        query['SourceStorage'] = request.source_storage_shrink
-        query['TargetStorage'] = request.target_storage_shrink
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.notify):
+            query['Notify'] = request.notify
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.source_storage_shrink):
+            query['SourceStorage'] = request.source_storage_shrink
+        if not UtilClient.is_unset(request.target_storage_shrink):
+            query['TargetStorage'] = request.target_storage_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitOssFileCopyJob',
@@ -13525,7 +15433,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13554,17 +15462,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitPornJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['PornConfig'] = request.porn_config
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.porn_config):
+            query['PornConfig'] = request.porn_config
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitPornJob',
@@ -13574,7 +15489,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13589,17 +15504,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitPornJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['PornConfig'] = request.porn_config
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.porn_config):
+            query['PornConfig'] = request.porn_config
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitPornJob',
@@ -13609,7 +15531,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13638,23 +15560,36 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitSmarttagJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Content'] = request.content
-        query['ContentAddr'] = request.content_addr
-        query['ContentType'] = request.content_type
-        query['Input'] = request.input
-        query['NotifyUrl'] = request.notify_url
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Params'] = request.params
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.content_addr):
+            query['ContentAddr'] = request.content_addr
+        if not UtilClient.is_unset(request.content_type):
+            query['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.notify_url):
+            query['NotifyUrl'] = request.notify_url
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitSmarttagJob',
@@ -13664,7 +15599,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13679,23 +15614,36 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitSmarttagJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Content'] = request.content
-        query['ContentAddr'] = request.content_addr
-        query['ContentType'] = request.content_type
-        query['Input'] = request.input
-        query['NotifyUrl'] = request.notify_url
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Params'] = request.params
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.content_addr):
+            query['ContentAddr'] = request.content_addr
+        if not UtilClient.is_unset(request.content_type):
+            query['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.notify_url):
+            query['NotifyUrl'] = request.notify_url
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitSmarttagJob',
@@ -13705,7 +15653,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13734,17 +15682,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitSnapshotJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SnapshotConfig'] = request.snapshot_config
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.snapshot_config):
+            query['SnapshotConfig'] = request.snapshot_config
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitSnapshotJob',
@@ -13754,7 +15709,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13769,17 +15724,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitSnapshotJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SnapshotConfig'] = request.snapshot_config
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.snapshot_config):
+            query['SnapshotConfig'] = request.snapshot_config
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitSnapshotJob',
@@ -13789,7 +15751,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13818,17 +15780,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitSubtitleJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InputConfig'] = request.input_config
-        query['OutputConfig'] = request.output_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.input_config):
+            query['InputConfig'] = request.input_config
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitSubtitleJob',
@@ -13838,7 +15807,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13853,17 +15822,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitSubtitleJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InputConfig'] = request.input_config
-        query['OutputConfig'] = request.output_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.input_config):
+            query['InputConfig'] = request.input_config
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitSubtitleJob',
@@ -13873,7 +15849,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13902,17 +15878,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitTagJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TagConfig'] = request.tag_config
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_config):
+            query['TagConfig'] = request.tag_config
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitTagJob',
@@ -13922,7 +15905,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13937,17 +15920,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitTagJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TagConfig'] = request.tag_config
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_config):
+            query['TagConfig'] = request.tag_config
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitTagJob',
@@ -13957,7 +15947,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13986,17 +15976,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitTerrorismJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TerrorismConfig'] = request.terrorism_config
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.terrorism_config):
+            query['TerrorismConfig'] = request.terrorism_config
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitTerrorismJob',
@@ -14006,7 +16003,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14021,17 +16018,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitTerrorismJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TerrorismConfig'] = request.terrorism_config
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.terrorism_config):
+            query['TerrorismConfig'] = request.terrorism_config
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitTerrorismJob',
@@ -14041,7 +16045,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14074,14 +16078,18 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.target_storage):
             request.target_storage_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.target_storage), 'TargetStorage', 'json')
         query = {}
-        query['Notify'] = request.notify
-        query['Region'] = request.region
-        query['SourceFileURL'] = request.source_file_url
-        query['TargetStorage'] = request.target_storage_shrink
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.notify):
+            query['Notify'] = request.notify
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.source_file_url):
+            query['SourceFileURL'] = request.source_file_url
+        if not UtilClient.is_unset(request.target_storage_shrink):
+            query['TargetStorage'] = request.target_storage_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitURLUploadJob',
@@ -14091,7 +16099,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14110,14 +16118,18 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.target_storage):
             request.target_storage_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.target_storage), 'TargetStorage', 'json')
         query = {}
-        query['Notify'] = request.notify
-        query['Region'] = request.region
-        query['SourceFileURL'] = request.source_file_url
-        query['TargetStorage'] = request.target_storage_shrink
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.notify):
+            query['Notify'] = request.notify
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.source_file_url):
+            query['SourceFileURL'] = request.source_file_url
+        if not UtilClient.is_unset(request.target_storage_shrink):
+            query['TargetStorage'] = request.target_storage_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitURLUploadJob',
@@ -14127,7 +16139,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14156,17 +16168,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitVideoGifJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
-        query['VideoGifConfig'] = request.video_gif_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.video_gif_config):
+            query['VideoGifConfig'] = request.video_gif_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitVideoGifJob',
@@ -14176,7 +16195,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14191,17 +16210,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitVideoGifJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
-        query['VideoGifConfig'] = request.video_gif_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.video_gif_config):
+            query['VideoGifConfig'] = request.video_gif_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitVideoGifJob',
@@ -14211,7 +16237,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14240,17 +16266,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitVideoPoseJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OutputConfig'] = request.output_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitVideoPoseJob',
@@ -14260,7 +16293,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14275,17 +16308,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitVideoPoseJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OutputConfig'] = request.output_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitVideoPoseJob',
@@ -14295,7 +16335,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14324,19 +16364,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitVideoQualityJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['JobParams'] = request.job_params
-        query['ModelId'] = request.model_id
-        query['NotifyUrl'] = request.notify_url
-        query['Output'] = request.output
-        query['PipelineId'] = request.pipeline_id
-        query['ScheduleParams'] = request.schedule_params
-        query['SourceType'] = request.source_type
-        query['UserData'] = request.user_data
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.job_params):
+            query['JobParams'] = request.job_params
+        if not UtilClient.is_unset(request.model_id):
+            query['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.notify_url):
+            query['NotifyUrl'] = request.notify_url
+        if not UtilClient.is_unset(request.output):
+            query['Output'] = request.output
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.schedule_params):
+            query['ScheduleParams'] = request.schedule_params
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitVideoQualityJob',
@@ -14346,7 +16395,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14361,19 +16410,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitVideoQualityJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['JobParams'] = request.job_params
-        query['ModelId'] = request.model_id
-        query['NotifyUrl'] = request.notify_url
-        query['Output'] = request.output
-        query['PipelineId'] = request.pipeline_id
-        query['ScheduleParams'] = request.schedule_params
-        query['SourceType'] = request.source_type
-        query['UserData'] = request.user_data
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.job_params):
+            query['JobParams'] = request.job_params
+        if not UtilClient.is_unset(request.model_id):
+            query['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.notify_url):
+            query['NotifyUrl'] = request.notify_url
+        if not UtilClient.is_unset(request.output):
+            query['Output'] = request.output
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.schedule_params):
+            query['ScheduleParams'] = request.schedule_params
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitVideoQualityJob',
@@ -14383,7 +16441,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14412,17 +16470,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitVideoSplitJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
-        query['VideoSplitConfig'] = request.video_split_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.video_split_config):
+            query['VideoSplitConfig'] = request.video_split_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitVideoSplitJob',
@@ -14432,7 +16497,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14447,17 +16512,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitVideoSplitJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
-        query['VideoSplitConfig'] = request.video_split_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.video_split_config):
+            query['VideoSplitConfig'] = request.video_split_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitVideoSplitJob',
@@ -14467,7 +16539,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14496,17 +16568,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitVideoSummaryJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
-        query['VideoSummaryConfig'] = request.video_summary_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.video_summary_config):
+            query['VideoSummaryConfig'] = request.video_summary_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitVideoSummaryJob',
@@ -14516,7 +16595,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14531,17 +16610,24 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.SubmitVideoSummaryJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Input'] = request.input
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
-        query['VideoSummaryConfig'] = request.video_summary_config
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.video_summary_config):
+            query['VideoSummaryConfig'] = request.video_summary_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SubmitVideoSummaryJob',
@@ -14551,7 +16637,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14580,19 +16666,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.TagCustomPersonResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CategoryDescription'] = request.category_description
-        query['CategoryId'] = request.category_id
-        query['CategoryName'] = request.category_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PersonDescription'] = request.person_description
-        query['PersonId'] = request.person_id
-        query['PersonName'] = request.person_name
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.category_description):
+            query['CategoryDescription'] = request.category_description
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.category_name):
+            query['CategoryName'] = request.category_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.person_description):
+            query['PersonDescription'] = request.person_description
+        if not UtilClient.is_unset(request.person_id):
+            query['PersonId'] = request.person_id
+        if not UtilClient.is_unset(request.person_name):
+            query['PersonName'] = request.person_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TagCustomPerson',
@@ -14602,7 +16697,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14617,19 +16712,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.TagCustomPersonResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CategoryDescription'] = request.category_description
-        query['CategoryId'] = request.category_id
-        query['CategoryName'] = request.category_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PersonDescription'] = request.person_description
-        query['PersonId'] = request.person_id
-        query['PersonName'] = request.person_name
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.category_description):
+            query['CategoryDescription'] = request.category_description
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.category_name):
+            query['CategoryName'] = request.category_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.person_description):
+            query['PersonDescription'] = request.person_description
+        if not UtilClient.is_unset(request.person_id):
+            query['PersonId'] = request.person_id
+        if not UtilClient.is_unset(request.person_name):
+            query['PersonName'] = request.person_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TagCustomPerson',
@@ -14639,7 +16743,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14668,15 +16772,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UnbindInputBucketResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bucket'] = request.bucket
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.bucket):
+            query['Bucket'] = request.bucket
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnbindInputBucket',
@@ -14686,7 +16795,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14701,15 +16810,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UnbindInputBucketResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bucket'] = request.bucket
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.bucket):
+            query['Bucket'] = request.bucket
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnbindInputBucket',
@@ -14719,7 +16833,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14748,14 +16862,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UnbindOutputBucketResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bucket'] = request.bucket
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.bucket):
+            query['Bucket'] = request.bucket
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnbindOutputBucket',
@@ -14765,7 +16883,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14780,14 +16898,18 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UnbindOutputBucketResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bucket'] = request.bucket
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.bucket):
+            query['Bucket'] = request.bucket
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnbindOutputBucket',
@@ -14797,7 +16919,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14826,16 +16948,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UnregisterCustomFaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CategoryId'] = request.category_id
-        query['FaceId'] = request.face_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PersonId'] = request.person_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.face_id):
+            query['FaceId'] = request.face_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.person_id):
+            query['PersonId'] = request.person_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnregisterCustomFace',
@@ -14845,7 +16973,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14860,16 +16988,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UnregisterCustomFaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CategoryId'] = request.category_id
-        query['FaceId'] = request.face_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PersonId'] = request.person_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.face_id):
+            query['FaceId'] = request.face_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.person_id):
+            query['PersonId'] = request.person_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnregisterCustomFace',
@@ -14879,7 +17013,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14908,18 +17042,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateAsrPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateAsrPipeline',
@@ -14929,7 +17071,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14944,18 +17086,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateAsrPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateAsrPipeline',
@@ -14965,7 +17115,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -14994,15 +17144,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateCategoryNameResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['CateName'] = request.cate_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.cate_name):
+            query['CateName'] = request.cate_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateCategoryName',
@@ -15012,7 +17167,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15027,15 +17182,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateCategoryNameResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['CateName'] = request.cate_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.cate_name):
+            query['CateName'] = request.cate_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateCategoryName',
@@ -15045,7 +17205,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15074,18 +17234,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateCensorPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateCensorPipeline',
@@ -15095,7 +17263,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15110,18 +17278,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateCensorPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateCensorPipeline',
@@ -15131,7 +17307,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15160,19 +17336,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateCoverPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Role'] = request.role
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateCoverPipeline',
@@ -15182,7 +17367,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15197,19 +17382,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateCoverPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Role'] = request.role
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateCoverPipeline',
@@ -15219,7 +17413,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15248,25 +17442,40 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateMCTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Abuse'] = request.abuse
-        query['Ad'] = request.ad
-        query['Contraband'] = request.contraband
-        query['Live'] = request.live
-        query['Logo'] = request.logo
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Politics'] = request.politics
-        query['Porn'] = request.porn
-        query['Qrcode'] = request.qrcode
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
-        query['Terrorism'] = request.terrorism
-        query['spam'] = request.spam
+        if not UtilClient.is_unset(request.abuse):
+            query['Abuse'] = request.abuse
+        if not UtilClient.is_unset(request.ad):
+            query['Ad'] = request.ad
+        if not UtilClient.is_unset(request.contraband):
+            query['Contraband'] = request.contraband
+        if not UtilClient.is_unset(request.live):
+            query['Live'] = request.live
+        if not UtilClient.is_unset(request.logo):
+            query['Logo'] = request.logo
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.politics):
+            query['Politics'] = request.politics
+        if not UtilClient.is_unset(request.porn):
+            query['Porn'] = request.porn
+        if not UtilClient.is_unset(request.qrcode):
+            query['Qrcode'] = request.qrcode
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.terrorism):
+            query['Terrorism'] = request.terrorism
+        if not UtilClient.is_unset(request.spam):
+            query['spam'] = request.spam
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateMCTemplate',
@@ -15276,7 +17485,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15291,25 +17500,40 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateMCTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Abuse'] = request.abuse
-        query['Ad'] = request.ad
-        query['Contraband'] = request.contraband
-        query['Live'] = request.live
-        query['Logo'] = request.logo
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Politics'] = request.politics
-        query['Porn'] = request.porn
-        query['Qrcode'] = request.qrcode
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
-        query['Terrorism'] = request.terrorism
-        query['spam'] = request.spam
+        if not UtilClient.is_unset(request.abuse):
+            query['Abuse'] = request.abuse
+        if not UtilClient.is_unset(request.ad):
+            query['Ad'] = request.ad
+        if not UtilClient.is_unset(request.contraband):
+            query['Contraband'] = request.contraband
+        if not UtilClient.is_unset(request.live):
+            query['Live'] = request.live
+        if not UtilClient.is_unset(request.logo):
+            query['Logo'] = request.logo
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.politics):
+            query['Politics'] = request.politics
+        if not UtilClient.is_unset(request.porn):
+            query['Porn'] = request.porn
+        if not UtilClient.is_unset(request.qrcode):
+            query['Qrcode'] = request.qrcode
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.terrorism):
+            query['Terrorism'] = request.terrorism
+        if not UtilClient.is_unset(request.spam):
+            query['spam'] = request.spam
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateMCTemplate',
@@ -15319,7 +17543,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15348,15 +17572,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateMcuTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Template'] = request.template
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template):
+            query['Template'] = request.template
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateMcuTemplate',
@@ -15366,7 +17595,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15381,15 +17610,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateMcuTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Template'] = request.template
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template):
+            query['Template'] = request.template
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateMcuTemplate',
@@ -15399,7 +17633,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15428,19 +17662,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Tags'] = request.tags
-        query['Title'] = request.title
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateMedia',
@@ -15450,7 +17693,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15465,19 +17708,28 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Tags'] = request.tags
-        query['Title'] = request.title
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateMedia',
@@ -15487,7 +17739,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15516,15 +17768,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateMediaCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateMediaCategory',
@@ -15534,7 +17791,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15549,15 +17806,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateMediaCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateMediaCategory',
@@ -15567,7 +17829,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15596,15 +17858,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateMediaCoverResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CoverURL'] = request.cover_url
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateMediaCover',
@@ -15614,7 +17881,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15629,15 +17896,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateMediaCoverResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CoverURL'] = request.cover_url
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateMediaCover',
@@ -15647,7 +17919,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15676,15 +17948,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateMediaPublishStateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Publish'] = request.publish
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.publish):
+            query['Publish'] = request.publish
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateMediaPublishState',
@@ -15694,7 +17971,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15709,15 +17986,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateMediaPublishStateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Publish'] = request.publish
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.publish):
+            query['Publish'] = request.publish
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateMediaPublishState',
@@ -15727,7 +18009,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15756,15 +18038,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateMediaWorkflowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaWorkflowId'] = request.media_workflow_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Topology'] = request.topology
+        if not UtilClient.is_unset(request.media_workflow_id):
+            query['MediaWorkflowId'] = request.media_workflow_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.topology):
+            query['Topology'] = request.topology
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateMediaWorkflow',
@@ -15774,7 +18061,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15789,15 +18076,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateMediaWorkflowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaWorkflowId'] = request.media_workflow_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Topology'] = request.topology
+        if not UtilClient.is_unset(request.media_workflow_id):
+            query['MediaWorkflowId'] = request.media_workflow_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.topology):
+            query['Topology'] = request.topology
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateMediaWorkflow',
@@ -15807,7 +18099,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15836,15 +18128,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateMediaWorkflowTriggerModeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaWorkflowId'] = request.media_workflow_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TriggerMode'] = request.trigger_mode
+        if not UtilClient.is_unset(request.media_workflow_id):
+            query['MediaWorkflowId'] = request.media_workflow_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.trigger_mode):
+            query['TriggerMode'] = request.trigger_mode
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateMediaWorkflowTriggerMode',
@@ -15854,7 +18151,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15869,15 +18166,20 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateMediaWorkflowTriggerModeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaWorkflowId'] = request.media_workflow_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TriggerMode'] = request.trigger_mode
+        if not UtilClient.is_unset(request.media_workflow_id):
+            query['MediaWorkflowId'] = request.media_workflow_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.trigger_mode):
+            query['TriggerMode'] = request.trigger_mode
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateMediaWorkflowTriggerMode',
@@ -15887,7 +18189,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15916,18 +18218,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdatePipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Role'] = request.role
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdatePipeline',
@@ -15937,7 +18247,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15952,18 +18262,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdatePipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Role'] = request.role
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdatePipeline',
@@ -15973,7 +18291,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -16002,18 +18320,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdatePornPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdatePornPipeline',
@@ -16023,7 +18349,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -16038,18 +18364,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdatePornPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdatePornPipeline',
@@ -16059,7 +18393,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -16088,24 +18422,40 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateSmarttagTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AnalyseTypes'] = request.analyse_types
-        query['FaceCategoryIds'] = request.face_category_ids
-        query['Industry'] = request.industry
-        query['IsDefault'] = request.is_default
-        query['KeywordConfig'] = request.keyword_config
-        query['KnowledgeConfig'] = request.knowledge_config
-        query['LabelType'] = request.label_type
-        query['LabelVersion'] = request.label_version
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Scene'] = request.scene
-        query['TemplateId'] = request.template_id
-        query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.analyse_types):
+            query['AnalyseTypes'] = request.analyse_types
+        if not UtilClient.is_unset(request.face_category_ids):
+            query['FaceCategoryIds'] = request.face_category_ids
+        if not UtilClient.is_unset(request.face_custom_params_config):
+            query['FaceCustomParamsConfig'] = request.face_custom_params_config
+        if not UtilClient.is_unset(request.industry):
+            query['Industry'] = request.industry
+        if not UtilClient.is_unset(request.is_default):
+            query['IsDefault'] = request.is_default
+        if not UtilClient.is_unset(request.keyword_config):
+            query['KeywordConfig'] = request.keyword_config
+        if not UtilClient.is_unset(request.knowledge_config):
+            query['KnowledgeConfig'] = request.knowledge_config
+        if not UtilClient.is_unset(request.label_type):
+            query['LabelType'] = request.label_type
+        if not UtilClient.is_unset(request.label_version):
+            query['LabelVersion'] = request.label_version
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scene):
+            query['Scene'] = request.scene
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateSmarttagTemplate',
@@ -16115,7 +18465,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -16130,24 +18480,40 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateSmarttagTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AnalyseTypes'] = request.analyse_types
-        query['FaceCategoryIds'] = request.face_category_ids
-        query['Industry'] = request.industry
-        query['IsDefault'] = request.is_default
-        query['KeywordConfig'] = request.keyword_config
-        query['KnowledgeConfig'] = request.knowledge_config
-        query['LabelType'] = request.label_type
-        query['LabelVersion'] = request.label_version
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Scene'] = request.scene
-        query['TemplateId'] = request.template_id
-        query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.analyse_types):
+            query['AnalyseTypes'] = request.analyse_types
+        if not UtilClient.is_unset(request.face_category_ids):
+            query['FaceCategoryIds'] = request.face_category_ids
+        if not UtilClient.is_unset(request.face_custom_params_config):
+            query['FaceCustomParamsConfig'] = request.face_custom_params_config
+        if not UtilClient.is_unset(request.industry):
+            query['Industry'] = request.industry
+        if not UtilClient.is_unset(request.is_default):
+            query['IsDefault'] = request.is_default
+        if not UtilClient.is_unset(request.keyword_config):
+            query['KeywordConfig'] = request.keyword_config
+        if not UtilClient.is_unset(request.knowledge_config):
+            query['KnowledgeConfig'] = request.knowledge_config
+        if not UtilClient.is_unset(request.label_type):
+            query['LabelType'] = request.label_type
+        if not UtilClient.is_unset(request.label_version):
+            query['LabelVersion'] = request.label_version
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scene):
+            query['Scene'] = request.scene
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateSmarttagTemplate',
@@ -16157,7 +18523,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -16186,20 +18552,30 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Audio'] = request.audio
-        query['Container'] = request.container
-        query['MuxConfig'] = request.mux_config
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
-        query['TransConfig'] = request.trans_config
-        query['Video'] = request.video
+        if not UtilClient.is_unset(request.audio):
+            query['Audio'] = request.audio
+        if not UtilClient.is_unset(request.container):
+            query['Container'] = request.container
+        if not UtilClient.is_unset(request.mux_config):
+            query['MuxConfig'] = request.mux_config
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.trans_config):
+            query['TransConfig'] = request.trans_config
+        if not UtilClient.is_unset(request.video):
+            query['Video'] = request.video
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateTemplate',
@@ -16209,7 +18585,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -16224,20 +18600,30 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Audio'] = request.audio
-        query['Container'] = request.container
-        query['MuxConfig'] = request.mux_config
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
-        query['TransConfig'] = request.trans_config
-        query['Video'] = request.video
+        if not UtilClient.is_unset(request.audio):
+            query['Audio'] = request.audio
+        if not UtilClient.is_unset(request.container):
+            query['Container'] = request.container
+        if not UtilClient.is_unset(request.mux_config):
+            query['MuxConfig'] = request.mux_config
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.trans_config):
+            query['TransConfig'] = request.trans_config
+        if not UtilClient.is_unset(request.video):
+            query['Video'] = request.video
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateTemplate',
@@ -16247,7 +18633,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -16276,18 +18662,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateTerrorismPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateTerrorismPipeline',
@@ -16297,7 +18691,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -16312,18 +18706,26 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateTerrorismPipelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['NotifyConfig'] = request.notify_config
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PipelineId'] = request.pipeline_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.notify_config):
+            query['NotifyConfig'] = request.notify_config
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateTerrorismPipeline',
@@ -16333,7 +18735,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -16362,16 +18764,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateWaterMarkTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Config'] = request.config
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['WaterMarkTemplateId'] = request.water_mark_template_id
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.water_mark_template_id):
+            query['WaterMarkTemplateId'] = request.water_mark_template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateWaterMarkTemplate',
@@ -16381,7 +18789,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -16396,16 +18804,22 @@ class Client(OpenApiClient):
     ) -> mts_20140618_models.UpdateWaterMarkTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Config'] = request.config
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['WaterMarkTemplateId'] = request.water_mark_template_id
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.water_mark_template_id):
+            query['WaterMarkTemplateId'] = request.water_mark_template_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateWaterMarkTemplate',
@@ -16415,7 +18829,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(

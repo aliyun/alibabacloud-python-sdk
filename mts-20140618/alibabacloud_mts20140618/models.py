@@ -2506,6 +2506,7 @@ class AddSmarttagTemplateRequest(TeaModel):
         self,
         analyse_types: str = None,
         face_category_ids: str = None,
+        face_custom_params_config: str = None,
         industry: str = None,
         is_default: bool = None,
         keyword_config: str = None,
@@ -2521,6 +2522,7 @@ class AddSmarttagTemplateRequest(TeaModel):
     ):
         self.analyse_types = analyse_types
         self.face_category_ids = face_category_ids
+        self.face_custom_params_config = face_custom_params_config
         self.industry = industry
         self.is_default = is_default
         self.keyword_config = keyword_config
@@ -2547,6 +2549,8 @@ class AddSmarttagTemplateRequest(TeaModel):
             result['AnalyseTypes'] = self.analyse_types
         if self.face_category_ids is not None:
             result['FaceCategoryIds'] = self.face_category_ids
+        if self.face_custom_params_config is not None:
+            result['FaceCustomParamsConfig'] = self.face_custom_params_config
         if self.industry is not None:
             result['Industry'] = self.industry
         if self.is_default is not None:
@@ -2579,6 +2583,8 @@ class AddSmarttagTemplateRequest(TeaModel):
             self.analyse_types = m.get('AnalyseTypes')
         if m.get('FaceCategoryIds') is not None:
             self.face_category_ids = m.get('FaceCategoryIds')
+        if m.get('FaceCustomParamsConfig') is not None:
+            self.face_custom_params_config = m.get('FaceCustomParamsConfig')
         if m.get('Industry') is not None:
             self.industry = m.get('Industry')
         if m.get('IsDefault') is not None:
@@ -33409,6 +33415,9 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVi
         start_time: str = None,
         timebase: str = None,
         width: str = None,
+        bits_per_raw_sample: str = None,
+        color_primaries: str = None,
+        color_transfer: str = None,
     ):
         self.avg_fps = avg_fps
         self.bitrate = bitrate
@@ -33433,6 +33442,9 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVi
         self.start_time = start_time
         self.timebase = timebase
         self.width = width
+        self.bits_per_raw_sample = bits_per_raw_sample
+        self.color_primaries = color_primaries
+        self.color_transfer = color_transfer
 
     def validate(self):
         if self.network_cost:
@@ -33490,6 +33502,12 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVi
             result['Timebase'] = self.timebase
         if self.width is not None:
             result['Width'] = self.width
+        if self.bits_per_raw_sample is not None:
+            result['bitsPerRawSample'] = self.bits_per_raw_sample
+        if self.color_primaries is not None:
+            result['colorPrimaries'] = self.color_primaries
+        if self.color_transfer is not None:
+            result['colorTransfer'] = self.color_transfer
         return result
 
     def from_map(self, m: dict = None):
@@ -33541,6 +33559,12 @@ class QueryJobListResponseBodyJobListJobOutputPropertiesStreamsVideoStreamListVi
             self.timebase = m.get('Timebase')
         if m.get('Width') is not None:
             self.width = m.get('Width')
+        if m.get('bitsPerRawSample') is not None:
+            self.bits_per_raw_sample = m.get('bitsPerRawSample')
+        if m.get('colorPrimaries') is not None:
+            self.color_primaries = m.get('colorPrimaries')
+        if m.get('colorTransfer') is not None:
+            self.color_transfer = m.get('colorTransfer')
         return self
 
 
@@ -50276,6 +50300,7 @@ class QuerySmarttagTemplateListResponseBodyTemplatesTemplate(TeaModel):
         self,
         analyse_types: str = None,
         face_category_ids: str = None,
+        face_custom_params_config: str = None,
         industry: str = None,
         is_default: bool = None,
         keyword_config: str = None,
@@ -50288,6 +50313,7 @@ class QuerySmarttagTemplateListResponseBodyTemplatesTemplate(TeaModel):
     ):
         self.analyse_types = analyse_types
         self.face_category_ids = face_category_ids
+        self.face_custom_params_config = face_custom_params_config
         self.industry = industry
         self.is_default = is_default
         self.keyword_config = keyword_config
@@ -50311,6 +50337,8 @@ class QuerySmarttagTemplateListResponseBodyTemplatesTemplate(TeaModel):
             result['AnalyseTypes'] = self.analyse_types
         if self.face_category_ids is not None:
             result['FaceCategoryIds'] = self.face_category_ids
+        if self.face_custom_params_config is not None:
+            result['FaceCustomParamsConfig'] = self.face_custom_params_config
         if self.industry is not None:
             result['Industry'] = self.industry
         if self.is_default is not None:
@@ -50337,6 +50365,8 @@ class QuerySmarttagTemplateListResponseBodyTemplatesTemplate(TeaModel):
             self.analyse_types = m.get('AnalyseTypes')
         if m.get('FaceCategoryIds') is not None:
             self.face_category_ids = m.get('FaceCategoryIds')
+        if m.get('FaceCustomParamsConfig') is not None:
+            self.face_custom_params_config = m.get('FaceCustomParamsConfig')
         if m.get('Industry') is not None:
             self.industry = m.get('Industry')
         if m.get('IsDefault') is not None:
@@ -82927,6 +82957,7 @@ class UpdateSmarttagTemplateRequest(TeaModel):
         self,
         analyse_types: str = None,
         face_category_ids: str = None,
+        face_custom_params_config: str = None,
         industry: str = None,
         is_default: bool = None,
         keyword_config: str = None,
@@ -82943,6 +82974,7 @@ class UpdateSmarttagTemplateRequest(TeaModel):
     ):
         self.analyse_types = analyse_types
         self.face_category_ids = face_category_ids
+        self.face_custom_params_config = face_custom_params_config
         self.industry = industry
         self.is_default = is_default
         self.keyword_config = keyword_config
@@ -82970,6 +83002,8 @@ class UpdateSmarttagTemplateRequest(TeaModel):
             result['AnalyseTypes'] = self.analyse_types
         if self.face_category_ids is not None:
             result['FaceCategoryIds'] = self.face_category_ids
+        if self.face_custom_params_config is not None:
+            result['FaceCustomParamsConfig'] = self.face_custom_params_config
         if self.industry is not None:
             result['Industry'] = self.industry
         if self.is_default is not None:
@@ -83004,6 +83038,8 @@ class UpdateSmarttagTemplateRequest(TeaModel):
             self.analyse_types = m.get('AnalyseTypes')
         if m.get('FaceCategoryIds') is not None:
             self.face_category_ids = m.get('FaceCategoryIds')
+        if m.get('FaceCustomParamsConfig') is not None:
+            self.face_custom_params_config = m.get('FaceCustomParamsConfig')
         if m.get('Industry') is not None:
             self.industry = m.get('Industry')
         if m.get('IsDefault') is not None:
