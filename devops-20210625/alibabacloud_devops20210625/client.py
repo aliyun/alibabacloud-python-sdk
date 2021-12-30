@@ -1511,6 +1511,198 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def get_pipeline_artifact_url(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.GetPipelineArtifactUrlRequest,
+    ) -> devops_20210625_models.GetPipelineArtifactUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_pipeline_artifact_url_with_options(organization_id, request, headers, runtime)
+
+    async def get_pipeline_artifact_url_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.GetPipelineArtifactUrlRequest,
+    ) -> devops_20210625_models.GetPipelineArtifactUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_pipeline_artifact_url_with_options_async(organization_id, request, headers, runtime)
+
+    def get_pipeline_artifact_url_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.GetPipelineArtifactUrlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetPipelineArtifactUrlResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_path):
+            query['filePath'] = request.file_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPipelineArtifactUrl',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/pipeline/getArtifactDownloadUrl',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetPipelineArtifactUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_pipeline_artifact_url_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.GetPipelineArtifactUrlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetPipelineArtifactUrlResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_path):
+            query['filePath'] = request.file_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPipelineArtifactUrl',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/pipeline/getArtifactDownloadUrl',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetPipelineArtifactUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_pipeline_emas_artifact_url(
+        self,
+        organization_id: str,
+        emas_job_instance_id: str,
+        md_5: str,
+        pipeline_id: str,
+        pipeline_run_id: str,
+        request: devops_20210625_models.GetPipelineEmasArtifactUrlRequest,
+    ) -> devops_20210625_models.GetPipelineEmasArtifactUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_pipeline_emas_artifact_url_with_options(organization_id, emas_job_instance_id, md_5, pipeline_id, pipeline_run_id, request, headers, runtime)
+
+    async def get_pipeline_emas_artifact_url_async(
+        self,
+        organization_id: str,
+        emas_job_instance_id: str,
+        md_5: str,
+        pipeline_id: str,
+        pipeline_run_id: str,
+        request: devops_20210625_models.GetPipelineEmasArtifactUrlRequest,
+    ) -> devops_20210625_models.GetPipelineEmasArtifactUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_pipeline_emas_artifact_url_with_options_async(organization_id, emas_job_instance_id, md_5, pipeline_id, pipeline_run_id, request, headers, runtime)
+
+    def get_pipeline_emas_artifact_url_with_options(
+        self,
+        organization_id: str,
+        emas_job_instance_id: str,
+        md_5: str,
+        pipeline_id: str,
+        pipeline_run_id: str,
+        request: devops_20210625_models.GetPipelineEmasArtifactUrlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetPipelineEmasArtifactUrlResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        emas_job_instance_id = OpenApiUtilClient.get_encode_param(emas_job_instance_id)
+        md_5 = OpenApiUtilClient.get_encode_param(md_5)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
+        query = {}
+        if not UtilClient.is_unset(request.service_connection_id):
+            query['serviceConnectionId'] = request.service_connection_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPipelineEmasArtifactUrl',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/pipeline/{pipeline_id}/pipelineRun/{pipeline_run_id}/emas/artifact/{emas_job_instance_id}/{md_5}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetPipelineEmasArtifactUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_pipeline_emas_artifact_url_with_options_async(
+        self,
+        organization_id: str,
+        emas_job_instance_id: str,
+        md_5: str,
+        pipeline_id: str,
+        pipeline_run_id: str,
+        request: devops_20210625_models.GetPipelineEmasArtifactUrlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetPipelineEmasArtifactUrlResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        emas_job_instance_id = OpenApiUtilClient.get_encode_param(emas_job_instance_id)
+        md_5 = OpenApiUtilClient.get_encode_param(md_5)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
+        query = {}
+        if not UtilClient.is_unset(request.service_connection_id):
+            query['serviceConnectionId'] = request.service_connection_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPipelineEmasArtifactUrl',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/pipeline/{pipeline_id}/pipelineRun/{pipeline_run_id}/emas/artifact/{emas_job_instance_id}/{md_5}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetPipelineEmasArtifactUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def get_pipeline_run(
         self,
         organization_id: str,
@@ -1588,6 +1780,88 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             devops_20210625_models.GetPipelineRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_pipeline_scan_report_url(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.GetPipelineScanReportUrlRequest,
+    ) -> devops_20210625_models.GetPipelineScanReportUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_pipeline_scan_report_url_with_options(organization_id, request, headers, runtime)
+
+    async def get_pipeline_scan_report_url_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.GetPipelineScanReportUrlRequest,
+    ) -> devops_20210625_models.GetPipelineScanReportUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_pipeline_scan_report_url_with_options_async(organization_id, request, headers, runtime)
+
+    def get_pipeline_scan_report_url_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.GetPipelineScanReportUrlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetPipelineScanReportUrlResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        body = {}
+        if not UtilClient.is_unset(request.report_path):
+            body['reportPath'] = request.report_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetPipelineScanReportUrl',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/pipeline/getPipelineScanReportUrl',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetPipelineScanReportUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_pipeline_scan_report_url_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.GetPipelineScanReportUrlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetPipelineScanReportUrlResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        body = {}
+        if not UtilClient.is_unset(request.report_path):
+            body['reportPath'] = request.report_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetPipelineScanReportUrl',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/pipeline/getPipelineScanReportUrl',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetPipelineScanReportUrlResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -2176,6 +2450,194 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             devops_20210625_models.ListOrganizationMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_pipeline_job_historys(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.ListPipelineJobHistorysRequest,
+    ) -> devops_20210625_models.ListPipelineJobHistorysResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_pipeline_job_historys_with_options(organization_id, pipeline_id, request, headers, runtime)
+
+    async def list_pipeline_job_historys_async(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.ListPipelineJobHistorysRequest,
+    ) -> devops_20210625_models.ListPipelineJobHistorysResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_pipeline_job_historys_with_options_async(organization_id, pipeline_id, request, headers, runtime)
+
+    def list_pipeline_job_historys_with_options(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.ListPipelineJobHistorysRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListPipelineJobHistorysResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['category'] = request.category
+        if not UtilClient.is_unset(request.identifier):
+            query['identifier'] = request.identifier
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPipelineJobHistorys',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/pipeline/{pipeline_id}/job/historys',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListPipelineJobHistorysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_pipeline_job_historys_with_options_async(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.ListPipelineJobHistorysRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListPipelineJobHistorysResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['category'] = request.category
+        if not UtilClient.is_unset(request.identifier):
+            query['identifier'] = request.identifier
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPipelineJobHistorys',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/pipeline/{pipeline_id}/job/historys',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListPipelineJobHistorysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_pipeline_jobs(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.ListPipelineJobsRequest,
+    ) -> devops_20210625_models.ListPipelineJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_pipeline_jobs_with_options(organization_id, pipeline_id, request, headers, runtime)
+
+    async def list_pipeline_jobs_async(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.ListPipelineJobsRequest,
+    ) -> devops_20210625_models.ListPipelineJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_pipeline_jobs_with_options_async(organization_id, pipeline_id, request, headers, runtime)
+
+    def list_pipeline_jobs_with_options(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.ListPipelineJobsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListPipelineJobsResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['category'] = request.category
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPipelineJobs',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/pipeline/{pipeline_id}/jobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListPipelineJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_pipeline_jobs_with_options_async(
+        self,
+        organization_id: str,
+        pipeline_id: str,
+        request: devops_20210625_models.ListPipelineJobsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListPipelineJobsResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['category'] = request.category
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPipelineJobs',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/pipeline/{pipeline_id}/jobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListPipelineJobsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 

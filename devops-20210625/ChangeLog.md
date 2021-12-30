@@ -1,3 +1,6 @@
+2021-12-30 Version: 1.1.7
+- Add GeyPipelinArtifactUrl Api.
+
 2021-12-15 Version: 1.1.6
 - Add Tag Api.
 

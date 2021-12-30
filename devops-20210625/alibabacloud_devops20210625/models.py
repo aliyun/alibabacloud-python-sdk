@@ -2843,6 +2843,250 @@ class GetPipelineResponse(TeaModel):
         return self
 
 
+class GetPipelineArtifactUrlRequest(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        file_path: str = None,
+    ):
+        self.file_name = file_name
+        self.file_path = file_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_path is not None:
+            result['filePath'] = self.file_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('filePath') is not None:
+            self.file_path = m.get('filePath')
+        return self
+
+
+class GetPipelineArtifactUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        file_url: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        self.file_url = file_url
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.file_url is not None:
+            result['fileUrl'] = self.file_url
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('fileUrl') is not None:
+            self.file_url = m.get('fileUrl')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetPipelineArtifactUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetPipelineArtifactUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetPipelineArtifactUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPipelineEmasArtifactUrlRequest(TeaModel):
+    def __init__(
+        self,
+        service_connection_id: int = None,
+    ):
+        self.service_connection_id = service_connection_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service_connection_id is not None:
+            result['serviceConnectionId'] = self.service_connection_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('serviceConnectionId') is not None:
+            self.service_connection_id = m.get('serviceConnectionId')
+        return self
+
+
+class GetPipelineEmasArtifactUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        file_url: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        self.file_url = file_url
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.file_url is not None:
+            result['fileUrl'] = self.file_url
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('fileUrl') is not None:
+            self.file_url = m.get('fileUrl')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetPipelineEmasArtifactUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetPipelineEmasArtifactUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetPipelineEmasArtifactUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetPipelineRunResponseBodyPipelineRunSourcesData(TeaModel):
     def __init__(
         self,
@@ -3356,6 +3600,125 @@ class GetPipelineRunResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetPipelineRunResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPipelineScanReportUrlRequest(TeaModel):
+    def __init__(
+        self,
+        report_path: str = None,
+    ):
+        self.report_path = report_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.report_path is not None:
+            result['reportPath'] = self.report_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('reportPath') is not None:
+            self.report_path = m.get('reportPath')
+        return self
+
+
+class GetPipelineScanReportUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        report_url: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        self.report_url = report_url
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.report_url is not None:
+            result['reportUrl'] = self.report_url
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('reportUrl') is not None:
+            self.report_url = m.get('reportUrl')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetPipelineScanReportUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetPipelineScanReportUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetPipelineScanReportUrlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5281,6 +5644,410 @@ class ListOrganizationMembersResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListOrganizationMembersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPipelineJobHistorysRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        identifier: str = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.category = category
+        self.identifier = identifier
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['category'] = self.category
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        return self
+
+
+class ListPipelineJobHistorysResponseBodyJobs(TeaModel):
+    def __init__(
+        self,
+        execute_number: int = None,
+        identifier: str = None,
+        job_id: int = None,
+        job_name: str = None,
+        operator_account_id: str = None,
+        pipeline_id: int = None,
+        pipeline_run_id: int = None,
+        sources: str = None,
+        status: str = None,
+    ):
+        self.execute_number = execute_number
+        self.identifier = identifier
+        self.job_id = job_id
+        self.job_name = job_name
+        self.operator_account_id = operator_account_id
+        self.pipeline_id = pipeline_id
+        self.pipeline_run_id = pipeline_run_id
+        self.sources = sources
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.execute_number is not None:
+            result['executeNumber'] = self.execute_number
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.job_id is not None:
+            result['jobId'] = self.job_id
+        if self.job_name is not None:
+            result['jobName'] = self.job_name
+        if self.operator_account_id is not None:
+            result['operatorAccountId'] = self.operator_account_id
+        if self.pipeline_id is not None:
+            result['pipelineId'] = self.pipeline_id
+        if self.pipeline_run_id is not None:
+            result['pipelineRunId'] = self.pipeline_run_id
+        if self.sources is not None:
+            result['sources'] = self.sources
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('executeNumber') is not None:
+            self.execute_number = m.get('executeNumber')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('jobId') is not None:
+            self.job_id = m.get('jobId')
+        if m.get('jobName') is not None:
+            self.job_name = m.get('jobName')
+        if m.get('operatorAccountId') is not None:
+            self.operator_account_id = m.get('operatorAccountId')
+        if m.get('pipelineId') is not None:
+            self.pipeline_id = m.get('pipelineId')
+        if m.get('pipelineRunId') is not None:
+            self.pipeline_run_id = m.get('pipelineRunId')
+        if m.get('sources') is not None:
+            self.sources = m.get('sources')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class ListPipelineJobHistorysResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        jobs: List[ListPipelineJobHistorysResponseBodyJobs] = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        self.jobs = jobs
+        self.next_token = next_token
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.jobs:
+            for k in self.jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        result['jobs'] = []
+        if self.jobs is not None:
+            for k in self.jobs:
+                result['jobs'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        self.jobs = []
+        if m.get('jobs') is not None:
+            for k in m.get('jobs'):
+                temp_model = ListPipelineJobHistorysResponseBodyJobs()
+                self.jobs.append(temp_model.from_map(k))
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListPipelineJobHistorysResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListPipelineJobHistorysResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListPipelineJobHistorysResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPipelineJobsRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+    ):
+        self.category = category
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['category'] = self.category
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        return self
+
+
+class ListPipelineJobsResponseBodyJobs(TeaModel):
+    def __init__(
+        self,
+        identifier: str = None,
+        job_name: str = None,
+        last_job_id: int = None,
+        last_job_params: str = None,
+    ):
+        self.identifier = identifier
+        self.job_name = job_name
+        self.last_job_id = last_job_id
+        self.last_job_params = last_job_params
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.job_name is not None:
+            result['jobName'] = self.job_name
+        if self.last_job_id is not None:
+            result['lastJobId'] = self.last_job_id
+        if self.last_job_params is not None:
+            result['lastJobParams'] = self.last_job_params
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('jobName') is not None:
+            self.job_name = m.get('jobName')
+        if m.get('lastJobId') is not None:
+            self.last_job_id = m.get('lastJobId')
+        if m.get('lastJobParams') is not None:
+            self.last_job_params = m.get('lastJobParams')
+        return self
+
+
+class ListPipelineJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        jobs: List[ListPipelineJobsResponseBodyJobs] = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+        self.jobs = jobs
+        # 请求id，每次请求都是唯一值，便于后续排查问题
+        self.request_id = request_id
+        # true 接口调用成功，false 接口调用失败
+        self.success = success
+
+    def validate(self):
+        if self.jobs:
+            for k in self.jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        result['jobs'] = []
+        if self.jobs is not None:
+            for k in self.jobs:
+                result['jobs'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        self.jobs = []
+        if m.get('jobs') is not None:
+            for k in m.get('jobs'):
+                temp_model = ListPipelineJobsResponseBodyJobs()
+                self.jobs.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListPipelineJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListPipelineJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListPipelineJobsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
