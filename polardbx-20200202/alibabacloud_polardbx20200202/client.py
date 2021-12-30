@@ -95,17 +95,24 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.AllocateInstancePublicConnectionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConnectionStringPrefix'] = request.connection_string_prefix
-        query['DBInstanceName'] = request.dbinstance_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Port'] = request.port
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AllocateInstancePublicConnection',
@@ -115,7 +122,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -130,17 +137,24 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.AllocateInstancePublicConnectionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConnectionStringPrefix'] = request.connection_string_prefix
-        query['DBInstanceName'] = request.dbinstance_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Port'] = request.port
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AllocateInstancePublicConnection',
@@ -150,7 +164,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -190,7 +204,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -216,7 +230,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -238,79 +252,87 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_active_operation_tasks_with_options_async(request, runtime)
 
-    def cancel_polarx_order_with_options(
+    def change_resource_group_with_options(
         self,
-        request: polardbx_20200202_models.CancelPolarxOrderRequest,
+        request: polardbx_20200202_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> polardbx_20200202_models.CancelPolarxOrderResponse:
+    ) -> polardbx_20200202_models.ChangeResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
-        query['ScaleOutToken'] = request.scale_out_token
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='CancelPolarxOrder',
+            action='ChangeResourceGroup',
             version='2020-02-02',
             protocol='HTTPS',
             pathname='/',
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
-            polardbx_20200202_models.CancelPolarxOrderResponse(),
+            polardbx_20200202_models.ChangeResourceGroupResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def cancel_polarx_order_with_options_async(
+    async def change_resource_group_with_options_async(
         self,
-        request: polardbx_20200202_models.CancelPolarxOrderRequest,
+        request: polardbx_20200202_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> polardbx_20200202_models.CancelPolarxOrderResponse:
+    ) -> polardbx_20200202_models.ChangeResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
-        query['ScaleOutToken'] = request.scale_out_token
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='CancelPolarxOrder',
+            action='ChangeResourceGroup',
             version='2020-02-02',
             protocol='HTTPS',
             pathname='/',
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
-            polardbx_20200202_models.CancelPolarxOrderResponse(),
+            polardbx_20200202_models.ChangeResourceGroupResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def cancel_polarx_order(
+    def change_resource_group(
         self,
-        request: polardbx_20200202_models.CancelPolarxOrderRequest,
-    ) -> polardbx_20200202_models.CancelPolarxOrderResponse:
+        request: polardbx_20200202_models.ChangeResourceGroupRequest,
+    ) -> polardbx_20200202_models.ChangeResourceGroupResponse:
         runtime = util_models.RuntimeOptions()
-        return self.cancel_polarx_order_with_options(request, runtime)
+        return self.change_resource_group_with_options(request, runtime)
 
-    async def cancel_polarx_order_async(
+    async def change_resource_group_async(
         self,
-        request: polardbx_20200202_models.CancelPolarxOrderRequest,
-    ) -> polardbx_20200202_models.CancelPolarxOrderResponse:
+        request: polardbx_20200202_models.ChangeResourceGroupRequest,
+    ) -> polardbx_20200202_models.ChangeResourceGroupResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.cancel_polarx_order_with_options_async(request, runtime)
+        return await self.change_resource_group_with_options_async(request, runtime)
 
     def check_cloud_resource_authorized_with_options(
         self,
@@ -319,12 +341,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.CheckCloudResourceAuthorizedResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
-        query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CheckCloudResourceAuthorized',
@@ -334,7 +358,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -349,12 +373,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.CheckCloudResourceAuthorizedResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
-        query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CheckCloudResourceAuthorized',
@@ -364,7 +390,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -393,18 +419,26 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.CreateAccountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountDescription'] = request.account_description
-        query['AccountName'] = request.account_name
-        query['AccountPassword'] = request.account_password
-        query['AccountPrivilege'] = request.account_privilege
-        query['DBInstanceName'] = request.dbinstance_name
-        query['DBName'] = request.dbname
-        query['RegionId'] = request.region_id
-        query['SecurityAccountName'] = request.security_account_name
-        query['SecurityAccountPassword'] = request.security_account_password
+        if not UtilClient.is_unset(request.account_description):
+            query['AccountDescription'] = request.account_description
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.account_privilege):
+            query['AccountPrivilege'] = request.account_privilege
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_account_name):
+            query['SecurityAccountName'] = request.security_account_name
+        if not UtilClient.is_unset(request.security_account_password):
+            query['SecurityAccountPassword'] = request.security_account_password
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateAccount',
@@ -414,7 +448,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -429,18 +463,26 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.CreateAccountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountDescription'] = request.account_description
-        query['AccountName'] = request.account_name
-        query['AccountPassword'] = request.account_password
-        query['AccountPrivilege'] = request.account_privilege
-        query['DBInstanceName'] = request.dbinstance_name
-        query['DBName'] = request.dbname
-        query['RegionId'] = request.region_id
-        query['SecurityAccountName'] = request.security_account_name
-        query['SecurityAccountPassword'] = request.security_account_password
+        if not UtilClient.is_unset(request.account_description):
+            query['AccountDescription'] = request.account_description
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.account_privilege):
+            query['AccountPrivilege'] = request.account_privilege
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_account_name):
+            query['SecurityAccountName'] = request.security_account_name
+        if not UtilClient.is_unset(request.security_account_password):
+            query['SecurityAccountPassword'] = request.security_account_password
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateAccount',
@@ -450,7 +492,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -479,12 +521,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.CreateBackupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BackupType'] = request.backup_type
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.backup_type):
+            query['BackupType'] = request.backup_type
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateBackup',
@@ -494,7 +538,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -509,12 +553,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.CreateBackupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BackupType'] = request.backup_type
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.backup_type):
+            query['BackupType'] = request.backup_type
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateBackup',
@@ -524,7 +570,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -553,18 +599,26 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.CreateDBResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountName'] = request.account_name
-        query['AccountPrivilege'] = request.account_privilege
-        query['Charset'] = request.charset
-        query['DBInstanceName'] = request.dbinstance_name
-        query['DbDescription'] = request.db_description
-        query['DbName'] = request.db_name
-        query['RegionId'] = request.region_id
-        query['SecurityAccountName'] = request.security_account_name
-        query['SecurityAccountPassword'] = request.security_account_password
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_privilege):
+            query['AccountPrivilege'] = request.account_privilege
+        if not UtilClient.is_unset(request.charset):
+            query['Charset'] = request.charset
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.db_description):
+            query['DbDescription'] = request.db_description
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_account_name):
+            query['SecurityAccountName'] = request.security_account_name
+        if not UtilClient.is_unset(request.security_account_password):
+            query['SecurityAccountPassword'] = request.security_account_password
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateDB',
@@ -574,7 +628,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -589,18 +643,26 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.CreateDBResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountName'] = request.account_name
-        query['AccountPrivilege'] = request.account_privilege
-        query['Charset'] = request.charset
-        query['DBInstanceName'] = request.dbinstance_name
-        query['DbDescription'] = request.db_description
-        query['DbName'] = request.db_name
-        query['RegionId'] = request.region_id
-        query['SecurityAccountName'] = request.security_account_name
-        query['SecurityAccountPassword'] = request.security_account_password
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_privilege):
+            query['AccountPrivilege'] = request.account_privilege
+        if not UtilClient.is_unset(request.charset):
+            query['Charset'] = request.charset
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.db_description):
+            query['DbDescription'] = request.db_description
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_account_name):
+            query['SecurityAccountName'] = request.security_account_name
+        if not UtilClient.is_unset(request.security_account_password):
+            query['SecurityAccountPassword'] = request.security_account_password
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateDB',
@@ -610,7 +672,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -639,25 +701,40 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.CreateDBInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoRenew'] = request.auto_renew
-        query['ClientToken'] = request.client_token
-        query['DBNodeClass'] = request.dbnode_class
-        query['DBNodeCount'] = request.dbnode_count
-        query['EngineVersion'] = request.engine_version
-        query['IsReadDBInstance'] = request.is_read_dbinstance
-        query['NetworkType'] = request.network_type
-        query['PayType'] = request.pay_type
-        query['Period'] = request.period
-        query['PrimaryDBInstanceName'] = request.primary_dbinstance_name
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['UsedTime'] = request.used_time
-        query['VPCId'] = request.vpcid
-        query['VSwitchId'] = request.v_switch_id
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbnode_class):
+            query['DBNodeClass'] = request.dbnode_class
+        if not UtilClient.is_unset(request.dbnode_count):
+            query['DBNodeCount'] = request.dbnode_count
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.is_read_dbinstance):
+            query['IsReadDBInstance'] = request.is_read_dbinstance
+        if not UtilClient.is_unset(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.primary_dbinstance_name):
+            query['PrimaryDBInstanceName'] = request.primary_dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateDBInstance',
@@ -667,7 +744,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -682,25 +759,40 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.CreateDBInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoRenew'] = request.auto_renew
-        query['ClientToken'] = request.client_token
-        query['DBNodeClass'] = request.dbnode_class
-        query['DBNodeCount'] = request.dbnode_count
-        query['EngineVersion'] = request.engine_version
-        query['IsReadDBInstance'] = request.is_read_dbinstance
-        query['NetworkType'] = request.network_type
-        query['PayType'] = request.pay_type
-        query['Period'] = request.period
-        query['PrimaryDBInstanceName'] = request.primary_dbinstance_name
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['UsedTime'] = request.used_time
-        query['VPCId'] = request.vpcid
-        query['VSwitchId'] = request.v_switch_id
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbnode_class):
+            query['DBNodeClass'] = request.dbnode_class
+        if not UtilClient.is_unset(request.dbnode_count):
+            query['DBNodeCount'] = request.dbnode_count
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.is_read_dbinstance):
+            query['IsReadDBInstance'] = request.is_read_dbinstance
+        if not UtilClient.is_unset(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.primary_dbinstance_name):
+            query['PrimaryDBInstanceName'] = request.primary_dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateDBInstance',
@@ -710,7 +802,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -732,80 +824,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_dbinstance_with_options_async(request, runtime)
 
-    def create_polarx_order_with_options(
-        self,
-        request: polardbx_20200202_models.CreatePolarxOrderRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardbx_20200202_models.CreatePolarxOrderResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['NodeCount'] = request.node_count
-        query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreatePolarxOrder',
-            version='2020-02-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            polardbx_20200202_models.CreatePolarxOrderResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_polarx_order_with_options_async(
-        self,
-        request: polardbx_20200202_models.CreatePolarxOrderRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardbx_20200202_models.CreatePolarxOrderResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['NodeCount'] = request.node_count
-        query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreatePolarxOrder',
-            version='2020-02-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            polardbx_20200202_models.CreatePolarxOrderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_polarx_order(
-        self,
-        request: polardbx_20200202_models.CreatePolarxOrderRequest,
-    ) -> polardbx_20200202_models.CreatePolarxOrderResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_polarx_order_with_options(request, runtime)
-
-    async def create_polarx_order_async(
-        self,
-        request: polardbx_20200202_models.CreatePolarxOrderRequest,
-    ) -> polardbx_20200202_models.CreatePolarxOrderResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_polarx_order_with_options_async(request, runtime)
-
     def create_super_account_with_options(
         self,
         request: polardbx_20200202_models.CreateSuperAccountRequest,
@@ -813,14 +831,18 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.CreateSuperAccountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountDescription'] = request.account_description
-        query['AccountName'] = request.account_name
-        query['AccountPassword'] = request.account_password
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.account_description):
+            query['AccountDescription'] = request.account_description
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateSuperAccount',
@@ -830,7 +852,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -845,14 +867,18 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.CreateSuperAccountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountDescription'] = request.account_description
-        query['AccountName'] = request.account_name
-        query['AccountPassword'] = request.account_password
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.account_description):
+            query['AccountDescription'] = request.account_description
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateSuperAccount',
@@ -862,7 +888,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -891,14 +917,18 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DeleteAccountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountName'] = request.account_name
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
-        query['SecurityAccountName'] = request.security_account_name
-        query['SecurityAccountPassword'] = request.security_account_password
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_account_name):
+            query['SecurityAccountName'] = request.security_account_name
+        if not UtilClient.is_unset(request.security_account_password):
+            query['SecurityAccountPassword'] = request.security_account_password
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAccount',
@@ -908,7 +938,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -923,14 +953,18 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DeleteAccountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountName'] = request.account_name
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
-        query['SecurityAccountName'] = request.security_account_name
-        query['SecurityAccountPassword'] = request.security_account_password
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_account_name):
+            query['SecurityAccountName'] = request.security_account_name
+        if not UtilClient.is_unset(request.security_account_password):
+            query['SecurityAccountPassword'] = request.security_account_password
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteAccount',
@@ -940,7 +974,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -969,12 +1003,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DeleteDBResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['DbName'] = request.db_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDB',
@@ -984,7 +1020,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -999,12 +1035,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DeleteDBResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['DbName'] = request.db_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDB',
@@ -1014,7 +1052,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1043,11 +1081,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DeleteDBInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDBInstance',
@@ -1057,7 +1098,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1072,11 +1113,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DeleteDBInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDBInstance',
@@ -1086,7 +1130,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1115,13 +1159,16 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeAccountListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountName'] = request.account_name
-        query['AccountType'] = request.account_type
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_type):
+            query['AccountType'] = request.account_type
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeAccountList',
@@ -1131,7 +1178,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1146,13 +1193,16 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeAccountListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountName'] = request.account_name
-        query['AccountType'] = request.account_type
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_type):
+            query['AccountType'] = request.account_type
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeAccountList',
@@ -1162,7 +1212,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1191,10 +1241,10 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeActiveOperationMaintainConfResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeActiveOperationMaintainConf',
@@ -1204,7 +1254,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1219,10 +1269,10 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeActiveOperationMaintainConfResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeActiveOperationMaintainConf',
@@ -1232,7 +1282,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1272,7 +1322,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1298,7 +1348,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1338,7 +1388,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1364,7 +1414,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1393,11 +1443,12 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeBackupPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeBackupPolicy',
@@ -1407,7 +1458,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1422,11 +1473,12 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeBackupPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeBackupPolicy',
@@ -1436,7 +1488,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1476,7 +1528,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1502,7 +1554,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1531,15 +1583,20 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeBinaryLogListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['EndTime'] = request.end_time
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeBinaryLogList',
@@ -1549,7 +1606,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1564,15 +1621,20 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeBinaryLogListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['EndTime'] = request.end_time
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeBinaryLogList',
@@ -1582,7 +1644,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1611,11 +1673,12 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeCharacterSetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCharacterSet',
@@ -1625,7 +1688,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1640,11 +1703,12 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeCharacterSetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCharacterSet',
@@ -1654,7 +1718,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1683,11 +1747,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeDBInstanceAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDBInstanceAttribute',
@@ -1697,7 +1764,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1712,11 +1779,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeDBInstanceAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDBInstanceAttribute',
@@ -1726,7 +1796,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1755,12 +1825,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeDBInstanceConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigName'] = request.config_name
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDBInstanceConfig',
@@ -1770,7 +1842,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1785,12 +1857,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeDBInstanceConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigName'] = request.config_name
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDBInstanceConfig',
@@ -1800,7 +1874,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1829,11 +1903,12 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeDBInstanceSSLResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDBInstanceSSL',
@@ -1843,7 +1918,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1858,11 +1933,12 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeDBInstanceSSLResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDBInstanceSSL',
@@ -1872,7 +1948,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1901,11 +1977,12 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeDBInstanceTDEResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDBInstanceTDE',
@@ -1915,7 +1992,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1930,11 +2007,12 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeDBInstanceTDEResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDBInstanceTDE',
@@ -1944,7 +2022,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1973,11 +2051,12 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeDBInstanceTopologyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDBInstanceTopology',
@@ -1987,7 +2066,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2002,11 +2081,12 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeDBInstanceTopologyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDBInstanceTopology',
@@ -2016,7 +2096,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2045,12 +2125,20 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeDBInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDBInstances',
@@ -2060,7 +2148,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2075,12 +2163,20 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeDBInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDBInstances',
@@ -2090,7 +2186,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2119,17 +2215,24 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeDBNodePerformanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CharacterType'] = request.character_type
-        query['DBInstanceName'] = request.dbinstance_name
-        query['DBNodeIds'] = request.dbnode_ids
-        query['DBNodeRole'] = request.dbnode_role
-        query['EndTime'] = request.end_time
-        query['Key'] = request.key
-        query['RegionId'] = request.region_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.character_type):
+            query['CharacterType'] = request.character_type
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.dbnode_ids):
+            query['DBNodeIds'] = request.dbnode_ids
+        if not UtilClient.is_unset(request.dbnode_role):
+            query['DBNodeRole'] = request.dbnode_role
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDBNodePerformance',
@@ -2139,7 +2242,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2154,17 +2257,24 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeDBNodePerformanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CharacterType'] = request.character_type
-        query['DBInstanceName'] = request.dbinstance_name
-        query['DBNodeIds'] = request.dbnode_ids
-        query['DBNodeRole'] = request.dbnode_role
-        query['EndTime'] = request.end_time
-        query['Key'] = request.key
-        query['RegionId'] = request.region_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.character_type):
+            query['CharacterType'] = request.character_type
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.dbnode_ids):
+            query['DBNodeIds'] = request.dbnode_ids
+        if not UtilClient.is_unset(request.dbnode_role):
+            query['DBNodeRole'] = request.dbnode_role
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDBNodePerformance',
@@ -2174,7 +2284,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2203,12 +2313,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeDbListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['DBName'] = request.dbname
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDbList',
@@ -2218,7 +2330,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2233,12 +2345,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeDbListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['DBName'] = request.dbname
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDbList',
@@ -2248,7 +2362,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2277,12 +2391,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeDistributeTableListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['DbName'] = request.db_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDistributeTableList',
@@ -2292,7 +2408,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2307,12 +2423,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeDistributeTableListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['DbName'] = request.db_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDistributeTableList',
@@ -2322,7 +2440,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2362,7 +2480,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2388,7 +2506,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2417,12 +2535,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeParameterTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceId'] = request.dbinstance_id
-        query['ParamLevel'] = request.param_level
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.param_level):
+            query['ParamLevel'] = request.param_level
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeParameterTemplates',
@@ -2432,7 +2552,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2447,12 +2567,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeParameterTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceId'] = request.dbinstance_id
-        query['ParamLevel'] = request.param_level
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.param_level):
+            query['ParamLevel'] = request.param_level
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeParameterTemplates',
@@ -2462,7 +2584,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2491,12 +2613,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeParametersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceId'] = request.dbinstance_id
-        query['ParamLevel'] = request.param_level
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.param_level):
+            query['ParamLevel'] = request.param_level
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeParameters',
@@ -2506,7 +2630,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2521,12 +2645,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeParametersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceId'] = request.dbinstance_id
-        query['ParamLevel'] = request.param_level
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.param_level):
+            query['ParamLevel'] = request.param_level
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeParameters',
@@ -2536,7 +2662,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2558,156 +2684,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_parameters_with_options_async(request, runtime)
 
-    def describe_polarx_data_nodes_with_options(
-        self,
-        request: polardbx_20200202_models.DescribePolarxDataNodesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardbx_20200202_models.DescribePolarxDataNodesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribePolarxDataNodes',
-            version='2020-02-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            polardbx_20200202_models.DescribePolarxDataNodesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_polarx_data_nodes_with_options_async(
-        self,
-        request: polardbx_20200202_models.DescribePolarxDataNodesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardbx_20200202_models.DescribePolarxDataNodesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribePolarxDataNodes',
-            version='2020-02-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            polardbx_20200202_models.DescribePolarxDataNodesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_polarx_data_nodes(
-        self,
-        request: polardbx_20200202_models.DescribePolarxDataNodesRequest,
-    ) -> polardbx_20200202_models.DescribePolarxDataNodesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_polarx_data_nodes_with_options(request, runtime)
-
-    async def describe_polarx_data_nodes_async(
-        self,
-        request: polardbx_20200202_models.DescribePolarxDataNodesRequest,
-    ) -> polardbx_20200202_models.DescribePolarxDataNodesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_polarx_data_nodes_with_options_async(request, runtime)
-
-    def describe_polarx_db_instances_with_options(
-        self,
-        request: polardbx_20200202_models.DescribePolarxDbInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardbx_20200202_models.DescribePolarxDbInstancesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['DbName'] = request.db_name
-        query['DrdsInstanceId'] = request.drds_instance_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribePolarxDbInstances',
-            version='2020-02-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            polardbx_20200202_models.DescribePolarxDbInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_polarx_db_instances_with_options_async(
-        self,
-        request: polardbx_20200202_models.DescribePolarxDbInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardbx_20200202_models.DescribePolarxDbInstancesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['DbName'] = request.db_name
-        query['DrdsInstanceId'] = request.drds_instance_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DescribePolarxDbInstances',
-            version='2020-02-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            polardbx_20200202_models.DescribePolarxDbInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_polarx_db_instances(
-        self,
-        request: polardbx_20200202_models.DescribePolarxDbInstancesRequest,
-    ) -> polardbx_20200202_models.DescribePolarxDbInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_polarx_db_instances_with_options(request, runtime)
-
-    async def describe_polarx_db_instances_async(
-        self,
-        request: polardbx_20200202_models.DescribePolarxDbInstancesRequest,
-    ) -> polardbx_20200202_models.DescribePolarxDbInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_polarx_db_instances_with_options_async(request, runtime)
-
     def describe_regions_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -2721,7 +2697,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2742,7 +2718,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2765,14 +2741,18 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeScaleOutMigrateTaskListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeScaleOutMigrateTaskList',
@@ -2782,7 +2762,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2797,14 +2777,18 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeScaleOutMigrateTaskListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeScaleOutMigrateTaskList',
@@ -2814,7 +2798,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2843,11 +2827,12 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeSecurityIpsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSecurityIps',
@@ -2857,7 +2842,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2872,11 +2857,12 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeSecurityIpsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeSecurityIps',
@@ -2886,7 +2872,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2908,6 +2894,174 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_ips_with_options_async(request, runtime)
 
+    def describe_slink_task_info_with_options(
+        self,
+        request: polardbx_20200202_models.DescribeSlinkTaskInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeSlinkTaskInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.fail_page_number):
+            query['FailPageNumber'] = request.fail_page_number
+        if not UtilClient.is_unset(request.fail_page_size):
+            query['FailPageSize'] = request.fail_page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.slink_task_id):
+            query['SlinkTaskId'] = request.slink_task_id
+        if not UtilClient.is_unset(request.success_page_number):
+            query['SuccessPageNumber'] = request.success_page_number
+        if not UtilClient.is_unset(request.success_page_size):
+            query['SuccessPageSize'] = request.success_page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSlinkTaskInfo',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.DescribeSlinkTaskInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_slink_task_info_with_options_async(
+        self,
+        request: polardbx_20200202_models.DescribeSlinkTaskInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeSlinkTaskInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.fail_page_number):
+            query['FailPageNumber'] = request.fail_page_number
+        if not UtilClient.is_unset(request.fail_page_size):
+            query['FailPageSize'] = request.fail_page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.slink_task_id):
+            query['SlinkTaskId'] = request.slink_task_id
+        if not UtilClient.is_unset(request.success_page_number):
+            query['SuccessPageNumber'] = request.success_page_number
+        if not UtilClient.is_unset(request.success_page_size):
+            query['SuccessPageSize'] = request.success_page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSlinkTaskInfo',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.DescribeSlinkTaskInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_slink_task_info(
+        self,
+        request: polardbx_20200202_models.DescribeSlinkTaskInfoRequest,
+    ) -> polardbx_20200202_models.DescribeSlinkTaskInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_slink_task_info_with_options(request, runtime)
+
+    async def describe_slink_task_info_async(
+        self,
+        request: polardbx_20200202_models.DescribeSlinkTaskInfoRequest,
+    ) -> polardbx_20200202_models.DescribeSlinkTaskInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_slink_task_info_with_options_async(request, runtime)
+
+    def describe_tags_with_options(
+        self,
+        request: polardbx_20200202_models.DescribeTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeTagsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTags',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.DescribeTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tags_with_options_async(
+        self,
+        request: polardbx_20200202_models.DescribeTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeTagsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTags',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.DescribeTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tags(
+        self,
+        request: polardbx_20200202_models.DescribeTagsRequest,
+    ) -> polardbx_20200202_models.DescribeTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tags_with_options(request, runtime)
+
+    async def describe_tags_async(
+        self,
+        request: polardbx_20200202_models.DescribeTagsRequest,
+    ) -> polardbx_20200202_models.DescribeTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tags_with_options_async(request, runtime)
+
     def describe_tasks_with_options(
         self,
         request: polardbx_20200202_models.DescribeTasksRequest,
@@ -2915,19 +3069,28 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeTasksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceId'] = request.dbinstance_id
-        query['EndTime'] = request.end_time
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeTasks',
@@ -2937,7 +3100,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2952,19 +3115,28 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeTasksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceId'] = request.dbinstance_id
-        query['EndTime'] = request.end_time
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeTasks',
@@ -2974,7 +3146,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3003,11 +3175,12 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeUserEncryptionKeyListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeUserEncryptionKeyList',
@@ -3017,7 +3190,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3032,11 +3205,12 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.DescribeUserEncryptionKeyListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeUserEncryptionKeyList',
@@ -3046,7 +3220,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3068,79 +3242,165 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_encryption_key_list_with_options_async(request, runtime)
 
-    def get_polarx_commodity_with_options(
+    def init_dbinstance_resource_group_id_with_options(
         self,
-        request: polardbx_20200202_models.GetPolarxCommodityRequest,
+        request: polardbx_20200202_models.InitDBInstanceResourceGroupIdRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> polardbx_20200202_models.GetPolarxCommodityResponse:
+    ) -> polardbx_20200202_models.InitDBInstanceResourceGroupIdResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['OrderType'] = request.order_type
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetPolarxCommodity',
+            action='InitDBInstanceResourceGroupId',
             version='2020-02-02',
             protocol='HTTPS',
             pathname='/',
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
-            polardbx_20200202_models.GetPolarxCommodityResponse(),
+            polardbx_20200202_models.InitDBInstanceResourceGroupIdResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def get_polarx_commodity_with_options_async(
+    async def init_dbinstance_resource_group_id_with_options_async(
         self,
-        request: polardbx_20200202_models.GetPolarxCommodityRequest,
+        request: polardbx_20200202_models.InitDBInstanceResourceGroupIdRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> polardbx_20200202_models.GetPolarxCommodityResponse:
+    ) -> polardbx_20200202_models.InitDBInstanceResourceGroupIdResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['OrderType'] = request.order_type
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetPolarxCommodity',
+            action='InitDBInstanceResourceGroupId',
             version='2020-02-02',
             protocol='HTTPS',
             pathname='/',
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
-            polardbx_20200202_models.GetPolarxCommodityResponse(),
+            polardbx_20200202_models.InitDBInstanceResourceGroupIdResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_polarx_commodity(
+    def init_dbinstance_resource_group_id(
         self,
-        request: polardbx_20200202_models.GetPolarxCommodityRequest,
-    ) -> polardbx_20200202_models.GetPolarxCommodityResponse:
+        request: polardbx_20200202_models.InitDBInstanceResourceGroupIdRequest,
+    ) -> polardbx_20200202_models.InitDBInstanceResourceGroupIdResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_polarx_commodity_with_options(request, runtime)
+        return self.init_dbinstance_resource_group_id_with_options(request, runtime)
 
-    async def get_polarx_commodity_async(
+    async def init_dbinstance_resource_group_id_async(
         self,
-        request: polardbx_20200202_models.GetPolarxCommodityRequest,
-    ) -> polardbx_20200202_models.GetPolarxCommodityResponse:
+        request: polardbx_20200202_models.InitDBInstanceResourceGroupIdRequest,
+    ) -> polardbx_20200202_models.InitDBInstanceResourceGroupIdResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_polarx_commodity_with_options_async(request, runtime)
+        return await self.init_dbinstance_resource_group_id_with_options_async(request, runtime)
+
+    def list_tag_resources_with_options(
+        self,
+        request: polardbx_20200202_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: polardbx_20200202_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.ListTagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: polardbx_20200202_models.ListTagResourcesRequest,
+    ) -> polardbx_20200202_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: polardbx_20200202_models.ListTagResourcesRequest,
+    ) -> polardbx_20200202_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
 
     def modify_account_description_with_options(
         self,
@@ -3149,13 +3409,16 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.ModifyAccountDescriptionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountDescription'] = request.account_description
-        query['AccountName'] = request.account_name
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.account_description):
+            query['AccountDescription'] = request.account_description
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyAccountDescription',
@@ -3165,7 +3428,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3180,13 +3443,16 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.ModifyAccountDescriptionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountDescription'] = request.account_description
-        query['AccountName'] = request.account_name
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.account_description):
+            query['AccountDescription'] = request.account_description
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyAccountDescription',
@@ -3196,7 +3462,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3236,7 +3502,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3262,7 +3528,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3291,13 +3557,16 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.ModifyActiveOperationTasksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Ids'] = request.ids
-        query['ImmediateStart'] = request.immediate_start
-        query['RegionId'] = request.region_id
-        query['SwitchTime'] = request.switch_time
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.immediate_start):
+            query['ImmediateStart'] = request.immediate_start
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyActiveOperationTasks',
@@ -3307,7 +3576,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3322,13 +3591,16 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.ModifyActiveOperationTasksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Ids'] = request.ids
-        query['ImmediateStart'] = request.immediate_start
-        query['RegionId'] = request.region_id
-        query['SwitchTime'] = request.switch_time
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.immediate_start):
+            query['ImmediateStart'] = request.immediate_start
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyActiveOperationTasks',
@@ -3338,7 +3610,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3367,13 +3639,16 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.ModifyDBInstanceClassResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
-        query['TargetDBInstanceClass'] = request.target_dbinstance_class
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.target_dbinstance_class):
+            query['TargetDBInstanceClass'] = request.target_dbinstance_class
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyDBInstanceClass',
@@ -3383,7 +3658,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3398,13 +3673,16 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.ModifyDBInstanceClassResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
-        query['TargetDBInstanceClass'] = request.target_dbinstance_class
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.target_dbinstance_class):
+            query['TargetDBInstanceClass'] = request.target_dbinstance_class
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyDBInstanceClass',
@@ -3414,7 +3692,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3443,13 +3721,16 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.ModifyDBInstanceConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigName'] = request.config_name
-        query['ConfigValue'] = request.config_value
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        if not UtilClient.is_unset(request.config_value):
+            query['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyDBInstanceConfig',
@@ -3459,7 +3740,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3474,13 +3755,16 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.ModifyDBInstanceConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigName'] = request.config_name
-        query['ConfigValue'] = request.config_value
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        if not UtilClient.is_unset(request.config_value):
+            query['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyDBInstanceConfig',
@@ -3490,7 +3774,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3512,6 +3796,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_config_with_options_async(request, runtime)
 
+    def modify_dbinstance_connection_string_with_options(
+        self,
+        request: polardbx_20200202_models.ModifyDBInstanceConnectionStringRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.ModifyDBInstanceConnectionStringResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_string):
+            query['ConnectionString'] = request.connection_string
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.new_port):
+            query['NewPort'] = request.new_port
+        if not UtilClient.is_unset(request.new_prefix):
+            query['NewPrefix'] = request.new_prefix
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceConnectionString',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.ModifyDBInstanceConnectionStringResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbinstance_connection_string_with_options_async(
+        self,
+        request: polardbx_20200202_models.ModifyDBInstanceConnectionStringRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.ModifyDBInstanceConnectionStringResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_string):
+            query['ConnectionString'] = request.connection_string
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.new_port):
+            query['NewPort'] = request.new_port
+        if not UtilClient.is_unset(request.new_prefix):
+            query['NewPrefix'] = request.new_prefix
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceConnectionString',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.ModifyDBInstanceConnectionStringResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbinstance_connection_string(
+        self,
+        request: polardbx_20200202_models.ModifyDBInstanceConnectionStringRequest,
+    ) -> polardbx_20200202_models.ModifyDBInstanceConnectionStringResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbinstance_connection_string_with_options(request, runtime)
+
+    async def modify_dbinstance_connection_string_async(
+        self,
+        request: polardbx_20200202_models.ModifyDBInstanceConnectionStringRequest,
+    ) -> polardbx_20200202_models.ModifyDBInstanceConnectionStringResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbinstance_connection_string_with_options_async(request, runtime)
+
     def modify_dbinstance_description_with_options(
         self,
         request: polardbx_20200202_models.ModifyDBInstanceDescriptionRequest,
@@ -3519,12 +3889,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.ModifyDBInstanceDescriptionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceDescription'] = request.dbinstance_description
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_description):
+            query['DBInstanceDescription'] = request.dbinstance_description
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyDBInstanceDescription',
@@ -3534,7 +3906,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3549,12 +3921,14 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.ModifyDBInstanceDescriptionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceDescription'] = request.dbinstance_description
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_description):
+            query['DBInstanceDescription'] = request.dbinstance_description
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyDBInstanceDescription',
@@ -3564,7 +3938,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3593,13 +3967,16 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.ModifyDatabaseDescriptionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['DbDescription'] = request.db_description
-        query['DbName'] = request.db_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.db_description):
+            query['DbDescription'] = request.db_description
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyDatabaseDescription',
@@ -3609,7 +3986,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3624,13 +4001,16 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.ModifyDatabaseDescriptionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['DbDescription'] = request.db_description
-        query['DbName'] = request.db_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.db_description):
+            query['DbDescription'] = request.db_description
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyDatabaseDescription',
@@ -3640,7 +4020,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3669,14 +4049,18 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.ModifyParameterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DBInstanceId'] = request.dbinstance_id
-        query['ParamLevel'] = request.param_level
-        query['Parameters'] = request.parameters
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.param_level):
+            query['ParamLevel'] = request.param_level
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyParameter',
@@ -3686,7 +4070,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3701,14 +4085,18 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.ModifyParameterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DBInstanceId'] = request.dbinstance_id
-        query['ParamLevel'] = request.param_level
-        query['Parameters'] = request.parameters
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.param_level):
+            query['ParamLevel'] = request.param_level
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyParameter',
@@ -3718,7 +4106,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3747,14 +4135,18 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.ModifySecurityIpsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['GroupName'] = request.group_name
-        query['ModifyMode'] = request.modify_mode
-        query['RegionId'] = request.region_id
-        query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifySecurityIps',
@@ -3764,7 +4156,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3779,14 +4171,18 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.ModifySecurityIpsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['GroupName'] = request.group_name
-        query['ModifyMode'] = request.modify_mode
-        query['RegionId'] = request.region_id
-        query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifySecurityIps',
@@ -3796,7 +4192,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3825,16 +4221,22 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.ReleaseInstancePublicConnectionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CurrentConnectionString'] = request.current_connection_string
-        query['DBInstanceName'] = request.dbinstance_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.current_connection_string):
+            query['CurrentConnectionString'] = request.current_connection_string
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReleaseInstancePublicConnection',
@@ -3844,7 +4246,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3859,16 +4261,22 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.ReleaseInstancePublicConnectionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CurrentConnectionString'] = request.current_connection_string
-        query['DBInstanceName'] = request.dbinstance_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.current_connection_string):
+            query['CurrentConnectionString'] = request.current_connection_string
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReleaseInstancePublicConnection',
@@ -3878,7 +4286,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3907,11 +4315,12 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.RestartDBInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RestartDBInstance',
@@ -3921,7 +4330,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3936,11 +4345,12 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.RestartDBInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RestartDBInstance',
@@ -3950,7 +4360,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3972,6 +4382,174 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.restart_dbinstance_with_options_async(request, runtime)
 
+    def tag_resources_with_options(
+        self,
+        request: polardbx_20200202_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: polardbx_20200202_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: polardbx_20200202_models.TagResourcesRequest,
+    ) -> polardbx_20200202_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: polardbx_20200202_models.TagResourcesRequest,
+    ) -> polardbx_20200202_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
+
+    def untag_resources_with_options(
+        self,
+        request: polardbx_20200202_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.UntagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        request: polardbx_20200202_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.UntagResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: polardbx_20200202_models.UntagResourcesRequest,
+    ) -> polardbx_20200202_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.untag_resources_with_options(request, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: polardbx_20200202_models.UntagResourcesRequest,
+    ) -> polardbx_20200202_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.untag_resources_with_options_async(request, runtime)
+
     def update_backup_policy_with_options(
         self,
         request: polardbx_20200202_models.UpdateBackupPolicyRequest,
@@ -3979,21 +4557,32 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.UpdateBackupPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BackupPeriod'] = request.backup_period
-        query['BackupPlanBegin'] = request.backup_plan_begin
-        query['BackupSetRetention'] = request.backup_set_retention
-        query['BackupType'] = request.backup_type
-        query['BackupWay'] = request.backup_way
-        query['DBInstanceName'] = request.dbinstance_name
-        query['ForceCleanOnHighSpaceUsage'] = request.force_clean_on_high_space_usage
-        query['IsEnabled'] = request.is_enabled
-        query['LocalLogRetention'] = request.local_log_retention
-        query['LogLocalRetentionSpace'] = request.log_local_retention_space
-        query['RegionId'] = request.region_id
-        query['RemoveLogRetention'] = request.remove_log_retention
+        if not UtilClient.is_unset(request.backup_period):
+            query['BackupPeriod'] = request.backup_period
+        if not UtilClient.is_unset(request.backup_plan_begin):
+            query['BackupPlanBegin'] = request.backup_plan_begin
+        if not UtilClient.is_unset(request.backup_set_retention):
+            query['BackupSetRetention'] = request.backup_set_retention
+        if not UtilClient.is_unset(request.backup_type):
+            query['BackupType'] = request.backup_type
+        if not UtilClient.is_unset(request.backup_way):
+            query['BackupWay'] = request.backup_way
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.force_clean_on_high_space_usage):
+            query['ForceCleanOnHighSpaceUsage'] = request.force_clean_on_high_space_usage
+        if not UtilClient.is_unset(request.is_enabled):
+            query['IsEnabled'] = request.is_enabled
+        if not UtilClient.is_unset(request.local_log_retention):
+            query['LocalLogRetention'] = request.local_log_retention
+        if not UtilClient.is_unset(request.log_local_retention_space):
+            query['LogLocalRetentionSpace'] = request.log_local_retention_space
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remove_log_retention):
+            query['RemoveLogRetention'] = request.remove_log_retention
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateBackupPolicy',
@@ -4003,7 +4592,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4018,21 +4607,32 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.UpdateBackupPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BackupPeriod'] = request.backup_period
-        query['BackupPlanBegin'] = request.backup_plan_begin
-        query['BackupSetRetention'] = request.backup_set_retention
-        query['BackupType'] = request.backup_type
-        query['BackupWay'] = request.backup_way
-        query['DBInstanceName'] = request.dbinstance_name
-        query['ForceCleanOnHighSpaceUsage'] = request.force_clean_on_high_space_usage
-        query['IsEnabled'] = request.is_enabled
-        query['LocalLogRetention'] = request.local_log_retention
-        query['LogLocalRetentionSpace'] = request.log_local_retention_space
-        query['RegionId'] = request.region_id
-        query['RemoveLogRetention'] = request.remove_log_retention
+        if not UtilClient.is_unset(request.backup_period):
+            query['BackupPeriod'] = request.backup_period
+        if not UtilClient.is_unset(request.backup_plan_begin):
+            query['BackupPlanBegin'] = request.backup_plan_begin
+        if not UtilClient.is_unset(request.backup_set_retention):
+            query['BackupSetRetention'] = request.backup_set_retention
+        if not UtilClient.is_unset(request.backup_type):
+            query['BackupType'] = request.backup_type
+        if not UtilClient.is_unset(request.backup_way):
+            query['BackupWay'] = request.backup_way
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.force_clean_on_high_space_usage):
+            query['ForceCleanOnHighSpaceUsage'] = request.force_clean_on_high_space_usage
+        if not UtilClient.is_unset(request.is_enabled):
+            query['IsEnabled'] = request.is_enabled
+        if not UtilClient.is_unset(request.local_log_retention):
+            query['LocalLogRetention'] = request.local_log_retention
+        if not UtilClient.is_unset(request.log_local_retention_space):
+            query['LogLocalRetentionSpace'] = request.log_local_retention_space
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remove_log_retention):
+            query['RemoveLogRetention'] = request.remove_log_retention
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateBackupPolicy',
@@ -4042,7 +4642,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4071,13 +4671,16 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.UpdateDBInstanceSSLResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CertCommonName'] = request.cert_common_name
-        query['DBInstanceName'] = request.dbinstance_name
-        query['EnableSSL'] = request.enable_ssl
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.cert_common_name):
+            query['CertCommonName'] = request.cert_common_name
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.enable_ssl):
+            query['EnableSSL'] = request.enable_ssl
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDBInstanceSSL',
@@ -4087,7 +4690,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4102,13 +4705,16 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.UpdateDBInstanceSSLResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CertCommonName'] = request.cert_common_name
-        query['DBInstanceName'] = request.dbinstance_name
-        query['EnableSSL'] = request.enable_ssl
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.cert_common_name):
+            query['CertCommonName'] = request.cert_common_name
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.enable_ssl):
+            query['EnableSSL'] = request.enable_ssl
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDBInstanceSSL',
@@ -4118,7 +4724,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4147,14 +4753,18 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.UpdateDBInstanceTDEResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['EncryptionKey'] = request.encryption_key
-        query['RegionId'] = request.region_id
-        query['RoleArn'] = request.role_arn
-        query['TDEStatus'] = request.tdestatus
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.tdestatus):
+            query['TDEStatus'] = request.tdestatus
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDBInstanceTDE',
@@ -4164,7 +4774,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4179,14 +4789,18 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.UpdateDBInstanceTDEResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['EncryptionKey'] = request.encryption_key
-        query['RegionId'] = request.region_id
-        query['RoleArn'] = request.role_arn
-        query['TDEStatus'] = request.tdestatus
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.tdestatus):
+            query['TDEStatus'] = request.tdestatus
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateDBInstanceTDE',
@@ -4196,7 +4810,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4225,13 +4839,16 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.UpdatePolarDBXInstanceNodeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DBInstanceName'] = request.dbinstance_name
-        query['DbInstanceNodeCount'] = request.db_instance_node_count
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.db_instance_node_count):
+            query['DbInstanceNodeCount'] = request.db_instance_node_count
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdatePolarDBXInstanceNode',
@@ -4241,7 +4858,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4256,13 +4873,16 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.UpdatePolarDBXInstanceNodeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DBInstanceName'] = request.dbinstance_name
-        query['DbInstanceNodeCount'] = request.db_instance_node_count
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.db_instance_node_count):
+            query['DbInstanceNodeCount'] = request.db_instance_node_count
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdatePolarDBXInstanceNode',
@@ -4272,7 +4892,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4301,11 +4921,12 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.UpgradeDBInstanceKernelVersionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpgradeDBInstanceKernelVersion',
@@ -4315,7 +4936,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4330,11 +4951,12 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.UpgradeDBInstanceKernelVersionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceName'] = request.dbinstance_name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpgradeDBInstanceKernelVersion',
@@ -4344,7 +4966,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
