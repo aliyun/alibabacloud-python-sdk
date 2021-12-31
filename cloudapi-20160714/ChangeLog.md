@@ -1,3 +1,7 @@
+2021-12-31 Version: 2.0.3
+- Update response parameter in DescribePlugins.
+- Add query parameter vpcId, instanceId, port in DescribeVpcAccesses.
+
 2021-12-08 Version: 2.0.2
 - Add parameters in ImportSwagger and DryRun.
 
