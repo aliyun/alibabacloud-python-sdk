@@ -41,6 +41,148 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def bind_esuser_analyzer(
+        self,
+        app_group_identity: str,
+        es_instance_id: str,
+    ) -> open_search_20171225_models.BindESUserAnalyzerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.bind_esuser_analyzer_with_options(app_group_identity, es_instance_id, headers, runtime)
+
+    async def bind_esuser_analyzer_async(
+        self,
+        app_group_identity: str,
+        es_instance_id: str,
+    ) -> open_search_20171225_models.BindESUserAnalyzerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.bind_esuser_analyzer_with_options_async(app_group_identity, es_instance_id, headers, runtime)
+
+    def bind_esuser_analyzer_with_options(
+        self,
+        app_group_identity: str,
+        es_instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.BindESUserAnalyzerResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        es_instance_id = OpenApiUtilClient.get_encode_param(es_instance_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='BindESUserAnalyzer',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/es/{es_instance_id}/actions/bind-analyzer',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.BindESUserAnalyzerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_esuser_analyzer_with_options_async(
+        self,
+        app_group_identity: str,
+        es_instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.BindESUserAnalyzerResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        es_instance_id = OpenApiUtilClient.get_encode_param(es_instance_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='BindESUserAnalyzer',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/es/{es_instance_id}/actions/bind-analyzer',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.BindESUserAnalyzerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_es_instance(
+        self,
+        app_group_identity: str,
+    ) -> open_search_20171225_models.BindEsInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.bind_es_instance_with_options(app_group_identity, headers, runtime)
+
+    async def bind_es_instance_async(
+        self,
+        app_group_identity: str,
+    ) -> open_search_20171225_models.BindEsInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.bind_es_instance_with_options_async(app_group_identity, headers, runtime)
+
+    def bind_es_instance_with_options(
+        self,
+        app_group_identity: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.BindEsInstanceResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='BindEsInstance',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/actions/bind-es-instance',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.BindEsInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_es_instance_with_options_async(
+        self,
+        app_group_identity: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.BindEsInstanceResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='BindEsInstance',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/actions/bind-es-instance',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.BindEsInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def compile_sort_script(
         self,
         app_group_identity: str,
@@ -69,12 +211,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CompileSortScriptResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        script_name = OpenApiUtilClient.get_encode_param(script_name)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CompileSortScript',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/actions/compiling',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CompileSortScriptResponse(),
-            self.do_roarequest('CompileSortScript', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/actions/compiling', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def compile_sort_script_with_options_async(
@@ -85,12 +241,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CompileSortScriptResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        script_name = OpenApiUtilClient.get_encode_param(script_name)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CompileSortScript',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/actions/compiling',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CompileSortScriptResponse(),
-            await self.do_roarequest_async('CompileSortScript', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/actions/compiling', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_abtest_experiment(
@@ -121,12 +291,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestExperimentResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateABTestExperiment',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateABTestExperimentResponse(),
-            self.do_roarequest('CreateABTestExperiment', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_abtest_experiment_with_options_async(
@@ -137,12 +321,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestExperimentResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateABTestExperiment',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateABTestExperimentResponse(),
-            await self.do_roarequest_async('CreateABTestExperiment', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_abtest_group(
@@ -170,12 +368,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestGroupResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateABTestGroup',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateABTestGroupResponse(),
-            self.do_roarequest('CreateABTestGroup', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_abtest_group_with_options_async(
@@ -185,12 +396,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestGroupResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateABTestGroup',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateABTestGroupResponse(),
-            await self.do_roarequest_async('CreateABTestGroup', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_abtest_scene(
@@ -215,12 +439,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestSceneResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateABTestScene',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateABTestSceneResponse(),
-            self.do_roarequest('CreateABTestScene', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_abtest_scene_with_options_async(
@@ -229,12 +465,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestSceneResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateABTestScene',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateABTestSceneResponse(),
-            await self.do_roarequest_async('CreateABTestScene', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_app(
@@ -263,6 +511,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateAppResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -270,9 +519,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='CreateApp',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateAppResponse(),
-            self.do_roarequest('CreateApp', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_app_with_options_async(
@@ -283,6 +543,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateAppResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -290,9 +551,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='CreateApp',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateAppResponse(),
-            await self.do_roarequest_async('CreateApp', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_app_group(self) -> open_search_20171225_models.CreateAppGroupResponse:
@@ -313,9 +585,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateAppGroup',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateAppGroupResponse(),
-            self.do_roarequest('CreateAppGroup', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_app_group_with_options_async(
@@ -326,9 +609,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateAppGroup',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateAppGroupResponse(),
-            await self.do_roarequest_async('CreateAppGroup', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_data_collection(
@@ -353,12 +647,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateDataCollectionResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateDataCollection',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-collections',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateDataCollectionResponse(),
-            self.do_roarequest('CreateDataCollection', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/data-collections', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_data_collection_with_options_async(
@@ -367,12 +673,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateDataCollectionResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateDataCollection',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-collections',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateDataCollectionResponse(),
-            await self.do_roarequest_async('CreateDataCollection', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/data-collections', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_first_rank(
@@ -404,6 +722,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateFirstRankResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -411,9 +731,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='CreateFirstRank',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateFirstRankResponse(),
-            self.do_roarequest('CreateFirstRank', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_first_rank_with_options_async(
@@ -425,6 +756,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateFirstRankResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -432,9 +765,208 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='CreateFirstRank',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateFirstRankResponse(),
-            await self.do_roarequest_async('CreateFirstRank', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_function_instance(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        request: open_search_20171225_models.CreateFunctionInstanceRequest,
+    ) -> open_search_20171225_models.CreateFunctionInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_function_instance_with_options(app_group_identity, function_name, request, headers, runtime)
+
+    async def create_function_instance_async(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        request: open_search_20171225_models.CreateFunctionInstanceRequest,
+    ) -> open_search_20171225_models.CreateFunctionInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_function_instance_with_options_async(app_group_identity, function_name, request, headers, runtime)
+
+    def create_function_instance_with_options(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        request: open_search_20171225_models.CreateFunctionInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.CreateFunctionInstanceResponse:
+        UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        body = {}
+        if not UtilClient.is_unset(request.create_parameters):
+            body['createParameters'] = request.create_parameters
+        if not UtilClient.is_unset(request.cron):
+            body['cron'] = request.cron
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.function_type):
+            body['functionType'] = request.function_type
+        if not UtilClient.is_unset(request.instance_name):
+            body['instanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.model_type):
+            body['modelType'] = request.model_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFunctionInstance',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.CreateFunctionInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_function_instance_with_options_async(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        request: open_search_20171225_models.CreateFunctionInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.CreateFunctionInstanceResponse:
+        UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        body = {}
+        if not UtilClient.is_unset(request.create_parameters):
+            body['createParameters'] = request.create_parameters
+        if not UtilClient.is_unset(request.cron):
+            body['cron'] = request.cron
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.function_type):
+            body['functionType'] = request.function_type
+        if not UtilClient.is_unset(request.instance_name):
+            body['instanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.model_type):
+            body['modelType'] = request.model_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFunctionInstance',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.CreateFunctionInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_function_task(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+    ) -> open_search_20171225_models.CreateFunctionTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_function_task_with_options(app_group_identity, function_name, instance_name, headers, runtime)
+
+    async def create_function_task_async(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+    ) -> open_search_20171225_models.CreateFunctionTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_function_task_with_options_async(app_group_identity, function_name, instance_name, headers, runtime)
+
+    def create_function_task_with_options(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.CreateFunctionTaskResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreateFunctionTask',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}/tasks',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.CreateFunctionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_function_task_with_options_async(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.CreateFunctionTaskResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreateFunctionTask',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}/tasks',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.CreateFunctionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_intervention_dictionary(self) -> open_search_20171225_models.CreateInterventionDictionaryResponse:
@@ -455,9 +987,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateInterventionDictionary',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/intervention-dictionaries',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateInterventionDictionaryResponse(),
-            self.do_roarequest('CreateInterventionDictionary', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/intervention-dictionaries', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_intervention_dictionary_with_options_async(
@@ -468,9 +1011,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateInterventionDictionary',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/intervention-dictionaries',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateInterventionDictionaryResponse(),
-            await self.do_roarequest_async('CreateInterventionDictionary', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/intervention-dictionaries', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_model(
@@ -495,12 +1049,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateModelResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateModel',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateModelResponse(),
-            self.do_roarequest('CreateModel', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_model_with_options_async(
@@ -509,12 +1075,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateModelResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateModel',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateModelResponse(),
-            await self.do_roarequest_async('CreateModel', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_query_processor(
@@ -546,6 +1124,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateQueryProcessorResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -553,9 +1133,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='CreateQueryProcessor',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateQueryProcessorResponse(),
-            self.do_roarequest('CreateQueryProcessor', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_query_processor_with_options_async(
@@ -567,6 +1158,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateQueryProcessorResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -574,9 +1167,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='CreateQueryProcessor',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateQueryProcessorResponse(),
-            await self.do_roarequest_async('CreateQueryProcessor', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_scheduled_task(
@@ -601,12 +1205,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateScheduledTaskResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateScheduledTask',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateScheduledTaskResponse(),
-            self.do_roarequest('CreateScheduledTask', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_scheduled_task_with_options_async(
@@ -615,12 +1231,98 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateScheduledTaskResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateScheduledTask',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateScheduledTaskResponse(),
-            await self.do_roarequest_async('CreateScheduledTask', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_search_strategy(
+        self,
+        app_group_identity: str,
+        app_id: str,
+    ) -> open_search_20171225_models.CreateSearchStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_search_strategy_with_options(app_group_identity, app_id, headers, runtime)
+
+    async def create_search_strategy_async(
+        self,
+        app_group_identity: str,
+        app_id: str,
+    ) -> open_search_20171225_models.CreateSearchStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_search_strategy_with_options_async(app_group_identity, app_id, headers, runtime)
+
+    def create_search_strategy_with_options(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.CreateSearchStrategyResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreateSearchStrategy',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.CreateSearchStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_search_strategy_with_options_async(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.CreateSearchStrategyResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreateSearchStrategy',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.CreateSearchStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_second_rank(
@@ -652,6 +1354,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateSecondRankResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -659,9 +1363,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='CreateSecondRank',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateSecondRankResponse(),
-            self.do_roarequest('CreateSecondRank', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_second_rank_with_options_async(
@@ -673,6 +1388,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateSecondRankResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -680,9 +1397,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='CreateSecondRank',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateSecondRankResponse(),
-            await self.do_roarequest_async('CreateSecondRank', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_sort_script(
@@ -710,12 +1438,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateSortScriptResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateSortScript',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateSortScriptResponse(),
-            self.do_roarequest('CreateSortScript', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_sort_script_with_options_async(
@@ -725,12 +1466,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateSortScriptResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateSortScript',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateSortScriptResponse(),
-            await self.do_roarequest_async('CreateSortScript', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_user_analyzer(self) -> open_search_20171225_models.CreateUserAnalyzerResponse:
@@ -751,9 +1505,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateUserAnalyzer',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/user-analyzers',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateUserAnalyzerResponse(),
-            self.do_roarequest('CreateUserAnalyzer', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/user-analyzers', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_user_analyzer_with_options_async(
@@ -764,9 +1529,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='CreateUserAnalyzer',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/user-analyzers',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.CreateUserAnalyzerResponse(),
-            await self.do_roarequest_async('CreateUserAnalyzer', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/user-analyzers', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_abtest_experiment(
@@ -800,12 +1576,27 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestExperimentResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
+        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteABTestExperiment',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DeleteABTestExperimentResponse(),
-            self.do_roarequest('DeleteABTestExperiment', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_abtest_experiment_with_options_async(
@@ -817,12 +1608,27 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestExperimentResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
+        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteABTestExperiment',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DeleteABTestExperimentResponse(),
-            await self.do_roarequest_async('DeleteABTestExperiment', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_abtest_group(
@@ -853,12 +1659,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestGroupResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteABTestGroup',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DeleteABTestGroupResponse(),
-            self.do_roarequest('DeleteABTestGroup', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_abtest_group_with_options_async(
@@ -869,12 +1689,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestGroupResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteABTestGroup',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DeleteABTestGroupResponse(),
-            await self.do_roarequest_async('DeleteABTestGroup', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_abtest_scene(
@@ -902,12 +1736,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestSceneResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteABTestScene',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DeleteABTestSceneResponse(),
-            self.do_roarequest('DeleteABTestScene', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_abtest_scene_with_options_async(
@@ -917,12 +1764,105 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestSceneResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteABTestScene',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DeleteABTestSceneResponse(),
-            await self.do_roarequest_async('DeleteABTestScene', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_function_instance(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+    ) -> open_search_20171225_models.DeleteFunctionInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_function_instance_with_options(app_group_identity, function_name, instance_name, headers, runtime)
+
+    async def delete_function_instance_async(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+    ) -> open_search_20171225_models.DeleteFunctionInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_function_instance_with_options_async(app_group_identity, function_name, instance_name, headers, runtime)
+
+    def delete_function_instance_with_options(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.DeleteFunctionInstanceResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteFunctionInstance',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.DeleteFunctionInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_function_instance_with_options_async(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.DeleteFunctionInstanceResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteFunctionInstance',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.DeleteFunctionInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_model(
@@ -950,12 +1890,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteModelResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteModel',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DeleteModelResponse(),
-            self.do_roarequest('DeleteModel', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_model_with_options_async(
@@ -965,12 +1918,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteModelResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteModel',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DeleteModelResponse(),
-            await self.do_roarequest_async('DeleteModel', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_sort_script(
@@ -1001,12 +1967,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteSortScriptResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        script_name = OpenApiUtilClient.get_encode_param(script_name)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteSortScript',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DeleteSortScriptResponse(),
-            self.do_roarequest('DeleteSortScript', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_sort_script_with_options_async(
@@ -1017,12 +1997,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteSortScriptResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        script_name = OpenApiUtilClient.get_encode_param(script_name)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteSortScript',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DeleteSortScriptResponse(),
-            await self.do_roarequest_async('DeleteSortScript', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_sort_script_file(
@@ -1056,12 +2050,27 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteSortScriptFileResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
+        script_name = OpenApiUtilClient.get_encode_param(script_name)
+        file_name = OpenApiUtilClient.get_encode_param(file_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteSortScriptFile',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/files/src/{file_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DeleteSortScriptFileResponse(),
-            self.do_roarequest('DeleteSortScriptFile', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/files/src/{file_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_sort_script_file_with_options_async(
@@ -1073,12 +2082,27 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteSortScriptFileResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
+        script_name = OpenApiUtilClient.get_encode_param(script_name)
+        file_name = OpenApiUtilClient.get_encode_param(file_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteSortScriptFile',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/files/src/{file_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DeleteSortScriptFileResponse(),
-            await self.do_roarequest_async('DeleteSortScriptFile', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/files/src/{file_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_abtest_experiment(
@@ -1112,12 +2136,27 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestExperimentResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
+        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeABTestExperiment',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeABTestExperimentResponse(),
-            self.do_roarequest('DescribeABTestExperiment', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_abtest_experiment_with_options_async(
@@ -1129,12 +2168,27 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestExperimentResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
+        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeABTestExperiment',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeABTestExperimentResponse(),
-            await self.do_roarequest_async('DescribeABTestExperiment', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_abtest_group(
@@ -1165,12 +2219,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestGroupResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeABTestGroup',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeABTestGroupResponse(),
-            self.do_roarequest('DescribeABTestGroup', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_abtest_group_with_options_async(
@@ -1181,12 +2249,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestGroupResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeABTestGroup',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeABTestGroupResponse(),
-            await self.do_roarequest_async('DescribeABTestGroup', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_abtest_scene(
@@ -1214,12 +2296,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestSceneResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeABTestScene',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeABTestSceneResponse(),
-            self.do_roarequest('DescribeABTestScene', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_abtest_scene_with_options_async(
@@ -1229,12 +2324,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestSceneResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeABTestScene',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeABTestSceneResponse(),
-            await self.do_roarequest_async('DescribeABTestScene', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_app(
@@ -1262,12 +2370,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeApp',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeAppResponse(),
-            self.do_roarequest('DescribeApp', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_app_with_options_async(
@@ -1277,12 +2398,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeApp',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeAppResponse(),
-            await self.do_roarequest_async('DescribeApp', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_app_group(
@@ -1307,12 +2441,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppGroupResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeAppGroup',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeAppGroupResponse(),
-            self.do_roarequest('DescribeAppGroup', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_app_group_with_options_async(
@@ -1321,12 +2467,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppGroupResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeAppGroup',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeAppGroupResponse(),
-            await self.do_roarequest_async('DescribeAppGroup', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_app_group_data_report(
@@ -1355,18 +2513,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppGroupDataReportResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeAppGroupDataReport',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-report',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeAppGroupDataReportResponse(),
-            self.do_roarequest('DescribeAppGroupDataReport', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/data-report', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_app_group_data_report_with_options_async(
@@ -1377,62 +2547,98 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppGroupDataReportResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeAppGroupDataReport',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-report',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeAppGroupDataReportResponse(),
-            await self.do_roarequest_async('DescribeAppGroupDataReport', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/data-report', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def describe_apps(
+    def describe_app_group_statistics(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.DescribeAppsResponse:
+    ) -> open_search_20171225_models.DescribeAppGroupStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_apps_with_options(app_group_identity, headers, runtime)
+        return self.describe_app_group_statistics_with_options(app_group_identity, headers, runtime)
 
-    async def describe_apps_async(
+    async def describe_app_group_statistics_async(
         self,
         app_group_identity: str,
-    ) -> open_search_20171225_models.DescribeAppsResponse:
+    ) -> open_search_20171225_models.DescribeAppGroupStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_apps_with_options_async(app_group_identity, headers, runtime)
+        return await self.describe_app_group_statistics_with_options_async(app_group_identity, headers, runtime)
 
-    def describe_apps_with_options(
+    def describe_app_group_statistics_with_options(
         self,
         app_group_identity: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.DescribeAppsResponse:
+    ) -> open_search_20171225_models.DescribeAppGroupStatisticsResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeAppGroupStatistics',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/statistics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
-            open_search_20171225_models.DescribeAppsResponse(),
-            self.do_roarequest('DescribeApps', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps', 'json', req, runtime)
+            open_search_20171225_models.DescribeAppGroupStatisticsResponse(),
+            self.call_api(params, req, runtime)
         )
 
-    async def describe_apps_with_options_async(
+    async def describe_app_group_statistics_with_options_async(
         self,
         app_group_identity: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.DescribeAppsResponse:
+    ) -> open_search_20171225_models.DescribeAppGroupStatisticsResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeAppGroupStatistics',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/statistics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
-            open_search_20171225_models.DescribeAppsResponse(),
-            await self.do_roarequest_async('DescribeApps', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps', 'json', req, runtime)
+            open_search_20171225_models.DescribeAppGroupStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_app_statistics(
@@ -1460,12 +2666,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppStatisticsResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeAppStatistics',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/statistics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeAppStatisticsResponse(),
-            self.do_roarequest('DescribeAppStatistics', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/statistics', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_app_statistics_with_options_async(
@@ -1475,12 +2694,93 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppStatisticsResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeAppStatistics',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/statistics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeAppStatisticsResponse(),
-            await self.do_roarequest_async('DescribeAppStatistics', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/statistics', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apps(
+        self,
+        app_group_identity: str,
+    ) -> open_search_20171225_models.DescribeAppsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_apps_with_options(app_group_identity, headers, runtime)
+
+    async def describe_apps_async(
+        self,
+        app_group_identity: str,
+    ) -> open_search_20171225_models.DescribeAppsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_apps_with_options_async(app_group_identity, headers, runtime)
+
+    def describe_apps_with_options(
+        self,
+        app_group_identity: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.DescribeAppsResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeApps',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.DescribeAppsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apps_with_options_async(
+        self,
+        app_group_identity: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.DescribeAppsResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeApps',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.DescribeAppsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_data_collction(
@@ -1508,12 +2808,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeDataCollctionResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        data_collection_identity = OpenApiUtilClient.get_encode_param(data_collection_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeDataCollction',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-collections/{data_collection_identity}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeDataCollctionResponse(),
-            self.do_roarequest('DescribeDataCollction', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/data-collections/{data_collection_identity}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_data_collction_with_options_async(
@@ -1523,12 +2836,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeDataCollctionResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        data_collection_identity = OpenApiUtilClient.get_encode_param(data_collection_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeDataCollction',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-collections/{data_collection_identity}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeDataCollctionResponse(),
-            await self.do_roarequest_async('DescribeDataCollction', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/data-collections/{data_collection_identity}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_first_rank(
@@ -1559,12 +2885,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeFirstRankResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeFirstRank',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks/{name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeFirstRankResponse(),
-            self.do_roarequest('DescribeFirstRank', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks/{name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_first_rank_with_options_async(
@@ -1575,12 +2915,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeFirstRankResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeFirstRank',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks/{name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeFirstRankResponse(),
-            await self.do_roarequest_async('DescribeFirstRank', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks/{name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_intervention_dictionary(
@@ -1605,12 +2959,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeInterventionDictionaryResponse:
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeInterventionDictionary',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/intervention-dictionaries/{name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeInterventionDictionaryResponse(),
-            self.do_roarequest('DescribeInterventionDictionary', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/intervention-dictionaries/{name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_intervention_dictionary_with_options_async(
@@ -1619,12 +2985,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeInterventionDictionaryResponse:
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeInterventionDictionary',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/intervention-dictionaries/{name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeInterventionDictionaryResponse(),
-            await self.do_roarequest_async('DescribeInterventionDictionary', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/intervention-dictionaries/{name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_model(
@@ -1652,12 +3030,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeModelResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeModel',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeModelResponse(),
-            self.do_roarequest('DescribeModel', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_model_with_options_async(
@@ -1667,12 +3058,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeModelResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeModel',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeModelResponse(),
-            await self.do_roarequest_async('DescribeModel', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_query_processor(
@@ -1703,12 +3107,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeQueryProcessorResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeQueryProcessor',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeQueryProcessorResponse(),
-            self.do_roarequest('DescribeQueryProcessor', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_query_processor_with_options_async(
@@ -1719,12 +3137,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeQueryProcessorResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeQueryProcessor',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeQueryProcessorResponse(),
-            await self.do_roarequest_async('DescribeQueryProcessor', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_region(self) -> open_search_20171225_models.DescribeRegionResponse:
@@ -1745,9 +3177,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeRegion',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/region',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeRegionResponse(),
-            self.do_roarequest('DescribeRegion', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/region', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_region_with_options_async(
@@ -1758,9 +3201,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeRegion',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/region',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeRegionResponse(),
-            await self.do_roarequest_async('DescribeRegion', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/region', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_regions(self) -> open_search_20171225_models.DescribeRegionsResponse:
@@ -1781,9 +3235,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeRegionsResponse(),
-            self.do_roarequest('DescribeRegions', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/regions', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_regions_with_options_async(
@@ -1794,9 +3259,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeRegionsResponse(),
-            await self.do_roarequest_async('DescribeRegions', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/regions', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_scheduled_task(
@@ -1824,12 +3300,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeScheduledTaskResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeScheduledTask',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks/{task_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeScheduledTaskResponse(),
-            self.do_roarequest('DescribeScheduledTask', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks/{task_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_scheduled_task_with_options_async(
@@ -1839,12 +3328,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeScheduledTaskResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeScheduledTask',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks/{task_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeScheduledTaskResponse(),
-            await self.do_roarequest_async('DescribeScheduledTask', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks/{task_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_second_rank(
@@ -1875,12 +3377,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeSecondRankResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeSecondRank',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks/{name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeSecondRankResponse(),
-            self.do_roarequest('DescribeSecondRank', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks/{name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_second_rank_with_options_async(
@@ -1891,12 +3407,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeSecondRankResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeSecondRank',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks/{name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeSecondRankResponse(),
-            await self.do_roarequest_async('DescribeSecondRank', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks/{name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_slow_query_status(
@@ -1921,12 +3451,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeSlowQueryStatusResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeSlowQueryStatus',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeSlowQueryStatusResponse(),
-            self.do_roarequest('DescribeSlowQueryStatus', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_slow_query_status_with_options_async(
@@ -1935,12 +3477,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeSlowQueryStatusResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DescribeSlowQueryStatus',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeSlowQueryStatusResponse(),
-            await self.do_roarequest_async('DescribeSlowQueryStatus', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_user_analyzer(
@@ -1969,6 +3523,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeUserAnalyzerResponse:
         UtilClient.validate_model(request)
+        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.with_):
             query['with'] = request.with_
@@ -1976,9 +3531,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeUserAnalyzer',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/user-analyzers/{name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeUserAnalyzerResponse(),
-            self.do_roarequest('DescribeUserAnalyzer', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/user-analyzers/{name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_user_analyzer_with_options_async(
@@ -1989,6 +3555,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeUserAnalyzerResponse:
         UtilClient.validate_model(request)
+        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.with_):
             query['with'] = request.with_
@@ -1996,9 +3563,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DescribeUserAnalyzer',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/user-analyzers/{name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DescribeUserAnalyzerResponse(),
-            await self.do_roarequest_async('DescribeUserAnalyzer', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/user-analyzers/{name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def disable_slow_query(
@@ -2023,12 +3601,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DisableSlowQueryResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DisableSlowQuery',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/actions/disable',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DisableSlowQueryResponse(),
-            self.do_roarequest('DisableSlowQuery', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/actions/disable', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def disable_slow_query_with_options_async(
@@ -2037,12 +3627,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DisableSlowQueryResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DisableSlowQuery',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/actions/disable',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.DisableSlowQueryResponse(),
-            await self.do_roarequest_async('DisableSlowQuery', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/actions/disable', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def enable_slow_query(
@@ -2067,12 +3669,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.EnableSlowQueryResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='EnableSlowQuery',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/actions/enable',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.EnableSlowQueryResponse(),
-            self.do_roarequest('EnableSlowQuery', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/actions/enable', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def enable_slow_query_with_options_async(
@@ -2081,12 +3695,100 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.EnableSlowQueryResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='EnableSlowQuery',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/actions/enable',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.EnableSlowQueryResponse(),
-            await self.do_roarequest_async('EnableSlowQuery', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/actions/enable', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_merged_table(
+        self,
+        request: open_search_20171225_models.GenerateMergedTableRequest,
+    ) -> open_search_20171225_models.GenerateMergedTableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.generate_merged_table_with_options(request, headers, runtime)
+
+    async def generate_merged_table_async(
+        self,
+        request: open_search_20171225_models.GenerateMergedTableRequest,
+    ) -> open_search_20171225_models.GenerateMergedTableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.generate_merged_table_with_options_async(request, headers, runtime)
+
+    def generate_merged_table_with_options(
+        self,
+        request: open_search_20171225_models.GenerateMergedTableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.GenerateMergedTableResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.spec):
+            query['spec'] = request.spec
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateMergedTable',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/assist/schema/actions/merge',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.GenerateMergedTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_merged_table_with_options_async(
+        self,
+        request: open_search_20171225_models.GenerateMergedTableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.GenerateMergedTableResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.spec):
+            query['spec'] = request.spec
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateMergedTable',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/assist/schema/actions/merge',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.GenerateMergedTableResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_domain(
@@ -2115,6 +3817,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetDomainResponse:
         UtilClient.validate_model(request)
+        domain_name = OpenApiUtilClient.get_encode_param(domain_name)
         query = {}
         if not UtilClient.is_unset(request.app_group_identity):
             query['appGroupIdentity'] = request.app_group_identity
@@ -2122,9 +3825,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetDomain',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/domains/{domain_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.GetDomainResponse(),
-            self.do_roarequest('GetDomain', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/domains/{domain_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_domain_with_options_async(
@@ -2135,6 +3849,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetDomainResponse:
         UtilClient.validate_model(request)
+        domain_name = OpenApiUtilClient.get_encode_param(domain_name)
         query = {}
         if not UtilClient.is_unset(request.app_group_identity):
             query['appGroupIdentity'] = request.app_group_identity
@@ -2142,9 +3857,356 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetDomain',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/domains/{domain_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.GetDomainResponse(),
-            await self.do_roarequest_async('GetDomain', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/domains/{domain_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_function_current_version(
+        self,
+        function_name: str,
+        request: open_search_20171225_models.GetFunctionCurrentVersionRequest,
+    ) -> open_search_20171225_models.GetFunctionCurrentVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_function_current_version_with_options(function_name, request, headers, runtime)
+
+    async def get_function_current_version_async(
+        self,
+        function_name: str,
+        request: open_search_20171225_models.GetFunctionCurrentVersionRequest,
+    ) -> open_search_20171225_models.GetFunctionCurrentVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_function_current_version_with_options_async(function_name, request, headers, runtime)
+
+    def get_function_current_version_with_options(
+        self,
+        function_name: str,
+        request: open_search_20171225_models.GetFunctionCurrentVersionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.GetFunctionCurrentVersionResponse:
+        UtilClient.validate_model(request)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['category'] = request.category
+        if not UtilClient.is_unset(request.domain):
+            query['domain'] = request.domain
+        if not UtilClient.is_unset(request.function_type):
+            query['functionType'] = request.function_type
+        if not UtilClient.is_unset(request.model_type):
+            query['modelType'] = request.model_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFunctionCurrentVersion',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/functions/{function_name}/current-version',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.GetFunctionCurrentVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_function_current_version_with_options_async(
+        self,
+        function_name: str,
+        request: open_search_20171225_models.GetFunctionCurrentVersionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.GetFunctionCurrentVersionResponse:
+        UtilClient.validate_model(request)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['category'] = request.category
+        if not UtilClient.is_unset(request.domain):
+            query['domain'] = request.domain
+        if not UtilClient.is_unset(request.function_type):
+            query['functionType'] = request.function_type
+        if not UtilClient.is_unset(request.model_type):
+            query['modelType'] = request.model_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFunctionCurrentVersion',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/functions/{function_name}/current-version',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.GetFunctionCurrentVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_function_default_instance(
+        self,
+        app_group_identity: str,
+        function_name: str,
+    ) -> open_search_20171225_models.GetFunctionDefaultInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_function_default_instance_with_options(app_group_identity, function_name, headers, runtime)
+
+    async def get_function_default_instance_async(
+        self,
+        app_group_identity: str,
+        function_name: str,
+    ) -> open_search_20171225_models.GetFunctionDefaultInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_function_default_instance_with_options_async(app_group_identity, function_name, headers, runtime)
+
+    def get_function_default_instance_with_options(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.GetFunctionDefaultInstanceResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetFunctionDefaultInstance',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/default-instance',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.GetFunctionDefaultInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_function_default_instance_with_options_async(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.GetFunctionDefaultInstanceResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetFunctionDefaultInstance',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/default-instance',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.GetFunctionDefaultInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_function_instance(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+        request: open_search_20171225_models.GetFunctionInstanceRequest,
+    ) -> open_search_20171225_models.GetFunctionInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_function_instance_with_options(app_group_identity, function_name, instance_name, request, headers, runtime)
+
+    async def get_function_instance_async(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+        request: open_search_20171225_models.GetFunctionInstanceRequest,
+    ) -> open_search_20171225_models.GetFunctionInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_function_instance_with_options_async(app_group_identity, function_name, instance_name, request, headers, runtime)
+
+    def get_function_instance_with_options(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+        request: open_search_20171225_models.GetFunctionInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.GetFunctionInstanceResponse:
+        UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
+        query = {}
+        if not UtilClient.is_unset(request.output):
+            query['output'] = request.output
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFunctionInstance',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.GetFunctionInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_function_instance_with_options_async(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+        request: open_search_20171225_models.GetFunctionInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.GetFunctionInstanceResponse:
+        UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
+        query = {}
+        if not UtilClient.is_unset(request.output):
+            query['output'] = request.output
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFunctionInstance',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.GetFunctionInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_function_version(
+        self,
+        function_name: str,
+        version_id: str,
+    ) -> open_search_20171225_models.GetFunctionVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_function_version_with_options(function_name, version_id, headers, runtime)
+
+    async def get_function_version_async(
+        self,
+        function_name: str,
+        version_id: str,
+    ) -> open_search_20171225_models.GetFunctionVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_function_version_with_options_async(function_name, version_id, headers, runtime)
+
+    def get_function_version_with_options(
+        self,
+        function_name: str,
+        version_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.GetFunctionVersionResponse:
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        version_id = OpenApiUtilClient.get_encode_param(version_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetFunctionVersion',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/functions/{function_name}/versions/{version_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.GetFunctionVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_function_version_with_options_async(
+        self,
+        function_name: str,
+        version_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.GetFunctionVersionResponse:
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        version_id = OpenApiUtilClient.get_encode_param(version_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetFunctionVersion',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/functions/{function_name}/versions/{version_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.GetFunctionVersionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_model_progress(
@@ -2172,12 +4234,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetModelProgressResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetModelProgress',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/progress',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.GetModelProgressResponse(),
-            self.do_roarequest('GetModelProgress', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/progress', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_model_progress_with_options_async(
@@ -2187,12 +4262,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetModelProgressResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetModelProgress',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/progress',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.GetModelProgressResponse(),
-            await self.do_roarequest_async('GetModelProgress', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/progress', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_model_report(
@@ -2220,12 +4308,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetModelReportResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetModelReport',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/report',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.GetModelReportResponse(),
-            self.do_roarequest('GetModelReport', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/report', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_model_report_with_options_async(
@@ -2235,12 +4336,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetModelReportResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetModelReport',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/report',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.GetModelReportResponse(),
-            await self.do_roarequest_async('GetModelReport', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/report', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_script_file_names(
@@ -2271,12 +4385,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetScriptFileNamesResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
+        script_name = OpenApiUtilClient.get_encode_param(script_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetScriptFileNames',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/file-names',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.GetScriptFileNamesResponse(),
-            self.do_roarequest('GetScriptFileNames', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/file-names', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_script_file_names_with_options_async(
@@ -2287,12 +4415,106 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetScriptFileNamesResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
+        script_name = OpenApiUtilClient.get_encode_param(script_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetScriptFileNames',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/file-names',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.GetScriptFileNamesResponse(),
-            await self.do_roarequest_async('GetScriptFileNames', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/file-names', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_search_strategy(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        strategy_name: str,
+    ) -> open_search_20171225_models.GetSearchStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_search_strategy_with_options(app_group_identity, app_id, strategy_name, headers, runtime)
+
+    async def get_search_strategy_async(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        strategy_name: str,
+    ) -> open_search_20171225_models.GetSearchStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_search_strategy_with_options_async(app_group_identity, app_id, strategy_name, headers, runtime)
+
+    def get_search_strategy_with_options(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        strategy_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.GetSearchStrategyResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        strategy_name = OpenApiUtilClient.get_encode_param(strategy_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetSearchStrategy',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies/{strategy_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.GetSearchStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_search_strategy_with_options_async(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        strategy_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.GetSearchStrategyResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        strategy_name = OpenApiUtilClient.get_encode_param(strategy_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetSearchStrategy',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies/{strategy_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.GetSearchStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_sort_script(
@@ -2323,12 +4545,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetSortScriptResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        script_name = OpenApiUtilClient.get_encode_param(script_name)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetSortScript',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.GetSortScriptResponse(),
-            self.do_roarequest('GetSortScript', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_sort_script_with_options_async(
@@ -2339,12 +4575,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetSortScriptResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        script_name = OpenApiUtilClient.get_encode_param(script_name)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetSortScript',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.GetSortScriptResponse(),
-            await self.do_roarequest_async('GetSortScript', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_sort_script_file(
@@ -2378,12 +4628,27 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetSortScriptFileResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        script_name = OpenApiUtilClient.get_encode_param(script_name)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
+        file_name = OpenApiUtilClient.get_encode_param(file_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetSortScriptFile',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/files/src/{file_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.GetSortScriptFileResponse(),
-            self.do_roarequest('GetSortScriptFile', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/files/src/{file_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_sort_script_file_with_options_async(
@@ -2395,12 +4660,27 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetSortScriptFileResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        script_name = OpenApiUtilClient.get_encode_param(script_name)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
+        file_name = OpenApiUtilClient.get_encode_param(file_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetSortScriptFile',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/files/src/{file_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.GetSortScriptFileResponse(),
-            await self.do_roarequest_async('GetSortScriptFile', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/files/src/{file_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_validation_error(
@@ -2429,6 +4709,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetValidationErrorResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.error_code):
             query['errorCode'] = request.error_code
@@ -2436,9 +4717,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetValidationError',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/data/validation-error',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.GetValidationErrorResponse(),
-            self.do_roarequest('GetValidationError', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/data/validation-error', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_validation_error_with_options_async(
@@ -2449,6 +4741,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetValidationErrorResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.error_code):
             query['errorCode'] = request.error_code
@@ -2456,9 +4749,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetValidationError',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/data/validation-error',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.GetValidationErrorResponse(),
-            await self.do_roarequest_async('GetValidationError', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/data/validation-error', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_validation_report(
@@ -2487,6 +4791,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetValidationReportResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
@@ -2494,9 +4799,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetValidationReport',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/data/validation-report',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.GetValidationReportResponse(),
-            self.do_roarequest('GetValidationReport', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/data/validation-report', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_validation_report_with_options_async(
@@ -2507,6 +4823,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetValidationReportResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
@@ -2514,9 +4831,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetValidationReport',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/data/validation-report',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.GetValidationReportResponse(),
-            await self.do_roarequest_async('GetValidationReport', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/data/validation-report', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_abtest_experiments(
@@ -2547,12 +4875,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestExperimentsResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListABTestExperiments',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListABTestExperimentsResponse(),
-            self.do_roarequest('ListABTestExperiments', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_abtest_experiments_with_options_async(
@@ -2563,12 +4905,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestExperimentsResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListABTestExperiments',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListABTestExperimentsResponse(),
-            await self.do_roarequest_async('ListABTestExperiments', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_abtest_fixed_flow_dividers(
@@ -2602,12 +4958,27 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestFixedFlowDividersResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
+        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListABTestFixedFlowDividers',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}/fixed-flow-dividers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListABTestFixedFlowDividersResponse(),
-            self.do_roarequest('ListABTestFixedFlowDividers', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}/fixed-flow-dividers', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_abtest_fixed_flow_dividers_with_options_async(
@@ -2619,12 +4990,27 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestFixedFlowDividersResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
+        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListABTestFixedFlowDividers',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}/fixed-flow-dividers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListABTestFixedFlowDividersResponse(),
-            await self.do_roarequest_async('ListABTestFixedFlowDividers', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}/fixed-flow-dividers', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_abtest_groups(
@@ -2652,12 +5038,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestGroupsResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListABTestGroups',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListABTestGroupsResponse(),
-            self.do_roarequest('ListABTestGroups', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_abtest_groups_with_options_async(
@@ -2667,12 +5066,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestGroupsResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListABTestGroups',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListABTestGroupsResponse(),
-            await self.do_roarequest_async('ListABTestGroups', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_abtest_metrics(
@@ -2703,12 +5115,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestMetricsResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListABTestMetrics',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/metrics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListABTestMetricsResponse(),
-            self.do_roarequest('ListABTestMetrics', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/metrics', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_abtest_metrics_with_options_async(
@@ -2719,12 +5145,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestMetricsResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListABTestMetrics',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/metrics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListABTestMetricsResponse(),
-            await self.do_roarequest_async('ListABTestMetrics', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/metrics', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_abtest_scenes(
@@ -2749,12 +5189,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestScenesResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListABTestScenes',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListABTestScenesResponse(),
-            self.do_roarequest('ListABTestScenes', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_abtest_scenes_with_options_async(
@@ -2763,12 +5215,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestScenesResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListABTestScenes',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListABTestScenesResponse(),
-            await self.do_roarequest_async('ListABTestScenes', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_app_group_errors(
@@ -2797,24 +5261,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListAppGroupErrorsResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['appId'] = request.app_id
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
-        if not UtilClient.is_unset(request.stop_time):
-            query['stopTime'] = request.stop_time
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.stop_time):
+            query['stopTime'] = request.stop_time
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListAppGroupErrors',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/errors',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListAppGroupErrorsResponse(),
-            self.do_roarequest('ListAppGroupErrors', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/errors', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_app_group_errors_with_options_async(
@@ -2825,24 +5301,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListAppGroupErrorsResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['appId'] = request.app_id
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
-        if not UtilClient.is_unset(request.stop_time):
-            query['stopTime'] = request.stop_time
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.stop_time):
+            query['stopTime'] = request.stop_time
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListAppGroupErrors',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/errors',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListAppGroupErrorsResponse(),
-            await self.do_roarequest_async('ListAppGroupErrors', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/errors', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_app_group_metrics(
@@ -2871,22 +5359,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListAppGroupMetricsResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
-        if not UtilClient.is_unset(request.metric_type):
-            query['metricType'] = request.metric_type
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
         if not UtilClient.is_unset(request.indexes):
             query['indexes'] = request.indexes
+        if not UtilClient.is_unset(request.metric_type):
+            query['metricType'] = request.metric_type
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListAppGroupMetrics',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/metrics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListAppGroupMetricsResponse(),
-            self.do_roarequest('ListAppGroupMetrics', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/metrics', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_app_group_metrics_with_options_async(
@@ -2897,22 +5397,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListAppGroupMetricsResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
-        if not UtilClient.is_unset(request.metric_type):
-            query['metricType'] = request.metric_type
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
         if not UtilClient.is_unset(request.indexes):
             query['indexes'] = request.indexes
+        if not UtilClient.is_unset(request.metric_type):
+            query['metricType'] = request.metric_type
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListAppGroupMetrics',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/metrics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListAppGroupMetricsResponse(),
-            await self.do_roarequest_async('ListAppGroupMetrics', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/metrics', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_app_groups(
@@ -2939,27 +5451,38 @@ class Client(OpenApiClient):
     ) -> open_search_20171225_models.ListAppGroupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.instance_id):
             query['instanceId'] = request.instance_id
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
-        if not UtilClient.is_unset(request.sort_by):
-            query['sortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.resource_group_id):
             query['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['sortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListAppGroups',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListAppGroupsResponse(),
-            self.do_roarequest('ListAppGroups', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_app_groups_with_options_async(
@@ -2970,27 +5493,38 @@ class Client(OpenApiClient):
     ) -> open_search_20171225_models.ListAppGroupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.instance_id):
             query['instanceId'] = request.instance_id
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
-        if not UtilClient.is_unset(request.sort_by):
-            query['sortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.resource_group_id):
             query['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['sortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListAppGroups',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListAppGroupsResponse(),
-            await self.do_roarequest_async('ListAppGroups', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_apps(
@@ -3027,9 +5561,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListApps',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/apps',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListAppsResponse(),
-            self.do_roarequest('ListApps', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/apps', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_apps_with_options_async(
@@ -3050,9 +5595,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListApps',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/apps',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListAppsResponse(),
-            await self.do_roarequest_async('ListApps', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/apps', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_data_collections(
@@ -3081,6 +5637,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDataCollectionsResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
@@ -3090,9 +5647,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListDataCollections',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-collections',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListDataCollectionsResponse(),
-            self.do_roarequest('ListDataCollections', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/data-collections', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_data_collections_with_options_async(
@@ -3103,6 +5671,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDataCollectionsResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
@@ -3112,9 +5681,184 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListDataCollections',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-collections',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListDataCollectionsResponse(),
-            await self.do_roarequest_async('ListDataCollections', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/data-collections', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_source_table_fields(
+        self,
+        data_source_type: str,
+        request: open_search_20171225_models.ListDataSourceTableFieldsRequest,
+    ) -> open_search_20171225_models.ListDataSourceTableFieldsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_data_source_table_fields_with_options(data_source_type, request, headers, runtime)
+
+    async def list_data_source_table_fields_async(
+        self,
+        data_source_type: str,
+        request: open_search_20171225_models.ListDataSourceTableFieldsRequest,
+    ) -> open_search_20171225_models.ListDataSourceTableFieldsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_data_source_table_fields_with_options_async(data_source_type, request, headers, runtime)
+
+    def list_data_source_table_fields_with_options(
+        self,
+        data_source_type: str,
+        request: open_search_20171225_models.ListDataSourceTableFieldsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListDataSourceTableFieldsResponse:
+        UtilClient.validate_model(request)
+        data_source_type = OpenApiUtilClient.get_encode_param(data_source_type)
+        query = {}
+        if not UtilClient.is_unset(request.params):
+            query['params'] = request.params
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataSourceTableFields',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/assist/data-sources/{data_source_type}/fields',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListDataSourceTableFieldsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_source_table_fields_with_options_async(
+        self,
+        data_source_type: str,
+        request: open_search_20171225_models.ListDataSourceTableFieldsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListDataSourceTableFieldsResponse:
+        UtilClient.validate_model(request)
+        data_source_type = OpenApiUtilClient.get_encode_param(data_source_type)
+        query = {}
+        if not UtilClient.is_unset(request.params):
+            query['params'] = request.params
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataSourceTableFields',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/assist/data-sources/{data_source_type}/fields',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListDataSourceTableFieldsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_source_tables(
+        self,
+        data_source_type: str,
+        request: open_search_20171225_models.ListDataSourceTablesRequest,
+    ) -> open_search_20171225_models.ListDataSourceTablesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_data_source_tables_with_options(data_source_type, request, headers, runtime)
+
+    async def list_data_source_tables_async(
+        self,
+        data_source_type: str,
+        request: open_search_20171225_models.ListDataSourceTablesRequest,
+    ) -> open_search_20171225_models.ListDataSourceTablesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_data_source_tables_with_options_async(data_source_type, request, headers, runtime)
+
+    def list_data_source_tables_with_options(
+        self,
+        data_source_type: str,
+        request: open_search_20171225_models.ListDataSourceTablesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListDataSourceTablesResponse:
+        UtilClient.validate_model(request)
+        data_source_type = OpenApiUtilClient.get_encode_param(data_source_type)
+        query = {}
+        if not UtilClient.is_unset(request.params):
+            query['params'] = request.params
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataSourceTables',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/assist/data-sources/{data_source_type}/tables',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListDataSourceTablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_source_tables_with_options_async(
+        self,
+        data_source_type: str,
+        request: open_search_20171225_models.ListDataSourceTablesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListDataSourceTablesResponse:
+        UtilClient.validate_model(request)
+        data_source_type = OpenApiUtilClient.get_encode_param(data_source_type)
+        query = {}
+        if not UtilClient.is_unset(request.params):
+            query['params'] = request.params
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataSourceTables',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/assist/data-sources/{data_source_type}/tables',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListDataSourceTablesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_deployed_algorithm_models(
@@ -3143,18 +5887,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDeployedAlgorithmModelsResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
-        if not UtilClient.is_unset(request.in_service_only):
-            query['inServiceOnly'] = request.in_service_only
         if not UtilClient.is_unset(request.algorithm_type):
             query['algorithmType'] = request.algorithm_type
+        if not UtilClient.is_unset(request.in_service_only):
+            query['inServiceOnly'] = request.in_service_only
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListDeployedAlgorithmModels',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/deployed-algorithm-models',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListDeployedAlgorithmModelsResponse(),
-            self.do_roarequest('ListDeployedAlgorithmModels', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/deployed-algorithm-models', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_deployed_algorithm_models_with_options_async(
@@ -3165,18 +5921,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDeployedAlgorithmModelsResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
-        if not UtilClient.is_unset(request.in_service_only):
-            query['inServiceOnly'] = request.in_service_only
         if not UtilClient.is_unset(request.algorithm_type):
             query['algorithmType'] = request.algorithm_type
+        if not UtilClient.is_unset(request.in_service_only):
+            query['inServiceOnly'] = request.in_service_only
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListDeployedAlgorithmModels',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/deployed-algorithm-models',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListDeployedAlgorithmModelsResponse(),
-            await self.do_roarequest_async('ListDeployedAlgorithmModels', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/deployed-algorithm-models', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_first_ranks(
@@ -3204,12 +5972,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListFirstRanksResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListFirstRanks',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListFirstRanksResponse(),
-            self.do_roarequest('ListFirstRanks', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_first_ranks_with_options_async(
@@ -3219,12 +6000,243 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListFirstRanksResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListFirstRanks',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListFirstRanksResponse(),
-            await self.do_roarequest_async('ListFirstRanks', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_function_instances(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        request: open_search_20171225_models.ListFunctionInstancesRequest,
+    ) -> open_search_20171225_models.ListFunctionInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_function_instances_with_options(app_group_identity, function_name, request, headers, runtime)
+
+    async def list_function_instances_async(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        request: open_search_20171225_models.ListFunctionInstancesRequest,
+    ) -> open_search_20171225_models.ListFunctionInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_function_instances_with_options_async(app_group_identity, function_name, request, headers, runtime)
+
+    def list_function_instances_with_options(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        request: open_search_20171225_models.ListFunctionInstancesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListFunctionInstancesResponse:
+        UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        query = {}
+        if not UtilClient.is_unset(request.function_type):
+            query['functionType'] = request.function_type
+        if not UtilClient.is_unset(request.model_type):
+            query['modelType'] = request.model_type
+        if not UtilClient.is_unset(request.output):
+            query['output'] = request.output
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.source):
+            query['source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFunctionInstances',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListFunctionInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_function_instances_with_options_async(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        request: open_search_20171225_models.ListFunctionInstancesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListFunctionInstancesResponse:
+        UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        query = {}
+        if not UtilClient.is_unset(request.function_type):
+            query['functionType'] = request.function_type
+        if not UtilClient.is_unset(request.model_type):
+            query['modelType'] = request.model_type
+        if not UtilClient.is_unset(request.output):
+            query['output'] = request.output
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.source):
+            query['source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFunctionInstances',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListFunctionInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_function_tasks(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+        request: open_search_20171225_models.ListFunctionTasksRequest,
+    ) -> open_search_20171225_models.ListFunctionTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_function_tasks_with_options(app_group_identity, function_name, instance_name, request, headers, runtime)
+
+    async def list_function_tasks_async(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+        request: open_search_20171225_models.ListFunctionTasksRequest,
+    ) -> open_search_20171225_models.ListFunctionTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_function_tasks_with_options_async(app_group_identity, function_name, instance_name, request, headers, runtime)
+
+    def list_function_tasks_with_options(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+        request: open_search_20171225_models.ListFunctionTasksRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListFunctionTasksResponse:
+        UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFunctionTasks',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}/tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListFunctionTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_function_tasks_with_options_async(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+        request: open_search_20171225_models.ListFunctionTasksRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListFunctionTasksResponse:
+        UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFunctionTasks',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}/tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListFunctionTasksResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_intervention_dictionaries(
@@ -3251,19 +6263,30 @@ class Client(OpenApiClient):
     ) -> open_search_20171225_models.ListInterventionDictionariesResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.types):
             query['types'] = request.types
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListInterventionDictionaries',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/intervention-dictionaries',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListInterventionDictionariesResponse(),
-            self.do_roarequest('ListInterventionDictionaries', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/intervention-dictionaries', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_intervention_dictionaries_with_options_async(
@@ -3274,19 +6297,30 @@ class Client(OpenApiClient):
     ) -> open_search_20171225_models.ListInterventionDictionariesResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.types):
             query['types'] = request.types
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListInterventionDictionaries',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/intervention-dictionaries',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListInterventionDictionariesResponse(),
-            await self.do_roarequest_async('ListInterventionDictionaries', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/intervention-dictionaries', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_intervention_dictionary_entries(
@@ -3315,20 +6349,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryEntriesResponse:
         UtilClient.validate_model(request)
+        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
-        if not UtilClient.is_unset(request.word):
-            query['word'] = request.word
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.word):
+            query['word'] = request.word
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListInterventionDictionaryEntries',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/intervention-dictionaries/{name}/entries',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListInterventionDictionaryEntriesResponse(),
-            self.do_roarequest('ListInterventionDictionaryEntries', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/intervention-dictionaries/{name}/entries', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_intervention_dictionary_entries_with_options_async(
@@ -3339,20 +6385,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryEntriesResponse:
         UtilClient.validate_model(request)
+        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
-        if not UtilClient.is_unset(request.word):
-            query['word'] = request.word
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.word):
+            query['word'] = request.word
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListInterventionDictionaryEntries',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/intervention-dictionaries/{name}/entries',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListInterventionDictionaryEntriesResponse(),
-            await self.do_roarequest_async('ListInterventionDictionaryEntries', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/intervention-dictionaries/{name}/entries', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_intervention_dictionary_ner_results(
@@ -3381,6 +6439,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryNerResultsResponse:
         UtilClient.validate_model(request)
+        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.query):
             query['query'] = request.query
@@ -3388,9 +6447,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListInterventionDictionaryNerResults',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/intervention-dictionaries/{name}/ner-results',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListInterventionDictionaryNerResultsResponse(),
-            self.do_roarequest('ListInterventionDictionaryNerResults', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/intervention-dictionaries/{name}/ner-results', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_intervention_dictionary_ner_results_with_options_async(
@@ -3401,6 +6471,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryNerResultsResponse:
         UtilClient.validate_model(request)
+        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.query):
             query['query'] = request.query
@@ -3408,9 +6479,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListInterventionDictionaryNerResults',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/intervention-dictionaries/{name}/ner-results',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListInterventionDictionaryNerResultsResponse(),
-            await self.do_roarequest_async('ListInterventionDictionaryNerResults', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/intervention-dictionaries/{name}/ner-results', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_intervention_dictionary_related_entities(
@@ -3435,12 +6517,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryRelatedEntitiesResponse:
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListInterventionDictionaryRelatedEntities',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/intervention-dictionaries/{name}/related',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListInterventionDictionaryRelatedEntitiesResponse(),
-            self.do_roarequest('ListInterventionDictionaryRelatedEntities', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/intervention-dictionaries/{name}/related', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_intervention_dictionary_related_entities_with_options_async(
@@ -3449,12 +6543,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryRelatedEntitiesResponse:
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListInterventionDictionaryRelatedEntities',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/intervention-dictionaries/{name}/related',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListInterventionDictionaryRelatedEntitiesResponse(),
-            await self.do_roarequest_async('ListInterventionDictionaryRelatedEntities', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/intervention-dictionaries/{name}/related', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_models(
@@ -3483,6 +6589,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListModelsResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
@@ -3494,9 +6601,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListModels',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListModelsResponse(),
-            self.do_roarequest('ListModels', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_models_with_options_async(
@@ -3507,6 +6625,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListModelsResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
@@ -3518,9 +6637,182 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListModels',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListModelsResponse(),
-            await self.do_roarequest_async('ListModels', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_proceedings(
+        self,
+        app_group_identity: str,
+    ) -> open_search_20171225_models.ListProceedingsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_proceedings_with_options(app_group_identity, headers, runtime)
+
+    async def list_proceedings_async(
+        self,
+        app_group_identity: str,
+    ) -> open_search_20171225_models.ListProceedingsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_proceedings_with_options_async(app_group_identity, headers, runtime)
+
+    def list_proceedings_with_options(
+        self,
+        app_group_identity: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListProceedingsResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListProceedings',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/proceedings',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListProceedingsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_proceedings_with_options_async(
+        self,
+        app_group_identity: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListProceedingsResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListProceedings',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/proceedings',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListProceedingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_query_processor_analyzer_results(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        name: str,
+        request: open_search_20171225_models.ListQueryProcessorAnalyzerResultsRequest,
+    ) -> open_search_20171225_models.ListQueryProcessorAnalyzerResultsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_query_processor_analyzer_results_with_options(app_group_identity, app_id, name, request, headers, runtime)
+
+    async def list_query_processor_analyzer_results_async(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        name: str,
+        request: open_search_20171225_models.ListQueryProcessorAnalyzerResultsRequest,
+    ) -> open_search_20171225_models.ListQueryProcessorAnalyzerResultsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_query_processor_analyzer_results_with_options_async(app_group_identity, app_id, name, request, headers, runtime)
+
+    def list_query_processor_analyzer_results_with_options(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        name: str,
+        request: open_search_20171225_models.ListQueryProcessorAnalyzerResultsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListQueryProcessorAnalyzerResultsResponse:
+        UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
+        query = {}
+        if not UtilClient.is_unset(request.text):
+            query['text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListQueryProcessorAnalyzerResults',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}/analyze',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListQueryProcessorAnalyzerResultsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_query_processor_analyzer_results_with_options_async(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        name: str,
+        request: open_search_20171225_models.ListQueryProcessorAnalyzerResultsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListQueryProcessorAnalyzerResultsResponse:
+        UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
+        query = {}
+        if not UtilClient.is_unset(request.text):
+            query['text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListQueryProcessorAnalyzerResults',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}/analyze',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListQueryProcessorAnalyzerResultsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_query_processor_ners(
@@ -3553,9 +6845,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListQueryProcessorNers',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/query-processor/ner/default-priorities',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListQueryProcessorNersResponse(),
-            self.do_roarequest('ListQueryProcessorNers', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/query-processor/ner/default-priorities', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_query_processor_ners_with_options_async(
@@ -3572,9 +6875,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListQueryProcessorNers',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/query-processor/ner/default-priorities',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListQueryProcessorNersResponse(),
-            await self.do_roarequest_async('ListQueryProcessorNers', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/query-processor/ner/default-priorities', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_query_processors(
@@ -3606,6 +6920,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListQueryProcessorsResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.is_active):
             query['isActive'] = request.is_active
@@ -3613,9 +6929,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListQueryProcessors',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListQueryProcessorsResponse(),
-            self.do_roarequest('ListQueryProcessors', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_query_processors_with_options_async(
@@ -3627,6 +6954,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListQueryProcessorsResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.is_active):
             query['isActive'] = request.is_active
@@ -3634,9 +6963,164 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListQueryProcessors',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListQueryProcessorsResponse(),
-            await self.do_roarequest_async('ListQueryProcessors', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_quota_review_tasks(
+        self,
+        app_group_identity: str,
+        request: open_search_20171225_models.ListQuotaReviewTasksRequest,
+    ) -> open_search_20171225_models.ListQuotaReviewTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_quota_review_tasks_with_options(app_group_identity, request, headers, runtime)
+
+    async def list_quota_review_tasks_async(
+        self,
+        app_group_identity: str,
+        request: open_search_20171225_models.ListQuotaReviewTasksRequest,
+    ) -> open_search_20171225_models.ListQuotaReviewTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_quota_review_tasks_with_options_async(app_group_identity, request, headers, runtime)
+
+    def list_quota_review_tasks_with_options(
+        self,
+        app_group_identity: str,
+        request: open_search_20171225_models.ListQuotaReviewTasksRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListQuotaReviewTasksResponse:
+        UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListQuotaReviewTasks',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/quota-review-tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListQuotaReviewTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_quota_review_tasks_with_options_async(
+        self,
+        app_group_identity: str,
+        request: open_search_20171225_models.ListQuotaReviewTasksRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListQuotaReviewTasksResponse:
+        UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListQuotaReviewTasks',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/quota-review-tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListQuotaReviewTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ram_roles(self) -> open_search_20171225_models.ListRamRolesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_ram_roles_with_options(headers, runtime)
+
+    async def list_ram_roles_async(self) -> open_search_20171225_models.ListRamRolesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_ram_roles_with_options_async(headers, runtime)
+
+    def list_ram_roles_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListRamRolesResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListRamRoles',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/assist/ram/roles',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListRamRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ram_roles_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListRamRolesResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListRamRoles',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/assist/ram/roles',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListRamRolesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_scheduled_tasks(
@@ -3665,20 +7149,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListScheduledTasksResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListScheduledTasks',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListScheduledTasksResponse(),
-            self.do_roarequest('ListScheduledTasks', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_scheduled_tasks_with_options_async(
@@ -3689,20 +7185,106 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListScheduledTasksResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListScheduledTasks',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListScheduledTasksResponse(),
-            await self.do_roarequest_async('ListScheduledTasks', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_search_strategies(
+        self,
+        app_group_identity: str,
+        app_id: str,
+    ) -> open_search_20171225_models.ListSearchStrategiesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_search_strategies_with_options(app_group_identity, app_id, headers, runtime)
+
+    async def list_search_strategies_async(
+        self,
+        app_group_identity: str,
+        app_id: str,
+    ) -> open_search_20171225_models.ListSearchStrategiesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_search_strategies_with_options_async(app_group_identity, app_id, headers, runtime)
+
+    def list_search_strategies_with_options(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListSearchStrategiesResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListSearchStrategies',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListSearchStrategiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_search_strategies_with_options_async(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListSearchStrategiesResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListSearchStrategies',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListSearchStrategiesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_second_ranks(
@@ -3730,12 +7312,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSecondRanksResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListSecondRanks',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListSecondRanksResponse(),
-            self.do_roarequest('ListSecondRanks', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_second_ranks_with_options_async(
@@ -3745,12 +7340,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSecondRanksResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListSecondRanks',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListSecondRanksResponse(),
-            await self.do_roarequest_async('ListSecondRanks', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_slow_query_categories(
@@ -3775,12 +7383,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSlowQueryCategoriesResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListSlowQueryCategories',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/categories',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListSlowQueryCategoriesResponse(),
-            self.do_roarequest('ListSlowQueryCategories', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/categories', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_slow_query_categories_with_options_async(
@@ -3789,12 +7409,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSlowQueryCategoriesResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListSlowQueryCategories',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/categories',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListSlowQueryCategoriesResponse(),
-            await self.do_roarequest_async('ListSlowQueryCategories', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/categories', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_slow_query_queries(
@@ -3822,12 +7454,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSlowQueryQueriesResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        category_index = OpenApiUtilClient.get_encode_param(category_index)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListSlowQueryQueries',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/categories/{category_index}/queries',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListSlowQueryQueriesResponse(),
-            self.do_roarequest('ListSlowQueryQueries', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/categories/{category_index}/queries', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_slow_query_queries_with_options_async(
@@ -3837,12 +7482,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSlowQueryQueriesResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        category_index = OpenApiUtilClient.get_encode_param(category_index)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListSlowQueryQueries',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/categories/{category_index}/queries',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListSlowQueryQueriesResponse(),
-            await self.do_roarequest_async('ListSlowQueryQueries', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/categories/{category_index}/queries', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_sort_expressions(
@@ -3870,12 +7528,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSortExpressionsResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListSortExpressions',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/sort-expressions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListSortExpressionsResponse(),
-            self.do_roarequest('ListSortExpressions', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/sort-expressions', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_sort_expressions_with_options_async(
@@ -3885,12 +7556,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSortExpressionsResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListSortExpressions',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/sort-expressions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListSortExpressionsResponse(),
-            await self.do_roarequest_async('ListSortExpressions', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/sort-expressions', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_sort_scripts(
@@ -3918,12 +7602,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSortScriptsResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListSortScripts',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListSortScriptsResponse(),
-            self.do_roarequest('ListSortScripts', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_sort_scripts_with_options_async(
@@ -3933,12 +7630,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSortScriptsResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListSortScripts',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListSortScriptsResponse(),
-            await self.do_roarequest_async('ListSortScripts', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_statistic_logs(
@@ -3970,11 +7680,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListStatisticLogsResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        module_name = OpenApiUtilClient.get_encode_param(module_name)
         query = {}
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
-        if not UtilClient.is_unset(request.stop_time):
-            query['stopTime'] = request.stop_time
+        if not UtilClient.is_unset(request.columns):
+            query['columns'] = request.columns
+        if not UtilClient.is_unset(request.distinct):
+            query['distinct'] = request.distinct
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -3983,17 +7695,28 @@ class Client(OpenApiClient):
             query['query'] = request.query
         if not UtilClient.is_unset(request.sort_by):
             query['sortBy'] = request.sort_by
-        if not UtilClient.is_unset(request.distinct):
-            query['distinct'] = request.distinct
-        if not UtilClient.is_unset(request.columns):
-            query['columns'] = request.columns
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.stop_time):
+            query['stopTime'] = request.stop_time
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListStatisticLogs',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/statistic-logs/{module_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListStatisticLogsResponse(),
-            self.do_roarequest('ListStatisticLogs', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/statistic-logs/{module_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_statistic_logs_with_options_async(
@@ -4005,11 +7728,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListStatisticLogsResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        module_name = OpenApiUtilClient.get_encode_param(module_name)
         query = {}
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
-        if not UtilClient.is_unset(request.stop_time):
-            query['stopTime'] = request.stop_time
+        if not UtilClient.is_unset(request.columns):
+            query['columns'] = request.columns
+        if not UtilClient.is_unset(request.distinct):
+            query['distinct'] = request.distinct
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -4018,17 +7743,28 @@ class Client(OpenApiClient):
             query['query'] = request.query
         if not UtilClient.is_unset(request.sort_by):
             query['sortBy'] = request.sort_by
-        if not UtilClient.is_unset(request.distinct):
-            query['distinct'] = request.distinct
-        if not UtilClient.is_unset(request.columns):
-            query['columns'] = request.columns
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.stop_time):
+            query['stopTime'] = request.stop_time
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListStatisticLogs',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/statistic-logs/{module_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListStatisticLogsResponse(),
-            await self.do_roarequest_async('ListStatisticLogs', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/statistic-logs/{module_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_statistic_report(
@@ -4060,26 +7796,39 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListStatisticReportResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        module_name = OpenApiUtilClient.get_encode_param(module_name)
         query = {}
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.columns):
+            query['columns'] = request.columns
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.columns):
-            query['columns'] = request.columns
         if not UtilClient.is_unset(request.query):
             query['query'] = request.query
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListStatisticReport',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/statistic-report/{module_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListStatisticReportResponse(),
-            self.do_roarequest('ListStatisticReport', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/statistic-report/{module_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_statistic_report_with_options_async(
@@ -4091,26 +7840,39 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListStatisticReportResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        module_name = OpenApiUtilClient.get_encode_param(module_name)
         query = {}
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.columns):
+            query['columns'] = request.columns
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.columns):
-            query['columns'] = request.columns
         if not UtilClient.is_unset(request.query):
             query['query'] = request.query
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListStatisticReport',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/statistic-report/{module_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListStatisticReportResponse(),
-            await self.do_roarequest_async('ListStatisticReport', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/statistic-report/{module_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_user_analyzer_entries(
@@ -4139,20 +7901,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListUserAnalyzerEntriesResponse:
         UtilClient.validate_model(request)
+        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
-        if not UtilClient.is_unset(request.word):
-            query['word'] = request.word
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.word):
+            query['word'] = request.word
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListUserAnalyzerEntries',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/user-analyzers/{name}/entries',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListUserAnalyzerEntriesResponse(),
-            self.do_roarequest('ListUserAnalyzerEntries', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/user-analyzers/{name}/entries', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_user_analyzer_entries_with_options_async(
@@ -4163,20 +7937,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListUserAnalyzerEntriesResponse:
         UtilClient.validate_model(request)
+        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
-        if not UtilClient.is_unset(request.word):
-            query['word'] = request.word
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.word):
+            query['word'] = request.word
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListUserAnalyzerEntries',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/user-analyzers/{name}/entries',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListUserAnalyzerEntriesResponse(),
-            await self.do_roarequest_async('ListUserAnalyzerEntries', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/user-analyzers/{name}/entries', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_user_analyzers(
@@ -4211,9 +7997,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListUserAnalyzers',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/user-analyzers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListUserAnalyzersResponse(),
-            self.do_roarequest('ListUserAnalyzers', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/user-analyzers', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_user_analyzers_with_options_async(
@@ -4232,9 +8029,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListUserAnalyzers',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/user-analyzers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ListUserAnalyzersResponse(),
-            await self.do_roarequest_async('ListUserAnalyzers', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/user-analyzers', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_app_group(
@@ -4259,12 +8067,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyAppGroupResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ModifyAppGroup',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ModifyAppGroupResponse(),
-            self.do_roarequest('ModifyAppGroup', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_app_group_with_options_async(
@@ -4273,12 +8093,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyAppGroupResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ModifyAppGroup',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ModifyAppGroupResponse(),
-            await self.do_roarequest_async('ModifyAppGroup', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_app_group_quota(
@@ -4303,12 +8135,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyAppGroupQuotaResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ModifyAppGroupQuota',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/quota',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ModifyAppGroupQuotaResponse(),
-            self.do_roarequest('ModifyAppGroupQuota', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/quota', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_app_group_quota_with_options_async(
@@ -4317,12 +8161,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyAppGroupQuotaResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ModifyAppGroupQuota',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/quota',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ModifyAppGroupQuotaResponse(),
-            await self.do_roarequest_async('ModifyAppGroupQuota', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/quota', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_first_rank(
@@ -4357,6 +8213,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyFirstRankResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -4364,9 +8223,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ModifyFirstRank',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks/{name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ModifyFirstRankResponse(),
-            self.do_roarequest('ModifyFirstRank', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks/{name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_first_rank_with_options_async(
@@ -4379,6 +8249,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyFirstRankResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -4386,9 +8259,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ModifyFirstRank',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks/{name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ModifyFirstRankResponse(),
-            await self.do_roarequest_async('ModifyFirstRank', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks/{name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_model(
@@ -4416,12 +8300,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyModelResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ModifyModel',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ModifyModelResponse(),
-            self.do_roarequest('ModifyModel', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_model_with_options_async(
@@ -4431,12 +8328,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyModelResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ModifyModel',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ModifyModelResponse(),
-            await self.do_roarequest_async('ModifyModel', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_query_processor(
@@ -4471,6 +8381,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyQueryProcessorResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -4478,9 +8391,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ModifyQueryProcessor',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ModifyQueryProcessorResponse(),
-            self.do_roarequest('ModifyQueryProcessor', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_query_processor_with_options_async(
@@ -4493,6 +8417,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyQueryProcessorResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -4500,9 +8427,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ModifyQueryProcessor',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ModifyQueryProcessorResponse(),
-            await self.do_roarequest_async('ModifyQueryProcessor', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_scheduled_task(
@@ -4530,12 +8468,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyScheduledTaskResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ModifyScheduledTask',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks/{task_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ModifyScheduledTaskResponse(),
-            self.do_roarequest('ModifyScheduledTask', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks/{task_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_scheduled_task_with_options_async(
@@ -4545,12 +8496,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyScheduledTaskResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ModifyScheduledTask',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks/{task_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ModifyScheduledTaskResponse(),
-            await self.do_roarequest_async('ModifyScheduledTask', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks/{task_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_second_rank(
@@ -4585,6 +8549,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifySecondRankResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -4592,9 +8559,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ModifySecondRank',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks/{name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ModifySecondRankResponse(),
-            self.do_roarequest('ModifySecondRank', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks/{name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_second_rank_with_options_async(
@@ -4607,6 +8585,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifySecondRankResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -4614,9 +8595,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ModifySecondRank',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks/{name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ModifySecondRankResponse(),
-            await self.do_roarequest_async('ModifySecondRank', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks/{name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def preview_model(
@@ -4648,6 +8640,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PreviewModelResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        model_name = OpenApiUtilClient.get_encode_param(model_name)
         query = {}
         if not UtilClient.is_unset(request.query):
             query['query'] = request.query
@@ -4655,9 +8649,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='PreviewModel',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/actions/preview',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.PreviewModelResponse(),
-            self.do_roarequest('PreviewModel', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/actions/preview', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def preview_model_with_options_async(
@@ -4669,6 +8674,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PreviewModelResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        model_name = OpenApiUtilClient.get_encode_param(model_name)
         query = {}
         if not UtilClient.is_unset(request.query):
             query['query'] = request.query
@@ -4676,9 +8683,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='PreviewModel',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/actions/preview',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.PreviewModelResponse(),
-            await self.do_roarequest_async('PreviewModel', '2017-12-25', 'HTTPS', 'GET', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/actions/preview', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def push_intervention_dictionary_entries(
@@ -4703,12 +8721,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PushInterventionDictionaryEntriesResponse:
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='PushInterventionDictionaryEntries',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/intervention-dictionaries/{name}/entries/actions/bulk',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.PushInterventionDictionaryEntriesResponse(),
-            self.do_roarequest('PushInterventionDictionaryEntries', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/intervention-dictionaries/{name}/entries/actions/bulk', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def push_intervention_dictionary_entries_with_options_async(
@@ -4717,12 +8747,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PushInterventionDictionaryEntriesResponse:
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='PushInterventionDictionaryEntries',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/intervention-dictionaries/{name}/entries/actions/bulk',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.PushInterventionDictionaryEntriesResponse(),
-            await self.do_roarequest_async('PushInterventionDictionaryEntries', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/intervention-dictionaries/{name}/entries/actions/bulk', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def push_user_analyzer_entries(
@@ -4747,12 +8789,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PushUserAnalyzerEntriesResponse:
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='PushUserAnalyzerEntries',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/user-analyzers/{name}/entries/actions/bulk',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.PushUserAnalyzerEntriesResponse(),
-            self.do_roarequest('PushUserAnalyzerEntries', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/user-analyzers/{name}/entries/actions/bulk', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def push_user_analyzer_entries_with_options_async(
@@ -4761,12 +8815,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PushUserAnalyzerEntriesResponse:
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='PushUserAnalyzerEntries',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/user-analyzers/{name}/entries/actions/bulk',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.PushUserAnalyzerEntriesResponse(),
-            await self.do_roarequest_async('PushUserAnalyzerEntries', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/user-analyzers/{name}/entries/actions/bulk', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def rank_preview_query(
@@ -4794,12 +8860,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RankPreviewQueryResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RankPreviewQuery',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/actions/query-rank',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RankPreviewQueryResponse(),
-            self.do_roarequest('RankPreviewQuery', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/actions/query-rank', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def rank_preview_query_with_options_async(
@@ -4809,12 +8888,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RankPreviewQueryResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RankPreviewQuery',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/actions/query-rank',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RankPreviewQueryResponse(),
-            await self.do_roarequest_async('RankPreviewQuery', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/actions/query-rank', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def release_sort_script(
@@ -4845,12 +8937,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ReleaseSortScriptResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        script_name = OpenApiUtilClient.get_encode_param(script_name)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ReleaseSortScript',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/actions/release',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ReleaseSortScriptResponse(),
-            self.do_roarequest('ReleaseSortScript', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/actions/release', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def release_sort_script_with_options_async(
@@ -4861,12 +8967,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ReleaseSortScriptResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        script_name = OpenApiUtilClient.get_encode_param(script_name)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ReleaseSortScript',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/actions/release',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ReleaseSortScriptResponse(),
-            await self.do_roarequest_async('ReleaseSortScript', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/actions/release', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_app(
@@ -4894,12 +9014,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveAppResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveApp',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RemoveAppResponse(),
-            self.do_roarequest('RemoveApp', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_app_with_options_async(
@@ -4909,12 +9042,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveAppResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveApp',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RemoveAppResponse(),
-            await self.do_roarequest_async('RemoveApp', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_app_group(
@@ -4939,12 +9085,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveAppGroupResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveAppGroup',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RemoveAppGroupResponse(),
-            self.do_roarequest('RemoveAppGroup', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_app_group_with_options_async(
@@ -4953,12 +9111,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveAppGroupResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveAppGroup',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RemoveAppGroupResponse(),
-            await self.do_roarequest_async('RemoveAppGroup', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_data_collection(
@@ -4986,12 +9156,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveDataCollectionResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        data_collection_identity = OpenApiUtilClient.get_encode_param(data_collection_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveDataCollection',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-collections/{data_collection_identity}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RemoveDataCollectionResponse(),
-            self.do_roarequest('RemoveDataCollection', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/data-collections/{data_collection_identity}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_data_collection_with_options_async(
@@ -5001,12 +9184,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveDataCollectionResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        data_collection_identity = OpenApiUtilClient.get_encode_param(data_collection_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveDataCollection',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-collections/{data_collection_identity}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RemoveDataCollectionResponse(),
-            await self.do_roarequest_async('RemoveDataCollection', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/data-collections/{data_collection_identity}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_first_rank(
@@ -5037,12 +9233,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveFirstRankResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveFirstRank',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks/{name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RemoveFirstRankResponse(),
-            self.do_roarequest('RemoveFirstRank', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks/{name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_first_rank_with_options_async(
@@ -5053,12 +9263,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveFirstRankResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveFirstRank',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks/{name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RemoveFirstRankResponse(),
-            await self.do_roarequest_async('RemoveFirstRank', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks/{name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_intervention_dictionary(
@@ -5083,12 +9307,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveInterventionDictionaryResponse:
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveInterventionDictionary',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/intervention-dictionaries/{name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RemoveInterventionDictionaryResponse(),
-            self.do_roarequest('RemoveInterventionDictionary', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/intervention-dictionaries/{name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_intervention_dictionary_with_options_async(
@@ -5097,12 +9333,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveInterventionDictionaryResponse:
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveInterventionDictionary',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/intervention-dictionaries/{name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RemoveInterventionDictionaryResponse(),
-            await self.do_roarequest_async('RemoveInterventionDictionary', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/intervention-dictionaries/{name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_query_processor(
@@ -5133,12 +9381,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveQueryProcessorResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveQueryProcessor',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RemoveQueryProcessorResponse(),
-            self.do_roarequest('RemoveQueryProcessor', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_query_processor_with_options_async(
@@ -5149,12 +9411,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveQueryProcessorResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveQueryProcessor',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RemoveQueryProcessorResponse(),
-            await self.do_roarequest_async('RemoveQueryProcessor', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_scheduled_task(
@@ -5182,12 +9458,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveScheduledTaskResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveScheduledTask',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks/{task_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RemoveScheduledTaskResponse(),
-            self.do_roarequest('RemoveScheduledTask', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks/{task_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_scheduled_task_with_options_async(
@@ -5197,12 +9486,105 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveScheduledTaskResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveScheduledTask',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks/{task_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RemoveScheduledTaskResponse(),
-            await self.do_roarequest_async('RemoveScheduledTask', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks/{task_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_search_strategy(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        strategy_name: str,
+    ) -> open_search_20171225_models.RemoveSearchStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.remove_search_strategy_with_options(app_group_identity, app_id, strategy_name, headers, runtime)
+
+    async def remove_search_strategy_async(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        strategy_name: str,
+    ) -> open_search_20171225_models.RemoveSearchStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.remove_search_strategy_with_options_async(app_group_identity, app_id, strategy_name, headers, runtime)
+
+    def remove_search_strategy_with_options(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        strategy_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.RemoveSearchStrategyResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        strategy_name = OpenApiUtilClient.get_encode_param(strategy_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='RemoveSearchStrategy',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies/{strategy_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.RemoveSearchStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_search_strategy_with_options_async(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        strategy_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.RemoveSearchStrategyResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        strategy_name = OpenApiUtilClient.get_encode_param(strategy_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='RemoveSearchStrategy',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies/{strategy_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.RemoveSearchStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_second_rank(
@@ -5233,12 +9615,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveSecondRankResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveSecondRank',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks/{name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RemoveSecondRankResponse(),
-            self.do_roarequest('RemoveSecondRank', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks/{name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_second_rank_with_options_async(
@@ -5249,12 +9645,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveSecondRankResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveSecondRank',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks/{name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RemoveSecondRankResponse(),
-            await self.do_roarequest_async('RemoveSecondRank', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks/{name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_user_analyzer(
@@ -5279,12 +9689,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveUserAnalyzerResponse:
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveUserAnalyzer',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/user-analyzers/{name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RemoveUserAnalyzerResponse(),
-            self.do_roarequest('RemoveUserAnalyzer', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/user-analyzers/{name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_user_analyzer_with_options_async(
@@ -5293,12 +9715,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveUserAnalyzerResponse:
+        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveUserAnalyzer',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/user-analyzers/{name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RemoveUserAnalyzerResponse(),
-            await self.do_roarequest_async('RemoveUserAnalyzer', '2017-12-25', 'HTTPS', 'DELETE', 'AK', f'/v4/openapi/user-analyzers/{name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def renew_app_group(
@@ -5323,12 +9757,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RenewAppGroupResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RenewAppGroup',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/actions/renew',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RenewAppGroupResponse(),
-            self.do_roarequest('RenewAppGroup', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/actions/renew', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def renew_app_group_with_options_async(
@@ -5337,12 +9783,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RenewAppGroupResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RenewAppGroup',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/actions/renew',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.RenewAppGroupResponse(),
-            await self.do_roarequest_async('RenewAppGroup', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/actions/renew', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def replace_app_group_commodity_code(
@@ -5367,12 +9825,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ReplaceAppGroupCommodityCodeResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ReplaceAppGroupCommodityCode',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/actions/to-instance-typed',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ReplaceAppGroupCommodityCodeResponse(),
-            self.do_roarequest('ReplaceAppGroupCommodityCode', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/actions/to-instance-typed', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def replace_app_group_commodity_code_with_options_async(
@@ -5381,12 +9851,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ReplaceAppGroupCommodityCodeResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ReplaceAppGroupCommodityCode',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/actions/to-instance-typed',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.ReplaceAppGroupCommodityCodeResponse(),
-            await self.do_roarequest_async('ReplaceAppGroupCommodityCode', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/actions/to-instance-typed', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def save_sort_script_file(
@@ -5420,12 +9902,27 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.SaveSortScriptFileResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        script_name = OpenApiUtilClient.get_encode_param(script_name)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
+        file_name = OpenApiUtilClient.get_encode_param(file_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='SaveSortScriptFile',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/files/src/{file_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.SaveSortScriptFileResponse(),
-            self.do_roarequest('SaveSortScriptFile', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/files/src/{file_name}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def save_sort_script_file_with_options_async(
@@ -5437,12 +9934,27 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.SaveSortScriptFileResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        script_name = OpenApiUtilClient.get_encode_param(script_name)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
+        file_name = OpenApiUtilClient.get_encode_param(file_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='SaveSortScriptFile',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/files/src/{file_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.SaveSortScriptFileResponse(),
-            await self.do_roarequest_async('SaveSortScriptFile', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/files/src/{file_name}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_slow_query_analyzer(
@@ -5467,12 +9979,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.StartSlowQueryAnalyzerResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='StartSlowQueryAnalyzer',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/actions/run',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.StartSlowQueryAnalyzerResponse(),
-            self.do_roarequest('StartSlowQueryAnalyzer', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/actions/run', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def start_slow_query_analyzer_with_options_async(
@@ -5481,12 +10005,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.StartSlowQueryAnalyzerResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='StartSlowQueryAnalyzer',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/actions/run',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.StartSlowQueryAnalyzerResponse(),
-            await self.do_roarequest_async('StartSlowQueryAnalyzer', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/actions/run', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def train_model(
@@ -5514,12 +10050,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.TrainModelResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='TrainModel',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/actions/train',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.TrainModelResponse(),
-            self.do_roarequest('TrainModel', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/actions/train', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def train_model_with_options_async(
@@ -5529,12 +10078,167 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.TrainModelResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='TrainModel',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/actions/train',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.TrainModelResponse(),
-            await self.do_roarequest_async('TrainModel', '2017-12-25', 'HTTPS', 'POST', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/actions/train', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind_esuser_analyzer(
+        self,
+        app_group_identity: str,
+        es_instance_id: str,
+    ) -> open_search_20171225_models.UnbindESUserAnalyzerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.unbind_esuser_analyzer_with_options(app_group_identity, es_instance_id, headers, runtime)
+
+    async def unbind_esuser_analyzer_async(
+        self,
+        app_group_identity: str,
+        es_instance_id: str,
+    ) -> open_search_20171225_models.UnbindESUserAnalyzerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.unbind_esuser_analyzer_with_options_async(app_group_identity, es_instance_id, headers, runtime)
+
+    def unbind_esuser_analyzer_with_options(
+        self,
+        app_group_identity: str,
+        es_instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.UnbindESUserAnalyzerResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        es_instance_id = OpenApiUtilClient.get_encode_param(es_instance_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='UnbindESUserAnalyzer',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/es/{es_instance_id}/actions/unbind-analyzer',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.UnbindESUserAnalyzerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_esuser_analyzer_with_options_async(
+        self,
+        app_group_identity: str,
+        es_instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.UnbindESUserAnalyzerResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        es_instance_id = OpenApiUtilClient.get_encode_param(es_instance_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='UnbindESUserAnalyzer',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/es/{es_instance_id}/actions/unbind-analyzer',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.UnbindESUserAnalyzerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind_es_instance(
+        self,
+        app_group_identity: str,
+    ) -> open_search_20171225_models.UnbindEsInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.unbind_es_instance_with_options(app_group_identity, headers, runtime)
+
+    async def unbind_es_instance_async(
+        self,
+        app_group_identity: str,
+    ) -> open_search_20171225_models.UnbindEsInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.unbind_es_instance_with_options_async(app_group_identity, headers, runtime)
+
+    def unbind_es_instance_with_options(
+        self,
+        app_group_identity: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.UnbindEsInstanceResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='UnbindEsInstance',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/actions/unbind-es-instance',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.UnbindEsInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_es_instance_with_options_async(
+        self,
+        app_group_identity: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.UnbindEsInstanceResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='UnbindEsInstance',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/actions/unbind-es-instance',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.UnbindEsInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_abtest_experiment(
@@ -5568,12 +10272,27 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestExperimentResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
+        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='UpdateABTestExperiment',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.UpdateABTestExperimentResponse(),
-            self.do_roarequest('UpdateABTestExperiment', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_abtest_experiment_with_options_async(
@@ -5585,12 +10304,27 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestExperimentResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
+        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='UpdateABTestExperiment',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.UpdateABTestExperimentResponse(),
-            await self.do_roarequest_async('UpdateABTestExperiment', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_abtest_fixed_flow_dividers(
@@ -5624,12 +10358,27 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestFixedFlowDividersResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
+        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='UpdateABTestFixedFlowDividers',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}/fixed-flow-dividers',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.UpdateABTestFixedFlowDividersResponse(),
-            self.do_roarequest('UpdateABTestFixedFlowDividers', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}/fixed-flow-dividers', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_abtest_fixed_flow_dividers_with_options_async(
@@ -5641,12 +10390,27 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestFixedFlowDividersResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
+        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='UpdateABTestFixedFlowDividers',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}/fixed-flow-dividers',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.UpdateABTestFixedFlowDividersResponse(),
-            await self.do_roarequest_async('UpdateABTestFixedFlowDividers', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}/fixed-flow-dividers', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_abtest_group(
@@ -5677,12 +10441,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestGroupResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='UpdateABTestGroup',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.UpdateABTestGroupResponse(),
-            self.do_roarequest('UpdateABTestGroup', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_abtest_group_with_options_async(
@@ -5693,12 +10471,26 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestGroupResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
+        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='UpdateABTestGroup',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.UpdateABTestGroupResponse(),
-            await self.do_roarequest_async('UpdateABTestGroup', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_abtest_scene(
@@ -5726,12 +10518,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestSceneResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='UpdateABTestScene',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.UpdateABTestSceneResponse(),
-            self.do_roarequest('UpdateABTestScene', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_abtest_scene_with_options_async(
@@ -5741,12 +10546,25 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestSceneResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='UpdateABTestScene',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.UpdateABTestSceneResponse(),
-            await self.do_roarequest_async('UpdateABTestScene', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_fetch_fields(
@@ -5778,6 +10596,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateFetchFieldsResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -5785,9 +10605,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='UpdateFetchFields',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/fetch-fields',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.UpdateFetchFieldsResponse(),
-            self.do_roarequest('UpdateFetchFields', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/fetch-fields', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_fetch_fields_with_options_async(
@@ -5799,6 +10630,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateFetchFieldsResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -5806,9 +10639,370 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='UpdateFetchFields',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/fetch-fields',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.UpdateFetchFieldsResponse(),
-            await self.do_roarequest_async('UpdateFetchFields', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/fetch-fields', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_function_default_instance(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        request: open_search_20171225_models.UpdateFunctionDefaultInstanceRequest,
+    ) -> open_search_20171225_models.UpdateFunctionDefaultInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_function_default_instance_with_options(app_group_identity, function_name, request, headers, runtime)
+
+    async def update_function_default_instance_async(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        request: open_search_20171225_models.UpdateFunctionDefaultInstanceRequest,
+    ) -> open_search_20171225_models.UpdateFunctionDefaultInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_function_default_instance_with_options_async(app_group_identity, function_name, request, headers, runtime)
+
+    def update_function_default_instance_with_options(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        request: open_search_20171225_models.UpdateFunctionDefaultInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.UpdateFunctionDefaultInstanceResponse:
+        UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        body = {}
+        if not UtilClient.is_unset(request.instance_name):
+            body['instanceName'] = request.instance_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateFunctionDefaultInstance',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/default-instance',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.UpdateFunctionDefaultInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_function_default_instance_with_options_async(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        request: open_search_20171225_models.UpdateFunctionDefaultInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.UpdateFunctionDefaultInstanceResponse:
+        UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        body = {}
+        if not UtilClient.is_unset(request.instance_name):
+            body['instanceName'] = request.instance_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateFunctionDefaultInstance',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/default-instance',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.UpdateFunctionDefaultInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_function_instance(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+        request: open_search_20171225_models.UpdateFunctionInstanceRequest,
+    ) -> open_search_20171225_models.UpdateFunctionInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_function_instance_with_options(app_group_identity, function_name, instance_name, request, headers, runtime)
+
+    async def update_function_instance_async(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+        request: open_search_20171225_models.UpdateFunctionInstanceRequest,
+    ) -> open_search_20171225_models.UpdateFunctionInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_function_instance_with_options_async(app_group_identity, function_name, instance_name, request, headers, runtime)
+
+    def update_function_instance_with_options(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+        request: open_search_20171225_models.UpdateFunctionInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.UpdateFunctionInstanceResponse:
+        UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
+        body = {}
+        if not UtilClient.is_unset(request.create_parameters):
+            body['createParameters'] = request.create_parameters
+        if not UtilClient.is_unset(request.cron):
+            body['cron'] = request.cron
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateFunctionInstance',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.UpdateFunctionInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_function_instance_with_options_async(
+        self,
+        app_group_identity: str,
+        function_name: str,
+        instance_name: str,
+        request: open_search_20171225_models.UpdateFunctionInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.UpdateFunctionInstanceResponse:
+        UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        function_name = OpenApiUtilClient.get_encode_param(function_name)
+        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
+        body = {}
+        if not UtilClient.is_unset(request.create_parameters):
+            body['createParameters'] = request.create_parameters
+        if not UtilClient.is_unset(request.cron):
+            body['cron'] = request.cron
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateFunctionInstance',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.UpdateFunctionInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_search_strategy(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        strategy_name: str,
+    ) -> open_search_20171225_models.UpdateSearchStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_search_strategy_with_options(app_group_identity, app_id, strategy_name, headers, runtime)
+
+    async def update_search_strategy_async(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        strategy_name: str,
+    ) -> open_search_20171225_models.UpdateSearchStrategyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_search_strategy_with_options_async(app_group_identity, app_id, strategy_name, headers, runtime)
+
+    def update_search_strategy_with_options(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        strategy_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.UpdateSearchStrategyResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        strategy_name = OpenApiUtilClient.get_encode_param(strategy_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='UpdateSearchStrategy',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies/{strategy_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.UpdateSearchStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_search_strategy_with_options_async(
+        self,
+        app_group_identity: str,
+        app_id: str,
+        strategy_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.UpdateSearchStrategyResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
+        strategy_name = OpenApiUtilClient.get_encode_param(strategy_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='UpdateSearchStrategy',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies/{strategy_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.UpdateSearchStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_sort_script(
+        self,
+        app_group_identity: str,
+        app_version_id: str,
+        script_name: str,
+    ) -> open_search_20171225_models.UpdateSortScriptResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_sort_script_with_options(app_group_identity, app_version_id, script_name, headers, runtime)
+
+    async def update_sort_script_async(
+        self,
+        app_group_identity: str,
+        app_version_id: str,
+        script_name: str,
+    ) -> open_search_20171225_models.UpdateSortScriptResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_sort_script_with_options_async(app_group_identity, app_version_id, script_name, headers, runtime)
+
+    def update_sort_script_with_options(
+        self,
+        app_group_identity: str,
+        app_version_id: str,
+        script_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.UpdateSortScriptResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
+        script_name = OpenApiUtilClient.get_encode_param(script_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='UpdateSortScript',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.UpdateSortScriptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_sort_script_with_options_async(
+        self,
+        app_group_identity: str,
+        app_version_id: str,
+        script_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.UpdateSortScriptResponse:
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
+        script_name = OpenApiUtilClient.get_encode_param(script_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='UpdateSortScript',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.UpdateSortScriptResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_summaries(
@@ -5840,6 +11034,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateSummariesResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -5847,9 +11043,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='UpdateSummaries',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/summaries',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.UpdateSummariesResponse(),
-            self.do_roarequest('UpdateSummaries', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/summaries', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_summaries_with_options_async(
@@ -5861,6 +11068,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateSummariesResponse:
         UtilClient.validate_model(request)
+        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -5868,7 +11077,76 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='UpdateSummaries',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/summaries',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             open_search_20171225_models.UpdateSummariesResponse(),
-            await self.do_roarequest_async('UpdateSummaries', '2017-12-25', 'HTTPS', 'PUT', 'AK', f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/summaries', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def validate_data_sources(self) -> open_search_20171225_models.ValidateDataSourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.validate_data_sources_with_options(headers, runtime)
+
+    async def validate_data_sources_async(self) -> open_search_20171225_models.ValidateDataSourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.validate_data_sources_with_options_async(headers, runtime)
+
+    def validate_data_sources_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ValidateDataSourcesResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ValidateDataSources',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/assist/data-sources/validations',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ValidateDataSourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def validate_data_sources_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ValidateDataSourcesResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ValidateDataSources',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/assist/data-sources/validations',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ValidateDataSourcesResponse(),
+            await self.call_api_async(params, req, runtime)
         )

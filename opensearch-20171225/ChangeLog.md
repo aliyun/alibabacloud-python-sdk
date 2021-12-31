@@ -1,3 +1,6 @@
+2021-12-31 Version: 1.0.3
+- Add algorithm service interface.
+
 2021-03-31 Version: 1.0.1
 - Generated python 2017-12-25 for OpenSearch.
 
