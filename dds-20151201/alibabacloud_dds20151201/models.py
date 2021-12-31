@@ -1488,6 +1488,7 @@ class CreateServerlessDBInstanceRequest(TeaModel):
         self,
         account_password: str = None,
         auto_renew: str = None,
+        capacity_unit: str = None,
         client_token: str = None,
         dbinstance_description: str = None,
         dbinstance_storage: int = None,
@@ -1510,6 +1511,7 @@ class CreateServerlessDBInstanceRequest(TeaModel):
     ):
         self.account_password = account_password
         self.auto_renew = auto_renew
+        self.capacity_unit = capacity_unit
         self.client_token = client_token
         self.dbinstance_description = dbinstance_description
         self.dbinstance_storage = dbinstance_storage
@@ -1543,6 +1545,8 @@ class CreateServerlessDBInstanceRequest(TeaModel):
             result['AccountPassword'] = self.account_password
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
+        if self.capacity_unit is not None:
+            result['CapacityUnit'] = self.capacity_unit
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dbinstance_description is not None:
@@ -1589,6 +1593,8 @@ class CreateServerlessDBInstanceRequest(TeaModel):
             self.account_password = m.get('AccountPassword')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+        if m.get('CapacityUnit') is not None:
+            self.capacity_unit = m.get('CapacityUnit')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DBInstanceDescription') is not None:
@@ -1824,6 +1830,7 @@ class CreateShardingDBInstanceRequest(TeaModel):
         protocol_type: str = None,
         region_id: str = None,
         replica_set: List[CreateShardingDBInstanceRequestReplicaSet] = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         restore_time: str = None,
@@ -1851,6 +1858,7 @@ class CreateShardingDBInstanceRequest(TeaModel):
         self.protocol_type = protocol_type
         self.region_id = region_id
         self.replica_set = replica_set
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.restore_time = restore_time
@@ -1920,6 +1928,8 @@ class CreateShardingDBInstanceRequest(TeaModel):
         if self.replica_set is not None:
             for k in self.replica_set:
                 result['ReplicaSet'].append(k.to_map() if k else None)
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -1985,6 +1995,8 @@ class CreateShardingDBInstanceRequest(TeaModel):
             for k in m.get('ReplicaSet'):
                 temp_model = CreateShardingDBInstanceRequestReplicaSet()
                 self.replica_set.append(temp_model.from_map(k))
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -8001,6 +8013,546 @@ class DescribeDBInstancesResponse(TeaModel):
         return self
 
 
+class DescribeDBInstancesOverviewRequest(TeaModel):
+    def __init__(
+        self,
+        architecture_type: str = None,
+        charge_type: str = None,
+        engine_version: str = None,
+        expire_time: str = None,
+        instance_class: str = None,
+        instance_ids: str = None,
+        instance_status: str = None,
+        instance_type: str = None,
+        network_type: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        search_key: str = None,
+        security_token: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.architecture_type = architecture_type
+        self.charge_type = charge_type
+        self.engine_version = engine_version
+        self.expire_time = expire_time
+        self.instance_class = instance_class
+        self.instance_ids = instance_ids
+        self.instance_status = instance_status
+        self.instance_type = instance_type
+        self.network_type = network_type
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.search_key = search_key
+        self.security_token = security_token
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.architecture_type is not None:
+            result['ArchitectureType'] = self.architecture_type
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.instance_class is not None:
+            result['InstanceClass'] = self.instance_class
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.instance_status is not None:
+            result['InstanceStatus'] = self.instance_status
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.search_key is not None:
+            result['SearchKey'] = self.search_key
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArchitectureType') is not None:
+            self.architecture_type = m.get('ArchitectureType')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('InstanceClass') is not None:
+            self.instance_class = m.get('InstanceClass')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('InstanceStatus') is not None:
+            self.instance_status = m.get('InstanceStatus')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SearchKey') is not None:
+            self.search_key = m.get('SearchKey')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeDBInstancesOverviewResponseBodyDBInstancesMongosList(TeaModel):
+    def __init__(
+        self,
+        node_class: str = None,
+        node_description: str = None,
+        node_id: str = None,
+    ):
+        self.node_class = node_class
+        self.node_description = node_description
+        self.node_id = node_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.node_class is not None:
+            result['NodeClass'] = self.node_class
+        if self.node_description is not None:
+            result['NodeDescription'] = self.node_description
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NodeClass') is not None:
+            self.node_class = m.get('NodeClass')
+        if m.get('NodeDescription') is not None:
+            self.node_description = m.get('NodeDescription')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        return self
+
+
+class DescribeDBInstancesOverviewResponseBodyDBInstancesShardList(TeaModel):
+    def __init__(
+        self,
+        node_class: str = None,
+        node_description: str = None,
+        node_id: str = None,
+        node_storage: int = None,
+        readonly_replicas: int = None,
+    ):
+        self.node_class = node_class
+        self.node_description = node_description
+        self.node_id = node_id
+        self.node_storage = node_storage
+        self.readonly_replicas = readonly_replicas
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.node_class is not None:
+            result['NodeClass'] = self.node_class
+        if self.node_description is not None:
+            result['NodeDescription'] = self.node_description
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.node_storage is not None:
+            result['NodeStorage'] = self.node_storage
+        if self.readonly_replicas is not None:
+            result['ReadonlyReplicas'] = self.readonly_replicas
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NodeClass') is not None:
+            self.node_class = m.get('NodeClass')
+        if m.get('NodeDescription') is not None:
+            self.node_description = m.get('NodeDescription')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('NodeStorage') is not None:
+            self.node_storage = m.get('NodeStorage')
+        if m.get('ReadonlyReplicas') is not None:
+            self.readonly_replicas = m.get('ReadonlyReplicas')
+        return self
+
+
+class DescribeDBInstancesOverviewResponseBodyDBInstancesTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeDBInstancesOverviewResponseBodyDBInstances(TeaModel):
+    def __init__(
+        self,
+        charge_type: str = None,
+        creation_time: str = None,
+        dbinstance_class: str = None,
+        dbinstance_description: str = None,
+        dbinstance_id: str = None,
+        dbinstance_status: str = None,
+        dbinstance_storage: int = None,
+        dbinstance_type: str = None,
+        destroy_time: str = None,
+        engine: str = None,
+        engine_version: str = None,
+        expire_time: str = None,
+        kind_code: str = None,
+        last_downgrade_time: str = None,
+        lock_mode: str = None,
+        mongos_list: List[DescribeDBInstancesOverviewResponseBodyDBInstancesMongosList] = None,
+        network_type: str = None,
+        region_id: str = None,
+        replication_factor: str = None,
+        resource_group_id: str = None,
+        shard_list: List[DescribeDBInstancesOverviewResponseBodyDBInstancesShardList] = None,
+        tags: List[DescribeDBInstancesOverviewResponseBodyDBInstancesTags] = None,
+        vpc_auth_mode: str = None,
+        zone_id: str = None,
+    ):
+        self.charge_type = charge_type
+        self.creation_time = creation_time
+        self.dbinstance_class = dbinstance_class
+        self.dbinstance_description = dbinstance_description
+        self.dbinstance_id = dbinstance_id
+        self.dbinstance_status = dbinstance_status
+        self.dbinstance_storage = dbinstance_storage
+        self.dbinstance_type = dbinstance_type
+        self.destroy_time = destroy_time
+        self.engine = engine
+        self.engine_version = engine_version
+        self.expire_time = expire_time
+        self.kind_code = kind_code
+        self.last_downgrade_time = last_downgrade_time
+        self.lock_mode = lock_mode
+        self.mongos_list = mongos_list
+        self.network_type = network_type
+        self.region_id = region_id
+        self.replication_factor = replication_factor
+        self.resource_group_id = resource_group_id
+        self.shard_list = shard_list
+        self.tags = tags
+        self.vpc_auth_mode = vpc_auth_mode
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.mongos_list:
+            for k in self.mongos_list:
+                if k:
+                    k.validate()
+        if self.shard_list:
+            for k in self.shard_list:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.dbinstance_class is not None:
+            result['DBInstanceClass'] = self.dbinstance_class
+        if self.dbinstance_description is not None:
+            result['DBInstanceDescription'] = self.dbinstance_description
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.dbinstance_status is not None:
+            result['DBInstanceStatus'] = self.dbinstance_status
+        if self.dbinstance_storage is not None:
+            result['DBInstanceStorage'] = self.dbinstance_storage
+        if self.dbinstance_type is not None:
+            result['DBInstanceType'] = self.dbinstance_type
+        if self.destroy_time is not None:
+            result['DestroyTime'] = self.destroy_time
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.kind_code is not None:
+            result['KindCode'] = self.kind_code
+        if self.last_downgrade_time is not None:
+            result['LastDowngradeTime'] = self.last_downgrade_time
+        if self.lock_mode is not None:
+            result['LockMode'] = self.lock_mode
+        result['MongosList'] = []
+        if self.mongos_list is not None:
+            for k in self.mongos_list:
+                result['MongosList'].append(k.to_map() if k else None)
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.replication_factor is not None:
+            result['ReplicationFactor'] = self.replication_factor
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['ShardList'] = []
+        if self.shard_list is not None:
+            for k in self.shard_list:
+                result['ShardList'].append(k.to_map() if k else None)
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.vpc_auth_mode is not None:
+            result['VpcAuthMode'] = self.vpc_auth_mode
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('DBInstanceClass') is not None:
+            self.dbinstance_class = m.get('DBInstanceClass')
+        if m.get('DBInstanceDescription') is not None:
+            self.dbinstance_description = m.get('DBInstanceDescription')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DBInstanceStatus') is not None:
+            self.dbinstance_status = m.get('DBInstanceStatus')
+        if m.get('DBInstanceStorage') is not None:
+            self.dbinstance_storage = m.get('DBInstanceStorage')
+        if m.get('DBInstanceType') is not None:
+            self.dbinstance_type = m.get('DBInstanceType')
+        if m.get('DestroyTime') is not None:
+            self.destroy_time = m.get('DestroyTime')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('KindCode') is not None:
+            self.kind_code = m.get('KindCode')
+        if m.get('LastDowngradeTime') is not None:
+            self.last_downgrade_time = m.get('LastDowngradeTime')
+        if m.get('LockMode') is not None:
+            self.lock_mode = m.get('LockMode')
+        self.mongos_list = []
+        if m.get('MongosList') is not None:
+            for k in m.get('MongosList'):
+                temp_model = DescribeDBInstancesOverviewResponseBodyDBInstancesMongosList()
+                self.mongos_list.append(temp_model.from_map(k))
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ReplicationFactor') is not None:
+            self.replication_factor = m.get('ReplicationFactor')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.shard_list = []
+        if m.get('ShardList') is not None:
+            for k in m.get('ShardList'):
+                temp_model = DescribeDBInstancesOverviewResponseBodyDBInstancesShardList()
+                self.shard_list.append(temp_model.from_map(k))
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeDBInstancesOverviewResponseBodyDBInstancesTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('VpcAuthMode') is not None:
+            self.vpc_auth_mode = m.get('VpcAuthMode')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeDBInstancesOverviewResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbinstances: List[DescribeDBInstancesOverviewResponseBodyDBInstances] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.dbinstances = dbinstances
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.dbinstances:
+            for k in self.dbinstances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DBInstances'] = []
+        if self.dbinstances is not None:
+            for k in self.dbinstances:
+                result['DBInstances'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dbinstances = []
+        if m.get('DBInstances') is not None:
+            for k in m.get('DBInstances'):
+                temp_model = DescribeDBInstancesOverviewResponseBodyDBInstances()
+                self.dbinstances.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeDBInstancesOverviewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeDBInstancesOverviewResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeDBInstancesOverviewResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDedicatedClusterInstanceListRequest(TeaModel):
     def __init__(
         self,
@@ -13873,7 +14425,9 @@ class EvaluateResourceRequest(TeaModel):
         engine_version: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        readonly_replicas: str = None,
         region_id: str = None,
+        replication_factor: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
@@ -13886,7 +14440,9 @@ class EvaluateResourceRequest(TeaModel):
         self.engine_version = engine_version
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.readonly_replicas = readonly_replicas
         self.region_id = region_id
+        self.replication_factor = replication_factor
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
@@ -13914,8 +14470,12 @@ class EvaluateResourceRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.readonly_replicas is not None:
+            result['ReadonlyReplicas'] = self.readonly_replicas
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.replication_factor is not None:
+            result['ReplicationFactor'] = self.replication_factor
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -13942,8 +14502,12 @@ class EvaluateResourceRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ReadonlyReplicas') is not None:
+            self.readonly_replicas = m.get('ReadonlyReplicas')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ReplicationFactor') is not None:
+            self.replication_factor = m.get('ReplicationFactor')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
