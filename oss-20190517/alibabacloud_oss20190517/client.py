@@ -65,7 +65,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.AbortBucketWormResponse(),
@@ -93,7 +93,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.AbortBucketWormResponse(),
@@ -149,7 +149,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.AbortMultipartUploadResponse(),
@@ -185,7 +185,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.AbortMultipartUploadResponse(),
@@ -264,7 +264,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='binary',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.AppendObjectResponse(),
@@ -323,7 +323,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='binary',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.AppendObjectResponse(),
@@ -375,7 +375,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.CompleteBucketWormResponse(),
@@ -409,7 +409,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.CompleteBucketWormResponse(),
@@ -711,7 +711,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketResponse(),
@@ -739,7 +739,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketResponse(),
@@ -783,7 +783,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketCorsResponse(),
@@ -811,7 +811,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketCorsResponse(),
@@ -855,7 +855,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketEncryptionResponse(),
@@ -883,7 +883,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketEncryptionResponse(),
@@ -935,7 +935,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketInventoryResponse(),
@@ -969,7 +969,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketInventoryResponse(),
@@ -1013,7 +1013,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketLifecycleResponse(),
@@ -1041,7 +1041,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketLifecycleResponse(),
@@ -1085,7 +1085,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketLoggingResponse(),
@@ -1113,7 +1113,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketLoggingResponse(),
@@ -1157,7 +1157,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketPolicyResponse(),
@@ -1185,7 +1185,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketPolicyResponse(),
@@ -1237,7 +1237,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketReplicationResponse(),
@@ -1271,7 +1271,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketReplicationResponse(),
@@ -1315,7 +1315,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketTagsResponse(),
@@ -1343,7 +1343,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketTagsResponse(),
@@ -1387,7 +1387,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketWebsiteResponse(),
@@ -1415,7 +1415,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteBucketWebsiteResponse(),
@@ -1463,7 +1463,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteLiveChannelResponse(),
@@ -1493,7 +1493,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteLiveChannelResponse(),
@@ -1633,7 +1633,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='binary',
-            body_type='binary'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteObjectResponse(),
@@ -1669,7 +1669,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='binary',
-            body_type='binary'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteObjectResponse(),
@@ -1725,7 +1725,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteObjectTaggingResponse(),
@@ -1761,10 +1761,86 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.DeleteObjectTaggingResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def describe_regions(
+        self,
+        request: oss_20190517_models.DescribeRegionsRequest,
+    ) -> oss_20190517_models.DescribeRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_regions_with_options(request, headers, runtime)
+
+    async def describe_regions_async(
+        self,
+        request: oss_20190517_models.DescribeRegionsRequest,
+    ) -> oss_20190517_models.DescribeRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_regions_with_options_async(request, headers, runtime)
+
+    def describe_regions_with_options(
+        self,
+        request: oss_20190517_models.DescribeRegionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> oss_20190517_models.DescribeRegionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.regions):
+            query['regions'] = request.regions
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2019-05-17',
+            protocol='HTTPS',
+            pathname=f'/?regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='xml',
+            body_type='xml'
+        )
+        return TeaCore.from_map(
+            oss_20190517_models.DescribeRegionsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def describe_regions_with_options_async(
+        self,
+        request: oss_20190517_models.DescribeRegionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> oss_20190517_models.DescribeRegionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.regions):
+            query['regions'] = request.regions
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2019-05-17',
+            protocol='HTTPS',
+            pathname=f'/?regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='xml',
+            body_type='xml'
+        )
+        return TeaCore.from_map(
+            oss_20190517_models.DescribeRegionsResponse(),
             await self.execute_async(params, req, runtime)
         )
 
@@ -1817,7 +1893,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.ExtendBucketWormResponse(),
@@ -1855,7 +1931,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.ExtendBucketWormResponse(),
@@ -3877,7 +3953,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='binary',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.GetObjectMetaResponse(),
@@ -3913,7 +3989,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='binary',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.GetObjectMetaResponse(),
@@ -4145,7 +4221,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.GetSymlinkResponse(),
@@ -4181,7 +4257,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.GetSymlinkResponse(),
@@ -4344,7 +4420,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.HeadObjectResponse(),
@@ -4391,7 +4467,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.HeadObjectResponse(),
@@ -4443,7 +4519,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.InitiateBucketWormResponse(),
@@ -4477,7 +4553,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.InitiateBucketWormResponse(),
@@ -5472,7 +5548,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.OptionObjectResponse(),
@@ -5511,7 +5587,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.OptionObjectResponse(),
@@ -5555,7 +5631,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='none',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PostObjectResponse(),
@@ -5583,7 +5659,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='none',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PostObjectResponse(),
@@ -5645,7 +5721,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PostVodPlaylistResponse(),
@@ -5685,7 +5761,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PostVodPlaylistResponse(),
@@ -5742,7 +5818,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketResponse(),
@@ -5781,7 +5857,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketResponse(),
@@ -5830,7 +5906,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketAclResponse(),
@@ -5863,7 +5939,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketAclResponse(),
@@ -5915,7 +5991,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketCorsResponse(),
@@ -5949,7 +6025,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketCorsResponse(),
@@ -6001,7 +6077,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketEncryptionResponse(),
@@ -6035,7 +6111,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketEncryptionResponse(),
@@ -6091,7 +6167,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketInventoryResponse(),
@@ -6129,7 +6205,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketInventoryResponse(),
@@ -6181,7 +6257,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketLifecycleResponse(),
@@ -6215,7 +6291,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketLifecycleResponse(),
@@ -6267,7 +6343,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketLoggingResponse(),
@@ -6301,7 +6377,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketLoggingResponse(),
@@ -6350,7 +6426,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='json'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketPolicyResponse(),
@@ -6381,7 +6457,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='json'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketPolicyResponse(),
@@ -6433,7 +6509,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketRefererResponse(),
@@ -6467,7 +6543,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketRefererResponse(),
@@ -6519,7 +6595,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketReplicationResponse(),
@@ -6553,7 +6629,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketReplicationResponse(),
@@ -6605,7 +6681,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketRequestPaymentResponse(),
@@ -6639,7 +6715,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketRequestPaymentResponse(),
@@ -6691,7 +6767,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketTagsResponse(),
@@ -6725,7 +6801,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketTagsResponse(),
@@ -6777,7 +6853,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketTransferAccelerationResponse(),
@@ -6811,7 +6887,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketTransferAccelerationResponse(),
@@ -6863,7 +6939,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketVersioningResponse(),
@@ -6897,7 +6973,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketVersioningResponse(),
@@ -6949,7 +7025,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketWebsiteResponse(),
@@ -6983,7 +7059,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutBucketWebsiteResponse(),
@@ -7131,7 +7207,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutLiveChannelStatusResponse(),
@@ -7167,7 +7243,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutLiveChannelStatusResponse(),
@@ -7240,7 +7316,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='binary',
-            body_type='binary'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutObjectResponse(),
@@ -7293,7 +7369,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='binary',
-            body_type='binary'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutObjectResponse(),
@@ -7354,7 +7430,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutObjectAclResponse(),
@@ -7395,7 +7471,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutObjectAclResponse(),
@@ -7455,7 +7531,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutObjectTaggingResponse(),
@@ -7495,7 +7571,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutObjectTaggingResponse(),
@@ -7554,7 +7630,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutSymlinkResponse(),
@@ -7595,7 +7671,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.PutSymlinkResponse(),
@@ -7655,7 +7731,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.RestoreObjectResponse(),
@@ -7695,7 +7771,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='xml',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.RestoreObjectResponse(),
@@ -7847,7 +7923,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='binary',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.UploadPartResponse(),
@@ -7887,7 +7963,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='binary',
-            body_type='xml'
+            body_type='none'
         )
         return TeaCore.from_map(
             oss_20190517_models.UploadPartResponse(),

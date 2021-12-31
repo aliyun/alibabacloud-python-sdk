@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_oss20190517.
 
-Created on 16/12/2021
+Created on 31/12/2021
 
 @author: Alibaba Cloud SDK
 """
@@ -40,9 +40,8 @@ REQUIRES = [
     "alibabacloud_tea_util>=0.3.5, <1.0.0",
     "alibabacloud_gateway_spi>=0.0.1, <1.0.0",
     "alibabacloud_gateway_oss>=0.0.3, <1.0.0",
-    "alibabacloud_tea_openapi>=0.3.0, <1.0.0",
-    "alibabacloud_openapi_util>=0.1.6, <1.0.0",
-    "alibabacloud_endpoint_util>=0.0.3, <1.0.0"
+    "alibabacloud_tea_openapi>=0.3.1, <1.0.0",
+    "alibabacloud_openapi_util>=0.1.6, <1.0.0"
 ]
 
 LONG_DESCRIPTION = ''
