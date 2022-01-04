@@ -42,19 +42,19 @@ class AddImageRequestLabels(TeaModel):
 class AddImageRequest(TeaModel):
     def __init__(
         self,
-        name: str = None,
         description: str = None,
         image_uri: str = None,
         labels: List[AddImageRequestLabels] = None,
+        name: str = None,
     ):
-        # 镜像名称
-        self.name = name
         # 镜像描述
         self.description = description
         # 镜像地址
         self.image_uri = image_uri
         # 镜像标签，是个数组
         self.labels = labels
+        # 镜像名称
+        self.name = name
 
     def validate(self):
         if self.labels:
@@ -68,8 +68,6 @@ class AddImageRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.name is not None:
-            result['Name'] = self.name
         if self.description is not None:
             result['Description'] = self.description
         if self.image_uri is not None:
@@ -78,12 +76,12 @@ class AddImageRequest(TeaModel):
         if self.labels is not None:
             for k in self.labels:
                 result['Labels'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('ImageUri') is not None:
@@ -93,19 +91,21 @@ class AddImageRequest(TeaModel):
             for k in m.get('Labels'):
                 temp_model = AddImageRequestLabels()
                 self.labels.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         return self
 
 
 class AddImageResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         image_id: str = None,
+        request_id: str = None,
     ):
-        # Id of the request
-        self.request_id = request_id
         # 镜像 id
         self.image_id = image_id
+        # Id of the request
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -116,18 +116,18 @@ class AddImageResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         return self
 
 
@@ -307,20 +307,23 @@ class AddImageLabelsResponse(TeaModel):
 class CopyExperimentRequest(TeaModel):
     def __init__(
         self,
-        name: str = None,
+        accessibility: str = None,
         description: str = None,
-        source: str = None,
         folder_id: str = None,
+        name: str = None,
+        source: str = None,
         workspace_id: str = None,
     ):
-        # 实验名称，最大长度 128，可包含中英文
-        self.name = name
+        # 工作空间内可见性 PUBLIC; PRIVATE 默认PUBLIC
+        self.accessibility = accessibility
         # 实验描述
         self.description = description
-        # 实验来源，目前 PaiStudio，data-airec（推荐白盒）
-        self.source = source
         # 实验创建的目录 id
         self.folder_id = folder_id
+        # 实验名称，最大长度 128，可包含中英文
+        self.name = name
+        # 实验来源，目前 PaiStudio，data-airec（推荐白盒）
+        self.source = source
         # 实验创建的Workspace
         self.workspace_id = workspace_id
 
@@ -333,28 +336,32 @@ class CopyExperimentRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.name is not None:
-            result['Name'] = self.name
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
         if self.description is not None:
             result['Description'] = self.description
-        if self.source is not None:
-            result['Source'] = self.source
         if self.folder_id is not None:
             result['FolderId'] = self.folder_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.source is not None:
+            result['Source'] = self.source
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
         if m.get('Description') is not None:
             self.description = m.get('Description')
-        if m.get('Source') is not None:
-            self.source = m.get('Source')
         if m.get('FolderId') is not None:
             self.folder_id = m.get('FolderId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -363,12 +370,12 @@ class CopyExperimentRequest(TeaModel):
 class CopyExperimentResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         experiment_id: str = None,
+        request_id: str = None,
     ):
+        self.experiment_id = experiment_id
         # Id of the request
         self.request_id = request_id
-        self.experiment_id = experiment_id
 
     def validate(self):
         pass
@@ -379,18 +386,18 @@ class CopyExperimentResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.experiment_id is not None:
             result['ExperimentId'] = self.experiment_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ExperimentId') is not None:
             self.experiment_id = m.get('ExperimentId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -434,21 +441,24 @@ class CopyExperimentResponse(TeaModel):
 class CreateExperimentRequest(TeaModel):
     def __init__(
         self,
-        name: str = None,
+        accessibility: str = None,
         description: str = None,
-        source: str = None,
         folder_id: str = None,
-        workspace_id: str = None,
-        template_id: str = None,
+        name: str = None,
         options: str = None,
+        source: str = None,
+        template_id: str = None,
+        workspace_id: str = None,
     ):
-        self.name = name
+        # 工作空间内可见性 PUBLIC; PRIVATE 默认PUBLIC
+        self.accessibility = accessibility
         self.description = description
-        self.source = source
         self.folder_id = folder_id
-        self.workspace_id = workspace_id
-        self.template_id = template_id
+        self.name = name
         self.options = options
+        self.source = source
+        self.template_id = template_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -459,50 +469,54 @@ class CreateExperimentRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.name is not None:
-            result['Name'] = self.name
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
         if self.description is not None:
             result['Description'] = self.description
-        if self.source is not None:
-            result['Source'] = self.source
         if self.folder_id is not None:
             result['FolderId'] = self.folder_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        if self.template_id is not None:
-            result['TemplateId'] = self.template_id
+        if self.name is not None:
+            result['Name'] = self.name
         if self.options is not None:
             result['Options'] = self.options
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
         if m.get('Description') is not None:
             self.description = m.get('Description')
-        if m.get('Source') is not None:
-            self.source = m.get('Source')
         if m.get('FolderId') is not None:
             self.folder_id = m.get('FolderId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        if m.get('TemplateId') is not None:
-            self.template_id = m.get('TemplateId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('Options') is not None:
             self.options = m.get('Options')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
 class CreateExperimentResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         experiment_id: str = None,
+        request_id: str = None,
     ):
+        self.experiment_id = experiment_id
         # Id of the request
         self.request_id = request_id
-        self.experiment_id = experiment_id
 
     def validate(self):
         pass
@@ -513,18 +527,18 @@ class CreateExperimentResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.experiment_id is not None:
             result['ExperimentId'] = self.experiment_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ExperimentId') is not None:
             self.experiment_id = m.get('ExperimentId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -568,15 +582,18 @@ class CreateExperimentResponse(TeaModel):
 class CreateExperimentFolderRequest(TeaModel):
     def __init__(
         self,
-        workspace_id: str = None,
+        accessibility: str = None,
         name: str = None,
         parent_folder_id: str = None,
         source: str = None,
+        workspace_id: str = None,
     ):
-        self.workspace_id = workspace_id
+        # 工作空间内可见性 PUBLIC; PRIVATE 默认PUBLIC
+        self.accessibility = accessibility
         self.name = name
         self.parent_folder_id = parent_folder_id
         self.source = source
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -587,38 +604,42 @@ class CreateExperimentFolderRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
         if self.name is not None:
             result['Name'] = self.name
         if self.parent_folder_id is not None:
             result['ParentFolderId'] = self.parent_folder_id
         if self.source is not None:
             result['Source'] = self.source
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('ParentFolderId') is not None:
             self.parent_folder_id = m.get('ParentFolderId')
         if m.get('Source') is not None:
             self.source = m.get('Source')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
 class CreateExperimentFolderResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         folder_id: str = None,
+        request_id: str = None,
     ):
+        self.folder_id = folder_id
         # Id of the request
         self.request_id = request_id
-        self.folder_id = folder_id
 
     def validate(self):
         pass
@@ -629,18 +650,18 @@ class CreateExperimentFolderResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.folder_id is not None:
             result['FolderId'] = self.folder_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('FolderId') is not None:
             self.folder_id = m.get('FolderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -681,18 +702,12 @@ class CreateExperimentFolderResponse(TeaModel):
         return self
 
 
-class CreateJobRequest(TeaModel):
+class CreateExperimentMigrateValidationRequest(TeaModel):
     def __init__(
         self,
-        experiment_id: str = None,
-        execute_type: str = None,
-        node_id: str = None,
-        options: str = None,
+        source_exp_id: int = None,
     ):
-        self.experiment_id = experiment_id
-        self.execute_type = execute_type
-        self.node_id = node_id
-        self.options = options
+        self.source_exp_id = source_exp_id
 
     def validate(self):
         pass
@@ -703,38 +718,24 @@ class CreateJobRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.experiment_id is not None:
-            result['ExperimentId'] = self.experiment_id
-        if self.execute_type is not None:
-            result['ExecuteType'] = self.execute_type
-        if self.node_id is not None:
-            result['NodeId'] = self.node_id
-        if self.options is not None:
-            result['Options'] = self.options
+        if self.source_exp_id is not None:
+            result['SourceExpId'] = self.source_exp_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ExperimentId') is not None:
-            self.experiment_id = m.get('ExperimentId')
-        if m.get('ExecuteType') is not None:
-            self.execute_type = m.get('ExecuteType')
-        if m.get('NodeId') is not None:
-            self.node_id = m.get('NodeId')
-        if m.get('Options') is not None:
-            self.options = m.get('Options')
+        if m.get('SourceExpId') is not None:
+            self.source_exp_id = m.get('SourceExpId')
         return self
 
 
-class CreateJobResponseBody(TeaModel):
+class CreateExperimentMigrateValidationResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        job_id: str = None,
     ):
         # Id of the request
         self.request_id = request_id
-        self.job_id = job_id
 
     def validate(self):
         pass
@@ -747,16 +748,128 @@ class CreateJobResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateExperimentMigrateValidationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateExperimentMigrateValidationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateExperimentMigrateValidationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateJobRequest(TeaModel):
+    def __init__(
+        self,
+        execute_type: str = None,
+        experiment_id: str = None,
+        node_id: str = None,
+        options: str = None,
+    ):
+        self.execute_type = execute_type
+        self.experiment_id = experiment_id
+        self.node_id = node_id
+        self.options = options
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.execute_type is not None:
+            result['ExecuteType'] = self.execute_type
+        if self.experiment_id is not None:
+            result['ExperimentId'] = self.experiment_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.options is not None:
+            result['Options'] = self.options
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExecuteType') is not None:
+            self.execute_type = m.get('ExecuteType')
+        if m.get('ExperimentId') is not None:
+            self.experiment_id = m.get('ExperimentId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+        return self
+
+
+class CreateJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        request_id: str = None,
+    ):
+        self.job_id = job_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -827,11 +940,11 @@ class CreateServiceRequestConfig(TeaModel):
 class CreateServiceRequest(TeaModel):
     def __init__(
         self,
-        service_type: str = None,
         config: CreateServiceRequestConfig = None,
+        service_type: str = None,
     ):
-        self.service_type = service_type
         self.config = config
+        self.service_type = service_type
 
     def validate(self):
         if self.config:
@@ -843,19 +956,19 @@ class CreateServiceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.service_type is not None:
-            result['ServiceType'] = self.service_type
         if self.config is not None:
             result['Config'] = self.config.to_map()
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServiceType') is not None:
-            self.service_type = m.get('ServiceType')
         if m.get('Config') is not None:
             temp_model = CreateServiceRequestConfig()
             self.config = temp_model.from_map(m['Config'])
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
         return self
 
 
@@ -863,13 +976,13 @@ class CreateServiceResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        url: str = None,
         service_id: str = None,
+        url: str = None,
     ):
         # Id of the request
         self.request_id = request_id
-        self.url = url
         self.service_id = service_id
+        self.url = url
 
     def validate(self):
         pass
@@ -882,20 +995,20 @@ class CreateServiceResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.url is not None:
-            result['Url'] = self.url
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.url is not None:
+            result['Url'] = self.url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Url') is not None:
-            self.url = m.get('Url')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
         return self
 
 
@@ -1131,17 +1244,115 @@ class DeleteServiceResponse(TeaModel):
         return self
 
 
+class GetAlgoTreeRequest(TeaModel):
+    def __init__(
+        self,
+        source: str = None,
+    ):
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source is not None:
+            result['Source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        return self
+
+
+class GetAlgoTreeResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: Dict[str, Any] = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetAlgoTreeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetAlgoTreeResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetAlgoTreeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetAlgorithmDefRequest(TeaModel):
     def __init__(
         self,
-        provider: str = None,
-        identifier: str = None,
         algo_version: str = None,
+        identifier: str = None,
+        provider: str = None,
         signature: str = None,
     ):
-        self.provider = provider
-        self.identifier = identifier
         self.algo_version = algo_version
+        self.identifier = identifier
+        self.provider = provider
         self.signature = signature
 
     def validate(self):
@@ -1153,24 +1364,24 @@ class GetAlgorithmDefRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.provider is not None:
-            result['Provider'] = self.provider
-        if self.identifier is not None:
-            result['Identifier'] = self.identifier
         if self.algo_version is not None:
             result['AlgoVersion'] = self.algo_version
+        if self.identifier is not None:
+            result['Identifier'] = self.identifier
+        if self.provider is not None:
+            result['Provider'] = self.provider
         if self.signature is not None:
             result['Signature'] = self.signature
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Provider') is not None:
-            self.provider = m.get('Provider')
-        if m.get('Identifier') is not None:
-            self.identifier = m.get('Identifier')
         if m.get('AlgoVersion') is not None:
             self.algo_version = m.get('AlgoVersion')
+        if m.get('Identifier') is not None:
+            self.identifier = m.get('Identifier')
+        if m.get('Provider') is not None:
+            self.provider = m.get('Provider')
         if m.get('Signature') is not None:
             self.signature = m.get('Signature')
         return self
@@ -1250,15 +1461,15 @@ class GetAlgorithmDefResponse(TeaModel):
 class GetAlgorithmDefsRequest(TeaModel):
     def __init__(
         self,
-        timestamp: str = None,
         latest_timestamp: str = None,
-        range_start: int = None,
         range_end: int = None,
+        range_start: int = None,
+        timestamp: str = None,
     ):
-        self.timestamp = timestamp
         self.latest_timestamp = latest_timestamp
-        self.range_start = range_start
         self.range_end = range_end
+        self.range_start = range_start
+        self.timestamp = timestamp
 
     def validate(self):
         pass
@@ -1269,26 +1480,26 @@ class GetAlgorithmDefsRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.timestamp is not None:
-            result['Timestamp'] = self.timestamp
         if self.latest_timestamp is not None:
             result['LatestTimestamp'] = self.latest_timestamp
-        if self.range_start is not None:
-            result['RangeStart'] = self.range_start
         if self.range_end is not None:
             result['RangeEnd'] = self.range_end
+        if self.range_start is not None:
+            result['RangeStart'] = self.range_start
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Timestamp') is not None:
-            self.timestamp = m.get('Timestamp')
         if m.get('LatestTimestamp') is not None:
             self.latest_timestamp = m.get('LatestTimestamp')
-        if m.get('RangeStart') is not None:
-            self.range_start = m.get('RangeStart')
         if m.get('RangeEnd') is not None:
             self.range_end = m.get('RangeEnd')
+        if m.get('RangeStart') is not None:
+            self.range_start = m.get('RangeStart')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
         return self
 
 
@@ -1394,13 +1605,13 @@ class GetAlgorithmTreeResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        tree: List[Dict[str, Any]] = None,
         timestamp: str = None,
+        tree: List[Dict[str, Any]] = None,
     ):
         # Id of the request
         self.request_id = request_id
-        self.tree = tree
         self.timestamp = timestamp
+        self.tree = tree
 
     def validate(self):
         pass
@@ -1413,20 +1624,20 @@ class GetAlgorithmTreeResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.tree is not None:
-            result['Tree'] = self.tree
         if self.timestamp is not None:
             result['Timestamp'] = self.timestamp
+        if self.tree is not None:
+            result['Tree'] = self.tree
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Tree') is not None:
-            self.tree = m.get('Tree')
         if m.get('Timestamp') is not None:
             self.timestamp = m.get('Timestamp')
+        if m.get('Tree') is not None:
+            self.tree = m.get('Tree')
         return self
 
 
@@ -1467,133 +1678,37 @@ class GetAlgorithmTreeResponse(TeaModel):
         return self
 
 
-class GetAlgoTreeRequest(TeaModel):
-    def __init__(
-        self,
-        source: str = None,
-    ):
-        self.source = source
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.source is not None:
-            result['Source'] = self.source
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Source') is not None:
-            self.source = m.get('Source')
-        return self
-
-
-class GetAlgoTreeResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: Dict[str, Any] = None,
-    ):
-        # Id of the request
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        return self
-
-
-class GetAlgoTreeResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: GetAlgoTreeResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = GetAlgoTreeResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class GetExperimentResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        experiment_id: str = None,
-        name: str = None,
+        accessibility: str = None,
+        content: str = None,
+        creator: str = None,
         description: str = None,
+        experiment_id: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
-        creator: str = None,
+        name: str = None,
+        options: str = None,
+        request_id: str = None,
         source: str = None,
         version: int = None,
         workspace_id: str = None,
-        content: str = None,
-        options: str = None,
     ):
-        # Id of the request
-        self.request_id = request_id
-        self.experiment_id = experiment_id
-        self.name = name
+        self.accessibility = accessibility
+        self.content = content
+        self.creator = creator
         self.description = description
+        self.experiment_id = experiment_id
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
-        self.creator = creator
+        self.name = name
+        self.options = options
+        # Id of the request
+        self.request_id = request_id
         self.source = source
         self.version = version
         self.workspace_id = workspace_id
-        self.content = content
-        self.options = options
 
     def validate(self):
         pass
@@ -1604,58 +1719,62 @@ class GetExperimentResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.experiment_id is not None:
-            result['ExperimentId'] = self.experiment_id
-        if self.name is not None:
-            result['Name'] = self.name
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.creator is not None:
+            result['Creator'] = self.creator
         if self.description is not None:
             result['Description'] = self.description
+        if self.experiment_id is not None:
+            result['ExperimentId'] = self.experiment_id
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
-        if self.creator is not None:
-            result['Creator'] = self.creator
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.options is not None:
+            result['Options'] = self.options
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.source is not None:
             result['Source'] = self.source
         if self.version is not None:
             result['Version'] = self.version
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
-        if self.content is not None:
-            result['Content'] = self.content
-        if self.options is not None:
-            result['Options'] = self.options
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ExperimentId') is not None:
-            self.experiment_id = m.get('ExperimentId')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ExperimentId') is not None:
+            self.experiment_id = m.get('ExperimentId')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
-        if m.get('Creator') is not None:
-            self.creator = m.get('Creator')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('Version') is not None:
             self.version = m.get('Version')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
-        if m.get('Content') is not None:
-            self.content = m.get('Content')
-        if m.get('Options') is not None:
-            self.options = m.get('Options')
         return self
 
 
@@ -1699,11 +1818,19 @@ class GetExperimentResponse(TeaModel):
 class GetExperimentFolderChildrenRequest(TeaModel):
     def __init__(
         self,
-        workspace_id: str = None,
+        accessibility: str = None,
         only_folder: bool = None,
+        source: str = None,
+        user_id: str = None,
+        workspace_id: str = None,
     ):
-        self.workspace_id = workspace_id
+        # 工作空间内可见性 PUBLIC; PRIVATE 默认PUBLIC
+        self.accessibility = accessibility
         self.only_folder = only_folder
+        self.source = source
+        # 若FolderId为root，Accessibility为PRIVATE，这里代表私有根路径的所有者，默认为访问者自己
+        self.user_id = user_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -1714,35 +1841,47 @@ class GetExperimentFolderChildrenRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
         if self.only_folder is not None:
             result['OnlyFolder'] = self.only_folder
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
         if m.get('OnlyFolder') is not None:
             self.only_folder = m.get('OnlyFolder')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
 class GetExperimentFolderChildrenResponseBodyItems(TeaModel):
     def __init__(
         self,
+        empty: bool = None,
+        icon: str = None,
         id: str = None,
         name: str = None,
         type: str = None,
-        icon: str = None,
-        empty: bool = None,
     ):
+        self.empty = empty
+        self.icon = icon
         self.id = id
         self.name = name
         self.type = type
-        self.icon = icon
-        self.empty = empty
 
     def validate(self):
         pass
@@ -1753,44 +1892,44 @@ class GetExperimentFolderChildrenResponseBodyItems(TeaModel):
             return _map
 
         result = dict()
+        if self.empty is not None:
+            result['Empty'] = self.empty
+        if self.icon is not None:
+            result['Icon'] = self.icon
         if self.id is not None:
             result['Id'] = self.id
         if self.name is not None:
             result['Name'] = self.name
         if self.type is not None:
             result['Type'] = self.type
-        if self.icon is not None:
-            result['Icon'] = self.icon
-        if self.empty is not None:
-            result['Empty'] = self.empty
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Empty') is not None:
+            self.empty = m.get('Empty')
+        if m.get('Icon') is not None:
+            self.icon = m.get('Icon')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Type') is not None:
             self.type = m.get('Type')
-        if m.get('Icon') is not None:
-            self.icon = m.get('Icon')
-        if m.get('Empty') is not None:
-            self.empty = m.get('Empty')
         return self
 
 
 class GetExperimentFolderChildrenResponseBody(TeaModel):
     def __init__(
         self,
+        items: List[GetExperimentFolderChildrenResponseBodyItems] = None,
         request_id: str = None,
         total_count: int = None,
-        items: List[GetExperimentFolderChildrenResponseBodyItems] = None,
     ):
+        self.items = items
         # Id of the request
         self.request_id = request_id
         self.total_count = total_count
-        self.items = items
 
     def validate(self):
         if self.items:
@@ -1804,27 +1943,27 @@ class GetExperimentFolderChildrenResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         result['Items'] = []
         if self.items is not None:
             for k in self.items:
                 result['Items'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         self.items = []
         if m.get('Items') is not None:
             for k in m.get('Items'):
                 temp_model = GetExperimentFolderChildrenResponseBodyItems()
                 self.items.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -1868,30 +2007,32 @@ class GetExperimentFolderChildrenResponse(TeaModel):
 class GetExperimentMetaResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        experiment_id: str = None,
-        name: str = None,
+        accessibility: str = None,
+        creator: str = None,
         description: str = None,
+        experiment_id: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
-        creator: str = None,
+        name: str = None,
+        options: str = None,
+        request_id: str = None,
         source: str = None,
         version: str = None,
         workspace_id: str = None,
-        options: str = None,
     ):
-        # Id of the request
-        self.request_id = request_id
-        self.experiment_id = experiment_id
-        self.name = name
+        self.accessibility = accessibility
+        self.creator = creator
         self.description = description
+        self.experiment_id = experiment_id
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
-        self.creator = creator
+        self.name = name
+        self.options = options
+        # Id of the request
+        self.request_id = request_id
         self.source = source
         self.version = version
         self.workspace_id = workspace_id
-        self.options = options
 
     def validate(self):
         pass
@@ -1902,54 +2043,58 @@ class GetExperimentMetaResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.experiment_id is not None:
-            result['ExperimentId'] = self.experiment_id
-        if self.name is not None:
-            result['Name'] = self.name
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+        if self.creator is not None:
+            result['Creator'] = self.creator
         if self.description is not None:
             result['Description'] = self.description
+        if self.experiment_id is not None:
+            result['ExperimentId'] = self.experiment_id
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
-        if self.creator is not None:
-            result['Creator'] = self.creator
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.options is not None:
+            result['Options'] = self.options
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.source is not None:
             result['Source'] = self.source
         if self.version is not None:
             result['Version'] = self.version
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
-        if self.options is not None:
-            result['Options'] = self.options
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ExperimentId') is not None:
-            self.experiment_id = m.get('ExperimentId')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ExperimentId') is not None:
+            self.experiment_id = m.get('ExperimentId')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
-        if m.get('Creator') is not None:
-            self.creator = m.get('Creator')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('Version') is not None:
             self.version = m.get('Version')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
-        if m.get('Options') is not None:
-            self.options = m.get('Options')
         return self
 
 
@@ -1990,14 +2135,24 @@ class GetExperimentMetaResponse(TeaModel):
         return self
 
 
-class GetExperimentsStatisticsRequest(TeaModel):
+class GetExperimentStatusResponseBodyNodes(TeaModel):
     def __init__(
         self,
-        workspace_ids: str = None,
-        source: str = None,
+        finished_at: str = None,
+        job_id: str = None,
+        node_id: str = None,
+        run_id: str = None,
+        run_node_id: str = None,
+        started_at: str = None,
+        status: str = None,
     ):
-        self.workspace_ids = workspace_ids
-        self.source = source
+        self.finished_at = finished_at
+        self.job_id = job_id
+        self.node_id = node_id
+        self.run_id = run_id
+        self.run_node_id = run_node_id
+        self.started_at = started_at
+        self.status = status
 
     def validate(self):
         pass
@@ -2008,31 +2163,314 @@ class GetExperimentsStatisticsRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.workspace_ids is not None:
-            result['WorkspaceIds'] = self.workspace_ids
-        if self.source is not None:
-            result['Source'] = self.source
+        if self.finished_at is not None:
+            result['FinishedAt'] = self.finished_at
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.run_id is not None:
+            result['RunId'] = self.run_id
+        if self.run_node_id is not None:
+            result['RunNodeId'] = self.run_node_id
+        if self.started_at is not None:
+            result['StartedAt'] = self.started_at
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('WorkspaceIds') is not None:
-            self.workspace_ids = m.get('WorkspaceIds')
+        if m.get('FinishedAt') is not None:
+            self.finished_at = m.get('FinishedAt')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('RunId') is not None:
+            self.run_id = m.get('RunId')
+        if m.get('RunNodeId') is not None:
+            self.run_node_id = m.get('RunNodeId')
+        if m.get('StartedAt') is not None:
+            self.started_at = m.get('StartedAt')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetExperimentStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        nodes: List[GetExperimentStatusResponseBodyNodes] = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.nodes = nodes
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        if self.nodes:
+            for k in self.nodes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Nodes'] = []
+        if self.nodes is not None:
+            for k in self.nodes:
+                result['Nodes'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.nodes = []
+        if m.get('Nodes') is not None:
+            for k in m.get('Nodes'):
+                temp_model = GetExperimentStatusResponseBodyNodes()
+                self.nodes.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetExperimentStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetExperimentStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetExperimentStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetExperimentVisualizationMetaRequest(TeaModel):
+    def __init__(
+        self,
+        node_ids: str = None,
+    ):
+        self.node_ids = node_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.node_ids is not None:
+            result['NodeIds'] = self.node_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NodeIds') is not None:
+            self.node_ids = m.get('NodeIds')
+        return self
+
+
+class GetExperimentVisualizationMetaResponseBodyVisualizationMeta(TeaModel):
+    def __init__(
+        self,
+        meta: str = None,
+        node_id: str = None,
+        node_name: str = None,
+    ):
+        self.meta = meta
+        self.node_id = node_id
+        self.node_name = node_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.meta is not None:
+            result['Meta'] = self.meta
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Meta') is not None:
+            self.meta = m.get('Meta')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        return self
+
+
+class GetExperimentVisualizationMetaResponseBody(TeaModel):
+    def __init__(
+        self,
+        visualization_meta: List[GetExperimentVisualizationMetaResponseBodyVisualizationMeta] = None,
+        request_id: str = None,
+    ):
+        self.visualization_meta = visualization_meta
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.visualization_meta:
+            for k in self.visualization_meta:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['VisualizationMeta'] = []
+        if self.visualization_meta is not None:
+            for k in self.visualization_meta:
+                result['VisualizationMeta'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.visualization_meta = []
+        if m.get('VisualizationMeta') is not None:
+            for k in m.get('VisualizationMeta'):
+                temp_model = GetExperimentVisualizationMetaResponseBodyVisualizationMeta()
+                self.visualization_meta.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetExperimentVisualizationMetaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetExperimentVisualizationMetaResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetExperimentVisualizationMetaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetExperimentsStatisticsRequest(TeaModel):
+    def __init__(
+        self,
+        source: str = None,
+        workspace_ids: str = None,
+    ):
+        self.source = source
+        self.workspace_ids = workspace_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.workspace_ids is not None:
+            result['WorkspaceIds'] = self.workspace_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
         if m.get('Source') is not None:
             self.source = m.get('Source')
+        if m.get('WorkspaceIds') is not None:
+            self.workspace_ids = m.get('WorkspaceIds')
         return self
 
 
 class GetExperimentsStatisticsResponseBodyData(TeaModel):
     def __init__(
         self,
-        workspace_id: str = None,
-        total_count: int = None,
         create_count: int = None,
+        total_count: int = None,
+        workspace_id: str = None,
     ):
-        self.workspace_id = workspace_id
-        self.total_count = total_count
         self.create_count = create_count
+        self.total_count = total_count
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -2043,34 +2481,34 @@ class GetExperimentsStatisticsResponseBodyData(TeaModel):
             return _map
 
         result = dict()
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         if self.create_count is not None:
             result['CreateCount'] = self.create_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         if m.get('CreateCount') is not None:
             self.create_count = m.get('CreateCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
 class GetExperimentsStatisticsResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: List[GetExperimentsStatisticsResponseBodyData] = None,
+        request_id: str = None,
     ):
+        self.data = data
         # Id of the request
         self.request_id = request_id
-        self.data = data
 
     def validate(self):
         if self.data:
@@ -2084,23 +2522,23 @@ class GetExperimentsStatisticsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         result['Data'] = []
         if self.data is not None:
             for k in self.data:
                 result['Data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         self.data = []
         if m.get('Data') is not None:
             for k in m.get('Data'):
                 temp_model = GetExperimentsStatisticsResponseBodyData()
                 self.data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2141,24 +2579,14 @@ class GetExperimentsStatisticsResponse(TeaModel):
         return self
 
 
-class GetExperimentStatusResponseBodyNodes(TeaModel):
+class GetExperimentsUsersStatisticsRequest(TeaModel):
     def __init__(
         self,
-        node_id: str = None,
-        job_id: str = None,
-        run_id: str = None,
-        run_node_id: str = None,
-        status: str = None,
-        started_at: str = None,
-        finished_at: str = None,
+        source: str = None,
+        workspace_id: str = None,
     ):
-        self.node_id = node_id
-        self.job_id = job_id
-        self.run_id = run_id
-        self.run_node_id = run_node_id
-        self.status = status
-        self.started_at = started_at
-        self.finished_at = finished_at
+        self.source = source
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -2169,56 +2597,61 @@ class GetExperimentStatusResponseBodyNodes(TeaModel):
             return _map
 
         result = dict()
-        if self.node_id is not None:
-            result['NodeId'] = self.node_id
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        if self.run_id is not None:
-            result['RunId'] = self.run_id
-        if self.run_node_id is not None:
-            result['RunNodeId'] = self.run_node_id
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.started_at is not None:
-            result['StartedAt'] = self.started_at
-        if self.finished_at is not None:
-            result['FinishedAt'] = self.finished_at
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('NodeId') is not None:
-            self.node_id = m.get('NodeId')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        if m.get('RunId') is not None:
-            self.run_id = m.get('RunId')
-        if m.get('RunNodeId') is not None:
-            self.run_node_id = m.get('RunNodeId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('StartedAt') is not None:
-            self.started_at = m.get('StartedAt')
-        if m.get('FinishedAt') is not None:
-            self.finished_at = m.get('FinishedAt')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
-class GetExperimentStatusResponseBody(TeaModel):
+class GetExperimentsUsersStatisticsResponseBodyUsers(TeaModel):
+    def __init__(
+        self,
+        user_id: str = None,
+    ):
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetExperimentsUsersStatisticsResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        status: str = None,
-        nodes: List[GetExperimentStatusResponseBodyNodes] = None,
+        users: List[GetExperimentsUsersStatisticsResponseBodyUsers] = None,
     ):
         # Id of the request
         self.request_id = request_id
-        self.status = status
-        self.nodes = nodes
+        self.users = users
 
     def validate(self):
-        if self.nodes:
-            for k in self.nodes:
+        if self.users:
+            for k in self.users:
                 if k:
                     k.validate()
 
@@ -2230,33 +2663,29 @@ class GetExperimentStatusResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.status is not None:
-            result['Status'] = self.status
-        result['Nodes'] = []
-        if self.nodes is not None:
-            for k in self.nodes:
-                result['Nodes'].append(k.to_map() if k else None)
+        result['Users'] = []
+        if self.users is not None:
+            for k in self.users:
+                result['Users'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        self.nodes = []
-        if m.get('Nodes') is not None:
-            for k in m.get('Nodes'):
-                temp_model = GetExperimentStatusResponseBodyNodes()
-                self.nodes.append(temp_model.from_map(k))
+        self.users = []
+        if m.get('Users') is not None:
+            for k in m.get('Users'):
+                temp_model = GetExperimentsUsersStatisticsResponseBodyUsers()
+                self.users.append(temp_model.from_map(k))
         return self
 
 
-class GetExperimentStatusResponse(TeaModel):
+class GetExperimentsUsersStatisticsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: GetExperimentStatusResponseBody = None,
+        body: GetExperimentsUsersStatisticsResponseBody = None,
     ):
         self.headers = headers
         self.body = body
@@ -2284,7 +2713,7 @@ class GetExperimentStatusResponse(TeaModel):
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('body') is not None:
-            temp_model = GetExperimentStatusResponseBody()
+            temp_model = GetExperimentsUsersStatisticsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2355,34 +2784,34 @@ class GetImageResponseBodyLabels(TeaModel):
 class GetImageResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
+        description: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
-        name: str = None,
-        description: str = None,
         image_uri: str = None,
+        labels: List[GetImageResponseBodyLabels] = None,
+        name: str = None,
         operator_create: str = None,
         parent_operator_create: str = None,
-        labels: List[GetImageResponseBodyLabels] = None,
+        request_id: str = None,
     ):
-        # Id of the request
-        self.request_id = request_id
+        # 描述
+        self.description = description
         # 创建 UTC 时间，日期格式 iso8601
         self.gmt_create_time = gmt_create_time
         # 创建 UTC 时间，日期格式 iso8601
         self.gmt_modified_time = gmt_modified_time
-        # 镜像名称
-        self.name = name
-        # 描述
-        self.description = description
         # 镜像地址，包含版本号
         self.image_uri = image_uri
+        # 镜像标签
+        self.labels = labels
+        # 镜像名称
+        self.name = name
         # 创建人
         self.operator_create = operator_create
         # 创建人父账户
         self.parent_operator_create = parent_operator_create
-        # 镜像标签
-        self.labels = labels
+        # Id of the request
+        self.request_id = request_id
 
     def validate(self):
         if self.labels:
@@ -2396,51 +2825,51 @@ class GetImageResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
+        if self.description is not None:
+            result['Description'] = self.description
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.description is not None:
-            result['Description'] = self.description
         if self.image_uri is not None:
             result['ImageUri'] = self.image_uri
-        if self.operator_create is not None:
-            result['OperatorCreate'] = self.operator_create
-        if self.parent_operator_create is not None:
-            result['ParentOperatorCreate'] = self.parent_operator_create
         result['Labels'] = []
         if self.labels is not None:
             for k in self.labels:
                 result['Labels'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operator_create is not None:
+            result['OperatorCreate'] = self.operator_create
+        if self.parent_operator_create is not None:
+            result['ParentOperatorCreate'] = self.parent_operator_create
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
         if m.get('ImageUri') is not None:
             self.image_uri = m.get('ImageUri')
-        if m.get('OperatorCreate') is not None:
-            self.operator_create = m.get('OperatorCreate')
-        if m.get('ParentOperatorCreate') is not None:
-            self.parent_operator_create = m.get('ParentOperatorCreate')
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):
                 temp_model = GetImageResponseBodyLabels()
                 self.labels.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OperatorCreate') is not None:
+            self.operator_create = m.get('OperatorCreate')
+        if m.get('ParentOperatorCreate') is not None:
+            self.parent_operator_create = m.get('ParentOperatorCreate')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         return self
 
 
@@ -2511,36 +2940,36 @@ class GetJobRequest(TeaModel):
 class GetJobResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        experiment_id: str = None,
-        workspace_id: str = None,
-        job_id: str = None,
-        snapshot: str = None,
-        execute_type: str = None,
-        node_id: str = None,
-        run_info: str = None,
-        run_id: str = None,
-        paiflow_node_id: str = None,
-        creator: str = None,
-        status: str = None,
-        gmt_create_time: str = None,
         arguments: str = None,
+        creator: str = None,
+        execute_type: str = None,
+        experiment_id: str = None,
+        gmt_create_time: str = None,
+        job_id: str = None,
+        node_id: str = None,
+        paiflow_node_id: str = None,
+        request_id: str = None,
+        run_id: str = None,
+        run_info: str = None,
+        snapshot: str = None,
+        status: str = None,
+        workspace_id: str = None,
     ):
+        self.arguments = arguments
+        self.creator = creator
+        self.execute_type = execute_type
+        self.experiment_id = experiment_id
+        self.gmt_create_time = gmt_create_time
+        self.job_id = job_id
+        self.node_id = node_id
+        self.paiflow_node_id = paiflow_node_id
         # Id of the request
         self.request_id = request_id
-        self.experiment_id = experiment_id
-        self.workspace_id = workspace_id
-        self.job_id = job_id
-        self.snapshot = snapshot
-        self.execute_type = execute_type
-        self.node_id = node_id
-        self.run_info = run_info
         self.run_id = run_id
-        self.paiflow_node_id = paiflow_node_id
-        self.creator = creator
+        self.run_info = run_info
+        self.snapshot = snapshot
         self.status = status
-        self.gmt_create_time = gmt_create_time
-        self.arguments = arguments
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -2551,66 +2980,66 @@ class GetJobResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.experiment_id is not None:
-            result['ExperimentId'] = self.experiment_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        if self.snapshot is not None:
-            result['Snapshot'] = self.snapshot
-        if self.execute_type is not None:
-            result['ExecuteType'] = self.execute_type
-        if self.node_id is not None:
-            result['NodeId'] = self.node_id
-        if self.run_info is not None:
-            result['RunInfo'] = self.run_info
-        if self.run_id is not None:
-            result['RunId'] = self.run_id
-        if self.paiflow_node_id is not None:
-            result['PaiflowNodeId'] = self.paiflow_node_id
-        if self.creator is not None:
-            result['Creator'] = self.creator
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.gmt_create_time is not None:
-            result['GmtCreateTime'] = self.gmt_create_time
         if self.arguments is not None:
             result['Arguments'] = self.arguments
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.execute_type is not None:
+            result['ExecuteType'] = self.execute_type
+        if self.experiment_id is not None:
+            result['ExperimentId'] = self.experiment_id
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.paiflow_node_id is not None:
+            result['PaiflowNodeId'] = self.paiflow_node_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.run_id is not None:
+            result['RunId'] = self.run_id
+        if self.run_info is not None:
+            result['RunInfo'] = self.run_info
+        if self.snapshot is not None:
+            result['Snapshot'] = self.snapshot
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ExperimentId') is not None:
-            self.experiment_id = m.get('ExperimentId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        if m.get('Snapshot') is not None:
-            self.snapshot = m.get('Snapshot')
-        if m.get('ExecuteType') is not None:
-            self.execute_type = m.get('ExecuteType')
-        if m.get('NodeId') is not None:
-            self.node_id = m.get('NodeId')
-        if m.get('RunInfo') is not None:
-            self.run_info = m.get('RunInfo')
-        if m.get('RunId') is not None:
-            self.run_id = m.get('RunId')
-        if m.get('PaiflowNodeId') is not None:
-            self.paiflow_node_id = m.get('PaiflowNodeId')
-        if m.get('Creator') is not None:
-            self.creator = m.get('Creator')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('GmtCreateTime') is not None:
-            self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('Arguments') is not None:
             self.arguments = m.get('Arguments')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('ExecuteType') is not None:
+            self.execute_type = m.get('ExecuteType')
+        if m.get('ExperimentId') is not None:
+            self.experiment_id = m.get('ExperimentId')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('PaiflowNodeId') is not None:
+            self.paiflow_node_id = m.get('PaiflowNodeId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RunId') is not None:
+            self.run_id = m.get('RunId')
+        if m.get('RunInfo') is not None:
+            self.run_info = m.get('RunInfo')
+        if m.get('Snapshot') is not None:
+            self.snapshot = m.get('Snapshot')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -2682,12 +3111,12 @@ class GetMCTableSchemaResponseBodyColumns(TeaModel):
     def __init__(
         self,
         name: str = None,
-        type: str = None,
         preview: List[str] = None,
+        type: str = None,
     ):
         self.name = name
-        self.type = type
         self.preview = preview
+        self.type = type
 
     def validate(self):
         pass
@@ -2700,34 +3129,34 @@ class GetMCTableSchemaResponseBodyColumns(TeaModel):
         result = dict()
         if self.name is not None:
             result['Name'] = self.name
-        if self.type is not None:
-            result['Type'] = self.type
         if self.preview is not None:
             result['Preview'] = self.preview
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Name') is not None:
             self.name = m.get('Name')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
         if m.get('Preview') is not None:
             self.preview = m.get('Preview')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
 class GetMCTableSchemaResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         columns: List[GetMCTableSchemaResponseBodyColumns] = None,
         partition_columns: List[str] = None,
+        request_id: str = None,
     ):
-        # Id of the request
-        self.request_id = request_id
         self.columns = columns
         self.partition_columns = partition_columns
+        # Id of the request
+        self.request_id = request_id
 
     def validate(self):
         if self.columns:
@@ -2741,20 +3170,18 @@ class GetMCTableSchemaResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         result['Columns'] = []
         if self.columns is not None:
             for k in self.columns:
                 result['Columns'].append(k.to_map() if k else None)
         if self.partition_columns is not None:
             result['PartitionColumns'] = self.partition_columns
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         self.columns = []
         if m.get('Columns') is not None:
             for k in m.get('Columns'):
@@ -2762,6 +3189,8 @@ class GetMCTableSchemaResponseBody(TeaModel):
                 self.columns.append(temp_model.from_map(k))
         if m.get('PartitionColumns') is not None:
             self.partition_columns = m.get('PartitionColumns')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2838,14 +3267,14 @@ class GetNodeInputSchemaRequest(TeaModel):
 class GetNodeInputSchemaResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         col_names: List[str] = None,
         col_types: List[str] = None,
+        request_id: str = None,
     ):
-        # Id of the request
-        self.request_id = request_id
         self.col_names = col_names
         self.col_types = col_types
+        # Id of the request
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -2856,22 +3285,22 @@ class GetNodeInputSchemaResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.col_names is not None:
             result['ColNames'] = self.col_names
         if self.col_types is not None:
             result['ColTypes'] = self.col_types
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ColNames') is not None:
             self.col_names = m.get('ColNames')
         if m.get('ColTypes') is not None:
             self.col_types = m.get('ColTypes')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2942,22 +3371,22 @@ class GetNodeOutputRequest(TeaModel):
 class GetNodeOutputResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        node_name: str = None,
         algo_name: str = None,
         display_name: str = None,
+        location_type: str = None,
+        node_name: str = None,
+        request_id: str = None,
         type: str = None,
         value: Dict[str, Any] = None,
-        location_type: str = None,
     ):
-        # Id of the request
-        self.request_id = request_id
-        self.node_name = node_name
         self.algo_name = algo_name
         self.display_name = display_name
+        self.location_type = location_type
+        self.node_name = node_name
+        # Id of the request
+        self.request_id = request_id
         self.type = type
         self.value = value
-        self.location_type = location_type
 
     def validate(self):
         pass
@@ -2968,38 +3397,38 @@ class GetNodeOutputResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.node_name is not None:
-            result['NodeName'] = self.node_name
         if self.algo_name is not None:
             result['AlgoName'] = self.algo_name
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
+        if self.location_type is not None:
+            result['LocationType'] = self.location_type
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.type is not None:
             result['Type'] = self.type
         if self.value is not None:
             result['Value'] = self.value
-        if self.location_type is not None:
-            result['LocationType'] = self.location_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('NodeName') is not None:
-            self.node_name = m.get('NodeName')
         if m.get('AlgoName') is not None:
             self.algo_name = m.get('AlgoName')
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
+        if m.get('LocationType') is not None:
+            self.location_type = m.get('LocationType')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('Value') is not None:
             self.value = m.get('Value')
-        if m.get('LocationType') is not None:
-            self.location_type = m.get('LocationType')
         return self
 
 
@@ -3070,14 +3499,14 @@ class GetNodeVisualizationRequest(TeaModel):
 class GetNodeVisualizationResponseBody(TeaModel):
     def __init__(
         self,
+        content: str = None,
         request_id: str = None,
         visualization_type: str = None,
-        content: str = None,
     ):
+        self.content = content
         # Id of the request
         self.request_id = request_id
         self.visualization_type = visualization_type
-        self.content = content
 
     def validate(self):
         pass
@@ -3088,22 +3517,22 @@ class GetNodeVisualizationResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.visualization_type is not None:
             result['VisualizationType'] = self.visualization_type
-        if self.content is not None:
-            result['Content'] = self.content
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('VisualizationType') is not None:
             self.visualization_type = m.get('VisualizationType')
-        if m.get('Content') is not None:
-            self.content = m.get('Content')
         return self
 
 
@@ -3175,13 +3604,13 @@ class GetServiceResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        url: str = None,
         service_id: str = None,
+        url: str = None,
     ):
         # Id of the request
         self.request_id = request_id
-        self.url = url
         self.service_id = service_id
+        self.url = url
 
     def validate(self):
         pass
@@ -3194,20 +3623,20 @@ class GetServiceResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.url is not None:
-            result['Url'] = self.url
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.url is not None:
+            result['Url'] = self.url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Url') is not None:
-            self.url = m.get('Url')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
         return self
 
 
@@ -3251,24 +3680,24 @@ class GetServiceResponse(TeaModel):
 class GetTemplateResponseBody(TeaModel):
     def __init__(
         self,
+        content: str = None,
+        description: str = None,
+        detail: str = None,
+        doc_link: str = None,
+        image_link: str = None,
+        name: str = None,
         request_id: str = None,
         template_id: str = None,
-        name: str = None,
-        image_link: str = None,
-        doc_link: str = None,
-        detail: str = None,
-        description: str = None,
-        content: str = None,
     ):
+        self.content = content
+        self.description = description
+        self.detail = detail
+        self.doc_link = doc_link
+        self.image_link = image_link
+        self.name = name
         # Id of the request
         self.request_id = request_id
         self.template_id = template_id
-        self.name = name
-        self.image_link = image_link
-        self.doc_link = doc_link
-        self.detail = detail
-        self.description = description
-        self.content = content
 
     def validate(self):
         pass
@@ -3279,42 +3708,42 @@ class GetTemplateResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.detail is not None:
+            result['Detail'] = self.detail
+        if self.doc_link is not None:
+            result['DocLink'] = self.doc_link
+        if self.image_link is not None:
+            result['ImageLink'] = self.image_link
+        if self.name is not None:
+            result['Name'] = self.name
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.image_link is not None:
-            result['ImageLink'] = self.image_link
-        if self.doc_link is not None:
-            result['DocLink'] = self.doc_link
-        if self.detail is not None:
-            result['Detail'] = self.detail
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.content is not None:
-            result['Content'] = self.content
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+        if m.get('DocLink') is not None:
+            self.doc_link = m.get('DocLink')
+        if m.get('ImageLink') is not None:
+            self.image_link = m.get('ImageLink')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('ImageLink') is not None:
-            self.image_link = m.get('ImageLink')
-        if m.get('DocLink') is not None:
-            self.doc_link = m.get('DocLink')
-        if m.get('Detail') is not None:
-            self.detail = m.get('Detail')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('Content') is not None:
-            self.content = m.get('Content')
         return self
 
 
@@ -3358,15 +3787,15 @@ class GetTemplateResponse(TeaModel):
 class ListAlgoDefsRequestBody(TeaModel):
     def __init__(
         self,
-        provider: str = None,
         identifier: str = None,
-        version: str = None,
+        provider: str = None,
         signature: str = None,
+        version: str = None,
     ):
-        self.provider = provider
         self.identifier = identifier
-        self.version = version
+        self.provider = provider
         self.signature = signature
+        self.version = version
 
     def validate(self):
         pass
@@ -3377,26 +3806,26 @@ class ListAlgoDefsRequestBody(TeaModel):
             return _map
 
         result = dict()
-        if self.provider is not None:
-            result['Provider'] = self.provider
         if self.identifier is not None:
             result['Identifier'] = self.identifier
-        if self.version is not None:
-            result['Version'] = self.version
+        if self.provider is not None:
+            result['Provider'] = self.provider
         if self.signature is not None:
             result['Signature'] = self.signature
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Provider') is not None:
-            self.provider = m.get('Provider')
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
+        if m.get('Provider') is not None:
+            self.provider = m.get('Provider')
         if m.get('Signature') is not None:
             self.signature = m.get('Signature')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -3438,12 +3867,12 @@ class ListAlgoDefsRequest(TeaModel):
 class ListAlgoDefsResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: List[Dict[str, Any]] = None,
+        request_id: str = None,
     ):
+        self.data = data
         # Id of the request
         self.request_id = request_id
-        self.data = data
 
     def validate(self):
         pass
@@ -3454,18 +3883,18 @@ class ListAlgoDefsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -3509,11 +3938,11 @@ class ListAlgoDefsResponse(TeaModel):
 class ListAuthRolesRequest(TeaModel):
     def __init__(
         self,
-        workspace_id: str = None,
         is_generate_token: str = None,
+        workspace_id: str = None,
     ):
-        self.workspace_id = workspace_id
         self.is_generate_token = is_generate_token
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -3524,33 +3953,33 @@ class ListAuthRolesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
         if self.is_generate_token is not None:
             result['IsGenerateToken'] = self.is_generate_token
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
         if m.get('IsGenerateToken') is not None:
             self.is_generate_token = m.get('IsGenerateToken')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
 class ListAuthRolesResponseBodyRolesToken(TeaModel):
     def __init__(
         self,
-        security_token: str = None,
         access_key_id: str = None,
         access_key_secret: str = None,
         expiration: str = None,
+        security_token: str = None,
     ):
-        self.security_token = security_token
         self.access_key_id = access_key_id
         self.access_key_secret = access_key_secret
         self.expiration = expiration
+        self.security_token = security_token
 
     def validate(self):
         pass
@@ -3561,43 +3990,43 @@ class ListAuthRolesResponseBodyRolesToken(TeaModel):
             return _map
 
         result = dict()
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.access_key_id is not None:
             result['AccessKeyId'] = self.access_key_id
         if self.access_key_secret is not None:
             result['AccessKeySecret'] = self.access_key_secret
         if self.expiration is not None:
             result['Expiration'] = self.expiration
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('AccessKeyId') is not None:
             self.access_key_id = m.get('AccessKeyId')
         if m.get('AccessKeySecret') is not None:
             self.access_key_secret = m.get('AccessKeySecret')
         if m.get('Expiration') is not None:
             self.expiration = m.get('Expiration')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
         return self
 
 
 class ListAuthRolesResponseBodyRoles(TeaModel):
     def __init__(
         self,
-        role_name: str = None,
-        role_arn: str = None,
         is_enabled: str = None,
-        token: ListAuthRolesResponseBodyRolesToken = None,
+        role_arn: str = None,
+        role_name: str = None,
         role_type: str = None,
+        token: ListAuthRolesResponseBodyRolesToken = None,
     ):
-        self.role_name = role_name
-        self.role_arn = role_arn
         self.is_enabled = is_enabled
-        self.token = token
+        self.role_arn = role_arn
+        self.role_name = role_name
         self.role_type = role_type
+        self.token = token
 
     def validate(self):
         if self.token:
@@ -3609,31 +4038,31 @@ class ListAuthRolesResponseBodyRoles(TeaModel):
             return _map
 
         result = dict()
-        if self.role_name is not None:
-            result['RoleName'] = self.role_name
-        if self.role_arn is not None:
-            result['RoleARN'] = self.role_arn
         if self.is_enabled is not None:
             result['IsEnabled'] = self.is_enabled
-        if self.token is not None:
-            result['Token'] = self.token.to_map()
+        if self.role_arn is not None:
+            result['RoleARN'] = self.role_arn
+        if self.role_name is not None:
+            result['RoleName'] = self.role_name
         if self.role_type is not None:
             result['RoleType'] = self.role_type
+        if self.token is not None:
+            result['Token'] = self.token.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RoleName') is not None:
-            self.role_name = m.get('RoleName')
-        if m.get('RoleARN') is not None:
-            self.role_arn = m.get('RoleARN')
         if m.get('IsEnabled') is not None:
             self.is_enabled = m.get('IsEnabled')
+        if m.get('RoleARN') is not None:
+            self.role_arn = m.get('RoleARN')
+        if m.get('RoleName') is not None:
+            self.role_name = m.get('RoleName')
+        if m.get('RoleType') is not None:
+            self.role_type = m.get('RoleType')
         if m.get('Token') is not None:
             temp_model = ListAuthRolesResponseBodyRolesToken()
             self.token = temp_model.from_map(m['Token'])
-        if m.get('RoleType') is not None:
-            self.role_type = m.get('RoleType')
         return self
 
 
@@ -3719,25 +4148,25 @@ class ListAuthRolesResponse(TeaModel):
 class ListExperimentsRequest(TeaModel):
     def __init__(
         self,
-        page_number: int = None,
-        page_size: int = None,
-        order: str = None,
+        creator: str = None,
         experiment_id: str = None,
         name: str = None,
-        creator: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        sort_by: str = None,
         source: str = None,
         workspace_id: str = None,
-        sort_by: str = None,
     ):
-        self.page_number = page_number
-        self.page_size = page_size
-        self.order = order
+        self.creator = creator
         self.experiment_id = experiment_id
         self.name = name
-        self.creator = creator
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        self.sort_by = sort_by
         self.source = source
         self.workspace_id = workspace_id
-        self.sort_by = sort_by
 
     def validate(self):
         pass
@@ -3748,68 +4177,70 @@ class ListExperimentsRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.order is not None:
-            result['Order'] = self.order
+        if self.creator is not None:
+            result['Creator'] = self.creator
         if self.experiment_id is not None:
             result['ExperimentId'] = self.experiment_id
         if self.name is not None:
             result['Name'] = self.name
-        if self.creator is not None:
-            result['Creator'] = self.creator
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
         if self.source is not None:
             result['Source'] = self.source
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
-        if self.sort_by is not None:
-            result['SortBy'] = self.sort_by
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('Order') is not None:
-            self.order = m.get('Order')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
         if m.get('ExperimentId') is not None:
             self.experiment_id = m.get('ExperimentId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
-        if m.get('Creator') is not None:
-            self.creator = m.get('Creator')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
-        if m.get('SortBy') is not None:
-            self.sort_by = m.get('SortBy')
         return self
 
 
 class ListExperimentsResponseBodyExperiments(TeaModel):
     def __init__(
         self,
-        experiment_id: str = None,
-        name: str = None,
+        accessibility: str = None,
+        creator: str = None,
         description: str = None,
+        experiment_id: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
-        creator: str = None,
+        name: str = None,
         source: str = None,
         version: int = None,
         workspace_id: str = None,
     ):
-        self.experiment_id = experiment_id
-        self.name = name
+        self.accessibility = accessibility
+        self.creator = creator
         self.description = description
+        self.experiment_id = experiment_id
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
-        self.creator = creator
+        self.name = name
         self.source = source
         self.version = version
         self.workspace_id = workspace_id
@@ -3823,18 +4254,20 @@ class ListExperimentsResponseBodyExperiments(TeaModel):
             return _map
 
         result = dict()
-        if self.experiment_id is not None:
-            result['ExperimentId'] = self.experiment_id
-        if self.name is not None:
-            result['Name'] = self.name
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+        if self.creator is not None:
+            result['Creator'] = self.creator
         if self.description is not None:
             result['Description'] = self.description
+        if self.experiment_id is not None:
+            result['ExperimentId'] = self.experiment_id
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
-        if self.creator is not None:
-            result['Creator'] = self.creator
+        if self.name is not None:
+            result['Name'] = self.name
         if self.source is not None:
             result['Source'] = self.source
         if self.version is not None:
@@ -3845,18 +4278,20 @@ class ListExperimentsResponseBodyExperiments(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ExperimentId') is not None:
-            self.experiment_id = m.get('ExperimentId')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ExperimentId') is not None:
+            self.experiment_id = m.get('ExperimentId')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
-        if m.get('Creator') is not None:
-            self.creator = m.get('Creator')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('Version') is not None:
@@ -3869,13 +4304,13 @@ class ListExperimentsResponseBodyExperiments(TeaModel):
 class ListExperimentsResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         experiments: List[ListExperimentsResponseBodyExperiments] = None,
+        request_id: str = None,
         total_count: int = None,
     ):
+        self.experiments = experiments
         # Id of the request
         self.request_id = request_id
-        self.experiments = experiments
         self.total_count = total_count
 
     def validate(self):
@@ -3890,25 +4325,25 @@ class ListExperimentsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         result['Experiments'] = []
         if self.experiments is not None:
             for k in self.experiments:
                 result['Experiments'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         self.experiments = []
         if m.get('Experiments') is not None:
             for k in m.get('Experiments'):
                 temp_model = ListExperimentsResponseBodyExperiments()
                 self.experiments.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -3954,16 +4389,16 @@ class ListExperimentsResponse(TeaModel):
 class ListImageLabelsRequest(TeaModel):
     def __init__(
         self,
-        label_keys: str = None,
-        label_filter: str = None,
         image_id: str = None,
+        label_filter: str = None,
+        label_keys: str = None,
     ):
-        # 标签列表，以逗号分隔
-        self.label_keys = label_keys
-        # image过滤条件，获取满足条件的image的所有label
-        self.label_filter = label_filter
         # 镜像id
         self.image_id = image_id
+        # image过滤条件，获取满足条件的image的所有label
+        self.label_filter = label_filter
+        # 标签列表，以逗号分隔
+        self.label_keys = label_keys
 
     def validate(self):
         pass
@@ -3974,22 +4409,22 @@ class ListImageLabelsRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.label_keys is not None:
-            result['LabelKeys'] = self.label_keys
-        if self.label_filter is not None:
-            result['LabelFilter'] = self.label_filter
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.label_filter is not None:
+            result['LabelFilter'] = self.label_filter
+        if self.label_keys is not None:
+            result['LabelKeys'] = self.label_keys
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('LabelKeys') is not None:
-            self.label_keys = m.get('LabelKeys')
-        if m.get('LabelFilter') is not None:
-            self.label_filter = m.get('LabelFilter')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('LabelFilter') is not None:
+            self.label_filter = m.get('LabelFilter')
+        if m.get('LabelKeys') is not None:
+            self.label_keys = m.get('LabelKeys')
         return self
 
 
@@ -4031,16 +4466,16 @@ class ListImageLabelsResponseBodyLabels(TeaModel):
 class ListImageLabelsResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         labels: List[ListImageLabelsResponseBodyLabels] = None,
         total_count: int = None,
+        request_id: str = None,
     ):
-        # Id of the request
-        self.request_id = request_id
         # 镜像标签
         self.labels = labels
         # 符合过滤条件的数量
         self.total_count = total_count
+        # Id of the request
+        self.request_id = request_id
 
     def validate(self):
         if self.labels:
@@ -4054,20 +4489,18 @@ class ListImageLabelsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
         result['Labels'] = []
         if self.labels is not None:
             for k in self.labels:
                 result['Labels'].append(k.to_map() if k else None)
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):
@@ -4075,6 +4508,8 @@ class ListImageLabelsResponseBody(TeaModel):
                 self.labels.append(temp_model.from_map(k))
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         return self
 
 
@@ -4118,26 +4553,26 @@ class ListImageLabelsResponse(TeaModel):
 class ListImagesRequest(TeaModel):
     def __init__(
         self,
+        labels: str = None,
         name: str = None,
+        order: str = None,
         page_number: int = None,
         page_size: int = None,
         sort_by: str = None,
-        order: str = None,
-        labels: str = None,
         verbose: bool = None,
     ):
+        # 过滤值 以逗号分隔
+        self.labels = labels
         # 镜像名称，支持模糊搜索
         self.name = name
+        # 排序方向： ASC - 升序 DESC - 降序
+        self.order = order
         # 分页，从1开始，默认1
         self.page_number = page_number
         # 页大小，默认20
         self.page_size = page_size
         # 排序字段
         self.sort_by = sort_by
-        # 排序方向： ASC - 升序 DESC - 降序
-        self.order = order
-        # 过滤值 以逗号分隔
-        self.labels = labels
         # 是否显示非必要信息：Labels
         self.verbose = verbose
 
@@ -4150,36 +4585,36 @@ class ListImagesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.labels is not None:
+            result['Labels'] = self.labels
         if self.name is not None:
             result['Name'] = self.name
+        if self.order is not None:
+            result['Order'] = self.order
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
-        if self.order is not None:
-            result['Order'] = self.order
-        if self.labels is not None:
-            result['Labels'] = self.labels
         if self.verbose is not None:
             result['Verbose'] = self.verbose
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
-        if m.get('Order') is not None:
-            self.order = m.get('Order')
-        if m.get('Labels') is not None:
-            self.labels = m.get('Labels')
         if m.get('Verbose') is not None:
             self.verbose = m.get('Verbose')
         return self
@@ -4223,25 +4658,25 @@ class ListImagesResponseBodyImagesLabels(TeaModel):
 class ListImagesResponseBodyImages(TeaModel):
     def __init__(
         self,
-        name: str = None,
-        gmt_create_time: str = None,
         description: str = None,
+        gmt_create_time: str = None,
+        image_id: str = None,
         image_uri: str = None,
         labels: List[ListImagesResponseBodyImagesLabels] = None,
-        image_id: str = None,
+        name: str = None,
     ):
-        # 镜像名称
-        self.name = name
-        # 创建 UTC 时间，日期格式 iso8601
-        self.gmt_create_time = gmt_create_time
         # 镜像描述
         self.description = description
+        # 创建 UTC 时间，日期格式 iso8601
+        self.gmt_create_time = gmt_create_time
+        # 镜像id
+        self.image_id = image_id
         # 镜像地址，包含版本号
         self.image_uri = image_uri
         # 镜像标签，是个map
         self.labels = labels
-        # 镜像id
-        self.image_id = image_id
+        # 镜像名称
+        self.name = name
 
     def validate(self):
         if self.labels:
@@ -4255,30 +4690,30 @@ class ListImagesResponseBodyImages(TeaModel):
             return _map
 
         result = dict()
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.gmt_create_time is not None:
-            result['GmtCreateTime'] = self.gmt_create_time
         if self.description is not None:
             result['Description'] = self.description
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
         if self.image_uri is not None:
             result['ImageUri'] = self.image_uri
         result['Labels'] = []
         if self.labels is not None:
             for k in self.labels:
                 result['Labels'].append(k.to_map() if k else None)
-        if self.image_id is not None:
-            result['ImageId'] = self.image_id
+        if self.name is not None:
+            result['Name'] = self.name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('GmtCreateTime') is not None:
-            self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
         if m.get('ImageUri') is not None:
             self.image_uri = m.get('ImageUri')
         self.labels = []
@@ -4286,24 +4721,24 @@ class ListImagesResponseBodyImages(TeaModel):
             for k in m.get('Labels'):
                 temp_model = ListImagesResponseBodyImagesLabels()
                 self.labels.append(temp_model.from_map(k))
-        if m.get('ImageId') is not None:
-            self.image_id = m.get('ImageId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         return self
 
 
 class ListImagesResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        total_count: int = None,
         images: List[ListImagesResponseBodyImages] = None,
+        total_count: int = None,
+        request_id: str = None,
     ):
-        # Id of the request
-        self.request_id = request_id
-        # 总数
-        self.total_count = total_count
         # 镜像列表
         self.images = images
+        # 总数
+        self.total_count = total_count
+        # Id of the request
+        self.request_id = request_id
 
     def validate(self):
         if self.images:
@@ -4317,27 +4752,27 @@ class ListImagesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         result['Images'] = []
         if self.images is not None:
             for k in self.images:
                 result['Images'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         self.images = []
         if m.get('Images') is not None:
             for k in m.get('Images'):
                 temp_model = ListImagesResponseBodyImages()
                 self.images.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         return self
 
 
@@ -4381,14 +4816,14 @@ class ListImagesResponse(TeaModel):
 class ListJobsRequest(TeaModel):
     def __init__(
         self,
-        experiment_id: str = None,
         creator: str = None,
+        experiment_id: str = None,
         order: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
-        self.experiment_id = experiment_id
         self.creator = creator
+        self.experiment_id = experiment_id
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
@@ -4402,10 +4837,10 @@ class ListJobsRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.experiment_id is not None:
-            result['ExperimentId'] = self.experiment_id
         if self.creator is not None:
             result['Creator'] = self.creator
+        if self.experiment_id is not None:
+            result['ExperimentId'] = self.experiment_id
         if self.order is not None:
             result['Order'] = self.order
         if self.page_number is not None:
@@ -4416,10 +4851,10 @@ class ListJobsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ExperimentId') is not None:
-            self.experiment_id = m.get('ExperimentId')
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
+        if m.get('ExperimentId') is not None:
+            self.experiment_id = m.get('ExperimentId')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('PageNumber') is not None:
@@ -4432,27 +4867,27 @@ class ListJobsRequest(TeaModel):
 class ListJobsResponseBodyJobs(TeaModel):
     def __init__(
         self,
-        experiment_id: str = None,
-        workspace_id: str = None,
-        job_id: str = None,
-        execute_type: str = None,
-        node_id: str = None,
-        run_id: str = None,
-        paiflow_node_id: str = None,
         creator: str = None,
-        status: str = None,
+        execute_type: str = None,
+        experiment_id: str = None,
         gmt_create_time: str = None,
+        job_id: str = None,
+        node_id: str = None,
+        paiflow_node_id: str = None,
+        run_id: str = None,
+        status: str = None,
+        workspace_id: str = None,
     ):
-        self.experiment_id = experiment_id
-        self.workspace_id = workspace_id
-        self.job_id = job_id
-        self.execute_type = execute_type
-        self.node_id = node_id
-        self.run_id = run_id
-        self.paiflow_node_id = paiflow_node_id
         self.creator = creator
-        self.status = status
+        self.execute_type = execute_type
+        self.experiment_id = experiment_id
         self.gmt_create_time = gmt_create_time
+        self.job_id = job_id
+        self.node_id = node_id
+        self.paiflow_node_id = paiflow_node_id
+        self.run_id = run_id
+        self.status = status
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -4463,62 +4898,62 @@ class ListJobsResponseBodyJobs(TeaModel):
             return _map
 
         result = dict()
-        if self.experiment_id is not None:
-            result['ExperimentId'] = self.experiment_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        if self.execute_type is not None:
-            result['ExecuteType'] = self.execute_type
-        if self.node_id is not None:
-            result['NodeId'] = self.node_id
-        if self.run_id is not None:
-            result['RunId'] = self.run_id
-        if self.paiflow_node_id is not None:
-            result['PaiflowNodeId'] = self.paiflow_node_id
         if self.creator is not None:
             result['Creator'] = self.creator
-        if self.status is not None:
-            result['Status'] = self.status
+        if self.execute_type is not None:
+            result['ExecuteType'] = self.execute_type
+        if self.experiment_id is not None:
+            result['ExperimentId'] = self.experiment_id
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.paiflow_node_id is not None:
+            result['PaiflowNodeId'] = self.paiflow_node_id
+        if self.run_id is not None:
+            result['RunId'] = self.run_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ExperimentId') is not None:
-            self.experiment_id = m.get('ExperimentId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        if m.get('ExecuteType') is not None:
-            self.execute_type = m.get('ExecuteType')
-        if m.get('NodeId') is not None:
-            self.node_id = m.get('NodeId')
-        if m.get('RunId') is not None:
-            self.run_id = m.get('RunId')
-        if m.get('PaiflowNodeId') is not None:
-            self.paiflow_node_id = m.get('PaiflowNodeId')
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
+        if m.get('ExecuteType') is not None:
+            self.execute_type = m.get('ExecuteType')
+        if m.get('ExperimentId') is not None:
+            self.experiment_id = m.get('ExperimentId')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('PaiflowNodeId') is not None:
+            self.paiflow_node_id = m.get('PaiflowNodeId')
+        if m.get('RunId') is not None:
+            self.run_id = m.get('RunId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
 class ListJobsResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         jobs: List[ListJobsResponseBodyJobs] = None,
+        request_id: str = None,
     ):
+        self.jobs = jobs
         # Id of the request
         self.request_id = request_id
-        self.jobs = jobs
 
     def validate(self):
         if self.jobs:
@@ -4532,23 +4967,23 @@ class ListJobsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         result['Jobs'] = []
         if self.jobs is not None:
             for k in self.jobs:
                 result['Jobs'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         self.jobs = []
         if m.get('Jobs') is not None:
             for k in m.get('Jobs'):
                 temp_model = ListJobsResponseBodyJobs()
                 self.jobs.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -4592,23 +5027,23 @@ class ListJobsResponse(TeaModel):
 class ListNodeOutputsResponseBodyOutputs(TeaModel):
     def __init__(
         self,
+        algo_name: str = None,
         display_name: str = None,
-        type: str = None,
+        location_type: str = None,
+        node_name: str = None,
         output_id: str = None,
         output_index: str = None,
+        type: str = None,
         value: Dict[str, Any] = None,
-        node_name: str = None,
-        algo_name: str = None,
-        location_type: str = None,
     ):
+        self.algo_name = algo_name
         self.display_name = display_name
-        self.type = type
+        self.location_type = location_type
+        self.node_name = node_name
         self.output_id = output_id
         self.output_index = output_index
+        self.type = type
         self.value = value
-        self.node_name = node_name
-        self.algo_name = algo_name
-        self.location_type = location_type
 
     def validate(self):
         pass
@@ -4619,54 +5054,54 @@ class ListNodeOutputsResponseBodyOutputs(TeaModel):
             return _map
 
         result = dict()
+        if self.algo_name is not None:
+            result['AlgoName'] = self.algo_name
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
-        if self.type is not None:
-            result['Type'] = self.type
+        if self.location_type is not None:
+            result['LocationType'] = self.location_type
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
         if self.output_id is not None:
             result['OutputId'] = self.output_id
         if self.output_index is not None:
             result['OutputIndex'] = self.output_index
+        if self.type is not None:
+            result['Type'] = self.type
         if self.value is not None:
             result['Value'] = self.value
-        if self.node_name is not None:
-            result['NodeName'] = self.node_name
-        if self.algo_name is not None:
-            result['AlgoName'] = self.algo_name
-        if self.location_type is not None:
-            result['LocationType'] = self.location_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlgoName') is not None:
+            self.algo_name = m.get('AlgoName')
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
+        if m.get('LocationType') is not None:
+            self.location_type = m.get('LocationType')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
         if m.get('OutputId') is not None:
             self.output_id = m.get('OutputId')
         if m.get('OutputIndex') is not None:
             self.output_index = m.get('OutputIndex')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         if m.get('Value') is not None:
             self.value = m.get('Value')
-        if m.get('NodeName') is not None:
-            self.node_name = m.get('NodeName')
-        if m.get('AlgoName') is not None:
-            self.algo_name = m.get('AlgoName')
-        if m.get('LocationType') is not None:
-            self.location_type = m.get('LocationType')
         return self
 
 
 class ListNodeOutputsResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         outputs: List[ListNodeOutputsResponseBodyOutputs] = None,
+        request_id: str = None,
     ):
+        self.outputs = outputs
         # Id of the request
         self.request_id = request_id
-        self.outputs = outputs
 
     def validate(self):
         if self.outputs:
@@ -4680,23 +5115,23 @@ class ListNodeOutputsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         result['Outputs'] = []
         if self.outputs is not None:
             for k in self.outputs:
                 result['Outputs'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         self.outputs = []
         if m.get('Outputs') is not None:
             for k in m.get('Outputs'):
                 temp_model = ListNodeOutputsResponseBodyOutputs()
                 self.outputs.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -4741,18 +5176,18 @@ class ListRecentExperimentsRequest(TeaModel):
     def __init__(
         self,
         order: str = None,
+        page_number: int = None,
+        page_size: int = None,
         source: str = None,
         type: str = None,
         workspace_id: str = None,
-        page_number: int = None,
-        page_size: int = None,
     ):
         self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
         self.source = source
         self.type = type
         self.workspace_id = workspace_id
-        self.page_number = page_number
-        self.page_size = page_size
 
     def validate(self):
         pass
@@ -4765,53 +5200,53 @@ class ListRecentExperimentsRequest(TeaModel):
         result = dict()
         if self.order is not None:
             result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.source is not None:
             result['Source'] = self.source
         if self.type is not None:
             result['Type'] = self.type
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Order') is not None:
             self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
         return self
 
 
 class ListRecentExperimentsResponseBodyExperiments(TeaModel):
     def __init__(
         self,
-        experiment_id: str = None,
-        name: str = None,
         description: str = None,
+        experiment_id: str = None,
+        modify_cnt: int = None,
+        name: str = None,
         recent_gmt_modified_time: str = None,
         source: str = None,
-        modify_cnt: int = None,
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        self.experiment_id = experiment_id
-        self.name = name
         self.description = description
+        self.experiment_id = experiment_id
+        self.modify_cnt = modify_cnt
+        self.name = name
         self.recent_gmt_modified_time = recent_gmt_modified_time
         self.source = source
-        self.modify_cnt = modify_cnt
         self.workspace_id = workspace_id
         self.workspace_name = workspace_name
 
@@ -4824,18 +5259,18 @@ class ListRecentExperimentsResponseBodyExperiments(TeaModel):
             return _map
 
         result = dict()
-        if self.experiment_id is not None:
-            result['ExperimentId'] = self.experiment_id
-        if self.name is not None:
-            result['Name'] = self.name
         if self.description is not None:
             result['Description'] = self.description
+        if self.experiment_id is not None:
+            result['ExperimentId'] = self.experiment_id
+        if self.modify_cnt is not None:
+            result['ModifyCnt'] = self.modify_cnt
+        if self.name is not None:
+            result['Name'] = self.name
         if self.recent_gmt_modified_time is not None:
             result['RecentGmtModifiedTime'] = self.recent_gmt_modified_time
         if self.source is not None:
             result['Source'] = self.source
-        if self.modify_cnt is not None:
-            result['ModifyCnt'] = self.modify_cnt
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         if self.workspace_name is not None:
@@ -4844,18 +5279,18 @@ class ListRecentExperimentsResponseBodyExperiments(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ExperimentId') is not None:
-            self.experiment_id = m.get('ExperimentId')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ExperimentId') is not None:
+            self.experiment_id = m.get('ExperimentId')
+        if m.get('ModifyCnt') is not None:
+            self.modify_cnt = m.get('ModifyCnt')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('RecentGmtModifiedTime') is not None:
             self.recent_gmt_modified_time = m.get('RecentGmtModifiedTime')
         if m.get('Source') is not None:
             self.source = m.get('Source')
-        if m.get('ModifyCnt') is not None:
-            self.modify_cnt = m.get('ModifyCnt')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         if m.get('WorkspaceName') is not None:
@@ -4866,13 +5301,13 @@ class ListRecentExperimentsResponseBodyExperiments(TeaModel):
 class ListRecentExperimentsResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         experiments: List[ListRecentExperimentsResponseBodyExperiments] = None,
+        request_id: str = None,
         total_count: int = None,
     ):
+        self.experiments = experiments
         # Id of the request
         self.request_id = request_id
-        self.experiments = experiments
         self.total_count = total_count
 
     def validate(self):
@@ -4887,25 +5322,25 @@ class ListRecentExperimentsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         result['Experiments'] = []
         if self.experiments is not None:
             for k in self.experiments:
                 result['Experiments'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         self.experiments = []
         if m.get('Experiments') is not None:
             for k in m.get('Experiments'):
                 temp_model = ListRecentExperimentsResponseBodyExperiments()
                 self.experiments.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -4951,11 +5386,11 @@ class ListRecentExperimentsResponse(TeaModel):
 class ListServicesRequest(TeaModel):
     def __init__(
         self,
-        workspace_id: str = None,
         service_type: str = None,
+        workspace_id: str = None,
     ):
-        self.workspace_id = workspace_id
         self.service_type = service_type
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -4966,29 +5401,29 @@ class ListServicesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
         if self.service_type is not None:
             result['ServiceType'] = self.service_type
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
         if m.get('ServiceType') is not None:
             self.service_type = m.get('ServiceType')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
 class ListServicesResponseBodyServices(TeaModel):
     def __init__(
         self,
-        url: str = None,
         service_id: str = None,
+        url: str = None,
     ):
-        self.url = url
         self.service_id = service_id
+        self.url = url
 
     def validate(self):
         pass
@@ -4999,18 +5434,18 @@ class ListServicesResponseBodyServices(TeaModel):
             return _map
 
         result = dict()
-        if self.url is not None:
-            result['Url'] = self.url
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.url is not None:
+            result['Url'] = self.url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Url') is not None:
-            self.url = m.get('Url')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
         return self
 
 
@@ -5018,13 +5453,13 @@ class ListServicesResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        total_count: int = None,
         services: List[ListServicesResponseBodyServices] = None,
+        total_count: int = None,
     ):
         # Id of the request
         self.request_id = request_id
-        self.total_count = total_count
         self.services = services
+        self.total_count = total_count
 
     def validate(self):
         if self.services:
@@ -5040,25 +5475,25 @@ class ListServicesResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         result['Services'] = []
         if self.services is not None:
             for k in self.services:
                 result['Services'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         self.services = []
         if m.get('Services') is not None:
             for k in m.get('Services'):
                 temp_model = ListServicesResponseBodyServices()
                 self.services.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -5102,20 +5537,20 @@ class ListServicesResponse(TeaModel):
 class ListTemplatesRequest(TeaModel):
     def __init__(
         self,
+        list: str = None,
+        order: str = None,
         page_number: int = None,
         page_size: int = None,
         source: str = None,
-        list: str = None,
         tag_id: str = None,
-        order: str = None,
         type_id: str = None,
     ):
+        self.list = list
+        self.order = order
         self.page_number = page_number
         self.page_size = page_size
         self.source = source
-        self.list = list
         self.tag_id = tag_id
-        self.order = order
         self.type_id = type_id
 
     def validate(self):
@@ -5127,36 +5562,36 @@ class ListTemplatesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.list is not None:
+            result['List'] = self.list
+        if self.order is not None:
+            result['Order'] = self.order
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.source is not None:
             result['Source'] = self.source
-        if self.list is not None:
-            result['List'] = self.list
         if self.tag_id is not None:
             result['TagId'] = self.tag_id
-        if self.order is not None:
-            result['Order'] = self.order
         if self.type_id is not None:
             result['TypeId'] = self.type_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('List') is not None:
+            self.list = m.get('List')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('Source') is not None:
             self.source = m.get('Source')
-        if m.get('List') is not None:
-            self.list = m.get('List')
         if m.get('TagId') is not None:
             self.tag_id = m.get('TagId')
-        if m.get('Order') is not None:
-            self.order = m.get('Order')
         if m.get('TypeId') is not None:
             self.type_id = m.get('TypeId')
         return self
@@ -5165,21 +5600,21 @@ class ListTemplatesRequest(TeaModel):
 class ListTemplatesResponseBodyTemplateDataTemplate(TeaModel):
     def __init__(
         self,
-        template_id: str = None,
         content: str = None,
         description: str = None,
         detail: str = None,
         doc_link: str = None,
         image_link: str = None,
         name: str = None,
+        template_id: str = None,
     ):
-        self.template_id = template_id
         self.content = content
         self.description = description
         self.detail = detail
         self.doc_link = doc_link
         self.image_link = image_link
         self.name = name
+        self.template_id = template_id
 
     def validate(self):
         pass
@@ -5190,8 +5625,6 @@ class ListTemplatesResponseBodyTemplateDataTemplate(TeaModel):
             return _map
 
         result = dict()
-        if self.template_id is not None:
-            result['TemplateId'] = self.template_id
         if self.content is not None:
             result['Content'] = self.content
         if self.description is not None:
@@ -5204,12 +5637,12 @@ class ListTemplatesResponseBodyTemplateDataTemplate(TeaModel):
             result['ImageLink'] = self.image_link
         if self.name is not None:
             result['Name'] = self.name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TemplateId') is not None:
-            self.template_id = m.get('TemplateId')
         if m.get('Content') is not None:
             self.content = m.get('Content')
         if m.get('Description') is not None:
@@ -5222,6 +5655,8 @@ class ListTemplatesResponseBodyTemplateDataTemplate(TeaModel):
             self.image_link = m.get('ImageLink')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
         return self
 
 
@@ -5267,11 +5702,11 @@ class ListTemplatesResponseBodyTemplateDataTemplateTag(TeaModel):
 class ListTemplatesResponseBodyTemplateDataTemplateType(TeaModel):
     def __init__(
         self,
-        type_id: str = None,
         name: str = None,
+        type_id: str = None,
     ):
-        self.type_id = type_id
         self.name = name
+        self.type_id = type_id
 
     def validate(self):
         pass
@@ -5282,18 +5717,18 @@ class ListTemplatesResponseBodyTemplateDataTemplateType(TeaModel):
             return _map
 
         result = dict()
-        if self.type_id is not None:
-            result['TypeId'] = self.type_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.type_id is not None:
+            result['TypeId'] = self.type_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TypeId') is not None:
-            self.type_id = m.get('TypeId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('TypeId') is not None:
+            self.type_id = m.get('TypeId')
         return self
 
 
@@ -5348,13 +5783,13 @@ class ListTemplatesResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        total_count: int = None,
         template_data: List[ListTemplatesResponseBodyTemplateData] = None,
+        total_count: int = None,
     ):
         # Id of the request
         self.request_id = request_id
-        self.total_count = total_count
         self.template_data = template_data
+        self.total_count = total_count
 
     def validate(self):
         if self.template_data:
@@ -5370,25 +5805,25 @@ class ListTemplatesResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         result['TemplateData'] = []
         if self.template_data is not None:
             for k in self.template_data:
                 result['TemplateData'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         self.template_data = []
         if m.get('TemplateData') is not None:
             for k in m.get('TemplateData'):
                 temp_model = ListTemplatesResponseBodyTemplateData()
                 self.template_data.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -5429,14 +5864,16 @@ class ListTemplatesResponse(TeaModel):
         return self
 
 
-class PreviewMCTableRequest(TeaModel):
+class MigrateExperimentFoldersRequest(TeaModel):
     def __init__(
         self,
+        accessibility: str = None,
+        is_owner: bool = None,
         workspace_id: str = None,
-        endpoint: str = None,
     ):
+        self.accessibility = accessibility
+        self.is_owner = is_owner
         self.workspace_id = workspace_id
-        self.endpoint = endpoint
 
     def validate(self):
         pass
@@ -5447,30 +5884,331 @@ class PreviewMCTableRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+        if self.is_owner is not None:
+            result['IsOwner'] = self.is_owner
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
-        if self.endpoint is not None:
-            result['Endpoint'] = self.endpoint
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+        if m.get('IsOwner') is not None:
+            self.is_owner = m.get('IsOwner')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class MigrateExperimentFoldersResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        folder_id_mapping: Dict[str, dict] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.folder_id_mapping = folder_id_mapping
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.folder_id_mapping is not None:
+            result['FolderIdMapping'] = self.folder_id_mapping
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('FolderIdMapping') is not None:
+            self.folder_id_mapping = m.get('FolderIdMapping')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class MigrateExperimentFoldersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: MigrateExperimentFoldersResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = MigrateExperimentFoldersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class MigrateExperimentsRequest(TeaModel):
+    def __init__(
+        self,
+        accessibility: str = None,
+        dest_folder_id: str = None,
+        is_owner: bool = None,
+        source_exp_id: int = None,
+        update_if_exists: bool = None,
+        workspace_id: str = None,
+    ):
+        self.accessibility = accessibility
+        self.dest_folder_id = dest_folder_id
+        self.is_owner = is_owner
+        self.source_exp_id = source_exp_id
+        self.update_if_exists = update_if_exists
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+        if self.dest_folder_id is not None:
+            result['DestFolderId'] = self.dest_folder_id
+        if self.is_owner is not None:
+            result['IsOwner'] = self.is_owner
+        if self.source_exp_id is not None:
+            result['SourceExpId'] = self.source_exp_id
+        if self.update_if_exists is not None:
+            result['UpdateIfExists'] = self.update_if_exists
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+        if m.get('DestFolderId') is not None:
+            self.dest_folder_id = m.get('DestFolderId')
+        if m.get('IsOwner') is not None:
+            self.is_owner = m.get('IsOwner')
+        if m.get('SourceExpId') is not None:
+            self.source_exp_id = m.get('SourceExpId')
+        if m.get('UpdateIfExists') is not None:
+            self.update_if_exists = m.get('UpdateIfExists')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class MigrateExperimentsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        already_exists: bool = None,
+        experiment_id: str = None,
+        updated: bool = None,
+    ):
+        self.already_exists = already_exists
+        self.experiment_id = experiment_id
+        self.updated = updated
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.already_exists is not None:
+            result['AlreadyExists'] = self.already_exists
+        if self.experiment_id is not None:
+            result['ExperimentId'] = self.experiment_id
+        if self.updated is not None:
+            result['Updated'] = self.updated
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlreadyExists') is not None:
+            self.already_exists = m.get('AlreadyExists')
+        if m.get('ExperimentId') is not None:
+            self.experiment_id = m.get('ExperimentId')
+        if m.get('Updated') is not None:
+            self.updated = m.get('Updated')
+        return self
+
+
+class MigrateExperimentsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: MigrateExperimentsResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = MigrateExperimentsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class MigrateExperimentsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: MigrateExperimentsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = MigrateExperimentsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PreviewMCTableRequest(TeaModel):
+    def __init__(
+        self,
+        endpoint: str = None,
+        workspace_id: str = None,
+    ):
+        self.endpoint = endpoint
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
         if m.get('Endpoint') is not None:
             self.endpoint = m.get('Endpoint')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
 class PreviewMCTableResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         content: List[List[str]] = None,
+        request_id: str = None,
     ):
+        self.content = content
         # Id of the request
         self.request_id = request_id
-        self.content = content
 
     def validate(self):
         pass
@@ -5481,18 +6219,18 @@ class PreviewMCTableResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.content is not None:
             result['Content'] = self.content
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -5529,6 +6267,307 @@ class PreviewMCTableResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = PreviewMCTableResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PublishExperimentRequest(TeaModel):
+    def __init__(
+        self,
+        folder_id: str = None,
+    ):
+        # 公共目录Id
+        self.folder_id = folder_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.folder_id is not None:
+            result['FolderId'] = self.folder_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FolderId') is not None:
+            self.folder_id = m.get('FolderId')
+        return self
+
+
+class PublishExperimentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PublishExperimentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: PublishExperimentResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = PublishExperimentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryExperimentVisualizationDataRequestBody(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        node_id: str = None,
+        start_time: str = None,
+        visualization_data_ids: List[str] = None,
+    ):
+        # 结束时间，UTC 时间，日期格式 iso8601，闭区间，对流算法必填
+        self.end_time = end_time
+        # node id
+        self.node_id = node_id
+        # 开始时间，UTC 时间，日期格式 iso8601，闭区间，对流算法必选
+        self.start_time = start_time
+        # dataId列表
+        self.visualization_data_ids = visualization_data_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.visualization_data_ids is not None:
+            result['VisualizationDataIds'] = self.visualization_data_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('VisualizationDataIds') is not None:
+            self.visualization_data_ids = m.get('VisualizationDataIds')
+        return self
+
+
+class QueryExperimentVisualizationDataRequest(TeaModel):
+    def __init__(
+        self,
+        body: List[QueryExperimentVisualizationDataRequestBody] = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            for k in self.body:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['body'] = []
+        if self.body is not None:
+            for k in self.body:
+                result['body'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.body = []
+        if m.get('body') is not None:
+            for k in m.get('body'):
+                temp_model = QueryExperimentVisualizationDataRequestBody()
+                self.body.append(temp_model.from_map(k))
+        return self
+
+
+class QueryExperimentVisualizationDataResponseBodyVisualizationData(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        data: str = None,
+        data_id: str = None,
+        node_id: str = None,
+    ):
+        self.create_time = create_time
+        self.data = data
+        self.data_id = data_id
+        self.node_id = node_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        return self
+
+
+class QueryExperimentVisualizationDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        visualization_data: List[QueryExperimentVisualizationDataResponseBodyVisualizationData] = None,
+        request_id: str = None,
+    ):
+        self.visualization_data = visualization_data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.visualization_data:
+            for k in self.visualization_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['VisualizationData'] = []
+        if self.visualization_data is not None:
+            for k in self.visualization_data:
+                result['VisualizationData'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.visualization_data = []
+        if m.get('VisualizationData') is not None:
+            for k in m.get('VisualizationData'):
+                temp_model = QueryExperimentVisualizationDataResponseBodyVisualizationData()
+                self.visualization_data.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class QueryExperimentVisualizationDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: QueryExperimentVisualizationDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = QueryExperimentVisualizationDataResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5666,11 +6705,11 @@ class RemoveImageLabelsResponse(TeaModel):
 class SearchMCTablesRequest(TeaModel):
     def __init__(
         self,
-        workspace_id: str = None,
         keyword: str = None,
+        workspace_id: str = None,
     ):
-        self.workspace_id = workspace_id
         self.keyword = keyword
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -5681,18 +6720,18 @@ class SearchMCTablesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
         if self.keyword is not None:
             result['Keyword'] = self.keyword
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
         if m.get('Keyword') is not None:
             self.keyword = m.get('Keyword')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -6102,14 +7141,17 @@ class UpdateExperimentFolderResponse(TeaModel):
 class UpdateExperimentMetaRequest(TeaModel):
     def __init__(
         self,
-        name: str = None,
+        accessibility: str = None,
         description: str = None,
         folder_id: str = None,
+        name: str = None,
         options: str = None,
     ):
-        self.name = name
+        # 工作空间内可见性 PUBLIC; PRIVATE 默认PUBLIC
+        self.accessibility = accessibility
         self.description = description
         self.folder_id = folder_id
+        self.name = name
         self.options = options
 
     def validate(self):
@@ -6121,24 +7163,28 @@ class UpdateExperimentMetaRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.name is not None:
-            result['Name'] = self.name
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
         if self.description is not None:
             result['Description'] = self.description
         if self.folder_id is not None:
             result['FolderId'] = self.folder_id
+        if self.name is not None:
+            result['Name'] = self.name
         if self.options is not None:
             result['Options'] = self.options
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('FolderId') is not None:
             self.folder_id = m.get('FolderId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('Options') is not None:
             self.options = m.get('Options')
         return self

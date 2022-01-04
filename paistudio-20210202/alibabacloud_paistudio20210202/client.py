@@ -83,21 +83,32 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.AddImageResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.name):
-            body['Name'] = request.name
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.image_uri):
             body['ImageUri'] = request.image_uri
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='AddImage',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/images',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.AddImageResponse(),
-            self.do_roarequest('AddImage', '2021-02-02', 'HTTPS', 'POST', 'AK', f'/api/v1/images', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_image_with_options_async(
@@ -108,21 +119,32 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.AddImageResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.name):
-            body['Name'] = request.name
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.image_uri):
             body['ImageUri'] = request.image_uri
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='AddImage',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/images',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.AddImageResponse(),
-            await self.do_roarequest_async('AddImage', '2021-02-02', 'HTTPS', 'POST', 'AK', f'/api/v1/images', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_image_labels(
@@ -159,9 +181,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='AddImageLabels',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/images/{image_id}/labels',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.AddImageLabelsResponse(),
-            self.do_roarequest('AddImageLabels', '2021-02-02', 'HTTPS', 'POST', 'AK', f'/api/v1/images/{image_id}/labels', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_image_labels_with_options_async(
@@ -180,9 +213,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='AddImageLabels',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/images/{image_id}/labels',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.AddImageLabelsResponse(),
-            await self.do_roarequest_async('AddImageLabels', '2021-02-02', 'HTTPS', 'POST', 'AK', f'/api/v1/images/{image_id}/labels', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def copy_experiment(
@@ -213,23 +257,36 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         body = {}
-        if not UtilClient.is_unset(request.name):
-            body['Name'] = request.name
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.source):
-            body['Source'] = request.source
         if not UtilClient.is_unset(request.folder_id):
             body['FolderId'] = request.folder_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.source):
+            body['Source'] = request.source
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CopyExperiment',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/[ExperimentId]/copy',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.CopyExperimentResponse(),
-            self.do_roarequest('CopyExperiment', '2021-02-02', 'HTTPS', 'POST', 'AK', f'/api/v1/experiments/[ExperimentId]/copy', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def copy_experiment_with_options_async(
@@ -242,23 +299,36 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         body = {}
-        if not UtilClient.is_unset(request.name):
-            body['Name'] = request.name
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.source):
-            body['Source'] = request.source
         if not UtilClient.is_unset(request.folder_id):
             body['FolderId'] = request.folder_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.source):
+            body['Source'] = request.source
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CopyExperiment',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/[ExperimentId]/copy',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.CopyExperimentResponse(),
-            await self.do_roarequest_async('CopyExperiment', '2021-02-02', 'HTTPS', 'POST', 'AK', f'/api/v1/experiments/[ExperimentId]/copy', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_experiment(
@@ -285,27 +355,40 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.CreateExperimentResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.name):
-            body['Name'] = request.name
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.source):
-            body['Source'] = request.source
         if not UtilClient.is_unset(request.folder_id):
             body['FolderId'] = request.folder_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        if not UtilClient.is_unset(request.template_id):
-            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
         if not UtilClient.is_unset(request.options):
             body['Options'] = request.options
+        if not UtilClient.is_unset(request.source):
+            body['Source'] = request.source
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateExperiment',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.CreateExperimentResponse(),
-            self.do_roarequest('CreateExperiment', '2021-02-02', 'HTTPS', 'POST', 'AK', f'/api/v1/experiments', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_experiment_with_options_async(
@@ -316,27 +399,40 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.CreateExperimentResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.name):
-            body['Name'] = request.name
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.source):
-            body['Source'] = request.source
         if not UtilClient.is_unset(request.folder_id):
             body['FolderId'] = request.folder_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        if not UtilClient.is_unset(request.template_id):
-            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
         if not UtilClient.is_unset(request.options):
             body['Options'] = request.options
+        if not UtilClient.is_unset(request.source):
+            body['Source'] = request.source
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateExperiment',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.CreateExperimentResponse(),
-            await self.do_roarequest_async('CreateExperiment', '2021-02-02', 'HTTPS', 'POST', 'AK', f'/api/v1/experiments', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_experiment_folder(
@@ -363,21 +459,34 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.CreateExperimentFolderResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.parent_folder_id):
             body['ParentFolderId'] = request.parent_folder_id
         if not UtilClient.is_unset(request.source):
             body['Source'] = request.source
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateExperimentFolder',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experimentfolders',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.CreateExperimentFolderResponse(),
-            self.do_roarequest('CreateExperimentFolder', '2021-02-02', 'HTTPS', 'POST', 'AK', f'/api/v1/experimentfolders', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_experiment_folder_with_options_async(
@@ -388,21 +497,110 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.CreateExperimentFolderResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.parent_folder_id):
             body['ParentFolderId'] = request.parent_folder_id
         if not UtilClient.is_unset(request.source):
             body['Source'] = request.source
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateExperimentFolder',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experimentfolders',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.CreateExperimentFolderResponse(),
-            await self.do_roarequest_async('CreateExperimentFolder', '2021-02-02', 'HTTPS', 'POST', 'AK', f'/api/v1/experimentfolders', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_experiment_migrate_validation(
+        self,
+        request: pai_studio_20210202_models.CreateExperimentMigrateValidationRequest,
+    ) -> pai_studio_20210202_models.CreateExperimentMigrateValidationResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_experiment_migrate_validation_with_options(request, headers, runtime)
+
+    async def create_experiment_migrate_validation_async(
+        self,
+        request: pai_studio_20210202_models.CreateExperimentMigrateValidationRequest,
+    ) -> pai_studio_20210202_models.CreateExperimentMigrateValidationResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_experiment_migrate_validation_with_options_async(request, headers, runtime)
+
+    def create_experiment_migrate_validation_with_options(
+        self,
+        request: pai_studio_20210202_models.CreateExperimentMigrateValidationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.CreateExperimentMigrateValidationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_exp_id):
+            query['SourceExpId'] = request.source_exp_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateExperimentMigrateValidation',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/migrate/experimentvalidation',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.CreateExperimentMigrateValidationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_experiment_migrate_validation_with_options_async(
+        self,
+        request: pai_studio_20210202_models.CreateExperimentMigrateValidationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.CreateExperimentMigrateValidationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_exp_id):
+            query['SourceExpId'] = request.source_exp_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateExperimentMigrateValidation',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/migrate/experimentvalidation',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.CreateExperimentMigrateValidationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_job(
@@ -429,10 +627,10 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.CreateJobResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.experiment_id):
-            body['ExperimentId'] = request.experiment_id
         if not UtilClient.is_unset(request.execute_type):
             body['ExecuteType'] = request.execute_type
+        if not UtilClient.is_unset(request.experiment_id):
+            body['ExperimentId'] = request.experiment_id
         if not UtilClient.is_unset(request.node_id):
             body['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.options):
@@ -441,9 +639,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateJob',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.CreateJobResponse(),
-            self.do_roarequest('CreateJob', '2021-02-02', 'HTTPS', 'POST', 'AK', f'/api/v1/jobs', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_job_with_options_async(
@@ -454,10 +663,10 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.CreateJobResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.experiment_id):
-            body['ExperimentId'] = request.experiment_id
         if not UtilClient.is_unset(request.execute_type):
             body['ExecuteType'] = request.execute_type
+        if not UtilClient.is_unset(request.experiment_id):
+            body['ExperimentId'] = request.experiment_id
         if not UtilClient.is_unset(request.node_id):
             body['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.options):
@@ -466,9 +675,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateJob',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.CreateJobResponse(),
-            await self.do_roarequest_async('CreateJob', '2021-02-02', 'HTTPS', 'POST', 'AK', f'/api/v1/jobs', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_service(
@@ -495,17 +715,28 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.CreateServiceResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.service_type):
-            body['ServiceType'] = request.service_type
         if not UtilClient.is_unset(request.config):
             body['Config'] = request.config
+        if not UtilClient.is_unset(request.service_type):
+            body['ServiceType'] = request.service_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateService',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/services',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.CreateServiceResponse(),
-            self.do_roarequest('CreateService', '2021-02-02', 'HTTPS', 'POST', 'AK', f'/api/v1/services', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_service_with_options_async(
@@ -516,17 +747,28 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.CreateServiceResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.service_type):
-            body['ServiceType'] = request.service_type
         if not UtilClient.is_unset(request.config):
             body['Config'] = request.config
+        if not UtilClient.is_unset(request.service_type):
+            body['ServiceType'] = request.service_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateService',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/services',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.CreateServiceResponse(),
-            await self.do_roarequest_async('CreateService', '2021-02-02', 'HTTPS', 'POST', 'AK', f'/api/v1/services', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_experiment(
@@ -555,9 +797,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteExperiment',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.DeleteExperimentResponse(),
-            self.do_roarequest('DeleteExperiment', '2021-02-02', 'HTTPS', 'DELETE', 'AK', f'/api/v1/experiments/{experiment_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_experiment_with_options_async(
@@ -570,9 +823,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteExperiment',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.DeleteExperimentResponse(),
-            await self.do_roarequest_async('DeleteExperiment', '2021-02-02', 'HTTPS', 'DELETE', 'AK', f'/api/v1/experiments/{experiment_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_experiment_folder(
@@ -601,9 +865,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteExperimentFolder',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experimentfolders/{folder_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.DeleteExperimentFolderResponse(),
-            self.do_roarequest('DeleteExperimentFolder', '2021-02-02', 'HTTPS', 'DELETE', 'AK', f'/api/v1/experimentfolders/{folder_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_experiment_folder_with_options_async(
@@ -616,9 +891,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteExperimentFolder',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experimentfolders/{folder_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.DeleteExperimentFolderResponse(),
-            await self.do_roarequest_async('DeleteExperimentFolder', '2021-02-02', 'HTTPS', 'DELETE', 'AK', f'/api/v1/experimentfolders/{folder_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_service(
@@ -647,9 +933,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteService',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/services/{service_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.DeleteServiceResponse(),
-            self.do_roarequest('DeleteService', '2021-02-02', 'HTTPS', 'DELETE', 'AK', f'/api/v1/services/{service_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_service_with_options_async(
@@ -662,195 +959,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='DeleteService',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/services/{service_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.DeleteServiceResponse(),
-            await self.do_roarequest_async('DeleteService', '2021-02-02', 'HTTPS', 'DELETE', 'AK', f'/api/v1/services/{service_id}', 'json', req, runtime)
-        )
-
-    def get_algorithm_def(
-        self,
-        request: pai_studio_20210202_models.GetAlgorithmDefRequest,
-    ) -> pai_studio_20210202_models.GetAlgorithmDefResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_algorithm_def_with_options(request, headers, runtime)
-
-    async def get_algorithm_def_async(
-        self,
-        request: pai_studio_20210202_models.GetAlgorithmDefRequest,
-    ) -> pai_studio_20210202_models.GetAlgorithmDefResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_algorithm_def_with_options_async(request, headers, runtime)
-
-    def get_algorithm_def_with_options(
-        self,
-        request: pai_studio_20210202_models.GetAlgorithmDefRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pai_studio_20210202_models.GetAlgorithmDefResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.provider):
-            query['Provider'] = request.provider
-        if not UtilClient.is_unset(request.identifier):
-            query['Identifier'] = request.identifier
-        if not UtilClient.is_unset(request.algo_version):
-            query['AlgoVersion'] = request.algo_version
-        if not UtilClient.is_unset(request.signature):
-            query['Signature'] = request.signature
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            pai_studio_20210202_models.GetAlgorithmDefResponse(),
-            self.do_roarequest('GetAlgorithmDef', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/algorithm/def', 'json', req, runtime)
-        )
-
-    async def get_algorithm_def_with_options_async(
-        self,
-        request: pai_studio_20210202_models.GetAlgorithmDefRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pai_studio_20210202_models.GetAlgorithmDefResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.provider):
-            query['Provider'] = request.provider
-        if not UtilClient.is_unset(request.identifier):
-            query['Identifier'] = request.identifier
-        if not UtilClient.is_unset(request.algo_version):
-            query['AlgoVersion'] = request.algo_version
-        if not UtilClient.is_unset(request.signature):
-            query['Signature'] = request.signature
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            pai_studio_20210202_models.GetAlgorithmDefResponse(),
-            await self.do_roarequest_async('GetAlgorithmDef', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/algorithm/def', 'json', req, runtime)
-        )
-
-    def get_algorithm_defs(
-        self,
-        request: pai_studio_20210202_models.GetAlgorithmDefsRequest,
-    ) -> pai_studio_20210202_models.GetAlgorithmDefsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_algorithm_defs_with_options(request, headers, runtime)
-
-    async def get_algorithm_defs_async(
-        self,
-        request: pai_studio_20210202_models.GetAlgorithmDefsRequest,
-    ) -> pai_studio_20210202_models.GetAlgorithmDefsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_algorithm_defs_with_options_async(request, headers, runtime)
-
-    def get_algorithm_defs_with_options(
-        self,
-        request: pai_studio_20210202_models.GetAlgorithmDefsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pai_studio_20210202_models.GetAlgorithmDefsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.timestamp):
-            query['Timestamp'] = request.timestamp
-        if not UtilClient.is_unset(request.latest_timestamp):
-            query['LatestTimestamp'] = request.latest_timestamp
-        if not UtilClient.is_unset(request.range_start):
-            query['RangeStart'] = request.range_start
-        if not UtilClient.is_unset(request.range_end):
-            query['RangeEnd'] = request.range_end
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            pai_studio_20210202_models.GetAlgorithmDefsResponse(),
-            self.do_roarequest('GetAlgorithmDefs', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/algorithm/defs', 'json', req, runtime)
-        )
-
-    async def get_algorithm_defs_with_options_async(
-        self,
-        request: pai_studio_20210202_models.GetAlgorithmDefsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pai_studio_20210202_models.GetAlgorithmDefsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.timestamp):
-            query['Timestamp'] = request.timestamp
-        if not UtilClient.is_unset(request.latest_timestamp):
-            query['LatestTimestamp'] = request.latest_timestamp
-        if not UtilClient.is_unset(request.range_start):
-            query['RangeStart'] = request.range_start
-        if not UtilClient.is_unset(request.range_end):
-            query['RangeEnd'] = request.range_end
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            pai_studio_20210202_models.GetAlgorithmDefsResponse(),
-            await self.do_roarequest_async('GetAlgorithmDefs', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/algorithm/defs', 'json', req, runtime)
-        )
-
-    def get_algorithm_tree(
-        self,
-        request: pai_studio_20210202_models.GetAlgorithmTreeRequest,
-    ) -> pai_studio_20210202_models.GetAlgorithmTreeResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_algorithm_tree_with_options(request, headers, runtime)
-
-    async def get_algorithm_tree_async(
-        self,
-        request: pai_studio_20210202_models.GetAlgorithmTreeRequest,
-    ) -> pai_studio_20210202_models.GetAlgorithmTreeResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_algorithm_tree_with_options_async(request, headers, runtime)
-
-    def get_algorithm_tree_with_options(
-        self,
-        request: pai_studio_20210202_models.GetAlgorithmTreeRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pai_studio_20210202_models.GetAlgorithmTreeResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.source):
-            query['Source'] = request.source
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            pai_studio_20210202_models.GetAlgorithmTreeResponse(),
-            self.do_roarequest('GetAlgorithmTree', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/algorithm/tree', 'json', req, runtime)
-        )
-
-    async def get_algorithm_tree_with_options_async(
-        self,
-        request: pai_studio_20210202_models.GetAlgorithmTreeRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pai_studio_20210202_models.GetAlgorithmTreeResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.source):
-            query['Source'] = request.source
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            pai_studio_20210202_models.GetAlgorithmTreeResponse(),
-            await self.do_roarequest_async('GetAlgorithmTree', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/algorithm/tree', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_algo_tree(
@@ -883,9 +1005,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetAlgoTree',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algo/tree',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetAlgoTreeResponse(),
-            self.do_roarequest('GetAlgoTree', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/algo/tree', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_algo_tree_with_options_async(
@@ -902,9 +1035,272 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetAlgoTree',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algo/tree',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetAlgoTreeResponse(),
-            await self.do_roarequest_async('GetAlgoTree', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/algo/tree', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_algorithm_def(
+        self,
+        request: pai_studio_20210202_models.GetAlgorithmDefRequest,
+    ) -> pai_studio_20210202_models.GetAlgorithmDefResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_algorithm_def_with_options(request, headers, runtime)
+
+    async def get_algorithm_def_async(
+        self,
+        request: pai_studio_20210202_models.GetAlgorithmDefRequest,
+    ) -> pai_studio_20210202_models.GetAlgorithmDefResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_algorithm_def_with_options_async(request, headers, runtime)
+
+    def get_algorithm_def_with_options(
+        self,
+        request: pai_studio_20210202_models.GetAlgorithmDefRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.GetAlgorithmDefResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algo_version):
+            query['AlgoVersion'] = request.algo_version
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.provider):
+            query['Provider'] = request.provider
+        if not UtilClient.is_unset(request.signature):
+            query['Signature'] = request.signature
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAlgorithmDef',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algorithm/def',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.GetAlgorithmDefResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_algorithm_def_with_options_async(
+        self,
+        request: pai_studio_20210202_models.GetAlgorithmDefRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.GetAlgorithmDefResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algo_version):
+            query['AlgoVersion'] = request.algo_version
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.provider):
+            query['Provider'] = request.provider
+        if not UtilClient.is_unset(request.signature):
+            query['Signature'] = request.signature
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAlgorithmDef',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algorithm/def',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.GetAlgorithmDefResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_algorithm_defs(
+        self,
+        request: pai_studio_20210202_models.GetAlgorithmDefsRequest,
+    ) -> pai_studio_20210202_models.GetAlgorithmDefsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_algorithm_defs_with_options(request, headers, runtime)
+
+    async def get_algorithm_defs_async(
+        self,
+        request: pai_studio_20210202_models.GetAlgorithmDefsRequest,
+    ) -> pai_studio_20210202_models.GetAlgorithmDefsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_algorithm_defs_with_options_async(request, headers, runtime)
+
+    def get_algorithm_defs_with_options(
+        self,
+        request: pai_studio_20210202_models.GetAlgorithmDefsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.GetAlgorithmDefsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.latest_timestamp):
+            query['LatestTimestamp'] = request.latest_timestamp
+        if not UtilClient.is_unset(request.range_end):
+            query['RangeEnd'] = request.range_end
+        if not UtilClient.is_unset(request.range_start):
+            query['RangeStart'] = request.range_start
+        if not UtilClient.is_unset(request.timestamp):
+            query['Timestamp'] = request.timestamp
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAlgorithmDefs',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algorithm/defs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.GetAlgorithmDefsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_algorithm_defs_with_options_async(
+        self,
+        request: pai_studio_20210202_models.GetAlgorithmDefsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.GetAlgorithmDefsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.latest_timestamp):
+            query['LatestTimestamp'] = request.latest_timestamp
+        if not UtilClient.is_unset(request.range_end):
+            query['RangeEnd'] = request.range_end
+        if not UtilClient.is_unset(request.range_start):
+            query['RangeStart'] = request.range_start
+        if not UtilClient.is_unset(request.timestamp):
+            query['Timestamp'] = request.timestamp
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAlgorithmDefs',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algorithm/defs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.GetAlgorithmDefsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_algorithm_tree(
+        self,
+        request: pai_studio_20210202_models.GetAlgorithmTreeRequest,
+    ) -> pai_studio_20210202_models.GetAlgorithmTreeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_algorithm_tree_with_options(request, headers, runtime)
+
+    async def get_algorithm_tree_async(
+        self,
+        request: pai_studio_20210202_models.GetAlgorithmTreeRequest,
+    ) -> pai_studio_20210202_models.GetAlgorithmTreeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_algorithm_tree_with_options_async(request, headers, runtime)
+
+    def get_algorithm_tree_with_options(
+        self,
+        request: pai_studio_20210202_models.GetAlgorithmTreeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.GetAlgorithmTreeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAlgorithmTree',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algorithm/tree',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.GetAlgorithmTreeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_algorithm_tree_with_options_async(
+        self,
+        request: pai_studio_20210202_models.GetAlgorithmTreeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.GetAlgorithmTreeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAlgorithmTree',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algorithm/tree',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.GetAlgorithmTreeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_experiment(
@@ -933,9 +1329,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetExperiment',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetExperimentResponse(),
-            self.do_roarequest('GetExperiment', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/experiments/{experiment_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_experiment_with_options_async(
@@ -948,9 +1355,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetExperiment',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetExperimentResponse(),
-            await self.do_roarequest_async('GetExperiment', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/experiments/{experiment_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_experiment_folder_children(
@@ -981,17 +1399,34 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         folder_id = OpenApiUtilClient.get_encode_param(folder_id)
         query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.only_folder):
             query['OnlyFolder'] = request.only_folder
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetExperimentFolderChildren',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experimentfolders/{folder_id}/children',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetExperimentFolderChildrenResponse(),
-            self.do_roarequest('GetExperimentFolderChildren', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/experimentfolders/{folder_id}/children', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_experiment_folder_children_with_options_async(
@@ -1004,17 +1439,34 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         folder_id = OpenApiUtilClient.get_encode_param(folder_id)
         query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.only_folder):
             query['OnlyFolder'] = request.only_folder
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetExperimentFolderChildren',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experimentfolders/{folder_id}/children',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetExperimentFolderChildrenResponse(),
-            await self.do_roarequest_async('GetExperimentFolderChildren', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/experimentfolders/{folder_id}/children', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_experiment_meta(
@@ -1043,9 +1495,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetExperimentMeta',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/meta',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetExperimentMetaResponse(),
-            self.do_roarequest('GetExperimentMeta', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/experiments/{experiment_id}/meta', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_experiment_meta_with_options_async(
@@ -1058,67 +1521,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetExperimentMeta',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/meta',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetExperimentMetaResponse(),
-            await self.do_roarequest_async('GetExperimentMeta', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/experiments/{experiment_id}/meta', 'json', req, runtime)
-        )
-
-    def get_experiments_statistics(
-        self,
-        request: pai_studio_20210202_models.GetExperimentsStatisticsRequest,
-    ) -> pai_studio_20210202_models.GetExperimentsStatisticsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_experiments_statistics_with_options(request, headers, runtime)
-
-    async def get_experiments_statistics_async(
-        self,
-        request: pai_studio_20210202_models.GetExperimentsStatisticsRequest,
-    ) -> pai_studio_20210202_models.GetExperimentsStatisticsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_experiments_statistics_with_options_async(request, headers, runtime)
-
-    def get_experiments_statistics_with_options(
-        self,
-        request: pai_studio_20210202_models.GetExperimentsStatisticsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pai_studio_20210202_models.GetExperimentsStatisticsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.workspace_ids):
-            query['WorkspaceIds'] = request.workspace_ids
-        if not UtilClient.is_unset(request.source):
-            query['Source'] = request.source
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            pai_studio_20210202_models.GetExperimentsStatisticsResponse(),
-            self.do_roarequest('GetExperimentsStatistics', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/statistics/experiments', 'json', req, runtime)
-        )
-
-    async def get_experiments_statistics_with_options_async(
-        self,
-        request: pai_studio_20210202_models.GetExperimentsStatisticsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pai_studio_20210202_models.GetExperimentsStatisticsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.workspace_ids):
-            query['WorkspaceIds'] = request.workspace_ids
-        if not UtilClient.is_unset(request.source):
-            query['Source'] = request.source
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            pai_studio_20210202_models.GetExperimentsStatisticsResponse(),
-            await self.do_roarequest_async('GetExperimentsStatistics', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/statistics/experiments', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_experiment_status(
@@ -1147,9 +1563,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetExperimentStatus',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetExperimentStatusResponse(),
-            self.do_roarequest('GetExperimentStatus', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/experiments/{experiment_id}/status', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_experiment_status_with_options_async(
@@ -1162,9 +1589,262 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetExperimentStatus',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetExperimentStatusResponse(),
-            await self.do_roarequest_async('GetExperimentStatus', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/experiments/{experiment_id}/status', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_experiment_visualization_meta(
+        self,
+        experiment_id: str,
+        request: pai_studio_20210202_models.GetExperimentVisualizationMetaRequest,
+    ) -> pai_studio_20210202_models.GetExperimentVisualizationMetaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_experiment_visualization_meta_with_options(experiment_id, request, headers, runtime)
+
+    async def get_experiment_visualization_meta_async(
+        self,
+        experiment_id: str,
+        request: pai_studio_20210202_models.GetExperimentVisualizationMetaRequest,
+    ) -> pai_studio_20210202_models.GetExperimentVisualizationMetaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_experiment_visualization_meta_with_options_async(experiment_id, request, headers, runtime)
+
+    def get_experiment_visualization_meta_with_options(
+        self,
+        experiment_id: str,
+        request: pai_studio_20210202_models.GetExperimentVisualizationMetaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.GetExperimentVisualizationMetaResponse:
+        UtilClient.validate_model(request)
+        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
+        query = {}
+        if not UtilClient.is_unset(request.node_ids):
+            query['NodeIds'] = request.node_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetExperimentVisualizationMeta',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/visualizationMeta',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.GetExperimentVisualizationMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_experiment_visualization_meta_with_options_async(
+        self,
+        experiment_id: str,
+        request: pai_studio_20210202_models.GetExperimentVisualizationMetaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.GetExperimentVisualizationMetaResponse:
+        UtilClient.validate_model(request)
+        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
+        query = {}
+        if not UtilClient.is_unset(request.node_ids):
+            query['NodeIds'] = request.node_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetExperimentVisualizationMeta',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/visualizationMeta',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.GetExperimentVisualizationMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_experiments_statistics(
+        self,
+        request: pai_studio_20210202_models.GetExperimentsStatisticsRequest,
+    ) -> pai_studio_20210202_models.GetExperimentsStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_experiments_statistics_with_options(request, headers, runtime)
+
+    async def get_experiments_statistics_async(
+        self,
+        request: pai_studio_20210202_models.GetExperimentsStatisticsRequest,
+    ) -> pai_studio_20210202_models.GetExperimentsStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_experiments_statistics_with_options_async(request, headers, runtime)
+
+    def get_experiments_statistics_with_options(
+        self,
+        request: pai_studio_20210202_models.GetExperimentsStatisticsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.GetExperimentsStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.workspace_ids):
+            query['WorkspaceIds'] = request.workspace_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetExperimentsStatistics',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/statistics/experiments',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.GetExperimentsStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_experiments_statistics_with_options_async(
+        self,
+        request: pai_studio_20210202_models.GetExperimentsStatisticsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.GetExperimentsStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.workspace_ids):
+            query['WorkspaceIds'] = request.workspace_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetExperimentsStatistics',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/statistics/experiments',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.GetExperimentsStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_experiments_users_statistics(
+        self,
+        request: pai_studio_20210202_models.GetExperimentsUsersStatisticsRequest,
+    ) -> pai_studio_20210202_models.GetExperimentsUsersStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_experiments_users_statistics_with_options(request, headers, runtime)
+
+    async def get_experiments_users_statistics_async(
+        self,
+        request: pai_studio_20210202_models.GetExperimentsUsersStatisticsRequest,
+    ) -> pai_studio_20210202_models.GetExperimentsUsersStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_experiments_users_statistics_with_options_async(request, headers, runtime)
+
+    def get_experiments_users_statistics_with_options(
+        self,
+        request: pai_studio_20210202_models.GetExperimentsUsersStatisticsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.GetExperimentsUsersStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetExperimentsUsersStatistics',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/statistics/experimentsusers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.GetExperimentsUsersStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_experiments_users_statistics_with_options_async(
+        self,
+        request: pai_studio_20210202_models.GetExperimentsUsersStatisticsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.GetExperimentsUsersStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetExperimentsUsersStatistics',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/statistics/experimentsusers',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.GetExperimentsUsersStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_image(
@@ -1201,9 +1881,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetImage',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/images/{image_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetImageResponse(),
-            self.do_roarequest('GetImage', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/images/{image_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_image_with_options_async(
@@ -1222,9 +1913,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetImage',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/images/{image_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetImageResponse(),
-            await self.do_roarequest_async('GetImage', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/images/{image_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_job(
@@ -1261,9 +1963,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetJob',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/{job_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetJobResponse(),
-            self.do_roarequest('GetJob', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/jobs/{job_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_job_with_options_async(
@@ -1282,9 +1995,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetJob',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/{job_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetJobResponse(),
-            await self.do_roarequest_async('GetJob', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/jobs/{job_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_mctable_schema(
@@ -1321,9 +2045,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetMCTableSchema',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasources/maxcompute/tables/{table_name}/schema',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetMCTableSchemaResponse(),
-            self.do_roarequest('GetMCTableSchema', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/datasources/maxcompute/tables/{table_name}/schema', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_mctable_schema_with_options_async(
@@ -1342,9 +2077,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetMCTableSchema',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasources/maxcompute/tables/{table_name}/schema',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetMCTableSchemaResponse(),
-            await self.do_roarequest_async('GetMCTableSchema', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/datasources/maxcompute/tables/{table_name}/schema', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_node_input_schema(
@@ -1387,9 +2133,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetNodeInputSchema',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/nodes/{node_id}/schema',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetNodeInputSchemaResponse(),
-            self.do_roarequest('GetNodeInputSchema', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/experiments/{experiment_id}/nodes/{node_id}/schema', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_node_input_schema_with_options_async(
@@ -1412,9 +2169,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetNodeInputSchema',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/nodes/{node_id}/schema',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetNodeInputSchemaResponse(),
-            await self.do_roarequest_async('GetNodeInputSchema', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/experiments/{experiment_id}/nodes/{node_id}/schema', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_node_output(
@@ -1459,9 +2227,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetNodeOutput',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/nodes/{node_id}/outputs/{output_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetNodeOutputResponse(),
-            self.do_roarequest('GetNodeOutput', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/experiments/{experiment_id}/nodes/{node_id}/outputs/{output_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_node_output_with_options_async(
@@ -1484,9 +2263,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetNodeOutput',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/nodes/{node_id}/outputs/{output_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetNodeOutputResponse(),
-            await self.do_roarequest_async('GetNodeOutput', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/experiments/{experiment_id}/nodes/{node_id}/outputs/{output_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_node_visualization(
@@ -1531,9 +2321,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetNodeVisualization',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/nodes/{node_id}/visualizations/{visualization_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetNodeVisualizationResponse(),
-            self.do_roarequest('GetNodeVisualization', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/experiments/{experiment_id}/nodes/{node_id}/visualizations/{visualization_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_node_visualization_with_options_async(
@@ -1556,9 +2357,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetNodeVisualization',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/nodes/{node_id}/visualizations/{visualization_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetNodeVisualizationResponse(),
-            await self.do_roarequest_async('GetNodeVisualization', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/experiments/{experiment_id}/nodes/{node_id}/visualizations/{visualization_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_service(
@@ -1595,9 +2407,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetService',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/services/{service_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetServiceResponse(),
-            self.do_roarequest('GetService', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/services/{service_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_service_with_options_async(
@@ -1616,9 +2439,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetService',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/services/{service_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetServiceResponse(),
-            await self.do_roarequest_async('GetService', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/services/{service_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_template(
@@ -1647,9 +2481,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetTemplate',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/templates/{template_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetTemplateResponse(),
-            self.do_roarequest('GetTemplate', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/templates/{template_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_template_with_options_async(
@@ -1662,9 +2507,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='GetTemplate',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/templates/{template_id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.GetTemplateResponse(),
-            await self.do_roarequest_async('GetTemplate', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/templates/{template_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_algo_defs(
@@ -1694,9 +2550,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=UtilClient.to_array(request.body)
         )
+        params = open_api_models.Params(
+            action='ListAlgoDefs',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algo/detail',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListAlgoDefsResponse(),
-            self.do_roarequest('ListAlgoDefs', '2021-02-02', 'HTTPS', 'POST', 'AK', f'/api/v1/algo/detail', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_algo_defs_with_options_async(
@@ -1710,9 +2577,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=UtilClient.to_array(request.body)
         )
+        params = open_api_models.Params(
+            action='ListAlgoDefs',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algo/detail',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListAlgoDefsResponse(),
-            await self.do_roarequest_async('ListAlgoDefs', '2021-02-02', 'HTTPS', 'POST', 'AK', f'/api/v1/algo/detail', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_auth_roles(
@@ -1739,17 +2617,28 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.ListAuthRolesResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
         if not UtilClient.is_unset(request.is_generate_token):
             query['IsGenerateToken'] = request.is_generate_token
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListAuthRoles',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/authorization/roles',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListAuthRolesResponse(),
-            self.do_roarequest('ListAuthRoles', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/authorization/roles', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_auth_roles_with_options_async(
@@ -1760,17 +2649,28 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.ListAuthRolesResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
         if not UtilClient.is_unset(request.is_generate_token):
             query['IsGenerateToken'] = request.is_generate_token
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListAuthRoles',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/authorization/roles',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListAuthRolesResponse(),
-            await self.do_roarequest_async('ListAuthRoles', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/authorization/roles', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_experiments(
@@ -1797,31 +2697,42 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.ListExperimentsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.order):
-            query['Order'] = request.order
+        if not UtilClient.is_unset(request.creator):
+            query['Creator'] = request.creator
         if not UtilClient.is_unset(request.experiment_id):
             query['ExperimentId'] = request.experiment_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.creator):
-            query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
-        if not UtilClient.is_unset(request.sort_by):
-            query['SortBy'] = request.sort_by
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListExperiments',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListExperimentsResponse(),
-            self.do_roarequest('ListExperiments', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/experiments', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_experiments_with_options_async(
@@ -1832,31 +2743,42 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.ListExperimentsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.order):
-            query['Order'] = request.order
+        if not UtilClient.is_unset(request.creator):
+            query['Creator'] = request.creator
         if not UtilClient.is_unset(request.experiment_id):
             query['ExperimentId'] = request.experiment_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.creator):
-            query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
-        if not UtilClient.is_unset(request.sort_by):
-            query['SortBy'] = request.sort_by
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListExperiments',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListExperimentsResponse(),
-            await self.do_roarequest_async('ListExperiments', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/experiments', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_image_labels(
@@ -1883,19 +2805,30 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.ListImageLabelsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.label_keys):
-            query['LabelKeys'] = request.label_keys
-        if not UtilClient.is_unset(request.label_filter):
-            query['LabelFilter'] = request.label_filter
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.label_filter):
+            query['LabelFilter'] = request.label_filter
+        if not UtilClient.is_unset(request.label_keys):
+            query['LabelKeys'] = request.label_keys
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListImageLabels',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/image/labels',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListImageLabelsResponse(),
-            self.do_roarequest('ListImageLabels', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/image/labels', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_image_labels_with_options_async(
@@ -1906,19 +2839,30 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.ListImageLabelsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.label_keys):
-            query['LabelKeys'] = request.label_keys
-        if not UtilClient.is_unset(request.label_filter):
-            query['LabelFilter'] = request.label_filter
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.label_filter):
+            query['LabelFilter'] = request.label_filter
+        if not UtilClient.is_unset(request.label_keys):
+            query['LabelKeys'] = request.label_keys
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListImageLabels',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/image/labels',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListImageLabelsResponse(),
-            await self.do_roarequest_async('ListImageLabels', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/image/labels', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_images(
@@ -1945,27 +2889,38 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.ListImagesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
-        if not UtilClient.is_unset(request.order):
-            query['Order'] = request.order
-        if not UtilClient.is_unset(request.labels):
-            query['Labels'] = request.labels
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListImages',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/images',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListImagesResponse(),
-            self.do_roarequest('ListImages', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/images', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_images_with_options_async(
@@ -1976,27 +2931,38 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.ListImagesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
-        if not UtilClient.is_unset(request.order):
-            query['Order'] = request.order
-        if not UtilClient.is_unset(request.labels):
-            query['Labels'] = request.labels
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListImages',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/images',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListImagesResponse(),
-            await self.do_roarequest_async('ListImages', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/images', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_jobs(
@@ -2023,10 +2989,10 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.ListJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.experiment_id):
-            query['ExperimentId'] = request.experiment_id
         if not UtilClient.is_unset(request.creator):
             query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.experiment_id):
+            query['ExperimentId'] = request.experiment_id
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
@@ -2037,9 +3003,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListJobs',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListJobsResponse(),
-            self.do_roarequest('ListJobs', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/jobs', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_jobs_with_options_async(
@@ -2050,10 +3027,10 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.ListJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.experiment_id):
-            query['ExperimentId'] = request.experiment_id
         if not UtilClient.is_unset(request.creator):
             query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.experiment_id):
+            query['ExperimentId'] = request.experiment_id
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
@@ -2064,9 +3041,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListJobs',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListJobsResponse(),
-            await self.do_roarequest_async('ListJobs', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/jobs', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_node_outputs(
@@ -2099,9 +3087,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListNodeOutputs',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/nodes/{node_id}/outputs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListNodeOutputsResponse(),
-            self.do_roarequest('ListNodeOutputs', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/experiments/{experiment_id}/nodes/{node_id}/outputs', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_node_outputs_with_options_async(
@@ -2116,9 +3115,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='ListNodeOutputs',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/nodes/{node_id}/outputs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListNodeOutputsResponse(),
-            await self.do_roarequest_async('ListNodeOutputs', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/experiments/{experiment_id}/nodes/{node_id}/outputs', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_recent_experiments(
@@ -2147,23 +3157,34 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListRecentExperiments',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/recentexperiments',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListRecentExperimentsResponse(),
-            self.do_roarequest('ListRecentExperiments', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/recentexperiments', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_recent_experiments_with_options_async(
@@ -2176,23 +3197,34 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListRecentExperiments',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/recentexperiments',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListRecentExperimentsResponse(),
-            await self.do_roarequest_async('ListRecentExperiments', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/recentexperiments', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_services(
@@ -2219,17 +3251,28 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.ListServicesResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
         if not UtilClient.is_unset(request.service_type):
             query['ServiceType'] = request.service_type
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListServices',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/services',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListServicesResponse(),
-            self.do_roarequest('ListServices', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/services', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_services_with_options_async(
@@ -2240,17 +3283,28 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.ListServicesResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
         if not UtilClient.is_unset(request.service_type):
             query['ServiceType'] = request.service_type
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListServices',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/services',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListServicesResponse(),
-            await self.do_roarequest_async('ListServices', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/services', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_templates(
@@ -2277,27 +3331,38 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.ListTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.list):
+            query['List'] = request.list
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
-        if not UtilClient.is_unset(request.list):
-            query['List'] = request.list
         if not UtilClient.is_unset(request.tag_id):
             query['TagId'] = request.tag_id
-        if not UtilClient.is_unset(request.order):
-            query['Order'] = request.order
         if not UtilClient.is_unset(request.type_id):
             query['TypeId'] = request.type_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListTemplates',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/templates',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListTemplatesResponse(),
-            self.do_roarequest('ListTemplates', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/templates', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_templates_with_options_async(
@@ -2308,27 +3373,218 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.ListTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.list):
+            query['List'] = request.list
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
-        if not UtilClient.is_unset(request.list):
-            query['List'] = request.list
         if not UtilClient.is_unset(request.tag_id):
             query['TagId'] = request.tag_id
-        if not UtilClient.is_unset(request.order):
-            query['Order'] = request.order
         if not UtilClient.is_unset(request.type_id):
             query['TypeId'] = request.type_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListTemplates',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/templates',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.ListTemplatesResponse(),
-            await self.do_roarequest_async('ListTemplates', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/templates', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def migrate_experiment_folders(
+        self,
+        request: pai_studio_20210202_models.MigrateExperimentFoldersRequest,
+    ) -> pai_studio_20210202_models.MigrateExperimentFoldersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.migrate_experiment_folders_with_options(request, headers, runtime)
+
+    async def migrate_experiment_folders_async(
+        self,
+        request: pai_studio_20210202_models.MigrateExperimentFoldersRequest,
+    ) -> pai_studio_20210202_models.MigrateExperimentFoldersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.migrate_experiment_folders_with_options_async(request, headers, runtime)
+
+    def migrate_experiment_folders_with_options(
+        self,
+        request: pai_studio_20210202_models.MigrateExperimentFoldersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.MigrateExperimentFoldersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accessibility):
+            query['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.is_owner):
+            query['IsOwner'] = request.is_owner
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MigrateExperimentFolders',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/migrate/folders',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.MigrateExperimentFoldersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def migrate_experiment_folders_with_options_async(
+        self,
+        request: pai_studio_20210202_models.MigrateExperimentFoldersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.MigrateExperimentFoldersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accessibility):
+            query['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.is_owner):
+            query['IsOwner'] = request.is_owner
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MigrateExperimentFolders',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/migrate/folders',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.MigrateExperimentFoldersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def migrate_experiments(
+        self,
+        request: pai_studio_20210202_models.MigrateExperimentsRequest,
+    ) -> pai_studio_20210202_models.MigrateExperimentsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.migrate_experiments_with_options(request, headers, runtime)
+
+    async def migrate_experiments_async(
+        self,
+        request: pai_studio_20210202_models.MigrateExperimentsRequest,
+    ) -> pai_studio_20210202_models.MigrateExperimentsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.migrate_experiments_with_options_async(request, headers, runtime)
+
+    def migrate_experiments_with_options(
+        self,
+        request: pai_studio_20210202_models.MigrateExperimentsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.MigrateExperimentsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accessibility):
+            query['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.dest_folder_id):
+            query['DestFolderId'] = request.dest_folder_id
+        if not UtilClient.is_unset(request.is_owner):
+            query['IsOwner'] = request.is_owner
+        if not UtilClient.is_unset(request.source_exp_id):
+            query['SourceExpId'] = request.source_exp_id
+        if not UtilClient.is_unset(request.update_if_exists):
+            query['UpdateIfExists'] = request.update_if_exists
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MigrateExperiments',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/migrate/experiments',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.MigrateExperimentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def migrate_experiments_with_options_async(
+        self,
+        request: pai_studio_20210202_models.MigrateExperimentsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.MigrateExperimentsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accessibility):
+            query['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.dest_folder_id):
+            query['DestFolderId'] = request.dest_folder_id
+        if not UtilClient.is_unset(request.is_owner):
+            query['IsOwner'] = request.is_owner
+        if not UtilClient.is_unset(request.source_exp_id):
+            query['SourceExpId'] = request.source_exp_id
+        if not UtilClient.is_unset(request.update_if_exists):
+            query['UpdateIfExists'] = request.update_if_exists
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MigrateExperiments',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/migrate/experiments',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.MigrateExperimentsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def preview_mctable(
@@ -2359,17 +3615,28 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         table_name = OpenApiUtilClient.get_encode_param(table_name)
         query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
         if not UtilClient.is_unset(request.endpoint):
             query['Endpoint'] = request.endpoint
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='PreviewMCTable',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasources/maxcompute/tables/{table_name}/preview',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.PreviewMCTableResponse(),
-            self.do_roarequest('PreviewMCTable', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/datasources/maxcompute/tables/{table_name}/preview', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def preview_mctable_with_options_async(
@@ -2382,17 +3649,186 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         table_name = OpenApiUtilClient.get_encode_param(table_name)
         query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
         if not UtilClient.is_unset(request.endpoint):
             query['Endpoint'] = request.endpoint
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='PreviewMCTable',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasources/maxcompute/tables/{table_name}/preview',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.PreviewMCTableResponse(),
-            await self.do_roarequest_async('PreviewMCTable', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/datasources/maxcompute/tables/{table_name}/preview', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def publish_experiment(
+        self,
+        experiment_id: str,
+        request: pai_studio_20210202_models.PublishExperimentRequest,
+    ) -> pai_studio_20210202_models.PublishExperimentResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.publish_experiment_with_options(experiment_id, request, headers, runtime)
+
+    async def publish_experiment_async(
+        self,
+        experiment_id: str,
+        request: pai_studio_20210202_models.PublishExperimentRequest,
+    ) -> pai_studio_20210202_models.PublishExperimentResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.publish_experiment_with_options_async(experiment_id, request, headers, runtime)
+
+    def publish_experiment_with_options(
+        self,
+        experiment_id: str,
+        request: pai_studio_20210202_models.PublishExperimentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.PublishExperimentResponse:
+        UtilClient.validate_model(request)
+        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
+        body = {}
+        if not UtilClient.is_unset(request.folder_id):
+            body['FolderId'] = request.folder_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PublishExperiment',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/publish',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.PublishExperimentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def publish_experiment_with_options_async(
+        self,
+        experiment_id: str,
+        request: pai_studio_20210202_models.PublishExperimentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.PublishExperimentResponse:
+        UtilClient.validate_model(request)
+        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
+        body = {}
+        if not UtilClient.is_unset(request.folder_id):
+            body['FolderId'] = request.folder_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PublishExperiment',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/publish',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.PublishExperimentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_experiment_visualization_data(
+        self,
+        experiment_id: str,
+        request: pai_studio_20210202_models.QueryExperimentVisualizationDataRequest,
+    ) -> pai_studio_20210202_models.QueryExperimentVisualizationDataResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_experiment_visualization_data_with_options(experiment_id, request, headers, runtime)
+
+    async def query_experiment_visualization_data_async(
+        self,
+        experiment_id: str,
+        request: pai_studio_20210202_models.QueryExperimentVisualizationDataRequest,
+    ) -> pai_studio_20210202_models.QueryExperimentVisualizationDataResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_experiment_visualization_data_with_options_async(experiment_id, request, headers, runtime)
+
+    def query_experiment_visualization_data_with_options(
+        self,
+        experiment_id: str,
+        request: pai_studio_20210202_models.QueryExperimentVisualizationDataRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.QueryExperimentVisualizationDataResponse:
+        UtilClient.validate_model(request)
+        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=UtilClient.to_array(request.body)
+        )
+        params = open_api_models.Params(
+            action='QueryExperimentVisualizationData',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/visualizationDataQuery',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.QueryExperimentVisualizationDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_experiment_visualization_data_with_options_async(
+        self,
+        experiment_id: str,
+        request: pai_studio_20210202_models.QueryExperimentVisualizationDataRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20210202_models.QueryExperimentVisualizationDataResponse:
+        UtilClient.validate_model(request)
+        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=UtilClient.to_array(request.body)
+        )
+        params = open_api_models.Params(
+            action='QueryExperimentVisualizationData',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/visualizationDataQuery',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20210202_models.QueryExperimentVisualizationDataResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_image(
@@ -2421,9 +3857,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveImage',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/images/{image_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.RemoveImageResponse(),
-            self.do_roarequest('RemoveImage', '2021-02-02', 'HTTPS', 'DELETE', 'AK', f'/api/v1/images/{image_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_image_with_options_async(
@@ -2436,9 +3883,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveImage',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/images/{image_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.RemoveImageResponse(),
-            await self.do_roarequest_async('RemoveImage', '2021-02-02', 'HTTPS', 'DELETE', 'AK', f'/api/v1/images/{image_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_image_labels(
@@ -2471,9 +3929,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveImageLabels',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/images/{image_id}/labels/{label_key}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.RemoveImageLabelsResponse(),
-            self.do_roarequest('RemoveImageLabels', '2021-02-02', 'HTTPS', 'DELETE', 'AK', f'/api/v1/images/{image_id}/labels/{label_key}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_image_labels_with_options_async(
@@ -2488,9 +3957,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='RemoveImageLabels',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/images/{image_id}/labels/{label_key}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.RemoveImageLabelsResponse(),
-            await self.do_roarequest_async('RemoveImageLabels', '2021-02-02', 'HTTPS', 'DELETE', 'AK', f'/api/v1/images/{image_id}/labels/{label_key}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def search_mctables(
@@ -2517,17 +3997,28 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.SearchMCTablesResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
         if not UtilClient.is_unset(request.keyword):
             query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='SearchMCTables',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasources/maxcompute/tables',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.SearchMCTablesResponse(),
-            self.do_roarequest('SearchMCTables', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/datasources/maxcompute/tables', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def search_mctables_with_options_async(
@@ -2538,17 +4029,28 @@ class Client(OpenApiClient):
     ) -> pai_studio_20210202_models.SearchMCTablesResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
         if not UtilClient.is_unset(request.keyword):
             query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='SearchMCTables',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/datasources/maxcompute/tables',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.SearchMCTablesResponse(),
-            await self.do_roarequest_async('SearchMCTables', '2021-02-02', 'HTTPS', 'GET', 'AK', f'/api/v1/datasources/maxcompute/tables', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_experiment(
@@ -2577,9 +4079,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='StopExperiment',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/stop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.StopExperimentResponse(),
-            self.do_roarequest('StopExperiment', '2021-02-02', 'HTTPS', 'POST', 'AK', f'/api/v1/experiments/{experiment_id}/stop', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def stop_experiment_with_options_async(
@@ -2592,9 +4105,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='StopExperiment',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/stop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.StopExperimentResponse(),
-            await self.do_roarequest_async('StopExperiment', '2021-02-02', 'HTTPS', 'POST', 'AK', f'/api/v1/experiments/{experiment_id}/stop', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_job(
@@ -2623,9 +4147,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='StopJob',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/{job_id}/stop',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.StopJobResponse(),
-            self.do_roarequest('StopJob', '2021-02-02', 'HTTPS', 'PUT', 'AK', f'/api/v1/jobs/{job_id}/stop', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def stop_job_with_options_async(
@@ -2638,9 +4173,20 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
+        params = open_api_models.Params(
+            action='StopJob',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/{job_id}/stop',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.StopJobResponse(),
-            await self.do_roarequest_async('StopJob', '2021-02-02', 'HTTPS', 'PUT', 'AK', f'/api/v1/jobs/{job_id}/stop', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_experiment_content(
@@ -2679,9 +4225,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateExperimentContent',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/content',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.UpdateExperimentContentResponse(),
-            self.do_roarequest('UpdateExperimentContent', '2021-02-02', 'HTTPS', 'PUT', 'AK', f'/api/v1/experiments/{experiment_id}/content', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_experiment_content_with_options_async(
@@ -2702,9 +4259,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateExperimentContent',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/content',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.UpdateExperimentContentResponse(),
-            await self.do_roarequest_async('UpdateExperimentContent', '2021-02-02', 'HTTPS', 'PUT', 'AK', f'/api/v1/experiments/{experiment_id}/content', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_experiment_folder(
@@ -2743,9 +4311,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateExperimentFolder',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experimentfolders/{folder_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.UpdateExperimentFolderResponse(),
-            self.do_roarequest('UpdateExperimentFolder', '2021-02-02', 'HTTPS', 'PUT', 'AK', f'/api/v1/experimentfolders/{folder_id}', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_experiment_folder_with_options_async(
@@ -2766,9 +4345,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateExperimentFolder',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experimentfolders/{folder_id}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.UpdateExperimentFolderResponse(),
-            await self.do_roarequest_async('UpdateExperimentFolder', '2021-02-02', 'HTTPS', 'PUT', 'AK', f'/api/v1/experimentfolders/{folder_id}', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_experiment_meta(
@@ -2799,21 +4389,34 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         body = {}
-        if not UtilClient.is_unset(request.name):
-            body['Name'] = request.name
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.folder_id):
             body['FolderId'] = request.folder_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
         if not UtilClient.is_unset(request.options):
             body['Options'] = request.options
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateExperimentMeta',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/meta',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.UpdateExperimentMetaResponse(),
-            self.do_roarequest('UpdateExperimentMeta', '2021-02-02', 'HTTPS', 'PUT', 'AK', f'/api/v1/experiments/{experiment_id}/meta', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_experiment_meta_with_options_async(
@@ -2826,19 +4429,32 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         body = {}
-        if not UtilClient.is_unset(request.name):
-            body['Name'] = request.name
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.folder_id):
             body['FolderId'] = request.folder_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
         if not UtilClient.is_unset(request.options):
             body['Options'] = request.options
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateExperimentMeta',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/experiments/{experiment_id}/meta',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             pai_studio_20210202_models.UpdateExperimentMetaResponse(),
-            await self.do_roarequest_async('UpdateExperimentMeta', '2021-02-02', 'HTTPS', 'PUT', 'AK', f'/api/v1/experiments/{experiment_id}/meta', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
