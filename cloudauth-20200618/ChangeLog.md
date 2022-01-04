@@ -1,3 +1,6 @@
+2022-01-04 Version: 1.0.6
+- QPS.
+
 2021-05-07 Version: 2.0.4
 - Generated python 2020-06-18 for Cloudauth.
 
