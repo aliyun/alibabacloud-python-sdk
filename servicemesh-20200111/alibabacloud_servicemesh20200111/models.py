@@ -577,7 +577,6 @@ class CreateServiceMeshRequest(TeaModel):
         oparequest_memory: str = None,
         opa_enabled: bool = None,
         open_agent_policy: bool = None,
-        pilot_public_eip: bool = None,
         prometheus_url: str = None,
         proxy_limit_cpu: str = None,
         proxy_limit_memory: str = None,
@@ -635,7 +634,6 @@ class CreateServiceMeshRequest(TeaModel):
         self.oparequest_memory = oparequest_memory
         self.opa_enabled = opa_enabled
         self.open_agent_policy = open_agent_policy
-        self.pilot_public_eip = pilot_public_eip
         self.prometheus_url = prometheus_url
         self.proxy_limit_cpu = proxy_limit_cpu
         self.proxy_limit_memory = proxy_limit_memory
@@ -744,8 +742,6 @@ class CreateServiceMeshRequest(TeaModel):
             result['OpaEnabled'] = self.opa_enabled
         if self.open_agent_policy is not None:
             result['OpenAgentPolicy'] = self.open_agent_policy
-        if self.pilot_public_eip is not None:
-            result['PilotPublicEip'] = self.pilot_public_eip
         if self.prometheus_url is not None:
             result['PrometheusUrl'] = self.prometheus_url
         if self.proxy_limit_cpu is not None:
@@ -862,8 +858,6 @@ class CreateServiceMeshRequest(TeaModel):
             self.opa_enabled = m.get('OpaEnabled')
         if m.get('OpenAgentPolicy') is not None:
             self.open_agent_policy = m.get('OpenAgentPolicy')
-        if m.get('PilotPublicEip') is not None:
-            self.pilot_public_eip = m.get('PilotPublicEip')
         if m.get('PrometheusUrl') is not None:
             self.prometheus_url = m.get('PrometheusUrl')
         if m.get('ProxyLimitCPU') is not None:
@@ -7296,6 +7290,117 @@ class DescribeVSwitchesResponse(TeaModel):
         return self
 
 
+class DescribeVersionsResponseBodyVersionInfo(TeaModel):
+    def __init__(
+        self,
+        edition: str = None,
+        versions: List[str] = None,
+    ):
+        self.edition = edition
+        self.versions = versions
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.edition is not None:
+            result['Edition'] = self.edition
+        if self.versions is not None:
+            result['Versions'] = self.versions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
+        if m.get('Versions') is not None:
+            self.versions = m.get('Versions')
+        return self
+
+
+class DescribeVersionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        version_info: List[DescribeVersionsResponseBodyVersionInfo] = None,
+    ):
+        self.request_id = request_id
+        self.version_info = version_info
+
+    def validate(self):
+        if self.version_info:
+            for k in self.version_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['VersionInfo'] = []
+        if self.version_info is not None:
+            for k in self.version_info:
+                result['VersionInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.version_info = []
+        if m.get('VersionInfo') is not None:
+            for k in m.get('VersionInfo'):
+                temp_model = DescribeVersionsResponseBodyVersionInfo()
+                self.version_info.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVersionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeVersionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeVersionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeVpcsRequest(TeaModel):
     def __init__(
         self,
@@ -10107,6 +10212,109 @@ class RemoveVMFromServiceMeshResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = RemoveVMFromServiceMeshResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RevokeKubeconfigRequest(TeaModel):
+    def __init__(
+        self,
+        private_ip_address: bool = None,
+        service_mesh_id: str = None,
+    ):
+        self.private_ip_address = private_ip_address
+        self.service_mesh_id = service_mesh_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.private_ip_address is not None:
+            result['PrivateIpAddress'] = self.private_ip_address
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PrivateIpAddress') is not None:
+            self.private_ip_address = m.get('PrivateIpAddress')
+        if m.get('ServiceMeshId') is not None:
+            self.service_mesh_id = m.get('ServiceMeshId')
+        return self
+
+
+class RevokeKubeconfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        kubeconfig: str = None,
+        request_id: str = None,
+    ):
+        self.kubeconfig = kubeconfig
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.kubeconfig is not None:
+            result['Kubeconfig'] = self.kubeconfig
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Kubeconfig') is not None:
+            self.kubeconfig = m.get('Kubeconfig')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RevokeKubeconfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RevokeKubeconfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RevokeKubeconfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
