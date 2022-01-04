@@ -48,16 +48,22 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.AddAxnTrackNoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PhoneNoX'] = request.phone_no_x
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SubsId'] = request.subs_id
-        query['trackNo'] = request.track_no
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_x):
+            query['PhoneNoX'] = request.phone_no_x
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subs_id):
+            query['SubsId'] = request.subs_id
+        if not UtilClient.is_unset(request.track_no):
+            query['trackNo'] = request.track_no
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddAxnTrackNo',
@@ -67,7 +73,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -82,16 +88,22 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.AddAxnTrackNoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PhoneNoX'] = request.phone_no_x
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SubsId'] = request.subs_id
-        query['trackNo'] = request.track_no
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_x):
+            query['PhoneNoX'] = request.phone_no_x
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subs_id):
+            query['SubsId'] = request.subs_id
+        if not UtilClient.is_unset(request.track_no):
+            query['trackNo'] = request.track_no
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddAxnTrackNo',
@@ -101,7 +113,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -130,14 +142,18 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.AddSecretBlacklistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BlackNo'] = request.black_no
-        query['BlackType'] = request.black_type
-        query['PoolKey'] = request.pool_key
-        query['Remark'] = request.remark
-        query['WayControl'] = request.way_control
+        if not UtilClient.is_unset(request.black_no):
+            query['BlackNo'] = request.black_no
+        if not UtilClient.is_unset(request.black_type):
+            query['BlackType'] = request.black_type
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.way_control):
+            query['WayControl'] = request.way_control
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddSecretBlacklist',
@@ -147,7 +163,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -162,14 +178,18 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.AddSecretBlacklistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BlackNo'] = request.black_no
-        query['BlackType'] = request.black_type
-        query['PoolKey'] = request.pool_key
-        query['Remark'] = request.remark
-        query['WayControl'] = request.way_control
+        if not UtilClient.is_unset(request.black_no):
+            query['BlackNo'] = request.black_no
+        if not UtilClient.is_unset(request.black_type):
+            query['BlackType'] = request.black_type
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.way_control):
+            query['WayControl'] = request.way_control
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddSecretBlacklist',
@@ -179,7 +199,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -208,27 +228,44 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.BindAxbResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ASRModelId'] = request.asrmodel_id
-        query['ASRStatus'] = request.asrstatus
-        query['CallDisplayType'] = request.call_display_type
-        query['CallRestrict'] = request.call_restrict
-        query['CallTimeout'] = request.call_timeout
-        query['ExpectCity'] = request.expect_city
-        query['Expiration'] = request.expiration
-        query['IsRecordingEnabled'] = request.is_recording_enabled
-        query['OutId'] = request.out_id
-        query['OutOrderId'] = request.out_order_id
-        query['OwnerId'] = request.owner_id
-        query['PhoneNoA'] = request.phone_no_a
-        query['PhoneNoB'] = request.phone_no_b
-        query['PhoneNoX'] = request.phone_no_x
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RingConfig'] = request.ring_config
+        if not UtilClient.is_unset(request.asrmodel_id):
+            query['ASRModelId'] = request.asrmodel_id
+        if not UtilClient.is_unset(request.asrstatus):
+            query['ASRStatus'] = request.asrstatus
+        if not UtilClient.is_unset(request.call_display_type):
+            query['CallDisplayType'] = request.call_display_type
+        if not UtilClient.is_unset(request.call_restrict):
+            query['CallRestrict'] = request.call_restrict
+        if not UtilClient.is_unset(request.call_timeout):
+            query['CallTimeout'] = request.call_timeout
+        if not UtilClient.is_unset(request.expect_city):
+            query['ExpectCity'] = request.expect_city
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.is_recording_enabled):
+            query['IsRecordingEnabled'] = request.is_recording_enabled
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['OutOrderId'] = request.out_order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_a):
+            query['PhoneNoA'] = request.phone_no_a
+        if not UtilClient.is_unset(request.phone_no_b):
+            query['PhoneNoB'] = request.phone_no_b
+        if not UtilClient.is_unset(request.phone_no_x):
+            query['PhoneNoX'] = request.phone_no_x
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.ring_config):
+            query['RingConfig'] = request.ring_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindAxb',
@@ -238,7 +275,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -253,27 +290,44 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.BindAxbResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ASRModelId'] = request.asrmodel_id
-        query['ASRStatus'] = request.asrstatus
-        query['CallDisplayType'] = request.call_display_type
-        query['CallRestrict'] = request.call_restrict
-        query['CallTimeout'] = request.call_timeout
-        query['ExpectCity'] = request.expect_city
-        query['Expiration'] = request.expiration
-        query['IsRecordingEnabled'] = request.is_recording_enabled
-        query['OutId'] = request.out_id
-        query['OutOrderId'] = request.out_order_id
-        query['OwnerId'] = request.owner_id
-        query['PhoneNoA'] = request.phone_no_a
-        query['PhoneNoB'] = request.phone_no_b
-        query['PhoneNoX'] = request.phone_no_x
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RingConfig'] = request.ring_config
+        if not UtilClient.is_unset(request.asrmodel_id):
+            query['ASRModelId'] = request.asrmodel_id
+        if not UtilClient.is_unset(request.asrstatus):
+            query['ASRStatus'] = request.asrstatus
+        if not UtilClient.is_unset(request.call_display_type):
+            query['CallDisplayType'] = request.call_display_type
+        if not UtilClient.is_unset(request.call_restrict):
+            query['CallRestrict'] = request.call_restrict
+        if not UtilClient.is_unset(request.call_timeout):
+            query['CallTimeout'] = request.call_timeout
+        if not UtilClient.is_unset(request.expect_city):
+            query['ExpectCity'] = request.expect_city
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.is_recording_enabled):
+            query['IsRecordingEnabled'] = request.is_recording_enabled
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['OutOrderId'] = request.out_order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_a):
+            query['PhoneNoA'] = request.phone_no_a
+        if not UtilClient.is_unset(request.phone_no_b):
+            query['PhoneNoB'] = request.phone_no_b
+        if not UtilClient.is_unset(request.phone_no_x):
+            query['PhoneNoX'] = request.phone_no_x
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.ring_config):
+            query['RingConfig'] = request.ring_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindAxb',
@@ -283,7 +337,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -312,27 +366,44 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.BindAxgResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ASRModelId'] = request.asrmodel_id
-        query['ASRStatus'] = request.asrstatus
-        query['CallDisplayType'] = request.call_display_type
-        query['CallRestrict'] = request.call_restrict
-        query['ExpectCity'] = request.expect_city
-        query['Expiration'] = request.expiration
-        query['GroupId'] = request.group_id
-        query['IsRecordingEnabled'] = request.is_recording_enabled
-        query['OutId'] = request.out_id
-        query['OutOrderId'] = request.out_order_id
-        query['OwnerId'] = request.owner_id
-        query['PhoneNoA'] = request.phone_no_a
-        query['PhoneNoB'] = request.phone_no_b
-        query['PhoneNoX'] = request.phone_no_x
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RingConfig'] = request.ring_config
+        if not UtilClient.is_unset(request.asrmodel_id):
+            query['ASRModelId'] = request.asrmodel_id
+        if not UtilClient.is_unset(request.asrstatus):
+            query['ASRStatus'] = request.asrstatus
+        if not UtilClient.is_unset(request.call_display_type):
+            query['CallDisplayType'] = request.call_display_type
+        if not UtilClient.is_unset(request.call_restrict):
+            query['CallRestrict'] = request.call_restrict
+        if not UtilClient.is_unset(request.expect_city):
+            query['ExpectCity'] = request.expect_city
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.is_recording_enabled):
+            query['IsRecordingEnabled'] = request.is_recording_enabled
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['OutOrderId'] = request.out_order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_a):
+            query['PhoneNoA'] = request.phone_no_a
+        if not UtilClient.is_unset(request.phone_no_b):
+            query['PhoneNoB'] = request.phone_no_b
+        if not UtilClient.is_unset(request.phone_no_x):
+            query['PhoneNoX'] = request.phone_no_x
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.ring_config):
+            query['RingConfig'] = request.ring_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindAxg',
@@ -342,7 +413,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -357,27 +428,44 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.BindAxgResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ASRModelId'] = request.asrmodel_id
-        query['ASRStatus'] = request.asrstatus
-        query['CallDisplayType'] = request.call_display_type
-        query['CallRestrict'] = request.call_restrict
-        query['ExpectCity'] = request.expect_city
-        query['Expiration'] = request.expiration
-        query['GroupId'] = request.group_id
-        query['IsRecordingEnabled'] = request.is_recording_enabled
-        query['OutId'] = request.out_id
-        query['OutOrderId'] = request.out_order_id
-        query['OwnerId'] = request.owner_id
-        query['PhoneNoA'] = request.phone_no_a
-        query['PhoneNoB'] = request.phone_no_b
-        query['PhoneNoX'] = request.phone_no_x
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RingConfig'] = request.ring_config
+        if not UtilClient.is_unset(request.asrmodel_id):
+            query['ASRModelId'] = request.asrmodel_id
+        if not UtilClient.is_unset(request.asrstatus):
+            query['ASRStatus'] = request.asrstatus
+        if not UtilClient.is_unset(request.call_display_type):
+            query['CallDisplayType'] = request.call_display_type
+        if not UtilClient.is_unset(request.call_restrict):
+            query['CallRestrict'] = request.call_restrict
+        if not UtilClient.is_unset(request.expect_city):
+            query['ExpectCity'] = request.expect_city
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.is_recording_enabled):
+            query['IsRecordingEnabled'] = request.is_recording_enabled
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['OutOrderId'] = request.out_order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_a):
+            query['PhoneNoA'] = request.phone_no_a
+        if not UtilClient.is_unset(request.phone_no_b):
+            query['PhoneNoB'] = request.phone_no_b
+        if not UtilClient.is_unset(request.phone_no_x):
+            query['PhoneNoX'] = request.phone_no_x
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.ring_config):
+            query['RingConfig'] = request.ring_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindAxg',
@@ -387,7 +475,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -416,28 +504,46 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.BindAxnResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ASRModelId'] = request.asrmodel_id
-        query['ASRStatus'] = request.asrstatus
-        query['CallDisplayType'] = request.call_display_type
-        query['CallRestrict'] = request.call_restrict
-        query['CallTimeout'] = request.call_timeout
-        query['ExpectCity'] = request.expect_city
-        query['Expiration'] = request.expiration
-        query['IsRecordingEnabled'] = request.is_recording_enabled
-        query['NoType'] = request.no_type
-        query['OutId'] = request.out_id
-        query['OutOrderId'] = request.out_order_id
-        query['OwnerId'] = request.owner_id
-        query['PhoneNoA'] = request.phone_no_a
-        query['PhoneNoB'] = request.phone_no_b
-        query['PhoneNoX'] = request.phone_no_x
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RingConfig'] = request.ring_config
+        if not UtilClient.is_unset(request.asrmodel_id):
+            query['ASRModelId'] = request.asrmodel_id
+        if not UtilClient.is_unset(request.asrstatus):
+            query['ASRStatus'] = request.asrstatus
+        if not UtilClient.is_unset(request.call_display_type):
+            query['CallDisplayType'] = request.call_display_type
+        if not UtilClient.is_unset(request.call_restrict):
+            query['CallRestrict'] = request.call_restrict
+        if not UtilClient.is_unset(request.call_timeout):
+            query['CallTimeout'] = request.call_timeout
+        if not UtilClient.is_unset(request.expect_city):
+            query['ExpectCity'] = request.expect_city
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.is_recording_enabled):
+            query['IsRecordingEnabled'] = request.is_recording_enabled
+        if not UtilClient.is_unset(request.no_type):
+            query['NoType'] = request.no_type
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['OutOrderId'] = request.out_order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_a):
+            query['PhoneNoA'] = request.phone_no_a
+        if not UtilClient.is_unset(request.phone_no_b):
+            query['PhoneNoB'] = request.phone_no_b
+        if not UtilClient.is_unset(request.phone_no_x):
+            query['PhoneNoX'] = request.phone_no_x
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.ring_config):
+            query['RingConfig'] = request.ring_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindAxn',
@@ -447,7 +553,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -462,28 +568,46 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.BindAxnResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ASRModelId'] = request.asrmodel_id
-        query['ASRStatus'] = request.asrstatus
-        query['CallDisplayType'] = request.call_display_type
-        query['CallRestrict'] = request.call_restrict
-        query['CallTimeout'] = request.call_timeout
-        query['ExpectCity'] = request.expect_city
-        query['Expiration'] = request.expiration
-        query['IsRecordingEnabled'] = request.is_recording_enabled
-        query['NoType'] = request.no_type
-        query['OutId'] = request.out_id
-        query['OutOrderId'] = request.out_order_id
-        query['OwnerId'] = request.owner_id
-        query['PhoneNoA'] = request.phone_no_a
-        query['PhoneNoB'] = request.phone_no_b
-        query['PhoneNoX'] = request.phone_no_x
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RingConfig'] = request.ring_config
+        if not UtilClient.is_unset(request.asrmodel_id):
+            query['ASRModelId'] = request.asrmodel_id
+        if not UtilClient.is_unset(request.asrstatus):
+            query['ASRStatus'] = request.asrstatus
+        if not UtilClient.is_unset(request.call_display_type):
+            query['CallDisplayType'] = request.call_display_type
+        if not UtilClient.is_unset(request.call_restrict):
+            query['CallRestrict'] = request.call_restrict
+        if not UtilClient.is_unset(request.call_timeout):
+            query['CallTimeout'] = request.call_timeout
+        if not UtilClient.is_unset(request.expect_city):
+            query['ExpectCity'] = request.expect_city
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.is_recording_enabled):
+            query['IsRecordingEnabled'] = request.is_recording_enabled
+        if not UtilClient.is_unset(request.no_type):
+            query['NoType'] = request.no_type
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['OutOrderId'] = request.out_order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_a):
+            query['PhoneNoA'] = request.phone_no_a
+        if not UtilClient.is_unset(request.phone_no_b):
+            query['PhoneNoB'] = request.phone_no_b
+        if not UtilClient.is_unset(request.phone_no_x):
+            query['PhoneNoX'] = request.phone_no_x
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.ring_config):
+            query['RingConfig'] = request.ring_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindAxn',
@@ -493,7 +617,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -522,27 +646,44 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.BindAxnExtensionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ASRModelId'] = request.asrmodel_id
-        query['ASRStatus'] = request.asrstatus
-        query['CallDisplayType'] = request.call_display_type
-        query['CallRestrict'] = request.call_restrict
-        query['ExpectCity'] = request.expect_city
-        query['Expiration'] = request.expiration
-        query['Extension'] = request.extension
-        query['IsRecordingEnabled'] = request.is_recording_enabled
-        query['OutId'] = request.out_id
-        query['OutOrderId'] = request.out_order_id
-        query['OwnerId'] = request.owner_id
-        query['PhoneNoA'] = request.phone_no_a
-        query['PhoneNoB'] = request.phone_no_b
-        query['PhoneNoX'] = request.phone_no_x
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RingConfig'] = request.ring_config
+        if not UtilClient.is_unset(request.asrmodel_id):
+            query['ASRModelId'] = request.asrmodel_id
+        if not UtilClient.is_unset(request.asrstatus):
+            query['ASRStatus'] = request.asrstatus
+        if not UtilClient.is_unset(request.call_display_type):
+            query['CallDisplayType'] = request.call_display_type
+        if not UtilClient.is_unset(request.call_restrict):
+            query['CallRestrict'] = request.call_restrict
+        if not UtilClient.is_unset(request.expect_city):
+            query['ExpectCity'] = request.expect_city
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.extension):
+            query['Extension'] = request.extension
+        if not UtilClient.is_unset(request.is_recording_enabled):
+            query['IsRecordingEnabled'] = request.is_recording_enabled
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['OutOrderId'] = request.out_order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_a):
+            query['PhoneNoA'] = request.phone_no_a
+        if not UtilClient.is_unset(request.phone_no_b):
+            query['PhoneNoB'] = request.phone_no_b
+        if not UtilClient.is_unset(request.phone_no_x):
+            query['PhoneNoX'] = request.phone_no_x
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.ring_config):
+            query['RingConfig'] = request.ring_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindAxnExtension',
@@ -552,7 +693,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -567,27 +708,44 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.BindAxnExtensionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ASRModelId'] = request.asrmodel_id
-        query['ASRStatus'] = request.asrstatus
-        query['CallDisplayType'] = request.call_display_type
-        query['CallRestrict'] = request.call_restrict
-        query['ExpectCity'] = request.expect_city
-        query['Expiration'] = request.expiration
-        query['Extension'] = request.extension
-        query['IsRecordingEnabled'] = request.is_recording_enabled
-        query['OutId'] = request.out_id
-        query['OutOrderId'] = request.out_order_id
-        query['OwnerId'] = request.owner_id
-        query['PhoneNoA'] = request.phone_no_a
-        query['PhoneNoB'] = request.phone_no_b
-        query['PhoneNoX'] = request.phone_no_x
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RingConfig'] = request.ring_config
+        if not UtilClient.is_unset(request.asrmodel_id):
+            query['ASRModelId'] = request.asrmodel_id
+        if not UtilClient.is_unset(request.asrstatus):
+            query['ASRStatus'] = request.asrstatus
+        if not UtilClient.is_unset(request.call_display_type):
+            query['CallDisplayType'] = request.call_display_type
+        if not UtilClient.is_unset(request.call_restrict):
+            query['CallRestrict'] = request.call_restrict
+        if not UtilClient.is_unset(request.expect_city):
+            query['ExpectCity'] = request.expect_city
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.extension):
+            query['Extension'] = request.extension
+        if not UtilClient.is_unset(request.is_recording_enabled):
+            query['IsRecordingEnabled'] = request.is_recording_enabled
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['OutOrderId'] = request.out_order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_a):
+            query['PhoneNoA'] = request.phone_no_a
+        if not UtilClient.is_unset(request.phone_no_b):
+            query['PhoneNoB'] = request.phone_no_b
+        if not UtilClient.is_unset(request.phone_no_x):
+            query['PhoneNoX'] = request.phone_no_x
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.ring_config):
+            query['RingConfig'] = request.ring_config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BindAxnExtension',
@@ -597,7 +755,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -626,17 +784,24 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.BuySecretNoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['City'] = request.city
-        query['DisplayPool'] = request.display_pool
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
-        query['SpecId'] = request.spec_id
+        if not UtilClient.is_unset(request.city):
+            query['City'] = request.city
+        if not UtilClient.is_unset(request.display_pool):
+            query['DisplayPool'] = request.display_pool
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_no):
+            query['SecretNo'] = request.secret_no
+        if not UtilClient.is_unset(request.spec_id):
+            query['SpecId'] = request.spec_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BuySecretNo',
@@ -646,7 +811,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -661,17 +826,24 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.BuySecretNoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['City'] = request.city
-        query['DisplayPool'] = request.display_pool
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
-        query['SpecId'] = request.spec_id
+        if not UtilClient.is_unset(request.city):
+            query['City'] = request.city
+        if not UtilClient.is_unset(request.display_pool):
+            query['DisplayPool'] = request.display_pool
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_no):
+            query['SecretNo'] = request.secret_no
+        if not UtilClient.is_unset(request.spec_id):
+            query['SpecId'] = request.spec_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BuySecretNo',
@@ -681,7 +853,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -710,14 +882,18 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.CancelPickUpWaybillResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CancelDesc'] = request.cancel_desc
-        query['OuterOrderCode'] = request.outer_order_code
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cancel_desc):
+            query['CancelDesc'] = request.cancel_desc
+        if not UtilClient.is_unset(request.outer_order_code):
+            query['OuterOrderCode'] = request.outer_order_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CancelPickUpWaybill',
@@ -727,7 +903,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -742,14 +918,18 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.CancelPickUpWaybillResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CancelDesc'] = request.cancel_desc
-        query['OuterOrderCode'] = request.outer_order_code
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cancel_desc):
+            query['CancelDesc'] = request.cancel_desc
+        if not UtilClient.is_unset(request.outer_order_code):
+            query['OuterOrderCode'] = request.outer_order_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CancelPickUpWaybill',
@@ -759,7 +939,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -788,15 +968,20 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.ConfirmSendSmsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CallId'] = request.call_id
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
+        if not UtilClient.is_unset(request.call_id):
+            query['CallId'] = request.call_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_no):
+            query['SecretNo'] = request.secret_no
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ConfirmSendSms',
@@ -806,7 +991,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -821,15 +1006,20 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.ConfirmSendSmsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CallId'] = request.call_id
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
+        if not UtilClient.is_unset(request.call_id):
+            query['CallId'] = request.call_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_no):
+            query['SecretNo'] = request.secret_no
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ConfirmSendSms',
@@ -839,7 +1029,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -868,16 +1058,22 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.CreateAxgGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['Numbers'] = request.numbers
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['Remark'] = request.remark
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.numbers):
+            query['Numbers'] = request.numbers
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateAxgGroup',
@@ -887,7 +1083,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -902,16 +1098,22 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.CreateAxgGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['Numbers'] = request.numbers
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['Remark'] = request.remark
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.numbers):
+            query['Numbers'] = request.numbers
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateAxgGroup',
@@ -921,7 +1123,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -958,22 +1160,34 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.send_address):
             request.send_address_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.send_address), 'SendAddress', 'json')
         query = {}
-        query['ConsigneeAddress'] = request.consignee_address_shrink
-        query['ConsigneeMobile'] = request.consignee_mobile
-        query['ConsigneeName'] = request.consignee_name
-        query['ConsigneePhone'] = request.consignee_phone
-        query['CpCode'] = request.cp_code
-        query['GoodsInfos'] = request.goods_infos_shrink
-        query['OrderChannels'] = request.order_channels
-        query['OuterOrderCode'] = request.outer_order_code
-        query['Remark'] = request.remark
-        query['SendAddress'] = request.send_address_shrink
-        query['SendMobile'] = request.send_mobile
-        query['SendName'] = request.send_name
-        query['SendPhone'] = request.send_phone
+        if not UtilClient.is_unset(request.consignee_address_shrink):
+            query['ConsigneeAddress'] = request.consignee_address_shrink
+        if not UtilClient.is_unset(request.consignee_mobile):
+            query['ConsigneeMobile'] = request.consignee_mobile
+        if not UtilClient.is_unset(request.consignee_name):
+            query['ConsigneeName'] = request.consignee_name
+        if not UtilClient.is_unset(request.consignee_phone):
+            query['ConsigneePhone'] = request.consignee_phone
+        if not UtilClient.is_unset(request.cp_code):
+            query['CpCode'] = request.cp_code
+        if not UtilClient.is_unset(request.goods_infos_shrink):
+            query['GoodsInfos'] = request.goods_infos_shrink
+        if not UtilClient.is_unset(request.order_channels):
+            query['OrderChannels'] = request.order_channels
+        if not UtilClient.is_unset(request.outer_order_code):
+            query['OuterOrderCode'] = request.outer_order_code
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.send_address_shrink):
+            query['SendAddress'] = request.send_address_shrink
+        if not UtilClient.is_unset(request.send_mobile):
+            query['SendMobile'] = request.send_mobile
+        if not UtilClient.is_unset(request.send_name):
+            query['SendName'] = request.send_name
+        if not UtilClient.is_unset(request.send_phone):
+            query['SendPhone'] = request.send_phone
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreatePickUpWaybill',
@@ -983,7 +1197,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1006,22 +1220,34 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.send_address):
             request.send_address_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.send_address), 'SendAddress', 'json')
         query = {}
-        query['ConsigneeAddress'] = request.consignee_address_shrink
-        query['ConsigneeMobile'] = request.consignee_mobile
-        query['ConsigneeName'] = request.consignee_name
-        query['ConsigneePhone'] = request.consignee_phone
-        query['CpCode'] = request.cp_code
-        query['GoodsInfos'] = request.goods_infos_shrink
-        query['OrderChannels'] = request.order_channels
-        query['OuterOrderCode'] = request.outer_order_code
-        query['Remark'] = request.remark
-        query['SendAddress'] = request.send_address_shrink
-        query['SendMobile'] = request.send_mobile
-        query['SendName'] = request.send_name
-        query['SendPhone'] = request.send_phone
+        if not UtilClient.is_unset(request.consignee_address_shrink):
+            query['ConsigneeAddress'] = request.consignee_address_shrink
+        if not UtilClient.is_unset(request.consignee_mobile):
+            query['ConsigneeMobile'] = request.consignee_mobile
+        if not UtilClient.is_unset(request.consignee_name):
+            query['ConsigneeName'] = request.consignee_name
+        if not UtilClient.is_unset(request.consignee_phone):
+            query['ConsigneePhone'] = request.consignee_phone
+        if not UtilClient.is_unset(request.cp_code):
+            query['CpCode'] = request.cp_code
+        if not UtilClient.is_unset(request.goods_infos_shrink):
+            query['GoodsInfos'] = request.goods_infos_shrink
+        if not UtilClient.is_unset(request.order_channels):
+            query['OrderChannels'] = request.order_channels
+        if not UtilClient.is_unset(request.outer_order_code):
+            query['OuterOrderCode'] = request.outer_order_code
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.send_address_shrink):
+            query['SendAddress'] = request.send_address_shrink
+        if not UtilClient.is_unset(request.send_mobile):
+            query['SendMobile'] = request.send_mobile
+        if not UtilClient.is_unset(request.send_name):
+            query['SendName'] = request.send_name
+        if not UtilClient.is_unset(request.send_phone):
+            query['SendPhone'] = request.send_phone
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreatePickUpWaybill',
@@ -1031,7 +1257,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1053,88 +1279,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_pick_up_waybill_with_options_async(request, runtime)
 
-    def create_subscription_with_options(
-        self,
-        request: dyplsapi_20170525_models.CreateSubscriptionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyplsapi_20170525_models.CreateSubscriptionResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['BindToken'] = request.bind_token
-        query['OwnerId'] = request.owner_id
-        query['PhoneNo'] = request.phone_no
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateSubscription',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.CreateSubscriptionResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_subscription_with_options_async(
-        self,
-        request: dyplsapi_20170525_models.CreateSubscriptionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyplsapi_20170525_models.CreateSubscriptionResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['BindToken'] = request.bind_token
-        query['OwnerId'] = request.owner_id
-        query['PhoneNo'] = request.phone_no
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateSubscription',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.CreateSubscriptionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_subscription(
-        self,
-        request: dyplsapi_20170525_models.CreateSubscriptionRequest,
-    ) -> dyplsapi_20170525_models.CreateSubscriptionResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_subscription_with_options(request, runtime)
-
-    async def create_subscription_async(
-        self,
-        request: dyplsapi_20170525_models.CreateSubscriptionRequest,
-    ) -> dyplsapi_20170525_models.CreateSubscriptionResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_subscription_with_options_async(request, runtime)
-
     def delete_secret_blacklist_with_options(
         self,
         request: dyplsapi_20170525_models.DeleteSecretBlacklistRequest,
@@ -1142,14 +1286,18 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.DeleteSecretBlacklistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BlackNo'] = request.black_no
-        query['BlackType'] = request.black_type
-        query['PoolKey'] = request.pool_key
-        query['Remark'] = request.remark
-        query['WayControl'] = request.way_control
+        if not UtilClient.is_unset(request.black_no):
+            query['BlackNo'] = request.black_no
+        if not UtilClient.is_unset(request.black_type):
+            query['BlackType'] = request.black_type
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.way_control):
+            query['WayControl'] = request.way_control
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSecretBlacklist',
@@ -1159,7 +1307,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1174,14 +1322,18 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.DeleteSecretBlacklistResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BlackNo'] = request.black_no
-        query['BlackType'] = request.black_type
-        query['PoolKey'] = request.pool_key
-        query['Remark'] = request.remark
-        query['WayControl'] = request.way_control
+        if not UtilClient.is_unset(request.black_no):
+            query['BlackNo'] = request.black_no
+        if not UtilClient.is_unset(request.black_type):
+            query['BlackType'] = request.black_type
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.way_control):
+            query['WayControl'] = request.way_control
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSecretBlacklist',
@@ -1191,7 +1343,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1213,82 +1365,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_secret_blacklist_with_options_async(request, runtime)
 
-    def get_face_verify_with_options(
-        self,
-        request: dyplsapi_20170525_models.GetFaceVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyplsapi_20170525_models.GetFaceVerifyResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VerifyToken'] = request.verify_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetFaceVerify',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.GetFaceVerifyResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_face_verify_with_options_async(
-        self,
-        request: dyplsapi_20170525_models.GetFaceVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyplsapi_20170525_models.GetFaceVerifyResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VerifyToken'] = request.verify_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetFaceVerify',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.GetFaceVerifyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_face_verify(
-        self,
-        request: dyplsapi_20170525_models.GetFaceVerifyRequest,
-    ) -> dyplsapi_20170525_models.GetFaceVerifyResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_face_verify_with_options(request, runtime)
-
-    async def get_face_verify_async(
-        self,
-        request: dyplsapi_20170525_models.GetFaceVerifyRequest,
-    ) -> dyplsapi_20170525_models.GetFaceVerifyResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_face_verify_with_options_async(request, runtime)
-
     def get_secret_asr_detail_with_options(
         self,
         request: dyplsapi_20170525_models.GetSecretAsrDetailRequest,
@@ -1296,12 +1372,14 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.GetSecretAsrDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CallId'] = request.call_id
-        query['CallTime'] = request.call_time
-        query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.call_id):
+            query['CallId'] = request.call_id
+        if not UtilClient.is_unset(request.call_time):
+            query['CallTime'] = request.call_time
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetSecretAsrDetail',
@@ -1311,7 +1389,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1326,12 +1404,14 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.GetSecretAsrDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CallId'] = request.call_id
-        query['CallTime'] = request.call_time
-        query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.call_id):
+            query['CallId'] = request.call_id
+        if not UtilClient.is_unset(request.call_time):
+            query['CallTime'] = request.call_time
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetSecretAsrDetail',
@@ -1341,7 +1421,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1370,15 +1450,20 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.GetSubscriptionDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
-        query['SubsId'] = request.subs_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_no):
+            query['SecretNo'] = request.secret_no
+        if not UtilClient.is_unset(request.subs_id):
+            query['SubsId'] = request.subs_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetSubscriptionDetail',
@@ -1388,7 +1473,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1403,15 +1488,20 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.GetSubscriptionDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
-        query['SubsId'] = request.subs_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_no):
+            query['SecretNo'] = request.secret_no
+        if not UtilClient.is_unset(request.subs_id):
+            query['SubsId'] = request.subs_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetSubscriptionDetail',
@@ -1421,7 +1511,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1450,16 +1540,22 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.GetTotalPublicUrlResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CallId'] = request.call_id
-        query['CallTime'] = request.call_time
-        query['CheckSubs'] = request.check_subs
-        query['OwnerId'] = request.owner_id
-        query['PartnerKey'] = request.partner_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.call_id):
+            query['CallId'] = request.call_id
+        if not UtilClient.is_unset(request.call_time):
+            query['CallTime'] = request.call_time
+        if not UtilClient.is_unset(request.check_subs):
+            query['CheckSubs'] = request.check_subs
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.partner_key):
+            query['PartnerKey'] = request.partner_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetTotalPublicUrl',
@@ -1469,7 +1565,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1484,16 +1580,22 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.GetTotalPublicUrlResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CallId'] = request.call_id
-        query['CallTime'] = request.call_time
-        query['CheckSubs'] = request.check_subs
-        query['OwnerId'] = request.owner_id
-        query['PartnerKey'] = request.partner_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.call_id):
+            query['CallId'] = request.call_id
+        if not UtilClient.is_unset(request.call_time):
+            query['CallTime'] = request.call_time
+        if not UtilClient.is_unset(request.check_subs):
+            query['CheckSubs'] = request.check_subs
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.partner_key):
+            query['PartnerKey'] = request.partner_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetTotalPublicUrl',
@@ -1503,7 +1605,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1525,82 +1627,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_total_public_url_with_options_async(request, runtime)
 
-    def init_face_verify_with_options(
-        self,
-        request: dyplsapi_20170525_models.InitFaceVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyplsapi_20170525_models.InitFaceVerifyResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['MetaInfo'] = request.meta_info
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='InitFaceVerify',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.InitFaceVerifyResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def init_face_verify_with_options_async(
-        self,
-        request: dyplsapi_20170525_models.InitFaceVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyplsapi_20170525_models.InitFaceVerifyResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['MetaInfo'] = request.meta_info
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='InitFaceVerify',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.InitFaceVerifyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def init_face_verify(
-        self,
-        request: dyplsapi_20170525_models.InitFaceVerifyRequest,
-    ) -> dyplsapi_20170525_models.InitFaceVerifyResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.init_face_verify_with_options(request, runtime)
-
-    async def init_face_verify_async(
-        self,
-        request: dyplsapi_20170525_models.InitFaceVerifyRequest,
-    ) -> dyplsapi_20170525_models.InitFaceVerifyResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.init_face_verify_with_options_async(request, runtime)
-
     def lock_secret_no_with_options(
         self,
         request: dyplsapi_20170525_models.LockSecretNoRequest,
@@ -1608,14 +1634,18 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.LockSecretNoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_no):
+            query['SecretNo'] = request.secret_no
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='LockSecretNo',
@@ -1625,7 +1655,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1640,14 +1670,18 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.LockSecretNoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_no):
+            query['SecretNo'] = request.secret_no
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='LockSecretNo',
@@ -1657,7 +1691,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1686,16 +1720,22 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.OperateAxgGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GroupId'] = request.group_id
-        query['Numbers'] = request.numbers
-        query['OperateType'] = request.operate_type
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.numbers):
+            query['Numbers'] = request.numbers
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='OperateAxgGroup',
@@ -1705,7 +1745,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1720,16 +1760,22 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.OperateAxgGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GroupId'] = request.group_id
-        query['Numbers'] = request.numbers
-        query['OperateType'] = request.operate_type
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.numbers):
+            query['Numbers'] = request.numbers
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='OperateAxgGroup',
@@ -1739,7 +1785,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1768,16 +1814,22 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.OperateBlackNoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BlackNo'] = request.black_no
-        query['OperateType'] = request.operate_type
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Tips'] = request.tips
+        if not UtilClient.is_unset(request.black_no):
+            query['BlackNo'] = request.black_no
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tips):
+            query['Tips'] = request.tips
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='OperateBlackNo',
@@ -1787,7 +1839,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1802,16 +1854,22 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.OperateBlackNoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BlackNo'] = request.black_no
-        query['OperateType'] = request.operate_type
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Tips'] = request.tips
+        if not UtilClient.is_unset(request.black_no):
+            query['BlackNo'] = request.black_no
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tips):
+            query['Tips'] = request.tips
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='OperateBlackNo',
@@ -1821,7 +1879,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1850,15 +1908,20 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.QueryCallStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CallNo'] = request.call_no
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SubsId'] = request.subs_id
+        if not UtilClient.is_unset(request.call_no):
+            query['CallNo'] = request.call_no
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subs_id):
+            query['SubsId'] = request.subs_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryCallStatus',
@@ -1868,7 +1931,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1883,15 +1946,20 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.QueryCallStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CallNo'] = request.call_no
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SubsId'] = request.subs_id
+        if not UtilClient.is_unset(request.call_no):
+            query['CallNo'] = request.call_no
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subs_id):
+            query['SubsId'] = request.subs_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryCallStatus',
@@ -1901,7 +1969,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1930,15 +1998,20 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.QueryPhoneNoAByTrackNoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CabinetNo'] = request.cabinet_no
-        query['OwnerId'] = request.owner_id
-        query['PhoneNoX'] = request.phone_no_x
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['trackNo'] = request.track_no
+        if not UtilClient.is_unset(request.cabinet_no):
+            query['CabinetNo'] = request.cabinet_no
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_x):
+            query['PhoneNoX'] = request.phone_no_x
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.track_no):
+            query['trackNo'] = request.track_no
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryPhoneNoAByTrackNo',
@@ -1948,7 +2021,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1963,15 +2036,20 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.QueryPhoneNoAByTrackNoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CabinetNo'] = request.cabinet_no
-        query['OwnerId'] = request.owner_id
-        query['PhoneNoX'] = request.phone_no_x
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['trackNo'] = request.track_no
+        if not UtilClient.is_unset(request.cabinet_no):
+            query['CabinetNo'] = request.cabinet_no
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_x):
+            query['PhoneNoX'] = request.phone_no_x
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.track_no):
+            query['trackNo'] = request.track_no
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryPhoneNoAByTrackNo',
@@ -1981,7 +2059,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2010,16 +2088,22 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.QueryRecordFileDownloadUrlResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CallId'] = request.call_id
-        query['CallTime'] = request.call_time
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ProductType'] = request.product_type
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.call_id):
+            query['CallId'] = request.call_id
+        if not UtilClient.is_unset(request.call_time):
+            query['CallTime'] = request.call_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryRecordFileDownloadUrl',
@@ -2029,7 +2113,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2044,16 +2128,22 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.QueryRecordFileDownloadUrlResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CallId'] = request.call_id
-        query['CallTime'] = request.call_time
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ProductType'] = request.product_type
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.call_id):
+            query['CallId'] = request.call_id
+        if not UtilClient.is_unset(request.call_time):
+            query['CallTime'] = request.call_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QueryRecordFileDownloadUrl',
@@ -2063,7 +2153,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2092,14 +2182,18 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.QuerySecretNoDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_no):
+            query['SecretNo'] = request.secret_no
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySecretNoDetail',
@@ -2109,7 +2203,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2124,14 +2218,18 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.QuerySecretNoDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_no):
+            query['SecretNo'] = request.secret_no
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySecretNoDetail',
@@ -2141,7 +2239,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2170,15 +2268,20 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.QuerySecretNoRemainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['City'] = request.city
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
-        query['SpecId'] = request.spec_id
+        if not UtilClient.is_unset(request.city):
+            query['City'] = request.city
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_no):
+            query['SecretNo'] = request.secret_no
+        if not UtilClient.is_unset(request.spec_id):
+            query['SpecId'] = request.spec_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySecretNoRemain',
@@ -2188,7 +2291,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2203,15 +2306,20 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.QuerySecretNoRemainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['City'] = request.city
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
-        query['SpecId'] = request.spec_id
+        if not UtilClient.is_unset(request.city):
+            query['City'] = request.city
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_no):
+            query['SecretNo'] = request.secret_no
+        if not UtilClient.is_unset(request.spec_id):
+            query['SpecId'] = request.spec_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySecretNoRemain',
@@ -2221,7 +2329,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2250,14 +2358,18 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.QuerySubsIdResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PhoneNoX'] = request.phone_no_x
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_x):
+            query['PhoneNoX'] = request.phone_no_x
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySubsId',
@@ -2267,7 +2379,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2282,14 +2394,18 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.QuerySubsIdResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PhoneNoX'] = request.phone_no_x
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_x):
+            query['PhoneNoX'] = request.phone_no_x
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySubsId',
@@ -2299,7 +2415,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2328,16 +2444,22 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.QuerySubscriptionDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PhoneNoX'] = request.phone_no_x
-        query['PoolKey'] = request.pool_key
-        query['ProductType'] = request.product_type
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SubsId'] = request.subs_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_x):
+            query['PhoneNoX'] = request.phone_no_x
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subs_id):
+            query['SubsId'] = request.subs_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySubscriptionDetail',
@@ -2347,7 +2469,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2362,16 +2484,22 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.QuerySubscriptionDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PhoneNoX'] = request.phone_no_x
-        query['PoolKey'] = request.pool_key
-        query['ProductType'] = request.product_type
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SubsId'] = request.subs_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_x):
+            query['PhoneNoX'] = request.phone_no_x
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subs_id):
+            query['SubsId'] = request.subs_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySubscriptionDetail',
@@ -2381,7 +2509,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2410,14 +2538,18 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.ReleaseSecretNoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_no):
+            query['SecretNo'] = request.secret_no
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReleaseSecretNo',
@@ -2427,7 +2559,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2442,14 +2574,18 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.ReleaseSecretNoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_no):
+            query['SecretNo'] = request.secret_no
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ReleaseSecretNo',
@@ -2459,7 +2595,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2488,16 +2624,22 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.UnbindSubscriptionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ProductType'] = request.product_type
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
-        query['SubsId'] = request.subs_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_no):
+            query['SecretNo'] = request.secret_no
+        if not UtilClient.is_unset(request.subs_id):
+            query['SubsId'] = request.subs_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnbindSubscription',
@@ -2507,7 +2649,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2522,16 +2664,22 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.UnbindSubscriptionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ProductType'] = request.product_type
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
-        query['SubsId'] = request.subs_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_no):
+            query['SecretNo'] = request.secret_no
+        if not UtilClient.is_unset(request.subs_id):
+            query['SubsId'] = request.subs_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnbindSubscription',
@@ -2541,7 +2689,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2570,14 +2718,18 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.UnlockSecretNoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_no):
+            query['SecretNo'] = request.secret_no
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnlockSecretNo',
@@ -2587,7 +2739,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2602,14 +2754,18 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.UnlockSecretNoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secret_no):
+            query['SecretNo'] = request.secret_no
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UnlockSecretNo',
@@ -2619,7 +2775,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2641,254 +2797,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.unlock_secret_no_with_options_async(request, runtime)
 
-    def update_default_bwith_options(
-        self,
-        request: dyplsapi_20170525_models.UpdateDefaultBRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyplsapi_20170525_models.UpdateDefaultBResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['PhoneNo'] = request.phone_no
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
-        query['SubsId'] = request.subs_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateDefaultB',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.UpdateDefaultBResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_default_bwith_options_async(
-        self,
-        request: dyplsapi_20170525_models.UpdateDefaultBRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyplsapi_20170525_models.UpdateDefaultBResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['PhoneNo'] = request.phone_no
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
-        query['SubsId'] = request.subs_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdateDefaultB',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.UpdateDefaultBResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_default_b(
-        self,
-        request: dyplsapi_20170525_models.UpdateDefaultBRequest,
-    ) -> dyplsapi_20170525_models.UpdateDefaultBResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_default_bwith_options(request, runtime)
-
-    async def update_default_b_async(
-        self,
-        request: dyplsapi_20170525_models.UpdateDefaultBRequest,
-    ) -> dyplsapi_20170525_models.UpdateDefaultBResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_default_bwith_options_async(request, runtime)
-
-    def update_phone_number_with_options(
-        self,
-        request: dyplsapi_20170525_models.UpdatePhoneNumberRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyplsapi_20170525_models.UpdatePhoneNumberResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['BindToken'] = request.bind_token
-        query['NewPhoneNo'] = request.new_phone_no
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
-        query['SubsId'] = request.subs_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdatePhoneNumber',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.UpdatePhoneNumberResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_phone_number_with_options_async(
-        self,
-        request: dyplsapi_20170525_models.UpdatePhoneNumberRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyplsapi_20170525_models.UpdatePhoneNumberResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['BindToken'] = request.bind_token
-        query['NewPhoneNo'] = request.new_phone_no
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
-        query['SubsId'] = request.subs_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdatePhoneNumber',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.UpdatePhoneNumberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_phone_number(
-        self,
-        request: dyplsapi_20170525_models.UpdatePhoneNumberRequest,
-    ) -> dyplsapi_20170525_models.UpdatePhoneNumberResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_phone_number_with_options(request, runtime)
-
-    async def update_phone_number_async(
-        self,
-        request: dyplsapi_20170525_models.UpdatePhoneNumberRequest,
-    ) -> dyplsapi_20170525_models.UpdatePhoneNumberResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_phone_number_with_options_async(request, runtime)
-
-    def update_phone_switch_with_options(
-        self,
-        request: dyplsapi_20170525_models.UpdatePhoneSwitchRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyplsapi_20170525_models.UpdatePhoneSwitchResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
-        query['SubsId'] = request.subs_id
-        query['SwitchStatus'] = request.switch_status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdatePhoneSwitch',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.UpdatePhoneSwitchResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_phone_switch_with_options_async(
-        self,
-        request: dyplsapi_20170525_models.UpdatePhoneSwitchRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dyplsapi_20170525_models.UpdatePhoneSwitchResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['OwnerId'] = request.owner_id
-        query['PoolKey'] = request.pool_key
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SecretNo'] = request.secret_no
-        query['SubsId'] = request.subs_id
-        query['SwitchStatus'] = request.switch_status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='UpdatePhoneSwitch',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.UpdatePhoneSwitchResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_phone_switch(
-        self,
-        request: dyplsapi_20170525_models.UpdatePhoneSwitchRequest,
-    ) -> dyplsapi_20170525_models.UpdatePhoneSwitchResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_phone_switch_with_options(request, runtime)
-
-    async def update_phone_switch_async(
-        self,
-        request: dyplsapi_20170525_models.UpdatePhoneSwitchRequest,
-    ) -> dyplsapi_20170525_models.UpdatePhoneSwitchResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_phone_switch_with_options_async(request, runtime)
-
     def update_subscription_with_options(
         self,
         request: dyplsapi_20170525_models.UpdateSubscriptionRequest,
@@ -2896,28 +2804,46 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.UpdateSubscriptionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ASRModelId'] = request.asrmodel_id
-        query['ASRStatus'] = request.asrstatus
-        query['CallDisplayType'] = request.call_display_type
-        query['CallRestrict'] = request.call_restrict
-        query['Expiration'] = request.expiration
-        query['GroupId'] = request.group_id
-        query['IsRecordingEnabled'] = request.is_recording_enabled
-        query['OperateType'] = request.operate_type
-        query['OutId'] = request.out_id
-        query['OwnerId'] = request.owner_id
-        query['PhoneNoA'] = request.phone_no_a
-        query['PhoneNoB'] = request.phone_no_b
-        query['PhoneNoX'] = request.phone_no_x
-        query['PoolKey'] = request.pool_key
-        query['ProductType'] = request.product_type
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RingConfig'] = request.ring_config
-        query['SubsId'] = request.subs_id
+        if not UtilClient.is_unset(request.asrmodel_id):
+            query['ASRModelId'] = request.asrmodel_id
+        if not UtilClient.is_unset(request.asrstatus):
+            query['ASRStatus'] = request.asrstatus
+        if not UtilClient.is_unset(request.call_display_type):
+            query['CallDisplayType'] = request.call_display_type
+        if not UtilClient.is_unset(request.call_restrict):
+            query['CallRestrict'] = request.call_restrict
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.is_recording_enabled):
+            query['IsRecordingEnabled'] = request.is_recording_enabled
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_a):
+            query['PhoneNoA'] = request.phone_no_a
+        if not UtilClient.is_unset(request.phone_no_b):
+            query['PhoneNoB'] = request.phone_no_b
+        if not UtilClient.is_unset(request.phone_no_x):
+            query['PhoneNoX'] = request.phone_no_x
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.ring_config):
+            query['RingConfig'] = request.ring_config
+        if not UtilClient.is_unset(request.subs_id):
+            query['SubsId'] = request.subs_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateSubscription',
@@ -2927,7 +2853,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2942,28 +2868,46 @@ class Client(OpenApiClient):
     ) -> dyplsapi_20170525_models.UpdateSubscriptionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ASRModelId'] = request.asrmodel_id
-        query['ASRStatus'] = request.asrstatus
-        query['CallDisplayType'] = request.call_display_type
-        query['CallRestrict'] = request.call_restrict
-        query['Expiration'] = request.expiration
-        query['GroupId'] = request.group_id
-        query['IsRecordingEnabled'] = request.is_recording_enabled
-        query['OperateType'] = request.operate_type
-        query['OutId'] = request.out_id
-        query['OwnerId'] = request.owner_id
-        query['PhoneNoA'] = request.phone_no_a
-        query['PhoneNoB'] = request.phone_no_b
-        query['PhoneNoX'] = request.phone_no_x
-        query['PoolKey'] = request.pool_key
-        query['ProductType'] = request.product_type
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RingConfig'] = request.ring_config
-        query['SubsId'] = request.subs_id
+        if not UtilClient.is_unset(request.asrmodel_id):
+            query['ASRModelId'] = request.asrmodel_id
+        if not UtilClient.is_unset(request.asrstatus):
+            query['ASRStatus'] = request.asrstatus
+        if not UtilClient.is_unset(request.call_display_type):
+            query['CallDisplayType'] = request.call_display_type
+        if not UtilClient.is_unset(request.call_restrict):
+            query['CallRestrict'] = request.call_restrict
+        if not UtilClient.is_unset(request.expiration):
+            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.is_recording_enabled):
+            query['IsRecordingEnabled'] = request.is_recording_enabled
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no_a):
+            query['PhoneNoA'] = request.phone_no_a
+        if not UtilClient.is_unset(request.phone_no_b):
+            query['PhoneNoB'] = request.phone_no_b
+        if not UtilClient.is_unset(request.phone_no_x):
+            query['PhoneNoX'] = request.phone_no_x
+        if not UtilClient.is_unset(request.pool_key):
+            query['PoolKey'] = request.pool_key
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.ring_config):
+            query['RingConfig'] = request.ring_config
+        if not UtilClient.is_unset(request.subs_id):
+            query['SubsId'] = request.subs_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateSubscription',
@@ -2973,7 +2917,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
