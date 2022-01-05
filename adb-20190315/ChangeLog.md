@@ -1,3 +1,7 @@
+2022-01-05 Version: 1.0.10
+- Move to perth for DescribeAuditLogRecords.
+- Move to perth for DescribeAuditLogConfig.
+
 2021-10-25 Version: 1.0.9
 - CreateDBCluster Support ElasticResourceIO.
 
