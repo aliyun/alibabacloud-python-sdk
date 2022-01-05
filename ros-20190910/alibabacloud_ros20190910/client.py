@@ -48,9 +48,12 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.CancelUpdateStackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CancelType'] = request.cancel_type
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.cancel_type):
+            query['CancelType'] = request.cancel_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -77,9 +80,12 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.CancelUpdateStackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CancelType'] = request.cancel_type
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.cancel_type):
+            query['CancelType'] = request.cancel_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -120,18 +126,30 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ContinueCreateStackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DryRun'] = request.dry_run
-        query['Mode'] = request.mode
-        query['Parallelism'] = request.parallelism
-        query['Parameters'] = request.parameters
-        query['RamRoleName'] = request.ram_role_name
-        query['RecreatingResources'] = request.recreating_resources
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.parallelism):
+            query['Parallelism'] = request.parallelism
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.ram_role_name):
+            query['RamRoleName'] = request.ram_role_name
+        if not UtilClient.is_unset(request.recreating_resources):
+            query['RecreatingResources'] = request.recreating_resources
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -158,18 +176,30 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ContinueCreateStackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DryRun'] = request.dry_run
-        query['Mode'] = request.mode
-        query['Parallelism'] = request.parallelism
-        query['Parameters'] = request.parameters
-        query['RamRoleName'] = request.ram_role_name
-        query['RecreatingResources'] = request.recreating_resources
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.parallelism):
+            query['Parallelism'] = request.parallelism
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.ram_role_name):
+            query['RamRoleName'] = request.ram_role_name
+        if not UtilClient.is_unset(request.recreating_resources):
+            query['RecreatingResources'] = request.recreating_resources
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -210,31 +240,56 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.CreateChangeSetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChangeSetName'] = request.change_set_name
-        query['ChangeSetType'] = request.change_set_type
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['DisableRollback'] = request.disable_rollback
-        query['NotificationURLs'] = request.notification_urls
-        query['Parallelism'] = request.parallelism
-        query['Parameters'] = request.parameters
-        query['RamRoleName'] = request.ram_role_name
-        query['RegionId'] = request.region_id
-        query['ReplacementOption'] = request.replacement_option
-        query['ResourcesToImport'] = request.resources_to_import
-        query['StackId'] = request.stack_id
-        query['StackName'] = request.stack_name
-        query['StackPolicyBody'] = request.stack_policy_body
-        query['StackPolicyDuringUpdateBody'] = request.stack_policy_during_update_body
-        query['StackPolicyDuringUpdateURL'] = request.stack_policy_during_update_url
-        query['StackPolicyURL'] = request.stack_policy_url
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateScratchId'] = request.template_scratch_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
-        query['TimeoutInMinutes'] = request.timeout_in_minutes
-        query['UsePreviousParameters'] = request.use_previous_parameters
+        if not UtilClient.is_unset(request.change_set_name):
+            query['ChangeSetName'] = request.change_set_name
+        if not UtilClient.is_unset(request.change_set_type):
+            query['ChangeSetType'] = request.change_set_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.disable_rollback):
+            query['DisableRollback'] = request.disable_rollback
+        if not UtilClient.is_unset(request.notification_urls):
+            query['NotificationURLs'] = request.notification_urls
+        if not UtilClient.is_unset(request.parallelism):
+            query['Parallelism'] = request.parallelism
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.ram_role_name):
+            query['RamRoleName'] = request.ram_role_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.replacement_option):
+            query['ReplacementOption'] = request.replacement_option
+        if not UtilClient.is_unset(request.resources_to_import):
+            query['ResourcesToImport'] = request.resources_to_import
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.stack_name):
+            query['StackName'] = request.stack_name
+        if not UtilClient.is_unset(request.stack_policy_body):
+            query['StackPolicyBody'] = request.stack_policy_body
+        if not UtilClient.is_unset(request.stack_policy_during_update_body):
+            query['StackPolicyDuringUpdateBody'] = request.stack_policy_during_update_body
+        if not UtilClient.is_unset(request.stack_policy_during_update_url):
+            query['StackPolicyDuringUpdateURL'] = request.stack_policy_during_update_url
+        if not UtilClient.is_unset(request.stack_policy_url):
+            query['StackPolicyURL'] = request.stack_policy_url
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_scratch_id):
+            query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.timeout_in_minutes):
+            query['TimeoutInMinutes'] = request.timeout_in_minutes
+        if not UtilClient.is_unset(request.use_previous_parameters):
+            query['UsePreviousParameters'] = request.use_previous_parameters
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -261,31 +316,56 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.CreateChangeSetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChangeSetName'] = request.change_set_name
-        query['ChangeSetType'] = request.change_set_type
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['DisableRollback'] = request.disable_rollback
-        query['NotificationURLs'] = request.notification_urls
-        query['Parallelism'] = request.parallelism
-        query['Parameters'] = request.parameters
-        query['RamRoleName'] = request.ram_role_name
-        query['RegionId'] = request.region_id
-        query['ReplacementOption'] = request.replacement_option
-        query['ResourcesToImport'] = request.resources_to_import
-        query['StackId'] = request.stack_id
-        query['StackName'] = request.stack_name
-        query['StackPolicyBody'] = request.stack_policy_body
-        query['StackPolicyDuringUpdateBody'] = request.stack_policy_during_update_body
-        query['StackPolicyDuringUpdateURL'] = request.stack_policy_during_update_url
-        query['StackPolicyURL'] = request.stack_policy_url
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateScratchId'] = request.template_scratch_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
-        query['TimeoutInMinutes'] = request.timeout_in_minutes
-        query['UsePreviousParameters'] = request.use_previous_parameters
+        if not UtilClient.is_unset(request.change_set_name):
+            query['ChangeSetName'] = request.change_set_name
+        if not UtilClient.is_unset(request.change_set_type):
+            query['ChangeSetType'] = request.change_set_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.disable_rollback):
+            query['DisableRollback'] = request.disable_rollback
+        if not UtilClient.is_unset(request.notification_urls):
+            query['NotificationURLs'] = request.notification_urls
+        if not UtilClient.is_unset(request.parallelism):
+            query['Parallelism'] = request.parallelism
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.ram_role_name):
+            query['RamRoleName'] = request.ram_role_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.replacement_option):
+            query['ReplacementOption'] = request.replacement_option
+        if not UtilClient.is_unset(request.resources_to_import):
+            query['ResourcesToImport'] = request.resources_to_import
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.stack_name):
+            query['StackName'] = request.stack_name
+        if not UtilClient.is_unset(request.stack_policy_body):
+            query['StackPolicyBody'] = request.stack_policy_body
+        if not UtilClient.is_unset(request.stack_policy_during_update_body):
+            query['StackPolicyDuringUpdateBody'] = request.stack_policy_during_update_body
+        if not UtilClient.is_unset(request.stack_policy_during_update_url):
+            query['StackPolicyDuringUpdateURL'] = request.stack_policy_during_update_url
+        if not UtilClient.is_unset(request.stack_policy_url):
+            query['StackPolicyURL'] = request.stack_policy_url
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_scratch_id):
+            query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.timeout_in_minutes):
+            query['TimeoutInMinutes'] = request.timeout_in_minutes
+        if not UtilClient.is_unset(request.use_previous_parameters):
+            query['UsePreviousParameters'] = request.use_previous_parameters
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -326,27 +406,48 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.CreateStackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['CreateOption'] = request.create_option
-        query['DeletionProtection'] = request.deletion_protection
-        query['DisableRollback'] = request.disable_rollback
-        query['NotificationURLs'] = request.notification_urls
-        query['Parallelism'] = request.parallelism
-        query['Parameters'] = request.parameters
-        query['RamRoleName'] = request.ram_role_name
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StackName'] = request.stack_name
-        query['StackPolicyBody'] = request.stack_policy_body
-        query['StackPolicyURL'] = request.stack_policy_url
-        query['Tags'] = request.tags
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateScratchId'] = request.template_scratch_id
-        query['TemplateScratchRegionId'] = request.template_scratch_region_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
-        query['TimeoutInMinutes'] = request.timeout_in_minutes
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.create_option):
+            query['CreateOption'] = request.create_option
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
+        if not UtilClient.is_unset(request.disable_rollback):
+            query['DisableRollback'] = request.disable_rollback
+        if not UtilClient.is_unset(request.notification_urls):
+            query['NotificationURLs'] = request.notification_urls
+        if not UtilClient.is_unset(request.parallelism):
+            query['Parallelism'] = request.parallelism
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.ram_role_name):
+            query['RamRoleName'] = request.ram_role_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.stack_name):
+            query['StackName'] = request.stack_name
+        if not UtilClient.is_unset(request.stack_policy_body):
+            query['StackPolicyBody'] = request.stack_policy_body
+        if not UtilClient.is_unset(request.stack_policy_url):
+            query['StackPolicyURL'] = request.stack_policy_url
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_scratch_id):
+            query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.template_scratch_region_id):
+            query['TemplateScratchRegionId'] = request.template_scratch_region_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.timeout_in_minutes):
+            query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -373,27 +474,48 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.CreateStackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['CreateOption'] = request.create_option
-        query['DeletionProtection'] = request.deletion_protection
-        query['DisableRollback'] = request.disable_rollback
-        query['NotificationURLs'] = request.notification_urls
-        query['Parallelism'] = request.parallelism
-        query['Parameters'] = request.parameters
-        query['RamRoleName'] = request.ram_role_name
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StackName'] = request.stack_name
-        query['StackPolicyBody'] = request.stack_policy_body
-        query['StackPolicyURL'] = request.stack_policy_url
-        query['Tags'] = request.tags
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateScratchId'] = request.template_scratch_id
-        query['TemplateScratchRegionId'] = request.template_scratch_region_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
-        query['TimeoutInMinutes'] = request.timeout_in_minutes
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.create_option):
+            query['CreateOption'] = request.create_option
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
+        if not UtilClient.is_unset(request.disable_rollback):
+            query['DisableRollback'] = request.disable_rollback
+        if not UtilClient.is_unset(request.notification_urls):
+            query['NotificationURLs'] = request.notification_urls
+        if not UtilClient.is_unset(request.parallelism):
+            query['Parallelism'] = request.parallelism
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.ram_role_name):
+            query['RamRoleName'] = request.ram_role_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.stack_name):
+            query['StackName'] = request.stack_name
+        if not UtilClient.is_unset(request.stack_policy_body):
+            query['StackPolicyBody'] = request.stack_policy_body
+        if not UtilClient.is_unset(request.stack_policy_url):
+            query['StackPolicyURL'] = request.stack_policy_url
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_scratch_id):
+            query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.template_scratch_region_id):
+            query['TemplateScratchRegionId'] = request.template_scratch_region_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.timeout_in_minutes):
+            query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -438,20 +560,34 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.auto_deployment):
             request.auto_deployment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.auto_deployment), 'AutoDeployment', 'json')
         query = {}
-        query['AdministrationRoleName'] = request.administration_role_name
-        query['AutoDeployment'] = request.auto_deployment_shrink
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['ExecutionRoleName'] = request.execution_role_name
-        query['Parameters'] = request.parameters
-        query['PermissionModel'] = request.permission_model
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StackGroupName'] = request.stack_group_name
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.administration_role_name):
+            query['AdministrationRoleName'] = request.administration_role_name
+        if not UtilClient.is_unset(request.auto_deployment_shrink):
+            query['AutoDeployment'] = request.auto_deployment_shrink
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.execution_role_name):
+            query['ExecutionRoleName'] = request.execution_role_name
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.permission_model):
+            query['PermissionModel'] = request.permission_model
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -482,20 +618,34 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.auto_deployment):
             request.auto_deployment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.auto_deployment), 'AutoDeployment', 'json')
         query = {}
-        query['AdministrationRoleName'] = request.administration_role_name
-        query['AutoDeployment'] = request.auto_deployment_shrink
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['ExecutionRoleName'] = request.execution_role_name
-        query['Parameters'] = request.parameters
-        query['PermissionModel'] = request.permission_model
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['StackGroupName'] = request.stack_group_name
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.administration_role_name):
+            query['AdministrationRoleName'] = request.administration_role_name
+        if not UtilClient.is_unset(request.auto_deployment_shrink):
+            query['AutoDeployment'] = request.auto_deployment_shrink
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.execution_role_name):
+            query['ExecutionRoleName'] = request.execution_role_name
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.permission_model):
+            query['PermissionModel'] = request.permission_model
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -546,17 +696,28 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         query = {}
-        query['AccountIds'] = request.account_ids_shrink
-        query['ClientToken'] = request.client_token
-        query['DeploymentTargets'] = request.deployment_targets_shrink
-        query['DisableRollback'] = request.disable_rollback
-        query['OperationDescription'] = request.operation_description
-        query['OperationPreferences'] = request.operation_preferences_shrink
-        query['ParameterOverrides'] = request.parameter_overrides
-        query['RegionId'] = request.region_id
-        query['RegionIds'] = request.region_ids_shrink
-        query['StackGroupName'] = request.stack_group_name
-        query['TimeoutInMinutes'] = request.timeout_in_minutes
+        if not UtilClient.is_unset(request.account_ids_shrink):
+            query['AccountIds'] = request.account_ids_shrink
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deployment_targets_shrink):
+            query['DeploymentTargets'] = request.deployment_targets_shrink
+        if not UtilClient.is_unset(request.disable_rollback):
+            query['DisableRollback'] = request.disable_rollback
+        if not UtilClient.is_unset(request.operation_description):
+            query['OperationDescription'] = request.operation_description
+        if not UtilClient.is_unset(request.operation_preferences_shrink):
+            query['OperationPreferences'] = request.operation_preferences_shrink
+        if not UtilClient.is_unset(request.parameter_overrides):
+            query['ParameterOverrides'] = request.parameter_overrides
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_ids_shrink):
+            query['RegionIds'] = request.region_ids_shrink
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.timeout_in_minutes):
+            query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -593,17 +754,28 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         query = {}
-        query['AccountIds'] = request.account_ids_shrink
-        query['ClientToken'] = request.client_token
-        query['DeploymentTargets'] = request.deployment_targets_shrink
-        query['DisableRollback'] = request.disable_rollback
-        query['OperationDescription'] = request.operation_description
-        query['OperationPreferences'] = request.operation_preferences_shrink
-        query['ParameterOverrides'] = request.parameter_overrides
-        query['RegionId'] = request.region_id
-        query['RegionIds'] = request.region_ids_shrink
-        query['StackGroupName'] = request.stack_group_name
-        query['TimeoutInMinutes'] = request.timeout_in_minutes
+        if not UtilClient.is_unset(request.account_ids_shrink):
+            query['AccountIds'] = request.account_ids_shrink
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deployment_targets_shrink):
+            query['DeploymentTargets'] = request.deployment_targets_shrink
+        if not UtilClient.is_unset(request.disable_rollback):
+            query['DisableRollback'] = request.disable_rollback
+        if not UtilClient.is_unset(request.operation_description):
+            query['OperationDescription'] = request.operation_description
+        if not UtilClient.is_unset(request.operation_preferences_shrink):
+            query['OperationPreferences'] = request.operation_preferences_shrink
+        if not UtilClient.is_unset(request.parameter_overrides):
+            query['ParameterOverrides'] = request.parameter_overrides
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_ids_shrink):
+            query['RegionIds'] = request.region_ids_shrink
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.timeout_in_minutes):
+            query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -644,11 +816,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.CreateTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Description'] = request.description
-        query['ResourceGroupId'] = request.resource_group_id
-        query['TemplateBody'] = request.template_body
-        query['TemplateName'] = request.template_name
-        query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -675,11 +852,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.CreateTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Description'] = request.description
-        query['ResourceGroupId'] = request.resource_group_id
-        query['TemplateBody'] = request.template_body
-        query['TemplateName'] = request.template_name
-        query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -730,16 +912,26 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.source_tag):
             request.source_tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.source_tag), 'SourceTag', 'json')
         query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['ExecutionMode'] = request.execution_mode
-        query['LogicalIdStrategy'] = request.logical_id_strategy
-        query['PreferenceParameters'] = request.preference_parameters_shrink
-        query['RegionId'] = request.region_id
-        query['SourceResourceGroup'] = request.source_resource_group_shrink
-        query['SourceResources'] = request.source_resources_shrink
-        query['SourceTag'] = request.source_tag_shrink
-        query['TemplateScratchType'] = request.template_scratch_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.execution_mode):
+            query['ExecutionMode'] = request.execution_mode
+        if not UtilClient.is_unset(request.logical_id_strategy):
+            query['LogicalIdStrategy'] = request.logical_id_strategy
+        if not UtilClient.is_unset(request.preference_parameters_shrink):
+            query['PreferenceParameters'] = request.preference_parameters_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_resource_group_shrink):
+            query['SourceResourceGroup'] = request.source_resource_group_shrink
+        if not UtilClient.is_unset(request.source_resources_shrink):
+            query['SourceResources'] = request.source_resources_shrink
+        if not UtilClient.is_unset(request.source_tag_shrink):
+            query['SourceTag'] = request.source_tag_shrink
+        if not UtilClient.is_unset(request.template_scratch_type):
+            query['TemplateScratchType'] = request.template_scratch_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -776,16 +968,26 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.source_tag):
             request.source_tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.source_tag), 'SourceTag', 'json')
         query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['ExecutionMode'] = request.execution_mode
-        query['LogicalIdStrategy'] = request.logical_id_strategy
-        query['PreferenceParameters'] = request.preference_parameters_shrink
-        query['RegionId'] = request.region_id
-        query['SourceResourceGroup'] = request.source_resource_group_shrink
-        query['SourceResources'] = request.source_resources_shrink
-        query['SourceTag'] = request.source_tag_shrink
-        query['TemplateScratchType'] = request.template_scratch_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.execution_mode):
+            query['ExecutionMode'] = request.execution_mode
+        if not UtilClient.is_unset(request.logical_id_strategy):
+            query['LogicalIdStrategy'] = request.logical_id_strategy
+        if not UtilClient.is_unset(request.preference_parameters_shrink):
+            query['PreferenceParameters'] = request.preference_parameters_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_resource_group_shrink):
+            query['SourceResourceGroup'] = request.source_resource_group_shrink
+        if not UtilClient.is_unset(request.source_resources_shrink):
+            query['SourceResources'] = request.source_resources_shrink
+        if not UtilClient.is_unset(request.source_tag_shrink):
+            query['SourceTag'] = request.source_tag_shrink
+        if not UtilClient.is_unset(request.template_scratch_type):
+            query['TemplateScratchType'] = request.template_scratch_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -826,8 +1028,10 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.DeleteChangeSetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChangeSetId'] = request.change_set_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.change_set_id):
+            query['ChangeSetId'] = request.change_set_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -854,8 +1058,10 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.DeleteChangeSetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChangeSetId'] = request.change_set_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.change_set_id):
+            query['ChangeSetId'] = request.change_set_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -896,11 +1102,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.DeleteStackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RamRoleName'] = request.ram_role_name
-        query['RegionId'] = request.region_id
-        query['RetainAllResources'] = request.retain_all_resources
-        query['RetainResources'] = request.retain_resources
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.ram_role_name):
+            query['RamRoleName'] = request.ram_role_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.retain_all_resources):
+            query['RetainAllResources'] = request.retain_all_resources
+        if not UtilClient.is_unset(request.retain_resources):
+            query['RetainResources'] = request.retain_resources
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -927,11 +1138,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.DeleteStackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RamRoleName'] = request.ram_role_name
-        query['RegionId'] = request.region_id
-        query['RetainAllResources'] = request.retain_all_resources
-        query['RetainResources'] = request.retain_resources
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.ram_role_name):
+            query['RamRoleName'] = request.ram_role_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.retain_all_resources):
+            query['RetainAllResources'] = request.retain_all_resources
+        if not UtilClient.is_unset(request.retain_resources):
+            query['RetainResources'] = request.retain_resources
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -972,8 +1188,10 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.DeleteStackGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1000,8 +1218,10 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.DeleteStackGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1052,15 +1272,24 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         query = {}
-        query['AccountIds'] = request.account_ids_shrink
-        query['ClientToken'] = request.client_token
-        query['DeploymentTargets'] = request.deployment_targets_shrink
-        query['OperationDescription'] = request.operation_description
-        query['OperationPreferences'] = request.operation_preferences_shrink
-        query['RegionId'] = request.region_id
-        query['RegionIds'] = request.region_ids_shrink
-        query['RetainStacks'] = request.retain_stacks
-        query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.account_ids_shrink):
+            query['AccountIds'] = request.account_ids_shrink
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deployment_targets_shrink):
+            query['DeploymentTargets'] = request.deployment_targets_shrink
+        if not UtilClient.is_unset(request.operation_description):
+            query['OperationDescription'] = request.operation_description
+        if not UtilClient.is_unset(request.operation_preferences_shrink):
+            query['OperationPreferences'] = request.operation_preferences_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_ids_shrink):
+            query['RegionIds'] = request.region_ids_shrink
+        if not UtilClient.is_unset(request.retain_stacks):
+            query['RetainStacks'] = request.retain_stacks
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1097,15 +1326,24 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         query = {}
-        query['AccountIds'] = request.account_ids_shrink
-        query['ClientToken'] = request.client_token
-        query['DeploymentTargets'] = request.deployment_targets_shrink
-        query['OperationDescription'] = request.operation_description
-        query['OperationPreferences'] = request.operation_preferences_shrink
-        query['RegionId'] = request.region_id
-        query['RegionIds'] = request.region_ids_shrink
-        query['RetainStacks'] = request.retain_stacks
-        query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.account_ids_shrink):
+            query['AccountIds'] = request.account_ids_shrink
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deployment_targets_shrink):
+            query['DeploymentTargets'] = request.deployment_targets_shrink
+        if not UtilClient.is_unset(request.operation_description):
+            query['OperationDescription'] = request.operation_description
+        if not UtilClient.is_unset(request.operation_preferences_shrink):
+            query['OperationPreferences'] = request.operation_preferences_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_ids_shrink):
+            query['RegionIds'] = request.region_ids_shrink
+        if not UtilClient.is_unset(request.retain_stacks):
+            query['RetainStacks'] = request.retain_stacks
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1146,7 +1384,8 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.DeleteTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1173,7 +1412,8 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.DeleteTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1214,8 +1454,10 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.DeleteTemplateScratchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_scratch_id):
+            query['TemplateScratchId'] = request.template_scratch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1242,8 +1484,10 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.DeleteTemplateScratchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_scratch_id):
+            query['TemplateScratchId'] = request.template_scratch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1284,7 +1528,8 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1311,7 +1556,8 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1352,10 +1598,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.DetectStackDriftResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['LogicalResourceId'] = request.logical_resource_id
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.logical_resource_id):
+            query['LogicalResourceId'] = request.logical_resource_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1382,10 +1632,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.DetectStackDriftResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['LogicalResourceId'] = request.logical_resource_id
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.logical_resource_id):
+            query['LogicalResourceId'] = request.logical_resource_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1430,10 +1684,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
         query = {}
-        query['ClientToken'] = request.client_token
-        query['OperationPreferences'] = request.operation_preferences_shrink
-        query['RegionId'] = request.region_id
-        query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.operation_preferences_shrink):
+            query['OperationPreferences'] = request.operation_preferences_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1464,10 +1722,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.operation_preferences):
             request.operation_preferences_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.operation_preferences, 'OperationPreferences', 'json')
         query = {}
-        query['ClientToken'] = request.client_token
-        query['OperationPreferences'] = request.operation_preferences_shrink
-        query['RegionId'] = request.region_id
-        query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.operation_preferences_shrink):
+            query['OperationPreferences'] = request.operation_preferences_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1508,10 +1770,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.DetectStackResourceDriftResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['LogicalResourceId'] = request.logical_resource_id
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.logical_resource_id):
+            query['LogicalResourceId'] = request.logical_resource_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1538,10 +1804,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.DetectStackResourceDriftResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['LogicalResourceId'] = request.logical_resource_id
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.logical_resource_id):
+            query['LogicalResourceId'] = request.logical_resource_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1582,9 +1852,12 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ExecuteChangeSetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChangeSetId'] = request.change_set_id
-        query['ClientToken'] = request.client_token
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.change_set_id):
+            query['ChangeSetId'] = request.change_set_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1611,9 +1884,12 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ExecuteChangeSetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChangeSetId'] = request.change_set_id
-        query['ClientToken'] = request.client_token
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.change_set_id):
+            query['ChangeSetId'] = request.change_set_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1654,9 +1930,12 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GenerateTemplateByScratchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProvisionRegionId'] = request.provision_region_id
-        query['RegionId'] = request.region_id
-        query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.provision_region_id):
+            query['ProvisionRegionId'] = request.provision_region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_scratch_id):
+            query['TemplateScratchId'] = request.template_scratch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1683,9 +1962,12 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GenerateTemplateByScratchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProvisionRegionId'] = request.provision_region_id
-        query['RegionId'] = request.region_id
-        query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.provision_region_id):
+            query['ProvisionRegionId'] = request.provision_region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_scratch_id):
+            query['TemplateScratchId'] = request.template_scratch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1726,10 +2008,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GenerateTemplatePolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1756,10 +2042,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GenerateTemplatePolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1800,9 +2090,12 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetChangeSetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChangeSetId'] = request.change_set_id
-        query['RegionId'] = request.region_id
-        query['ShowTemplate'] = request.show_template
+        if not UtilClient.is_unset(request.change_set_id):
+            query['ChangeSetId'] = request.change_set_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.show_template):
+            query['ShowTemplate'] = request.show_template
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1829,9 +2122,12 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetChangeSetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChangeSetId'] = request.change_set_id
-        query['RegionId'] = request.region_id
-        query['ShowTemplate'] = request.show_template
+        if not UtilClient.is_unset(request.change_set_id):
+            query['ChangeSetId'] = request.change_set_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.show_template):
+            query['ShowTemplate'] = request.show_template
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1872,8 +2168,10 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetFeatureDetailsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Feature'] = request.feature
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.feature):
+            query['Feature'] = request.feature
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1900,8 +2198,10 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetFeatureDetailsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Feature'] = request.feature
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.feature):
+            query['Feature'] = request.feature
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1942,7 +2242,8 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetResourceTypeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1969,7 +2270,8 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetResourceTypeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2010,7 +2312,8 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetResourceTypeTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2037,7 +2340,8 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetResourceTypeTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2078,13 +2382,20 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetServiceProvisionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Parameters'] = request.parameters
-        query['RegionId'] = request.region_id
-        query['Services'] = request.services
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.services):
+            query['Services'] = request.services
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2111,13 +2422,20 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetServiceProvisionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Parameters'] = request.parameters
-        query['RegionId'] = request.region_id
-        query['Services'] = request.services
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.services):
+            query['Services'] = request.services
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2158,11 +2476,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetStackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['OutputOption'] = request.output_option
-        query['RegionId'] = request.region_id
-        query['ShowResourceProgress'] = request.show_resource_progress
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.output_option):
+            query['OutputOption'] = request.output_option
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.show_resource_progress):
+            query['ShowResourceProgress'] = request.show_resource_progress
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2189,11 +2512,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetStackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['OutputOption'] = request.output_option
-        query['RegionId'] = request.region_id
-        query['ShowResourceProgress'] = request.show_resource_progress
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.output_option):
+            query['OutputOption'] = request.output_option
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.show_resource_progress):
+            query['ShowResourceProgress'] = request.show_resource_progress
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2234,8 +2562,10 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetStackDriftDetectionStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DriftDetectionId'] = request.drift_detection_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.drift_detection_id):
+            query['DriftDetectionId'] = request.drift_detection_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2262,8 +2592,10 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetStackDriftDetectionStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DriftDetectionId'] = request.drift_detection_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.drift_detection_id):
+            query['DriftDetectionId'] = request.drift_detection_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2304,9 +2636,12 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetStackGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['StackGroupId'] = request.stack_group_id
-        query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_group_id):
+            query['StackGroupId'] = request.stack_group_id
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2333,9 +2668,12 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetStackGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['StackGroupId'] = request.stack_group_id
-        query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_group_id):
+            query['StackGroupId'] = request.stack_group_id
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2376,8 +2714,10 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetStackGroupOperationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OperationId'] = request.operation_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.operation_id):
+            query['OperationId'] = request.operation_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2404,8 +2744,10 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetStackGroupOperationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OperationId'] = request.operation_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.operation_id):
+            query['OperationId'] = request.operation_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2446,10 +2788,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetStackInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['StackGroupName'] = request.stack_group_name
-        query['StackInstanceAccountId'] = request.stack_instance_account_id
-        query['StackInstanceRegionId'] = request.stack_instance_region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.stack_instance_account_id):
+            query['StackInstanceAccountId'] = request.stack_instance_account_id
+        if not UtilClient.is_unset(request.stack_instance_region_id):
+            query['StackInstanceRegionId'] = request.stack_instance_region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2476,10 +2822,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetStackInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['StackGroupName'] = request.stack_group_name
-        query['StackInstanceAccountId'] = request.stack_instance_account_id
-        query['StackInstanceRegionId'] = request.stack_instance_region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.stack_instance_account_id):
+            query['StackInstanceAccountId'] = request.stack_instance_account_id
+        if not UtilClient.is_unset(request.stack_instance_region_id):
+            query['StackInstanceRegionId'] = request.stack_instance_region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2520,8 +2870,10 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetStackPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2548,8 +2900,10 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetStackPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2590,11 +2944,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetStackResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['LogicalResourceId'] = request.logical_resource_id
-        query['RegionId'] = request.region_id
-        query['ShowResourceAttributes'] = request.show_resource_attributes
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.logical_resource_id):
+            query['LogicalResourceId'] = request.logical_resource_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.show_resource_attributes):
+            query['ShowResourceAttributes'] = request.show_resource_attributes
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2621,11 +2980,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetStackResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['LogicalResourceId'] = request.logical_resource_id
-        query['RegionId'] = request.region_id
-        query['ShowResourceAttributes'] = request.show_resource_attributes
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.logical_resource_id):
+            query['LogicalResourceId'] = request.logical_resource_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.show_resource_attributes):
+            query['ShowResourceAttributes'] = request.show_resource_attributes
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2666,14 +3030,22 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChangeSetId'] = request.change_set_id
-        query['IncludePermission'] = request.include_permission
-        query['RegionId'] = request.region_id
-        query['StackGroupName'] = request.stack_group_name
-        query['StackId'] = request.stack_id
-        query['TemplateId'] = request.template_id
-        query['TemplateStage'] = request.template_stage
-        query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.change_set_id):
+            query['ChangeSetId'] = request.change_set_id
+        if not UtilClient.is_unset(request.include_permission):
+            query['IncludePermission'] = request.include_permission
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_stage):
+            query['TemplateStage'] = request.template_stage
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2700,14 +3072,22 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChangeSetId'] = request.change_set_id
-        query['IncludePermission'] = request.include_permission
-        query['RegionId'] = request.region_id
-        query['StackGroupName'] = request.stack_group_name
-        query['StackId'] = request.stack_id
-        query['TemplateId'] = request.template_id
-        query['TemplateStage'] = request.template_stage
-        query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.change_set_id):
+            query['ChangeSetId'] = request.change_set_id
+        if not UtilClient.is_unset(request.include_permission):
+            query['IncludePermission'] = request.include_permission
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_stage):
+            query['TemplateStage'] = request.template_stage
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2748,15 +3128,24 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetTemplateEstimateCostResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['Parameters'] = request.parameters
-        query['RegionId'] = request.region_id
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateScratchId'] = request.template_scratch_id
-        query['TemplateScratchRegionId'] = request.template_scratch_region_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_scratch_id):
+            query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.template_scratch_region_id):
+            query['TemplateScratchRegionId'] = request.template_scratch_region_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2783,15 +3172,24 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetTemplateEstimateCostResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['Parameters'] = request.parameters
-        query['RegionId'] = request.region_id
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateScratchId'] = request.template_scratch_id
-        query['TemplateScratchRegionId'] = request.template_scratch_region_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_scratch_id):
+            query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.template_scratch_region_id):
+            query['TemplateScratchRegionId'] = request.template_scratch_region_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2836,14 +3234,22 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.parameters_key_filter):
             request.parameters_key_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters_key_filter, 'ParametersKeyFilter', 'json')
         query = {}
-        query['ClientToken'] = request.client_token
-        query['Parameters'] = request.parameters
-        query['ParametersKeyFilter'] = request.parameters_key_filter_shrink
-        query['RegionId'] = request.region_id
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.parameters_key_filter_shrink):
+            query['ParametersKeyFilter'] = request.parameters_key_filter_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2874,14 +3280,22 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.parameters_key_filter):
             request.parameters_key_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters_key_filter, 'ParametersKeyFilter', 'json')
         query = {}
-        query['ClientToken'] = request.client_token
-        query['Parameters'] = request.parameters
-        query['ParametersKeyFilter'] = request.parameters_key_filter_shrink
-        query['RegionId'] = request.region_id
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.parameters_key_filter_shrink):
+            query['ParametersKeyFilter'] = request.parameters_key_filter_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2922,9 +3336,12 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetTemplateScratchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ShowDataOption'] = request.show_data_option
-        query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.show_data_option):
+            query['ShowDataOption'] = request.show_data_option
+        if not UtilClient.is_unset(request.template_scratch_id):
+            query['TemplateScratchId'] = request.template_scratch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2951,9 +3368,12 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetTemplateScratchResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ShowDataOption'] = request.show_data_option
-        query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.show_data_option):
+            query['ShowDataOption'] = request.show_data_option
+        if not UtilClient.is_unset(request.template_scratch_id):
+            query['TemplateScratchId'] = request.template_scratch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2994,14 +3414,22 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetTemplateSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChangeSetId'] = request.change_set_id
-        query['RegionId'] = request.region_id
-        query['StackGroupName'] = request.stack_group_name
-        query['StackId'] = request.stack_id
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.change_set_id):
+            query['ChangeSetId'] = request.change_set_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3028,14 +3456,22 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.GetTemplateSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChangeSetId'] = request.change_set_id
-        query['RegionId'] = request.region_id
-        query['StackGroupName'] = request.stack_group_name
-        query['StackId'] = request.stack_id
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.change_set_id):
+            query['ChangeSetId'] = request.change_set_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3076,14 +3512,22 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListChangeSetsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChangeSetId'] = request.change_set_id
-        query['ChangeSetName'] = request.change_set_name
-        query['ExecutionStatus'] = request.execution_status
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.change_set_id):
+            query['ChangeSetId'] = request.change_set_id
+        if not UtilClient.is_unset(request.change_set_name):
+            query['ChangeSetName'] = request.change_set_name
+        if not UtilClient.is_unset(request.execution_status):
+            query['ExecutionStatus'] = request.execution_status
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3110,14 +3554,22 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListChangeSetsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChangeSetId'] = request.change_set_id
-        query['ChangeSetName'] = request.change_set_name
-        query['ExecutionStatus'] = request.execution_status
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.change_set_id):
+            query['ChangeSetId'] = request.change_set_id
+        if not UtilClient.is_unset(request.change_set_name):
+            query['ChangeSetName'] = request.change_set_name
+        if not UtilClient.is_unset(request.execution_status):
+            query['ExecutionStatus'] = request.execution_status
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3208,13 +3660,20 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListStackEventsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['LogicalResourceId'] = request.logical_resource_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceType'] = request.resource_type
-        query['StackId'] = request.stack_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.logical_resource_id):
+            query['LogicalResourceId'] = request.logical_resource_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3241,13 +3700,20 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListStackEventsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['LogicalResourceId'] = request.logical_resource_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceType'] = request.resource_type
-        query['StackId'] = request.stack_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.logical_resource_id):
+            query['LogicalResourceId'] = request.logical_resource_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3288,10 +3754,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListStackGroupOperationResultsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OperationId'] = request.operation_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.operation_id):
+            query['OperationId'] = request.operation_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3318,10 +3788,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListStackGroupOperationResultsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OperationId'] = request.operation_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.operation_id):
+            query['OperationId'] = request.operation_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3362,10 +3836,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListStackGroupOperationsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3392,10 +3870,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListStackGroupOperationsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3436,11 +3918,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListStackGroupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3467,11 +3954,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListStackGroupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3512,12 +4004,18 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListStackInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['StackGroupName'] = request.stack_group_name
-        query['StackInstanceAccountId'] = request.stack_instance_account_id
-        query['StackInstanceRegionId'] = request.stack_instance_region_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.stack_instance_account_id):
+            query['StackInstanceAccountId'] = request.stack_instance_account_id
+        if not UtilClient.is_unset(request.stack_instance_region_id):
+            query['StackInstanceRegionId'] = request.stack_instance_region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3544,12 +4042,18 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListStackInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['StackGroupName'] = request.stack_group_name
-        query['StackInstanceAccountId'] = request.stack_instance_account_id
-        query['StackInstanceRegionId'] = request.stack_instance_region_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.stack_instance_account_id):
+            query['StackInstanceAccountId'] = request.stack_instance_account_id
+        if not UtilClient.is_unset(request.stack_instance_region_id):
+            query['StackInstanceRegionId'] = request.stack_instance_region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3590,13 +4094,20 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListStackOperationRisksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['OperationType'] = request.operation_type
-        query['RamRoleName'] = request.ram_role_name
-        query['RegionId'] = request.region_id
-        query['RetainAllResources'] = request.retain_all_resources
-        query['RetainResources'] = request.retain_resources
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.ram_role_name):
+            query['RamRoleName'] = request.ram_role_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.retain_all_resources):
+            query['RetainAllResources'] = request.retain_all_resources
+        if not UtilClient.is_unset(request.retain_resources):
+            query['RetainResources'] = request.retain_resources
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3623,13 +4134,20 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListStackOperationRisksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['OperationType'] = request.operation_type
-        query['RamRoleName'] = request.ram_role_name
-        query['RegionId'] = request.region_id
-        query['RetainAllResources'] = request.retain_all_resources
-        query['RetainResources'] = request.retain_resources
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.ram_role_name):
+            query['RamRoleName'] = request.ram_role_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.retain_all_resources):
+            query['RetainAllResources'] = request.retain_all_resources
+        if not UtilClient.is_unset(request.retain_resources):
+            query['RetainResources'] = request.retain_resources
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3670,11 +4188,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListStackResourceDriftsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['ResourceDriftStatus'] = request.resource_drift_status
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_drift_status):
+            query['ResourceDriftStatus'] = request.resource_drift_status
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3701,11 +4224,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListStackResourceDriftsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['ResourceDriftStatus'] = request.resource_drift_status
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_drift_status):
+            query['ResourceDriftStatus'] = request.resource_drift_status
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3746,8 +4274,10 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListStackResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3774,8 +4304,10 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListStackResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3816,17 +4348,28 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListStacksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ParentStackId'] = request.parent_stack_id
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ShowNestedStack'] = request.show_nested_stack
-        query['StackId'] = request.stack_id
-        query['StackIds'] = request.stack_ids
-        query['StackName'] = request.stack_name
-        query['Status'] = request.status
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_stack_id):
+            query['ParentStackId'] = request.parent_stack_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.show_nested_stack):
+            query['ShowNestedStack'] = request.show_nested_stack
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.stack_ids):
+            query['StackIds'] = request.stack_ids
+        if not UtilClient.is_unset(request.stack_name):
+            query['StackName'] = request.stack_name
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3853,17 +4396,28 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListStacksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ParentStackId'] = request.parent_stack_id
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ShowNestedStack'] = request.show_nested_stack
-        query['StackId'] = request.stack_id
-        query['StackIds'] = request.stack_ids
-        query['StackName'] = request.stack_name
-        query['Status'] = request.status
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_stack_id):
+            query['ParentStackId'] = request.parent_stack_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.show_nested_stack):
+            query['ShowNestedStack'] = request.show_nested_stack
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.stack_ids):
+            query['StackIds'] = request.stack_ids
+        if not UtilClient.is_unset(request.stack_name):
+            query['StackName'] = request.stack_name
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3904,9 +4458,12 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListTagKeysResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3933,9 +4490,12 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListTagKeysResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3976,11 +4536,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4007,11 +4572,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4052,10 +4622,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListTagValuesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Key'] = request.key
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4082,10 +4656,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListTagValuesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Key'] = request.key
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4126,12 +4704,18 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListTemplateScratchesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['Status'] = request.status
-        query['TemplateScratchId'] = request.template_scratch_id
-        query['TemplateScratchType'] = request.template_scratch_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.template_scratch_id):
+            query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.template_scratch_type):
+            query['TemplateScratchType'] = request.template_scratch_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4158,12 +4742,18 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListTemplateScratchesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['Status'] = request.status
-        query['TemplateScratchId'] = request.template_scratch_id
-        query['TemplateScratchType'] = request.template_scratch_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.template_scratch_id):
+            query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.template_scratch_type):
+            query['TemplateScratchType'] = request.template_scratch_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4204,9 +4794,12 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListTemplateVersionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4233,9 +4826,12 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListTemplateVersionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4276,12 +4872,18 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ShareType'] = request.share_type
-        query['Tag'] = request.tag
-        query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.share_type):
+            query['ShareType'] = request.share_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4308,12 +4910,18 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ShareType'] = request.share_type
-        query['Tag'] = request.tag
-        query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.share_type):
+            query['ShareType'] = request.share_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4354,10 +4962,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NewResourceGroupId'] = request.new_resource_group_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4384,10 +4996,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NewResourceGroupId'] = request.new_resource_group_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4428,21 +5044,36 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.PreviewStackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DisableRollback'] = request.disable_rollback
-        query['Parallelism'] = request.parallelism
-        query['Parameters'] = request.parameters
-        query['RegionId'] = request.region_id
-        query['StackName'] = request.stack_name
-        query['StackPolicyBody'] = request.stack_policy_body
-        query['StackPolicyURL'] = request.stack_policy_url
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateScratchId'] = request.template_scratch_id
-        query['TemplateScratchRegionId'] = request.template_scratch_region_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
-        query['TimeoutInMinutes'] = request.timeout_in_minutes
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.disable_rollback):
+            query['DisableRollback'] = request.disable_rollback
+        if not UtilClient.is_unset(request.parallelism):
+            query['Parallelism'] = request.parallelism
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_name):
+            query['StackName'] = request.stack_name
+        if not UtilClient.is_unset(request.stack_policy_body):
+            query['StackPolicyBody'] = request.stack_policy_body
+        if not UtilClient.is_unset(request.stack_policy_url):
+            query['StackPolicyURL'] = request.stack_policy_url
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_scratch_id):
+            query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.template_scratch_region_id):
+            query['TemplateScratchRegionId'] = request.template_scratch_region_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.timeout_in_minutes):
+            query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4469,21 +5100,36 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.PreviewStackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DisableRollback'] = request.disable_rollback
-        query['Parallelism'] = request.parallelism
-        query['Parameters'] = request.parameters
-        query['RegionId'] = request.region_id
-        query['StackName'] = request.stack_name
-        query['StackPolicyBody'] = request.stack_policy_body
-        query['StackPolicyURL'] = request.stack_policy_url
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateScratchId'] = request.template_scratch_id
-        query['TemplateScratchRegionId'] = request.template_scratch_region_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
-        query['TimeoutInMinutes'] = request.timeout_in_minutes
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.disable_rollback):
+            query['DisableRollback'] = request.disable_rollback
+        if not UtilClient.is_unset(request.parallelism):
+            query['Parallelism'] = request.parallelism
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_name):
+            query['StackName'] = request.stack_name
+        if not UtilClient.is_unset(request.stack_policy_body):
+            query['StackPolicyBody'] = request.stack_policy_body
+        if not UtilClient.is_unset(request.stack_policy_url):
+            query['StackPolicyURL'] = request.stack_policy_url
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_scratch_id):
+            query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.template_scratch_region_id):
+            query['TemplateScratchRegionId'] = request.template_scratch_region_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.timeout_in_minutes):
+            query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4524,9 +5170,12 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.SetDeletionProtectionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DeletionProtection'] = request.deletion_protection
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4553,9 +5202,12 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.SetDeletionProtectionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DeletionProtection'] = request.deletion_protection
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4596,10 +5248,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.SetStackPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
-        query['StackPolicyBody'] = request.stack_policy_body
-        query['StackPolicyURL'] = request.stack_policy_url
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.stack_policy_body):
+            query['StackPolicyBody'] = request.stack_policy_body
+        if not UtilClient.is_unset(request.stack_policy_url):
+            query['StackPolicyURL'] = request.stack_policy_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4626,10 +5282,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.SetStackPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
-        query['StackPolicyBody'] = request.stack_policy_body
-        query['StackPolicyURL'] = request.stack_policy_url
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.stack_policy_body):
+            query['StackPolicyBody'] = request.stack_policy_body
+        if not UtilClient.is_unset(request.stack_policy_url):
+            query['StackPolicyURL'] = request.stack_policy_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4670,11 +5330,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.SetTemplatePermissionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountIds'] = request.account_ids
-        query['ShareOption'] = request.share_option
-        query['TemplateId'] = request.template_id
-        query['TemplateVersion'] = request.template_version
-        query['VersionOption'] = request.version_option
+        if not UtilClient.is_unset(request.account_ids):
+            query['AccountIds'] = request.account_ids
+        if not UtilClient.is_unset(request.share_option):
+            query['ShareOption'] = request.share_option
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.version_option):
+            query['VersionOption'] = request.version_option
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4701,11 +5366,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.SetTemplatePermissionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountIds'] = request.account_ids
-        query['ShareOption'] = request.share_option
-        query['TemplateId'] = request.template_id
-        query['TemplateVersion'] = request.template_version
-        query['VersionOption'] = request.version_option
+        if not UtilClient.is_unset(request.account_ids):
+            query['AccountIds'] = request.account_ids
+        if not UtilClient.is_unset(request.share_option):
+            query['ShareOption'] = request.share_option
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.version_option):
+            query['VersionOption'] = request.version_option
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4746,12 +5416,18 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.SignalResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['LogicalResourceId'] = request.logical_resource_id
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
-        query['Status'] = request.status
-        query['UniqueId'] = request.unique_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.logical_resource_id):
+            query['LogicalResourceId'] = request.logical_resource_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.unique_id):
+            query['UniqueId'] = request.unique_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4778,12 +5454,18 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.SignalResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['LogicalResourceId'] = request.logical_resource_id
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
-        query['Status'] = request.status
-        query['UniqueId'] = request.unique_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.logical_resource_id):
+            query['LogicalResourceId'] = request.logical_resource_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.unique_id):
+            query['UniqueId'] = request.unique_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4824,8 +5506,10 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.StopStackGroupOperationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OperationId'] = request.operation_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.operation_id):
+            query['OperationId'] = request.operation_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4852,8 +5536,10 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.StopStackGroupOperationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OperationId'] = request.operation_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.operation_id):
+            query['OperationId'] = request.operation_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4894,10 +5580,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.TagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4924,10 +5614,14 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.TagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4968,11 +5662,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['All'] = request.all
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4999,11 +5698,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['All'] = request.all
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5044,25 +5748,44 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.UpdateStackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DisableRollback'] = request.disable_rollback
-        query['Parallelism'] = request.parallelism
-        query['Parameters'] = request.parameters
-        query['RamRoleName'] = request.ram_role_name
-        query['RegionId'] = request.region_id
-        query['ReplacementOption'] = request.replacement_option
-        query['StackId'] = request.stack_id
-        query['StackPolicyBody'] = request.stack_policy_body
-        query['StackPolicyDuringUpdateBody'] = request.stack_policy_during_update_body
-        query['StackPolicyDuringUpdateURL'] = request.stack_policy_during_update_url
-        query['StackPolicyURL'] = request.stack_policy_url
-        query['Tags'] = request.tags
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
-        query['TimeoutInMinutes'] = request.timeout_in_minutes
-        query['UsePreviousParameters'] = request.use_previous_parameters
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.disable_rollback):
+            query['DisableRollback'] = request.disable_rollback
+        if not UtilClient.is_unset(request.parallelism):
+            query['Parallelism'] = request.parallelism
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.ram_role_name):
+            query['RamRoleName'] = request.ram_role_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.replacement_option):
+            query['ReplacementOption'] = request.replacement_option
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.stack_policy_body):
+            query['StackPolicyBody'] = request.stack_policy_body
+        if not UtilClient.is_unset(request.stack_policy_during_update_body):
+            query['StackPolicyDuringUpdateBody'] = request.stack_policy_during_update_body
+        if not UtilClient.is_unset(request.stack_policy_during_update_url):
+            query['StackPolicyDuringUpdateURL'] = request.stack_policy_during_update_url
+        if not UtilClient.is_unset(request.stack_policy_url):
+            query['StackPolicyURL'] = request.stack_policy_url
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.timeout_in_minutes):
+            query['TimeoutInMinutes'] = request.timeout_in_minutes
+        if not UtilClient.is_unset(request.use_previous_parameters):
+            query['UsePreviousParameters'] = request.use_previous_parameters
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5089,25 +5812,44 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.UpdateStackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DisableRollback'] = request.disable_rollback
-        query['Parallelism'] = request.parallelism
-        query['Parameters'] = request.parameters
-        query['RamRoleName'] = request.ram_role_name
-        query['RegionId'] = request.region_id
-        query['ReplacementOption'] = request.replacement_option
-        query['StackId'] = request.stack_id
-        query['StackPolicyBody'] = request.stack_policy_body
-        query['StackPolicyDuringUpdateBody'] = request.stack_policy_during_update_body
-        query['StackPolicyDuringUpdateURL'] = request.stack_policy_during_update_url
-        query['StackPolicyURL'] = request.stack_policy_url
-        query['Tags'] = request.tags
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
-        query['TimeoutInMinutes'] = request.timeout_in_minutes
-        query['UsePreviousParameters'] = request.use_previous_parameters
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.disable_rollback):
+            query['DisableRollback'] = request.disable_rollback
+        if not UtilClient.is_unset(request.parallelism):
+            query['Parallelism'] = request.parallelism
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.ram_role_name):
+            query['RamRoleName'] = request.ram_role_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.replacement_option):
+            query['ReplacementOption'] = request.replacement_option
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.stack_policy_body):
+            query['StackPolicyBody'] = request.stack_policy_body
+        if not UtilClient.is_unset(request.stack_policy_during_update_body):
+            query['StackPolicyDuringUpdateBody'] = request.stack_policy_during_update_body
+        if not UtilClient.is_unset(request.stack_policy_during_update_url):
+            query['StackPolicyDuringUpdateURL'] = request.stack_policy_during_update_url
+        if not UtilClient.is_unset(request.stack_policy_url):
+            query['StackPolicyURL'] = request.stack_policy_url
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.timeout_in_minutes):
+            query['TimeoutInMinutes'] = request.timeout_in_minutes
+        if not UtilClient.is_unset(request.use_previous_parameters):
+            query['UsePreviousParameters'] = request.use_previous_parameters
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5160,24 +5902,42 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         query = {}
-        query['AccountIds'] = request.account_ids_shrink
-        query['AdministrationRoleName'] = request.administration_role_name
-        query['AutoDeployment'] = request.auto_deployment_shrink
-        query['ClientToken'] = request.client_token
-        query['DeploymentTargets'] = request.deployment_targets_shrink
-        query['Description'] = request.description
-        query['ExecutionRoleName'] = request.execution_role_name
-        query['OperationDescription'] = request.operation_description
-        query['OperationPreferences'] = request.operation_preferences_shrink
-        query['Parameters'] = request.parameters
-        query['PermissionModel'] = request.permission_model
-        query['RegionId'] = request.region_id
-        query['RegionIds'] = request.region_ids_shrink
-        query['StackGroupName'] = request.stack_group_name
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.account_ids_shrink):
+            query['AccountIds'] = request.account_ids_shrink
+        if not UtilClient.is_unset(request.administration_role_name):
+            query['AdministrationRoleName'] = request.administration_role_name
+        if not UtilClient.is_unset(request.auto_deployment_shrink):
+            query['AutoDeployment'] = request.auto_deployment_shrink
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deployment_targets_shrink):
+            query['DeploymentTargets'] = request.deployment_targets_shrink
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.execution_role_name):
+            query['ExecutionRoleName'] = request.execution_role_name
+        if not UtilClient.is_unset(request.operation_description):
+            query['OperationDescription'] = request.operation_description
+        if not UtilClient.is_unset(request.operation_preferences_shrink):
+            query['OperationPreferences'] = request.operation_preferences_shrink
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.permission_model):
+            query['PermissionModel'] = request.permission_model
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_ids_shrink):
+            query['RegionIds'] = request.region_ids_shrink
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5216,24 +5976,42 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         query = {}
-        query['AccountIds'] = request.account_ids_shrink
-        query['AdministrationRoleName'] = request.administration_role_name
-        query['AutoDeployment'] = request.auto_deployment_shrink
-        query['ClientToken'] = request.client_token
-        query['DeploymentTargets'] = request.deployment_targets_shrink
-        query['Description'] = request.description
-        query['ExecutionRoleName'] = request.execution_role_name
-        query['OperationDescription'] = request.operation_description
-        query['OperationPreferences'] = request.operation_preferences_shrink
-        query['Parameters'] = request.parameters
-        query['PermissionModel'] = request.permission_model
-        query['RegionId'] = request.region_id
-        query['RegionIds'] = request.region_ids_shrink
-        query['StackGroupName'] = request.stack_group_name
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateURL'] = request.template_url
-        query['TemplateVersion'] = request.template_version
+        if not UtilClient.is_unset(request.account_ids_shrink):
+            query['AccountIds'] = request.account_ids_shrink
+        if not UtilClient.is_unset(request.administration_role_name):
+            query['AdministrationRoleName'] = request.administration_role_name
+        if not UtilClient.is_unset(request.auto_deployment_shrink):
+            query['AutoDeployment'] = request.auto_deployment_shrink
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deployment_targets_shrink):
+            query['DeploymentTargets'] = request.deployment_targets_shrink
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.execution_role_name):
+            query['ExecutionRoleName'] = request.execution_role_name
+        if not UtilClient.is_unset(request.operation_description):
+            query['OperationDescription'] = request.operation_description
+        if not UtilClient.is_unset(request.operation_preferences_shrink):
+            query['OperationPreferences'] = request.operation_preferences_shrink
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.permission_model):
+            query['PermissionModel'] = request.permission_model
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_ids_shrink):
+            query['RegionIds'] = request.region_ids_shrink
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5284,16 +6062,26 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         query = {}
-        query['AccountIds'] = request.account_ids_shrink
-        query['ClientToken'] = request.client_token
-        query['DeploymentTargets'] = request.deployment_targets_shrink
-        query['OperationDescription'] = request.operation_description
-        query['OperationPreferences'] = request.operation_preferences_shrink
-        query['ParameterOverrides'] = request.parameter_overrides
-        query['RegionId'] = request.region_id
-        query['RegionIds'] = request.region_ids_shrink
-        query['StackGroupName'] = request.stack_group_name
-        query['TimeoutInMinutes'] = request.timeout_in_minutes
+        if not UtilClient.is_unset(request.account_ids_shrink):
+            query['AccountIds'] = request.account_ids_shrink
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deployment_targets_shrink):
+            query['DeploymentTargets'] = request.deployment_targets_shrink
+        if not UtilClient.is_unset(request.operation_description):
+            query['OperationDescription'] = request.operation_description
+        if not UtilClient.is_unset(request.operation_preferences_shrink):
+            query['OperationPreferences'] = request.operation_preferences_shrink
+        if not UtilClient.is_unset(request.parameter_overrides):
+            query['ParameterOverrides'] = request.parameter_overrides
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_ids_shrink):
+            query['RegionIds'] = request.region_ids_shrink
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.timeout_in_minutes):
+            query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5330,16 +6118,26 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         query = {}
-        query['AccountIds'] = request.account_ids_shrink
-        query['ClientToken'] = request.client_token
-        query['DeploymentTargets'] = request.deployment_targets_shrink
-        query['OperationDescription'] = request.operation_description
-        query['OperationPreferences'] = request.operation_preferences_shrink
-        query['ParameterOverrides'] = request.parameter_overrides
-        query['RegionId'] = request.region_id
-        query['RegionIds'] = request.region_ids_shrink
-        query['StackGroupName'] = request.stack_group_name
-        query['TimeoutInMinutes'] = request.timeout_in_minutes
+        if not UtilClient.is_unset(request.account_ids_shrink):
+            query['AccountIds'] = request.account_ids_shrink
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deployment_targets_shrink):
+            query['DeploymentTargets'] = request.deployment_targets_shrink
+        if not UtilClient.is_unset(request.operation_description):
+            query['OperationDescription'] = request.operation_description
+        if not UtilClient.is_unset(request.operation_preferences_shrink):
+            query['OperationPreferences'] = request.operation_preferences_shrink
+        if not UtilClient.is_unset(request.parameter_overrides):
+            query['ParameterOverrides'] = request.parameter_overrides
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_ids_shrink):
+            query['RegionIds'] = request.region_ids_shrink
+        if not UtilClient.is_unset(request.stack_group_name):
+            query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.timeout_in_minutes):
+            query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5380,12 +6178,18 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.UpdateStackTemplateByResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LogicalResourceId'] = request.logical_resource_id
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
-        query['TemplateFormat'] = request.template_format
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.logical_resource_id):
+            query['LogicalResourceId'] = request.logical_resource_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.template_format):
+            query['TemplateFormat'] = request.template_format
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5412,12 +6216,18 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.UpdateStackTemplateByResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LogicalResourceId'] = request.logical_resource_id
-        query['RegionId'] = request.region_id
-        query['StackId'] = request.stack_id
-        query['TemplateFormat'] = request.template_format
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.logical_resource_id):
+            query['LogicalResourceId'] = request.logical_resource_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.stack_id):
+            query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.template_format):
+            query['TemplateFormat'] = request.template_format
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5458,11 +6268,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Description'] = request.description
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateName'] = request.template_name
-        query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5489,11 +6304,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Description'] = request.description
-        query['TemplateBody'] = request.template_body
-        query['TemplateId'] = request.template_id
-        query['TemplateName'] = request.template_name
-        query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5544,16 +6364,26 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.source_tag):
             request.source_tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.source_tag), 'SourceTag', 'json')
         query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['ExecutionMode'] = request.execution_mode
-        query['LogicalIdStrategy'] = request.logical_id_strategy
-        query['PreferenceParameters'] = request.preference_parameters_shrink
-        query['RegionId'] = request.region_id
-        query['SourceResourceGroup'] = request.source_resource_group_shrink
-        query['SourceResources'] = request.source_resources_shrink
-        query['SourceTag'] = request.source_tag_shrink
-        query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.execution_mode):
+            query['ExecutionMode'] = request.execution_mode
+        if not UtilClient.is_unset(request.logical_id_strategy):
+            query['LogicalIdStrategy'] = request.logical_id_strategy
+        if not UtilClient.is_unset(request.preference_parameters_shrink):
+            query['PreferenceParameters'] = request.preference_parameters_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_resource_group_shrink):
+            query['SourceResourceGroup'] = request.source_resource_group_shrink
+        if not UtilClient.is_unset(request.source_resources_shrink):
+            query['SourceResources'] = request.source_resources_shrink
+        if not UtilClient.is_unset(request.source_tag_shrink):
+            query['SourceTag'] = request.source_tag_shrink
+        if not UtilClient.is_unset(request.template_scratch_id):
+            query['TemplateScratchId'] = request.template_scratch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5590,16 +6420,26 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.source_tag):
             request.source_tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.source_tag), 'SourceTag', 'json')
         query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['ExecutionMode'] = request.execution_mode
-        query['LogicalIdStrategy'] = request.logical_id_strategy
-        query['PreferenceParameters'] = request.preference_parameters_shrink
-        query['RegionId'] = request.region_id
-        query['SourceResourceGroup'] = request.source_resource_group_shrink
-        query['SourceResources'] = request.source_resources_shrink
-        query['SourceTag'] = request.source_tag_shrink
-        query['TemplateScratchId'] = request.template_scratch_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.execution_mode):
+            query['ExecutionMode'] = request.execution_mode
+        if not UtilClient.is_unset(request.logical_id_strategy):
+            query['LogicalIdStrategy'] = request.logical_id_strategy
+        if not UtilClient.is_unset(request.preference_parameters_shrink):
+            query['PreferenceParameters'] = request.preference_parameters_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_resource_group_shrink):
+            query['SourceResourceGroup'] = request.source_resource_group_shrink
+        if not UtilClient.is_unset(request.source_resources_shrink):
+            query['SourceResources'] = request.source_resources_shrink
+        if not UtilClient.is_unset(request.source_tag_shrink):
+            query['SourceTag'] = request.source_tag_shrink
+        if not UtilClient.is_unset(request.template_scratch_id):
+            query['TemplateScratchId'] = request.template_scratch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5640,11 +6480,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ValidateTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['RegionId'] = request.region_id
-        query['TemplateBody'] = request.template_body
-        query['TemplateURL'] = request.template_url
-        query['ValidationOption'] = request.validation_option
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.validation_option):
+            query['ValidationOption'] = request.validation_option
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5671,11 +6516,16 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ValidateTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['RegionId'] = request.region_id
-        query['TemplateBody'] = request.template_body
-        query['TemplateURL'] = request.template_url
-        query['ValidationOption'] = request.validation_option
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.validation_option):
+            query['ValidationOption'] = request.validation_option
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

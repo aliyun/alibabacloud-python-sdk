@@ -1,3 +1,6 @@
+2022-01-05 Version: 3.0.5
+- GetTemplate return value adds TemplateId, TemplateVersion, TemplateScratchId and TemplateURL.
+
 2021-12-20 Version: 3.0.4
 - CreateStack, PreviewStack and GetTemplateEstimateCost parameters supports specifing TemplateScratchRegionId.
 - GetTemplateScratch return value adds StackProvision and UsageType in Stacks.
