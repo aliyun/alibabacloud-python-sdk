@@ -1,3 +1,6 @@
+2022-01-06 Version: 1.0.9
+- Add Application Monitor Api.
+
 2021-12-20 Version: 1.0.8
 - Update createBasicAccelerator Api.
 - Add UpdateAcceleratorAutoRenewAttribute Api.
